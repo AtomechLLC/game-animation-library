@@ -31,6 +31,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Build library page
+        run: python3 build_page.py index.html
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

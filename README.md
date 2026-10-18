@@ -11,6 +11,10 @@ python merge.py
 
 `merge.py` writes `library.json`, `atlas.html` and `todo.json`. `index.json`, `atlas.html` and `todo.json` are generated, so they are ignored by git.
 
+## GitHub Pages
+
+On every push to `main`, `.github/workflows/static.yml` runs `python3 build_page.py index.html` (template.html + library.json) and publishes the repo root, so the site always matches the committed `library.json`. Run `python build_page.py` locally to preview `index.html`.
+
 ## Source data
 
 - `taxonomy.txt` — the hand-written index. One `# CAT id | Name | description` line per category, then one line per animation: `Name | Subcategory | tags,comma,separated | Game;Game;Game | Description`.
