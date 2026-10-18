@@ -3,11 +3,12 @@
     python serve_local.py            # then open http://localhost:8765
     python serve_local.py 9000       # another port
 
-Every GIF and entry gets a "✕ Mark" button. Marks are saved to marks.json in this folder,
-so a later Claude thread can search for better images for exactly those entries.
-Listens on 127.0.0.1 only.
+Every GIF gets a "✕ Bad GIF" button and every entry a "✕ Needs better GIFs" button.
+Marks are saved to marks.json in this folder, so a later Claude thread can search for
+better images for exactly those entries. Listens on 127.0.0.1 only and opens your browser.
+On Windows you can double-click serve_local.bat instead.
 """
-import http.server, json, os, sys
+import http.server, json, os, sys, threading, webbrowser
 from build_page import render
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -59,4 +60,6 @@ if __name__ == '__main__':
     os.chdir(ROOT)
     PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8765
     print(f'Local atlas on http://localhost:{PORT}  (marks are saved to {MARKS})')
+    print('Leave this window open while you review; press Ctrl+C to stop.')
+    threading.Timer(0.5, webbrowser.open, [f'http://localhost:{PORT}']).start()
     http.server.ThreadingHTTPServer(('127.0.0.1', PORT), Handler).serve_forever()

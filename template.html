@@ -170,7 +170,7 @@ footer{color:var(--muted);font-size:12px;padding-block:24px;border-top:1px solid
 <div class="wrap shell">
   <aside id="rail">
     <section><h2>Category</h2><div class="flist" id="cats"></div></section>
-    <section><h2>Show</h2><div class="flist"><button class="fitem" id="gifOnly" aria-pressed="false"><span>Only entries with GIFs</span><span id="gifN"></span></button><button class="fitem" id="markOnly" aria-pressed="false" hidden><span>Only entries marked ✕</span><span id="markN"></span></button><button class="fitem" id="flagOnly" aria-pressed="false" hidden><span>Only flagged by downvotes</span><span id="flagN"></span></button></div></section>
+    <section><h2>Show</h2><div class="flist"><button class="fitem" id="gifOnly" aria-pressed="false"><span>Only entries with GIFs</span><span id="gifN"></span></button><button class="fitem" id="markOnly" aria-pressed="false" hidden><span>Only entries marked bad ✕</span><span id="markN"></span></button><button class="fitem" id="flagOnly" aria-pressed="false" hidden><span>Only flagged by downvotes</span><span id="flagN"></span></button></div></section>
     <section><h2>Tags</h2><div class="chips" id="tags"></div></section>
     <section><h2>Example games</h2><div class="flist" id="games"></div></section>
   </aside>
@@ -217,13 +217,13 @@ const gkey=(a,g)=>a.id+'|'+(g.local||g.media_url||g.page_url);
 const isFlagged=a=>a.gifs.some(g=>CS.flagged.has(gkey(a,g)));
 function thumbOf(a){const l=a.gifs.filter(g=>g.local);if(!l.length)return null;return CS.on?l.slice().sort((x,y)=>score(gkey(a,y))-score(gkey(a,x)))[0]:l[0]}
 function voteHtml(aid,t){const v=CS.tally[t]||[0,0],m=CS.mine[t]||0;return `<span class="vt" data-t="${esc(t)}"><button class="vbtn up" data-vote="1" data-a="${esc(aid)}" data-t="${esc(t)}" aria-pressed="${m===1}" title="Good example">▲ ${v[0]}</button> <button class="vbtn down" data-vote="-1" data-a="${esc(aid)}" data-t="${esc(t)}" aria-pressed="${m===-1}" title="Poor example">▼ ${v[1]}</button></span>`}
-function markHtml(aid,gif,label){const m=markOf(aid,gif);return `<button class="tbtn" data-mark="${esc(aid)}" data-gif="${esc(gif||'')}" aria-pressed="${!!m}" title="Mark for a better-image search later">✕ ${m?'Marked':label}</button>`}
+function markHtml(aid,gif,label){const m=markOf(aid,gif);return `<button class="tbtn" data-mark="${esc(aid)}" data-gif="${esc(gif||'')}" aria-pressed="${!!m}" title="Mark for a better-image search later">✕ ${m?'Marked bad':label}</button>`}
 function searchLinks(a){const g=(a.gk[0]||'');return `<a target="_blank" rel="noopener" href="https://giphy.com/search/${q((a.name+' '+g).replace(/[^\w\s-]/g,'').trim().replace(/\s+/g,'-'))}">Giphy ↗</a> · <a target="_blank" rel="noopener" href="https://tenor.com/search/${q((g+' '+a.name).toLowerCase().replace(/[^\w\s-]/g,'').trim().replace(/\s+/g,'-'))}-gifs">Tenor ↗</a>`}
 function gifTools(a,g){
   let h='';
   if(CS.on)h+=voteHtml(a.id,gkey(a,g))+' ';
   h+=`<a class="tbtn" href="#submit/${esc(a.id)}/${a.gifs.indexOf(g)}">Suggest a replacement</a>`;
-  if(CFG.local)h+=' '+markHtml(a.id,gkey(a,g),'Mark');
+  if(CFG.local)h+=' '+markHtml(a.id,gkey(a,g),'Bad GIF');
   h=h?`<div class="gtools">${h}</div>`:'';
   if(CS.on&&CS.flagged.has(gkey(a,g)))h+=`<div class="flagged">Voters flagged this GIF. A replacement search is queued; you can help: ${searchLinks(a)}</div>`;
   return h}
@@ -303,7 +303,7 @@ function openSheet(id,push=true){
   <dt>Tags</dt><dd class="chips">${a.tags.map(t=>`<button class="chip" data-tag="${esc(t)}" data-close="1">${esc(t)}</button>`).join('')}</dd>
   <dt>Seen in</dt><dd class="chips gamechips">${a.example_games.map(g=>`<a class="chip" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${q(g+' '+a.name+' animation')}">${esc(g)} ↗</a>`).join('')}</dd></dl>
   <section><h3>GIF examples (${a.gifs.length})</h3>${a.gifs.length?`<ul class="reflist gifl">${a.gifs.map(g=>`<li>${g.local?`<img loading="lazy" alt="${esc(g.title)}" src="${esc(g.local)}">`:''}<span class="src">${esc(g.host||'GIF')}${g.game?' · '+esc(g.game):''}</span><a href="${esc(g.page_url)}" target="_blank" rel="noopener">${esc(g.title||'Open GIF')} ↗</a>${g.media_url?`<small><a href="${esc(g.media_url)}" target="_blank" rel="noopener">Direct file ↗</a></small>`:''}${gifTools(a,g)}</li>`).join('')}</ul>`:'<p class="count">No GIF found yet. Try the Giphy or Tenor search below.</p>'}
-  <div class="gtools" style="margin-top:8px"><a class="cta" href="#submit/${esc(a.id)}">Submit a better GIF</a>${CFG.local?markHtml(a.id,'','Mark whole entry'):''}</div><div id="sugSlot"></div></section>${communityHtml(a)}
+  <div class="gtools" style="margin-top:8px"><a class="cta" href="#submit/${esc(a.id)}">Submit a better GIF</a>${CFG.local?markHtml(a.id,'','Needs better GIFs'):''}</div><div id="sugSlot"></div></section>${communityHtml(a)}
   <section><h3>References (${a.references.length})</h3>${a.references.length?`<ul class="reflist">${a.references.map(r=>`<li><span class="src">${esc(r.source||'Link')}${r.game?' · '+esc(r.game):''}</span><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title||r.url)}</a>${r.note?`<small>${esc(r.note)}</small>`:''}<small>${esc(r.url.replace(/^https?:\/\/(www\.)?/,'').split('/')[0])}</small></li>`).join('')}</ul>`:'<p class="count">No saved references yet. Use the live searches below.</p>'}</section>
   <section><h3>Live searches</h3><div class="quick">
    <a target="_blank" rel="noopener" href="https://www.google.com/search?q=${q(a.name+' animation video game')}">Google ↗</a>

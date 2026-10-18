@@ -41,12 +41,12 @@ and an owner review page (`admin.php`). GIFs that collect enough downvotes are f
 replacement search (`tools/find_replacements.php`); candidates wait for review like community suggestions.
 Setup: [DEPLOY-XCLOUD.md](DEPLOY-XCLOUD.md). Code: `api.php`, `admin.php`, `lib/bootstrap.php`, `config.sample.php`.
 
-## Local review: mark entries with ✕
+## Local review: mark bad GIFs with ✕
 
-```bash
-python serve_local.py        # open http://localhost:8765
-```
+On Windows, double-click `serve_local.bat` (or run `python serve_local.py`). Your browser opens http://localhost:8765; keep the console window open while you review.
 
-Every GIF has a "✕ Mark" button and every entry a "✕ Mark whole entry" button; the "Only entries marked ✕" filter lists them.
-Marks are written to `marks.json` (animation id, GIF page URL or empty for the whole entry, title, time).
-Commit it, and a later search pass can look for better images for exactly those entries.
+- Open an entry and press **✕ Bad GIF** under any clip you want replaced, or **✕ Needs better GIFs** for the whole entry. Press again to unmark.
+- Cards with marks show a red ✕; the **Only entries marked bad ✕** filter lists them.
+- Marks are saved instantly to `marks.json` in this folder (entry id and name, GIF key, page URL, local file, title, time).
+
+To get replacements, ask Claude to "search for better GIFs for my marks". Claude reads `marks.json` from this folder on your computer or from the repo (commit and push it), finds candidates for each marked entry, and clears the marks it has handled.
