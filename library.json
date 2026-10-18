@@ -329,15 +329,21 @@
      "host": "Giphy",
      "local": "gifs/locomotion.combat-walk-2.webp",
      "source_url": "https://media.giphy.com/media/JJHgmYP4XFxRrzswoD/200w.webp"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/dark-souls-artorias-abyss-walk-the-abyss-nah-gif-17595976570383834810",
      "media_url": "",
      "title": "Artorias walking (walk the abyss)",
      "game": "Dark Souls",
      "host": "Tenor",
-     "local": "gifs/locomotion.combat-walk-3.webp",
-     "source_url": "https://media.tenor.com/9DF3dpnTHroAAAA1/dark-souls-artorias-abyss-walk-the-abyss-nah.webp"
+     "source_url": "https://media.tenor.com/9DF3dpnTHroAAAA1/dark-souls-artorias-abyss-walk-the-abyss-nah.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "A single manga panel of a helmeted knight saying 'Nah, I'd walk the abyss'"
+     }
     }
    ]
   },
@@ -475,7 +481,12 @@
      "game": "Call of Duty: Warzone",
      "host": "Giphy",
      "local": "gifs/locomotion.sprint-2.webp",
-     "source_url": "https://media.giphy.com/media/geeLCBfylpeOCIblXt/200w.webp"
+     "source_url": "https://media.giphy.com/media/geeLCBfylpeOCIblXt/200w.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "low",
+      "what": "Close-ups from a CoD MW2/Warzone trailer with a 'RUN' caption on every frame; soldiers in close-up, no clear sprint"
+     }
     },
     {
      "page_url": "https://tenor.com/view/running-call-of-duty-modern-warfare-iii-i'm-coming-to-you-i-am-otw-call-of-duty-gif-13559334972762653500",
@@ -542,15 +553,20 @@
      "note": "Lock-on vs free movement in Dark Souls combat"
     }
    ],
-   "gifs": [
+   "gifs": [],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/ds1-lock-on-dark-souls-gif-14549586169031928712",
      "media_url": "https://media1.tenor.com/m/yeqDiKIVq4gAAAAd/ds1-lock-on.gif",
      "title": "Dark Souls 1 lock-on",
      "game": "Dark Souls",
      "host": "Tenor",
-     "local": "gifs/locomotion.strafe-lock-on-movement-0.webp",
-     "source_url": "https://media.tenor.com/yeqDiKIVq4gAAAA1/ds1-lock-on-dark-souls.webp"
+     "source_url": "https://media.tenor.com/yeqDiKIVq4gAAAA1/ds1-lock-on-dark-souls.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Dark Souls 1 gameplay with the meme caption 'i love ds1 lock on'"
+     }
     }
    ]
   },
@@ -1352,15 +1368,21 @@
      "title": "Titanfall pilot wall run",
      "game": "Titanfall",
      "host": "Tenor"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/faith-faith-connors-mirrors-edge-running-flash-gif-6319587616831825814",
      "media_url": "",
      "title": "Faith Connors Mirror's Edge running (unconfirmed wall run)",
      "game": "Mirror's Edge",
      "host": "Tenor",
-     "local": "gifs/locomotion.wall-run-2.webp",
-     "source_url": "https://media.tenor.com/V7OvdHQ355YAAAA1/faith-faith-connors-mirrors-edge-running-flash.webp"
+     "source_url": "https://media.tenor.com/V7OvdHQ355YAAAA1/faith-faith-connors-mirrors-edge-running-flash.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Hand-drawn 2D fan animation of Mirror's Edge Faith running on a red ledge; not game footage and no wall-run"
+     }
     },
     {
      "page_url": "https://giphy.com/gifs/absolute-cinema-titanfall-2-waRCz9DUtcPWuNpBmF",
@@ -1368,8 +1390,12 @@
      "title": "Titanfall 2 GIF (unconfirmed wall run)",
      "game": "Titanfall 2",
      "host": "Giphy",
-     "local": "gifs/locomotion.wall-run-3.webp",
-     "source_url": "https://media.giphy.com/media/waRCz9DUtcPWuNpBmF/200w.webp"
+     "source_url": "https://media.giphy.com/media/waRCz9DUtcPWuNpBmF/200w.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "'ABSOLUTE TITANFALL' black-and-white image macro meme"
+     }
     }
    ]
   },
@@ -1581,20 +1607,26 @@
      "host": "Tenor"
     },
     {
-     "page_url": "https://tenor.com/view/tomb-raider-lara-croft-the-last-revelation-pole-climbing-gif-13637885673743408596",
-     "media_url": "",
-     "title": "Lara pole climbing",
-     "game": "Tomb Raider: The Last Revelation",
-     "host": "Tenor",
-     "local": "gifs/locomotion.mantle-ledge-climb-1.webp",
-     "source_url": "https://media.tenor.com/vUOAw37dXdQAAAA1/tomb-raider-lara-croft-the-last-revelation-pole-climbing.webp"
-    },
-    {
      "page_url": "https://tenor.com/view/climbing-up-fenyx-immortals-fenyx-rising-stadia-im-a-mountain-climber-gif-20110365",
      "media_url": "",
      "title": "Fenyx climbing up a cliff",
      "game": "Immortals Fenyx Rising",
      "host": "Tenor"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/tomb-raider-lara-croft-the-last-revelation-pole-climbing-gif-13637885673743408596",
+     "media_url": "",
+     "title": "Lara pole climbing",
+     "game": "Tomb Raider: The Last Revelation",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/vUOAw37dXdQAAAA1/tomb-raider-lara-croft-the-last-revelation-pole-climbing.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "high",
+      "what": "Tomb Raider: The Last Revelation, Lara hanging on a rope or pole in the dark; real gameplay but no mantle"
+     }
     }
    ]
   },
@@ -1652,7 +1684,12 @@
      "game": "Tomb Raider: The Last Revelation",
      "host": "Tenor",
      "local": "gifs/locomotion.ledge-grab-hang-0.webp",
-     "source_url": "https://media.tenor.com/vUOAw37dXdQAAAA1/tomb-raider-lara-croft-the-last-revelation-pole-climbing.webp"
+     "source_url": "https://media.tenor.com/vUOAw37dXdQAAAA1/tomb-raider-lara-croft-the-last-revelation-pole-climbing.webp",
+     "screened": {
+      "verdict": "unclear",
+      "confidence": "medium",
+      "what": "Very dark shot of a figure hanging on a rope or chain over a pit, almost static"
+     }
     },
     {
      "page_url": "https://tenor.com/view/ezio-climbing-revelations-assasins-creed-gif-10868698",
@@ -1800,7 +1837,12 @@
      "game": "Elden Ring",
      "host": "Tenor",
      "local": "gifs/locomotion.mount-dismount-0.webp",
-     "source_url": "https://media.tenor.com/MtEGW7m1zlsAAAA1/spectral-speed-whistle-elden-ring-torrent-horse-steed.webp"
+     "source_url": "https://media.tenor.com/MtEGW7m1zlsAAAA1/spectral-speed-whistle-elden-ring-torrent-horse-steed.webp",
+     "screened": {
+      "verdict": "unclear",
+      "confidence": "low",
+      "what": "Dark night gameplay with heavy UI; a mount or dismount can't be made out"
+     }
     },
     {
      "page_url": "https://tenor.com/view/elden-ring-goty-game-of-the-year-tarnished-mounted-fight-gif-27608412",
@@ -2234,15 +2276,6 @@
      "host": "Tenor"
     },
     {
-     "page_url": "https://tenor.com/view/360meteoric-slam-360no-scope-god-of-war-ratio-gif-25130307",
-     "media_url": "https://media1.tenor.com/m/Q81EbkTkRwsAAAAC/360meteoric-slam-360no-scope.gif",
-     "title": "Kratos Meteoric Slam (360 variant)",
-     "game": "God of War (2018)",
-     "host": "Tenor",
-     "local": "gifs/melee.overhead-slam-1.webp",
-     "source_url": "https://media.tenor.com/Q81EbkTkRwsAAAA1/360meteoric-slam-360no-scope-god-of-war-ratio.webp"
-    },
-    {
      "page_url": "https://ultimateframedata.com/ike",
      "media_url": "https://ultimateframedata.com/hitboxes/ike/IkeFSmash.gif",
      "title": "Ike forward smash, with hitboxes",
@@ -2250,6 +2283,21 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.overhead-slam-ufd-0.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/ike/IkeFSmash.gif"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/360meteoric-slam-360no-scope-god-of-war-ratio-gif-25130307",
+     "media_url": "https://media1.tenor.com/m/Q81EbkTkRwsAAAAC/360meteoric-slam-360no-scope.gif",
+     "title": "Kratos Meteoric Slam (360 variant)",
+     "game": "God of War (2018)",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/Q81EbkTkRwsAAAA1/360meteoric-slam-360no-scope-god-of-war-ratio.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "God of War-style slam with the caption '360 METEORIC SLAM RATIO'"
+     }
     }
    ]
   },
@@ -2302,15 +2350,6 @@
      "host": "Tenor"
     },
     {
-     "page_url": "https://tenor.com/view/fidgetus-spinnus-for-honor-for-honor-shinobi-shinobi-zone-for-honor-shinobi-zone-gif-13993602921481544424",
-     "media_url": "",
-     "title": "For Honor Shinobi zone attack spin",
-     "game": "For Honor",
-     "host": "Tenor",
-     "local": "gifs/melee.horizontal-sweep-1.webp",
-     "source_url": "https://media.tenor.com/wjNDtz7GougAAAA1/fidgetus-spinnus-for-honor-for-honor-shinobi-shinobi-zone-for-honor-shinobi-zone.webp"
-    },
-    {
      "page_url": "https://ultimateframedata.com/ike",
      "media_url": "https://ultimateframedata.com/hitboxes/ike/IkeDSmash.gif",
      "title": "Ike down smash, with hitboxes",
@@ -2327,6 +2366,21 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.horizontal-sweep-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/marth/MarthDSmash.gif"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/fidgetus-spinnus-for-honor-for-honor-shinobi-shinobi-zone-for-honor-shinobi-zone-gif-13993602921481544424",
+     "media_url": "",
+     "title": "For Honor Shinobi zone attack spin",
+     "game": "For Honor",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/wjNDtz7GougAAAA1/fidgetus-spinnus-for-honor-for-honor-shinobi-shinobi-zone-for-honor-shinobi-zone.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "For Honor spin attack with the caption 'fidgetus spinnus'"
+     }
     }
    ]
   },
@@ -2574,15 +2628,6 @@
      "host": "Tenor"
     },
     {
-     "page_url": "https://tenor.com/view/street-fighter-uppercut-ryu-ken-gif-14825716441229481276",
-     "media_url": "",
-     "title": "Ryu/Ken uppercut",
-     "game": "Street Fighter",
-     "host": "Tenor",
-     "local": "gifs/melee.uppercut-launcher-3.webp",
-     "source_url": "https://media.tenor.com/zb-GjaQm1TwAAAA1/street-fighter-uppercut-ryu-ken.webp"
-    },
-    {
      "page_url": "https://ultimateframedata.com/ryu",
      "media_url": "https://ultimateframedata.com/hitboxes/ryu/RyuUTiltHeavy.gif",
      "title": "Ryu heavy up tilt, with hitboxes",
@@ -2599,6 +2644,21 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.uppercut-launcher-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/terry/TerryUTilt.gif"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/street-fighter-uppercut-ryu-ken-gif-14825716441229481276",
+     "media_url": "",
+     "title": "Ryu/Ken uppercut",
+     "game": "Street Fighter",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/zb-GjaQm1TwAAAA1/street-fighter-uppercut-ryu-ken.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Street Fighter 2 Ryu vs Ken with a 'HA-DOOKIN!!!' caption joke edit"
+     }
     }
    ]
   },
@@ -2665,24 +2725,6 @@
      "host": "Tenor"
     },
     {
-     "page_url": "https://tenor.com/view/dunktastic-mario-forward-aerial-spike-super-smash-bros-ultimate-gif-11315351889153536109",
-     "media_url": "",
-     "title": "Mario forward aerial spike",
-     "game": "Super Smash Bros. Ultimate",
-     "host": "Tenor",
-     "local": "gifs/melee.aerial-attack-3.webp",
-     "source_url": "https://media.tenor.com/nQg0l4WKsG0AAAA1/dunktastic-mario-forward-aerial-spike-super-smash-bros-ultimate.webp"
-    },
-    {
-     "page_url": "https://tenor.com/view/mario-forward-air-caption-smash-ultimate-gif-17026005180855219682",
-     "media_url": "",
-     "title": "Mario forward air",
-     "game": "Super Smash Bros. Ultimate",
-     "host": "Tenor",
-     "local": "gifs/melee.aerial-attack-4.webp",
-     "source_url": "https://media.tenor.com/7EiFgRzV9eIAAAA1/mario-forward-air-caption-smash-ultimate.webp"
-    },
-    {
      "page_url": "https://ultimateframedata.com/marth",
      "media_url": "https://ultimateframedata.com/hitboxes/marth/MarthFAir.gif",
      "title": "Marth forward air, with hitboxes",
@@ -2699,6 +2741,34 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.aerial-attack-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/cloud/CloudFAir.gif"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/dunktastic-mario-forward-aerial-spike-super-smash-bros-ultimate-gif-11315351889153536109",
+     "media_url": "",
+     "title": "Mario forward aerial spike",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/nQg0l4WKsG0AAAA1/dunktastic-mario-forward-aerial-spike-super-smash-bros-ultimate.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "'DUNKTASTIC!' caption meme over a Mario Smash animation"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/mario-forward-air-caption-smash-ultimate-gif-17026005180855219682",
+     "media_url": "",
+     "title": "Mario forward air",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/7EiFgRzV9eIAAAA1/mario-forward-air-caption-smash-ultimate.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "'get Mario Forward Aerial'd' caption meme"
+     }
     }
    ]
   },
@@ -2765,15 +2835,6 @@
      "host": "Tenor"
     },
     {
-     "page_url": "https://tenor.com/view/ss-silksong-hollow-knight-hk-skong-gif-16335370890033522618",
-     "media_url": "",
-     "title": "Silksong pogo / down-air attack",
-     "game": "Hollow Knight: Silksong",
-     "host": "Tenor",
-     "local": "gifs/melee.plunging-downward-attack-2.webp",
-     "source_url": "https://media.tenor.com/4rLlRqa0Z7oAAAA1/ss-silksong-hollow-knight-hk-skong.webp"
-    },
-    {
      "page_url": "https://ultimateframedata.com/link",
      "media_url": "https://ultimateframedata.com/hitboxes/link/LinkDAir.gif",
      "title": "Link down air, with hitboxes",
@@ -2790,6 +2851,21 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.plunging-downward-attack-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/sheik/SheikDAir.gif"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/ss-silksong-hollow-knight-hk-skong-gif-16335370890033522618",
+     "media_url": "",
+     "title": "Silksong pogo / down-air attack",
+     "game": "Hollow Knight: Silksong",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/4rLlRqa0Z7oAAAA1/ss-silksong-hollow-knight-hk-skong.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Plunging attack with the caption 'average witch crest user'"
+     }
     }
    ]
   },
@@ -3066,15 +3142,21 @@
      "host": "Tenor",
      "local": "gifs/melee.rolling-attack-0.webp",
      "source_url": "https://media.tenor.com/WtaeLE9ADcQAAAA1/dodgeroll-dodge-roll-dark-souls-matthewmatosis.webp"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/dark-souls-dark-souls-3-dark-souls-meme-dark-souls-roll-gif-16789676583030205408",
      "media_url": "",
      "title": "Dark Souls 3 Roll (unconfirmed: roll meme)",
      "game": "Dark Souls 3",
      "host": "Tenor",
-     "local": "gifs/melee.rolling-attack-1.webp",
-     "source_url": "https://media.tenor.com/6QDp5ZE1q-AAAAA1/dark-souls-dark-souls-3-dark-souls-meme-dark-souls-roll.webp"
+     "source_url": "https://media.tenor.com/6QDp5ZE1q-AAAAA1/dark-souls-dark-souls-3-dark-souls-meme-dark-souls-roll.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Real-life street footage (a man rolling after money) cut into Dark Souls footage"
+     }
     }
    ]
   },
@@ -3474,20 +3556,26 @@
    ],
    "gifs": [
     {
-     "page_url": "https://tenor.com/view/bashing-shield-bashing-shield-echo-arkheron-gif-5131701993100545060",
-     "media_url": "",
-     "title": "Shield bashing",
-     "game": "Arkheron",
-     "host": "Tenor",
-     "local": "gifs/melee.shield-bash-0.webp",
-     "source_url": "https://media.tenor.com/Rzd3xhfsDCQAAAA1/bashing-shield-bashing-shield-echo-arkheron.webp"
-    },
-    {
      "page_url": "https://tenor.com/view/for-honor-conquer-spike-punch-exucution-gif-21485845",
      "media_url": "",
      "title": "For Honor shield-wielders fighting (Conqueror)",
      "game": "For Honor",
      "host": "Tenor"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/bashing-shield-bashing-shield-echo-arkheron-gif-5131701993100545060",
+     "media_url": "",
+     "title": "Shield bashing",
+     "game": "Arkheron",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/Rzd3xhfsDCQAAAA1/bashing-shield-bashing-shield-echo-arkheron.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Heart-locket meme: 'Bashing Shield my beloved'"
+     }
     }
    ]
   },
@@ -3843,15 +3931,6 @@
      "host": "Tenor"
     },
     {
-     "page_url": "https://tenor.com/view/mario-sm64-super-mario-64-ground-pound-dumb-gif-669079115077754052",
-     "media_url": "",
-     "title": "Mario ground pound in Super Mario 64",
-     "game": "Super Mario 64",
-     "host": "Tenor",
-     "local": "gifs/melee.ground-pound-3.webp",
-     "source_url": "https://media.tenor.com/CUkL6QTXnMQAAAA1/mario-sm64-super-mario-64-ground-pound-dumb.webp"
-    },
-    {
      "page_url": "https://ultimateframedata.com/bowser",
      "media_url": "https://ultimateframedata.com/hitboxes/bowser/BowserBowserBombG.gif",
      "title": "Bowser Bowser Bomb, with hitboxes",
@@ -3859,6 +3938,21 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.ground-pound-ufd-0.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/bowser/BowserBowserBombG.gif"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/mario-sm64-super-mario-64-ground-pound-dumb-gif-669079115077754052",
+     "media_url": "",
+     "title": "Mario ground pound in Super Mario 64",
+     "game": "Super Mario 64",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/CUkL6QTXnMQAAAA1/mario-sm64-super-mario-64-ground-pound-dumb.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Mario 64 with the caption 'me groud pouding you because you a re dumb'"
+     }
     }
    ]
   },
@@ -4161,15 +4255,6 @@
    ],
    "gifs": [
     {
-     "page_url": "https://tenor.com/view/elden-ring-powerstance-dual-wielding-gif-18380532414051085128",
-     "title": "Elden Ring powerstance dual wielding",
-     "game": "Elden Ring",
-     "media_url": "",
-     "host": "Tenor",
-     "local": "gifs/melee.dual-wield-flurry-0.webp",
-     "source_url": "https://media.tenor.com/_xTE2KoRa0gAAAA1/elden-ring-powerstance-dual-wielding.webp"
-    },
-    {
      "page_url": "https://tenor.com/view/rellana-twin-moon-knight-knight-dual-wield-two-swords-gif-5478273648472334804",
      "title": "Rellana dual-wield twin swords",
      "game": "Elden Ring Shadow of the Erdtree",
@@ -4177,6 +4262,21 @@
      "host": "Tenor",
      "local": "gifs/melee.dual-wield-flurry-1.webp",
      "source_url": "https://media.tenor.com/TAa826-TodQAAAA1/rellana-twin-moon-knight-knight-dual-wield-two-swords.webp"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/elden-ring-powerstance-dual-wielding-gif-18380532414051085128",
+     "title": "Elden Ring powerstance dual wielding",
+     "game": "Elden Ring",
+     "media_url": "",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/_xTE2KoRa0gAAAA1/elden-ring-powerstance-dual-wielding.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Dark Souls powerstance clip with the captions 'Powerstancing!' and 'FUCK YEAH!'"
+     }
     }
    ]
   },
@@ -4233,15 +4333,21 @@
      "title": "Leviathan Axe vs Mjolnir throws",
      "game": "God of War Ragnarok",
      "host": "Tenor"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/kratos-leviathan-leviathan-axe-freeze-charge-gif-13667036024056087956",
      "media_url": "",
      "title": "Leviathan Axe frost charge",
      "game": "God of War",
      "host": "Tenor",
-     "local": "gifs/melee.weapon-throw-recall-1.webp",
-     "source_url": "https://media.tenor.com/vasQ2lJUhZQAAAA1/kratos-leviathan-leviathan-axe-freeze-charge.webp"
+     "source_url": "https://media.tenor.com/vasQ2lJUhZQAAAA1/kratos-leviathan-leviathan-axe-freeze-charge.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "medium",
+      "what": "Fortnite item-shop showcase of the Kratos skin holding a glowing axe; no throw or recall"
+     }
     }
    ]
   },
@@ -4284,15 +4390,20 @@
      "note": "Players discuss weapon draw animations"
     }
    ],
-   "gifs": [
+   "gifs": [],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/nazir-black-ops-6-quick-draw-bo6-nazir-bo6-gif-4748495282982330112",
      "media_url": "",
      "title": "Black Ops 6 quick draw",
      "game": "Call of Duty Black Ops 6",
      "host": "Tenor",
-     "local": "gifs/ranged.weapon-draw-equip-0.webp",
-     "source_url": "https://media.tenor.com/QeYLTR_HnwAAAAA1/nazir-black-ops-6-quick-draw-bo6-nazir-bo6.webp"
+     "source_url": "https://media.tenor.com/QeYLTR_HnwAAAAA1/nazir-black-ops-6-quick-draw-bo6-nazir-bo6.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "medium",
+      "what": "Character doing a salute or emote on a customization screen; no weapon draw"
+     }
     }
    ]
   },
@@ -4655,7 +4766,12 @@
      "game": "Call of Duty",
      "host": "Giphy",
      "local": "gifs/ranged.reload-tactical-3.webp",
-     "source_url": "https://media.giphy.com/media/ejTTWRtnrxZMt5SWLy/200w.webp"
+     "source_url": "https://media.giphy.com/media/ejTTWRtnrxZMt5SWLy/200w.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "low",
+      "what": "Same 'LOCKED AND LOADED' captioned clip as reload-empty-3"
+     }
     },
     {
      "page_url": "https://giphy.com/gifs/callofduty-call-of-duty-cod-modern-warfare-3-3BP233Z58NmJZqlick",
@@ -4664,7 +4780,12 @@
      "game": "Call of Duty",
      "host": "Giphy",
      "local": "gifs/ranged.reload-tactical-4.webp",
-     "source_url": "https://media.giphy.com/media/3BP233Z58NmJZqlick/200w.webp"
+     "source_url": "https://media.giphy.com/media/3BP233Z58NmJZqlick/200w.webp",
+     "screened": {
+      "verdict": "unclear",
+      "confidence": "low",
+      "what": "Same dark CoD cell-block clip as reload-empty-4; no reload visible"
+     }
     }
    ]
   },
@@ -4744,7 +4865,12 @@
      "game": "Call of Duty: Modern Warfare II",
      "host": "Giphy",
      "local": "gifs/ranged.reload-empty-3.webp",
-     "source_url": "https://media.giphy.com/media/ejTTWRtnrxZMt5SWLy/200w.webp"
+     "source_url": "https://media.giphy.com/media/ejTTWRtnrxZMt5SWLy/200w.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "low",
+      "what": "Short first-person gun clip with a 'LOCKED AND LOADED' text overlay (promo/reaction-style)"
+     }
     },
     {
      "page_url": "https://giphy.com/gifs/callofduty-call-of-duty-cod-modern-warfare-3-3BP233Z58NmJZqlick",
@@ -4753,7 +4879,12 @@
      "game": "Call of Duty: Modern Warfare III",
      "host": "Giphy",
      "local": "gifs/ranged.reload-empty-4.webp",
-     "source_url": "https://media.giphy.com/media/3BP233Z58NmJZqlick/200w.webp"
+     "source_url": "https://media.giphy.com/media/3BP233Z58NmJZqlick/200w.webp",
+     "screened": {
+      "verdict": "unclear",
+      "confidence": "low",
+      "what": "Very dark CoD MW cell-block gameplay; no reload visible"
+     }
     }
    ]
   },
@@ -5291,15 +5422,21 @@
      "title": "Eivor throwing axe",
      "game": "Assassin's Creed Valhalla",
      "host": "Tenor"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/citramaria-lands-of-citramaria-levantine-assassins-brotherhood-assassin's-creed-throwing-knife-gif-17604969605403330297",
      "media_url": "https://media1.tenor.com/m/9FFqlLudRvkAAAAC/citramaria-lands-of-citramaria.gif",
      "title": "Assassin throwing knife (fan animation)",
      "game": "Assassin's Creed (fan)",
      "host": "Tenor",
-     "local": "gifs/ranged.throwing-knife-shuriken-1.webp",
-     "source_url": "https://media.tenor.com/9FFqlLudRvkAAAA1/citramaria-lands-of-citramaria-levantine-assassins-brotherhood-assassin's-creed-throwing-knife.webp"
+     "source_url": "https://media.tenor.com/9FFqlLudRvkAAAA1/citramaria-lands-of-citramaria-levantine-assassins-brotherhood-assassin's-creed-throwing-knife.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Gameplay with a wojak meme insert and a 'THROWING KNIFE' caption"
+     }
     }
    ]
   },
@@ -5419,15 +5556,20 @@
      "note": "Roadie run, cover and blind fire basics"
     }
    ],
-   "gifs": [
+   "gifs": [],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/blindfire-shooter-in-the-dark-double11-gif-11573967063507683210",
      "media_url": "",
      "title": "Blindfire Shooter In The Dark (unconfirmed - may be title poster)",
      "game": "Blindfire",
      "host": "Tenor",
-     "local": "gifs/ranged.blind-fire-from-cover-0.webp",
-     "source_url": "https://media.tenor.com/oJ79uQZyR4oAAAA1/blindfire-shooter-in-the-dark-double11.webp"
+     "source_url": "https://media.tenor.com/oJ79uQZyR4oAAAA1/blindfire-shooter-in-the-dark-double11.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "high",
+      "what": "Promo title card for the game 'Blindfire' ('Available now'); no blind-fire animation"
+     }
     },
     {
      "page_url": "https://giphy.com/gifs/GearsOfWar-lancer-gears-of-war-e-day-xKa6N1Qx7dQgGsFX1x",
@@ -5435,8 +5577,12 @@
      "title": "Marcus Fenix Lancer GIF by Gears Of War (unconfirmed blind fire)",
      "game": "Gears of War: E-Day",
      "host": "Giphy",
-     "local": "gifs/ranged.blind-fire-from-cover-1.webp",
-     "source_url": "https://media.giphy.com/media/xKa6N1Qx7dQgGsFX1x/200w.webp"
+     "source_url": "https://media.giphy.com/media/xKa6N1Qx7dQgGsFX1x/200w.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "medium",
+      "what": "Gears cutscene of soldiers with Lancers talking; no blind fire from cover"
+     }
     }
    ]
   },
@@ -5486,15 +5632,20 @@
      "note": "Cover, peek and blind-fire basics"
     }
    ],
-   "gifs": [
+   "gifs": [],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/gears-5-gears-of-war-gears-of-war-movement-wallbounce-wallbouncing-gif-3141234246689968614",
      "media_url": "",
      "title": "Gears 5 cover movement / wallbounce (unconfirmed pop-up aim)",
      "game": "Gears 5",
      "host": "Tenor",
-     "local": "gifs/ranged.cover-peek-pop-up-aim-0.webp",
-     "source_url": "https://media.tenor.com/K5fn54Y_UeYAAAA1/gears-5-gears-of-war-gears-of-war-movement-wallbounce-wallbouncing.webp"
+     "source_url": "https://media.tenor.com/K5fn54Y_UeYAAAA1/gears-5-gears-of-war-gears-of-war-movement-wallbounce-wallbouncing.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Vertical Gears of War clip with the caption 'Gears of War Movement be like'"
+     }
     },
     {
      "page_url": "https://giphy.com/gifs/xbox-gears-of-war-tactics-2K626a49T6yBS6cGUN",
@@ -5502,8 +5653,12 @@
      "title": "Gears Of War Game GIF by Xbox (unconfirmed)",
      "game": "Gears Tactics",
      "host": "Giphy",
-     "local": "gifs/ranged.cover-peek-pop-up-aim-1.webp",
-     "source_url": "https://media.giphy.com/media/2K626a49T6yBS6cGUN/200w.webp"
+     "source_url": "https://media.giphy.com/media/2K626a49T6yBS6cGUN/200w.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "medium",
+      "what": "Trailer clip of a woman swinging a shovel with an 'ANYTHING ELSE?' text overlay; no cover peek"
+     }
     }
    ]
   },
@@ -5560,15 +5715,21 @@
      "game": "Rainbow Six Siege",
      "media_url": "",
      "host": "Tenor"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/siege-lean-gif-6002768058840700612",
      "media_url": "",
      "title": "Siege lean",
      "game": "Rainbow Six Siege",
      "host": "Tenor",
-     "local": "gifs/ranged.lean-peek-1.webp",
-     "source_url": "https://media.tenor.com/U04dvthC1sQAAAA1/siege-lean.webp"
+     "source_url": "https://media.tenor.com/U04dvthC1sQAAAA1/siege-lean.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Real-life footage of Halo cosplayers lying on a blue-lit convention floor"
+     }
     },
     {
      "page_url": "https://giphy.com/gifs/G2Esports-alem4o-karl-zarth-g2-cSMKH8yYc2XnpLNIQz",
@@ -5576,8 +5737,12 @@
      "title": "Rainbow Six peek (G2 Esports)",
      "game": "Rainbow Six Siege",
      "host": "Giphy",
-     "local": "gifs/ranged.lean-peek-2.webp",
-     "source_url": "https://media.giphy.com/media/cSMKH8yYc2XnpLNIQz/200w.webp"
+     "source_url": "https://media.giphy.com/media/cSMKH8yYc2XnpLNIQz/200w.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Real-life video of a man in an esports jersey doing finger-gun gestures"
+     }
     }
    ]
   },
@@ -5749,15 +5914,21 @@
      "title": "Max Payne bullet time",
      "game": "Max Payne",
      "host": "Tenor"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/max-payne-gif-15711766035535882577",
      "media_url": "",
      "title": "Max Payne diving through the air with a gun",
      "game": "Max Payne",
      "host": "Tenor",
-     "local": "gifs/ranged.gun-kata-stylish-shooting-2.webp",
-     "source_url": "https://media.tenor.com/2gtn9v4p6VEAAAA1/max-payne.webp"
+     "source_url": "https://media.tenor.com/2gtn9v4p6VEAAAA1/max-payne.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Real-life webcam image of a shirtless guy with drawn-on guns and a speech bubble (1 frame)"
+     }
     }
    ]
   },
@@ -5780,15 +5951,6 @@
    "references": [],
    "gifs": [
     {
-     "page_url": "https://tenor.com/view/zelda-link-boomerang-kill-triforce-gif-15820824015422176432",
-     "title": "Link boomerang kill",
-     "game": "Zelda",
-     "media_url": "",
-     "host": "Tenor",
-     "local": "gifs/ranged.boomerang-returning-throw-0.webp",
-     "source_url": "https://media.tenor.com/247bnqU1PLAAAAA1/zelda-link-boomerang-kill-triforce.webp"
-    },
-    {
      "page_url": "https://tenor.com/view/legend-of-zelda-minish-cap-magic-boomerang-ladder-gif-19144800",
      "title": "Minish Cap magic boomerang",
      "game": "Zelda: The Minish Cap",
@@ -5801,6 +5963,21 @@
      "game": "Zelda: Phantom Hourglass",
      "media_url": "",
      "host": "Tenor"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/zelda-link-boomerang-kill-triforce-gif-15820824015422176432",
+     "title": "Link boomerang kill",
+     "game": "Zelda",
+     "media_url": "",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/247bnqU1PLAAAAA1/zelda-link-boomerang-kill-triforce.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Cartoon parody of a chubby Link holding a boomerang; not game footage"
+     }
     }
    ]
   },
@@ -6151,7 +6328,12 @@
      "game": "Elden Ring",
      "host": "Tenor",
      "local": "gifs/magic.summon-0.webp",
-     "source_url": "https://media.tenor.com/mkWJE1US6QAAAAA1/elden-ring-albinauric-spirit-summon.webp"
+     "source_url": "https://media.tenor.com/mkWJE1US6QAAAAA1/elden-ring-albinauric-spirit-summon.webp",
+     "screened": {
+      "verdict": "unclear",
+      "confidence": "low",
+      "what": "Fisheye, washed-out Dark Souls-style knight clip (DiabloDesu watermark); summon not clearly visible"
+     }
     }
    ]
   },
@@ -6186,15 +6368,21 @@
      "title": "Goku Super Kaioken power-up scream",
      "game": "Dragon Ball Z",
      "host": "Tenor"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/kaio-ken-gif-14906211501812681100",
      "media_url": "",
      "title": "Pixel-art Kaioken pink aura power-up",
      "game": "Dragon Ball Z",
      "host": "Tenor",
-     "local": "gifs/magic.self-buff-power-up-2.webp",
-     "source_url": "https://media.tenor.com/zt2AYmhjCYwAAAA1/kaio-ken.webp"
+     "source_url": "https://media.tenor.com/zt2AYmhjCYwAAAA1/kaio-ken.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Dragon Ball Z anime: Goku powering up with Kaioken, Vegeta reacting"
+     }
     }
    ]
   },
@@ -6318,7 +6506,12 @@
      "game": "Overwatch",
      "host": "Tenor",
      "local": "gifs/magic.shield-barrier-1.webp",
-     "source_url": "https://media.tenor.com/FgxQnJtwRRoAAAA1/brigitte-reinhardt-shields.webp"
+     "source_url": "https://media.tenor.com/FgxQnJtwRRoAAAA1/brigitte-reinhardt-shields.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "low",
+      "what": "Overwatch animated short (makeagif): Brigitte face and armor close-ups, no visible barrier"
+     }
     },
     {
      "page_url": "https://tenor.com/view/overwatch-2-ow2-ramattra-shield-vortex-gif-10713342605633941789",
@@ -6543,15 +6736,21 @@
      "game": "Dragon Ball FighterZ",
      "media_url": "",
      "host": "Tenor"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/tien-tenshinhan-tien-shinhan-dragon-ball-charge-gif-18123441638235323123",
      "title": "Tien ki charge",
      "game": "Dragon Ball",
      "media_url": "",
      "host": "Tenor",
-     "local": "gifs/magic.charge-up-ki-charge-2.webp",
-     "source_url": "https://media.tenor.com/-4NmJdqKOvMAAAA1/tien-tenshinhan-tien-shinhan-dragon-ball-charge.webp"
+     "source_url": "https://media.tenor.com/-4NmJdqKOvMAAAA1/tien-tenshinhan-tien-shinhan-dragon-ball-charge.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Dragon Ball Z anime clip (Tien), not from a game"
+     }
     }
    ]
   },
@@ -6863,7 +7062,12 @@
      "game": "Skyrim",
      "host": "Tenor",
      "local": "gifs/magic.shout-roar-ability-0.webp",
-     "source_url": "https://media.tenor.com/tEF3CtfIsG8AAAA1/skyrim-dovahkiin-fus-ro-dah-evil-fight.webp"
+     "source_url": "https://media.tenor.com/tEF3CtfIsG8AAAA1/skyrim-dovahkiin-fus-ro-dah-evil-fight.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "low",
+      "what": "Skyrim trailer footage with a 'FUS RO DAH' caption on every frame"
+     }
     },
     {
      "page_url": "https://tenor.com/view/fus-roh-dah-skyrim-yeet-poor-guards-gif-19617949",
@@ -7087,20 +7291,26 @@
      "source_url": "https://media.tenor.com/tfIBJM6g7eIAAAA1/sekiro-shadows-die-twice-sekiro-true-corrupted-monk-katana-parry.webp"
     },
     {
-     "page_url": "https://tenor.com/view/sekiro-parry-get-parried-clang-clang-deflect-gif-15299406514620790298",
-     "media_url": "",
-     "title": "Sekiro deflect clang",
-     "game": "Sekiro",
-     "host": "Tenor",
-     "local": "gifs/defense.parry-1.webp",
-     "source_url": "https://media.tenor.com/1FJpKlJE9hoAAAA1/sekiro-parry-get-parried-clang-clang-deflect.webp"
-    },
-    {
      "page_url": "https://tenor.com/view/dark-souls-parry-gwyn-boss-gif-19051216",
      "media_url": "",
      "title": "Parrying Gwyn",
      "game": "Dark Souls",
      "host": "Tenor"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/sekiro-parry-get-parried-clang-clang-deflect-gif-15299406514620790298",
+     "media_url": "",
+     "title": "Sekiro deflect clang",
+     "game": "Sekiro",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/1FJpKlJE9hoAAAA1/sekiro-parry-get-parried-clang-clang-deflect.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Sekiro footage with a 'CLANG CLANG CLANG Get Parried GET PARRIED!!!' caption"
+     }
     }
    ]
   },
@@ -7162,15 +7372,21 @@
      "host": "Tenor",
      "local": "gifs/defense.perfect-block-deflect-1.webp",
      "source_url": "https://media.tenor.com/tfIBJM6g7eIAAAA1/sekiro-shadows-die-twice-sekiro-true-corrupted-monk-katana-parry.webp"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/sekiro-parry-get-parried-clang-clang-deflect-gif-15299406514620790298",
      "media_url": "",
      "title": "Sekiro deflect chain (clang clang)",
      "game": "Sekiro",
      "host": "Tenor",
-     "local": "gifs/defense.perfect-block-deflect-2.webp",
-     "source_url": "https://media.tenor.com/1FJpKlJE9hoAAAA1/sekiro-parry-get-parried-clang-clang-deflect.webp"
+     "source_url": "https://media.tenor.com/1FJpKlJE9hoAAAA1/sekiro-parry-get-parried-clang-clang-deflect.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Same Sekiro 'Get Parried' captioned meme as parry-1"
+     }
     }
    ]
   },
@@ -7355,7 +7571,12 @@
      "game": "Dark Souls",
      "host": "Tenor",
      "local": "gifs/defense.backstep-backflip-2.webp",
-     "source_url": "https://media.tenor.com/ZKXRLdiLkpYAAAA1/combat-roll-roll-dark-souls-roll-dodge.webp"
+     "source_url": "https://media.tenor.com/ZKXRLdiLkpYAAAA1/combat-roll-roll-dark-souls-roll-dodge.webp",
+     "screened": {
+      "verdict": "unclear",
+      "confidence": "low",
+      "what": "Tiny isolated figure tumbling/rolling on a white background; source and move hard to identify"
+     }
     }
    ]
   },
@@ -7590,15 +7811,6 @@
      "source_url": "https://media.tenor.com/oKPAsOTkSEkAAAA1/assassin's-creed-iii-combat-finisher-counter-kill-connor-kenway.webp"
     },
     {
-     "page_url": "https://tenor.com/view/i'm-not-going-to-sugarcoat-it-batman-arkham-game-counter-gif-614668015841564527",
-     "media_url": "",
-     "title": "Batman Arkham counter",
-     "game": "Batman: Arkham",
-     "host": "Tenor",
-     "local": "gifs/defense.counter-attack-1.webp",
-     "source_url": "https://media.tenor.com/CIe9TcMH128AAAA1/i'm-not-going-to-sugarcoat-it-batman-arkham-game-counter.webp"
-    },
-    {
      "page_url": "https://ultimateframedata.com/marth",
      "media_url": "https://ultimateframedata.com/hitboxes/marth/MarthCounterHit.gif",
      "title": "Marth Counter, with hitboxes",
@@ -7615,6 +7827,21 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/defense.counter-attack-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/little_mac/LittleMacSlipCounterHitG.gif"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/i'm-not-going-to-sugarcoat-it-batman-arkham-game-counter-gif-614668015841564527",
+     "media_url": "",
+     "title": "Batman Arkham counter",
+     "game": "Batman: Arkham",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/CIe9TcMH128AAAA1/i'm-not-going-to-sugarcoat-it-batman-arkham-game-counter.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Batman Arkham fight intercut with 'I'm not gonna sugarcoat it' meme cards and Y/X buttons"
+     }
     }
    ]
   },
@@ -7756,13 +7983,26 @@
    ],
    "gifs": [
     {
+     "page_url": "https://tenor.com/view/take-cover-shooting-cover-me-cod-black-ops-cod-black-ops4-gif-13664300",
+     "media_url": "",
+     "title": "Black Ops soldier taking cover while shooting",
+     "game": "Call of Duty: Black Ops 4",
+     "host": "Tenor"
+    }
+   ],
+   "rejected_gifs": [
+    {
      "page_url": "https://tenor.com/view/gears-5-gears-of-war-gears-of-war-movement-wallbounce-wallbouncing-gif-3141234246689968614",
      "media_url": "",
      "title": "Gears 5 Movement Wallbounce (unconfirmed: cover-to-cover movement)",
      "game": "Gears 5",
      "host": "Tenor",
-     "local": "gifs/defense.take-cover-0.webp",
-     "source_url": "https://media.tenor.com/K5fn54Y_UeYAAAA1/gears-5-gears-of-war-gears-of-war-movement-wallbounce-wallbouncing.webp"
+     "source_url": "https://media.tenor.com/K5fn54Y_UeYAAAA1/gears-5-gears-of-war-gears-of-war-movement-wallbounce-wallbouncing.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Same 'Gears of War Movement be like' captioned clip as cover-swap-slide-0"
+     }
     },
     {
      "page_url": "https://tenor.com/view/gears-of-war-gif-14857186406041094649",
@@ -7770,15 +8010,12 @@
      "title": "Gears of War (unconfirmed)",
      "game": "Gears of War",
      "host": "Tenor",
-     "local": "gifs/defense.take-cover-1.webp",
-     "source_url": "https://media.tenor.com/zi9UUc3XifkAAAA1/gears-of-war.webp"
-    },
-    {
-     "page_url": "https://tenor.com/view/take-cover-shooting-cover-me-cod-black-ops-cod-black-ops4-gif-13664300",
-     "media_url": "",
-     "title": "Black Ops soldier taking cover while shooting",
-     "game": "Call of Duty: Black Ops 4",
-     "host": "Tenor"
+     "source_url": "https://media.tenor.com/zi9UUc3XifkAAAA1/gears-of-war.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Marcus Fenix dancing in a fan animation (makeagif); not taking cover"
+     }
     }
    ]
   },
@@ -7828,15 +8065,20 @@
      "note": "Cover mechanics incl. swaps across games"
     }
    ],
-   "gifs": [
+   "gifs": [],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/gears-5-gears-of-war-gears-of-war-movement-wallbounce-wallbouncing-gif-3141234246689968614",
      "media_url": "",
      "title": "Gears 5 cover-to-cover wallbounce movement",
      "game": "Gears 5",
      "host": "Tenor",
-     "local": "gifs/defense.cover-swap-slide-0.webp",
-     "source_url": "https://media.tenor.com/K5fn54Y_UeYAAAA1/gears-5-gears-of-war-gears-of-war-movement-wallbounce-wallbouncing.webp"
+     "source_url": "https://media.tenor.com/K5fn54Y_UeYAAAA1/gears-5-gears-of-war-gears-of-war-movement-wallbounce-wallbouncing.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Vertical clip with the caption 'Gears of War Movement be like'"
+     }
     }
    ]
   },
@@ -7880,15 +8122,20 @@
      "note": "Controls incl. roll/evade"
     }
    ],
-   "gifs": [
+   "gifs": [],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/gears-of-war-gears-of-war-roll-rolling-keep-rolling-rollin-rollin-rollin-gif-11441388656170544723",
      "media_url": "",
      "title": "Gears of War roll",
      "game": "Gears of War",
      "host": "Tenor",
-     "local": "gifs/defense.combat-roll-shooter-0.webp",
-     "source_url": "https://media.tenor.com/nsf6XRw6rlMAAAA1/gears-of-war-gears-of-war-roll-rolling-keep-rolling-rollin-rollin-rollin.webp"
+     "source_url": "https://media.tenor.com/nsf6XRw6rlMAAAA1/gears-of-war-gears-of-war-roll-rolling-keep-rolling-rollin-rollin-rollin.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Several duplicated Gears soldiers rolling, overlapped into a spinning wheel (edited joke, gifrun)"
+     }
     }
    ]
   },
@@ -8086,22 +8333,33 @@
      "host": "Tenor"
     },
     {
-     "page_url": "https://tenor.com/view/scorpion-punches-sub-zero-scorpion-uppercut-sub-zero-scorpion-uppercut-scorpion-vs-sub-zero-scorpion-mk9-gif-3319033291768639454",
-     "media_url": "",
-     "title": "Sub-Zero reacts to Scorpion uppercut",
-     "game": "Mortal Kombat (2011)",
-     "host": "Tenor",
-     "local": "gifs/reactions.directional-hit-reaction-2.webp",
-     "source_url": "https://media.tenor.com/Lg-TMaGQr94AAAA1/scorpion-punches-sub-zero-scorpion-uppercut-sub-zero-scorpion-uppercut-scorpion-vs-sub-zero-scorpion-mk9.webp"
-    },
-    {
      "page_url": "https://giphy.com/gifs/fCTp1ebazF23hH6dEk",
      "media_url": "",
      "title": "Mortal Kombat punch",
      "game": "Mortal Kombat",
      "host": "Giphy",
      "local": "gifs/reactions.directional-hit-reaction-3.webp",
-     "source_url": "https://media.giphy.com/media/fCTp1ebazF23hH6dEk/200w.webp"
+     "source_url": "https://media.giphy.com/media/fCTp1ebazF23hH6dEk/200w.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "low",
+      "what": "MK11 cinematic trailer shots, no clear directional hit reaction"
+     }
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/scorpion-punches-sub-zero-scorpion-uppercut-sub-zero-scorpion-uppercut-scorpion-vs-sub-zero-scorpion-mk9-gif-3319033291768639454",
+     "media_url": "",
+     "title": "Sub-Zero reacts to Scorpion uppercut",
+     "game": "Mortal Kombat (2011)",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/Lg-TMaGQr94AAAA1/scorpion-punches-sub-zero-scorpion-uppercut-sub-zero-scorpion-uppercut-scorpion-vs-sub-zero-scorpion-mk9.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "high",
+      "what": "Mortal Kombat 9 title and main-menu screens (makeagif)"
+     }
     }
    ]
   },
@@ -8471,16 +8729,27 @@
      "game": "Tekken 8",
      "host": "Tenor",
      "local": "gifs/reactions.ground-bounce-0.webp",
-     "source_url": "https://media.tenor.com/9CJxfKnUrMEAAAA1/tekken-tekken-8-kuma-reina-juggle.webp"
-    },
+     "source_url": "https://media.tenor.com/9CJxfKnUrMEAAAA1/tekken-tekken-8-kuma-reina-juggle.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "low",
+      "what": "Looping 2D fan animation (watermark 'Princess') of a teddy-bear brawler juggling a character in an arena; not clearly from a game"
+     }
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/mvc-mvc2-marvel-vs-capcom-marvel-vs-capcom-2-tron-bonne-gif-8503879631652780901",
      "media_url": "",
      "title": "MvC2 Tron Bonne (unconfirmed ground bounce)",
      "game": "Marvel vs Capcom 2",
      "host": "Tenor",
-     "local": "gifs/reactions.ground-bounce-1.webp",
-     "source_url": "https://media.tenor.com/dgPZeDFX-2UAAAA1/mvc-mvc2-marvel-vs-capcom-marvel-vs-capcom-2-tron-bonne.webp"
+     "source_url": "https://media.tenor.com/dgPZeDFX-2UAAAA1/mvc-mvc2-marvel-vs-capcom-marvel-vs-capcom-2-tron-bonne.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "The Croods movie clip with a 'RELEASE THE Projectile Type' caption edited into a Smash-style scene"
+     }
     }
    ]
   },
@@ -8707,20 +8976,26 @@
    ],
    "gifs": [
     {
-     "page_url": "https://tenor.com/view/hop-on-street-fighter-6-hop-on-sf6-sf6-counter-hit-kimberly-gif-17680668288496705994",
-     "media_url": "",
-     "title": "SF6 Kimberly counter hit",
-     "game": "Street Fighter 6",
-     "host": "Tenor",
-     "local": "gifs/reactions.hit-stop-hit-freeze-0.webp",
-     "source_url": "https://media.tenor.com/9V5aIddcIcoAAAA1/hop-on-street-fighter-6-hop-on-sf6-sf6-counter-hit-kimberly.webp"
-    },
-    {
      "page_url": "https://tenor.com/view/daigo-parry-evo-moment37-evo-moment37-gif-16716468",
      "media_url": "",
      "title": "SF3 Daigo parry sequence, freeze on each parry",
      "game": "Street Fighter III: 3rd Strike",
      "host": "Tenor"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/hop-on-street-fighter-6-hop-on-sf6-sf6-counter-hit-kimberly-gif-17680668288496705994",
+     "media_url": "",
+     "title": "SF6 Kimberly counter hit",
+     "game": "Street Fighter 6",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/9V5aIddcIcoAAAA1/hop-on-street-fighter-6-hop-on-sf6-sf6-counter-hit-kimberly.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "SF6 counter-hit footage with a 'Hop on Street Fighter 6' meme caption"
+     }
     }
    ]
   },
@@ -8765,20 +9040,26 @@
    ],
    "gifs": [
     {
-     "page_url": "https://tenor.com/view/street-fighter-3rd-strike-stunned-stun-stunlock-gif-1621335466572381761",
-     "media_url": "",
-     "title": "Street Fighter 3rd Strike stunned / dizzy",
-     "game": "Street Fighter III: 3rd Strike",
-     "host": "Tenor",
-     "local": "gifs/reactions.crumple-collapse-0.webp",
-     "source_url": "https://media.tenor.com/FoAkBELJ_kEAAAA1/street-fighter-3rd-strike-stunned-stun-stunlock.webp"
-    },
-    {
      "page_url": "https://tenor.com/view/cammy-guile-street-fighter-street-fighter-2-sf2-gif-22585354",
      "media_url": "",
      "title": "SF2 Cammy vs Guile, fighter knocked to ground",
      "game": "Street Fighter II",
      "host": "Tenor"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/street-fighter-3rd-strike-stunned-stun-stunlock-gif-1621335466572381761",
+     "media_url": "",
+     "title": "Street Fighter 3rd Strike stunned / dizzy",
+     "game": "Street Fighter III: 3rd Strike",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/FoAkBELJ_kEAAAA1/street-fighter-3rd-strike-stunned-stun-stunlock.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "medium",
+      "what": "SF3 Hugo kneeling and dizzy with birdies circling (a stun/dizzy loop, not a crumple)"
+     }
     },
     {
      "page_url": "https://tenor.com/view/sonya-blade-sonya-dizziness-animation-dizzy-animation-dizzy-gif-12376343886598899414",
@@ -8786,8 +9067,12 @@
      "title": "MK Sonya dizzy stun animation (pre-collapse)",
      "game": "Mortal Kombat",
      "host": "Tenor",
-     "local": "gifs/reactions.crumple-collapse-2.webp",
-     "source_url": "https://media.tenor.com/q8GbMTLOBtYAAAA1/sonya-blade-sonya-dizziness-animation-dizzy-animation-dizzy.webp"
+     "source_url": "https://media.tenor.com/q8GbMTLOBtYAAAA1/sonya-blade-sonya-dizziness-animation-dizzy-animation-dizzy.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "medium",
+      "what": "MK digitized Sonya sprite swaying dizzy in the 'finish him' state, never collapses"
+     }
     }
    ]
   },
@@ -8940,15 +9225,21 @@
      "host": "Tenor",
      "local": "gifs/reactions.poisoned-0.webp",
      "source_url": "https://media.tenor.com/yn-AvXBXZh8AAAA1/badly-poisoned-doof.webp"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/leavanny-pokemon-leavanny-poisoned-leavnny-has-been-poisoned-panting-gif-2604331803957129862",
      "media_url": "",
      "title": "Leavanny poisoned and panting",
      "game": "Pokemon (anime)",
      "host": "Tenor",
-     "local": "gifs/reactions.poisoned-1.webp",
-     "source_url": "https://media.tenor.com/JCRx-jQd8oYAAAA1/leavanny-pokemon-leavanny-poisoned-leavnny-has-been-poisoned-panting.webp"
+     "source_url": "https://media.tenor.com/JCRx-jQd8oYAAAA1/leavanny-pokemon-leavanny-poisoned-leavnny-has-been-poisoned-panting.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Pokemon anime clip of a grass Pokemon being poisoned (TV anime, not a game)"
+     }
     },
     {
      "page_url": "https://tenor.com/view/pikachu-pichu-pokemon-poison-poisoned-gif-11245513849296901985",
@@ -8956,8 +9247,12 @@
      "title": "Pichu poisoned",
      "game": "Pokemon",
      "host": "Tenor",
-     "local": "gifs/reactions.poisoned-2.webp",
-     "source_url": "https://media.tenor.com/nBAXQ8AT12EAAAA1/pikachu-pichu-pokemon-poison-poisoned.webp"
+     "source_url": "https://media.tenor.com/nBAXQ8AT12EAAAA1/pikachu-pichu-pokemon-poison-poisoned.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Looping fan-art animation of a sick, flushed Pichu; not game footage"
+     }
     }
    ]
   },
@@ -9096,15 +9391,21 @@
      "host": "Tenor",
      "local": "gifs/reactions.pushback-on-block-0.webp",
      "source_url": "https://media.tenor.com/elxXI3KpP7IAAAA1/kbrad2007-street-fighter-5-im-gonna-block-this-wackass-mixup-kage-demon-airdash-combo-stun.webp"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/urien-street-fighter-sf3-3s-3rd-strike-gif-653914356537951740",
      "media_url": "",
      "title": "SF3 Urien blocking a launcher",
      "game": "Street Fighter III: 3rd Strike",
      "host": "Tenor",
-     "local": "gifs/reactions.pushback-on-block-1.webp",
-     "source_url": "https://media.tenor.com/CRMrpIb5BfwAAAA1/urien-street-fighter-sf3-3s-3rd-strike.webp"
+     "source_url": "https://media.tenor.com/CRMrpIb5BfwAAAA1/urien-street-fighter-sf3-3s-3rd-strike.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "SF3 Evo Moment 37 with a 'block my launcher...' caption that cuts to real-life crowd footage"
+     }
     }
    ]
   },
@@ -9168,15 +9469,21 @@
      "title": "Micah Bell shot and falls",
      "game": "Red Dead Redemption 2",
      "host": "Tenor"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/dark-souls-you-died-dark-souls-3-gaming-me-when-gif-4585792668571262828",
      "media_url": "",
      "title": "You Died",
      "game": "Dark Souls III",
      "host": "Tenor",
-     "local": "gifs/death.death-collapse-2.webp",
-     "source_url": "https://media.tenor.com/P6QCIq_H32wAAAA1/dark-souls-you-died-dark-souls-3-gaming-me-when.webp"
+     "source_url": "https://media.tenor.com/P6QCIq_H32wAAAA1/dark-souls-you-died-dark-souls-3-gaming-me-when.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Souls-like player dies, then cuts to a black screen with an edited 'What the fuck' text"
+     }
     },
     {
      "page_url": "https://tenor.com/view/dark-souls-death-dark-souls-meme-gif-6289326971422580683",
@@ -9184,8 +9491,12 @@
      "title": "Dark Souls death",
      "game": "Dark Souls",
      "host": "Tenor",
-     "local": "gifs/death.death-collapse-3.webp",
-     "source_url": "https://media.tenor.com/V0gtjuftH8sAAAA1/dark-souls-death-dark-souls-meme.webp"
+     "source_url": "https://media.tenor.com/V0gtjuftH8sAAAA1/dark-souls-death-dark-souls-meme.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "medium",
+      "what": "Only the Dark Souls 'YOU DIED' text on black; no character collapse shown"
+     }
     }
    ]
   },
@@ -9353,15 +9664,20 @@
      "note": "Concept page listing games with gibbing"
     }
    ],
-   "gifs": [
+   "gifs": [],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/doom-slayer-cannon-doomguy-crash-explosion-gif-9591314586502621637",
      "media_url": "",
      "title": "Doom Slayer Cannon Explosion (unconfirmed: not clearly a gib)",
      "game": "Doom",
      "host": "Tenor",
-     "local": "gifs/death.gib-explode-0.webp",
-     "source_url": "https://media.tenor.com/hRsxzKmC6cUAAAA1/doom-slayer-cannon-doomguy-crash-explosion.webp"
+     "source_url": "https://media.tenor.com/hRsxzKmC6cUAAAA1/doom-slayer-cannon-doomguy-crash-explosion.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "medium",
+      "what": "DOOM Slayer walking toward the camera wreathed in flames; no gib explosion"
+     }
     }
    ]
   },
@@ -9483,15 +9799,21 @@
      "game": "Apex Legends",
      "media_url": "",
      "host": "Tenor"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/revive-me-apex-revive-apex-legends-revive-downed-need-revive-gif-3424652910944254406",
      "media_url": "",
      "title": "Revive Me Apex Legends Downed (unconfirmed - meme)",
      "game": "Apex Legends",
      "host": "Tenor",
-     "local": "gifs/death.downed-bleeding-out-1.webp",
-     "source_url": "https://media.tenor.com/L4bPrYvW-cYAAAA1/revive-me-apex-revive-apex-legends-revive-downed-need-revive.webp"
+     "source_url": "https://media.tenor.com/L4bPrYvW-cYAAAA1/revive-me-apex-revive-apex-legends-revive-downed-need-revive.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Colour-cycling 'REVIVE ME' DIGI 995 sticker/graphic"
+     }
     }
    ]
   },
@@ -9512,15 +9834,20 @@
    "description": "Helping a downed teammate back to their feet.",
    "search_query": "Revive Ally animation video game",
    "references": [],
-   "gifs": [
+   "gifs": [],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/left4dead-l4d2-gif-21674439",
      "media_url": "https://media1.tenor.com/m/t79fdVSl_fIAAAAC/left4dead-l4d2.gif",
      "title": "Reviving a downed teammate",
      "game": "Left 4 Dead 2",
      "host": "Tenor",
-     "local": "gifs/death.revive-ally-0.webp",
-     "source_url": "https://media.tenor.com/t79fdVSl_fIAAAA1/left4dead-l4d2.webp"
+     "source_url": "https://media.tenor.com/t79fdVSl_fIAAAA1/left4dead-l4d2.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Left 4 Dead revive footage that cuts to real-life crowd/party footage"
+     }
     }
    ]
   },
@@ -9854,15 +10181,21 @@
      "host": "Tenor",
      "local": "gifs/fighting.crouch-block-2.webp",
      "source_url": "https://media.tenor.com/KporBgv79LYAAAA1/omni-man-mk1-invincible-mortal-kombat-block.webp"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://giphy.com/gifs/Capcom-street-fighter-6-sf6-QXeRPDyFZUiGa5s2g7",
      "media_url": "",
      "title": "SF6 GIF by Capcom (unconfirmed crouch block)",
      "game": "Street Fighter 6",
      "host": "Giphy",
-     "local": "gifs/fighting.crouch-block-3.webp",
-     "source_url": "https://media.giphy.com/media/QXeRPDyFZUiGa5s2g7/200w.webp"
+     "source_url": "https://media.giphy.com/media/QXeRPDyFZUiGa5s2g7/200w.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "medium",
+      "what": "SF6 Zangief trailer with red stylized close-ups; no crouch block"
+     }
     }
    ]
   },
@@ -9975,7 +10308,12 @@
      "game": "Street Fighter 6",
      "host": "Giphy",
      "local": "gifs/fighting.rising-uppercut-shoryuken-3.webp",
-     "source_url": "https://media.giphy.com/media/KfOQZmq41Z3OBj6nIf/200w.webp"
+     "source_url": "https://media.giphy.com/media/KfOQZmq41Z3OBj6nIf/200w.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "low",
+      "what": "Split screen: SF6 gameplay above, real-life hands on a Hitbox controller below (input tutorial)"
+     }
     },
     {
      "page_url": "https://giphy.com/gifs/aYUOtg0Cw3oKY1my9Z",
@@ -9984,7 +10322,12 @@
      "game": "Street Fighter 6",
      "host": "Giphy",
      "local": "gifs/fighting.rising-uppercut-shoryuken-4.webp",
-     "source_url": "https://media.giphy.com/media/aYUOtg0Cw3oKY1my9Z/200w.webp"
+     "source_url": "https://media.giphy.com/media/aYUOtg0Cw3oKY1my9Z/200w.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "low",
+      "what": "Split screen: SF6 gameplay and super art above, real-life hands on a Hitbox controller below (input tutorial)"
+     }
     },
     {
      "page_url": "https://ultimateframedata.com/ryu",
@@ -10276,15 +10619,6 @@
    ],
    "gifs": [
     {
-     "page_url": "https://tenor.com/view/street-fighter-street-fighter-6-sf6-throw-loop-kusoge-gif-7455022067108044039",
-     "media_url": "",
-     "title": "SF6 throw exchange (throw loop)",
-     "game": "Street Fighter 6",
-     "host": "Tenor",
-     "local": "gifs/fighting.throw-tech-break-0.webp",
-     "source_url": "https://media.tenor.com/Z3WPElasXQcAAAA1/street-fighter-street-fighter-6-sf6-throw-loop-kusoge.webp"
-    },
-    {
      "page_url": "https://giphy.com/gifs/Capcom-street-fighter-capcom-6-roz6RoTYpodqeKQtgD",
      "media_url": "",
      "title": "Street Fighter 6 throw (Capcom)",
@@ -10292,6 +10626,21 @@
      "host": "Giphy",
      "local": "gifs/fighting.throw-tech-break-1.webp",
      "source_url": "https://media.giphy.com/media/roz6RoTYpodqeKQtgD/200w.webp"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/street-fighter-street-fighter-6-sf6-throw-loop-kusoge-gif-7455022067108044039",
+     "media_url": "",
+     "title": "SF6 throw exchange (throw loop)",
+     "game": "Street Fighter 6",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/Z3WPElasXQcAAAA1/street-fighter-street-fighter-6-sf6-throw-loop-kusoge.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "SF6 throw with the meme caption 'Hop on Street Fighter 6'"
+     }
     },
     {
      "page_url": "https://tenor.com/view/sfv-urien-epic-win-throw-tech-aegis-setup-gif-6289407395190920317",
@@ -10299,8 +10648,12 @@
      "title": "SFV Urien throw tech out of Aegis setup",
      "game": "Street Fighter V",
      "host": "Tenor",
-     "local": "gifs/fighting.throw-tech-break-2.webp",
-     "source_url": "https://media.tenor.com/V0h2tAYR1H0AAAA1/sfv-urien-epic-win-throw-tech-aegis-setup.webp"
+     "source_url": "https://media.tenor.com/V0h2tAYR1H0AAAA1/sfv-urien-epic-win-throw-tech-aegis-setup.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Urien close-up with an 'Epic Win!' caption"
+     }
     },
     {
      "page_url": "https://tenor.com/view/urien-aegis-setup-tech-her-throw-urien-aegis-setup-tech-her-throw-and-gif-15255334738729652931",
@@ -10308,8 +10661,12 @@
      "title": "Urien Aegis setup, opponent techs throw",
      "game": "Street Fighter V",
      "host": "Tenor",
-     "local": "gifs/fighting.throw-tech-break-3.webp",
-     "source_url": "https://media.tenor.com/07XWHl-oUsMAAAA1/urien-aegis-setup-tech-her-throw-urien-aegis-setup-tech-her-throw-and.webp"
+     "source_url": "https://media.tenor.com/07XWHl-oUsMAAAA1/urien-aegis-setup-tech-her-throw-urien-aegis-setup-tech-her-throw-and.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "SFV clip with the meme caption 'tech her throw and do my aegis setup'"
+     }
     }
    ]
   },
@@ -10432,15 +10789,21 @@
      "title": "Guilty Gear Burst breaking a combo",
      "game": "Guilty Gear",
      "host": "Tenor"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/guilty-gear-guilty-gear-strive-happy-chaos-gold-burst-gif-10022622794371266988",
      "media_url": "",
      "title": "Happy Chaos Gold Burst, GG Strive",
      "game": "Guilty Gear Strive",
      "host": "Tenor",
-     "local": "gifs/fighting.combo-breaker-1.webp",
-     "source_url": "https://media.tenor.com/ixeCVFA7eawAAAA1/guilty-gear-guilty-gear-strive-happy-chaos-gold-burst.webp"
+     "source_url": "https://media.tenor.com/ixeCVFA7eawAAAA1/guilty-gear-guilty-gear-strive-happy-chaos-gold-burst.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Guilty Gear footage edited with pixelation, a 3D cube transition and a pasted-in face"
+     }
     },
     {
      "page_url": "https://tenor.com/view/guilty-gear-gold-burst-gif-12610071864947609009",
@@ -10448,8 +10811,12 @@
      "title": "Guilty Gear Gold Burst",
      "game": "Guilty Gear",
      "host": "Tenor",
-     "local": "gifs/fighting.combo-breaker-2.webp",
-     "source_url": "https://media.tenor.com/rv_5jNZZjbEAAAA1/guilty-gear-gold-burst.webp"
+     "source_url": "https://media.tenor.com/rv_5jNZZjbEAAAA1/guilty-gear-gold-burst.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Guilty Gear footage with a real person's face (MrBeast) edited in"
+     }
     }
    ]
   },
@@ -10472,15 +10839,6 @@
    "references": [],
    "gifs": [
     {
-     "page_url": "https://tenor.com/view/super-smash-bros-melee-smash-bros-character-select-player-select-fighting-game-gif-24482766",
-     "media_url": "https://media1.tenor.com/m/vNGuviKejlAAAAAd/super-smash-bros-melee-smash-bros.gif",
-     "title": "Smash Bros Melee character select",
-     "game": "Super Smash Bros Melee",
-     "host": "Tenor",
-     "local": "gifs/fighting.character-select-pose-0.webp",
-     "source_url": "https://media.tenor.com/vNGuviKejlAAAAA1/super-smash-bros-melee-smash-bros-character-select-player-select-fighting-game.webp"
-    },
-    {
      "page_url": "https://tenor.com/view/mario-kart-world-mario-kart-mario-dancing-mario-kart-dance-mario-kart-world-character-select-screen-dancing-gif-10716362364713600188",
      "title": "Mario dancing on Mario Kart World character select",
      "game": "Mario Kart World",
@@ -10495,6 +10853,21 @@
      "game": "Valorant",
      "media_url": "",
      "host": "Tenor"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/super-smash-bros-melee-smash-bros-character-select-player-select-fighting-game-gif-24482766",
+     "media_url": "https://media1.tenor.com/m/vNGuviKejlAAAAAd/super-smash-bros-melee-smash-bros.gif",
+     "title": "Smash Bros Melee character select",
+     "game": "Super Smash Bros Melee",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/vNGuviKejlAAAAA1/super-smash-bros-melee-smash-bros-character-select-player-select-fighting-game.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "medium",
+      "what": "Smash Melee character select screen with cursors picking fighters; no character pose animation"
+     }
     }
    ]
   },
@@ -11011,7 +11384,12 @@
      "game": "Monster Hunter",
      "host": "Giphy",
      "local": "gifs/enemies.flee-retreat-0.webp",
-     "source_url": "https://media.giphy.com/media/9pxlw4RuiVqRqmPX5D/200w.webp"
+     "source_url": "https://media.giphy.com/media/9pxlw4RuiVqRqmPX5D/200w.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "low",
+      "what": "Horned warrior walking forward through lightning strikes (game trailer); not fleeing"
+     }
     },
     {
      "page_url": "https://tenor.com/view/halo-kayzer-grunts-sauve-qui-peut-gif-26554197",
@@ -11062,7 +11440,12 @@
      "game": "Monster Hunter World",
      "host": "Tenor",
      "local": "gifs/enemies.weak-point-exposed-0.webp",
-     "source_url": "https://media.tenor.com/SC4YtVcuMIgAAAA1/diablos-monster-hunter-black-diablos-monster-hunter-world-groin-hit.webp"
+     "source_url": "https://media.tenor.com/SC4YtVcuMIgAAAA1/diablos-monster-hunter-black-diablos-monster-hunter-world-groin-hit.webp",
+     "screened": {
+      "verdict": "unclear",
+      "confidence": "low",
+      "what": "Monster Hunter World Nergigante fight (same clip as charging-rush-2); no clear weak-point exposure"
+     }
     },
     {
      "page_url": "https://tenor.com/view/shadow-of-the-colossus-sotc-climbing-cinematic-platformer-ps2-gif-22327634",
@@ -11112,16 +11495,27 @@
      "game": "Left 4 Dead 2",
      "host": "Tenor",
      "local": "gifs/enemies.monster-grab-pin-1.webp",
-     "source_url": "https://media.tenor.com/N9IkXnORVjkAAAA1/l4d2-hunter-l4d-left-4-dead-pounce.webp"
-    },
+     "source_url": "https://media.tenor.com/N9IkXnORVjkAAAA1/l4d2-hunter-l4d-left-4-dead-pounce.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "low",
+      "what": "Night first-person scene: a figure is flung up into the sky; no grab or pin visible"
+     }
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/hunter-pounce-left-4-dead-gif-16652253058991650494",
      "media_url": "",
      "title": "Hunter pounce",
      "game": "Left 4 Dead",
      "host": "Tenor",
-     "local": "gifs/enemies.monster-grab-pin-2.webp",
-     "source_url": "https://media.tenor.com/5xiv7gMb9r4AAAA1/hunter-pounce-left-4-dead.webp"
+     "source_url": "https://media.tenor.com/5xiv7gMb9r4AAAA1/hunter-pounce-left-4-dead.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Same figure-flung-into-sky clip with a 'L0vEmaG in chat!!!!' stream caption"
+     }
     }
    ]
   },
@@ -11165,15 +11559,21 @@
      "host": "Tenor",
      "local": "gifs/enemies.charging-rush-2.webp",
      "source_url": "https://media.tenor.com/SC4YtVcuMIgAAAA1/diablos-monster-hunter-black-diablos-monster-hunter-world-groin-hit.webp"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/bloodbath-diablos-diablos-monster-hunter-generations-ultimate-mhgu-monster-hunter-gif-7034703324921674578",
      "media_url": "",
      "title": "Bloodbath Diablos MHGU (unconfirmed charge)",
      "game": "Monster Hunter Generations Ultimate",
      "host": "Tenor",
-     "local": "gifs/enemies.charging-rush-3.webp",
-     "source_url": "https://media.tenor.com/YaBJZw43O1IAAAA1/bloodbath-diablos-diablos-monster-hunter-generations-ultimate-mhgu-monster-hunter.webp"
+     "source_url": "https://media.tenor.com/YaBJZw43O1IAAAA1/bloodbath-diablos-diablos-monster-hunter-generations-ultimate-mhgu-monster-hunter.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Monster Hunter monster image edited with blood splatter, a knife and the text 'Slaughter' (4 frames)"
+     }
     }
    ]
   },
@@ -11335,16 +11735,27 @@
      "game": "Batman: Arkham Asylum",
      "host": "Tenor",
      "local": "gifs/stealth.ledge-takedown-1.webp",
-     "source_url": "https://media.tenor.com/o1Xq1l6RHNUAAAA1/batman-arkham-asylum-stealth-batman-game-predator-rocksteady-games.webp"
-    },
+     "source_url": "https://media.tenor.com/o1Xq1l6RHNUAAAA1/batman-arkham-asylum-stealth-batman-game-predator-rocksteady-games.webp",
+     "screened": {
+      "verdict": "unclear",
+      "confidence": "low",
+      "what": "Same dark Batman Arkham predator montage as cover-takedown-1; no ledge takedown discernible"
+     }
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://giphy.com/gifs/assassinscreed-stealth-assassination-35yPOImga5d72hCyyb",
      "media_url": "",
      "title": "Stealth Assassination by Assassin's Creed (unconfirmed ledge)",
      "game": "Assassin's Creed Mirage",
      "host": "Giphy",
-     "local": "gifs/stealth.ledge-takedown-2.webp",
-     "source_url": "https://media.giphy.com/media/35yPOImga5d72hCyyb/200w.webp"
+     "source_url": "https://media.giphy.com/media/35yPOImga5d72hCyyb/200w.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "medium",
+      "what": "Assassin's Creed Odyssey ground melee in a forest, no ledge"
+     }
     }
    ]
   },
@@ -11373,7 +11784,12 @@
      "game": "Batman Arkham City",
      "host": "Tenor",
      "local": "gifs/stealth.cover-takedown-0.webp",
-     "source_url": "https://media.tenor.com/Cxb-MSjVkaoAAAA1/batman-silent-takedown-arkham-city-shh.webp"
+     "source_url": "https://media.tenor.com/Cxb-MSjVkaoAAAA1/batman-silent-takedown-arkham-city-shh.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "low",
+      "what": "Same Batman Arkham silent takedown from behind, no cover involved"
+     }
     },
     {
      "page_url": "https://tenor.com/view/batman-arkham-asylum-stealth-batman-game-predator-rocksteady-games-gif-11769571407633128661",
@@ -11382,7 +11798,12 @@
      "game": "Batman Arkham Asylum",
      "host": "Tenor",
      "local": "gifs/stealth.cover-takedown-1.webp",
-     "source_url": "https://media.tenor.com/o1Xq1l6RHNUAAAA1/batman-arkham-asylum-stealth-batman-game-predator-rocksteady-games.webp"
+     "source_url": "https://media.tenor.com/o1Xq1l6RHNUAAAA1/batman-arkham-asylum-stealth-batman-game-predator-rocksteady-games.webp",
+     "screened": {
+      "verdict": "unclear",
+      "confidence": "low",
+      "what": "Dark Batman Arkham predator-mode montage with HUD; no takedown clearly visible"
+     }
     }
    ]
   },
@@ -11569,15 +11990,21 @@
      "host": "Tenor",
      "local": "gifs/stealth.hide-grass-locker-0.webp",
      "source_url": "https://media.tenor.com/QhEpcV0EC2cAAAA1/assassin's-creed-altair-crowd-hide-assassin.webp"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/franco-barbi-outlast-trials-franco-barbi-locker-gif-1508274574663438375",
      "media_url": "",
      "title": "Outlast Trials locker gameplay",
      "game": "The Outlast Trials",
      "host": "Tenor",
-     "local": "gifs/stealth.hide-grass-locker-1.webp",
-     "source_url": "https://media.tenor.com/FO53vAaRUCcAAAA1/franco-barbi-outlast-trials-franco-barbi-locker.webp"
+     "source_url": "https://media.tenor.com/FO53vAaRUCcAAAA1/franco-barbi-outlast-trials-franco-barbi-locker.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "medium",
+      "what": "First-person horror game (Outlast-like): a Joker-ish enemy grabs and attacks the player, no hiding"
+     }
     }
    ]
   },
@@ -11606,7 +12033,12 @@
      "media_url": "",
      "host": "Tenor",
      "local": "gifs/stealth.chain-takedown-0.webp",
-     "source_url": "https://media.tenor.com/Cxb-MSjVkaoAAAA1/batman-silent-takedown-arkham-city-shh.webp"
+     "source_url": "https://media.tenor.com/Cxb-MSjVkaoAAAA1/batman-silent-takedown-arkham-city-shh.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "low",
+      "what": "Batman Arkham single silent takedown from behind, not a chain of takedowns"
+     }
     }
    ]
   },
@@ -11872,20 +12304,26 @@
      "source_url": "https://media.tenor.com/3vlohz2ITKIAAAA1/fire-emblem-sacred-stones-fire-emblem-sacred-stones-crit-crit-animation.webp"
     },
     {
-     "page_url": "https://tenor.com/view/out-of-my-way-dimitri-fire-emblem-dimitri-alexandre-blaiddyd-critical-hit-gif-14843886018842220360",
-     "media_url": "",
-     "title": "Dimitri critical hit cut-in",
-     "game": "Fire Emblem Three Houses",
-     "host": "Tenor",
-     "local": "gifs/vfx.camera-zoom-on-crit-1.webp",
-     "source_url": "https://media.tenor.com/zgATsBd6V0gAAAA1/out-of-my-way-dimitri-fire-emblem-dimitri-alexandre-blaiddyd-critical-hit.webp"
-    },
-    {
      "page_url": "https://tenor.com/view/eirika-magvel-fire-emblem-fe-engage-critical-hit-gif-27469680",
      "media_url": "",
      "title": "Engage critical hit camera",
      "game": "Fire Emblem Engage",
      "host": "Tenor"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/out-of-my-way-dimitri-fire-emblem-dimitri-alexandre-blaiddyd-critical-hit-gif-14843886018842220360",
+     "media_url": "",
+     "title": "Dimitri critical hit cut-in",
+     "game": "Fire Emblem Three Houses",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/zgATsBd6V0gAAAA1/out-of-my-way-dimitri-fire-emblem-dimitri-alexandre-blaiddyd-critical-hit.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Fire Emblem Three Houses crit cut-in with a Kapwing 'OUT OF WAY' caption edit"
+     }
     }
    ]
   },
@@ -12019,16 +12457,27 @@
      "game": "Halo",
      "host": "Giphy",
      "local": "gifs/vfx.bullet-tracer-0.webp",
-     "source_url": "https://media.giphy.com/media/iRjhHgGOZ1IGfdKCPb/200w.webp"
-    },
+     "source_url": "https://media.giphy.com/media/iRjhHgGOZ1IGfdKCPb/200w.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "low",
+      "what": "Sepia Halo-style CGI/fan-film shot of Warthogs racing through a ruined city; no bullet tracers"
+     }
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/halo-sniper-halo-francotirador-halo-battle-halo-vs-gif-347632082106366963",
      "media_url": "",
      "title": "Halo Sniper battle (unconfirmed tracers)",
      "game": "Halo",
      "host": "Tenor",
-     "local": "gifs/vfx.bullet-tracer-1.webp",
-     "source_url": "https://media.tenor.com/BNMJiW56u_MAAAA1/halo-sniper-halo-francotirador-halo-battle-halo-vs.webp"
+     "source_url": "https://media.tenor.com/BNMJiW56u_MAAAA1/halo-sniper-halo-francotirador-halo-battle-halo-vs.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Halo Spartan live-action/CGI trailer footage (LOACHER watermark), not gameplay, no tracers"
+     }
     }
    ]
   },
@@ -12257,20 +12706,26 @@
      "host": "Tenor"
     },
     {
-     "page_url": "https://tenor.com/view/kaioken-kaio-ken-goku-son-goku-rainbow-gif-18309250552255588370",
-     "media_url": "https://media1.tenor.com/m/_heGXubRqBIAAAAd/kaioken-kaio-ken.gif",
-     "title": "Kaioken aura flare",
-     "game": "Dragon Ball",
-     "host": "Tenor",
-     "local": "gifs/vfx.charge-glow-power-aura-1.webp",
-     "source_url": "https://media.tenor.com/_heGXubRqBIAAAA1/kaioken-kaio-ken-goku-son-goku-rainbow.webp"
-    },
-    {
      "page_url": "https://tenor.com/view/broly-dragon-ball-super-saiyan-power-up-charging-gif-16751648",
      "title": "Broly charging",
      "game": "Dragon Ball",
      "media_url": "",
      "host": "Tenor"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/kaioken-kaio-ken-goku-son-goku-rainbow-gif-18309250552255588370",
+     "media_url": "https://media1.tenor.com/m/_heGXubRqBIAAAAd/kaioken-kaio-ken.gif",
+     "title": "Kaioken aura flare",
+     "game": "Dragon Ball",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/_heGXubRqBIAAAA1/kaioken-kaio-ken-goku-son-goku-rainbow.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Dragon Ball Z anime: Goku powering up into Kaioken (TV anime)"
+     }
     }
    ]
   },
@@ -12353,15 +12808,21 @@
      "title": "Shield break attack",
      "game": "",
      "host": "Tenor"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/cracked-shields-apex-cracked-apex-legends-cracked-shield-cracked-enemy-cracked-gif-11332299302556929226",
      "media_url": "",
      "title": "Cracked shields",
      "game": "Apex Legends",
      "host": "Tenor",
-     "local": "gifs/vfx.shield-break-shatter-2.webp",
-     "source_url": "https://media.tenor.com/nURqLLFQDMoAAAA1/cracked-shields-apex-cracked-apex-legends-cracked-shield-cracked-enemy-cracked.webp"
+     "source_url": "https://media.tenor.com/nURqLLFQDMoAAAA1/cracked-shields-apex-cracked-apex-legends-cracked-shield-cracked-enemy-cracked.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "'CRACKED SHIELDS' DIGI995 poster art cycling through color variants"
+     }
     }
    ]
   },
@@ -12494,15 +12955,6 @@
    ],
    "gifs": [
     {
-     "page_url": "https://tenor.com/view/pokemon-meowth-smear-frame-head-turn-gif-17196268380437703723",
-     "media_url": "",
-     "title": "Meowth head-turn smear frame",
-     "game": "Pokemon anime",
-     "host": "Tenor",
-     "local": "gifs/vfx.smear-frame-0.webp",
-     "source_url": "https://media.tenor.com/7qVq-3ZFbCsAAAA1/pokemon-meowth-smear-frame-head-turn.webp"
-    },
-    {
      "page_url": "https://tenor.com/view/ducktales2017-ducktales-living-mummies-of-tothra-falling-smear-frames-gif-21535078",
      "media_url": "",
      "title": "DuckTales falling smear frames",
@@ -12517,6 +12969,21 @@
      "host": "Tenor",
      "local": "gifs/vfx.smear-frame-2.webp",
      "source_url": "https://media.tenor.com/9P35Il3vyy0AAAA1/sol-badguy-spin-guilty-gear-guilty-gear-xx-guilty-gear-xx-accent-core-plus.webp"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/pokemon-meowth-smear-frame-head-turn-gif-17196268380437703723",
+     "media_url": "",
+     "title": "Meowth head-turn smear frame",
+     "game": "Pokemon anime",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/7qVq-3ZFbCsAAAA1/pokemon-meowth-smear-frame-head-turn.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Pokemon anime Meowth reaction clip (TV anime)"
+     }
     }
    ]
   },
@@ -12613,20 +13080,26 @@
    ],
    "gifs": [
     {
-     "page_url": "https://giphy.com/gifs/xbox-xbox-series-x-s-street-fighter-6-fNsRPnBMgLMJGAO922",
-     "media_url": "",
-     "title": "Street Fighter 6 Knockout GIF by Xbox (unconfirmed health bar)",
-     "game": "Street Fighter 6",
-     "host": "Giphy",
-     "local": "gifs/ui.health-bar-drain-ghost-bar-0.webp",
-     "source_url": "https://media.giphy.com/media/fNsRPnBMgLMJGAO922/200w.webp"
-    },
-    {
      "page_url": "https://tenor.com/view/hpbar-health-health-bar-damage-video-games-gif-15836601",
      "media_url": "",
      "title": "Game health bar taking damage",
      "game": "",
      "host": "Tenor"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://giphy.com/gifs/xbox-xbox-series-x-s-street-fighter-6-fNsRPnBMgLMJGAO922",
+     "media_url": "",
+     "title": "Street Fighter 6 Knockout GIF by Xbox (unconfirmed health bar)",
+     "game": "Street Fighter 6",
+     "host": "Giphy",
+     "source_url": "https://media.giphy.com/media/fNsRPnBMgLMJGAO922/200w.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "medium",
+      "what": "SF4 Guile ultra cinematic with no health bars visible"
+     }
     }
    ]
   },
@@ -12671,13 +13144,26 @@
    ],
    "gifs": [
     {
+     "page_url": "https://tenor.com/view/borderlands-rainbow-rarity-gif-13884106",
+     "media_url": "",
+     "title": "Borderlands attack showing damage numbers",
+     "game": "Borderlands",
+     "host": "Tenor"
+    }
+   ],
+   "rejected_gifs": [
+    {
      "page_url": "https://giphy.com/gifs/rpg-crit-dmg-3-damage-critical-NBV1nM0n275IyO7Oll",
      "media_url": "",
      "title": "3 damage (critical) RPG number",
      "game": "Generic RPG",
      "host": "Giphy",
-     "local": "gifs/ui.floating-damage-numbers-0.webp",
-     "source_url": "https://media.giphy.com/media/NBV1nM0n275IyO7Oll/200w.webp"
+     "source_url": "https://media.giphy.com/media/NBV1nM0n275IyO7Oll/200w.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Real-life man with a '-3 CRITICAL' RPG damage overlay ('rpg crit dmg 3' meme)"
+     }
     },
     {
      "page_url": "https://giphy.com/gifs/rpg-crit-dmg-1-damage-critical-yjki0wSnCtDH7IikqU",
@@ -12685,15 +13171,12 @@
      "title": "1 damage RPG number",
      "game": "Generic RPG",
      "host": "Giphy",
-     "local": "gifs/ui.floating-damage-numbers-1.webp",
-     "source_url": "https://media.giphy.com/media/yjki0wSnCtDH7IikqU/200w.webp"
-    },
-    {
-     "page_url": "https://tenor.com/view/borderlands-rainbow-rarity-gif-13884106",
-     "media_url": "",
-     "title": "Borderlands attack showing damage numbers",
-     "game": "Borderlands",
-     "host": "Tenor"
+     "source_url": "https://media.giphy.com/media/yjki0wSnCtDH7IikqU/200w.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Same real-life man with a '-1 CRITICAL' overlay"
+     }
     },
     {
      "page_url": "https://tenor.com/view/damage-number-rpg-hit-massive-digits-boss-fight-gaming-stats-gif-15614838591148673056",
@@ -12701,8 +13184,12 @@
      "title": "RPG damage number pop (stylised)",
      "game": "",
      "host": "Tenor",
-     "local": "gifs/ui.floating-damage-numbers-3.webp",
-     "source_url": "https://media.tenor.com/2LMM97p6SCAAAAA1/damage-number-rpg-hit-massive-digits-boss-fight-gaming-stats.webp"
+     "source_url": "https://media.tenor.com/2LMM97p6SCAAAAA1/damage-number-rpg-hit-massive-digits-boss-fight-gaming-stats.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "'Ashwin Gane Energy 99999' motion-graphic text edit"
+     }
     }
    ]
   },
@@ -12782,7 +13269,12 @@
      "game": "Devil May Cry 5",
      "host": "Tenor",
      "local": "gifs/ui.combo-counter-0.webp",
-     "source_url": "https://media.tenor.com/dYob1IR0hSMAAAA1/dmc-gameplay-v-dmc.webp"
+     "source_url": "https://media.tenor.com/dYob1IR0hSMAAAA1/dmc-gameplay-v-dmc.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "low",
+      "what": "Chibi character under a jittering 'SSS' style-rank graphic over color-shifting backgrounds; looks like a fan edit"
+     }
     },
     {
      "page_url": "https://tenor.com/view/devil-may-cry-style-gif-18338147733380571267",
@@ -12812,15 +13304,20 @@
    "description": "The marker that snaps to a targeted enemy.",
    "search_query": "Lock-On Reticle animation video game",
    "references": [],
-   "gifs": [
+   "gifs": [],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/ds1-lock-on-dark-souls-gif-14549586169031928712",
      "media_url": "https://media1.tenor.com/m/yeqDiKIVq4gAAAAd/ds1-lock-on.gif",
      "title": "Dark Souls 1 lock-on (captioned)",
      "game": "Dark Souls",
      "host": "Tenor",
-     "local": "gifs/ui.lock-on-reticle-0.webp",
-     "source_url": "https://media.tenor.com/yeqDiKIVq4gAAAA1/ds1-lock-on-dark-souls.webp"
+     "source_url": "https://media.tenor.com/yeqDiKIVq4gAAAA1/ds1-lock-on-dark-souls.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Dark Souls 1 gameplay with an 'i love ds1 lock on' meme caption"
+     }
     }
    ]
   },
@@ -12914,15 +13411,21 @@
      "title": "Call of Duty hitmarker graphic spam",
      "game": "Call of Duty",
      "host": "Tenor"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/codm-sniper-hitmarker-hit-marker-gif-7152604650791601130",
      "media_url": "",
      "title": "CoD Mobile sniper hitmarker",
      "game": "Call of Duty Mobile",
      "host": "Tenor",
-     "local": "gifs/ui.hit-marker-1.webp",
-     "source_url": "https://media.tenor.com/Y0MoCKU9g-oAAAA1/codm-sniper-hitmarker-hit-marker.webp"
+     "source_url": "https://media.tenor.com/Y0MoCKU9g-oAAAA1/codm-sniper-hitmarker-hit-marker.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "3D cartoon frog/lizard render with MLG 'HITMARKER' text"
+     }
     },
     {
      "page_url": "https://tenor.com/view/187-call-of-duty-killshot-hit-marker-gif-1748184944570850151",
@@ -12930,8 +13433,12 @@
      "title": "Call of Duty killshot hit marker",
      "game": "Call of Duty",
      "host": "Tenor",
-     "local": "gifs/ui.hit-marker-2.webp",
-     "source_url": "https://media.tenor.com/GELM8d7U22cAAAA1/187-call-of-duty-killshot-hit-marker.webp"
+     "source_url": "https://media.tenor.com/GELM8d7U22cAAAA1/187-call-of-duty-killshot-hit-marker.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Movie clip of Samuel L. Jackson (MLG hitmarker-style edit)"
+     }
     }
    ]
   },
@@ -13014,20 +13521,26 @@
    ],
    "gifs": [
     {
-     "page_url": "https://giphy.com/gifs/xbox-halo-shield-infinite-IxjLj6zRvVXVT4wsdW",
-     "media_url": "",
-     "title": "Halo Infinite Master Chief shield (unconfirmed damage indicator)",
-     "game": "Halo Infinite",
-     "host": "Giphy",
-     "local": "gifs/ui.damage-direction-indicator-0.webp",
-     "source_url": "https://media.giphy.com/media/IxjLj6zRvVXVT4wsdW/200w.webp"
-    },
-    {
      "page_url": "https://tenor.com/view/hitmarker-gif-9723397980673825472",
      "media_url": "",
      "title": "Hitmarker sticker (unconfirmed; hit UI, not direction indicator)",
      "game": "Call of Duty",
      "host": "Tenor"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://giphy.com/gifs/xbox-halo-shield-infinite-IxjLj6zRvVXVT4wsdW",
+     "media_url": "",
+     "title": "Halo Infinite Master Chief shield (unconfirmed damage indicator)",
+     "game": "Halo Infinite",
+     "host": "Giphy",
+     "source_url": "https://media.giphy.com/media/IxjLj6zRvVXVT4wsdW/200w.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "medium",
+      "what": "Halo CGI cinematic (Spartans vs. a Lekgolo-like enemy), no HUD or damage indicator"
+     }
     }
    ]
   },
@@ -13193,20 +13706,26 @@
    "references": [],
    "gifs": [
     {
-     "page_url": "https://tenor.com/view/videogame-gamer-stamina-running-gif-22582221",
-     "media_url": "https://media1.tenor.com/m/bGfv_dKTl7cAAAAd/videogame-gamer.gif",
-     "title": "Running out of stamina in a game",
-     "game": "",
-     "host": "Tenor",
-     "local": "gifs/ui.stamina-bar-0.webp",
-     "source_url": "https://media.tenor.com/bGfv_dKTl7cAAAA1/videogame-gamer-stamina-running.webp"
-    },
-    {
      "page_url": "https://tenor.com/view/indie-games-game-dev-weeee-run-stamina-gif-15845617",
      "media_url": "",
      "title": "Indie game run with stamina",
      "game": "",
      "host": "Tenor"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/videogame-gamer-stamina-running-gif-22582221",
+     "media_url": "https://media1.tenor.com/m/bGfv_dKTl7cAAAAd/videogame-gamer.gif",
+     "title": "Running out of stamina in a game",
+     "game": "",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/bGfv_dKTl7cAAAA1/videogame-gamer-stamina-running.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Real-life man running down a hallway, captioned 'Running in any game with a stamina bar'"
+     }
     }
    ]
   },
@@ -13286,15 +13805,6 @@
      "host": "Tenor"
     },
     {
-     "page_url": "https://giphy.com/gifs/ThisIsMashed-animation-animated-mashed-8UShaoMBBeK7aJsqaI",
-     "media_url": "",
-     "title": "Street Fighter knockout",
-     "game": "Street Fighter",
-     "host": "Giphy",
-     "local": "gifs/ui.round-start-ko-banner-3.webp",
-     "source_url": "https://media.giphy.com/media/8UShaoMBBeK7aJsqaI/200w.webp"
-    },
-    {
      "page_url": "https://giphy.com/gifs/AGoodDoctorBTC-ko-street-fighter-combo-VEsz2xcsNtUQN1p8Uw",
      "media_url": "",
      "title": "Street Fighter KO combo",
@@ -13302,6 +13812,21 @@
      "host": "Giphy",
      "local": "gifs/ui.round-start-ko-banner-4.webp",
      "source_url": "https://media.giphy.com/media/VEsz2xcsNtUQN1p8Uw/200w.webp"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://giphy.com/gifs/ThisIsMashed-animation-animated-mashed-8UShaoMBBeK7aJsqaI",
+     "media_url": "",
+     "title": "Street Fighter knockout",
+     "game": "Street Fighter",
+     "host": "Giphy",
+     "source_url": "https://media.giphy.com/media/8UShaoMBBeK7aJsqaI/200w.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Coronation Street parody beat-'em-up edit ('MASHED', Rovers Return), with Deirdre fighting; a fan joke"
+     }
     }
    ]
   },
@@ -13389,15 +13914,20 @@
      "note": "Counter indicator and combat changes"
     }
    ],
-   "gifs": [
+   "gifs": [],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/batman-im-not-gonna-sugarcoat-it-arkham-city-counter-gif-8508312900635790873",
      "media_url": "",
      "title": "Arkham City gameplay with counter prompt",
      "game": "Batman: Arkham City",
      "host": "Tenor",
-     "local": "gifs/ui.counter-prompt-indicator-0.webp",
-     "source_url": "https://media.tenor.com/dhOZgRBFDhkAAAA1/batman-im-not-gonna-sugarcoat-it-arkham-city-counter.webp"
+     "source_url": "https://media.tenor.com/dhOZgRBFDhkAAAA1/batman-im-not-gonna-sugarcoat-it-arkham-city-counter.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Batman Arkham footage edited with an 'I'm not gonna sugarcoat it' meme card and a Y button"
+     }
     },
     {
      "page_url": "https://tenor.com/view/i'm-not-going-to-sugarcoat-it-batman-arkham-game-counter-gif-614668015841564527",
@@ -13405,8 +13935,12 @@
      "title": "Arkham counter moment",
      "game": "Batman: Arkham",
      "host": "Tenor",
-     "local": "gifs/ui.counter-prompt-indicator-1.webp",
-     "source_url": "https://media.tenor.com/CIe9TcMH128AAAA1/i'm-not-going-to-sugarcoat-it-batman-arkham-game-counter.webp"
+     "source_url": "https://media.tenor.com/CIe9TcMH128AAAA1/i'm-not-going-to-sugarcoat-it-batman-arkham-game-counter.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Longer version of the same 'I'm not gonna sugarcoat it' Batman meme edit"
+     }
     }
    ]
   },
@@ -13489,13 +14023,33 @@
    ],
    "gifs": [
     {
+     "page_url": "https://tenor.com/view/mario-walk-cycle-twitter-gif-4178332629046760965",
+     "media_url": "",
+     "title": "Super Mario walk cycle comparison",
+     "game": "Super Mario",
+     "host": "Tenor",
+     "local": "gifs/exploration.walk-cycle-2.webp",
+     "source_url": "https://media.tenor.com/OfxrY2vBlgUAAAA1/mario-walk-cycle-twitter.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "low",
+      "what": "Fan-made 'Super Mario walk cycle comparison' edit putting together sprites from several Mario games (the sprites themselves are real)"
+     }
+    }
+   ],
+   "rejected_gifs": [
+    {
      "page_url": "https://tenor.com/view/animation-walking-tips-animator-fps-gif-11978529245147428773",
      "media_url": "",
      "title": "Walk cycle at 12/24/48 fps comparison",
      "game": "Animation tutorial",
      "host": "Tenor",
-     "local": "gifs/exploration.walk-cycle-0.webp",
-     "source_url": "https://media.tenor.com/pjxI4iyj96UAAAA1/animation-walking-tips-animator-fps.webp"
+     "source_url": "https://media.tenor.com/pjxI4iyj96UAAAA1/animation-walking-tips-animator-fps.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Animation tutorial: a simple ball-and-legs walk cycle shown at 12, 24 and 48 FPS; not from a game"
+     }
     },
     {
      "page_url": "https://tenor.com/view/walk-walking-walk-away-walk-cycle-animation-gif-15671636272930196400",
@@ -13503,17 +14057,12 @@
      "title": "Walk cycle inbetweens breakdown",
      "game": "Animation tutorial",
      "host": "Tenor",
-     "local": "gifs/exploration.walk-cycle-1.webp",
-     "source_url": "https://media.tenor.com/2XzWKIkhi7AAAAA1/walk-walking-walk-away-walk-cycle-animation.webp"
-    },
-    {
-     "page_url": "https://tenor.com/view/mario-walk-cycle-twitter-gif-4178332629046760965",
-     "media_url": "",
-     "title": "Super Mario walk cycle comparison",
-     "game": "Super Mario",
-     "host": "Tenor",
-     "local": "gifs/exploration.walk-cycle-2.webp",
-     "source_url": "https://media.tenor.com/OfxrY2vBlgUAAAA1/mario-walk-cycle-twitter.webp"
+     "source_url": "https://media.tenor.com/2XzWKIkhi7AAAAA1/walk-walking-walk-away-walk-cycle-animation.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Animation tutorial graphic labelled 'Inbetweens - walk cycle' with numbered poses; not from a game"
+     }
     }
    ]
   },
@@ -13558,7 +14107,12 @@
      "game": "Genshin Impact",
      "host": "Tenor",
      "local": "gifs/exploration.jog-run-explore-2.webp",
-     "source_url": "https://media.tenor.com/Bw1NW-XHVQcAAAA1/iansan-genshin-impact-genshin-iansan-run.webp"
+     "source_url": "https://media.tenor.com/Bw1NW-XHVQcAAAA1/iansan-genshin-impact-genshin-iansan-run.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "low",
+      "what": "Hand-drawn 2D fan-art run cycle of an anime girl on a cream background; not game footage"
+     }
     }
    ]
   },
@@ -13596,15 +14150,6 @@
      "host": "Tenor"
     },
     {
-     "page_url": "https://tenor.com/view/metal-gear-solid-delta-snake-sneak-konami-gif-10334474129559129533",
-     "media_url": "",
-     "title": "Metal Gear Solid Delta Snake Sneak",
-     "game": "Metal Gear Solid Delta",
-     "host": "Tenor",
-     "local": "gifs/exploration.sneak-tiptoe-2.webp",
-     "source_url": "https://media.tenor.com/j2ttd2jWDb0AAAA1/metal-gear-solid-delta-snake-sneak-konami.webp"
-    },
-    {
      "page_url": "https://tenor.com/view/luigi-luigi's-mansion-luigis-mansion-funny-walk-gameboy-horror-gif-8067597674825758008",
      "media_url": "",
      "title": "Luigi's Mansion funny walk (unconfirmed tiptoe)",
@@ -13612,6 +14157,21 @@
      "host": "Tenor",
      "local": "gifs/exploration.sneak-tiptoe-3.webp",
      "source_url": "https://media.tenor.com/b_XdV17BtTgAAAA1/luigi-luigi's-mansion-luigis-mansion-funny-walk-gameboy-horror.webp"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/metal-gear-solid-delta-snake-sneak-konami-gif-10334474129559129533",
+     "media_url": "",
+     "title": "Metal Gear Solid Delta Snake Sneak",
+     "game": "Metal Gear Solid Delta",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/j2ttd2jWDb0AAAA1/metal-gear-solid-delta-snake-sneak-konami.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "medium",
+      "what": "Dark MGS Delta trailer shot: Snake's face slowly emerges from foliage; no sneaking or tiptoe movement"
+     }
     }
    ]
   },
@@ -14276,22 +14836,18 @@
    "references": [],
    "gifs": [
     {
-     "page_url": "https://tenor.com/view/sonic-the-hedgehog-classic-sonic-spin-dash-gif-8385102177297258191",
-     "media_url": "",
-     "title": "Classic Sonic spin dash",
-     "game": "Sonic the Hedgehog",
-     "host": "Tenor",
-     "local": "gifs/exploration.spin-dash-roll-ball-0.webp",
-     "source_url": "https://media.tenor.com/dF3eAQsoVs8AAAA1/sonic-the-hedgehog-classic-sonic-spin-dash.webp"
-    },
-    {
      "page_url": "https://tenor.com/view/sonic-dash-charge-sonic-charge-sonic-gif-6378473862176332626",
      "media_url": "",
      "title": "Sonic spin dash charge (pixel)",
      "game": "Sonic the Hedgehog",
      "host": "Tenor",
      "local": "gifs/exploration.spin-dash-roll-ball-1.webp",
-     "source_url": "https://media.tenor.com/WITkLtwiW1IAAAA1/sonic-dash-charge-sonic-charge-sonic.webp"
+     "source_url": "https://media.tenor.com/WITkLtwiW1IAAAA1/sonic-dash-charge-sonic-charge-sonic.webp",
+     "screened": {
+      "verdict": "unclear",
+      "confidence": "low",
+      "what": "Pixel Sonic spin-dash then a flash and a large logo burst; looks like a fan sprite animation rather than gameplay"
+     }
     },
     {
      "page_url": "https://tenor.com/view/metroid-prime-morph-ball-gamecube-speed-booster-halfpipe-gif-27173430",
@@ -14299,6 +14855,21 @@
      "title": "Metroid Prime Morph Ball halfpipe boost",
      "game": "Metroid Prime",
      "host": "Tenor"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/sonic-the-hedgehog-classic-sonic-spin-dash-gif-8385102177297258191",
+     "media_url": "",
+     "title": "Classic Sonic spin dash",
+     "game": "Sonic the Hedgehog",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/dF3eAQsoVs8AAAA1/sonic-the-hedgehog-classic-sonic-spin-dash.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Hand-drawn cartoon/fan animation of Sonic jumping off a rock spire and curling into a ball"
+     }
     }
    ]
   },
@@ -14336,15 +14907,21 @@
      "host": "Tenor",
      "local": "gifs/exploration.wall-slide-1.webp",
      "source_url": "https://media.tenor.com/MaVvV3P4gf0AAAA1/super-mario-bros-wonder-wall-jump-walljump-jumping-2d-platformer.webp"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/mega-man-megaman-rockman-x-x8-gif-8252121197641677655",
      "media_url": "",
      "title": "Mega Man X8 Wall Slide (fan animation, unconfirmed)",
      "game": "Mega Man X8",
      "host": "Tenor",
-     "local": "gifs/exploration.wall-slide-2.webp",
-     "source_url": "https://media.tenor.com/coVsgfTnO1cAAAA1/mega-man-megaman-rockman-x-x8.webp"
+     "source_url": "https://media.tenor.com/coVsgfTnO1cAAAA1/mega-man-megaman-rockman-x-x8.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "medium",
+      "what": "Mega Man X 3D cutscene or render: X crashes through debris in an explosion and falls; no wall slide"
+     }
     }
    ]
   },
@@ -14380,15 +14957,21 @@
      "title": "Cappy capture of a frog",
      "game": "Super Mario Odyssey",
      "host": "Tenor"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/kirby-inhaling-gif-5084451038088578118",
      "media_url": "",
      "title": "Kirby Inhaling (unconfirmed - inhale/copy)",
      "game": "Kirby",
      "host": "Tenor",
-     "local": "gifs/exploration.cap-throw-possess-2.webp",
-     "source_url": "https://media.tenor.com/Ro-ZR9MixEYAAAA1/kirby-inhaling.webp"
+     "source_url": "https://media.tenor.com/Ro-ZR9MixEYAAAA1/kirby-inhaling.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "medium",
+      "what": "Pixel Kirby inhaling small blocks; not a cap throw or possession"
+     }
     },
     {
      "page_url": "https://tenor.com/view/kirby-kirby-eating-me-inhaling-my-me-inhaling-kirby-super-star-gif-16326327119310753364",
@@ -14396,8 +14979,12 @@
      "title": "Kirby Super Star inhaling (unconfirmed)",
      "game": "Kirby Super Star",
      "host": "Tenor",
-     "local": "gifs/exploration.cap-throw-possess-3.webp",
-     "source_url": "https://media.tenor.com/4pLEA7FYDlQAAAA1/kirby-kirby-eating-me-inhaling-my-me-inhaling-kirby-super-star.webp"
+     "source_url": "https://media.tenor.com/4pLEA7FYDlQAAAA1/kirby-kirby-eating-me-inhaling-my-me-inhaling-kirby-super-star.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "'ME INHALING MY [plasma wisp] BECAUSE OF HOW THIS IS' Kirby caption meme"
+     }
     }
    ]
   },
@@ -14519,15 +15106,21 @@
      "game": "Zelda: Breath of the Wild",
      "media_url": "",
      "host": "Tenor"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/legend-of-zelda-ocarina-of-time-loz-tloz-zelda-link-gif-16513107091092094331",
      "title": "Link opens chest, Ocarina of Time",
      "game": "Zelda: Ocarina of Time",
      "media_url": "",
      "host": "Tenor",
-     "local": "gifs/interaction.open-chest-2.webp",
-     "source_url": "https://media.tenor.com/5SpXaL6HPXsAAAA1/legend-of-zelda-ocarina-of-time-loz-tloz-zelda-link.webp"
+     "source_url": "https://media.tenor.com/5SpXaL6HPXsAAAA1/legend-of-zelda-ocarina-of-time-loz-tloz-zelda-link.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Remade OoT chest opening ending in a 'True...' meme image edited in"
+     }
     }
    ]
   },
@@ -14556,7 +15149,12 @@
      "game": "Doom: The Dark Ages",
      "host": "Tenor",
      "local": "gifs/interaction.open-kick-door-0.webp",
-     "source_url": "https://media.tenor.com/8Z2GD2TtGPMAAAA1/doom-here's-johnny-doom-slayer-doom-marine-doom-the-dark-ages.webp"
+     "source_url": "https://media.tenor.com/8Z2GD2TtGPMAAAA1/doom-here's-johnny-doom-slayer-doom-marine-doom-the-dark-ages.webp",
+     "screened": {
+      "verdict": "unclear",
+      "confidence": "medium",
+      "what": "Very dark clip: a dark silhouette in front of fire, no visible door or kick"
+     }
     }
    ]
   },
@@ -14584,15 +15182,21 @@
      "title": "Kronk pulls the lever",
      "game": "The Emperor's New Groove",
      "host": "Tenor"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/the-simpsons-lever-gif-9957671",
      "media_url": "https://media1.tenor.com/m/A0PmEzZN3YYAAAAC/the-simpsons-lever.gif",
      "title": "Simpsons lever pull",
      "game": "The Simpsons",
      "host": "Tenor",
-     "local": "gifs/interaction.pull-lever-press-switch-1.webp",
-     "source_url": "https://media.tenor.com/A0PmEzZN3YYAAAA1/the-simpsons-lever.webp"
+     "source_url": "https://media.tenor.com/A0PmEzZN3YYAAAA1/the-simpsons-lever.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "The Simpsons (TV): a yellow hand pulling levers"
+     }
     },
     {
      "page_url": "https://tenor.com/view/playstation-square-button-press-lever-ps2-gif-12397664411304801110",
@@ -14600,8 +15204,12 @@
      "title": "PS2 game lever press",
      "game": "",
      "host": "Tenor",
-     "local": "gifs/interaction.pull-lever-press-switch-2.webp",
-     "source_url": "https://media.tenor.com/rA1aGLBTM1YAAAA1/playstation-square-button-press-lever-ps2.webp"
+     "source_url": "https://media.tenor.com/rA1aGLBTM1YAAAA1/playstation-square-button-press-lever-ps2.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Black screen with only the subtitle 'Pull down the lever' (Emperor's New Groove meme)"
+     }
     }
    ]
   },
@@ -14729,15 +15337,21 @@
      "host": "Tenor",
      "local": "gifs/interaction.eat-drink-1.webp",
      "source_url": "https://media.tenor.com/ckx6wQUygRoAAAA1/monster-hunter-mh-potion-potion-flex-mh-potion.webp"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/rdr-2-arthur-morgan-arthur-red-dead-redemption-2-cowboy-gif-263945590927564528",
      "media_url": "",
      "title": "Arthur eating soup with spoon",
      "game": "Red Dead Redemption 2",
      "host": "Tenor",
-     "local": "gifs/interaction.eat-drink-2.webp",
-     "source_url": "https://media.tenor.com/A6m5HdNEnvAAAAA1/rdr-2-arthur-morgan-arthur-red-dead-redemption-2-cowboy.webp"
+     "source_url": "https://media.tenor.com/A6m5HdNEnvAAAAA1/rdr-2-arthur-morgan-arthur-red-dead-redemption-2-cowboy.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Chibi fan-art drawing of Arthur Morgan being fed with a giant spoon"
+     }
     }
    ]
   },
@@ -14832,15 +15446,21 @@
      "host": "Tenor",
      "local": "gifs/interaction.sleep-lie-down-3.webp",
      "source_url": "https://media.tenor.com/-0m0cImsttEAAAA1/animal-crossing-sleep-rolling-over-cheeseboymad.webp"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/sleepy-animal-crossing-gif-115440598527697998",
      "media_url": "",
      "title": "Sleepy villager",
      "game": "Animal Crossing",
      "host": "Tenor",
-     "local": "gifs/interaction.sleep-lie-down-4.webp",
-     "source_url": "https://media.tenor.com/AZognNvm5E4AAAA1/sleepy-animal-crossing.webp"
+     "source_url": "https://media.tenor.com/AZognNvm5E4AAAA1/sleepy-animal-crossing.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "medium",
+      "what": "ACNH villager standing and yawning in a shop (same clip as sim-needs-yawn-stretch-3); not lying down"
+     }
     }
    ]
   },
@@ -15098,15 +15718,6 @@
    "references": [],
    "gifs": [
     {
-     "page_url": "https://tenor.com/view/your-alright-boah-horse-arthur-pet-horse-red-dead-redemption2-gif-16615644",
-     "media_url": "https://media1.tenor.com/m/16l8k3Fwn4UAAAAC/your-alright-boah-horse.gif",
-     "title": "Arthur petting his horse",
-     "game": "Red Dead Redemption 2",
-     "host": "Tenor",
-     "local": "gifs/interaction.pet-animal-0.webp",
-     "source_url": "https://media.tenor.com/16l8k3Fwn4UAAAA1/your-alright-boah-horse-arthur-pet-horse-red-dead-redemption2.webp"
-    },
-    {
      "page_url": "https://tenor.com/view/ghost-of-tsushima-got-fox-tappies-cute-fox-gif-5612391714279224006",
      "media_url": "",
      "title": "Jin petting a fox",
@@ -15114,6 +15725,21 @@
      "host": "Tenor",
      "local": "gifs/interaction.pet-animal-1.webp",
      "source_url": "https://media.tenor.com/TeM4h0X1csYAAAA1/ghost-of-tsushima-got-fox-tappies-cute-fox.webp"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/your-alright-boah-horse-arthur-pet-horse-red-dead-redemption2-gif-16615644",
+     "media_url": "https://media1.tenor.com/m/16l8k3Fwn4UAAAAC/your-alright-boah-horse.gif",
+     "title": "Arthur petting his horse",
+     "game": "Red Dead Redemption 2",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/16l8k3Fwn4UAAAA1/your-alright-boah-horse-arthur-pet-horse-red-dead-redemption2.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "RDR2 horse petting with the caption 'YOUR ALRIGHT BOAH'"
+     }
     }
    ]
   },
@@ -15336,15 +15962,20 @@
      "note": "Related hand-raise gesture for comparison"
     }
    ],
-   "gifs": [
+   "gifs": [],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/dark-souls-3-point-dark-souls-point-dark-souls-point-forward-dark-souls-3-point-forward-dark-souls-3-purple-phantom-gif-13811536828249137742",
      "media_url": "",
      "title": "Dark Souls 3 Point Forward gesture",
      "game": "Dark Souls 3",
      "host": "Tenor",
-     "local": "gifs/expression.point-beckon-0.webp",
-     "source_url": "https://media.tenor.com/v6xvkZID4k4AAAA1/dark-souls-3-point-dark-souls-point-dark-souls-point-forward-dark-souls-3-point-forward-dark-souls-3-purple-phantom.webp"
+     "source_url": "https://media.tenor.com/v6xvkZID4k4AAAA1/dark-souls-3-point-dark-souls-point-dark-souls-point-forward-dark-souls-3-point-forward-dark-souls-3-purple-phantom.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Neon-outlined figure in a music-video style edit with the lyric caption 'TO ROOT WITH YOUR BOOTY'"
+     }
     },
     {
      "page_url": "https://tenor.com/view/dark-souls-3-point-dark-souls-point-dark-souls-point-forward-dark-souls-3-point-forward-dark-souls-3-purple-phantom-gif-5652688199604297089",
@@ -15352,8 +15983,12 @@
      "title": "Purple phantom Point Forward (DS3)",
      "game": "Dark Souls 3",
      "host": "Tenor",
-     "local": "gifs/expression.point-beckon-1.webp",
-     "source_url": "https://media.tenor.com/TnJh9-N03YEAAAA1/dark-souls-3-point-dark-souls-point-dark-souls-point-forward-dark-souls-3-point-forward-dark-souls-3-purple-phantom.webp"
+     "source_url": "https://media.tenor.com/TnJh9-N03YEAAAA1/dark-souls-3-point-dark-souls-point-dark-souls-point-forward-dark-souls-3-point-forward-dark-souls-3-purple-phantom.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "The same neon-outlined music-video edit as point-beckon-0 (lyric caption)"
+     }
     }
    ]
   },
@@ -15414,15 +16049,6 @@
    "references": [],
    "gifs": [
     {
-     "page_url": "https://tenor.com/view/tidus-haha-lol-laugh-final-fantasy-gif-11720324",
-     "media_url": "https://media1.tenor.com/m/gk0D0LBbr-oAAAAC/tidus-haha.gif",
-     "title": "Tidus's forced laugh scene",
-     "game": "Final Fantasy X",
-     "host": "Tenor",
-     "local": "gifs/expression.laugh-0.webp",
-     "source_url": "https://media.tenor.com/gk0D0LBbr-oAAAA1/tidus-haha-lol-laugh-final-fantasy.webp"
-    },
-    {
      "page_url": "https://tenor.com/view/tidus-tidus-laugh-final-fantasy-final-fantasy10-speech-bubble-gif-25488799",
      "media_url": "",
      "title": "Tidus laugh",
@@ -15435,6 +16061,21 @@
      "title": "Cid laughing",
      "game": "Final Fantasy X",
      "host": "Tenor"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/tidus-haha-lol-laugh-final-fantasy-gif-11720324",
+     "media_url": "https://media1.tenor.com/m/gk0D0LBbr-oAAAAC/tidus-haha.gif",
+     "title": "Tidus's forced laugh scene",
+     "game": "Final Fantasy X",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/gk0D0LBbr-oAAAA1/tidus-haha-lol-laugh-final-fantasy.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "FFX Tidus forced-laugh scene with a 'HAHAHAHAHA' caption added on top"
+     }
     }
    ]
   },
@@ -15663,15 +16304,20 @@
      "note": "Animator essay on takes"
     }
    ],
-   "gifs": [
+   "gifs": [],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/sorprendido-bugs-bunny-looney-tunes-qué-fue-eso-reacción-tardía-gif-16241226595635462289",
      "media_url": "https://media1.tenor.com/m/4WRtif16gJEAAAAC/sorprendido-bugs-bunny.gif",
      "title": "Bugs Bunny delayed reaction double take",
      "game": "Looney Tunes",
      "host": "Tenor",
-     "local": "gifs/expression.double-take-0.webp",
-     "source_url": "https://media.tenor.com/4WRtif16gJEAAAA1/sorprendido-bugs-bunny-looney-tunes-qué-fue-eso-reacción-tardía.webp"
+     "source_url": "https://media.tenor.com/4WRtif16gJEAAAA1/sorprendido-bugs-bunny-looney-tunes-qué-fue-eso-reacción-tardía.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Bugs Bunny double take from Looney Tunes on Cartoon Network (TV)"
+     }
     },
     {
      "page_url": "https://tenor.com/view/tiny-toon-adventures-porky-pig-bugs-bunny-looney-tunes-wild-take-gif-16741528936867455938",
@@ -15679,8 +16325,12 @@
      "title": "Bugs and Porky wild take",
      "game": "Looney Tunes",
      "host": "Tenor",
-     "local": "gifs/expression.double-take-1.webp",
-     "source_url": "https://media.tenor.com/6FXb3h7oY8IAAAA1/tiny-toon-adventures-porky-pig-bugs-bunny-looney-tunes-wild-take.webp"
+     "source_url": "https://media.tenor.com/6FXb3h7oY8IAAAA1/tiny-toon-adventures-porky-pig-bugs-bunny-looney-tunes-wild-take.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Looney Tunes cartoon: Porky and Bugs at a door with an exaggerated scream take"
+     }
     }
    ]
   },
@@ -15715,15 +16365,21 @@
      "title": "ACNH curiosity reaction with question mark",
      "game": "Animal Crossing: New Horizons",
      "host": "Tenor"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/animal-crossing-tom-nook-tanuki-acww-acnh-gif-4476645787435685219",
      "media_url": "",
      "title": "Tom Nook question-mark reaction",
      "game": "Animal Crossing",
      "host": "Tenor",
-     "local": "gifs/expression.shrug-confused-2.webp",
-     "source_url": "https://media.tenor.com/PiA9oBlaVWMAAAA1/animal-crossing-tom-nook-tanuki-acww-acnh.webp"
+     "source_url": "https://media.tenor.com/PiA9oBlaVWMAAAA1/animal-crossing-tom-nook-tanuki-acww-acnh.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "A single-frame pixel emoji or sticker of Tom Nook with a question mark"
+     }
     }
    ]
   },
@@ -15746,13 +16402,26 @@
    "references": [],
    "gifs": [
     {
+     "page_url": "https://tenor.com/view/woohoo-yehey-cuphead-mugman-the-cuphead-show-yay-gif-27352786",
+     "media_url": "",
+     "title": "Cuphead and Mugman cheering woohoo",
+     "game": "The Cuphead Show",
+     "host": "Tenor"
+    }
+   ],
+   "rejected_gifs": [
+    {
      "page_url": "https://tenor.com/view/fuecoco-happy-celebrating-celebration-jumping-gif-1351061037646223420",
      "media_url": "",
      "title": "Fuecoco celebratory jumping",
      "game": "Pokemon (anime)",
      "host": "Tenor",
-     "local": "gifs/expression.celebrate-cheer-0.webp",
-     "source_url": "https://media.tenor.com/Er_u2wLGGDwAAAA1/fuecoco-happy-celebrating-celebration-jumping.webp"
+     "source_url": "https://media.tenor.com/Er_u2wLGGDwAAAA1/fuecoco-happy-celebrating-celebration-jumping.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Fuecoco cheering in the Pokemon anime (Horizons)"
+     }
     },
     {
      "page_url": "https://tenor.com/view/pokemon-happy-celebrate-jump-smile-gif-15594895",
@@ -15760,15 +16429,12 @@
      "title": "Pokemon jumping in celebration",
      "game": "Pokemon (anime)",
      "host": "Tenor",
-     "local": "gifs/expression.celebrate-cheer-1.webp",
-     "source_url": "https://media.tenor.com/zenjhCdEDtkAAAA1/pokemon-happy-celebrate-jump-smile.webp"
-    },
-    {
-     "page_url": "https://tenor.com/view/woohoo-yehey-cuphead-mugman-the-cuphead-show-yay-gif-27352786",
-     "media_url": "",
-     "title": "Cuphead and Mugman cheering woohoo",
-     "game": "The Cuphead Show",
-     "host": "Tenor"
+     "source_url": "https://media.tenor.com/zenjhCdEDtkAAAA1/pokemon-happy-celebrate-jump-smile.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Pokemon anime (TV) crowd of Pikachu, Chikorita and others cheering"
+     }
     }
    ]
   },
@@ -16032,7 +16698,12 @@
      "game": "The Last of Us",
      "host": "Tenor",
      "local": "gifs/expression.eye-blink-look-at-0.webp",
-     "source_url": "https://media.tenor.com/n95_3JnlHxIAAAA1/ellie-williams-side-eye-disgusted-the-last-of-us.webp"
+     "source_url": "https://media.tenor.com/n95_3JnlHxIAAAA1/ellie-williams-side-eye-disgusted-the-last-of-us.webp",
+     "screened": {
+      "verdict": "unclear",
+      "confidence": "medium",
+      "what": "A single still frame of Ellie (TLOU2); no motion, so no blink or look-at can be seen"
+     }
     },
     {
      "page_url": "https://tenor.com/view/ellie-tlou-the-last-of-us-what-gif-27185064",
@@ -16063,15 +16734,6 @@
    "references": [],
    "gifs": [
     {
-     "page_url": "https://tenor.com/view/bored-rdr2-red-dead-redemption-2-arthur-morgan-gif-4449821542521558468",
-     "media_url": "https://media1.tenor.com/m/PcDxHePg1cQAAAAd/bored-rdr2.gif",
-     "title": "Arthur sitting on a rock",
-     "game": "Red Dead Redemption 2",
-     "host": "Tenor",
-     "local": "gifs/expression.sit-idle-lean-0.webp",
-     "source_url": "https://media.tenor.com/PcDxHePg1cQAAAA1/bored-rdr2-red-dead-redemption-2-arthur-morgan.webp"
-    },
-    {
      "page_url": "https://tenor.com/view/arthur-morgan-tired-sigh-sitting-rdr2-gif-1537345656884802918",
      "title": "Arthur sitting under tree, sigh",
      "game": "Red Dead Redemption 2",
@@ -16079,6 +16741,21 @@
      "host": "Tenor",
      "local": "gifs/expression.sit-idle-lean-1.webp",
      "source_url": "https://media.tenor.com/FVW_us-btWYAAAA1/arthur-morgan-tired-sigh-sitting-rdr2.webp"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/bored-rdr2-red-dead-redemption-2-arthur-morgan-gif-4449821542521558468",
+     "media_url": "https://media1.tenor.com/m/PcDxHePg1cQAAAAd/bored-rdr2.gif",
+     "title": "Arthur sitting on a rock",
+     "game": "Red Dead Redemption 2",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/PcDxHePg1cQAAAA1/bored-rdr2-red-dead-redemption-2-arthur-morgan.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "RDR2 Arthur sitting on a rock with a red 'Bored' caption added"
+     }
     }
    ]
   },
@@ -16218,15 +16895,6 @@
    ],
    "gifs": [
     {
-     "page_url": "https://tenor.com/view/squash-%26-stretch-animation-gif-4761641098362283890",
-     "media_url": "",
-     "title": "Bouncing ball with/without squash & stretch",
-     "game": "",
-     "host": "Tenor",
-     "local": "gifs/cartoon.squash-and-stretch-0.webp",
-     "source_url": "https://media.tenor.com/QhS_WcfI53IAAAA1/squash-%26-stretch-animation.webp"
-    },
-    {
      "page_url": "https://tenor.com/view/skullgirls-animation-fighting-games-squash-and-stretch-filia-gif-19980552",
      "media_url": "",
      "title": "Skullgirls Filia squash and stretch",
@@ -16239,6 +16907,21 @@
      "title": "Toon Meowscles squash-and-stretch emote",
      "game": "Fortnite",
      "host": "Tenor"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/squash-%26-stretch-animation-gif-4761641098362283890",
+     "media_url": "",
+     "title": "Bouncing ball with/without squash & stretch",
+     "game": "",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/QhS_WcfI53IAAAA1/squash-%26-stretch-animation.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Animation-tutorial bouncing ball with an onion-skin trail ('See the difference?'), not game footage"
+     }
     }
    ]
   },
@@ -16281,15 +16964,20 @@
      "note": "Step-by-step anticipation lesson"
     }
    ],
-   "gifs": [
+   "gifs": [],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/anticipation-antic-animation-meme-2d56-vanarts-gif-4272525324837286455",
      "media_url": "",
      "title": "VanArts animation anticipation (antic) example",
      "game": "",
      "host": "Tenor",
-     "local": "gifs/cartoon.anticipation-0.webp",
-     "source_url": "https://media.tenor.com/O0sPJWjJcjcAAAA1/anticipation-antic-animation-meme-2d56-vanarts.webp"
+     "source_url": "https://media.tenor.com/O0sPJWjJcjcAAAA1/anticipation-antic-animation-meme-2d56-vanarts.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Real-life person jumping off a box, red 'Anticcc' caption"
+     }
     }
    ]
   },
@@ -16332,15 +17020,20 @@
      "note": "Illustrated tutorial on the principle"
     }
    ],
-   "gifs": [
+   "gifs": [],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/follow-through-animation-meme-animation-students-animation-principal-2d56-gif-403376068186713212",
      "media_url": "",
      "title": "Follow-through animation principle example",
      "game": "Animation tutorial",
      "host": "Tenor",
-     "local": "gifs/cartoon.follow-through-overlap-0.webp",
-     "source_url": "https://media.tenor.com/BZkUZZcprHwAAAA1/follow-through-animation-meme-animation-students-animation-principal-2d56.webp"
+     "source_url": "https://media.tenor.com/BZkUZZcprHwAAAA1/follow-through-animation-meme-animation-students-animation-principal-2d56.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Real-life woman with headphones, 'add follow truuu!!' caption"
+     }
     }
    ]
   },
@@ -16439,20 +17132,26 @@
      "host": "Tenor"
     },
     {
-     "page_url": "https://tenor.com/view/super-peel-out-xtreme-gif-14030121920784918360",
-     "title": "Super Peel Out cartoon",
-     "game": "Sonic",
-     "media_url": "",
-     "host": "Tenor",
-     "local": "gifs/cartoon.cartoon-run-wheel-legs-2.webp",
-     "source_url": "https://media.tenor.com/wrUBjVvOZ1gAAAA1/super-peel-out-xtreme.webp"
-    },
-    {
      "page_url": "https://tenor.com/view/meep-meep-roadrunner-looney-tunes-run-fast-gif-5055539",
      "title": "Road Runner blur-leg run, meep meep",
      "game": "Looney Tunes",
      "media_url": "",
      "host": "Tenor"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/super-peel-out-xtreme-gif-14030121920784918360",
+     "title": "Super Peel Out cartoon",
+     "game": "Sonic",
+     "media_url": "",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/wrUBjVvOZ1gAAAA1/super-peel-out-xtreme.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "A single still panel from a Sonic comic book (speech bubbles), not game footage and not animated"
+     }
     }
    ]
   },
@@ -16474,15 +17173,20 @@
    "description": "Legs spinning in place before zooming off.",
    "search_query": "Scramble in Place / Takeoff animation video game",
    "references": [],
-   "gifs": [
+   "gifs": [],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/looney-tunes-porky-pig-running-run-running-in-place-gif-16110701",
      "media_url": "https://media1.tenor.com/m/5PbqlymNV5AAAAAC/looney-tunes-porky-pig.gif",
      "title": "Porky Pig running in place",
      "game": "Looney Tunes",
      "host": "Tenor",
-     "local": "gifs/cartoon.scramble-in-place-takeoff-0.webp",
-     "source_url": "https://media.tenor.com/5PbqlymNV5AAAAA1/looney-tunes-porky-pig-running-run-running-in-place.webp"
+     "source_url": "https://media.tenor.com/5PbqlymNV5AAAAA1/looney-tunes-porky-pig-running-run-running-in-place.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Black-and-white Porky Pig Looney Tunes short (TV/film), not a game"
+     }
     }
    ]
   },
@@ -16528,20 +17232,26 @@
      "host": "Tenor"
     },
     {
-     "page_url": "https://tenor.com/view/falling-gif-15126670824425260555",
-     "media_url": "",
-     "title": "Wile E. Coyote falling",
-     "game": "Looney Tunes",
-     "host": "Tenor",
-     "local": "gifs/cartoon.cartoon-fall-look-at-camera-1.webp",
-     "source_url": "https://media.tenor.com/0ey6-GQiBgsAAAA1/falling.webp"
-    },
-    {
      "page_url": "https://tenor.com/view/coyote-fail-wile-coyote-and-the-road-runner-gif-7848376",
      "media_url": "",
      "title": "Coyote fail, hanging before the fall",
      "game": "Looney Tunes",
      "host": "Tenor"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/falling-gif-15126670824425260555",
+     "media_url": "",
+     "title": "Wile E. Coyote falling",
+     "game": "Looney Tunes",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/0ey6-GQiBgsAAAA1/falling.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Wile E. Coyote falling off a cliff, from the Looney Tunes TV cartoon, not a game"
+     }
     }
    ]
   },
@@ -16564,13 +17274,26 @@
    "references": [],
    "gifs": [
     {
+     "page_url": "https://tenor.com/view/steamroller-flattened-acme-looney-tunes-acme-hour-gif-16845213",
+     "title": "Steamroller flattening",
+     "game": "Looney Tunes",
+     "media_url": "",
+     "host": "Tenor"
+    }
+   ],
+   "rejected_gifs": [
+    {
      "page_url": "https://tenor.com/view/wile-e-coyote-flattened-flattening-looney-tunes-toony-gif-4672944480218771013",
      "media_url": "https://media1.tenor.com/m/QNmiPxaP7kUAAAAC/wile-e-coyote-flattened.gif",
      "title": "Wile E. Coyote flattened",
      "game": "Looney Tunes",
      "host": "Tenor",
-     "local": "gifs/cartoon.flattened-accordion-0.webp",
-     "source_url": "https://media.tenor.com/QNmiPxaP7kUAAAA1/wile-e-coyote-flattened-flattening-looney-tunes-toony.webp"
+     "source_url": "https://media.tenor.com/QNmiPxaP7kUAAAA1/wile-e-coyote-flattened-flattening-looney-tunes-toony.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Road Runner / Wile E. Coyote flattened gag from a Looney Tunes TV cartoon"
+     }
     },
     {
      "page_url": "https://tenor.com/view/wile-e-coyote-boulder-flattened-flattening-looney-tunes-gif-10324369565874970690",
@@ -16578,15 +17301,12 @@
      "game": "Looney Tunes",
      "media_url": "",
      "host": "Tenor",
-     "local": "gifs/cartoon.flattened-accordion-1.webp",
-     "source_url": "https://media.tenor.com/j0eHa1fU4EIAAAA1/wile-e-coyote-boulder-flattened-flattening-looney-tunes.webp"
-    },
-    {
-     "page_url": "https://tenor.com/view/steamroller-flattened-acme-looney-tunes-acme-hour-gif-16845213",
-     "title": "Steamroller flattening",
-     "game": "Looney Tunes",
-     "media_url": "",
-     "host": "Tenor"
+     "source_url": "https://media.tenor.com/j0eHa1fU4EIAAAA1/wile-e-coyote-boulder-flattened-flattening-looney-tunes.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Road Runner cartoon: coyote squashed into a canyon wall, from Looney Tunes TV, not a game"
+     }
     }
    ]
   },
@@ -16629,7 +17349,12 @@
      "game": "Sonic",
      "host": "Tenor",
      "local": "gifs/cartoon.dizzy-stars-birds-2.webp",
-     "source_url": "https://media.tenor.com/En74-zSF6G4AAAA1/sonic-sonic-the-hedgehog-one-minute-melee-dizzy-knocked-out.webp"
+     "source_url": "https://media.tenor.com/En74-zSF6G4AAAA1/sonic-sonic-the-hedgehog-one-minute-melee-dizzy-knocked-out.webp",
+     "screened": {
+      "verdict": "unclear",
+      "confidence": "low",
+      "what": "Zoomed pixel Sonic with chicks circling his head; looks like a fan sprite animation rather than an actual game"
+     }
     }
    ]
   },
@@ -17362,15 +18087,21 @@
      "host": "Giphy",
      "local": "gifs/creature.dragon-flight-breath-3.webp",
      "source_url": "https://media.giphy.com/media/4IiYuv59t6sV8wLELI/200w.webp"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://giphy.com/gifs/bethesda-dragon-skyrim-alduin-U3n3hOE1mFVeulmpnf",
      "media_url": "",
      "title": "Dragon Alduin GIF by Bethesda (unconfirmed flight/breath)",
      "game": "Skyrim",
      "host": "Giphy",
-     "local": "gifs/creature.dragon-flight-breath-4.webp",
-     "source_url": "https://media.giphy.com/media/U3n3hOE1mFVeulmpnf/200w.webp"
+     "source_url": "https://media.giphy.com/media/U3n3hOE1mFVeulmpnf/200w.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "medium",
+      "what": "Skyrim Helgen execution: dragon perched on a tower, headsman with an axe; no flight or breath attack"
+     }
     }
    ]
   },
@@ -17486,15 +18217,6 @@
      "source_url": "https://media.tenor.com/fxcxqQHpm4cAAAA1/slime-dragon-quest-dragon-quest-3-dragon-quest-hd-2d-hd2d.webp"
     },
     {
-     "page_url": "https://tenor.com/view/dragon-quest-slime-slimes-dq-dragon-quest-slime-gif-24175878",
-     "media_url": "https://media1.tenor.com/m/Jey6agdd0rwAAAAC/dragon-quest-slime.gif",
-     "title": "Group of bouncing slimes",
-     "game": "Dragon Quest",
-     "host": "Tenor",
-     "local": "gifs/creature.slime-bounce-1.webp",
-     "source_url": "https://media.tenor.com/Jey6agdd0rwAAAA1/dragon-quest-slime-slimes-dq-dragon-quest-slime.webp"
-    },
-    {
      "page_url": "https://tenor.com/view/dragon-quest-slime-dragon-quest-11-we-are-here-gif-13388058629761797225",
      "media_url": "",
      "title": "Slimes hopping in, DQ11",
@@ -17502,6 +18224,21 @@
      "host": "Tenor",
      "local": "gifs/creature.slime-bounce-2.webp",
      "source_url": "https://media.tenor.com/ucvwZAsODGkAAAA1/dragon-quest-slime-dragon-quest-11-we-are-here.webp"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/dragon-quest-slime-slimes-dq-dragon-quest-slime-gif-24175878",
+     "media_url": "https://media1.tenor.com/m/Jey6agdd0rwAAAAC/dragon-quest-slime.gif",
+     "title": "Group of bouncing slimes",
+     "game": "Dragon Quest",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/Jey6agdd0rwAAAA1/dragon-quest-slime-slimes-dq-dragon-quest-slime.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Many Dragon Quest slimes in 2D anime style (likely the Dai anime), not game footage"
+     }
     }
    ]
   },
@@ -17634,7 +18371,12 @@
      "game": "Persona 5 Royal",
      "host": "Giphy",
      "local": "gifs/menu.menu-transition-4.webp",
-     "source_url": "https://media.giphy.com/media/86EWxCctOQP4Nj4b4z/200w.webp"
+     "source_url": "https://media.giphy.com/media/86EWxCctOQP4Nj4b4z/200w.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "low",
+      "what": "Persona 5-style portrait of Maruki sipping a drink, near-static; not a menu transition"
+     }
     }
    ]
   },
@@ -17893,15 +18635,20 @@
    "description": "Text revealed character by character, often with blips.",
    "search_query": "Dialogue Box Typewriter animation video game",
    "references": [],
-   "gifs": [
+   "gifs": [],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/pixel-text-box-dialogue-box-bedroom-stuck-gif-5434805785681575487",
      "media_url": "",
      "title": "Undertale-style text box dialogue",
      "game": "Undertale",
      "host": "Tenor",
-     "local": "gifs/menu.dialogue-box-typewriter-0.webp",
-     "source_url": "https://media.tenor.com/S2xPETbJvj8AAAA1/pixel-text-box-dialogue-box-bedroom-stuck.webp"
+     "source_url": "https://media.tenor.com/S2xPETbJvj8AAAA1/pixel-text-box-dialogue-box-bedroom-stuck.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Undertale-style edit with the dialogue '* mom help' (1 frame)"
+     }
     },
     {
      "page_url": "https://tenor.com/view/pixel-text-box-dialogue-face-head-gif-8783055155061061523",
@@ -17909,8 +18656,12 @@
      "title": "Sans and Papyrus dialogue box",
      "game": "Undertale",
      "host": "Tenor",
-     "local": "gifs/menu.dialogue-box-typewriter-1.webp",
-     "source_url": "https://media.tenor.com/eeOuIQAT95MAAAA1/pixel-text-box-dialogue-face-head.webp"
+     "source_url": "https://media.tenor.com/eeOuIQAT95MAAAA1/pixel-text-box-dialogue-face-head.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Fan-made Sans/Papyrus Undertale dialogue joke with profanity (1 frame)"
+     }
     },
     {
      "page_url": "https://tenor.com/view/texting-undertale-dialog-gif-17997638300913491035",
@@ -17918,8 +18669,12 @@
      "title": "Undertale dialog text typing out",
      "game": "Undertale",
      "host": "Tenor",
-     "local": "gifs/menu.dialogue-box-typewriter-2.webp",
-     "source_url": "https://media.tenor.com/-cR0rdnp3FsAAAA1/texting-undertale-dialog.webp"
+     "source_url": "https://media.tenor.com/-cR0rdnp3FsAAAA1/texting-undertale-dialog.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Fan Sans dialogue box: 'hey kiddo... pray/curse is ready'"
+     }
     }
    ]
   },
@@ -17940,15 +18695,20 @@
    "description": "Map areas unveiling as they are explored.",
    "search_query": "Map Reveal / Fog of War animation video game",
    "references": [],
-   "gifs": [
+   "gifs": [],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/hollow-knight-reading-map-pixel-art-gif-8043633549067461458",
      "title": "Knight reading map on bench (pixel art)",
      "game": "Hollow Knight",
      "media_url": "",
      "host": "Tenor",
-     "local": "gifs/menu.map-reveal-fog-of-war-0.webp",
-     "source_url": "https://media.tenor.com/b6C6GIuUo1IAAAA1/hollow-knight-reading-map-pixel-art.webp"
+     "source_url": "https://media.tenor.com/b6C6GIuUo1IAAAA1/hollow-knight-reading-map-pixel-art.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Hollow Knight fan pixel art of the Knight on a bench (artist watermark); no map reveal"
+     }
     }
    ]
   },
@@ -18080,7 +18840,12 @@
      "media_url": "",
      "host": "Tenor",
      "local": "gifs/cinematic.cutscene-performance-capture-1.webp",
-     "source_url": "https://media.tenor.com/n95_3JnlHxIAAAA1/ellie-williams-side-eye-disgusted-the-last-of-us.webp"
+     "source_url": "https://media.tenor.com/n95_3JnlHxIAAAA1/ellie-williams-side-eye-disgusted-the-last-of-us.webp",
+     "screened": {
+      "verdict": "unclear",
+      "confidence": "low",
+      "what": "A single still frame of Ellie (The Last of Us Part II); real game but no motion to judge"
+     }
     }
    ]
   },
@@ -18249,7 +19014,12 @@
      "game": "Journey",
      "host": "Tenor",
      "local": "gifs/cinematic.ending-credits-scene-2.webp",
-     "source_url": "https://media.tenor.com/yPuMN_AB_rUAAAA1/journey-game-journey-mornoonevenight-tgc-chirp.webp"
+     "source_url": "https://media.tenor.com/yPuMN_AB_rUAAAA1/journey-game-journey-mornoonevenight-tgc-chirp.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "low",
+      "what": "Journey desert vista with an overlaid expanding white bubble and the text 'MORNOONEVENIGHT'; looks like a fan edit, not an ending-credits scene"
+     }
     }
    ]
   },
@@ -18396,15 +19166,21 @@
      "host": "Tenor",
      "local": "gifs/sports.dribble-2.webp",
      "source_url": "https://media.tenor.com/fF-SgeV7_oUAAAA1/ankle-breaker-2k-crossed-pull-up-jumper-fried.webp"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/soccer-football-skill-move-dribble-nice-play-gif-892036307960887592",
      "media_url": "",
      "title": "Soccer Football Skill Move Dribble (unconfirmed game footage)",
      "game": "EA Sports FC (unconfirmed)",
      "host": "Tenor",
-     "local": "gifs/sports.dribble-3.webp",
-     "source_url": "https://media.tenor.com/DGEmS77CeSgAAAA1/soccer-football-skill-move-dribble-nice-play.webp"
+     "source_url": "https://media.tenor.com/DGEmS77CeSgAAAA1/soccer-football-skill-move-dribble-nice-play.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Real-life women's soccer: Brazil #10 dribbling past a defender (Shuffle watermark)"
+     }
     }
    ]
   },
@@ -18455,15 +19231,21 @@
      "host": "Giphy",
      "local": "gifs/sports.goal-score-celebration-3.webp",
      "source_url": "https://media.giphy.com/media/IeoJP9jJb8gsygPfXC/200w.webp"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://giphy.com/gifs/playstation-3o6Zt8sb3WLUF24AW4",
      "media_url": "",
      "title": "rocket league goal GIF by PlayStation",
      "game": "Rocket League",
      "host": "Giphy",
-     "local": "gifs/sports.goal-score-celebration-4.webp",
-     "source_url": "https://media.giphy.com/media/3o6Zt8sb3WLUF24AW4/200w.webp"
+     "source_url": "https://media.giphy.com/media/3o6Zt8sb3WLUF24AW4/200w.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Rocket League clip that cuts to a streamer's webcam yelling 'YAA!' (reaction clip)"
+     }
     }
    ]
   },
@@ -18551,15 +19333,21 @@
      "host": "Tenor",
      "local": "gifs/sports.swing-golf-tennis-bat-0.webp",
      "source_url": "https://media.tenor.com/yKwT8pQSo9sAAAA1/swing-and-a-miss-wii-sports-baseball-failed-joke-l.webp"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/mario-tennis-fever-peach-princess-peach-daisy-princess-daisy-gif-12662997526259355397",
      "title": "Peach and Daisy tennis rally",
      "game": "Mario Tennis Fever",
      "media_url": "",
      "host": "Tenor",
-     "local": "gifs/sports.swing-golf-tennis-bat-1.webp",
-     "source_url": "https://media.tenor.com/r7wBKKBWzwUAAAA1/mario-tennis-fever-peach-princess-peach-daisy-princess-daisy.webp"
+     "source_url": "https://media.tenor.com/r7wBKKBWzwUAAAA1/mario-tennis-fever-peach-princess-peach-daisy-princess-daisy.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "medium",
+      "what": "Mario Tennis: Peach and Daisy standing idle on court, no swing"
+     }
     }
    ]
   },
@@ -18620,7 +19408,12 @@
      "game": "Mario Kart",
      "host": "Tenor",
      "local": "gifs/sports.kart-drift-boost-2.webp",
-     "source_url": "https://media.tenor.com/hgH0ropAo0oAAAA1/mario-kart-drifting-drift.webp"
+     "source_url": "https://media.tenor.com/hgH0ropAo0oAAAA1/mario-kart-drifting-drift.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "low",
+      "what": "Hand-drawn illustration-style animation of Mario drifting a kart on a white background; not game footage"
+     }
     }
    ]
   },
@@ -18657,15 +19450,21 @@
      "title": "THPS skater trick",
      "game": "Tony Hawk's Pro Skater",
      "host": "Tenor"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/spider-man-skateboarding-tony-hawk's-pro-skater-2-marvel-neversoft-gif-1936021508202089645",
      "media_url": "",
      "title": "Spider-Man skating in THPS2",
      "game": "Tony Hawk's Pro Skater 2",
      "host": "Tenor",
-     "local": "gifs/sports.skateboard-trick-2.webp",
-     "source_url": "https://media.tenor.com/Gt4hTeHmzK0AAAA1/spider-man-skateboarding-tony-hawk's-pro-skater-2-marvel-neversoft.webp"
+     "source_url": "https://media.tenor.com/Gt4hTeHmzK0AAAA1/spider-man-skateboarding-tony-hawk's-pro-skater-2-marvel-neversoft.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "high",
+      "what": "Real-life skater in a Spider-Man costume at a Vans skatepark"
+     }
     }
    ]
   },
@@ -18761,15 +19560,21 @@
      "host": "Tenor",
      "local": "gifs/sports.dance-performance-3.webp",
      "source_url": "https://media.tenor.com/SXbszMOWZw8AAAA1/ubisoft-just-dance-just-dance-2-just-dance-contest-winner-dance.webp"
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/happy-happy-dance-just-dance-just-dance-game-just-dance-2025-gif-12853640022967981396",
      "media_url": "",
      "title": "Happy dance in Just Dance 2025",
      "game": "Just Dance 2025",
      "host": "Tenor",
-     "local": "gifs/sports.dance-performance-4.webp",
-     "source_url": "https://media.tenor.com/smFNf9fAFVQAAAA1/happy-happy-dance-just-dance-just-dance-game-just-dance-2025.webp"
+     "source_url": "https://media.tenor.com/smFNf9fAFVQAAAA1/happy-happy-dance-just-dance-just-dance-game-just-dance-2025.webp",
+     "screened": {
+      "verdict": "meme",
+      "confidence": "medium",
+      "what": "Just Dance footage with a 'doing my happy dance' reaction caption"
+     }
     }
    ]
   }
