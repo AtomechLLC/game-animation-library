@@ -1,0 +1,8 @@
+# Apache / LiteSpeed: keep server-side files private. (Nginx: see DEPLOY-XCLOUD.md.)
+DirectoryIndex index.php index.html
+Options -Indexes
+RedirectMatch 404 ^/(lib|tools|storage)(/|$)
+RedirectMatch 404 ^/\.git
+<FilesMatch "^(config(\.sample)?\.php|.*\.(py|md|txt|sqlite.*|upload)|marks\.json|missing-references\.json)$">
+    Require all denied
+</FilesMatch>

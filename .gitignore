@@ -15,3 +15,9 @@ desktop.ini
 .idea/
 index.html
 .claude/
+
+# Server-side (xCloud) private files
+config.php
+storage/*
+!storage/.htaccess
+!storage/.gitkeep
