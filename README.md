@@ -26,3 +26,5 @@ On every push to `main`, `.github/workflows/static.yml` runs `python3 build_page
 - `template.html` — the library page; `__DATA__` is replaced with library.json.
 
 To add animations: append lines to taxonomy.txt, rebuild index.json, rerun merge.py, republish the page.
+
+- `gifs/` — downloaded copies (Tenor's 200px animated WebP, Giphy's 200w WebP), one per GIF that could be fetched. `local` is the path, `source_url` the file it came from. Tenor links whose page id is 18-20 digits map straight to a media URL; older 7-8 digit ids could not be resolved, so those links stay page-only.
