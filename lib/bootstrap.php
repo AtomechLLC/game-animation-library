@@ -104,11 +104,19 @@ function library(): array
     return $lib;
 }
 
-/** Vote target for a library GIF: its page_url (always present). Community GIFs use "sub:<id>". */
+/**
+ * Vote target for a library GIF: "<animation>|<local path, else media URL, else page URL>".
+ * page_url alone is not unique (several Ultimate Frame Data GIFs share a character page). Community GIFs use "sub:<id>".
+ */
+function gif_key(string $animation, array $g): string
+{
+    return $animation . '|' . (($g['local'] ?? '') ?: (($g['media_url'] ?? '') ?: ($g['page_url'] ?? '')));
+}
+
 function library_gif(string $animation, string $target): ?array
 {
     foreach (library()[$animation]['gifs'] ?? [] as $g) {
-        if (($g['page_url'] ?? '') === $target) return $g;
+        if (gif_key($animation, $g) === $target) return $g;
     }
     return null;
 }
@@ -188,7 +196,8 @@ function search_replacements(string $target, string $animation): string
     if (!$a) return 'unknown animation';
     $game = $a['example_games'][0] ?? '';
     $query = trim($game . ' ' . $a['name']);
-    $known = array_map(fn($g) => $g['page_url'], $a['gifs'] ?? []);
+    $known = [];
+    foreach ($a['gifs'] ?? [] as $g) array_push($known, $g['page_url'] ?? '', $g['media_url'] ?? '', $g['source_url'] ?? '');
     $pdo = db();
     $s = $pdo->prepare('SELECT url FROM submissions WHERE animation = ? AND url IS NOT NULL');
     $s->execute([$animation]);

@@ -208,27 +208,29 @@ function apiSrc(src){return /^https?:/i.test(src)?src:CFG.api.replace(/[^/]*$/,'
 const score=t=>{const v=CS.tally[t];return v?v[0]-v[1]:0};
 function markOf(aid,gif){return MARKS.marks.find(m=>m.animation===aid&&(m.gif||'')===(gif||''))}
 const isMarked=a=>MARKS.marks.some(m=>m.animation===a.id);
-const isFlagged=a=>a.gifs.some(g=>CS.flagged.has(g.page_url));
-function thumbOf(a){const l=a.gifs.filter(g=>g.local);if(!l.length)return null;return CS.on?l.slice().sort((x,y)=>score(y.page_url)-score(x.page_url))[0]:l[0]}
+// Vote/mark key for a library GIF, same as gif_key() in lib/bootstrap.php (page_url alone is not unique)
+const gkey=(a,g)=>a.id+'|'+(g.local||g.media_url||g.page_url);
+const isFlagged=a=>a.gifs.some(g=>CS.flagged.has(gkey(a,g)));
+function thumbOf(a){const l=a.gifs.filter(g=>g.local);if(!l.length)return null;return CS.on?l.slice().sort((x,y)=>score(gkey(a,y))-score(gkey(a,x)))[0]:l[0]}
 function voteHtml(aid,t){const v=CS.tally[t]||[0,0],m=CS.mine[t]||0;return `<span class="vt" data-t="${esc(t)}"><button class="vbtn up" data-vote="1" data-a="${esc(aid)}" data-t="${esc(t)}" aria-pressed="${m===1}" title="Good example">▲ ${v[0]}</button> <button class="vbtn down" data-vote="-1" data-a="${esc(aid)}" data-t="${esc(t)}" aria-pressed="${m===-1}" title="Poor example">▼ ${v[1]}</button></span>`}
 function markHtml(aid,gif,label){const m=markOf(aid,gif);return `<button class="tbtn" data-mark="${esc(aid)}" data-gif="${esc(gif||'')}" aria-pressed="${!!m}" title="Mark for a better-image search later">✕ ${m?'Marked':label}</button>`}
 function searchLinks(a){const g=(a.gk[0]||'');return `<a target="_blank" rel="noopener" href="https://giphy.com/search/${q((a.name+' '+g).replace(/[^\w\s-]/g,'').trim().replace(/\s+/g,'-'))}">Giphy ↗</a> · <a target="_blank" rel="noopener" href="https://tenor.com/search/${q((g+' '+a.name).toLowerCase().replace(/[^\w\s-]/g,'').trim().replace(/\s+/g,'-'))}-gifs">Tenor ↗</a>`}
 function gifTools(a,g){
   let h='';
-  if(CS.on)h+=voteHtml(a.id,g.page_url)+' ';
+  if(CS.on)h+=voteHtml(a.id,gkey(a,g))+' ';
   h+=`<a class="tbtn" href="#submit/${esc(a.id)}/${a.gifs.indexOf(g)}">Suggest a replacement</a>`;
-  if(CFG.local)h+=' '+markHtml(a.id,g.page_url,'Mark');
+  if(CFG.local)h+=' '+markHtml(a.id,gkey(a,g),'Mark');
   h=h?`<div class="gtools">${h}</div>`:'';
-  if(CS.on&&CS.flagged.has(g.page_url))h+=`<div class="flagged">Voters flagged this GIF. A replacement search is queued; you can help: ${searchLinks(a)}</div>`;
+  if(CS.on&&CS.flagged.has(gkey(a,g)))h+=`<div class="flagged">Voters flagged this GIF. A replacement search is queued; you can help: ${searchLinks(a)}</div>`;
   return h}
 function mediaHtml(src,mime,alt){return mime==='video/mp4'||/\.mp4(\?|$)/i.test(src)?`<video src="${esc(src)}" autoplay loop muted playsinline style="width:100%;border-radius:4px"></video>`:`<img loading="lazy" alt="${esc(alt||'')}" src="${esc(src)}" referrerpolicy="no-referrer">`}
 function communityHtml(a){
   const list=CS.community[a.id]||[];if(!list.length)return '';
   return `<section><h3>Community GIFs (${list.length})</h3><ul class="reflist gifl">${list.map(c=>`<li>${mediaHtml(apiSrc(c.src),c.mime,c.note)}<span class="src">${c.by==='search'?'Found by search':'Shared by '+esc(c.by)}${c.replaces?' · proposed replacement':''}</span>${c.note?`<small>${esc(c.note)}</small>`:''}${/^https?:/i.test(c.src)?`<small><a href="${esc(c.src)}" target="_blank" rel="noopener">Source ↗</a></small>`:''}<div class="gtools">${voteHtml(a.id,c.target)}</div></li>`).join('')}</ul></section>`}
-// a: the entry (null shows an entry picker); rep: page_url of the GIF being replaced ('' for a new GIF).
+// a: the entry (null shows an entry picker); rep: gkey() of the GIF being replaced ('' for a new GIF).
 // With the API on, the form posts to api.php; on the static copy it opens a prefilled GitHub issue instead.
 function sugForm(a,rep){
-  const g=a&&rep&&a.gifs.find(x=>x.page_url===rep);
+  const g=a&&rep&&a.gifs.find(x=>gkey(a,x)===rep);
   const pick=a?'':`<label>Which entry is it for?<select name="animation" required><option value="">Choose an entry…</option>${D.categories.map(c=>`<optgroup label="${esc(c.name)}">${A.filter(x=>x.category===c.id).map(x=>`<option value="${esc(x.id)}">${esc(x.name)}</option>`).join('')}</optgroup>`).join('')}</select></label>`;
   const file=CS.on?`<div class="row"><label style="flex:1 1 200px">…or upload a file (GIF, WebP or MP4, up to ${Math.round(CS.max/1048576)} MB)<input name="file" type="file" accept=".gif,.webp,.mp4,image/gif,image/webp,video/mp4"></label></div>`:'';
   return `<form class="sug" id="sugForm" data-a="${esc(a?a.id:'')}"><b>${g?'Suggest a replacement for “'+esc(g.title||'this GIF')+'”':a?'Submit a better GIF for '+esc(a.name):'Submit a GIF'}</b>
@@ -240,12 +242,12 @@ function sugForm(a,rep){
   <div class="row"><button type="submit">${CS.on?'Send for review':'Continue on GitHub ↗'}</button><button type="button" class="tbtn" data-sugclose="1">Cancel</button><span class="msg" role="status"></span></div>
   <small style="color:var(--muted)">${CS.on?'Suggestions are reviewed before they appear, and credited to you.':'This opens a prefilled GitHub issue (free account needed). To upload a file instead of a link, drag it into the issue box there.'}</small></form>`}
 function issueUrl(a,rep,url,note,name){
-  const g=rep&&a.gifs.find(x=>x.page_url===rep);
-  const body=[`**Entry:** ${a.name} (\`${a.id}\`)`,`**Replaces:** ${g?(g.title||'GIF')+' · '+rep:'nothing, this is a new GIF for the entry'}`,`**GIF link:** ${url||'(attached below)'}`,`**Why it is better:** ${note||''}`,`**Credit as:** ${name||'anonymous'}`,'','<!-- To upload a GIF, WebP or MP4 file, drag it into this box. -->'].join('\n');
+  const g=rep&&a.gifs.find(x=>gkey(a,x)===rep);
+  const body=[`**Entry:** ${a.name} (\`${a.id}\`)`,`**Replaces:** ${g?(g.title||'GIF')+' · '+g.page_url:'nothing, this is a new GIF for the entry'}`,`**GIF link:** ${url||'(attached below)'}`,`**Why it is better:** ${note||''}`,`**Credit as:** ${name||'anonymous'}`,'','<!-- To upload a GIF, WebP or MP4 file, drag it into this box. -->'].join('\n');
   return (CFG.issues||'https://github.com/atomechllc/game-animation-library/issues/new')+'?'+new URLSearchParams({title:`GIF suggestion: ${a.name}`,body})}
 function openSubmit(aid,n){
   const a=aid&&A.find(x=>x.id===aid);
-  if(a){openSheet(a.id);const g=a.gifs[+n];$('#sugSlot').innerHTML=sugForm(a,g?g.page_url:'');requestAnimationFrame(()=>$('#sugForm').scrollIntoView({block:'center'}));$('#sugForm input[name=url]').focus({preventScroll:true});return}
+  if(a){openSheet(a.id);const g=a.gifs[+n];$('#sugSlot').innerHTML=sugForm(a,g?gkey(a,g):'');requestAnimationFrame(()=>$('#sugForm').scrollIntoView({block:'center'}));$('#sugForm input[name=url]').focus({preventScroll:true});return}
   const s=$('#sheet');
   s.innerHTML=`<div class="top"><div><div class="src">Community</div><h2 id="dName">Help build the atlas</h2></div><button class="close" id="close">Close</button></div>
   <p style="margin:0;max-width:65ch">This collection was created for a private database; please help us replace these with better examples! Pick the entry your clip shows, add a link${CS.on?' or upload a file':''}, and tell us why it is a better example.</p>${sugForm(null,'')}`;
@@ -343,7 +345,7 @@ async function vote(b){
 async function toggleMark(aid,gif){
   const m=markOf(aid,gif);
   if(m)MARKS.marks=MARKS.marks.filter(x=>x!==m);
-  else{const a=A.find(x=>x.id===aid),g=gif&&a.gifs.find(x=>x.page_url===gif);MARKS.marks.push({animation:aid,name:a.name,gif:gif||'',local:g?.local||'',title:g?.title||'',marked_at:new Date().toISOString()})}
+  else{const a=A.find(x=>x.id===aid),g=gif&&a.gifs.find(x=>gkey(a,x)===gif);MARKS.marks.push({animation:aid,name:a.name,gif:gif||'',page_url:g?.page_url||'',local:g?.local||'',title:g?.title||'',marked_at:new Date().toISOString()})}
   try{const r=await fetch(CFG.marks||'marks.json',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(MARKS)});if(!r.ok)throw new Error(r.status)}
   catch(err){alert('Could not save marks.json ('+err.message+'). Is serve_local.py running?')}
   render();if(!$('#sheet').hidden)openSheet(aid,false)}

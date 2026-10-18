@@ -150,7 +150,7 @@ h2{margin:24px 0 8px}
   <b><?= e($a['name'] ?? $f['animation']) ?></b>
   <?php if (!empty($g['local'])): ?><img src="<?= e($g['local']) ?>" alt=""><?php endif; ?>
   <small>▲ <?= (int) $f['up'] ?> ▼ <?= (int) $f['down'] ?> · flagged <?= e($f['flagged_at']) ?><?= $f['searched_at'] ? ' · searched: ' . e($f['result']) : ' · not searched yet' ?></small>
-  <a href="<?= e($f['target']) ?>" target="_blank" rel="noopener noreferrer"><?= e($g['title'] ?? $f['target']) ?></a>
+  <a href="<?= e($g['page_url'] ?? '#') ?>" target="_blank" rel="noopener noreferrer"><?= e($g['title'] ?? $f['target']) ?></a>
   <div class="acts"><?= form('search', 'Search now', ['target' => $f['target'], 'animation' => $f['animation']], $csrf) ?><?= form('unflag', 'Keep this GIF', ['target' => $f['target']], $csrf) ?></div>
 </div>
 <?php endforeach; ?>
