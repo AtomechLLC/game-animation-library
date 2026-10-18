@@ -28,3 +28,7 @@ On every push to `main`, `.github/workflows/static.yml` runs `python3 build_page
 To add animations: append lines to taxonomy.txt, rebuild index.json, rerun merge.py, republish the page.
 
 - `gifs/` — downloaded copies (Tenor's 200px animated WebP, Giphy's 200w WebP), one per GIF that could be fetched. `local` is the path, `source_url` the file it came from. Tenor links whose page id is 18-20 digits map straight to a media URL; older 7-8 digit ids could not be resolved, so those links stay page-only.
+
+## Clip screening
+
+`gif-screening.json` records a frame-by-frame check of every downloaded clip for memes, reaction edits, TV/anime/real-life footage and clips that don't show the named move. Clips flagged at medium or high confidence were deleted from `gifs/` and moved to the animation's `rejected_gifs` list (with a `screened` note) so the page no longer shows them. Low-confidence or unclear calls stay in `gifs` with a `screened` note for a human to check. `needs_replacement` lists animations left with no screened local clip.

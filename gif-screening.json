@@ -1,0 +1,1429 @@
+{
+ "method": "Each local clip was checked by looking at 5 frames sampled across it. Removed = meme/reaction/non-game footage or a clip that does not show the named move, at medium or high confidence. Review = low-confidence or unclear calls left in place.",
+ "removed": [
+  {
+   "animation": "locomotion.combat-walk",
+   "name": "Combat Walk",
+   "file": "locomotion.combat-walk-3.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "A single manga panel of a helmeted knight saying 'Nah, I'd walk the abyss'"
+  },
+  {
+   "animation": "locomotion.strafe-lock-on-movement",
+   "name": "Strafe (Lock-on Movement)",
+   "file": "locomotion.strafe-lock-on-movement-0.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Dark Souls 1 gameplay with the meme caption 'i love ds1 lock on'"
+  },
+  {
+   "animation": "locomotion.wall-run",
+   "name": "Wall Run",
+   "file": "locomotion.wall-run-2.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Hand-drawn 2D fan animation of Mirror's Edge Faith running on a red ledge; not game footage and no wall-run"
+  },
+  {
+   "animation": "locomotion.wall-run",
+   "name": "Wall Run",
+   "file": "locomotion.wall-run-3.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "'ABSOLUTE TITANFALL' black-and-white image macro meme"
+  },
+  {
+   "animation": "locomotion.mantle-ledge-climb",
+   "name": "Mantle / Ledge Climb",
+   "file": "locomotion.mantle-ledge-climb-1.webp",
+   "verdict": "mismatch",
+   "confidence": "high",
+   "what": "Tomb Raider: The Last Revelation, Lara hanging on a rope or pole in the dark; real gameplay but no mantle"
+  },
+  {
+   "animation": "melee.overhead-slam",
+   "name": "Overhead Slam",
+   "file": "melee.overhead-slam-1.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "God of War-style slam with the caption '360 METEORIC SLAM RATIO'"
+  },
+  {
+   "animation": "melee.horizontal-sweep",
+   "name": "Horizontal Sweep",
+   "file": "melee.horizontal-sweep-1.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "For Honor spin attack with the caption 'fidgetus spinnus'"
+  },
+  {
+   "animation": "melee.uppercut-launcher",
+   "name": "Uppercut / Launcher",
+   "file": "melee.uppercut-launcher-3.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Street Fighter 2 Ryu vs Ken with a 'HA-DOOKIN!!!' caption joke edit"
+  },
+  {
+   "animation": "melee.aerial-attack",
+   "name": "Aerial Attack",
+   "file": "melee.aerial-attack-3.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "'DUNKTASTIC!' caption meme over a Mario Smash animation"
+  },
+  {
+   "animation": "melee.aerial-attack",
+   "name": "Aerial Attack",
+   "file": "melee.aerial-attack-4.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "'get Mario Forward Aerial'd' caption meme"
+  },
+  {
+   "animation": "melee.plunging-downward-attack",
+   "name": "Plunging / Downward Attack",
+   "file": "melee.plunging-downward-attack-2.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Plunging attack with the caption 'average witch crest user'"
+  },
+  {
+   "animation": "melee.rolling-attack",
+   "name": "Rolling Attack",
+   "file": "melee.rolling-attack-1.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Real-life street footage (a man rolling after money) cut into Dark Souls footage"
+  },
+  {
+   "animation": "melee.shield-bash",
+   "name": "Shield Bash",
+   "file": "melee.shield-bash-0.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Heart-locket meme: 'Bashing Shield my beloved'"
+  },
+  {
+   "animation": "melee.ground-pound",
+   "name": "Ground Pound",
+   "file": "melee.ground-pound-3.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Mario 64 with the caption 'me groud pouding you because you a re dumb'"
+  },
+  {
+   "animation": "melee.dual-wield-flurry",
+   "name": "Dual-Wield Flurry",
+   "file": "melee.dual-wield-flurry-0.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Dark Souls powerstance clip with the captions 'Powerstancing!' and 'FUCK YEAH!'"
+  },
+  {
+   "animation": "melee.weapon-throw-recall",
+   "name": "Weapon Throw / Recall",
+   "file": "melee.weapon-throw-recall-1.webp",
+   "verdict": "mismatch",
+   "confidence": "medium",
+   "what": "Fortnite item-shop showcase of the Kratos skin holding a glowing axe; no throw or recall"
+  },
+  {
+   "animation": "ranged.weapon-draw-equip",
+   "name": "Weapon Draw / Equip",
+   "file": "ranged.weapon-draw-equip-0.webp",
+   "verdict": "mismatch",
+   "confidence": "medium",
+   "what": "Character doing a salute or emote on a customization screen; no weapon draw"
+  },
+  {
+   "animation": "ranged.throwing-knife-shuriken",
+   "name": "Throwing Knife / Shuriken",
+   "file": "ranged.throwing-knife-shuriken-1.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Gameplay with a wojak meme insert and a 'THROWING KNIFE' caption"
+  },
+  {
+   "animation": "ranged.blind-fire-from-cover",
+   "name": "Blind Fire from Cover",
+   "file": "ranged.blind-fire-from-cover-0.webp",
+   "verdict": "mismatch",
+   "confidence": "high",
+   "what": "Promo title card for the game 'Blindfire' ('Available now'); no blind-fire animation"
+  },
+  {
+   "animation": "ranged.blind-fire-from-cover",
+   "name": "Blind Fire from Cover",
+   "file": "ranged.blind-fire-from-cover-1.webp",
+   "verdict": "mismatch",
+   "confidence": "medium",
+   "what": "Gears cutscene of soldiers with Lancers talking; no blind fire from cover"
+  },
+  {
+   "animation": "ranged.cover-peek-pop-up-aim",
+   "name": "Cover Peek / Pop-up Aim",
+   "file": "ranged.cover-peek-pop-up-aim-0.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Vertical Gears of War clip with the caption 'Gears of War Movement be like'"
+  },
+  {
+   "animation": "ranged.cover-peek-pop-up-aim",
+   "name": "Cover Peek / Pop-up Aim",
+   "file": "ranged.cover-peek-pop-up-aim-1.webp",
+   "verdict": "mismatch",
+   "confidence": "medium",
+   "what": "Trailer clip of a woman swinging a shovel with an 'ANYTHING ELSE?' text overlay; no cover peek"
+  },
+  {
+   "animation": "ranged.lean-peek",
+   "name": "Lean / Peek",
+   "file": "ranged.lean-peek-1.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Real-life footage of Halo cosplayers lying on a blue-lit convention floor"
+  },
+  {
+   "animation": "ranged.lean-peek",
+   "name": "Lean / Peek",
+   "file": "ranged.lean-peek-2.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Real-life video of a man in an esports jersey doing finger-gun gestures"
+  },
+  {
+   "animation": "ranged.gun-kata-stylish-shooting",
+   "name": "Gun Kata / Stylish Shooting",
+   "file": "ranged.gun-kata-stylish-shooting-2.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Real-life webcam image of a shirtless guy with drawn-on guns and a speech bubble (1 frame)"
+  },
+  {
+   "animation": "ranged.boomerang-returning-throw",
+   "name": "Boomerang / Returning Throw",
+   "file": "ranged.boomerang-returning-throw-0.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Cartoon parody of a chubby Link holding a boomerang; not game footage"
+  },
+  {
+   "animation": "magic.self-buff-power-up",
+   "name": "Self Buff / Power Up",
+   "file": "magic.self-buff-power-up-2.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Dragon Ball Z anime: Goku powering up with Kaioken, Vegeta reacting"
+  },
+  {
+   "animation": "magic.charge-up-ki-charge",
+   "name": "Charge Up / Ki Charge",
+   "file": "magic.charge-up-ki-charge-2.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Dragon Ball Z anime clip (Tien), not from a game"
+  },
+  {
+   "animation": "defense.parry",
+   "name": "Parry",
+   "file": "defense.parry-1.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Sekiro footage with a 'CLANG CLANG CLANG Get Parried GET PARRIED!!!' caption"
+  },
+  {
+   "animation": "defense.perfect-block-deflect",
+   "name": "Perfect Block / Deflect",
+   "file": "defense.perfect-block-deflect-2.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Same Sekiro 'Get Parried' captioned meme as parry-1"
+  },
+  {
+   "animation": "defense.counter-attack",
+   "name": "Counter Attack",
+   "file": "defense.counter-attack-1.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Batman Arkham fight intercut with 'I'm not gonna sugarcoat it' meme cards and Y/X buttons"
+  },
+  {
+   "animation": "defense.take-cover",
+   "name": "Take Cover",
+   "file": "defense.take-cover-0.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Same 'Gears of War Movement be like' captioned clip as cover-swap-slide-0"
+  },
+  {
+   "animation": "defense.take-cover",
+   "name": "Take Cover",
+   "file": "defense.take-cover-1.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Marcus Fenix dancing in a fan animation (makeagif); not taking cover"
+  },
+  {
+   "animation": "defense.cover-swap-slide",
+   "name": "Cover Swap / Slide",
+   "file": "defense.cover-swap-slide-0.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Vertical clip with the caption 'Gears of War Movement be like'"
+  },
+  {
+   "animation": "defense.combat-roll-shooter",
+   "name": "Combat Roll (Shooter)",
+   "file": "defense.combat-roll-shooter-0.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Several duplicated Gears soldiers rolling, overlapped into a spinning wheel (edited joke, gifrun)"
+  },
+  {
+   "animation": "reactions.directional-hit-reaction",
+   "name": "Directional Hit Reaction",
+   "file": "reactions.directional-hit-reaction-2.webp",
+   "verdict": "mismatch",
+   "confidence": "high",
+   "what": "Mortal Kombat 9 title and main-menu screens (makeagif)"
+  },
+  {
+   "animation": "reactions.ground-bounce",
+   "name": "Ground Bounce",
+   "file": "reactions.ground-bounce-1.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "The Croods movie clip with a 'RELEASE THE Projectile Type' caption edited into a Smash-style scene"
+  },
+  {
+   "animation": "reactions.hit-stop-hit-freeze",
+   "name": "Hit Stop / Hit Freeze",
+   "file": "reactions.hit-stop-hit-freeze-0.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "SF6 counter-hit footage with a 'Hop on Street Fighter 6' meme caption"
+  },
+  {
+   "animation": "reactions.crumple-collapse",
+   "name": "Crumple / Collapse",
+   "file": "reactions.crumple-collapse-0.webp",
+   "verdict": "mismatch",
+   "confidence": "medium",
+   "what": "SF3 Hugo kneeling and dizzy with birdies circling (a stun/dizzy loop, not a crumple)"
+  },
+  {
+   "animation": "reactions.crumple-collapse",
+   "name": "Crumple / Collapse",
+   "file": "reactions.crumple-collapse-2.webp",
+   "verdict": "mismatch",
+   "confidence": "medium",
+   "what": "MK digitized Sonya sprite swaying dizzy in the 'finish him' state, never collapses"
+  },
+  {
+   "animation": "reactions.poisoned",
+   "name": "Poisoned",
+   "file": "reactions.poisoned-1.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Pokemon anime clip of a grass Pokemon being poisoned (TV anime, not a game)"
+  },
+  {
+   "animation": "reactions.poisoned",
+   "name": "Poisoned",
+   "file": "reactions.poisoned-2.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Looping fan-art animation of a sick, flushed Pichu; not game footage"
+  },
+  {
+   "animation": "reactions.pushback-on-block",
+   "name": "Pushback on Block",
+   "file": "reactions.pushback-on-block-1.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "SF3 Evo Moment 37 with a 'block my launcher...' caption that cuts to real-life crowd footage"
+  },
+  {
+   "animation": "death.death-collapse",
+   "name": "Death (Collapse)",
+   "file": "death.death-collapse-2.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Souls-like player dies, then cuts to a black screen with an edited 'What the fuck' text"
+  },
+  {
+   "animation": "death.death-collapse",
+   "name": "Death (Collapse)",
+   "file": "death.death-collapse-3.webp",
+   "verdict": "mismatch",
+   "confidence": "medium",
+   "what": "Only the Dark Souls 'YOU DIED' text on black; no character collapse shown"
+  },
+  {
+   "animation": "death.gib-explode",
+   "name": "Gib / Explode",
+   "file": "death.gib-explode-0.webp",
+   "verdict": "mismatch",
+   "confidence": "medium",
+   "what": "DOOM Slayer walking toward the camera wreathed in flames; no gib explosion"
+  },
+  {
+   "animation": "death.downed-bleeding-out",
+   "name": "Downed / Bleeding Out",
+   "file": "death.downed-bleeding-out-1.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Colour-cycling 'REVIVE ME' DIGI 995 sticker/graphic"
+  },
+  {
+   "animation": "death.revive-ally",
+   "name": "Revive Ally",
+   "file": "death.revive-ally-0.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Left 4 Dead revive footage that cuts to real-life crowd/party footage"
+  },
+  {
+   "animation": "fighting.crouch-block",
+   "name": "Crouch Block",
+   "file": "fighting.crouch-block-3.webp",
+   "verdict": "mismatch",
+   "confidence": "medium",
+   "what": "SF6 Zangief trailer with red stylized close-ups; no crouch block"
+  },
+  {
+   "animation": "fighting.throw-tech-break",
+   "name": "Throw Tech / Break",
+   "file": "fighting.throw-tech-break-0.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "SF6 throw with the meme caption 'Hop on Street Fighter 6'"
+  },
+  {
+   "animation": "fighting.throw-tech-break",
+   "name": "Throw Tech / Break",
+   "file": "fighting.throw-tech-break-2.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Urien close-up with an 'Epic Win!' caption"
+  },
+  {
+   "animation": "fighting.throw-tech-break",
+   "name": "Throw Tech / Break",
+   "file": "fighting.throw-tech-break-3.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "SFV clip with the meme caption 'tech her throw and do my aegis setup'"
+  },
+  {
+   "animation": "fighting.combo-breaker",
+   "name": "Combo Breaker",
+   "file": "fighting.combo-breaker-1.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Guilty Gear footage edited with pixelation, a 3D cube transition and a pasted-in face"
+  },
+  {
+   "animation": "fighting.combo-breaker",
+   "name": "Combo Breaker",
+   "file": "fighting.combo-breaker-2.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Guilty Gear footage with a real person's face (MrBeast) edited in"
+  },
+  {
+   "animation": "fighting.character-select-pose",
+   "name": "Character Select Pose",
+   "file": "fighting.character-select-pose-0.webp",
+   "verdict": "mismatch",
+   "confidence": "medium",
+   "what": "Smash Melee character select screen with cursors picking fighters; no character pose animation"
+  },
+  {
+   "animation": "enemies.monster-grab-pin",
+   "name": "Monster Grab / Pin",
+   "file": "enemies.monster-grab-pin-2.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Same figure-flung-into-sky clip with a 'L0vEmaG in chat!!!!' stream caption"
+  },
+  {
+   "animation": "enemies.charging-rush",
+   "name": "Charging Rush",
+   "file": "enemies.charging-rush-3.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Monster Hunter monster image edited with blood splatter, a knife and the text 'Slaughter' (4 frames)"
+  },
+  {
+   "animation": "stealth.ledge-takedown",
+   "name": "Ledge Takedown",
+   "file": "stealth.ledge-takedown-2.webp",
+   "verdict": "mismatch",
+   "confidence": "medium",
+   "what": "Assassin's Creed Odyssey ground melee in a forest, no ledge"
+  },
+  {
+   "animation": "stealth.hide-grass-locker",
+   "name": "Hide (Grass / Locker)",
+   "file": "stealth.hide-grass-locker-1.webp",
+   "verdict": "mismatch",
+   "confidence": "medium",
+   "what": "First-person horror game (Outlast-like): a Joker-ish enemy grabs and attacks the player, no hiding"
+  },
+  {
+   "animation": "vfx.camera-zoom-on-crit",
+   "name": "Camera Zoom on Crit",
+   "file": "vfx.camera-zoom-on-crit-1.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Fire Emblem Three Houses crit cut-in with a Kapwing 'OUT OF WAY' caption edit"
+  },
+  {
+   "animation": "vfx.bullet-tracer",
+   "name": "Bullet Tracer",
+   "file": "vfx.bullet-tracer-1.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Halo Spartan live-action/CGI trailer footage (LOACHER watermark), not gameplay, no tracers"
+  },
+  {
+   "animation": "vfx.charge-glow-power-aura",
+   "name": "Charge Glow / Power Aura",
+   "file": "vfx.charge-glow-power-aura-1.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Dragon Ball Z anime: Goku powering up into Kaioken (TV anime)"
+  },
+  {
+   "animation": "vfx.shield-break-shatter",
+   "name": "Shield Break Shatter",
+   "file": "vfx.shield-break-shatter-2.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "'CRACKED SHIELDS' DIGI995 poster art cycling through color variants"
+  },
+  {
+   "animation": "vfx.smear-frame",
+   "name": "Smear Frame",
+   "file": "vfx.smear-frame-0.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Pokemon anime Meowth reaction clip (TV anime)"
+  },
+  {
+   "animation": "ui.health-bar-drain-ghost-bar",
+   "name": "Health Bar Drain (Ghost Bar)",
+   "file": "ui.health-bar-drain-ghost-bar-0.webp",
+   "verdict": "mismatch",
+   "confidence": "medium",
+   "what": "SF4 Guile ultra cinematic with no health bars visible"
+  },
+  {
+   "animation": "ui.floating-damage-numbers",
+   "name": "Floating Damage Numbers",
+   "file": "ui.floating-damage-numbers-0.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Real-life man with a '-3 CRITICAL' RPG damage overlay ('rpg crit dmg 3' meme)"
+  },
+  {
+   "animation": "ui.floating-damage-numbers",
+   "name": "Floating Damage Numbers",
+   "file": "ui.floating-damage-numbers-1.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Same real-life man with a '-1 CRITICAL' overlay"
+  },
+  {
+   "animation": "ui.floating-damage-numbers",
+   "name": "Floating Damage Numbers",
+   "file": "ui.floating-damage-numbers-3.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "'Ashwin Gane Energy 99999' motion-graphic text edit"
+  },
+  {
+   "animation": "ui.lock-on-reticle",
+   "name": "Lock-On Reticle",
+   "file": "ui.lock-on-reticle-0.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Dark Souls 1 gameplay with an 'i love ds1 lock on' meme caption"
+  },
+  {
+   "animation": "ui.hit-marker",
+   "name": "Hit Marker",
+   "file": "ui.hit-marker-1.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "3D cartoon frog/lizard render with MLG 'HITMARKER' text"
+  },
+  {
+   "animation": "ui.hit-marker",
+   "name": "Hit Marker",
+   "file": "ui.hit-marker-2.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Movie clip of Samuel L. Jackson (MLG hitmarker-style edit)"
+  },
+  {
+   "animation": "ui.damage-direction-indicator",
+   "name": "Damage Direction Indicator",
+   "file": "ui.damage-direction-indicator-0.webp",
+   "verdict": "mismatch",
+   "confidence": "medium",
+   "what": "Halo CGI cinematic (Spartans vs. a Lekgolo-like enemy), no HUD or damage indicator"
+  },
+  {
+   "animation": "ui.stamina-bar",
+   "name": "Stamina Bar",
+   "file": "ui.stamina-bar-0.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Real-life man running down a hallway, captioned 'Running in any game with a stamina bar'"
+  },
+  {
+   "animation": "ui.round-start-ko-banner",
+   "name": "Round Start / KO Banner",
+   "file": "ui.round-start-ko-banner-3.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Coronation Street parody beat-'em-up edit ('MASHED', Rovers Return), with Deirdre fighting; a fan joke"
+  },
+  {
+   "animation": "ui.counter-prompt-indicator",
+   "name": "Counter Prompt Indicator",
+   "file": "ui.counter-prompt-indicator-0.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Batman Arkham footage edited with an 'I'm not gonna sugarcoat it' meme card and a Y button"
+  },
+  {
+   "animation": "ui.counter-prompt-indicator",
+   "name": "Counter Prompt Indicator",
+   "file": "ui.counter-prompt-indicator-1.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Longer version of the same 'I'm not gonna sugarcoat it' Batman meme edit"
+  },
+  {
+   "animation": "exploration.walk-cycle",
+   "name": "Walk Cycle",
+   "file": "exploration.walk-cycle-0.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Animation tutorial: a simple ball-and-legs walk cycle shown at 12, 24 and 48 FPS; not from a game"
+  },
+  {
+   "animation": "exploration.walk-cycle",
+   "name": "Walk Cycle",
+   "file": "exploration.walk-cycle-1.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Animation tutorial graphic labelled 'Inbetweens - walk cycle' with numbered poses; not from a game"
+  },
+  {
+   "animation": "exploration.sneak-tiptoe",
+   "name": "Sneak / Tiptoe",
+   "file": "exploration.sneak-tiptoe-2.webp",
+   "verdict": "mismatch",
+   "confidence": "medium",
+   "what": "Dark MGS Delta trailer shot: Snake's face slowly emerges from foliage; no sneaking or tiptoe movement"
+  },
+  {
+   "animation": "exploration.spin-dash-roll-ball",
+   "name": "Spin Dash / Roll Ball",
+   "file": "exploration.spin-dash-roll-ball-0.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Hand-drawn cartoon/fan animation of Sonic jumping off a rock spire and curling into a ball"
+  },
+  {
+   "animation": "exploration.wall-slide",
+   "name": "Wall Slide",
+   "file": "exploration.wall-slide-2.webp",
+   "verdict": "mismatch",
+   "confidence": "medium",
+   "what": "Mega Man X 3D cutscene or render: X crashes through debris in an explosion and falls; no wall slide"
+  },
+  {
+   "animation": "exploration.cap-throw-possess",
+   "name": "Cap Throw / Possess",
+   "file": "exploration.cap-throw-possess-2.webp",
+   "verdict": "mismatch",
+   "confidence": "medium",
+   "what": "Pixel Kirby inhaling small blocks; not a cap throw or possession"
+  },
+  {
+   "animation": "exploration.cap-throw-possess",
+   "name": "Cap Throw / Possess",
+   "file": "exploration.cap-throw-possess-3.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "'ME INHALING MY [plasma wisp] BECAUSE OF HOW THIS IS' Kirby caption meme"
+  },
+  {
+   "animation": "interaction.open-chest",
+   "name": "Open Chest",
+   "file": "interaction.open-chest-2.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Remade OoT chest opening ending in a 'True...' meme image edited in"
+  },
+  {
+   "animation": "interaction.pull-lever-press-switch",
+   "name": "Pull Lever / Press Switch",
+   "file": "interaction.pull-lever-press-switch-1.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "The Simpsons (TV): a yellow hand pulling levers"
+  },
+  {
+   "animation": "interaction.pull-lever-press-switch",
+   "name": "Pull Lever / Press Switch",
+   "file": "interaction.pull-lever-press-switch-2.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Black screen with only the subtitle 'Pull down the lever' (Emperor's New Groove meme)"
+  },
+  {
+   "animation": "interaction.eat-drink",
+   "name": "Eat / Drink",
+   "file": "interaction.eat-drink-2.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Chibi fan-art drawing of Arthur Morgan being fed with a giant spoon"
+  },
+  {
+   "animation": "interaction.sleep-lie-down",
+   "name": "Sleep / Lie Down",
+   "file": "interaction.sleep-lie-down-4.webp",
+   "verdict": "mismatch",
+   "confidence": "medium",
+   "what": "ACNH villager standing and yawning in a shop (same clip as sim-needs-yawn-stretch-3); not lying down"
+  },
+  {
+   "animation": "interaction.pet-animal",
+   "name": "Pet Animal",
+   "file": "interaction.pet-animal-0.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "RDR2 horse petting with the caption 'YOUR ALRIGHT BOAH'"
+  },
+  {
+   "animation": "expression.point-beckon",
+   "name": "Point / Beckon",
+   "file": "expression.point-beckon-0.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Neon-outlined figure in a music-video style edit with the lyric caption 'TO ROOT WITH YOUR BOOTY'"
+  },
+  {
+   "animation": "expression.point-beckon",
+   "name": "Point / Beckon",
+   "file": "expression.point-beckon-1.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "The same neon-outlined music-video edit as point-beckon-0 (lyric caption)"
+  },
+  {
+   "animation": "expression.laugh",
+   "name": "Laugh",
+   "file": "expression.laugh-0.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "FFX Tidus forced-laugh scene with a 'HAHAHAHAHA' caption added on top"
+  },
+  {
+   "animation": "expression.double-take",
+   "name": "Double Take",
+   "file": "expression.double-take-0.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Bugs Bunny double take from Looney Tunes on Cartoon Network (TV)"
+  },
+  {
+   "animation": "expression.double-take",
+   "name": "Double Take",
+   "file": "expression.double-take-1.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Looney Tunes cartoon: Porky and Bugs at a door with an exaggerated scream take"
+  },
+  {
+   "animation": "expression.shrug-confused",
+   "name": "Shrug / Confused",
+   "file": "expression.shrug-confused-2.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "A single-frame pixel emoji or sticker of Tom Nook with a question mark"
+  },
+  {
+   "animation": "expression.celebrate-cheer",
+   "name": "Celebrate / Cheer",
+   "file": "expression.celebrate-cheer-0.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Fuecoco cheering in the Pokemon anime (Horizons)"
+  },
+  {
+   "animation": "expression.celebrate-cheer",
+   "name": "Celebrate / Cheer",
+   "file": "expression.celebrate-cheer-1.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Pokemon anime (TV) crowd of Pikachu, Chikorita and others cheering"
+  },
+  {
+   "animation": "expression.sit-idle-lean",
+   "name": "Sit Idle / Lean",
+   "file": "expression.sit-idle-lean-0.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "RDR2 Arthur sitting on a rock with a red 'Bored' caption added"
+  },
+  {
+   "animation": "cartoon.squash-and-stretch",
+   "name": "Squash and Stretch",
+   "file": "cartoon.squash-and-stretch-0.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Animation-tutorial bouncing ball with an onion-skin trail ('See the difference?'), not game footage"
+  },
+  {
+   "animation": "cartoon.anticipation",
+   "name": "Anticipation",
+   "file": "cartoon.anticipation-0.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Real-life person jumping off a box, red 'Anticcc' caption"
+  },
+  {
+   "animation": "cartoon.follow-through-overlap",
+   "name": "Follow Through & Overlap",
+   "file": "cartoon.follow-through-overlap-0.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Real-life woman with headphones, 'add follow truuu!!' caption"
+  },
+  {
+   "animation": "cartoon.cartoon-run-wheel-legs",
+   "name": "Cartoon Run (Wheel Legs)",
+   "file": "cartoon.cartoon-run-wheel-legs-2.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "A single still panel from a Sonic comic book (speech bubbles), not game footage and not animated"
+  },
+  {
+   "animation": "cartoon.scramble-in-place-takeoff",
+   "name": "Scramble in Place / Takeoff",
+   "file": "cartoon.scramble-in-place-takeoff-0.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Black-and-white Porky Pig Looney Tunes short (TV/film), not a game"
+  },
+  {
+   "animation": "cartoon.cartoon-fall-look-at-camera",
+   "name": "Cartoon Fall (Look at Camera)",
+   "file": "cartoon.cartoon-fall-look-at-camera-1.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Wile E. Coyote falling off a cliff, from the Looney Tunes TV cartoon, not a game"
+  },
+  {
+   "animation": "cartoon.flattened-accordion",
+   "name": "Flattened / Accordion",
+   "file": "cartoon.flattened-accordion-0.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Road Runner / Wile E. Coyote flattened gag from a Looney Tunes TV cartoon"
+  },
+  {
+   "animation": "cartoon.flattened-accordion",
+   "name": "Flattened / Accordion",
+   "file": "cartoon.flattened-accordion-1.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Road Runner cartoon: coyote squashed into a canyon wall, from Looney Tunes TV, not a game"
+  },
+  {
+   "animation": "creature.dragon-flight-breath",
+   "name": "Dragon Flight & Breath",
+   "file": "creature.dragon-flight-breath-4.webp",
+   "verdict": "mismatch",
+   "confidence": "medium",
+   "what": "Skyrim Helgen execution: dragon perched on a tower, headsman with an axe; no flight or breath attack"
+  },
+  {
+   "animation": "creature.slime-bounce",
+   "name": "Slime Bounce",
+   "file": "creature.slime-bounce-1.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Many Dragon Quest slimes in 2D anime style (likely the Dai anime), not game footage"
+  },
+  {
+   "animation": "menu.dialogue-box-typewriter",
+   "name": "Dialogue Box Typewriter",
+   "file": "menu.dialogue-box-typewriter-0.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Undertale-style edit with the dialogue '* mom help' (1 frame)"
+  },
+  {
+   "animation": "menu.dialogue-box-typewriter",
+   "name": "Dialogue Box Typewriter",
+   "file": "menu.dialogue-box-typewriter-1.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Fan-made Sans/Papyrus Undertale dialogue joke with profanity (1 frame)"
+  },
+  {
+   "animation": "menu.dialogue-box-typewriter",
+   "name": "Dialogue Box Typewriter",
+   "file": "menu.dialogue-box-typewriter-2.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Fan Sans dialogue box: 'hey kiddo... pray/curse is ready'"
+  },
+  {
+   "animation": "menu.map-reveal-fog-of-war",
+   "name": "Map Reveal / Fog of War",
+   "file": "menu.map-reveal-fog-of-war-0.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Hollow Knight fan pixel art of the Knight on a bench (artist watermark); no map reveal"
+  },
+  {
+   "animation": "sports.dribble",
+   "name": "Dribble",
+   "file": "sports.dribble-3.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Real-life women's soccer: Brazil #10 dribbling past a defender (Shuffle watermark)"
+  },
+  {
+   "animation": "sports.goal-score-celebration",
+   "name": "Goal / Score Celebration",
+   "file": "sports.goal-score-celebration-4.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Rocket League clip that cuts to a streamer's webcam yelling 'YAA!' (reaction clip)"
+  },
+  {
+   "animation": "sports.swing-golf-tennis-bat",
+   "name": "Swing (Golf / Tennis / Bat)",
+   "file": "sports.swing-golf-tennis-bat-1.webp",
+   "verdict": "mismatch",
+   "confidence": "medium",
+   "what": "Mario Tennis: Peach and Daisy standing idle on court, no swing"
+  },
+  {
+   "animation": "sports.skateboard-trick",
+   "name": "Skateboard Trick",
+   "file": "sports.skateboard-trick-2.webp",
+   "verdict": "meme",
+   "confidence": "high",
+   "what": "Real-life skater in a Spider-Man costume at a Vans skatepark"
+  },
+  {
+   "animation": "sports.dance-performance",
+   "name": "Dance Performance",
+   "file": "sports.dance-performance-4.webp",
+   "verdict": "meme",
+   "confidence": "medium",
+   "what": "Just Dance footage with a 'doing my happy dance' reaction caption"
+  }
+ ],
+ "review": [
+  {
+   "animation": "locomotion.sprint",
+   "name": "Sprint",
+   "file": "locomotion.sprint-2.webp",
+   "verdict": "mismatch",
+   "confidence": "low",
+   "what": "Close-ups from a CoD MW2/Warzone trailer with a 'RUN' caption on every frame; soldiers in close-up, no clear sprint"
+  },
+  {
+   "animation": "locomotion.ledge-grab-hang",
+   "name": "Ledge Grab / Hang",
+   "file": "locomotion.ledge-grab-hang-0.webp",
+   "verdict": "unclear",
+   "confidence": "medium",
+   "what": "Very dark shot of a figure hanging on a rope or chain over a pit, almost static"
+  },
+  {
+   "animation": "locomotion.mount-dismount",
+   "name": "Mount / Dismount",
+   "file": "locomotion.mount-dismount-0.webp",
+   "verdict": "unclear",
+   "confidence": "low",
+   "what": "Dark night gameplay with heavy UI; a mount or dismount can't be made out"
+  },
+  {
+   "animation": "ranged.reload-tactical",
+   "name": "Reload (Tactical)",
+   "file": "ranged.reload-tactical-3.webp",
+   "verdict": "meme",
+   "confidence": "low",
+   "what": "Same 'LOCKED AND LOADED' captioned clip as reload-empty-3"
+  },
+  {
+   "animation": "ranged.reload-tactical",
+   "name": "Reload (Tactical)",
+   "file": "ranged.reload-tactical-4.webp",
+   "verdict": "unclear",
+   "confidence": "low",
+   "what": "Same dark CoD cell-block clip as reload-empty-4; no reload visible"
+  },
+  {
+   "animation": "ranged.reload-empty",
+   "name": "Reload (Empty)",
+   "file": "ranged.reload-empty-3.webp",
+   "verdict": "meme",
+   "confidence": "low",
+   "what": "Short first-person gun clip with a 'LOCKED AND LOADED' text overlay (promo/reaction-style)"
+  },
+  {
+   "animation": "ranged.reload-empty",
+   "name": "Reload (Empty)",
+   "file": "ranged.reload-empty-4.webp",
+   "verdict": "unclear",
+   "confidence": "low",
+   "what": "Very dark CoD MW cell-block gameplay; no reload visible"
+  },
+  {
+   "animation": "magic.summon",
+   "name": "Summon",
+   "file": "magic.summon-0.webp",
+   "verdict": "unclear",
+   "confidence": "low",
+   "what": "Fisheye, washed-out Dark Souls-style knight clip (DiabloDesu watermark); summon not clearly visible"
+  },
+  {
+   "animation": "magic.shield-barrier",
+   "name": "Shield / Barrier",
+   "file": "magic.shield-barrier-1.webp",
+   "verdict": "mismatch",
+   "confidence": "low",
+   "what": "Overwatch animated short (makeagif): Brigitte face and armor close-ups, no visible barrier"
+  },
+  {
+   "animation": "magic.shout-roar-ability",
+   "name": "Shout / Roar Ability",
+   "file": "magic.shout-roar-ability-0.webp",
+   "verdict": "meme",
+   "confidence": "low",
+   "what": "Skyrim trailer footage with a 'FUS RO DAH' caption on every frame"
+  },
+  {
+   "animation": "defense.backstep-backflip",
+   "name": "Backstep / Backflip",
+   "file": "defense.backstep-backflip-2.webp",
+   "verdict": "unclear",
+   "confidence": "low",
+   "what": "Tiny isolated figure tumbling/rolling on a white background; source and move hard to identify"
+  },
+  {
+   "animation": "reactions.directional-hit-reaction",
+   "name": "Directional Hit Reaction",
+   "file": "reactions.directional-hit-reaction-3.webp",
+   "verdict": "mismatch",
+   "confidence": "low",
+   "what": "MK11 cinematic trailer shots, no clear directional hit reaction"
+  },
+  {
+   "animation": "reactions.ground-bounce",
+   "name": "Ground Bounce",
+   "file": "reactions.ground-bounce-0.webp",
+   "verdict": "meme",
+   "confidence": "low",
+   "what": "Looping 2D fan animation (watermark 'Princess') of a teddy-bear brawler juggling a character in an arena; not clearly from a game"
+  },
+  {
+   "animation": "fighting.rising-uppercut-shoryuken",
+   "name": "Rising Uppercut (Shoryuken)",
+   "file": "fighting.rising-uppercut-shoryuken-3.webp",
+   "verdict": "meme",
+   "confidence": "low",
+   "what": "Split screen: SF6 gameplay above, real-life hands on a Hitbox controller below (input tutorial)"
+  },
+  {
+   "animation": "fighting.rising-uppercut-shoryuken",
+   "name": "Rising Uppercut (Shoryuken)",
+   "file": "fighting.rising-uppercut-shoryuken-4.webp",
+   "verdict": "meme",
+   "confidence": "low",
+   "what": "Split screen: SF6 gameplay and super art above, real-life hands on a Hitbox controller below (input tutorial)"
+  },
+  {
+   "animation": "enemies.flee-retreat",
+   "name": "Flee / Retreat",
+   "file": "enemies.flee-retreat-0.webp",
+   "verdict": "mismatch",
+   "confidence": "low",
+   "what": "Horned warrior walking forward through lightning strikes (game trailer); not fleeing"
+  },
+  {
+   "animation": "enemies.weak-point-exposed",
+   "name": "Weak Point Exposed",
+   "file": "enemies.weak-point-exposed-0.webp",
+   "verdict": "unclear",
+   "confidence": "low",
+   "what": "Monster Hunter World Nergigante fight (same clip as charging-rush-2); no clear weak-point exposure"
+  },
+  {
+   "animation": "enemies.monster-grab-pin",
+   "name": "Monster Grab / Pin",
+   "file": "enemies.monster-grab-pin-1.webp",
+   "verdict": "mismatch",
+   "confidence": "low",
+   "what": "Night first-person scene: a figure is flung up into the sky; no grab or pin visible"
+  },
+  {
+   "animation": "stealth.ledge-takedown",
+   "name": "Ledge Takedown",
+   "file": "stealth.ledge-takedown-1.webp",
+   "verdict": "unclear",
+   "confidence": "low",
+   "what": "Same dark Batman Arkham predator montage as cover-takedown-1; no ledge takedown discernible"
+  },
+  {
+   "animation": "stealth.cover-takedown",
+   "name": "Cover Takedown",
+   "file": "stealth.cover-takedown-0.webp",
+   "verdict": "mismatch",
+   "confidence": "low",
+   "what": "Same Batman Arkham silent takedown from behind, no cover involved"
+  },
+  {
+   "animation": "stealth.cover-takedown",
+   "name": "Cover Takedown",
+   "file": "stealth.cover-takedown-1.webp",
+   "verdict": "unclear",
+   "confidence": "low",
+   "what": "Dark Batman Arkham predator-mode montage with HUD; no takedown clearly visible"
+  },
+  {
+   "animation": "stealth.chain-takedown",
+   "name": "Chain Takedown",
+   "file": "stealth.chain-takedown-0.webp",
+   "verdict": "mismatch",
+   "confidence": "low",
+   "what": "Batman Arkham single silent takedown from behind, not a chain of takedowns"
+  },
+  {
+   "animation": "vfx.bullet-tracer",
+   "name": "Bullet Tracer",
+   "file": "vfx.bullet-tracer-0.webp",
+   "verdict": "mismatch",
+   "confidence": "low",
+   "what": "Sepia Halo-style CGI/fan-film shot of Warthogs racing through a ruined city; no bullet tracers"
+  },
+  {
+   "animation": "ui.combo-counter",
+   "name": "Combo Counter",
+   "file": "ui.combo-counter-0.webp",
+   "verdict": "meme",
+   "confidence": "low",
+   "what": "Chibi character under a jittering 'SSS' style-rank graphic over color-shifting backgrounds; looks like a fan edit"
+  },
+  {
+   "animation": "exploration.walk-cycle",
+   "name": "Walk Cycle",
+   "file": "exploration.walk-cycle-2.webp",
+   "verdict": "meme",
+   "confidence": "low",
+   "what": "Fan-made 'Super Mario walk cycle comparison' edit putting together sprites from several Mario games (the sprites themselves are real)"
+  },
+  {
+   "animation": "exploration.jog-run-explore",
+   "name": "Jog / Run (Explore)",
+   "file": "exploration.jog-run-explore-2.webp",
+   "verdict": "meme",
+   "confidence": "low",
+   "what": "Hand-drawn 2D fan-art run cycle of an anime girl on a cream background; not game footage"
+  },
+  {
+   "animation": "exploration.spin-dash-roll-ball",
+   "name": "Spin Dash / Roll Ball",
+   "file": "exploration.spin-dash-roll-ball-1.webp",
+   "verdict": "unclear",
+   "confidence": "low",
+   "what": "Pixel Sonic spin-dash then a flash and a large logo burst; looks like a fan sprite animation rather than gameplay"
+  },
+  {
+   "animation": "interaction.open-kick-door",
+   "name": "Open / Kick Door",
+   "file": "interaction.open-kick-door-0.webp",
+   "verdict": "unclear",
+   "confidence": "medium",
+   "what": "Very dark clip: a dark silhouette in front of fire, no visible door or kick"
+  },
+  {
+   "animation": "expression.eye-blink-look-at",
+   "name": "Eye Blink & Look-At",
+   "file": "expression.eye-blink-look-at-0.webp",
+   "verdict": "unclear",
+   "confidence": "medium",
+   "what": "A single still frame of Ellie (TLOU2); no motion, so no blink or look-at can be seen"
+  },
+  {
+   "animation": "cartoon.dizzy-stars-birds",
+   "name": "Dizzy Stars / Birds",
+   "file": "cartoon.dizzy-stars-birds-2.webp",
+   "verdict": "unclear",
+   "confidence": "low",
+   "what": "Zoomed pixel Sonic with chicks circling his head; looks like a fan sprite animation rather than an actual game"
+  },
+  {
+   "animation": "menu.menu-transition",
+   "name": "Menu Transition",
+   "file": "menu.menu-transition-4.webp",
+   "verdict": "mismatch",
+   "confidence": "low",
+   "what": "Persona 5-style portrait of Maruki sipping a drink, near-static; not a menu transition"
+  },
+  {
+   "animation": "cinematic.cutscene-performance-capture",
+   "name": "Cutscene Performance Capture",
+   "file": "cinematic.cutscene-performance-capture-1.webp",
+   "verdict": "unclear",
+   "confidence": "low",
+   "what": "A single still frame of Ellie (The Last of Us Part II); real game but no motion to judge"
+  },
+  {
+   "animation": "cinematic.ending-credits-scene",
+   "name": "Ending / Credits Scene",
+   "file": "cinematic.ending-credits-scene-2.webp",
+   "verdict": "meme",
+   "confidence": "low",
+   "what": "Journey desert vista with an overlaid expanding white bubble and the text 'MORNOONEVENIGHT'; looks like a fan edit, not an ending-credits scene"
+  },
+  {
+   "animation": "sports.kart-drift-boost",
+   "name": "Kart Drift & Boost",
+   "file": "sports.kart-drift-boost-2.webp",
+   "verdict": "meme",
+   "confidence": "low",
+   "what": "Hand-drawn illustration-style animation of Mario drifting a kart on a white background; not game footage"
+  }
+ ],
+ "needs_replacement": [
+  {
+   "animation": "locomotion.strafe-lock-on-movement",
+   "name": "Strafe (Lock-on Movement)"
+  },
+  {
+   "animation": "locomotion.wall-run",
+   "name": "Wall Run"
+  },
+  {
+   "animation": "locomotion.mantle-ledge-climb",
+   "name": "Mantle / Ledge Climb"
+  },
+  {
+   "animation": "melee.overhead-slam",
+   "name": "Overhead Slam"
+  },
+  {
+   "animation": "melee.horizontal-sweep",
+   "name": "Horizontal Sweep"
+  },
+  {
+   "animation": "melee.uppercut-launcher",
+   "name": "Uppercut / Launcher"
+  },
+  {
+   "animation": "melee.aerial-attack",
+   "name": "Aerial Attack"
+  },
+  {
+   "animation": "melee.plunging-downward-attack",
+   "name": "Plunging / Downward Attack"
+  },
+  {
+   "animation": "melee.shield-bash",
+   "name": "Shield Bash"
+  },
+  {
+   "animation": "melee.ground-pound",
+   "name": "Ground Pound"
+  },
+  {
+   "animation": "melee.weapon-throw-recall",
+   "name": "Weapon Throw / Recall"
+  },
+  {
+   "animation": "ranged.weapon-draw-equip",
+   "name": "Weapon Draw / Equip"
+  },
+  {
+   "animation": "ranged.throwing-knife-shuriken",
+   "name": "Throwing Knife / Shuriken"
+  },
+  {
+   "animation": "ranged.blind-fire-from-cover",
+   "name": "Blind Fire from Cover"
+  },
+  {
+   "animation": "ranged.cover-peek-pop-up-aim",
+   "name": "Cover Peek / Pop-up Aim"
+  },
+  {
+   "animation": "ranged.lean-peek",
+   "name": "Lean / Peek"
+  },
+  {
+   "animation": "ranged.gun-kata-stylish-shooting",
+   "name": "Gun Kata / Stylish Shooting"
+  },
+  {
+   "animation": "ranged.boomerang-returning-throw",
+   "name": "Boomerang / Returning Throw"
+  },
+  {
+   "animation": "magic.self-buff-power-up",
+   "name": "Self Buff / Power Up"
+  },
+  {
+   "animation": "defense.take-cover",
+   "name": "Take Cover"
+  },
+  {
+   "animation": "defense.cover-swap-slide",
+   "name": "Cover Swap / Slide"
+  },
+  {
+   "animation": "defense.combat-roll-shooter",
+   "name": "Combat Roll (Shooter)"
+  },
+  {
+   "animation": "reactions.hit-stop-hit-freeze",
+   "name": "Hit Stop / Hit Freeze"
+  },
+  {
+   "animation": "reactions.crumple-collapse",
+   "name": "Crumple / Collapse"
+  },
+  {
+   "animation": "death.death-collapse",
+   "name": "Death (Collapse)"
+  },
+  {
+   "animation": "death.gib-explode",
+   "name": "Gib / Explode"
+  },
+  {
+   "animation": "death.downed-bleeding-out",
+   "name": "Downed / Bleeding Out"
+  },
+  {
+   "animation": "death.revive-ally",
+   "name": "Revive Ally"
+  },
+  {
+   "animation": "fighting.combo-breaker",
+   "name": "Combo Breaker"
+  },
+  {
+   "animation": "vfx.charge-glow-power-aura",
+   "name": "Charge Glow / Power Aura"
+  },
+  {
+   "animation": "vfx.shield-break-shatter",
+   "name": "Shield Break Shatter"
+  },
+  {
+   "animation": "ui.health-bar-drain-ghost-bar",
+   "name": "Health Bar Drain (Ghost Bar)"
+  },
+  {
+   "animation": "ui.floating-damage-numbers",
+   "name": "Floating Damage Numbers"
+  },
+  {
+   "animation": "ui.lock-on-reticle",
+   "name": "Lock-On Reticle"
+  },
+  {
+   "animation": "ui.hit-marker",
+   "name": "Hit Marker"
+  },
+  {
+   "animation": "ui.damage-direction-indicator",
+   "name": "Damage Direction Indicator"
+  },
+  {
+   "animation": "ui.stamina-bar",
+   "name": "Stamina Bar"
+  },
+  {
+   "animation": "ui.counter-prompt-indicator",
+   "name": "Counter Prompt Indicator"
+  },
+  {
+   "animation": "exploration.cap-throw-possess",
+   "name": "Cap Throw / Possess"
+  },
+  {
+   "animation": "interaction.pull-lever-press-switch",
+   "name": "Pull Lever / Press Switch"
+  },
+  {
+   "animation": "expression.point-beckon",
+   "name": "Point / Beckon"
+  },
+  {
+   "animation": "expression.laugh",
+   "name": "Laugh"
+  },
+  {
+   "animation": "expression.double-take",
+   "name": "Double Take"
+  },
+  {
+   "animation": "expression.shrug-confused",
+   "name": "Shrug / Confused"
+  },
+  {
+   "animation": "expression.celebrate-cheer",
+   "name": "Celebrate / Cheer"
+  },
+  {
+   "animation": "cartoon.squash-and-stretch",
+   "name": "Squash and Stretch"
+  },
+  {
+   "animation": "cartoon.anticipation",
+   "name": "Anticipation"
+  },
+  {
+   "animation": "cartoon.follow-through-overlap",
+   "name": "Follow Through & Overlap"
+  },
+  {
+   "animation": "cartoon.scramble-in-place-takeoff",
+   "name": "Scramble in Place / Takeoff"
+  },
+  {
+   "animation": "cartoon.cartoon-fall-look-at-camera",
+   "name": "Cartoon Fall (Look at Camera)"
+  },
+  {
+   "animation": "cartoon.flattened-accordion",
+   "name": "Flattened / Accordion"
+  },
+  {
+   "animation": "menu.dialogue-box-typewriter",
+   "name": "Dialogue Box Typewriter"
+  },
+  {
+   "animation": "menu.map-reveal-fog-of-war",
+   "name": "Map Reveal / Fog of War"
+  }
+ ]
+}
