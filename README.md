@@ -28,3 +28,20 @@ On every push to `main`, `.github/workflows/static.yml` runs `python3 build_page
 To add animations: append lines to taxonomy.txt, rebuild index.json, rerun merge.py, republish the page.
 
 - `gifs/` — downloaded copies (Tenor's 200px animated WebP, Giphy's 200w WebP), one per GIF that could be fetched. `local` is the path, `source_url` the file it came from. Tenor links whose page id is 18-20 digits map straight to a media URL; older 7-8 digit ids could not be resolved, so those links stay page-only.
+
+## Community features (xCloud / any PHP host)
+
+`index.php` serves the atlas with voting (▲/▼ on every GIF), "Suggest a replacement" / "Suggest a GIF" (link or file upload),
+and an owner review page (`admin.php`). GIFs that collect enough downvotes are flagged and queued for a Giphy/Tenor
+replacement search (`tools/find_replacements.php`); candidates wait for review like community suggestions.
+Setup: [DEPLOY-XCLOUD.md](DEPLOY-XCLOUD.md). Code: `api.php`, `admin.php`, `lib/bootstrap.php`, `config.sample.php`.
+
+## Local review: mark entries with ✕
+
+```bash
+python serve_local.py        # open http://localhost:8765
+```
+
+Every GIF has a "✕ Mark" button and every entry a "✕ Mark whole entry" button; the "Only entries marked ✕" filter lists them.
+Marks are written to `marks.json` (animation id, GIF page URL or empty for the whole entry, title, time).
+Commit it, and a later search pass can look for better images for exactly those entries.
