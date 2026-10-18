@@ -33,3 +33,20 @@ To add animations: append lines to taxonomy.txt, rebuild index.json, rerun merge
 ## Clip screening
 
 `gif-screening.json` records a frame-by-frame check of every downloaded clip for memes, reaction edits, TV/anime/real-life footage and clips that don't show the named move. Clips flagged at medium or high confidence were deleted from `gifs/` and moved to the animation's `rejected_gifs` list (with a `screened` note) so the page no longer shows them. Low-confidence or unclear calls stay in `gifs` with a `screened` note for a human to check. `needs_replacement` lists animations left with no screened local clip.
+
+## Community features (xCloud / any PHP host)
+
+`index.php` serves the atlas with voting (▲/▼ on every GIF), "Suggest a replacement" / "Suggest a GIF" (link or file upload),
+and an owner review page (`admin.php`). GIFs that collect enough downvotes are flagged and queued for a Giphy/Tenor
+replacement search (`tools/find_replacements.php`); candidates wait for review like community suggestions.
+Setup: [DEPLOY-XCLOUD.md](DEPLOY-XCLOUD.md). Code: `api.php`, `admin.php`, `lib/bootstrap.php`, `config.sample.php`.
+
+## Local review: mark entries with ✕
+
+```bash
+python serve_local.py        # open http://localhost:8765
+```
+
+Every GIF has a "✕ Mark" button and every entry a "✕ Mark whole entry" button; the "Only entries marked ✕" filter lists them.
+Marks are written to `marks.json` (animation id, GIF page URL or empty for the whole entry, title, time).
+Commit it, and a later search pass can look for better images for exactly those entries.
