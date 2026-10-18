@@ -1881,6 +1881,24 @@
      "host": "Giphy",
      "local": "gifs/melee.light-attack-2.webp",
      "source_url": "https://media.giphy.com/media/tDfClZn3KzGpSL2PXk/200w.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/link",
+     "media_url": "https://ultimateframedata.com/hitboxes/link/LinkJab1.gif",
+     "title": "Link jab, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.light-attack-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/link/LinkJab1.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/marth",
+     "media_url": "https://ultimateframedata.com/hitboxes/marth/MarthJab1.gif",
+     "title": "Marth jab, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.light-attack-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/marth/MarthJab1.gif"
     }
    ]
   },
@@ -1963,6 +1981,24 @@
      "game": "Bayonetta",
      "media_url": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/marth",
+     "media_url": "https://ultimateframedata.com/hitboxes/marth/MarthDancingBlade1.gif",
+     "title": "Marth Dancing Blade hit 1, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.light-attack-combo-string-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/marth/MarthDancingBlade1.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/marth",
+     "media_url": "https://ultimateframedata.com/hitboxes/marth/MarthDancingBlade4.gif",
+     "title": "Marth Dancing Blade hit 4, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.light-attack-combo-string-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/marth/MarthDancingBlade4.gif"
     }
    ]
   },
@@ -2030,6 +2066,24 @@
      "host": "Tenor",
      "local": "gifs/melee.heavy-attack-1.webp",
      "source_url": "https://media.tenor.com/onmBNdOqcdoAAAA1/sunhilegend-monster-hunter-wilds-arkveld-great-sword.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ganondorf",
+     "media_url": "https://ultimateframedata.com/hitboxes/ganondorf/GanondorfFSmash.gif",
+     "title": "Ganondorf forward smash, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.heavy-attack-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ganondorf/GanondorfFSmash.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ganondorf",
+     "media_url": "https://ultimateframedata.com/hitboxes/ganondorf/GanondorfWarlockPunchG.gif",
+     "title": "Ganondorf Warlock Punch, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.heavy-attack-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ganondorf/GanondorfWarlockPunchG.gif"
     }
    ]
   },
@@ -2110,6 +2164,24 @@
      "title": "Great Sword tackle into charge",
      "game": "Monster Hunter",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ike",
+     "media_url": "https://ultimateframedata.com/hitboxes/ike/IkeEruptionMax.gif",
+     "title": "Ike Eruption, fully charged, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.charged-attack-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ike/IkeEruptionMax.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/marth",
+     "media_url": "https://ultimateframedata.com/hitboxes/marth/MarthShieldbreakerMax.gif",
+     "title": "Marth Shield Breaker, fully charged, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.charged-attack-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/marth/MarthShieldbreakerMax.gif"
     }
    ]
   },
@@ -2169,6 +2241,15 @@
      "host": "Tenor",
      "local": "gifs/melee.overhead-slam-1.webp",
      "source_url": "https://media.tenor.com/Q81EbkTkRwsAAAA1/360meteoric-slam-360no-scope-god-of-war-ratio.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ike",
+     "media_url": "https://ultimateframedata.com/hitboxes/ike/IkeFSmash.gif",
+     "title": "Ike forward smash, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.overhead-slam-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ike/IkeFSmash.gif"
     }
    ]
   },
@@ -2228,6 +2309,24 @@
      "host": "Tenor",
      "local": "gifs/melee.horizontal-sweep-1.webp",
      "source_url": "https://media.tenor.com/wjNDtz7GougAAAA1/fidgetus-spinnus-for-honor-for-honor-shinobi-shinobi-zone-for-honor-shinobi-zone.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ike",
+     "media_url": "https://ultimateframedata.com/hitboxes/ike/IkeDSmash.gif",
+     "title": "Ike down smash, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.horizontal-sweep-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ike/IkeDSmash.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/marth",
+     "media_url": "https://ultimateframedata.com/hitboxes/marth/MarthDSmash.gif",
+     "title": "Marth down smash, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.horizontal-sweep-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/marth/MarthDSmash.gif"
     }
    ]
   },
@@ -2293,6 +2392,24 @@
      "host": "Giphy",
      "local": "gifs/melee.thrust-stab-1.webp",
      "source_url": "https://media.giphy.com/media/kpDKiZGR6wB7pT7IVT/200w.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/marth",
+     "media_url": "https://ultimateframedata.com/hitboxes/marth/MarthShieldbreaker.gif",
+     "title": "Marth Shield Breaker, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.thrust-stab-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/marth/MarthShieldbreaker.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/sephiroth",
+     "media_url": "https://ultimateframedata.com/hitboxes/sephiroth/SephirothBladeDash.gif",
+     "title": "Sephiroth Blade Dash, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.thrust-stab-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/sephiroth/SephirothBladeDash.gif"
     }
    ]
   },
@@ -2366,6 +2483,24 @@
      "title": "Kaveh spinning charged attack",
      "game": "Genshin Impact",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/link",
+     "media_url": "https://ultimateframedata.com/hitboxes/link/LinkSpinAttackG.gif",
+     "title": "Link Spin Attack, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.spin-attack-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/link/LinkSpinAttackG.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/bowser",
+     "media_url": "https://ultimateframedata.com/hitboxes/bowser/BowserWhirlingFortressG.gif",
+     "title": "Bowser Whirling Fortress, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.spin-attack-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/bowser/BowserWhirlingFortressG.gif"
     }
    ]
   },
@@ -2446,6 +2581,24 @@
      "host": "Tenor",
      "local": "gifs/melee.uppercut-launcher-3.webp",
      "source_url": "https://media.tenor.com/zb-GjaQm1TwAAAA1/street-fighter-uppercut-ryu-ken.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ryu",
+     "media_url": "https://ultimateframedata.com/hitboxes/ryu/RyuUTiltHeavy.gif",
+     "title": "Ryu heavy up tilt, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.uppercut-launcher-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ryu/RyuUTiltHeavy.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/terry",
+     "media_url": "https://ultimateframedata.com/hitboxes/terry/TerryUTilt.gif",
+     "title": "Terry up tilt, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.uppercut-launcher-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/terry/TerryUTilt.gif"
     }
    ]
   },
@@ -2528,6 +2681,24 @@
      "host": "Tenor",
      "local": "gifs/melee.aerial-attack-4.webp",
      "source_url": "https://media.tenor.com/7EiFgRzV9eIAAAA1/mario-forward-air-caption-smash-ultimate.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/marth",
+     "media_url": "https://ultimateframedata.com/hitboxes/marth/MarthFAir.gif",
+     "title": "Marth forward air, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.aerial-attack-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/marth/MarthFAir.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/cloud",
+     "media_url": "https://ultimateframedata.com/hitboxes/cloud/CloudFAir.gif",
+     "title": "Cloud forward air, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.aerial-attack-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/cloud/CloudFAir.gif"
     }
    ]
   },
@@ -2601,6 +2772,24 @@
      "host": "Tenor",
      "local": "gifs/melee.plunging-downward-attack-2.webp",
      "source_url": "https://media.tenor.com/4rLlRqa0Z7oAAAA1/ss-silksong-hollow-knight-hk-skong.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/link",
+     "media_url": "https://ultimateframedata.com/hitboxes/link/LinkDAir.gif",
+     "title": "Link down air, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.plunging-downward-attack-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/link/LinkDAir.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/sheik",
+     "media_url": "https://ultimateframedata.com/hitboxes/sheik/SheikDAir.gif",
+     "title": "Sheik down air, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.plunging-downward-attack-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/sheik/SheikDAir.gif"
     }
    ]
   },
@@ -2667,6 +2856,24 @@
      "host": "Tenor",
      "local": "gifs/melee.jump-attack-1.webp",
      "source_url": "https://media.tenor.com/PpCt0-PohhUAAAA1/ironeye-cliff-looking-jump-attack.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ike",
+     "media_url": "https://ultimateframedata.com/hitboxes/ike/IkeAetherG.gif",
+     "title": "Ike Aether, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.jump-attack-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ike/IkeAetherG.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/terry",
+     "media_url": "https://ultimateframedata.com/hitboxes/terry/TerryPowerDunkStrong.gif",
+     "title": "Terry Power Dunk, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.jump-attack-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/terry/TerryPowerDunkStrong.gif"
     }
    ]
   },
@@ -2734,6 +2941,24 @@
      "host": "Tenor",
      "local": "gifs/melee.dash-attack-lunge-1.webp",
      "source_url": "https://media.tenor.com/-a2-Ncx_qfoAAAA1/hades-dash.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/marth",
+     "media_url": "https://ultimateframedata.com/hitboxes/marth/MarthDashAttack.gif",
+     "title": "Marth dash attack, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.dash-attack-lunge-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/marth/MarthDashAttack.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ike",
+     "media_url": "https://ultimateframedata.com/hitboxes/ike/IkeDashAttack.gif",
+     "title": "Ike dash attack, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.dash-attack-lunge-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ike/IkeDashAttack.gif"
     }
    ]
   },
@@ -2916,6 +3141,24 @@
      "title": "Combo finish pose",
      "game": "Bayonetta 2",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/link",
+     "media_url": "https://ultimateframedata.com/hitboxes/link/LinkJab3.gif",
+     "title": "Link jab finisher, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.combo-finisher-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/link/LinkJab3.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/cloud",
+     "media_url": "https://ultimateframedata.com/hitboxes/cloud/CloudJab3.gif",
+     "title": "Cloud jab finisher, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.combo-finisher-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/cloud/CloudJab3.gif"
     }
    ]
   },
@@ -2982,6 +3225,24 @@
      "title": "Leon kick",
      "game": "Resident Evil 4",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ken",
+     "media_url": "https://ultimateframedata.com/hitboxes/ken/KenOosotoMawashiGeri.gif",
+     "title": "Ken Oosoto Mawashi Geri roundhouse, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.kick-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ken/KenOosotoMawashiGeri.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ken",
+     "media_url": "https://ultimateframedata.com/hitboxes/ken/KenFTiltHeavy.gif",
+     "title": "Ken heavy forward tilt, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.kick-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ken/KenFTiltHeavy.gif"
     }
    ]
   },
@@ -3059,6 +3320,24 @@
      "host": "Tenor",
      "local": "gifs/melee.punch-combo-2.webp",
      "source_url": "https://media.tenor.com/tsjjvaiTi28AAAA1/akiyama-shun-akiyama-combo-yakuza-4-yakuza.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/little_mac",
+     "media_url": "https://ultimateframedata.com/hitboxes/little_mac/LittleMacJab1.gif",
+     "title": "Little Mac jab 1, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.punch-combo-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/little_mac/LittleMacJab1.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/little_mac",
+     "media_url": "https://ultimateframedata.com/hitboxes/little_mac/LittleMacJab3.gif",
+     "title": "Little Mac jab 3, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.punch-combo-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/little_mac/LittleMacJab3.gif"
     }
    ]
   },
@@ -3133,6 +3412,24 @@
      "game": "Tekken",
      "media_url": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/incineroar",
+     "media_url": "https://ultimateframedata.com/hitboxes/incineroar/IncineroarFThrow.gif",
+     "title": "Incineroar forward throw, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.grab-throw-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/incineroar/IncineroarFThrow.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ganondorf",
+     "media_url": "https://ultimateframedata.com/hitboxes/ganondorf/GanondorfBThrow.gif",
+     "title": "Ganondorf back throw, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.grab-throw-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ganondorf/GanondorfBThrow.gif"
     }
    ]
   },
@@ -3553,6 +3850,15 @@
      "host": "Tenor",
      "local": "gifs/melee.ground-pound-3.webp",
      "source_url": "https://media.tenor.com/CUkL6QTXnMQAAAA1/mario-sm64-super-mario-64-ground-pound-dumb.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/bowser",
+     "media_url": "https://ultimateframedata.com/hitboxes/bowser/BowserBowserBombG.gif",
+     "title": "Bowser Bowser Bomb, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.ground-pound-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/bowser/BowserBowserBombG.gif"
     }
    ]
   },
@@ -3619,6 +3925,24 @@
      "host": "Tenor",
      "local": "gifs/melee.weapon-art-skill-attack-1.webp",
      "source_url": "https://media.tenor.com/BZbG4uVuktkAAAA1/lion's-claw-elden-ring-ash-of-war.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/sephiroth",
+     "media_url": "https://ultimateframedata.com/hitboxes/sephiroth/SephirothOctaslash.gif",
+     "title": "Sephiroth Octaslash, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.weapon-art-skill-attack-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/sephiroth/SephirothOctaslash.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/cloud",
+     "media_url": "https://ultimateframedata.com/hitboxes/cloud/CloudFinishingTouchG.gif",
+     "title": "Cloud Finishing Touch, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.weapon-art-skill-attack-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/cloud/CloudFinishingTouchG.gif"
     }
    ]
   },
@@ -3685,6 +4009,15 @@
      "title": "Vergil Judgement Cut End",
      "game": "Devil May Cry 5",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ike",
+     "media_url": "https://ultimateframedata.com/hitboxes/ike/IkeQuickDraw.gif",
+     "title": "Ike Quick Draw, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.iaido-quick-draw-slash-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ike/IkeQuickDraw.gif"
     }
    ]
   },
@@ -3758,6 +4091,24 @@
      "host": "Tenor",
      "local": "gifs/melee.whip-chain-lash-2.webp",
      "source_url": "https://media.tenor.com/TMUk_hf6DRgAAAA1/castlevania-bloodlines-whip-sega-genesis-castlevania-grinding.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/simon",
+     "media_url": "https://ultimateframedata.com/hitboxes/simon/SimonFSmash.gif",
+     "title": "Simon forward smash, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.whip-chain-lash-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/simon/SimonFSmash.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/simon",
+     "media_url": "https://ultimateframedata.com/hitboxes/simon/SimonFTilt.gif",
+     "title": "Simon forward tilt, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.whip-chain-lash-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/simon/SimonFTilt.gif"
     }
    ]
   },
@@ -7246,6 +7597,24 @@
      "host": "Tenor",
      "local": "gifs/defense.counter-attack-1.webp",
      "source_url": "https://media.tenor.com/CIe9TcMH128AAAA1/i'm-not-going-to-sugarcoat-it-batman-arkham-game-counter.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/marth",
+     "media_url": "https://ultimateframedata.com/hitboxes/marth/MarthCounterHit.gif",
+     "title": "Marth Counter, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.counter-attack-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/marth/MarthCounterHit.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/little_mac",
+     "media_url": "https://ultimateframedata.com/hitboxes/little_mac/LittleMacSlipCounterHitG.gif",
+     "title": "Little Mac Slip Counter, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.counter-attack-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/little_mac/LittleMacSlipCounterHitG.gif"
     }
    ]
   },
@@ -8150,6 +8519,24 @@
      "host": "Tenor",
      "local": "gifs/reactions.get-up-wake-up-1.webp",
      "source_url": "https://media.tenor.com/ZQJMYZVdKR0AAAA1/re4r-pesanta-black-robe-getting-up-waking-up-awake.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ryu",
+     "media_url": "https://ultimateframedata.com/hitboxes/ryu/ryuGetupAttackU.gif",
+     "title": "Ryu get-up attack, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/reactions.get-up-wake-up-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ryu/ryuGetupAttackU.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/link",
+     "media_url": "https://ultimateframedata.com/hitboxes/link/linkGetupAttackU.gif",
+     "title": "Link get-up attack, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/reactions.get-up-wake-up-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/link/linkGetupAttackU.gif"
     }
    ]
   },
@@ -9520,6 +9907,24 @@
      "game": "Street Fighter",
      "media_url": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ryu",
+     "media_url": "https://ultimateframedata.com/hitboxes/ryu/RyuHadokenHeavy.gif",
+     "title": "Ryu Hadoken, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.special-move-projectile-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ryu/RyuHadokenHeavy.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/terry",
+     "media_url": "https://ultimateframedata.com/hitboxes/terry/TerryPowerWaveGStrong.gif",
+     "title": "Terry Power Wave, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.special-move-projectile-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/terry/TerryPowerWaveGStrong.gif"
     }
    ]
   },
@@ -9580,6 +9985,24 @@
      "host": "Giphy",
      "local": "gifs/fighting.rising-uppercut-shoryuken-4.webp",
      "source_url": "https://media.giphy.com/media/aYUOtg0Cw3oKY1my9Z/200w.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ryu",
+     "media_url": "https://ultimateframedata.com/hitboxes/ryu/RyuShoryukenHeavy.gif",
+     "title": "Ryu Shoryuken, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.rising-uppercut-shoryuken-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ryu/RyuShoryukenHeavy.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ken",
+     "media_url": "https://ultimateframedata.com/hitboxes/ken/KenShoryukenHeavy.gif",
+     "title": "Ken Shoryuken, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.rising-uppercut-shoryuken-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ken/KenShoryukenHeavy.gif"
     }
    ]
   },
@@ -9623,6 +10046,24 @@
      "host": "Tenor",
      "local": "gifs/fighting.spinning-kick-tatsumaki-2.webp",
      "source_url": "https://media.tenor.com/Xj5lvX3fpy8AAAA1/tatsumakisenpuukyaku.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ryu",
+     "media_url": "https://ultimateframedata.com/hitboxes/ryu/RyuTatsumakiSenpukyakuHeavyGrounded.gif",
+     "title": "Ryu Tatsumaki Senpukyaku, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.spinning-kick-tatsumaki-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ryu/RyuTatsumakiSenpukyakuHeavyGrounded.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ken",
+     "media_url": "https://ultimateframedata.com/hitboxes/ken/KenTatsumakiSenpukyakuStrongGrounded.gif",
+     "title": "Ken Tatsumaki Senpukyaku, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.spinning-kick-tatsumaki-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ken/KenTatsumakiSenpukyakuStrongGrounded.gif"
     }
    ]
   },
@@ -9681,6 +10122,24 @@
      "title": "Zangief piledriver jump KO",
      "game": "Street Fighter",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ganondorf",
+     "media_url": "https://ultimateframedata.com/hitboxes/ganondorf/GanondorfFlameChokeG.gif",
+     "title": "Ganondorf Flame Choke, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.command-grab-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ganondorf/GanondorfFlameChokeG.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/incineroar",
+     "media_url": "https://ultimateframedata.com/hitboxes/incineroar/IncineroarAlolanWhipG.gif",
+     "title": "Incineroar Alolan Whip, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.command-grab-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/incineroar/IncineroarAlolanWhipG.gif"
     }
    ]
   },
@@ -9762,6 +10221,24 @@
      "title": "Chun-Li Hoyokusen Critical Art",
      "game": "Street Fighter V",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/terry",
+     "media_url": "https://ultimateframedata.com/hitboxes/terry/TerryPowerGeyser.gif",
+     "title": "Terry Power Geyser, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.super-critical-art-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/terry/TerryPowerGeyser.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/terry",
+     "media_url": "https://ultimateframedata.com/hitboxes/terry/TerryBusterWolf.gif",
+     "title": "Terry Buster Wolf, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.super-critical-art-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/terry/TerryBusterWolf.gif"
     }
    ]
   },
@@ -9895,6 +10372,24 @@
      "host": "Tenor",
      "local": "gifs/fighting.drive-impact-armor-attack-2.webp",
      "source_url": "https://media.tenor.com/VRp6L7XwuzwAAAA1/drive-impact-drive-impact-punish-sf6-street-fighter-6-street-fighter.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ryu",
+     "media_url": "https://ultimateframedata.com/hitboxes/ryu/RyuFocusAttackLvl3.gif",
+     "title": "Ryu Focus Attack level 3, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.drive-impact-armor-attack-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ryu/RyuFocusAttackLvl3.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ken",
+     "media_url": "https://ultimateframedata.com/hitboxes/ken/KenFocusAttackLv3.gif",
+     "title": "Ken Focus Attack level 3, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.drive-impact-armor-attack-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ken/KenFocusAttackLv3.gif"
     }
    ]
   },
