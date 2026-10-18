@@ -1,0 +1,24 @@
+# Game Combat Animation Library
+
+A catalogue of 330 video game animations across 20 categories (combat and non-combat), each with a description, tags, example games, web references and GIF examples. `template.html` renders it as a browsable page (the "atlas").
+
+## Rebuilding
+
+```bash
+python build_index.py taxonomy.txt index.json
+python merge.py
+```
+
+`merge.py` writes `library.json`, `atlas.html` and `todo.json`. `index.json`, `atlas.html` and `todo.json` are generated, so they are ignored by git.
+
+## Source data
+
+- `taxonomy.txt` — the hand-written index. One `# CAT id | Name | description` line per category, then one line per animation: `Name | Subcategory | tags,comma,separated | Game;Game;Game | Description`.
+- `build_index.py taxonomy.txt index.json` — turns the taxonomy into JSON (ids are `category.slug`).
+- `library.json` — the full library: categories plus animations with `references` (title, url, source, game, note) gathered by web search.
+- `merge.py` — run in a folder holding `index.json`, `refs*.json` and `template.html`; merges reference files and writes `library.json`, `atlas.html` and `todo.json` (animations still missing references).
+- `gifs` field on each animation — GIF examples found on Tenor/Giphy: `page_url` (always), `media_url` (direct file, only when the search page exposed it), `title`, `game`, `host`. Picked from Tenor descriptions, not watched; spot-check before relying on one. Files saved at `gifs/<id>-<n>.gif|webp|mp4` get a `local` path and play inline on the page.
+- `missing-references.json` — animations still without web references.
+- `template.html` — the library page; `__DATA__` is replaced with library.json.
+
+To add animations: append lines to taxonomy.txt, rebuild index.json, rerun merge.py, republish the page.

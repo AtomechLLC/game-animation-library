@@ -1,0 +1,350 @@
+# CAT locomotion | Combat Locomotion | Moving while in a fight: stances, footwork and traversal used mid-combat.
+Combat Idle Stance | Stance | idle,loop,stance | Dark Souls;For Honor;Street Fighter 6 | The ready pose a character holds between actions, usually with a subtle breathing loop and weapon raised.
+Idle Fidget / Breakaway | Stance | idle,personality | Sekiro;Hollow Knight;World of Warcraft | A one-off flourish that plays after the character idles for a while, such as a weapon twirl or stretch.
+Combat Walk | Footwork | walk,loop | Dark Souls;The Witcher 3;Monster Hunter World | A guarded walk with weapon ready, slower than travel walk.
+Run Cycle | Footwork | run,loop | God of War (2018);Devil May Cry 5;Elden Ring | The standard looping run while a weapon is drawn.
+Sprint | Footwork | sprint,loop,stamina | Elden Ring;Call of Duty;Apex Legends | An all-out run with exaggerated lean, often costing stamina and lowering the weapon.
+Strafe (Lock-on Movement) | Footwork | strafe,lock-on,8-way | Dark Souls;Zelda Ocarina of Time;For Honor | Sideways and backward movement while facing a locked target, usually an 8-way blend space.
+Backpedal | Footwork | walk,lock-on | Dark Souls;Resident Evil 4;Bloodborne | Walking backward while keeping guard up and eyes on the enemy.
+Turn in Place | Footwork | turn,root-motion | Red Dead Redemption 2;The Last of Us Part II;Monster Hunter World | Pivot animations (90 and 180 degree) that rotate the character without moving forward.
+Start / Stop Transitions | Footwork | transition,root-motion | Red Dead Redemption 2;Assassin's Creed;Uncharted 4 | Acceleration and deceleration clips that sell weight when beginning or ending a run.
+Pivot / Hard Turn | Footwork | turn,run | Assassin's Creed Unity;Uncharted 4;Spider-Man | A planted-foot skid turn when reversing direction at speed.
+Jump | Aerial | jump,air | Super Mario Bros;Devil May Cry 5;Hollow Knight | Takeoff, apex and fall poses of a jump, often split into separate clips.
+Double Jump | Aerial | jump,air | Devil May Cry 5;Hollow Knight;Bayonetta | A second midair jump, usually with a flip, wing or magical burst.
+Fall Loop | Aerial | fall,loop,air | Elden Ring;Uncharted;Prince of Persia | The looping flail or tuck pose while falling.
+Landing (Soft / Hard) | Aerial | land,recovery | Elden Ring;Uncharted 4;Titanfall 2 | Impact on touchdown, with a heavier recovery or roll for long falls.
+Crouch | Footwork | crouch,stealth | Metal Gear Solid;Counter-Strike;Street Fighter | Lowering into a crouch, plus the crouch idle.
+Crouch Walk | Footwork | crouch,stealth,loop | Metal Gear Solid V;The Last of Us;Hitman | Slow, low movement used for stealth or behind cover.
+Slide | Traversal | slide,movement-tech | Apex Legends;Call of Duty;Titanfall 2 | A momentum slide along the ground, often cancellable into a jump or shot.
+Wall Run | Traversal | wallrun,parkour | Titanfall 2;Prince of Persia;Mirror's Edge | Running along a vertical wall surface.
+Wall Jump / Wall Kick | Traversal | wall,jump | Mega Man X;Celeste;Hollow Knight | Kicking off a wall to gain height.
+Vault | Traversal | vault,parkour | Assassin's Creed;Dying Light;Apex Legends | Hopping over waist-high obstacles without breaking stride.
+Mantle / Ledge Climb | Traversal | climb,mantle | Uncharted;Apex Legends;Tomb Raider | Pulling up onto a ledge from a hang or jump.
+Ledge Grab / Hang | Traversal | climb,hang | Tomb Raider;Uncharted;Super Smash Bros | Catching and hanging from a ledge edge.
+Swing / Grapple Swing | Traversal | grapple,swing | Spider-Man;Just Cause 3;Sekiro | Swinging on a rope, web or grappling hook.
+Mount / Dismount | Traversal | mount,horse | Elden Ring;Red Dead Redemption 2;The Witcher 3 | Getting on and off a horse or creature.
+# CAT melee | Melee Attacks | Close-range strikes with weapons, fists and feet.
+Light Attack | Basic | attack,light,combo | Dark Souls;God of War;Devil May Cry 5 | The fast, low-commitment strike that starts most combo strings.
+Light Attack Combo String | Basic | attack,combo,chain | Bayonetta;Devil May Cry 5;Batman Arkham | A sequence of 3 to 5 chained light attacks with distinct swings.
+Heavy Attack | Basic | attack,heavy | Dark Souls;For Honor;Monster Hunter | A slow, high-damage swing with a long windup.
+Charged Attack | Basic | attack,charge,hold | Monster Hunter;Elden Ring;Zelda Breath of the Wild | Holding the button to build power, with a visible charge loop and release.
+Overhead Slam | Directional | attack,heavy,vertical | Elden Ring;God of War;Monster Hunter | A vertical downward strike, often causing a ground impact.
+Horizontal Sweep | Directional | attack,wide,crowd-control | Dynasty Warriors;Dark Souls;For Honor | A wide horizontal swing that hits multiple enemies.
+Thrust / Stab | Directional | attack,pierce | Dark Souls;Bloodborne;Mount and Blade | A forward lunge with a pointed weapon.
+Spin Attack | Special | attack,aoe,360 | Zelda;Diablo;Kingdom Hearts | A 360-degree spinning slash around the character.
+Uppercut / Launcher | Special | attack,launcher,juggle | Devil May Cry 5;Bayonetta;Tekken | An upward strike that launches the enemy into the air for juggles.
+Aerial Attack | Aerial | attack,air,combo | Devil May Cry 5;Hollow Knight;Super Smash Bros | Strikes performed while airborne.
+Plunging / Downward Attack | Aerial | attack,air,plunge | Elden Ring;Shovel Knight;Hollow Knight | Diving or falling down onto an enemy, often a pogo or plunge.
+Jump Attack | Aerial | attack,jump,gap-closer | Elden Ring;Monster Hunter;Dark Souls | A leaping strike that closes distance and lands with force.
+Dash Attack / Lunge | Special | attack,gap-closer | Hades;Super Smash Bros;Devil May Cry Stinger | A rushing attack out of a dash or sprint.
+Sprint Attack | Special | attack,sprint | Dark Souls;Elden Ring;Call of Duty | An attack performed while sprinting, usually a lunging stab or tackle.
+Rolling Attack | Special | attack,dodge-cancel | Dark Souls;Bloodborne;Nioh | A strike chained immediately out of a dodge roll.
+Combo Finisher | Basic | attack,finisher,combo | Bayonetta;Batman Arkham;Devil May Cry 5 | The big final hit of a combo string, often with a camera punch.
+Kick | Unarmed | attack,kick,unarmed | Resident Evil 4;Dark Souls;Dying Light | A push or roundhouse kick, often used to break guards.
+Punch Combo | Unarmed | attack,punch,unarmed | Street Fighter;Sleeping Dogs;Yakuza | Jab, cross and hook strings with fists.
+Grab / Throw | Grapple | grapple,throw | Tekken;Street Fighter;God of War | Seizing an enemy and hurling or slamming them.
+Shield Bash | Shield | shield,stun | For Honor;Dark Souls;God of War | Ramming the shield into an enemy to stagger them.
+Backstab | Critical | critical,backstab | Dark Souls;Bloodborne;Dishonored | A critical strike from behind, usually a paired animation.
+Riposte | Critical | critical,parry,paired | Dark Souls;Bloodborne Visceral Attack;Sekiro | The critical counter strike after a successful parry.
+Finisher / Execution | Critical | execution,paired,cinematic | Doom Glory Kill;God of War;Mortal Kombat Fatality | A brutal paired kill animation on a staggered or weakened enemy.
+Deathblow | Critical | execution,posture | Sekiro;Nioh;Lies of P | A lethal strike once the enemy's posture or guard is broken.
+Ground Pound | Special | attack,aoe,slam | Super Mario 64;Spider-Man;God of War | Slamming into the ground from above to create a shockwave.
+Weapon Art / Skill Attack | Special | attack,skill,ash-of-war | Elden Ring;Nioh;Monster Hunter | A unique weapon technique tied to a special button or resource.
+Iaido / Quick-Draw Slash | Special | attack,sheathe,katana | Ghost of Tsushima;Sekiro;Devil May Cry Vergil | A lightning-fast slash from a sheathed blade.
+Whip / Chain Lash | Special | attack,whip,reach | Castlevania;God of War Blades of Chaos;Darksiders | Long-reach lashing strikes with whips or chained blades.
+Dual-Wield Flurry | Special | attack,dual-wield,flurry | Elden Ring;Diablo;Dragon's Dogma | Rapid alternating strikes with two weapons.
+Weapon Throw / Recall | Special | throw,recall | God of War Leviathan Axe;Thor Ragnarok;Hollow Knight | Throwing a melee weapon and calling it back.
+# CAT ranged | Ranged & Firearms | Guns, bows, throwables and everything you aim.
+Weapon Draw / Equip | Handling | equip,draw | Call of Duty;Elden Ring;Red Dead Redemption 2 | Pulling a weapon out from the holster, back or sheath.
+Weapon Holster / Sheathe | Handling | holster,sheathe | Red Dead Redemption 2;Ghost of Tsushima;The Witcher 3 | Putting the weapon away, often with a flourish.
+Weapon Swap | Handling | swap,switch | Doom Eternal;Call of Duty;Devil May Cry 5 | Switching between weapons, often a fast lower-and-raise.
+Hip Fire | Firing | fire,shoot | Doom;Call of Duty;Gears of War | Shooting without aiming down sights.
+Aim Down Sights (ADS) | Aiming | aim,ads,zoom | Call of Duty;Battlefield;Escape from Tarkov | Raising the weapon to align the sights with the camera.
+Recoil | Firing | recoil,kick | Call of Duty;Counter-Strike;Rainbow Six Siege | The weapon kick and camera climb per shot.
+Reload (Tactical) | Reload | reload,magazine | Call of Duty;Battlefield;Escape from Tarkov | Swapping a partly-empty magazine.
+Reload (Empty) | Reload | reload,empty,chamber | Call of Duty;Insurgency;Battlefield | Reloading from empty, including racking the slide or charging handle.
+Shotgun Pump / Shell Load | Reload | shotgun,pump | Doom;Resident Evil;Left 4 Dead | Pumping the action or loading shells one at a time.
+Bolt-Action Cycle | Firing | sniper,bolt | Battlefield 1;Call of Duty;Hunt Showdown | Working the bolt between shots on a rifle.
+Weapon Inspect | Handling | inspect,cosmetic | Counter-Strike;Valorant;Destiny 2 | Turning the weapon over to admire it.
+Bow Draw / Aim / Release | Bow | bow,draw,release | Horizon Zero Dawn;The Last of Us;Skyrim | Nocking, drawing, holding and loosing an arrow.
+Crossbow Reload | Bow | crossbow,reload | Kingdom Come Deliverance;Hunt Showdown;Dishonored | Cranking or pulling back the crossbow string.
+Charge Shot | Firing | charge,hold,beam | Mega Man;Metroid;Destiny 2 | Holding fire to build a more powerful shot.
+Grenade Throw | Throwable | grenade,throw,arc | Call of Duty;Halo;Gears of War | Pulling the pin and lobbing a grenade.
+Throwing Knife / Shuriken | Throwable | throw,knife | Sekiro;Assassin's Creed;Ninja Gaiden | Quick throws of small projectiles.
+Gun Melee / Rifle Butt | Firing | melee,bash | Halo;Call of Duty;Gears of War | A quick melee strike with the gun.
+Blind Fire from Cover | Cover | cover,fire | Gears of War;Uncharted;The Division | Firing over or around cover without exposing the body.
+Cover Peek / Pop-up Aim | Cover | cover,peek | Gears of War;Uncharted;Mass Effect | Leaning out of cover to aim.
+Lean / Peek | Aiming | lean,peek | Rainbow Six Siege;Escape from Tarkov;PUBG | Tilting the body around a corner while aiming.
+Dual-Pistol Gunplay | Firing | akimbo,stylish | Devil May Cry Ebony and Ivory;Max Payne;Bayonetta | Firing two handguns at once, often with flips and spins.
+Weapon Jam / Overheat | Firing | jam,overheat | Halo plasma;Far Cry 2;Gears of War Active Reload | Malfunction or overheating, with a clearing animation.
+Gun Kata / Stylish Shooting | Firing | stylish,acrobatic | Max Payne Shootdodge;Stranglehold;Devil May Cry | Acrobatic shooting moves like dives and spinning shots.
+Boomerang / Returning Throw | Throwable | throw,return | Zelda;God of War;Risk of Rain | Throwing a projectile that curves back.
+# CAT magic | Magic & Abilities | Spells, powers, summons and ultimates.
+Spell Cast (Instant) | Casting | cast,instant | Skyrim;Diablo;World of Warcraft | A quick one-handed cast gesture.
+Spell Channel | Casting | cast,channel,loop | World of Warcraft;Diablo;League of Legends | A sustained casting loop while the spell charges or beams.
+Projectile Cast (Fireball) | Casting | cast,projectile,fire | Skyrim;Elden Ring;Dark Souls | Hurling a magic projectile from the hand or staff.
+Beam Attack | Casting | beam,channel | Dragon Ball FighterZ Kamehameha;Elden Ring Comet Azur;Overwatch Zarya | A continuous energy beam, with charge pose and recoil.
+Area-of-Effect Slam | Casting | aoe,ground | Diablo;World of Warcraft;League of Legends | Slamming the ground or raising arms to unleash an area blast.
+Summon | Casting | summon,minion | Elden Ring Spirit Ash;Diablo Necromancer;Persona | Calling forth a creature, spirit or construct.
+Self Buff / Power Up | Support | buff,aura | Dragon Ball Z Kaioken;Monster Hunter;Dark Souls | Powering up with an aura flare or roar.
+Heal | Support | heal,support | Overwatch Mercy;World of Warcraft;Final Fantasy | Casting a healing spell on self or ally.
+Shield / Barrier | Support | barrier,defense | Overwatch Reinhardt;Halo;Apex Legends Gibraltar | Projecting a protective dome or wall.
+Teleport / Blink | Movement | teleport,blink | Dishonored Blink;Overwatch Tracer;Diablo | Vanishing and reappearing at another spot.
+Transformation | Special | transform,form-change | Devil May Cry Devil Trigger;Bayonetta;Batman Arkham Knight | A dramatic change of form or mode, such as a devil trigger.
+Ultimate / Super Ability | Special | ultimate,cinematic | Overwatch;Valorant;Street Fighter Super Art | The big signature move charged over the match.
+Charge Up / Ki Charge | Casting | charge,aura,hold | Dragon Ball FighterZ;Naruto Storm;Kingdom Hearts | Standing in place to build energy, with an aura loop.
+Lightning Strike | Elemental | lightning,elemental | Elden Ring;Dark Souls Lightning Spear;Diablo | Calling down or throwing lightning.
+Ice / Frost Spell | Elemental | ice,elemental,freeze | Skyrim;Diablo;League of Legends | Freezing blasts, ice spikes or frost novas.
+Fire Breath / Flame Spray | Elemental | fire,elemental,channel | Skyrim Shout;Dark Souls Pyromancy;Monster Hunter | A cone of flame sprayed from mouth or hand.
+Telekinesis / Force Push | Special | force,push,physics | Star Wars Jedi Fallen Order;Control;Psi-Ops | Lifting or flinging enemies and objects with the mind.
+Time Slow / Bullet Time | Special | slow-motion,time | Max Payne;Bayonetta Witch Time;Superhot | Slowing time around the player.
+Shout / Roar Ability | Special | shout,cone | Skyrim Fus Ro Dah;God of War Spartan Rage;Monster Hunter Roar | A voice-powered blast or stun.
+Healing Item Use (Flask) | Support | heal,item,flask | Dark Souls Estus;Bloodborne Blood Vial;Monster Hunter Potion | Drinking a potion or flask, usually a punishable slow animation.
+# CAT defense | Defense & Evasion | Blocking, parrying, dodging and every way to not get hit.
+Block / Guard | Block | block,guard,hold | Dark Souls;For Honor;Street Fighter | Raising a weapon or shield to absorb hits.
+Block Impact / Guard Hit | Block | block,reaction | Dark Souls;Sekiro;For Honor | The recoil when an attack lands on a guard.
+Parry | Parry | parry,timing | Dark Souls;Sekiro;Lies of P | A timed deflection that leaves the attacker open.
+Perfect Block / Deflect | Parry | deflect,timing,sparks | Sekiro;Ghost of Tsushima;Metal Gear Rising | A frame-perfect block that throws sparks and builds enemy posture.
+Dodge Roll | Dodge | dodge,roll,i-frames | Dark Souls;Elden Ring;Enter the Gungeon | A tumbling roll with invulnerability frames.
+Sidestep / Quickstep | Dodge | dodge,step | Bloodborne;Tekken;Devil May Cry Trickster | A short, fast lateral step.
+Backstep / Backflip | Dodge | dodge,backstep | Dark Souls;Devil May Cry;Nier Automata | A quick hop backward out of range.
+Dash | Dodge | dash,i-frames | Hades;Celeste;Hollow Knight | A burst of speed in any direction.
+Air Dash | Dodge | dash,air | Hollow Knight;Guilty Gear;Devil May Cry | A dash performed midair.
+Perfect Dodge / Witch Time | Dodge | dodge,timing,slow-motion | Bayonetta;Nier Automata;Astral Chain | A last-moment dodge that triggers slow motion or a counter.
+Counter Attack | Parry | counter,reaction | Batman Arkham;Assassin's Creed;Shadow of Mordor | A prompted counter that punishes an incoming attack.
+Guard Break / Shield Break | Block | guard-break,stagger | For Honor;Sekiro;Soulcalibur | Losing your guard after too many blocked hits.
+Mikiri Counter / Stomp | Parry | counter,thrust | Sekiro;Lies of P;Nioh | A special counter to thrust or sweep attacks.
+Take Cover | Cover | cover,snap | Gears of War;Uncharted;Mass Effect | Snapping to a wall or low obstacle.
+Cover Swap / Slide | Cover | cover,move | Gears of War;Mass Effect;The Division | Moving between cover positions.
+Combat Roll (Shooter) | Dodge | dodge,roll,shooter | Gears of War;The Division;Max Payne | A tactical roll used in shooters to change position.
+Shield Raise (Directional Guard) | Block | stance,directional | For Honor;Mount and Blade;Chivalry 2 | Choosing a guard direction to block from.
+# CAT reactions | Hit Reactions & Status | How bodies respond to getting hit, stunned, set alight and more.
+Light Flinch / Hit React | Hit | flinch,hit | Dark Souls;God of War;Devil May Cry | A small additive jolt when hit by a weak attack.
+Directional Hit Reaction | Hit | hit,directional | The Last of Us Part II;Uncharted;Mortal Kombat | Reactions that differ by the angle and body part hit.
+Heavy Stagger | Hit | stagger,heavy | Dark Souls;Sekiro;Monster Hunter | A big stumble that interrupts the victim's action.
+Knockback | Displacement | knockback,push | Super Smash Bros;Diablo;Monster Hunter | Being shoved backward by the force of a hit.
+Knockdown | Displacement | knockdown,floor | Street Fighter;Monster Hunter;Dark Souls | Being knocked flat onto the ground.
+Launch / Juggle | Displacement | launch,juggle,air | Devil May Cry 5;Tekken;Bayonetta | Being sent into the air and kept there by follow-up hits.
+Wall Bounce / Wall Splat | Displacement | wall,bounce | Tekken;Street Fighter;Mortal Kombat | Hitting a wall and rebounding or sticking.
+Ground Bounce | Displacement | bounce,ground | Street Fighter;Marvel vs Capcom;Tekken | Slammed into the ground hard enough to bounce back up.
+Get Up / Wake Up | Recovery | getup,recovery | Dark Souls;Street Fighter;Monster Hunter | Rising back to the feet after a knockdown, sometimes with a roll.
+Tech Recovery / Breakfall | Recovery | tech,recovery | Super Smash Bros;Tekken;Guilty Gear | A quick recovery roll to avoid follow-ups.
+Stun / Dazed | Status | stun,dazed | Street Fighter Dizzy;Batman Arkham;Monster Hunter | A wobbling helpless state, often with birds or stars overhead.
+Posture Break | Status | posture,break | Sekiro;Lies of P;Wo Long | Collapsing to a knee when the posture meter fills.
+Hit Stop / Hit Freeze | Feel | hitstop,impact,timing | Street Fighter;Monster Hunter;Hollow Knight | Freezing both characters for a few frames on impact to sell weight.
+Crumple / Collapse | Hit | crumple,knockdown | Street Fighter Crumple;Tekken;Mortal Kombat | A slow collapse to the floor that leaves the victim open.
+Burning | Status | fire,dot | Dark Souls;Elden Ring;Divinity Original Sin 2 | Writhing and patting at flames while on fire.
+Frozen | Status | ice,freeze | Diablo;Magicka;Darksiders | Encased in ice and unable to move.
+Electrocuted / Shocked | Status | lightning,stun | Resident Evil;Bioshock;Elden Ring | Convulsing from electric damage.
+Poisoned | Status | poison,dot | Dark Souls;Monster Hunter;Pokemon | Green tint, retching or slowed movement from poison.
+Grabbed / Struggle (Button Mash) | Status | grabbed,qte | Resident Evil;Left 4 Dead;The Last of Us | Being held by an enemy and mashing to break free.
+Block Stun / Chip Damage | Hit | block,stun | Street Fighter;Guilty Gear;Tekken | The frozen frames after blocking during which you can't act.
+Pushback on Block | Displacement | block,push | Street Fighter;Mortal Kombat;Tekken | Being slid backward while blocking.
+# CAT death | Death & Defeat | Dying, getting downed, and coming back.
+Death (Collapse) | Death | death,collapse | Dark Souls;The Witcher 3;Red Dead Redemption 2 | A keyframed fall to the ground on death.
+Ragdoll Death | Death | death,ragdoll,physics | Half-Life 2;Skyrim;GTA V | Handing the body to physics so it flops naturally.
+Dissolve / Disintegrate | Death | death,dissolve,vfx | Destiny 2;Hollow Knight;Elden Ring | The body fades, burns away or turns to particles.
+Gib / Explode | Death | death,gore,gibs | Doom;Gears of War;Dead Space | The body bursts into pieces.
+Dismemberment | Death | gore,limbs | Dead Space;Metal Gear Rising;Fallout | Limbs severed by cutting attacks.
+Kill Cam / Slow-Mo Kill | Death | killcam,slow-motion | Sniper Elite X-Ray;Fallout VATS;Call of Duty | A replay or slow-motion shot of the killing blow.
+Downed / Bleeding Out | Down | downed,revive | Gears of War;Apex Legends;Left 4 Dead | Crawling or kneeling while waiting for revival.
+Revive Ally | Down | revive,coop | Apex Legends;Gears of War;Left 4 Dead | Helping a downed teammate back to their feet.
+Resurrection / Respawn | Down | respawn,revive | Dark Souls Bonfire;Overwatch;Destiny 2 | Coming back to life at a checkpoint or spawn.
+Fighting Game KO | Death | ko,fighting | Street Fighter;Tekken;Mortal Kombat | The slow-motion final hit and collapse that ends a round.
+Boss Death Sequence | Death | boss,cinematic | Elden Ring;Hollow Knight;Dark Souls | An extended death, often with a final roar, collapse and dissolve.
+# CAT fighting | Fighting Game Moves | Animations specific to versus fighters.
+Fighter Intro | Presentation | intro,cinematic | Street Fighter 6;Tekken 8;Guilty Gear Strive | The pre-round entrance animation.
+Victory Pose | Presentation | win,pose | Street Fighter;Tekken;Super Smash Bros | The win animation after a round or match.
+Taunt | Presentation | taunt,emote | Street Fighter;Super Smash Bros;Devil May Cry | A provocative gesture, sometimes with a gameplay effect.
+Forward / Back Dash | Movement | dash,fighting | Street Fighter;Guilty Gear;Tekken | Short burst movement in a 2D or 3D fighter.
+Crouch Block | Defense | block,low | Street Fighter;Mortal Kombat;King of Fighters | Blocking low while crouched.
+Special Move (Projectile) | Special | special,projectile,motion-input | Street Fighter Hadouken;Mortal Kombat;King of Fighters | A motion-input fireball move.
+Rising Uppercut (Shoryuken) | Special | special,invincible,anti-air | Street Fighter Shoryuken;King of Fighters;Tekken | An invincible anti-air uppercut.
+Spinning Kick (Tatsumaki) | Special | special,kick | Street Fighter Tatsumaki;Tekken;Mortal Kombat | A spinning, traveling kick special.
+Command Grab | Grapple | grab,command | Street Fighter Zangief;Tekken King;Guilty Gear Potemkin | An unblockable special throw.
+Super / Critical Art | Special | super,cinematic | Street Fighter 6 Critical Art;Mortal Kombat Fatal Blow;Guilty Gear Overdrive | A meter-burning cinematic super move.
+Throw Tech / Break | Defense | tech,throw | Street Fighter;Tekken;Guilty Gear | Escaping a throw by pushing apart.
+Drive Impact / Armor Attack | Special | armor,super-armor | Street Fighter 6 Drive Impact;Street Fighter IV Focus Attack;Tekken Heat | An armored strike that absorbs hits and crumples the opponent.
+Combo Breaker | Defense | burst,break | Killer Instinct;Guilty Gear Burst;Mortal Kombat Breaker | Interrupting the opponent's combo with a burst.
+Character Select Pose | Presentation | select,menu | Super Smash Bros;Tekken;Street Fighter | The pose or loop on the character select screen.
+# CAT enemies | Enemy & Boss Behaviour | How enemies telegraph, react, enter and escalate.
+Attack Telegraph / Windup | Telegraph | telegraph,windup,readability | Dark Souls;Monster Hunter;Hades | The readable anticipation pose before an enemy attacks.
+Unblockable Attack Warning | Telegraph | telegraph,glint,unblockable | Sekiro Perilous Attack;Shadow of Mordor;Batman Arkham | A flash, glyph or glint warning of an undodgeable attack.
+Boss Intro | Boss | boss,intro,cinematic | Elden Ring;Hollow Knight;Devil May Cry | The entrance sequence, often with a name card.
+Boss Phase Transition | Boss | boss,phase | Elden Ring Radagon;Sekiro Isshin;Dark Souls Gael | A mid-fight change of form, moveset or arena.
+Enrage / Roar | Boss | roar,enrage | Monster Hunter;Elden Ring;World of Warcraft | A roar or flare signalling a more aggressive state.
+Enemy Spawn / Emerge | Spawn | spawn,emerge | Doom Eternal;Diablo;Hades | Enemies crawling out of the ground, portals or doors.
+Alert / Spotted | Stealth AI | alert,detection | Metal Gear Solid;Hitman;Assassin's Creed | The startled reaction when a guard detects the player.
+Search / Investigate | Stealth AI | search,ai | Metal Gear Solid;Splinter Cell;The Last of Us | A guard looking around after losing the player.
+Enemy Taunt / Provoke | Behaviour | taunt,ai | Halo Grunts;Monster Hunter;Dark Souls | Enemies jeering or posturing between attacks.
+Flee / Retreat | Behaviour | flee,ai | Monster Hunter;Halo;The Last of Us | An enemy turning to run when weakened.
+Weak Point Exposed | Boss | weakpoint,vulnerable | Shadow of the Colossus;Zelda;Monster Hunter | A boss revealing a vulnerable spot after a mistake.
+Monster Grab / Pin | Behaviour | grab,pin | Monster Hunter;Resident Evil;Left 4 Dead Hunter | A creature pinning the player to the ground.
+Charging Rush | Behaviour | charge,rush | Resident Evil 4 El Gigante;Monster Hunter Diablos;Hades | A headlong charge across the arena.
+# CAT stealth | Stealth & Takedowns | Silent kills and sneaky handling of enemies.
+Stealth Takedown (Behind) | Takedown | takedown,silent,paired | Batman Arkham;Splinter Cell;The Last of Us | Grabbing an enemy from behind and silently dispatching them.
+Air Assassination | Takedown | assassination,air | Assassin's Creed;Dishonored;Ghost of Tsushima | Dropping from above onto a target.
+Ledge Takedown | Takedown | takedown,ledge | Assassin's Creed;Batman Arkham;Uncharted | Pulling an enemy off a ledge from below.
+Cover Takedown | Takedown | takedown,cover | Splinter Cell;Hitman;Ghost Recon | Reaching over or around cover to take an enemy out.
+Chokehold / Sleeper Hold | Takedown | choke,non-lethal | Metal Gear Solid;Hitman;The Last of Us | Choking an enemy unconscious.
+Body Drag / Carry | Utility | body,carry | Hitman;Metal Gear Solid;Dishonored | Moving a body out of sight.
+Distraction Throw | Utility | throw,distract | The Last of Us Bottle;Metal Gear Solid;Hitman | Throwing an object to draw attention.
+Hide (Grass / Locker) | Utility | hide,stealth | Assassin's Creed;Alien Isolation;Outlast | Entering and exiting hiding spots.
+Chain Takedown | Takedown | takedown,chain | Splinter Cell Mark and Execute;Shadow of Mordor;Batman Arkham | Taking out several enemies in one continuous sequence.
+# CAT vfx | Combat VFX & Game Feel | Effects layered on animation that make hits feel powerful.
+Weapon Trail / Slash Arc | Trail | trail,slash | Devil May Cry 5;Genshin Impact;Zelda Breath of the Wild | A ribbon or arc following the weapon's swing path.
+Hit Spark / Impact Flash | Impact | impact,spark | Street Fighter;Monster Hunter;Hollow Knight | A burst at the point of contact.
+Blood Splatter | Impact | blood,gore | Bloodborne;Mortal Kombat;Ghost of Tsushima | Spurts and decals of blood on hit.
+Screen Shake | Camera | camera,shake | Vlambeer games;Doom Eternal;Hollow Knight | Shaking the camera to sell impact.
+Camera Zoom on Crit | Camera | camera,zoom,critical | Batman Arkham;Spider-Man;Fire Emblem | A brief zoom or slow-mo on a big hit.
+Muzzle Flash | Firearm | muzzle,flash | Call of Duty;Battlefield;Doom | The flash of light from a gun barrel.
+Shell Ejection | Firearm | shell,casing | Call of Duty;Max Payne 3;Escape from Tarkov | Brass casings flying from the gun.
+Bullet Tracer | Firearm | tracer,projectile | Battlefield;Halo;Destiny 2 | The visible streak of a bullet's path.
+Impact Decal / Bullet Hole | Impact | decal,environment | F.E.A.R.;Battlefield;Max Payne | Marks left on surfaces after a hit.
+Explosion | Explosive | explosion,fire,smoke | Battlefield;Just Cause;Doom Eternal | Fireball, debris and smoke from explosives.
+Shockwave / Ground Crack | Impact | shockwave,ground | God of War;Dragon Ball;Monster Hunter | A ring distortion or cracked ground from a big impact.
+Afterimage / Motion Trail | Trail | afterimage,speed | Devil May Cry;Sekiro;Dragon Ball FighterZ | Ghost copies trailing a fast-moving character.
+Charge Glow / Power Aura | Aura | aura,charge | Dragon Ball;Street Fighter;Monster Hunter | Light and particles that build while charging.
+Parry Spark / Clash | Impact | parry,spark,clash | Sekiro;For Honor;Ghost of Tsushima | Sparks when blades meet during a parry or clash.
+Shield Break Shatter | Impact | shield,shatter | Apex Legends;Overwatch;Destiny 2 | Glassy shatter when a shield or armor breaks.
+Hit Flash / White Flash | Impact | flash,shader | Hollow Knight;Hades;Enter the Gungeon | Briefly tinting the hit character white or red.
+Slow-Motion Impact | Camera | slow-motion,impact | Batman Arkham;Sifu;Max Payne | Time briefly slowing on a decisive blow.
+Smear Frame | Animation | smear,2d,principle | Spider-Verse style;Guilty Gear Strive;Cuphead | Stretched in-between frames that sell speed.
+Elemental Status VFX | Status | elemental,status | Genshin Impact;Divinity Original Sin 2;Diablo | Fire, ice, poison and shock overlays on characters.
+# CAT ui | Combat UI Animation | HUD motion that reports combat state (the bridge to Game UI Database).
+Health Bar Drain (Ghost Bar) | Health | health,bar,lag | Street Fighter;Dark Souls;Monster Hunter | A delayed second bar that shows recent damage before catching up.
+Floating Damage Numbers | Feedback | damage,numbers | World of Warcraft;Borderlands;Diablo | Numbers that pop off enemies when hit.
+Critical Hit Text | Feedback | critical,text | Borderlands;Destiny 2;Fire Emblem | A distinct pop, color or callout for critical hits.
+Combo Counter | Feedback | combo,counter | Devil May Cry Style Meter;Bayonetta;Batman Arkham | An escalating counter or rank for combos.
+Lock-On Reticle | Targeting | lock-on,reticle | Dark Souls;Zelda;Bayonetta | The marker that snaps to a targeted enemy.
+Crosshair Bloom | Targeting | crosshair,spread | Counter-Strike;Fortnite;Halo | The crosshair expanding with movement and firing.
+Hit Marker | Feedback | hitmarker,confirm | Call of Duty;Apex Legends;Destiny 2 | The tick or X that confirms a hit.
+Kill Feed / Kill Confirmation | Feedback | killfeed,confirm | Call of Duty;Valorant;Overwatch | A notice or skull that confirms an elimination.
+Damage Direction Indicator | Feedback | damage,direction | Call of Duty;Halo;Apex Legends | Arcs pointing toward incoming damage.
+Low Health Vignette | Health | health,vignette | Call of Duty;Gears of War;Resident Evil | Red edges, desaturation or heartbeat at low health.
+Ability Cooldown Sweep | Abilities | cooldown,radial | World of Warcraft;League of Legends;Overwatch | A radial wipe showing an ability recharging, with a flash when ready.
+Boss Health Bar Intro | Health | boss,bar,intro | Dark Souls;Elden Ring;Hollow Knight | The boss name and bar sliding into view.
+Stamina Bar | Resource | stamina,bar | Dark Souls;Zelda Breath of the Wild;Elden Ring | Depletion and regeneration of stamina.
+Death Screen (YOU DIED) | Presentation | death,screen | Dark Souls;Elden Ring;Sekiro | The fade-in text and treatment when the player dies.
+Round Start / KO Banner | Presentation | banner,round | Street Fighter;Tekken;Mortal Kombat | Fight! and K.O. banners in fighting games.
+Quick Time Event Prompt | Prompt | qte,button | God of War;Resident Evil 4;Batman Arkham | Pop-up button prompts during cinematic actions.
+Counter Prompt Indicator | Prompt | counter,prompt | Batman Arkham;Shadow of Mordor;Spider-Man | The icon above enemies that signals a counter window.
+Posture / Stagger Meter | Resource | posture,stagger,bar | Sekiro;Final Fantasy VII Remake;Lies of P | A meter that fills toward a stagger break.
+# CAT exploration | Exploration & Traversal | Getting around the world outside of fights.
+Walk Cycle | Ground | walk,loop | Red Dead Redemption 2;Journey;Animal Crossing | The everyday relaxed walk loop.
+Jog / Run (Explore) | Ground | run,loop | Zelda Breath of the Wild;Okami;Genshin Impact | The default travel run without a weapon drawn.
+Sneak / Tiptoe | Ground | sneak,tiptoe,cartoon | Mickey Mouse cartoons;Luigi's Mansion;Untitled Goose Game | Exaggerated careful tiptoeing, high knees and arched back.
+Swim (Surface) | Water | swim,loop | Zelda Breath of the Wild;Red Dead Redemption 2;Subnautica | Paddling or crawl stroke on the water surface.
+Dive / Underwater Swim | Water | swim,dive | Super Mario 64;Subnautica;Abzu | Swimming freely beneath the surface.
+Free Climb | Climbing | climb,surface | Zelda Breath of the Wild;Shadow of the Colossus;Assassin's Creed | Climbing a rock or wall face in any direction.
+Ladder Climb | Climbing | ladder,loop | Resident Evil;Metal Gear Solid;Half-Life | Climbing up or down a ladder with hand-over-hand cycles.
+Glide / Paraglider | Air | glide,air | Zelda Breath of the Wild;Spyro;Genshin Impact | Floating down with a glider, cape or wings.
+Fly | Air | fly,loop | Spyro;Superman games;Sonic | Sustained flight with wing flaps or superhero pose.
+Ride Horse (Gallop) | Mount | horse,gallop | Red Dead Redemption 2;Shadow of the Colossus;Ghost of Tsushima | Rider and horse gallop cycle.
+Drive / Steer Vehicle | Vehicle | vehicle,steer | GTA V;Mario Kart;Death Stranding | Hands on the wheel, leaning into turns.
+Slide Down Slope | Ground | slide,slope | Super Mario 64;Uncharted;Tomb Raider | Sliding down a steep surface.
+Balance Beam / Tightrope | Ground | balance,beam | Uncharted;Assassin's Creed;Crash Bandicoot | Arms out, wobbling across a narrow surface.
+Squeeze Through Gap | Ground | squeeze,loading | God of War;Uncharted;Tomb Raider | Shimmying sideways through a narrow crack, often hiding a load.
+Push / Pull Object | Interaction | push,pull,physics | Zelda;Uncharted;Inside | Leaning into a block or crate to move it.
+Zipline | Air | zipline,slide | Uncharted;Dying Light;Apex Legends | Hanging from a line and sliding along it.
+Leap of Faith | Air | dive,signature | Assassin's Creed;Prince of Persia;Uncharted | A swan dive from a great height into a haystack or water.
+Spin Dash / Roll Ball | Ground | spin,ball,platformer | Sonic the Hedgehog;Metroid Morph Ball;Spyro | Curling into a ball to roll at speed.
+Wall Slide | Climbing | wall,slide,platformer | Mega Man X;Celeste;Super Mario Odyssey | Sliding slowly down a wall while clinging.
+Cap Throw / Possess | Ground | throw,signature,platformer | Super Mario Odyssey;Kirby;Psychonauts | A signature platformer verb with a thrown or transformed object.
+# CAT interaction | World Interaction | Everyday verbs: picking up, opening, using and gathering.
+Pick Up Item | Pickup | pickup,item | Zelda;Resident Evil;The Last of Us | Bending to grab an item off the ground or table.
+Item Get / Holding Aloft | Pickup | item,celebrate,fanfare | Zelda Item Get;Super Mario 64 Star;Okami Brush Technique | Raising a new item overhead with a fanfare.
+Open Chest | Container | chest,loot | Zelda;Diablo;Dark Souls | Lifting the lid of a chest, often with a glow.
+Open / Kick Door | Door | door,open | Resident Evil;Doom;Dishonored | Pushing, pulling or kicking through a door.
+Pull Lever / Press Switch | Mechanism | lever,switch | Dark Souls;Zelda;Tomb Raider | Operating a lever, button or valve.
+Talk / Interact with NPC | Social | npc,talk | The Witcher 3;Animal Crossing;Mass Effect | Turning to face and gesturing at an NPC.
+Read / Examine | Examine | read,inspect | Resident Evil;Gone Home;What Remains of Edith Finch | Holding up and studying an object or note.
+Eat / Drink | Consume | eat,drink | Monster Hunter;Red Dead Redemption 2;Breath of the Wild | Eating, drinking or feasting animations.
+Sit / Rest at Campfire | Rest | sit,rest,checkpoint | Dark Souls Bonfire;Elden Ring Site of Grace;The Witcher 3 Meditate | Sitting down to rest, often as a save point.
+Sleep / Lie Down | Rest | sleep,rest | Animal Crossing;Zelda;Stardew Valley | Getting into bed and sleeping.
+Gather / Harvest | Gathering | gather,harvest | Monster Hunter;Genshin Impact;Stardew Valley | Picking plants, berries or materials.
+Mine / Chop | Gathering | mine,chop,tool | Minecraft;Stardew Valley;Valheim | Swinging a pickaxe or axe at a resource node.
+Fishing (Cast / Reel) | Gathering | fishing,minigame | Stardew Valley;Animal Crossing;Final Fantasy XV | Casting a line, waiting and reeling in the catch.
+Craft / Forge | Crafting | craft,forge | Monster Hunter Smithy;Minecraft;Kingdom Come Deliverance | Hammering, stirring or assembling at a station.
+Cook | Crafting | cook,food | Breath of the Wild;Monster Hunter;Overcooked | Cooking with a pot, grill or stove, often with a reveal.
+Plant / Water Crops | Farming | farm,water | Stardew Valley;Harvest Moon;Animal Crossing | Tilling, sowing and watering.
+Pet Animal | Social | pet,animal | Assassin's Creed Valhalla;Red Dead Redemption 2;Ghost of Tsushima | Kneeling to pet a dog, cat or horse.
+Use Tool / Gadget | Gadget | tool,gadget | Zelda Hookshot;Batman Arkham;Ratchet and Clank | Aiming and firing a utility gadget.
+Collectible Pickup Pop | Pickup | collectible,coin,pop | Super Mario;Sonic Rings;Crash Bandicoot Wumpa | Coins, rings and fruit spinning and popping when collected.
+# CAT expression | Emotes & Expression | Faces, gestures and personality, from emotes to dialogue.
+Wave / Greet | Emote | wave,greet,social | Fortnite;World of Warcraft;Animal Crossing | Waving hello.
+Dance Emote | Emote | dance,emote | Fortnite;World of Warcraft;Destiny 2 | Looping dance emotes.
+Point / Beckon | Emote | point,gesture | Elden Ring Gestures;Dark Souls;Sea of Thieves | Pointing forward or waving others over.
+Bow / Salute | Emote | bow,respect | Elden Ring;Sekiro;Ghost of Tsushima | A respectful bow or salute.
+Laugh | Emote | laugh,emotion | Animal Crossing;Final Fantasy X;World of Warcraft | Laughing reactions.
+Cry / Sad | Emotion | sad,emotion | Animal Crossing;Kingdom Hearts;Undertale | Sobbing, slumped or dejected poses.
+Angry / Fume | Emotion | angry,emotion,cartoon | Animal Crossing;Donald Duck cartoons;Paper Mario | Steam from ears, stomping and shaking fists.
+Surprised / Take | Emotion | surprise,take,cartoon | Mickey Mouse cartoons;Animal Crossing;Ace Attorney | A jump of surprise with eyes popping out.
+Double Take | Emotion | take,comedy,cartoon | Looney Tunes;Ace Attorney;Paper Mario | Looking, glancing away, then snapping back in shock.
+Shrug / Confused | Emotion | shrug,question | Animal Crossing;The Sims;Fortnite | Shrugging or scratching the head with a question mark.
+Celebrate / Cheer | Emotion | celebrate,win | Pokemon;FIFA;Mario Party | Fist pumps, jumps and cheers.
+Victory Fanfare | Celebrate | victory,fanfare,jrpg | Final Fantasy;Zelda;Pokemon | Post-battle victory pose and music sting.
+Lip Sync / Talking | Dialogue | lipsync,facial | The Last of Us;Mass Effect;Half-Life 2 | Mouth shapes synced to dialogue.
+Gibberish Talk / Animalese | Dialogue | gibberish,stylised | Animal Crossing;Banjo-Kazooie;Okami | Stylised babble with bobbing heads instead of lip sync.
+Facial Expression Blend | Dialogue | facial,blendshape | L.A. Noire;Hellblade;Detroit Become Human | Blended facial expressions for emotion.
+Eye Blink & Look-At | Dialogue | blink,lookat,procedural | The Last of Us;Uncharted;Red Dead Redemption 2 | Procedural blinking and eye/head tracking.
+Sit Idle / Lean | Idle | idle,sit,ambient | The Sims;Red Dead Redemption 2;Persona 5 | Ambient sitting, leaning and lounging.
+Sim Needs (Yawn, Stretch) | Idle | idle,needs,sim | The Sims;Animal Crossing;Stardew Valley | Yawning, stretching, scratching and other ambient needs.
+Photo Mode Pose | Emote | pose,photo | Ghost of Tsushima;Spider-Man;Final Fantasy XV | Static or looping poses for photo mode.
+# CAT cartoon | Cartoon & Classic Principles | Traditional and rubber-hose animation applied to games.
+Squash and Stretch | Principle | principle,squash,stretch | Cuphead;Super Mario;Kirby | Deforming shape to show weight and speed.
+Anticipation | Principle | principle,anticipation | Cuphead;Hollow Knight;Street Fighter | A preparatory movement before the main action.
+Follow Through & Overlap | Principle | principle,secondary | Hollow Knight Cloak;Ori;Zelda Wind Waker | Hair, cloth and tails continuing to move after the body stops.
+Rubber Hose Walk | Cartoon | rubber-hose,walk,1930s | Cuphead;Steamboat Willie;Epic Mickey | Bouncy, noodle-limbed 1930s cartoon walk.
+Cartoon Run (Wheel Legs) | Cartoon | run,cartoon,smear | Looney Tunes;Sonic Super Peel Out;Crash Bandicoot | Legs blurring into a wheel at top speed.
+Scramble in Place / Takeoff | Cartoon | cartoon,run,anticipation | Looney Tunes;Crash Bandicoot;Sonic | Legs spinning in place before zooming off.
+Cartoon Fall (Look at Camera) | Cartoon | fall,gag,cartoon | Looney Tunes;Crash Bandicoot;Rayman | Hanging midair, looking at the camera, then dropping.
+Flattened / Accordion | Cartoon | squash,gag | Looney Tunes;Super Mario;Crash Bandicoot Death | Squashed flat or crumpled like an accordion.
+Dizzy Stars / Birds | Cartoon | dizzy,stars | Looney Tunes;Super Mario;Kirby | Stars or birds circling the head after a bonk.
+Ink / Brush Stroke Animation | Stylised | ink,brush,painterly | Okami;Sifu;Hades | Animation that mimics brush strokes, ink washes or painted frames.
+Celestial Brush Draw | Stylised | brush,draw,gesture | Okami;Drawn to Life;Scribblenauts | Freezing time and drawing a shape on screen to cause an effect.
+Flower Bloom Trail | Stylised | bloom,nature,trail | Okami;Flower;Journey | Grass and flowers sprouting in a character's wake.
+Limited Animation / On Twos | Stylised | twos,framerate,stylised | Guilty Gear Strive;Spider-Verse;Hi-Fi Rush | Holding poses for two frames or more to mimic hand-drawn animation.
+Sprite Animation (Pixel Art) | Stylised | pixel,sprite,2d | Hollow Knight;Dead Cells;Celeste | Frame-by-frame pixel art animation.
+Paper / Cutout Animation | Stylised | paper,cutout | Paper Mario;Tearaway;South Park | Flat paper characters that flip and fold.
+Claymation / Stop Motion Look | Stylised | stopmotion,clay | Armikrog;The Neverhood;Harold Halibut | A handmade stop-motion feel.
+Toon Shader Line Boil | Stylised | lineboil,toon | Cuphead;Borderlands;Hi-Fi Rush | Jittering outlines that mimic hand-drawn redraws.
+# CAT creature | Creatures & Animals | Non-human locomotion and behaviour.
+Quadruped Walk / Trot | Locomotion | quadruped,walk | Okami Amaterasu;Red Dead Redemption 2;Shadow of the Colossus | Four-legged gait cycles.
+Bird Flight / Flap | Locomotion | bird,flight | Assassin's Creed Eagle;Journey;Untitled Goose Game | Wing flaps, glides and landings.
+Slither | Locomotion | snake,slither | Snake Pass;Monster Hunter;Dark Souls | Serpentine side-to-side motion.
+Fish Swim | Locomotion | fish,swim | Abzu;Subnautica;Animal Crossing | Body-wave swimming cycles.
+Insect / Spider Crawl | Locomotion | insect,spider,procedural | Grounded;Hollow Knight;Dark Souls | Many-legged crawling, often procedural IK.
+Dragon Flight & Breath | Boss | dragon,flight,breath | Skyrim;Elden Ring;Monster Hunter | Wing beats, landings and breath attacks.
+Pet / Companion Idle | Companion | pet,companion | Animal Crossing;Ghost of Tsushima;Fallout 4 Dogmeat | Tail wags, sniffing and play animations.
+Creature Eat / Feed | Behaviour | eat,creature | Monster Hunter;Spore;Viva Pinata | Creatures feeding on prey or food.
+Slime Bounce | Locomotion | slime,bounce,squash | Dragon Quest;Slime Rancher;Kirby | Jelly-like squash-and-stretch hopping.
+# CAT menu | UI & Menu Motion | Interface animation outside combat.
+Main Menu Idle Scene | Menu | menu,background | Final Fantasy;Persona 5;Elden Ring | Animated characters or scenery behind the title menu.
+Menu Transition | Menu | transition,wipe | Persona 5;Hades;Ghost of Tsushima | Wipes, slides and flourishes between menu screens.
+Button Hover / Press | Menu | button,hover,feedback | Persona 5;Hades;Destiny 2 | Scale, glow or shake on hover and press.
+Inventory Item Rotate | Menu | inventory,rotate | Resident Evil;Escape from Tarkov;Destiny 2 | Spinning a 3D item in the inventory.
+Level Up / Rank Up | Progression | level-up,celebrate | World of Warcraft;Diablo;Fortnite Battle Pass | Burst, sound and text when leveling up.
+Loot Box / Card Reveal | Progression | reveal,gacha | Overwatch Loot Box;Genshin Impact Wish;Hearthstone Pack | Anticipation and reveal sequences for rewards.
+Loading Screen Animation | Menu | loading,spinner | Bayonetta;Destiny 2;Elden Ring | Animated characters or emblems while loading.
+Dialogue Box Typewriter | Dialogue | text,typewriter | Undertale;Pokemon;Ace Attorney | Text revealed character by character, often with blips.
+Map Reveal / Fog of War | Map | map,reveal | Assassin's Creed Viewpoint;Hollow Knight;Breath of the Wild | Map areas unveiling as they are explored.
+Quest Complete Banner | Progression | quest,banner | Skyrim;The Witcher 3;Destiny 2 | The banner and sound for completing a quest.
+Achievement / Trophy Pop | Progression | achievement,toast | Xbox Achievements;PlayStation Trophy;Steam | A toast notification sliding in.
+# CAT cinematic | Cinematic & Narrative | Cutscene and storytelling animation.
+Cutscene Performance Capture | Cinematic | mocap,cutscene | The Last of Us Part II;God of War;Hellblade | Full-body and facial mocap performances.
+Character Entrance | Cinematic | intro,entrance | Devil May Cry 5;Metal Gear Solid;Kingdom Hearts | A stylish introduction of a character.
+Walk-and-Talk | Cinematic | walk,dialogue | The Last of Us;God of War;Uncharted | Characters talking while moving with the player.
+Dramatic Reveal / Turn | Cinematic | reveal,camera | Metal Gear Solid;Final Fantasy VII;Resident Evil | A slow turn or reveal staged for drama.
+Ending / Credits Scene | Cinematic | ending,credits | Journey;Shadow of the Colossus;Okami | Final narrative sequences.
+Hug / Embrace | Cinematic | hug,contact,paired | God of War;The Last of Us;Kingdom Hearts | Two characters embracing, a hard paired-contact animation.
+# CAT sports | Sports, Racing & Rhythm | Animation for sports sims, racers and music games.
+Kick / Shoot (Football) | Sports | football,kick | EA Sports FC;Rocket League;Mario Strikers | Striking a ball with the foot.
+Dribble | Sports | dribble,basketball | NBA 2K;EA Sports FC;Mario Hoops | Ball handling while moving.
+Goal / Score Celebration | Sports | celebrate,goal | EA Sports FC;NBA 2K;Rocket League | Celebrations after scoring.
+Tackle | Sports | tackle,paired | Madden NFL;EA Sports FC;Rugby | Paired tackling animations.
+Swing (Golf / Tennis / Bat) | Sports | swing,racket | Wii Sports;Mario Tennis;MLB The Show | Swinging a club, racket or bat.
+Kart Drift & Boost | Racing | drift,boost,kart | Mario Kart;Crash Team Racing;Sonic Racing | Leaning into drifts with sparks and boost.
+Skateboard Trick | Sports | skate,trick | Tony Hawk's Pro Skater;Skate;OlliOlli | Ollies, flips and grinds.
+Rhythm Hit / Note Feedback | Rhythm | rhythm,beat | Hi-Fi Rush;Guitar Hero;Crypt of the NecroDancer | Characters and UI pulsing to the beat on each hit.
+Dance Performance | Rhythm | dance,mocap | Just Dance;Dance Central;Persona Dancing | Full choreographed dance routines.

@@ -1,0 +1,1352 @@
+[
+{
+"id": "ranged.charge-shot",
+"name": "Charge Shot",
+"example_games": [
+"Mega Man",
+"Metroid",
+"Destiny 2"
+]
+},
+{
+"id": "ranged.dual-pistol-gunplay",
+"name": "Dual-Pistol Gunplay",
+"example_games": [
+"Devil May Cry Ebony and Ivory",
+"Max Payne",
+"Bayonetta"
+]
+},
+{
+"id": "ranged.boomerang-returning-throw",
+"name": "Boomerang / Returning Throw",
+"example_games": [
+"Zelda",
+"God of War",
+"Risk of Rain"
+]
+},
+{
+"id": "magic.beam-attack",
+"name": "Beam Attack",
+"example_games": [
+"Dragon Ball FighterZ Kamehameha",
+"Elden Ring Comet Azur",
+"Overwatch Zarya"
+]
+},
+{
+"id": "magic.self-buff-power-up",
+"name": "Self Buff / Power Up",
+"example_games": [
+"Dragon Ball Z Kaioken",
+"Monster Hunter",
+"Dark Souls"
+]
+},
+{
+"id": "magic.heal",
+"name": "Heal",
+"example_games": [
+"Overwatch Mercy",
+"World of Warcraft",
+"Final Fantasy"
+]
+},
+{
+"id": "magic.transformation",
+"name": "Transformation",
+"example_games": [
+"Devil May Cry Devil Trigger",
+"Bayonetta",
+"Batman Arkham Knight"
+]
+},
+{
+"id": "magic.lightning-strike",
+"name": "Lightning Strike",
+"example_games": [
+"Elden Ring",
+"Dark Souls Lightning Spear",
+"Diablo"
+]
+},
+{
+"id": "magic.telekinesis-force-push",
+"name": "Telekinesis / Force Push",
+"example_games": [
+"Star Wars Jedi Fallen Order",
+"Control",
+"Psi-Ops"
+]
+},
+{
+"id": "magic.time-slow-bullet-time",
+"name": "Time Slow / Bullet Time",
+"example_games": [
+"Max Payne",
+"Bayonetta Witch Time",
+"Superhot"
+]
+},
+{
+"id": "defense.block-guard",
+"name": "Block / Guard",
+"example_games": [
+"Dark Souls",
+"For Honor",
+"Street Fighter"
+]
+},
+{
+"id": "defense.backstep-backflip",
+"name": "Backstep / Backflip",
+"example_games": [
+"Dark Souls",
+"Devil May Cry",
+"Nier Automata"
+]
+},
+{
+"id": "reactions.get-up-wake-up",
+"name": "Get Up / Wake Up",
+"example_games": [
+"Dark Souls",
+"Street Fighter",
+"Monster Hunter"
+]
+},
+{
+"id": "reactions.tech-recovery-breakfall",
+"name": "Tech Recovery / Breakfall",
+"example_games": [
+"Super Smash Bros",
+"Tekken",
+"Guilty Gear"
+]
+},
+{
+"id": "reactions.stun-dazed",
+"name": "Stun / Dazed",
+"example_games": [
+"Street Fighter Dizzy",
+"Batman Arkham",
+"Monster Hunter"
+]
+},
+{
+"id": "reactions.burning",
+"name": "Burning",
+"example_games": [
+"Dark Souls",
+"Elden Ring",
+"Divinity Original Sin 2"
+]
+},
+{
+"id": "reactions.frozen",
+"name": "Frozen",
+"example_games": [
+"Diablo",
+"Magicka",
+"Darksiders"
+]
+},
+{
+"id": "reactions.electrocuted-shocked",
+"name": "Electrocuted / Shocked",
+"example_games": [
+"Resident Evil",
+"Bioshock",
+"Elden Ring"
+]
+},
+{
+"id": "reactions.poisoned",
+"name": "Poisoned",
+"example_games": [
+"Dark Souls",
+"Monster Hunter",
+"Pokemon"
+]
+},
+{
+"id": "reactions.grabbed-struggle-button-mash",
+"name": "Grabbed / Struggle (Button Mash)",
+"example_games": [
+"Resident Evil",
+"Left 4 Dead",
+"The Last of Us"
+]
+},
+{
+"id": "reactions.pushback-on-block",
+"name": "Pushback on Block",
+"example_games": [
+"Street Fighter",
+"Mortal Kombat",
+"Tekken"
+]
+},
+{
+"id": "death.dismemberment",
+"name": "Dismemberment",
+"example_games": [
+"Dead Space",
+"Metal Gear Rising",
+"Fallout"
+]
+},
+{
+"id": "death.downed-bleeding-out",
+"name": "Downed / Bleeding Out",
+"example_games": [
+"Gears of War",
+"Apex Legends",
+"Left 4 Dead"
+]
+},
+{
+"id": "death.revive-ally",
+"name": "Revive Ally",
+"example_games": [
+"Apex Legends",
+"Gears of War",
+"Left 4 Dead"
+]
+},
+{
+"id": "death.resurrection-respawn",
+"name": "Resurrection / Respawn",
+"example_games": [
+"Dark Souls Bonfire",
+"Overwatch",
+"Destiny 2"
+]
+},
+{
+"id": "death.fighting-game-ko",
+"name": "Fighting Game KO",
+"example_games": [
+"Street Fighter",
+"Tekken",
+"Mortal Kombat"
+]
+},
+{
+"id": "death.boss-death-sequence",
+"name": "Boss Death Sequence",
+"example_games": [
+"Elden Ring",
+"Hollow Knight",
+"Dark Souls"
+]
+},
+{
+"id": "fighting.fighter-intro",
+"name": "Fighter Intro",
+"example_games": [
+"Street Fighter 6",
+"Tekken 8",
+"Guilty Gear Strive"
+]
+},
+{
+"id": "fighting.victory-pose",
+"name": "Victory Pose",
+"example_games": [
+"Street Fighter",
+"Tekken",
+"Super Smash Bros"
+]
+},
+{
+"id": "fighting.taunt",
+"name": "Taunt",
+"example_games": [
+"Street Fighter",
+"Super Smash Bros",
+"Devil May Cry"
+]
+},
+{
+"id": "fighting.forward-back-dash",
+"name": "Forward / Back Dash",
+"example_games": [
+"Street Fighter",
+"Guilty Gear",
+"Tekken"
+]
+},
+{
+"id": "fighting.crouch-block",
+"name": "Crouch Block",
+"example_games": [
+"Street Fighter",
+"Mortal Kombat",
+"King of Fighters"
+]
+},
+{
+"id": "fighting.special-move-projectile",
+"name": "Special Move (Projectile)",
+"example_games": [
+"Street Fighter Hadouken",
+"Mortal Kombat",
+"King of Fighters"
+]
+},
+{
+"id": "fighting.rising-uppercut-shoryuken",
+"name": "Rising Uppercut (Shoryuken)",
+"example_games": [
+"Street Fighter Shoryuken",
+"King of Fighters",
+"Tekken"
+]
+},
+{
+"id": "fighting.spinning-kick-tatsumaki",
+"name": "Spinning Kick (Tatsumaki)",
+"example_games": [
+"Street Fighter Tatsumaki",
+"Tekken",
+"Mortal Kombat"
+]
+},
+{
+"id": "fighting.character-select-pose",
+"name": "Character Select Pose",
+"example_games": [
+"Super Smash Bros",
+"Tekken",
+"Street Fighter"
+]
+},
+{
+"id": "enemies.enemy-taunt-provoke",
+"name": "Enemy Taunt / Provoke",
+"example_games": [
+"Halo Grunts",
+"Monster Hunter",
+"Dark Souls"
+]
+},
+{
+"id": "enemies.flee-retreat",
+"name": "Flee / Retreat",
+"example_games": [
+"Monster Hunter",
+"Halo",
+"The Last of Us"
+]
+},
+{
+"id": "enemies.monster-grab-pin",
+"name": "Monster Grab / Pin",
+"example_games": [
+"Monster Hunter",
+"Resident Evil",
+"Left 4 Dead Hunter"
+]
+},
+{
+"id": "enemies.charging-rush",
+"name": "Charging Rush",
+"example_games": [
+"Resident Evil 4 El Gigante",
+"Monster Hunter Diablos",
+"Hades"
+]
+},
+{
+"id": "stealth.air-assassination",
+"name": "Air Assassination",
+"example_games": [
+"Assassin's Creed",
+"Dishonored",
+"Ghost of Tsushima"
+]
+},
+{
+"id": "stealth.cover-takedown",
+"name": "Cover Takedown",
+"example_games": [
+"Splinter Cell",
+"Hitman",
+"Ghost Recon"
+]
+},
+{
+"id": "stealth.chokehold-sleeper-hold",
+"name": "Chokehold / Sleeper Hold",
+"example_games": [
+"Metal Gear Solid",
+"Hitman",
+"The Last of Us"
+]
+},
+{
+"id": "stealth.hide-grass-locker",
+"name": "Hide (Grass / Locker)",
+"example_games": [
+"Assassin's Creed",
+"Alien Isolation",
+"Outlast"
+]
+},
+{
+"id": "stealth.chain-takedown",
+"name": "Chain Takedown",
+"example_games": [
+"Splinter Cell Mark and Execute",
+"Shadow of Mordor",
+"Batman Arkham"
+]
+},
+{
+"id": "vfx.blood-splatter",
+"name": "Blood Splatter",
+"example_games": [
+"Bloodborne",
+"Mortal Kombat",
+"Ghost of Tsushima"
+]
+},
+{
+"id": "vfx.camera-zoom-on-crit",
+"name": "Camera Zoom on Crit",
+"example_games": [
+"Batman Arkham",
+"Spider-Man",
+"Fire Emblem"
+]
+},
+{
+"id": "vfx.muzzle-flash",
+"name": "Muzzle Flash",
+"example_games": [
+"Call of Duty",
+"Battlefield",
+"Doom"
+]
+},
+{
+"id": "vfx.shell-ejection",
+"name": "Shell Ejection",
+"example_games": [
+"Call of Duty",
+"Max Payne 3",
+"Escape from Tarkov"
+]
+},
+{
+"id": "vfx.impact-decal-bullet-hole",
+"name": "Impact Decal / Bullet Hole",
+"example_games": [
+"F.E.A.R.",
+"Battlefield",
+"Max Payne"
+]
+},
+{
+"id": "vfx.explosion",
+"name": "Explosion",
+"example_games": [
+"Battlefield",
+"Just Cause",
+"Doom Eternal"
+]
+},
+{
+"id": "vfx.shockwave-ground-crack",
+"name": "Shockwave / Ground Crack",
+"example_games": [
+"God of War",
+"Dragon Ball",
+"Monster Hunter"
+]
+},
+{
+"id": "vfx.afterimage-motion-trail",
+"name": "Afterimage / Motion Trail",
+"example_games": [
+"Devil May Cry",
+"Sekiro",
+"Dragon Ball FighterZ"
+]
+},
+{
+"id": "vfx.charge-glow-power-aura",
+"name": "Charge Glow / Power Aura",
+"example_games": [
+"Dragon Ball",
+"Street Fighter",
+"Monster Hunter"
+]
+},
+{
+"id": "vfx.parry-spark-clash",
+"name": "Parry Spark / Clash",
+"example_games": [
+"Sekiro",
+"For Honor",
+"Ghost of Tsushima"
+]
+},
+{
+"id": "vfx.shield-break-shatter",
+"name": "Shield Break Shatter",
+"example_games": [
+"Apex Legends",
+"Overwatch",
+"Destiny 2"
+]
+},
+{
+"id": "vfx.hit-flash-white-flash",
+"name": "Hit Flash / White Flash",
+"example_games": [
+"Hollow Knight",
+"Hades",
+"Enter the Gungeon"
+]
+},
+{
+"id": "vfx.slow-motion-impact",
+"name": "Slow-Motion Impact",
+"example_games": [
+"Batman Arkham",
+"Sifu",
+"Max Payne"
+]
+},
+{
+"id": "vfx.elemental-status-vfx",
+"name": "Elemental Status VFX",
+"example_games": [
+"Genshin Impact",
+"Divinity Original Sin 2",
+"Diablo"
+]
+},
+{
+"id": "ui.critical-hit-text",
+"name": "Critical Hit Text",
+"example_games": [
+"Borderlands",
+"Destiny 2",
+"Fire Emblem"
+]
+},
+{
+"id": "ui.lock-on-reticle",
+"name": "Lock-On Reticle",
+"example_games": [
+"Dark Souls",
+"Zelda",
+"Bayonetta"
+]
+},
+{
+"id": "ui.kill-feed-kill-confirmation",
+"name": "Kill Feed / Kill Confirmation",
+"example_games": [
+"Call of Duty",
+"Valorant",
+"Overwatch"
+]
+},
+{
+"id": "ui.low-health-vignette",
+"name": "Low Health Vignette",
+"example_games": [
+"Call of Duty",
+"Gears of War",
+"Resident Evil"
+]
+},
+{
+"id": "ui.boss-health-bar-intro",
+"name": "Boss Health Bar Intro",
+"example_games": [
+"Dark Souls",
+"Elden Ring",
+"Hollow Knight"
+]
+},
+{
+"id": "ui.stamina-bar",
+"name": "Stamina Bar",
+"example_games": [
+"Dark Souls",
+"Zelda Breath of the Wild",
+"Elden Ring"
+]
+},
+{
+"id": "ui.death-screen-you-died",
+"name": "Death Screen (YOU DIED)",
+"example_games": [
+"Dark Souls",
+"Elden Ring",
+"Sekiro"
+]
+},
+{
+"id": "ui.round-start-ko-banner",
+"name": "Round Start / KO Banner",
+"example_games": [
+"Street Fighter",
+"Tekken",
+"Mortal Kombat"
+]
+},
+{
+"id": "ui.quick-time-event-prompt",
+"name": "Quick Time Event Prompt",
+"example_games": [
+"God of War",
+"Resident Evil 4",
+"Batman Arkham"
+]
+},
+{
+"id": "exploration.jog-run-explore",
+"name": "Jog / Run (Explore)",
+"example_games": [
+"Zelda Breath of the Wild",
+"Okami",
+"Genshin Impact"
+]
+},
+{
+"id": "exploration.sneak-tiptoe",
+"name": "Sneak / Tiptoe",
+"example_games": [
+"Mickey Mouse cartoons",
+"Luigi's Mansion",
+"Untitled Goose Game"
+]
+},
+{
+"id": "exploration.swim-surface",
+"name": "Swim (Surface)",
+"example_games": [
+"Zelda Breath of the Wild",
+"Red Dead Redemption 2",
+"Subnautica"
+]
+},
+{
+"id": "exploration.dive-underwater-swim",
+"name": "Dive / Underwater Swim",
+"example_games": [
+"Super Mario 64",
+"Subnautica",
+"Abzu"
+]
+},
+{
+"id": "exploration.ladder-climb",
+"name": "Ladder Climb",
+"example_games": [
+"Resident Evil",
+"Metal Gear Solid",
+"Half-Life"
+]
+},
+{
+"id": "exploration.fly",
+"name": "Fly",
+"example_games": [
+"Spyro",
+"Superman games",
+"Sonic"
+]
+},
+{
+"id": "exploration.drive-steer-vehicle",
+"name": "Drive / Steer Vehicle",
+"example_games": [
+"GTA V",
+"Mario Kart",
+"Death Stranding"
+]
+},
+{
+"id": "exploration.slide-down-slope",
+"name": "Slide Down Slope",
+"example_games": [
+"Super Mario 64",
+"Uncharted",
+"Tomb Raider"
+]
+},
+{
+"id": "exploration.push-pull-object",
+"name": "Push / Pull Object",
+"example_games": [
+"Zelda",
+"Uncharted",
+"Inside"
+]
+},
+{
+"id": "exploration.zipline",
+"name": "Zipline",
+"example_games": [
+"Uncharted",
+"Dying Light",
+"Apex Legends"
+]
+},
+{
+"id": "exploration.leap-of-faith",
+"name": "Leap of Faith",
+"example_games": [
+"Assassin's Creed",
+"Prince of Persia",
+"Uncharted"
+]
+},
+{
+"id": "exploration.spin-dash-roll-ball",
+"name": "Spin Dash / Roll Ball",
+"example_games": [
+"Sonic the Hedgehog",
+"Metroid Morph Ball",
+"Spyro"
+]
+},
+{
+"id": "exploration.wall-slide",
+"name": "Wall Slide",
+"example_games": [
+"Mega Man X",
+"Celeste",
+"Super Mario Odyssey"
+]
+},
+{
+"id": "exploration.cap-throw-possess",
+"name": "Cap Throw / Possess",
+"example_games": [
+"Super Mario Odyssey",
+"Kirby",
+"Psychonauts"
+]
+},
+{
+"id": "interaction.pick-up-item",
+"name": "Pick Up Item",
+"example_games": [
+"Zelda",
+"Resident Evil",
+"The Last of Us"
+]
+},
+{
+"id": "interaction.item-get-holding-aloft",
+"name": "Item Get / Holding Aloft",
+"example_games": [
+"Zelda Item Get",
+"Super Mario 64 Star",
+"Okami Brush Technique"
+]
+},
+{
+"id": "interaction.open-chest",
+"name": "Open Chest",
+"example_games": [
+"Zelda",
+"Diablo",
+"Dark Souls"
+]
+},
+{
+"id": "interaction.open-kick-door",
+"name": "Open / Kick Door",
+"example_games": [
+"Resident Evil",
+"Doom",
+"Dishonored"
+]
+},
+{
+"id": "interaction.pull-lever-press-switch",
+"name": "Pull Lever / Press Switch",
+"example_games": [
+"Dark Souls",
+"Zelda",
+"Tomb Raider"
+]
+},
+{
+"id": "interaction.talk-interact-with-npc",
+"name": "Talk / Interact with NPC",
+"example_games": [
+"The Witcher 3",
+"Animal Crossing",
+"Mass Effect"
+]
+},
+{
+"id": "interaction.eat-drink",
+"name": "Eat / Drink",
+"example_games": [
+"Monster Hunter",
+"Red Dead Redemption 2",
+"Breath of the Wild"
+]
+},
+{
+"id": "interaction.sit-rest-at-campfire",
+"name": "Sit / Rest at Campfire",
+"example_games": [
+"Dark Souls Bonfire",
+"Elden Ring Site of Grace",
+"The Witcher 3 Meditate"
+]
+},
+{
+"id": "interaction.sleep-lie-down",
+"name": "Sleep / Lie Down",
+"example_games": [
+"Animal Crossing",
+"Zelda",
+"Stardew Valley"
+]
+},
+{
+"id": "interaction.gather-harvest",
+"name": "Gather / Harvest",
+"example_games": [
+"Monster Hunter",
+"Genshin Impact",
+"Stardew Valley"
+]
+},
+{
+"id": "interaction.mine-chop",
+"name": "Mine / Chop",
+"example_games": [
+"Minecraft",
+"Stardew Valley",
+"Valheim"
+]
+},
+{
+"id": "interaction.fishing-cast-reel",
+"name": "Fishing (Cast / Reel)",
+"example_games": [
+"Stardew Valley",
+"Animal Crossing",
+"Final Fantasy XV"
+]
+},
+{
+"id": "interaction.craft-forge",
+"name": "Craft / Forge",
+"example_games": [
+"Monster Hunter Smithy",
+"Minecraft",
+"Kingdom Come Deliverance"
+]
+},
+{
+"id": "interaction.cook",
+"name": "Cook",
+"example_games": [
+"Breath of the Wild",
+"Monster Hunter",
+"Overcooked"
+]
+},
+{
+"id": "interaction.plant-water-crops",
+"name": "Plant / Water Crops",
+"example_games": [
+"Stardew Valley",
+"Harvest Moon",
+"Animal Crossing"
+]
+},
+{
+"id": "interaction.pet-animal",
+"name": "Pet Animal",
+"example_games": [
+"Assassin's Creed Valhalla",
+"Red Dead Redemption 2",
+"Ghost of Tsushima"
+]
+},
+{
+"id": "interaction.use-tool-gadget",
+"name": "Use Tool / Gadget",
+"example_games": [
+"Zelda Hookshot",
+"Batman Arkham",
+"Ratchet and Clank"
+]
+},
+{
+"id": "interaction.collectible-pickup-pop",
+"name": "Collectible Pickup Pop",
+"example_games": [
+"Super Mario",
+"Sonic Rings",
+"Crash Bandicoot Wumpa"
+]
+},
+{
+"id": "expression.wave-greet",
+"name": "Wave / Greet",
+"example_games": [
+"Fortnite",
+"World of Warcraft",
+"Animal Crossing"
+]
+},
+{
+"id": "expression.dance-emote",
+"name": "Dance Emote",
+"example_games": [
+"Fortnite",
+"World of Warcraft",
+"Destiny 2"
+]
+},
+{
+"id": "expression.point-beckon",
+"name": "Point / Beckon",
+"example_games": [
+"Elden Ring Gestures",
+"Dark Souls",
+"Sea of Thieves"
+]
+},
+{
+"id": "expression.bow-salute",
+"name": "Bow / Salute",
+"example_games": [
+"Elden Ring",
+"Sekiro",
+"Ghost of Tsushima"
+]
+},
+{
+"id": "expression.laugh",
+"name": "Laugh",
+"example_games": [
+"Animal Crossing",
+"Final Fantasy X",
+"World of Warcraft"
+]
+},
+{
+"id": "expression.cry-sad",
+"name": "Cry / Sad",
+"example_games": [
+"Animal Crossing",
+"Kingdom Hearts",
+"Undertale"
+]
+},
+{
+"id": "expression.angry-fume",
+"name": "Angry / Fume",
+"example_games": [
+"Animal Crossing",
+"Donald Duck cartoons",
+"Paper Mario"
+]
+},
+{
+"id": "expression.shrug-confused",
+"name": "Shrug / Confused",
+"example_games": [
+"Animal Crossing",
+"The Sims",
+"Fortnite"
+]
+},
+{
+"id": "expression.celebrate-cheer",
+"name": "Celebrate / Cheer",
+"example_games": [
+"Pokemon",
+"FIFA",
+"Mario Party"
+]
+},
+{
+"id": "expression.victory-fanfare",
+"name": "Victory Fanfare",
+"example_games": [
+"Final Fantasy",
+"Zelda",
+"Pokemon"
+]
+},
+{
+"id": "expression.gibberish-talk-animalese",
+"name": "Gibberish Talk / Animalese",
+"example_games": [
+"Animal Crossing",
+"Banjo-Kazooie",
+"Okami"
+]
+},
+{
+"id": "expression.sit-idle-lean",
+"name": "Sit Idle / Lean",
+"example_games": [
+"The Sims",
+"Red Dead Redemption 2",
+"Persona 5"
+]
+},
+{
+"id": "expression.sim-needs-yawn-stretch",
+"name": "Sim Needs (Yawn, Stretch)",
+"example_games": [
+"The Sims",
+"Animal Crossing",
+"Stardew Valley"
+]
+},
+{
+"id": "expression.photo-mode-pose",
+"name": "Photo Mode Pose",
+"example_games": [
+"Ghost of Tsushima",
+"Spider-Man",
+"Final Fantasy XV"
+]
+},
+{
+"id": "cartoon.cartoon-run-wheel-legs",
+"name": "Cartoon Run (Wheel Legs)",
+"example_games": [
+"Looney Tunes",
+"Sonic Super Peel Out",
+"Crash Bandicoot"
+]
+},
+{
+"id": "cartoon.scramble-in-place-takeoff",
+"name": "Scramble in Place / Takeoff",
+"example_games": [
+"Looney Tunes",
+"Crash Bandicoot",
+"Sonic"
+]
+},
+{
+"id": "cartoon.flattened-accordion",
+"name": "Flattened / Accordion",
+"example_games": [
+"Looney Tunes",
+"Super Mario",
+"Crash Bandicoot Death"
+]
+},
+{
+"id": "cartoon.dizzy-stars-birds",
+"name": "Dizzy Stars / Birds",
+"example_games": [
+"Looney Tunes",
+"Super Mario",
+"Kirby"
+]
+},
+{
+"id": "cartoon.sprite-animation-pixel-art",
+"name": "Sprite Animation (Pixel Art)",
+"example_games": [
+"Hollow Knight",
+"Dead Cells",
+"Celeste"
+]
+},
+{
+"id": "cartoon.paper-cutout-animation",
+"name": "Paper / Cutout Animation",
+"example_games": [
+"Paper Mario",
+"Tearaway",
+"South Park"
+]
+},
+{
+"id": "cartoon.claymation-stop-motion-look",
+"name": "Claymation / Stop Motion Look",
+"example_games": [
+"Armikrog",
+"The Neverhood",
+"Harold Halibut"
+]
+},
+{
+"id": "creature.bird-flight-flap",
+"name": "Bird Flight / Flap",
+"example_games": [
+"Assassin's Creed Eagle",
+"Journey",
+"Untitled Goose Game"
+]
+},
+{
+"id": "creature.slither",
+"name": "Slither",
+"example_games": [
+"Snake Pass",
+"Monster Hunter",
+"Dark Souls"
+]
+},
+{
+"id": "creature.fish-swim",
+"name": "Fish Swim",
+"example_games": [
+"Abzu",
+"Subnautica",
+"Animal Crossing"
+]
+},
+{
+"id": "creature.insect-spider-crawl",
+"name": "Insect / Spider Crawl",
+"example_games": [
+"Grounded",
+"Hollow Knight",
+"Dark Souls"
+]
+},
+{
+"id": "creature.dragon-flight-breath",
+"name": "Dragon Flight & Breath",
+"example_games": [
+"Skyrim",
+"Elden Ring",
+"Monster Hunter"
+]
+},
+{
+"id": "creature.pet-companion-idle",
+"name": "Pet / Companion Idle",
+"example_games": [
+"Animal Crossing",
+"Ghost of Tsushima",
+"Fallout 4 Dogmeat"
+]
+},
+{
+"id": "creature.creature-eat-feed",
+"name": "Creature Eat / Feed",
+"example_games": [
+"Monster Hunter",
+"Spore",
+"Viva Pinata"
+]
+},
+{
+"id": "creature.slime-bounce",
+"name": "Slime Bounce",
+"example_games": [
+"Dragon Quest",
+"Slime Rancher",
+"Kirby"
+]
+},
+{
+"id": "menu.main-menu-idle-scene",
+"name": "Main Menu Idle Scene",
+"example_games": [
+"Final Fantasy",
+"Persona 5",
+"Elden Ring"
+]
+},
+{
+"id": "menu.button-hover-press",
+"name": "Button Hover / Press",
+"example_games": [
+"Persona 5",
+"Hades",
+"Destiny 2"
+]
+},
+{
+"id": "menu.inventory-item-rotate",
+"name": "Inventory Item Rotate",
+"example_games": [
+"Resident Evil",
+"Escape from Tarkov",
+"Destiny 2"
+]
+},
+{
+"id": "menu.level-up-rank-up",
+"name": "Level Up / Rank Up",
+"example_games": [
+"World of Warcraft",
+"Diablo",
+"Fortnite Battle Pass"
+]
+},
+{
+"id": "menu.loading-screen-animation",
+"name": "Loading Screen Animation",
+"example_games": [
+"Bayonetta",
+"Destiny 2",
+"Elden Ring"
+]
+},
+{
+"id": "menu.dialogue-box-typewriter",
+"name": "Dialogue Box Typewriter",
+"example_games": [
+"Undertale",
+"Pokemon",
+"Ace Attorney"
+]
+},
+{
+"id": "menu.map-reveal-fog-of-war",
+"name": "Map Reveal / Fog of War",
+"example_games": [
+"Assassin's Creed Viewpoint",
+"Hollow Knight",
+"Breath of the Wild"
+]
+},
+{
+"id": "menu.quest-complete-banner",
+"name": "Quest Complete Banner",
+"example_games": [
+"Skyrim",
+"The Witcher 3",
+"Destiny 2"
+]
+},
+{
+"id": "menu.achievement-trophy-pop",
+"name": "Achievement / Trophy Pop",
+"example_games": [
+"Xbox Achievements",
+"PlayStation Trophy",
+"Steam"
+]
+},
+{
+"id": "cinematic.character-entrance",
+"name": "Character Entrance",
+"example_games": [
+"Devil May Cry 5",
+"Metal Gear Solid",
+"Kingdom Hearts"
+]
+},
+{
+"id": "cinematic.walk-and-talk",
+"name": "Walk-and-Talk",
+"example_games": [
+"The Last of Us",
+"God of War",
+"Uncharted"
+]
+},
+{
+"id": "cinematic.dramatic-reveal-turn",
+"name": "Dramatic Reveal / Turn",
+"example_games": [
+"Metal Gear Solid",
+"Final Fantasy VII",
+"Resident Evil"
+]
+},
+{
+"id": "cinematic.ending-credits-scene",
+"name": "Ending / Credits Scene",
+"example_games": [
+"Journey",
+"Shadow of the Colossus",
+"Okami"
+]
+},
+{
+"id": "cinematic.hug-embrace",
+"name": "Hug / Embrace",
+"example_games": [
+"God of War",
+"The Last of Us",
+"Kingdom Hearts"
+]
+},
+{
+"id": "sports.kick-shoot-football",
+"name": "Kick / Shoot (Football)",
+"example_games": [
+"EA Sports FC",
+"Rocket League",
+"Mario Strikers"
+]
+},
+{
+"id": "sports.dribble",
+"name": "Dribble",
+"example_games": [
+"NBA 2K",
+"EA Sports FC",
+"Mario Hoops"
+]
+},
+{
+"id": "sports.goal-score-celebration",
+"name": "Goal / Score Celebration",
+"example_games": [
+"EA Sports FC",
+"NBA 2K",
+"Rocket League"
+]
+},
+{
+"id": "sports.tackle",
+"name": "Tackle",
+"example_games": [
+"Madden NFL",
+"EA Sports FC",
+"Rugby"
+]
+},
+{
+"id": "sports.skateboard-trick",
+"name": "Skateboard Trick",
+"example_games": [
+"Tony Hawk's Pro Skater",
+"Skate",
+"OlliOlli"
+]
+},
+{
+"id": "sports.rhythm-hit-note-feedback",
+"name": "Rhythm Hit / Note Feedback",
+"example_games": [
+"Hi-Fi Rush",
+"Guitar Hero",
+"Crypt of the NecroDancer"
+]
+},
+{
+"id": "sports.dance-performance",
+"name": "Dance Performance",
+"example_games": [
+"Just Dance",
+"Dance Central",
+"Persona Dancing"
+]
+}
+]
