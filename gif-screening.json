@@ -1226,32 +1226,8 @@
    "name": "Mantle / Ledge Climb"
   },
   {
-   "animation": "melee.overhead-slam",
-   "name": "Overhead Slam"
-  },
-  {
-   "animation": "melee.horizontal-sweep",
-   "name": "Horizontal Sweep"
-  },
-  {
-   "animation": "melee.uppercut-launcher",
-   "name": "Uppercut / Launcher"
-  },
-  {
-   "animation": "melee.aerial-attack",
-   "name": "Aerial Attack"
-  },
-  {
-   "animation": "melee.plunging-downward-attack",
-   "name": "Plunging / Downward Attack"
-  },
-  {
    "animation": "melee.shield-bash",
    "name": "Shield Bash"
-  },
-  {
-   "animation": "melee.ground-pound",
-   "name": "Ground Pound"
   },
   {
    "animation": "melee.weapon-throw-recall",
