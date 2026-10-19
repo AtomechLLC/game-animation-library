@@ -936,6 +936,54 @@
    "verdict": "meme",
    "confidence": "medium",
    "what": "Just Dance footage with a 'doing my happy dance' reaction caption"
+  },
+  {
+   "animation": "locomotion.combat-walk",
+   "name": "Combat Walk",
+   "file": "locomotion.combat-walk-2.webp",
+   "verdict": "mismatch",
+   "confidence": "high",
+   "what": "Trailer close-up of feet only; the walk and weapon stance are not visible (marked bad by owner)"
+  },
+  {
+   "animation": "locomotion.crouch",
+   "name": "Crouch",
+   "file": "locomotion.crouch-0.webp",
+   "verdict": "mismatch",
+   "confidence": "high",
+   "what": "Distant crouch-walk; the drop into a crouch and crouch idle are not shown (marked bad by owner)"
+  },
+  {
+   "animation": "locomotion.crouch",
+   "name": "Crouch",
+   "file": "locomotion.crouch-1.webp",
+   "verdict": "mismatch",
+   "confidence": "high",
+   "what": "Top-down Game Boy sneak; no crouch visible (marked bad by owner)"
+  },
+  {
+   "animation": "melee.light-attack",
+   "name": "Light Attack",
+   "file": "melee.light-attack-2.webp",
+   "verdict": "mismatch",
+   "confidence": "high",
+   "what": "Slow cinematic trailer shot, not a readable light attack (marked bad by owner)"
+  },
+  {
+   "animation": "melee.thrust-stab",
+   "name": "Thrust / Stab",
+   "file": "melee.thrust-stab-1.webp",
+   "verdict": "mismatch",
+   "confidence": "high",
+   "what": "Cutscene of two knights; no clear forward thrust (marked bad by owner)"
+  },
+  {
+   "animation": "ranged.aim-down-sights-ads",
+   "name": "Aim Down Sights (ADS)",
+   "file": "ranged.aim-down-sights-ads-1.webp",
+   "verdict": "mismatch",
+   "confidence": "high",
+   "what": "Dark third-person cinematic of a soldier on a rock; no first-person sight alignment (marked bad by owner)"
   }
  ],
  "review": [

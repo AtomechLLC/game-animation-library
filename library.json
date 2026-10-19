@@ -322,13 +322,13 @@
      "host": "Tenor"
     },
     {
-     "page_url": "https://giphy.com/gifs/bandainamco-dark-souls-ds2-ii-JJHgmYP4XFxRrzswoD",
+     "page_url": "https://tenor.com/view/dark-souls-sewers-fantasy-rogue-dungeon-gif-18641824",
      "media_url": "",
-     "title": "Dark Souls II walk (official Bandai Namco)",
-     "game": "Dark Souls II",
-     "host": "Giphy",
-     "local": "gifs/locomotion.combat-walk-2.webp",
-     "source_url": "https://media.giphy.com/media/JJHgmYP4XFxRrzswoD/200w.webp"
+     "title": "Sword-and-shield walk down a corridor",
+     "game": "Dark Souls",
+     "host": "Tenor",
+     "local": "gifs/locomotion.combat-walk-r0.webp",
+     "source_url": "https://media.tenor.com/KVHSLFgPGAkAAAA1/dark-souls-sewers.webp"
     }
    ],
    "rejected_gifs": [
@@ -343,6 +343,20 @@
       "verdict": "meme",
       "confidence": "high",
       "what": "A single manga panel of a helmeted knight saying 'Nah, I'd walk the abyss'"
+     }
+    },
+    {
+     "page_url": "https://giphy.com/gifs/bandainamco-dark-souls-ds2-ii-JJHgmYP4XFxRrzswoD",
+     "media_url": "",
+     "title": "Dark Souls II walk (official Bandai Namco)",
+     "game": "Dark Souls II",
+     "host": "Giphy",
+     "local": "gifs/locomotion.combat-walk-2.webp",
+     "source_url": "https://media.giphy.com/media/JJHgmYP4XFxRrzswoD/200w.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "high",
+      "what": "Trailer close-up of feet only; the walk and weapon stance are not visible (marked bad by owner)"
      }
     }
    ]
@@ -1142,13 +1156,38 @@
    ],
    "gifs": [
     {
+     "page_url": "https://tenor.com/view/halo-tbag-teabag-infinite-gif-25198426",
+     "media_url": "",
+     "title": "Drops into a deep crouch and stands, front view",
+     "game": "Halo Infinite",
+     "host": "Tenor",
+     "local": "gifs/locomotion.crouch-r0.webp",
+     "source_url": "https://media.tenor.com/FJRUCHa_jPMAAAA1/halo-tbag.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/ticklefiend-tickle-fiend-tickle-fiend-streefighter6-gif-14355762421186255818",
+     "media_url": "",
+     "title": "Crouch stance with crouching jabs in training mode",
+     "game": "Street Fighter 6",
+     "host": "Tenor",
+     "local": "gifs/locomotion.crouch-r1.webp",
+     "source_url": "https://media.tenor.com/xznp3Kq1W8oAAAA1/ticklefiend-tickle-fiend.webp"
+    }
+   ],
+   "rejected_gifs": [
+    {
      "page_url": "https://tenor.com/view/mgs4-metal-gear-solid-4-sneaking-stealth-crouchwalking-gif-7388084183514675587",
      "media_url": "https://media1.tenor.com/m/Zoe_a9ES-YMAAAAd/mgs4-metal-gear-solid-4.gif",
      "title": "Old Snake crouch-walking",
      "game": "Metal Gear Solid 4",
      "host": "Tenor",
      "local": "gifs/locomotion.crouch-0.webp",
-     "source_url": "https://media.tenor.com/Zoe_a9ES-YMAAAA1/mgs4-metal-gear-solid-4-sneaking-stealth-crouchwalking.webp"
+     "source_url": "https://media.tenor.com/Zoe_a9ES-YMAAAA1/mgs4-metal-gear-solid-4-sneaking-stealth-crouchwalking.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "high",
+      "what": "Distant crouch-walk; the drop into a crouch and crouch idle are not shown (marked bad by owner)"
+     }
     },
     {
      "page_url": "https://tenor.com/view/ghost-babel-metal-gear-ghost-babel-solid-snake-sneaking-stealth-game-gif-1527971206713350534",
@@ -1157,7 +1196,12 @@
      "game": "Metal Gear Ghost Babel",
      "host": "Tenor",
      "local": "gifs/locomotion.crouch-1.webp",
-     "source_url": "https://media.tenor.com/FTRxt4ssmYYAAAA1/ghost-babel-metal-gear-ghost-babel-solid-snake-sneaking-stealth-game.webp"
+     "source_url": "https://media.tenor.com/FTRxt4ssmYYAAAA1/ghost-babel-metal-gear-ghost-babel-solid-snake-sneaking-stealth-game.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "high",
+      "what": "Top-down Game Boy sneak; no crouch visible (marked bad by owner)"
+     }
     }
    ]
   },
@@ -1916,15 +1960,6 @@
      "host": "Tenor"
     },
     {
-     "page_url": "https://giphy.com/gifs/bandainamco-ds-dark-souls-3-tDfClZn3KzGpSL2PXk",
-     "media_url": "",
-     "title": "Dark Souls 3 sword attack (Bandai Namco)",
-     "game": "Dark Souls 3",
-     "host": "Giphy",
-     "local": "gifs/melee.light-attack-2.webp",
-     "source_url": "https://media.giphy.com/media/tDfClZn3KzGpSL2PXk/200w.webp"
-    },
-    {
      "page_url": "https://ultimateframedata.com/link",
      "media_url": "https://ultimateframedata.com/hitboxes/link/LinkJab1.gif",
      "title": "Link jab, with hitboxes",
@@ -1941,6 +1976,40 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.light-attack-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/marth/MarthJab1.gif"
+    },
+    {
+     "page_url": "https://tenor.com/view/god-of-war-god-of-war-3-ps3-character-action-game-kratos-gif-2685507617750490619",
+     "media_url": "",
+     "title": "Blades of Exile basic combo strings on a crowd",
+     "game": "God of War III",
+     "host": "Tenor",
+     "local": "gifs/melee.light-attack-r0.webp",
+     "source_url": "https://media.tenor.com/JUTW8y2fnfsAAAA1/god-of-war-god-of-war-3.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/devil-may-cry-dmc-gif-22943706",
+     "media_url": "",
+     "title": "Red Queen basic ground combo (move-list demo)",
+     "game": "Devil May Cry 4",
+     "host": "Tenor",
+     "local": "gifs/melee.light-attack-r1.webp",
+     "source_url": "https://media.tenor.com/dzl9uR7KFSAAAAA1/devil-may-cry-dmc.webp"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://giphy.com/gifs/bandainamco-ds-dark-souls-3-tDfClZn3KzGpSL2PXk",
+     "media_url": "",
+     "title": "Dark Souls 3 sword attack (Bandai Namco)",
+     "game": "Dark Souls 3",
+     "host": "Giphy",
+     "local": "gifs/melee.light-attack-2.webp",
+     "source_url": "https://media.giphy.com/media/tDfClZn3KzGpSL2PXk/200w.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "high",
+      "what": "Slow cinematic trailer shot, not a readable light attack (marked bad by owner)"
+     }
     }
    ]
   },
@@ -2439,15 +2508,6 @@
      "host": "Tenor"
     },
     {
-     "page_url": "https://giphy.com/gifs/bandainamco-ds-dark-souls-3-kpDKiZGR6wB7pT7IVT",
-     "media_url": "",
-     "title": "Dark Souls 3 stab (Bandai Namco)",
-     "game": "Dark Souls",
-     "host": "Giphy",
-     "local": "gifs/melee.thrust-stab-1.webp",
-     "source_url": "https://media.giphy.com/media/kpDKiZGR6wB7pT7IVT/200w.webp"
-    },
-    {
      "page_url": "https://ultimateframedata.com/marth",
      "media_url": "https://ultimateframedata.com/hitboxes/marth/MarthShieldbreaker.gif",
      "title": "Marth Shield Breaker, with hitboxes",
@@ -2464,6 +2524,40 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.thrust-stab-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/sephiroth/SephirothBladeDash.gif"
+    },
+    {
+     "page_url": "https://tenor.com/view/dark-souls-elite-knight-fantasy-sword-great-sword-gif-17782074",
+     "media_url": "",
+     "title": "Straight-sword lunge thrust (animation showcase)",
+     "game": "Dark Souls",
+     "host": "Tenor",
+     "local": "gifs/melee.thrust-stab-r0.webp",
+     "source_url": "https://media.tenor.com/2z9KmgyGaooAAAA1/dark-souls-elite-knight.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/the-first-berserker-khazan-halberd-spear-partizan-gif-12476179458952057271",
+     "media_url": "",
+     "title": "Polearm forward thrusts in a snowy arena",
+     "game": "The First Berserker: Khazan",
+     "host": "Tenor",
+     "local": "gifs/melee.thrust-stab-r1.webp",
+     "source_url": "https://media.tenor.com/rSRLHcTc0bcAAAA1/the-first-berserker-khazan.webp"
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://giphy.com/gifs/bandainamco-ds-dark-souls-3-kpDKiZGR6wB7pT7IVT",
+     "media_url": "",
+     "title": "Dark Souls 3 stab (Bandai Namco)",
+     "game": "Dark Souls",
+     "host": "Giphy",
+     "local": "gifs/melee.thrust-stab-1.webp",
+     "source_url": "https://media.giphy.com/media/kpDKiZGR6wB7pT7IVT/200w.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "high",
+      "what": "Cutscene of two knights; no clear forward thrust (marked bad by owner)"
+     }
     }
    ]
   },
@@ -4609,11 +4703,36 @@
    ],
    "gifs": [
     {
+     "page_url": "https://tenor.com/view/shoot-them-down-call-of-duty-vanguard-aiming-down-sight-gun-them-down-bang-bang-bang-gif-22836214",
+     "media_url": "",
+     "title": "Raises rifle from hip to iron sights, then fires",
+     "game": "Call of Duty: Vanguard",
+     "host": "Tenor",
+     "local": "gifs/ranged.aim-down-sights-ads-r0.webp",
+     "source_url": "https://media.tenor.com/hHXY0HbceHcAAAA1/shoot-them-down-call-of-duty-vanguard.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/m249-iron-sight-gif-819381572653092638",
+     "media_url": "",
+     "title": "M249 snaps from hip to iron sights and back",
+     "game": "Unidentified FPS (shooting range)",
+     "host": "Tenor",
+     "local": "gifs/ranged.aim-down-sights-ads-r1.webp",
+     "source_url": "https://media.tenor.com/C18HMvV9Dx4AAAA1/m249-iron-sight.webp"
+    }
+   ],
+   "rejected_gifs": [
+    {
      "page_url": "https://tenor.com/view/shooting-call-of-duty-vanguard-aiming-down-sight-bang-bang-gun-them-down-gif-22836217",
      "media_url": "",
      "title": "Vanguard aiming down sights",
      "game": "Call of Duty: Vanguard",
-     "host": "Tenor"
+     "host": "Tenor",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "high",
+      "what": "Page-only link, never screened; replaced along with the whole entry (marked bad by owner)"
+     }
     },
     {
      "page_url": "https://tenor.com/view/aiming-call-of-duty-modern-warfare-iii-pointing-a-gun-target-sighted-call-of-duty-gif-3838665571826144660",
@@ -4622,7 +4741,12 @@
      "game": "Call of Duty: Modern Warfare III",
      "host": "Tenor",
      "local": "gifs/ranged.aim-down-sights-ads-1.webp",
-     "source_url": "https://media.tenor.com/NUWt_9w4FZQAAAA1/aiming-call-of-duty-modern-warfare-iii-pointing-a-gun-target-sighted-call-of-duty.webp"
+     "source_url": "https://media.tenor.com/NUWt_9w4FZQAAAA1/aiming-call-of-duty-modern-warfare-iii-pointing-a-gun-target-sighted-call-of-duty.webp",
+     "screened": {
+      "verdict": "mismatch",
+      "confidence": "high",
+      "what": "Dark third-person cinematic of a soldier on a rock; no first-person sight alignment (marked bad by owner)"
+     }
     }
    ]
   },

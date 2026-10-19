@@ -50,3 +50,4 @@ On Windows, double-click `serve_local.bat` (or run `python serve_local.py`). You
 - Marks are saved instantly to `marks.json` in this folder (entry id and name, GIF key, page URL, local file, title, time).
 
 To get replacements, ask Claude to "search for better GIFs for my marks". Claude reads `marks.json` from this folder on your computer or from the repo (commit and push it), finds candidates for each marked entry, and clears the marks it has handled.
+Replacement clips are saved as `gifs/<id>-r<n>.webp` (Tenor 200px WebP); the clips they replace move to `rejected_gifs` with a `screened` note and are listed under `removed` in `gif-screening.json`.
