@@ -1,6 +1,6 @@
 import json,os,sys
 # Renders template.html with library.json into a standalone page (default: index.html).
-# LIBRARY_API_URL (optional) points the page at a deployed api.php so the static copy gets voting and suggestions too.
+# LIBRARY_API_URL (optional) points the page at a deployed /api so the static copy gets voting and suggestions too.
 def render(cfg):
     d=json.load(open('library.json',encoding='utf-8'))
     dump=lambda o:json.dumps(o,ensure_ascii=False).replace('</',r'<\/')

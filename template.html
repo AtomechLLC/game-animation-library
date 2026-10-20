@@ -199,7 +199,7 @@ const D=JSON.parse(document.getElementById('data').textContent);
 const A=D.animations, C=Object.fromEntries(D.categories.map(c=>[c.id,c]));
 const code={};D.categories.forEach(c=>{let n=0;A.filter(a=>a.category===c.id).forEach(a=>{a.code=c.id.slice(0,3).toUpperCase()+'·'+String(++n).padStart(3,'0')})});
 const st={gif:false,mark:false,flag:false,q:'',dom:'all',cat:null,tags:new Set(),game:null};
-// Modes: {api:"api.php"} turns on community voting and suggestions (xCloud / PHP host);
+// Modes: {api:"api"} turns on community voting and suggestions (server.js on xCloud);
 // {local:true} is the owner's workstation copy (serve_local.py) where entries and GIFs can be marked ✕ into marks.json.
 let CFG={};try{CFG=JSON.parse(document.getElementById('cfg').textContent)||{}}catch(e){}
 const CS={tally:{},mine:{},community:{},flagged:new Set(),max:8388608,on:false};
@@ -212,7 +212,7 @@ function apiSrc(src){return /^https?:/i.test(src)?src:CFG.api.replace(/[^/]*$/,'
 const score=t=>{const v=CS.tally[t];return v?v[0]-v[1]:0};
 function markOf(aid,gif){return MARKS.marks.find(m=>m.animation===aid&&(m.gif||'')===(gif||''))}
 const isMarked=a=>MARKS.marks.some(m=>m.animation===a.id);
-// Vote/mark key for a library GIF, same as gif_key() in lib/bootstrap.php (page_url alone is not unique)
+// Vote/mark key for a library GIF, same as gifKey() in lib/store.js (page_url alone is not unique)
 const gkey=(a,g)=>a.id+'|'+(g.local||g.media_url||g.page_url);
 const isFlagged=a=>a.gifs.some(g=>CS.flagged.has(gkey(a,g)));
 // Approved community GIF shown in place of a library GIF (the owner chose "replace" on the review page), else undefined
@@ -242,7 +242,7 @@ function communityHtml(a){
   const list=(CS.community[a.id]||[]).filter(c=>c.mode!=='replace');if(!list.length)return '';
   return `<section><h3>Community GIFs (${list.length})</h3><ul class="reflist gifl">${list.map(c=>`<li>${mediaHtml(apiSrc(c.src),c.mime,c.note)}<span class="src">${c.by==='search'?'Found by search':'Shared by '+esc(c.by)}${c.replaces?' · proposed replacement':''}</span>${c.note?`<small>${esc(c.note)}</small>`:''}${/^https?:/i.test(c.source_url||'')?`<small><a href="${esc(c.source_url)}" target="_blank" rel="noopener">Source ↗</a></small>`:''}<div class="gtools">${voteHtml(a.id,c.target)}</div></li>`).join('')}</ul></section>`}
 // a: the entry (null shows an entry picker); rep: gkey() of the GIF being replaced ('' for a new GIF).
-// With the API on, the form posts to api.php; on the static copy it opens a prefilled GitHub issue instead.
+// With the API on, the form posts to /api; on the static copy it opens a prefilled GitHub issue instead.
 function sugForm(a,rep){
   const g=a&&rep&&a.gifs.find(x=>gkey(a,x)===rep);
   const pick=a?'':`<label>Which entry is it for?<select name="animation" required><option value="">Choose an entry…</option>${D.categories.map(c=>`<optgroup label="${esc(c.name)}">${A.filter(x=>x.category===c.id).map(x=>`<option value="${esc(x.id)}">${esc(x.name)}</option>`).join('')}</optgroup>`).join('')}</select></label>`;

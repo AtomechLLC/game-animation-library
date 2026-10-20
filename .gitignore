@@ -17,7 +17,6 @@ index.html
 .claude/
 
 # Server-side (xCloud) private files
-config.php
-storage/*
-!storage/.htaccess
-!storage/.gitkeep
+.env
+library-data/
+node_modules/
