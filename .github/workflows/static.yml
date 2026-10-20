@@ -32,7 +32,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Build library page
-        # Set the repository variable LIBRARY_API_URL (e.g. https://your-site/api.php) to turn on voting here too
+        # Set the repository variable LIBRARY_API_URL (e.g. https://your-site/api) to turn on voting here too
         env:
           LIBRARY_API_URL: ${{ vars.LIBRARY_API_URL }}
         run: python3 build_page.py index.html

@@ -1,0 +1,67 @@
+// The atlas on xCloud (or any Node.js host): serves the page, the community API (/api) and the review page (/admin).
+// No dependencies. Start with `npm start`; settings are in .env (see .env.example and DEPLOY-XCLOUD.md).
+'use strict';
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
+const cfg = require('./lib/config');
+const api = require('./lib/api');
+const admin = require('./lib/admin');
+const { searchFlagged } = require('./lib/media');
+const { send } = require('./lib/http');
+
+const TYPES = { '.webp': 'image/webp', '.gif': 'image/gif', '.png': 'image/png', '.jpg': 'image/jpeg', '.mp4': 'video/mp4' };
+
+/** template.html + library.json, with community features pointed at /api. Same output as build_page.py. */
+let pageCache = null;
+function renderPage() {
+  const files = ['template.html', 'library.json'].map(f => path.join(cfg.ROOT, f));
+  const stamp = files.map(f => fs.statSync(f).mtimeMs).join();
+  if (pageCache?.stamp !== stamp) {
+    const dump = o => JSON.stringify(o).replace(/<\//g, '<\\/');
+    const data = JSON.parse(fs.readFileSync(files[1], 'utf8'));
+    const html = fs.readFileSync(files[0], 'utf8').replace('__DATA__', () => dump(data)).replace('__CONFIG__', () => dump({ api: 'api' }));
+    pageCache = { stamp, html };
+  }
+  return pageCache.html;
+}
+
+/** Only the GIF folder is public; everything else in the repo stays private. */
+function serveGif(res, pathname) {
+  const rel = decodeURIComponent(pathname).replace(/^\/+/, '');
+  const file = path.join(cfg.ROOT, rel);
+  const type = TYPES[path.extname(file).toLowerCase()];
+  if (!file.startsWith(path.join(cfg.ROOT, 'gifs') + path.sep) || !type || !fs.existsSync(file) || !fs.statSync(file).isFile()) return send(res, 404, 'Not found');
+  res.writeHead(200, { 'Content-Type': type, 'Content-Length': fs.statSync(file).size, 'Cache-Control': 'public, max-age=604800', 'X-Content-Type-Options': 'nosniff' });
+  fs.createReadStream(file).pipe(res);
+}
+
+const server = http.createServer(async (req, res) => {
+  try {
+    const u = new URL(req.url, 'http://x');
+    const p = u.pathname;
+    if (p === '/' || p === '/index.html' || p === '/index.php') {
+      return send(res, 200, renderPage(), { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache' });
+    }
+    if (p === '/api' || p === '/api.php') return await api.handle(req, res, u.searchParams); // api.php: older GitHub Pages builds
+    if (p === '/admin' || p === '/admin.php') return await admin.handle(req, res, u.searchParams);
+    if (p.startsWith('/gifs/')) return serveGif(res, p);
+    if (p === '/healthz') return send(res, 200, 'ok');
+    send(res, 404, 'Not found');
+  } catch (e) {
+    console.error(e);
+    if (!res.headersSent) send(res, e.status || 500, e.status ? e.message : 'Server error');
+  }
+});
+
+server.listen(cfg.port, cfg.host, () => {
+  console.log(`Animation atlas on http://${cfg.host}:${cfg.port}  (data in ${cfg.dataDir})`);
+  if (!cfg.adminPasswordHash) console.log('ADMIN_PASSWORD_HASH is not set, so /admin is disabled. Run: npm run hash-password');
+});
+
+// Replacement search for GIFs flagged by downvotes (needs GIPHY_API_KEY and/or TENOR_API_KEY).
+if (cfg.giphyApiKey || cfg.tenorApiKey) {
+  const run = () => searchFlagged().catch(e => console.error('search:', e));
+  setInterval(run, cfg.searchEveryMinutes * 60e3).unref();
+  setTimeout(run, 30e3).unref();
+}
