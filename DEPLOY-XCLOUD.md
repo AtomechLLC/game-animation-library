@@ -67,13 +67,28 @@ You can also press **Search now** on a flagged GIF in the review page.
 
 ## 6. Review submissions
 
-Open `https://YOUR-SITE/admin.php` and sign in. You can:
+Open `https://YOUR-SITE/admin.php` and sign in with the password from step 2. Submissions never appear on the
+public page until you approve them there. You can:
 
-- approve or reject community suggestions and search candidates (current vs. proposed side by side),
+- see the current GIF and the proposed one side by side. Proposed GIFs are **blurred until you click them**
+  (untick "Blur submitted GIFs until clicked" to turn that off), so nothing explicit flashes on screen,
+- **Approve: replace current** puts the new GIF in place of the library GIF on the site (the original stays linked
+  under it as "Replaced"), **Approve as extra GIF** adds it under **Community GIFs**, **Reject** hides it,
+  **Delete** removes the row and its stored file,
+- on the Approved tab, **Restore original** / **Use as replacement** switch an approved GIF between the two,
 - see GIFs flagged by downvotes, run a search, or dismiss the flag with **Keep this GIF**,
 - **Export approved JSON** to fold approved GIFs into `library.json` later.
 
-Approved GIFs appear on the entry under **Community GIFs** and can be voted on. Nothing in `library.json` is replaced automatically.
+**Where submissions are stored.** Uploads *and* links are saved on the site: a submitted Giphy/Tenor page or direct
+.gif/.webp/.mp4 link is downloaded when it is sent, so what you approve is exactly what is shown and a link can't be
+swapped for something else later. Files go to `storage_dir/uploads` with a random, non-executable name, and are only
+served through `api.php` (approved only) or `admin.php` (signed in). The downloader only fetches public addresses on
+ports 80/443 and stops at `max_upload_bytes` (8 MB by default).
+
+**PHP upload limits.** In the site's **PHP Settings** in xCloud, make sure `upload_max_filesize` and `post_max_size`
+are at least 10M so 8 MB uploads get through.
+
+Link-only suggestions approved before this change are hidden until you approve them again (approving downloads a copy).
 
 ## Optional: voting on the GitHub Pages copy
 

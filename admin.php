@@ -1,5 +1,6 @@
 <?php
-// Owner review page: approve or reject community and search-found GIFs, see GIFs flagged by downvotes,
+// Owner review page: approve (as a replacement or an extra GIF) or reject community and search-found GIFs,
+// see GIFs flagged by downvotes,
 // run a replacement search on demand, and export approved GIFs as JSON.
 declare(strict_types=1);
 require __DIR__ . '/lib/bootstrap.php';
@@ -68,8 +69,29 @@ if ($post) {
     $id = (int) ($_POST['id'] ?? 0);
     switch ($_POST['do'] ?? '') {
         case 'approve':
+        case 'setmode':
+            $s = $pdo->prepare('SELECT * FROM submissions WHERE id = ?');
+            $s->execute([$id]);
+            if (!($r = $s->fetch())) break;
+            if ($r['kind'] !== 'file') {
+                // Older link-only rows: store a copy first, the public page never hotlinks.
+                try { $m = fetch_media((string) $r['url']); } catch (RuntimeException $e) { $msg = 'Not approved: ' . $e->getMessage(); break; }
+                $pdo->prepare("UPDATE submissions SET kind = 'file', file = ?, mime = ?, bytes = ? WHERE id = ?")->execute([$m['file'], $m['mime'], $m['bytes'], $id]);
+            }
+            $mode = $r['replaces'] && ($_POST['mode'] ?? '') === 'replace' ? 'replace' : 'add';
+            $pdo->beginTransaction();
+            if ($mode === 'replace') {
+                // One replacement per library GIF: an earlier one drops back to Community GIFs.
+                $pdo->prepare("UPDATE submissions SET mode = 'add' WHERE animation = ? AND replaces = ? AND mode = 'replace' AND id <> ?")->execute([$r['animation'], $r['replaces'], $id]);
+                $pdo->prepare('DELETE FROM replacement_queue WHERE target = ?')->execute([$r['replaces']]);
+            }
+            $pdo->prepare("UPDATE submissions SET status = 'approved', mode = ?, reviewed_at = ? WHERE id = ?")->execute([$mode, now(), $id]);
+            $pdo->commit();
+            $msg = $mode === 'replace' ? 'Approved. It now replaces the original GIF on the site.' : 'Approved. It shows under Community GIFs.';
+            if ($_POST['do'] === 'setmode') $msg = $mode === 'replace' ? 'Now replacing the original GIF.' : 'Original GIF restored; this one shows under Community GIFs.';
+            break;
         case 'reject':
-            $pdo->prepare('UPDATE submissions SET status = ?, reviewed_at = ? WHERE id = ?')->execute([$_POST['do'] === 'approve' ? 'approved' : 'rejected', now(), $id]);
+            $pdo->prepare("UPDATE submissions SET status = 'rejected', mode = 'add', reviewed_at = ? WHERE id = ?")->execute([now(), $id]);
             break;
         case 'delete':
             $s = $pdo->prepare('SELECT file FROM submissions WHERE id = ?');
@@ -133,12 +155,19 @@ button{font:inherit;padding:5px 10px;border-radius:4px;border:1px solid #d8d5cc;
 button.ok{background:#2f7a6b;color:#fff;border-color:#2f7a6b}button.no{background:#c2412d;color:#fff;border-color:#c2412d}
 a{overflow-wrap:anywhere}small{color:#6b6860}.msg{padding:8px 12px;background:#ffb02033;border-radius:6px;margin-bottom:12px}
 h2{margin:24px 0 8px}
-</style></head><body><main>
+.badge{font-weight:600;color:#2f7a6b}
+/* Submitted media stays blurred until you click it (or turn blurring off), so nothing explicit flashes on screen. */
+.card .pv{position:relative;overflow:hidden;border-radius:4px;cursor:pointer}
+.card .pv>*{display:block}
+body.blur .card .pv:not(.shown)>*{filter:blur(22px) saturate(.4)}
+body.blur .card .pv:not(.shown)::after{content:"Click to view";position:absolute;inset:0;display:grid;place-items:center;font-weight:600;color:#fff;text-shadow:0 1px 3px #000}
+</style></head><body class="blur"><main>
 <h1>Library review</h1>
 <?php if ($msg): ?><div class="msg"><?= e($msg) ?></div><?php endif; ?>
 <nav>
 <?php foreach (['pending', 'approved', 'rejected'] as $st): ?><a class="<?= $st === $status ? 'on' : '' ?>" href="?status=<?= $st ?>"><?= ucfirst($st) ?> (<?= $counts[$st] ?? 0 ?>)</a><?php endforeach; ?>
 <a href="?export=1">Export approved JSON</a> <a href="./">Open atlas</a>
+<label><input type="checkbox" id="blur" checked> Blur submitted GIFs until clicked</label>
 </nav>
 
 <?php if ($flagged): ?>
@@ -165,17 +194,31 @@ h2{margin:24px 0 8px}
 <div class="card">
   <b><?= e($a['name'] ?? $r['animation']) ?></b>
   <small><?= $r['source'] === 'search' ? 'Found by search' : 'From ' . e($r['submitter'] ?: 'anonymous') ?> · <?= e($r['created_at']) ?><?= $r['bytes'] ? ' · ' . round($r['bytes'] / 1024) . ' KB' : '' ?></small>
+  <?php if ($r['status'] === 'approved'): ?><small class="badge"><?= $r['replaces'] && $r['mode'] === 'replace' ? 'Live: replaces the original GIF' : 'Live: under Community GIFs' ?></small><?php endif; ?>
   <?php if ($old): ?>
-    <div class="pair"><div><small>Current</small><?= !empty($old['local']) ? '<img src="' . e($old['local']) . '" alt="">' : '<div class="nopreview">no copy</div>' ?></div><div><small>Proposed</small><?= media($src, $r['mime']) ?></div></div>
-  <?php else: ?><?= media($src, $r['mime']) ?><small>New GIF for this entry</small><?php endif; ?>
-  <?php if ($r['kind'] === 'url'): ?><a href="<?= e($r['url']) ?>" target="_blank" rel="noopener noreferrer"><?= e($r['url']) ?></a><?php endif; ?>
+    <div class="pair"><div><small>Current</small><?= !empty($old['local']) ? '<img src="' . e($old['local']) . '" alt="">' : '<div class="nopreview">no copy</div>' ?></div><div><small>Proposed</small><div class="pv"><?= media($src, $r['mime']) ?></div></div></div>
+  <?php else: ?><div class="pv"><?= media($src, $r['mime']) ?></div><small>New GIF for this entry</small><?php endif; ?>
+  <?php if ($r['url']): ?><small>Source: <a href="<?= e($r['url']) ?>" target="_blank" rel="noopener noreferrer"><?= e($r['url']) ?></a></small><?php endif; ?>
   <?php if ($r['note']): ?><small><?= e($r['note']) ?></small><?php endif; ?>
   <div class="acts">
-    <?php if ($r['status'] !== 'approved') echo form('approve', 'Approve', ['id' => $r['id']], $csrf, 'ok'); ?>
+    <?php if ($r['status'] !== 'approved') {
+        if ($old) echo form('approve', 'Approve: replace current', ['id' => $r['id'], 'mode' => 'replace'], $csrf, 'ok');
+        echo form('approve', $old ? 'Approve as extra GIF' : 'Approve', ['id' => $r['id'], 'mode' => 'add'], $csrf, $old ? '' : 'ok');
+    } elseif ($old) {
+        echo $r['mode'] === 'replace'
+            ? form('setmode', 'Restore original', ['id' => $r['id'], 'mode' => 'add'], $csrf)
+            : form('setmode', 'Use as replacement', ['id' => $r['id'], 'mode' => 'replace'], $csrf);
+    } ?>
     <?php if ($r['status'] !== 'rejected') echo form('reject', 'Reject', ['id' => $r['id']], $csrf, 'no'); ?>
     <?= form('delete', 'Delete', ['id' => $r['id']], $csrf) ?>
   </div>
 </div>
 <?php endforeach; ?>
 </div>
-</main></body></html>
+</main>
+<script>
+const b=document.getElementById('blur');let on=true;try{on=localStorage.getItem('libadmin-blur')!=='0'}catch(e){}
+b.checked=on;document.body.classList.toggle('blur',on);
+b.onchange=()=>{document.body.classList.toggle('blur',b.checked);try{localStorage.setItem('libadmin-blur',b.checked?'1':'0')}catch(e){}};
+document.addEventListener('click',e=>{const p=e.target.closest('.pv');if(p&&document.body.classList.contains('blur'))p.classList.toggle('shown')});
+</script></body></html>

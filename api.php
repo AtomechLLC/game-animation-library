@@ -3,6 +3,7 @@
 //   GET  api.php?action=state            vote tallies, your votes, approved community GIFs, flagged GIFs
 //   POST api.php?action=vote             JSON {animation, target, value: 1 | -1 | 0}
 //   POST api.php?action=submit           multipart: animation, replaces?, url | file, note?, name?
+//                                        (a url is downloaded and stored like an upload; nothing is public until approved)
 //   GET  api.php?action=file&id=N        an approved uploaded GIF
 // Voters are identified by a random token the page keeps in localStorage and sends as X-Voter-Token.
 declare(strict_types=1);
@@ -64,12 +65,15 @@ function state(): void
         foreach ($s as $r) $mine[$r['target']] = (int) $r['value'];
     }
     $community = [];
-    foreach ($pdo->query("SELECT id, animation, replaces, kind, url, mime, note, submitter, source FROM submissions WHERE status = 'approved' ORDER BY id") as $r) {
+    // Only approved, server-stored files are ever public. mode 'replace' rows take the place of the library GIF in `replaces`.
+    foreach ($pdo->query("SELECT id, animation, replaces, mode, url, mime, note, submitter, source FROM submissions WHERE status = 'approved' AND kind = 'file' ORDER BY id") as $r) {
         $community[$r['animation']][] = [
             'id' => (int) $r['id'],
             'target' => 'sub:' . $r['id'],
             'replaces' => $r['replaces'],
-            'src' => $r['kind'] === 'file' ? 'api.php?action=file&id=' . $r['id'] : $r['url'],
+            'mode' => $r['replaces'] && $r['mode'] === 'replace' ? 'replace' : 'add',
+            'src' => 'api.php?action=file&id=' . $r['id'],
+            'source_url' => $r['url'],
             'mime' => $r['mime'],
             'note' => $r['note'],
             'by' => $r['source'] === 'search' ? 'search' : ($r['submitter'] ?: 'anonymous'),
@@ -132,10 +136,11 @@ function submit(): void
     if ($hasFile === ($url !== '')) fail('send either a URL or a file');
     if (!rate_ok('submit', (int) cfg('submissions_per_hour'))) fail('too many submissions, try again later', 429);
 
-    $row = ['kind' => 'url', 'url' => null, 'file' => null, 'mime' => null, 'bytes' => null];
     if ($url !== '') {
         if (strlen($url) > 1000 || !preg_match('#^https?://[^\s/$.?\#].[^\s]*$#i', $url)) fail('that does not look like a web address');
-        $row['url'] = $url;
+        // Linked GIFs are downloaded and stored here too, so what gets approved is exactly what is shown.
+        try { $m = fetch_media($url); } catch (RuntimeException $e) { fail($e->getMessage()); }
+        $row = ['kind' => 'file', 'url' => $url] + $m;
     } else {
         if ($file['error'] === UPLOAD_ERR_INI_SIZE || $file['error'] === UPLOAD_ERR_FORM_SIZE) fail('file is too large');
         if ($file['error'] !== UPLOAD_ERR_OK || !is_uploaded_file($file['tmp_name'])) fail('upload failed');

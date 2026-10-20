@@ -37,7 +37,8 @@ To add animations: append lines to taxonomy.txt, rebuild index.json, rerun merge
 ## Community features (xCloud / any PHP host)
 
 `index.php` serves the atlas with voting (▲/▼ on every GIF), "Suggest a replacement" / "Suggest a GIF" (link or file upload),
-and an owner review page (`admin.php`). GIFs that collect enough downvotes are flagged and queued for a Giphy/Tenor
+and an owner review page (`admin.php`). Submitted GIFs (uploads and links) are stored on the site and stay hidden until
+approved; an approved replacement takes the original GIF's place on the page. GIFs that collect enough downvotes are flagged and queued for a Giphy/Tenor
 replacement search (`tools/find_replacements.php`); candidates wait for review like community suggestions.
 Setup: [DEPLOY-XCLOUD.md](DEPLOY-XCLOUD.md). Code: `api.php`, `admin.php`, `lib/bootstrap.php`, `config.sample.php`.
 

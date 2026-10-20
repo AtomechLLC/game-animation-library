@@ -84,6 +84,11 @@ function migrate(PDO $pdo): void
     $pdo->exec("CREATE TABLE IF NOT EXISTS replacement_queue (
         target $str NOT NULL PRIMARY KEY, animation $str NOT NULL, flagged_at $str NOT NULL, searched_at $str, result TEXT)$tail");
     $pdo->exec("CREATE TABLE IF NOT EXISTS hits (ip_hash CHAR(64) NOT NULL, action VARCHAR(16) NOT NULL, at INT NOT NULL)$tail");
+    // mode: 'replace' = shown in place of the library GIF it replaces, 'add' = shown under Community GIFs
+    $cols = $mysql
+        ? array_column($pdo->query('SHOW COLUMNS FROM submissions')->fetchAll(), 'Field')
+        : array_column($pdo->query('PRAGMA table_info(submissions)')->fetchAll(), 'name');
+    if (!in_array('mode', $cols, true)) $pdo->exec("ALTER TABLE submissions ADD COLUMN mode VARCHAR(16) NOT NULL DEFAULT 'add'");
 }
 
 function now(): string { return gmdate('Y-m-d H:i:s'); }
@@ -141,6 +146,81 @@ function sniff_media(string $head): ?array
     if (substr($head, 0, 4) === 'RIFF' && substr($head, 8, 4) === 'WEBP') return ['image/webp', 'webp'];
     if (substr($head, 4, 4) === 'ftyp') return ['video/mp4', 'mp4'];
     return null;
+}
+
+/** True for a public IPv4/IPv6 address (blocks localhost, private, link-local and reserved ranges). */
+function public_ip(string $ip): bool
+{
+    return (bool) filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE);
+}
+
+/**
+ * Download a GIF / WebP / MP4 from a link and store it in upload_dir(), so the site never hotlinks
+ * community media (a link could be swapped for something else after it was approved).
+ * Accepts a direct media link or a page (Giphy, Tenor, …) whose og:video / og:image points at one.
+ * Only public addresses are fetched, each redirect is re-checked, and the size is capped.
+ * Returns ['file' => stored name, 'mime' => ..., 'bytes' => ...]; throws RuntimeException with a user-facing reason.
+ */
+function fetch_media(string $url, int $depth = 0): array
+{
+    if (!function_exists('curl_init')) throw new RuntimeException('this server cannot download links, upload the file instead');
+    $max = (int) cfg('max_upload_bytes');
+    for ($hop = 0; $hop < 5; $hop++) {
+        $p = parse_url($url);
+        $scheme = strtolower($p['scheme'] ?? '');
+        $host = trim($p['host'] ?? '', '[]');
+        if (!in_array($scheme, ['http', 'https'], true) || $host === '' || isset($p['user'])) throw new RuntimeException('that does not look like a web address');
+        $port = (int) ($p['port'] ?? ($scheme === 'https' ? 443 : 80));
+        if (!in_array($port, [80, 443], true)) throw new RuntimeException('that link uses an unsupported port');
+        $ips = filter_var($host, FILTER_VALIDATE_IP) ? [$host] : (gethostbynamel($host) ?: []);
+        if (!$ips) throw new RuntimeException('could not find that website');
+        foreach ($ips as $ip) if (!public_ip($ip)) throw new RuntimeException('that address is not allowed');
+        $body = '';
+        $tooBig = false;
+        $ch = curl_init($url);
+        curl_setopt_array($ch, [
+            // Pin the checked address so DNS cannot change between the check and the request.
+            CURLOPT_RESOLVE => ["$host:$port:" . (str_contains($ips[0], ':') ? '[' . $ips[0] . ']' : $ips[0])],
+            CURLOPT_FOLLOWLOCATION => false,
+            CURLOPT_PROTOCOLS => CURLPROTO_HTTP | CURLPROTO_HTTPS,
+            CURLOPT_CONNECTTIMEOUT => 8,
+            CURLOPT_TIMEOUT => 25,
+            CURLOPT_USERAGENT => 'Mozilla/5.0 (compatible; game-animation-library)',
+            CURLOPT_HTTPHEADER => ['Accept: image/gif,image/webp,video/mp4,text/html;q=0.8,*/*;q=0.5'],
+            CURLOPT_WRITEFUNCTION => function ($ch, $chunk) use (&$body, &$tooBig, $max) {
+                $body .= $chunk;
+                if (strlen($body) > $max) { $tooBig = true; return 0; }
+                return strlen($chunk);
+            },
+        ]);
+        curl_exec($ch);
+        $code = (int) curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
+        $location = (string) curl_getinfo($ch, CURLINFO_REDIRECT_URL);
+        $err = curl_errno($ch);
+        curl_close($ch);
+        if ($tooBig) throw new RuntimeException('that file is too large');
+        if ($code >= 300 && $code < 400 && $location !== '') { $url = $location; continue; }
+        if ($err || $code >= 400 || $code === 0) throw new RuntimeException('could not download that link');
+        if ($media = sniff_media(substr($body, 0, 16))) {
+            $stored = bin2hex(random_bytes(16)) . '.' . $media[1] . '.upload';
+            if (file_put_contents(upload_dir() . '/' . $stored, $body) === false) throw new RuntimeException('could not store file');
+            return ['file' => $stored, 'mime' => $media[0], 'bytes' => strlen($body)];
+        }
+        // A page: follow its og:video / og:image once (Giphy and Tenor pages point at the GIF this way).
+        if ($depth === 0 && preg_match_all('#<meta[^>]+(?:property|name)=["\'](og:video(?::secure_url|:url)?|og:image(?::secure_url|:url)?|twitter:image)["\'][^>]*>#i', $body, $m)) {
+            $cands = [];
+            foreach ($m[0] as $i => $tag) {
+                if (preg_match('#content=["\']([^"\']+)#i', $tag, $c)) $cands[] = html_entity_decode($c[1]);
+            }
+            // Prefer animated formats over a still preview image.
+            usort($cands, fn($a, $b) => (int) !preg_match('/\.(gif|webp|mp4)(\?|$)/i', $a) <=> (int) !preg_match('/\.(gif|webp|mp4)(\?|$)/i', $b));
+            foreach ($cands as $c) {
+                try { return fetch_media($c, 1); } catch (RuntimeException $e) {}
+            }
+        }
+        throw new RuntimeException('no GIF, WebP or MP4 found at that link, upload the file or use a direct link');
+    }
+    throw new RuntimeException('that link redirects too many times');
 }
 
 function upload_dir(): string
@@ -219,12 +299,13 @@ function search_replacements(string $target, string $animation): string
         }
     }
     $added = 0;
-    $ins = $pdo->prepare("INSERT INTO submissions (animation, replaces, kind, url, note, submitter, source, status, created_at) VALUES (?, ?, 'url', ?, ?, ?, 'search', 'pending', ?)");
+    $ins = $pdo->prepare("INSERT INTO submissions (animation, replaces, kind, url, file, mime, bytes, note, submitter, source, status, created_at) VALUES (?, ?, 'file', ?, ?, ?, ?, ?, ?, 'search', 'pending', ?)");
     foreach ($found as $f) {
         if ($added >= $n) break;
         if (in_array($f['media'], $known, true) || in_array($f['page'], $known, true)) continue;
         $known[] = $f['media'];
-        $ins->execute([$animation, $target, $f['media'], trim($f['title'] . ' · ' . $f['page'], ' ·'), $f['host'] . ' search: ' . $query, now()]);
+        try { $m = fetch_media($f['media']); } catch (RuntimeException $e) { continue; }
+        $ins->execute([$animation, $target, $f['media'], $m['file'], $m['mime'], $m['bytes'], trim($f['title'] . ' · ' . $f['page'], ' ·'), $f['host'] . ' search: ' . $query, now()]);
         $added++;
     }
     // Without a provider the GIF stays queued, so it is searched once a key is added.
