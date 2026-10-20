@@ -37,7 +37,7 @@ Then check `.env`:
 
 - `PORT` matches the port xCloud proxies to.
 - `ADMIN_PASSWORD_HASH` and `SECRET` from the two commands above.
-- Submissions and votes are stored in `~/library-data` (the site user's home, e.g. `/home/radical_motion/library-data`),
+- Submissions and votes are stored in `~/library-data` (found automatically: the home folder of whichever user runs the app),
   outside the app folder so deploys never overwrite it. Set `DATA_DIR` only to move it. Include that folder in your
   backups: it holds every vote and submission.
 - Optional: `GIPHY_API_KEY` and/or `TENOR_API_KEY` to turn on automatic replacement search for downvoted GIFs.
