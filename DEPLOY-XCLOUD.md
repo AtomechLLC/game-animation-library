@@ -46,16 +46,40 @@ Then check `.env`:
 
 ## 3. Upload size
 
-Submissions can be up to `MAX_UPLOAD_MB` (8 MB by default). If xCloud lets you edit the site's Nginx config, set
-`client_max_body_size 10m;` so larger uploads aren't cut off by Nginx before they reach the app.
+GIF and WebP submissions can be up to `MAX_UPLOAD_MB` (8 MB by default), short videos up to `VIDEO_MAX_MB` (25 MB).
+If xCloud lets you edit the site's Nginx config, set `client_max_body_size 30m;` so video uploads aren't cut off by
+Nginx before they reach the app (Nginx's default is only 1 MB; the visitor then sees "Not sent").
 
-## 4. What is public
+## 4. Video uploads (ffmpeg)
+
+Visitors can upload a short video (MP4, MOV, WebM, MKV or AVI, up to `VIDEO_MAX_SECONDS`, 10 s by default) instead of
+a GIF. The app turns it into an animated WebP like the rest of the library (or a GIF if ffmpeg has no WebP encoder),
+scaled so its longest side is at most `VIDEO_SIZE` (480 px) at `VIDEO_FPS` (15 fps), without sound. The upload request
+only checks the length and saves the video; the conversion runs right after in the background, one at a time at low
+CPU priority, and the review page shows "Converting video to GIF…" until it is ready to approve. The original video is
+deleted once its GIF exists. Videos linked from a page (for example a Giphy page's MP4) are converted the same way.
+
+This needs the `ffmpeg` program on the server. xCloud's Ubuntu servers usually don't have it preinstalled, so install it once over
+SSH as a user with sudo (the server's sudo user from xCloud, not the site user):
+
+```bash
+sudo apt update && sudo apt install -y ffmpeg
+ffmpeg -version | head -1     # check it worked
+```
+
+Then restart the app in xCloud. The app log says `Video uploads: on (ffmpeg …)` at startup, and the review page shows
+"Video uploads: on" next to the tabs. If ffmpeg is missing, the log says `Video uploads: OFF, ffmpeg was not found`
+and the review page says so too; the form then only offers GIF, WebP and MP4 (an MP4 is kept as a video, as before),
+and other video files are refused with a clear message. If ffmpeg is installed somewhere unusual, set
+`FFMPEG_PATH=/full/path/to/ffmpeg` in `.env`.
+
+## 5. What is public
 
 Only the page, `/gifs/*`, `/api` and `/admin` are served. The repo's other files (`.env`, `library.json`, scripts) are
 not reachable from the web, and the data folder lives outside the app. Check afterwards that
 `https://YOUR-SITE/.env` returns 404.
 
-## 5. Replacement search (optional)
+## 6. Replacement search (optional)
 
 When a library GIF collects at least 3 downvotes and is 2+ below its upvotes (configurable), it is flagged and queued.
 With a Giphy or Tenor key set, the app searches for each newly flagged GIF every `SEARCH_EVERY_MINUTES` (60 by
@@ -63,7 +87,7 @@ default) and adds up to 4 candidates to the review queue. No cron job is needed.
 queued and the page shows visitors Giphy/Tenor links to suggest one themselves. You can also press **Search now** on a
 flagged GIF in the review page.
 
-## 6. Review submissions
+## 7. Review submissions
 
 Open `https://YOUR-SITE/admin` and sign in with the password from step 2. Submissions never appear on the
 public page until you approve them there. You can:
@@ -80,6 +104,9 @@ public page until you approve them there. You can:
   prompt to suggest a better GIF. The review page lists everything marked, with **Clear mark**, and a GIF's mark
   clears itself when you approve a replacement for it. Marks are saved in `library-data/db.json` like everything else,
 - **Export approved JSON** to fold approved GIFs into `library.json` later.
+
+A submitted video shows **Converting video to GIF…** until its GIF is made, then **Converted from MP4 video, 4.2 s**
+(or similar) under it, and can be approved like any GIF. If a conversion fails the card says why; **Delete** it.
 
 **Where submissions are stored.** Uploads *and* links are saved on the site: a submitted Giphy/Tenor page or direct
 .gif/.webp/.mp4 link is downloaded when it is sent, so what you approve is exactly what is shown and a link can't be

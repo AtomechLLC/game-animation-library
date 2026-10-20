@@ -8,6 +8,7 @@ const cfg = require('./lib/config');
 const api = require('./lib/api');
 const admin = require('./lib/admin');
 const { searchFlagged } = require('./lib/media');
+const video = require('./lib/video');
 const { send } = require('./lib/http');
 
 const TYPES = { '.webp': 'image/webp', '.gif': 'image/gif', '.png': 'image/png', '.jpg': 'image/jpeg', '.mp4': 'video/mp4' };
@@ -58,6 +59,9 @@ server.listen(cfg.port, cfg.host, () => {
   console.log(`Animation atlas on http://${cfg.host}:${cfg.port}  (data in ${cfg.dataDir})`);
   if (!cfg.adminPasswordHash) console.log('ADMIN_PASSWORD_HASH is not set, so /admin is disabled. Run: npm run hash-password');
 });
+
+// Finds ffmpeg for video uploads and resumes conversions a restart interrupted.
+video.start().catch(e => console.error('video:', e));
 
 // Replacement search for GIFs flagged by downvotes (needs GIPHY_API_KEY and/or TENOR_API_KEY).
 if (cfg.giphyApiKey || cfg.tenorApiKey) {
