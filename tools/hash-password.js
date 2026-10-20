@@ -6,7 +6,8 @@ const { hashPassword } = require('../lib/password');
 
 function done(pw) {
   if (!pw) { console.error('Empty password.'); process.exit(1); }
-  console.log('ADMIN_PASSWORD_HASH=' + hashPassword(pw));
+  // Single quotes keep the $ signs literal if the host loads .env through a shell.
+  console.log("ADMIN_PASSWORD_HASH='" + hashPassword(pw) + "'");
 }
 if (process.argv[2]) done(process.argv[2]);
 else {
