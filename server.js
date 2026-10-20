@@ -60,8 +60,9 @@ server.listen(cfg.port, cfg.host, () => {
   if (!cfg.adminPasswordHash) console.log('ADMIN_PASSWORD_HASH is not set, so /admin is disabled. Run: npm run hash-password');
 });
 
-// Finds ffmpeg for video uploads and resumes conversions a restart interrupted.
-video.start().catch(e => console.error('video:', e));
+// Finds ffmpeg for video uploads (downloading it if missing) and resumes conversions a restart interrupted.
+// Runs after the server is listening and never stops it: without ffmpeg, video uploads just stay off.
+server.once('listening', () => setTimeout(() => video.start().catch(e => console.error('video:', e)), 2000).unref());
 
 // Replacement search for GIFs flagged by downvotes (needs GIPHY_API_KEY and/or TENOR_API_KEY).
 if (cfg.giphyApiKey || cfg.tenorApiKey) {
