@@ -8,13 +8,20 @@ Needs Node.js 20 or newer (set it under the server's **Node Configuration** in x
 
 ## 1. Create the site
 
-1. In xCloud, open your server and add a new **Node.js** site deployed from Git.
-2. Connect GitHub and pick `atomechllc/game-animation-library`, branch `main`.
-3. Build command: leave empty (or `npm install`, which installs nothing). Start command: `npm start`.
-4. Port: the one xCloud assigns, or `3000`. The app reads `PORT` from the environment or `.env`.
+1. In xCloud, open your server and add a new site deployed from Git: connect GitHub and pick
+   `atomechllc/game-animation-library`, branch `main`.
+2. **App Type: Node.js.** xCloud will say "Framework not recognised — assuming a server process". That is
+   correct: this is a plain Node server with no framework, so keep the **server process** (SSR / Node process)
+   serving mode, not a static build.
+3. Build command: leave empty (or `npm install`, which installs nothing). Start command: `npm start`
+   (same as `node server.js`). There is no build output folder.
+4. Port: `3000`, or whatever xCloud fills in. Use the same number for `PORT` in `.env` (step 2). If xCloud sets
+   `PORT` itself, that value wins over `.env`.
 5. Turn on **Push to deploy** if you want every push to `main` to update the site.
 
 xCloud's Nginx sits in front of the app and handles HTTPS, so the app only needs to listen on `127.0.0.1`.
+If the site shows a 502 error after deploying, set `HOST=0.0.0.0` in `.env` and restart, and check that `PORT`
+matches the port in xCloud's settings.
 
 ## 2. Add the private settings
 
