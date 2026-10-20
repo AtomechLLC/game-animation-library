@@ -31,15 +31,15 @@ SSH (or use xCloud's file manager) into the site folder and run:
 cp .env.example .env
 npm run hash-password      # type the review page password, paste the ADMIN_PASSWORD_HASH=... line into .env
 npm run secret             # paste the SECRET=... line into .env
-mkdir -p ../library-data   # where submissions are stored (DATA_DIR)
 ```
 
 Then check `.env`:
 
 - `PORT` matches the port xCloud proxies to.
 - `ADMIN_PASSWORD_HASH` and `SECRET` from the two commands above.
-- `DATA_DIR` points **outside the app folder** (default `../library-data`), so deploys never overwrite it.
-  Include that folder in your backups: it holds every vote and submission.
+- Submissions and votes are stored in `~/library-data` (the site user's home, e.g. `/home/radical_motion/library-data`),
+  outside the app folder so deploys never overwrite it. Set `DATA_DIR` only to move it. Include that folder in your
+  backups: it holds every vote and submission.
 - Optional: `GIPHY_API_KEY` and/or `TENOR_API_KEY` to turn on automatic replacement search for downvoted GIFs.
 
 `.env` and `library-data/` are git-ignored. Restart the app after editing `.env`.
@@ -94,5 +94,5 @@ Pages workflow.
 
 ## Running it locally
 
-`npm start` with no `.env` serves the atlas on http://127.0.0.1:3000 with data in `../library-data`. Set
+`npm start` with no `.env` serves the atlas on http://127.0.0.1:3000 with data in `~/library-data`. Set
 `ADMIN_PASSWORD_HASH` to try the review page. (`serve_local.py` is the separate owner-only page for ✕ marks.)
