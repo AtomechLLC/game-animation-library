@@ -5,6 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "postinstall": "node tools/install-ffmpeg.js",
+    "install-ffmpeg": "node tools/install-ffmpeg.js",
     "hash-password": "node tools/hash-password.js",
     "secret": "node -e \"console.log('SECRET='+require('crypto').randomBytes(32).toString('hex'))\""
   },

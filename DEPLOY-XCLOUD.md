@@ -13,8 +13,8 @@ Needs Node.js 20 or newer (set it under the server's **Node Configuration** in x
 2. **App Type: Node.js.** xCloud will say "Framework not recognised — assuming a server process". That is
    correct: this is a plain Node server with no framework, so keep the **server process** (SSR / Node process)
    serving mode, not a static build.
-3. Build command: leave empty (or `npm install`, which installs nothing). Start command: `npm start`
-   (same as `node server.js`). There is no build output folder.
+3. Build command: `npm install`. There are no packages to install, but it downloads ffmpeg for video uploads the
+   first time (see step 4). Start command: `npm start` (same as `node server.js`). There is no build output folder.
 4. Port: `3000`, or whatever xCloud fills in. Use the same number for `PORT` in `.env` (step 2). If xCloud sets
    `PORT` itself, that value wins over `.env`.
 5. Turn on **Push to deploy** if you want every push to `main` to update the site.
@@ -59,19 +59,26 @@ only checks the length and saves the video; the conversion runs right after in t
 CPU priority, and the review page shows "Converting video to GIF…" until it is ready to approve. The original video is
 deleted once its GIF exists. Videos linked from a page (for example a Giphy page's MP4) are converted the same way.
 
-This needs the `ffmpeg` program on the server. xCloud's Ubuntu servers usually don't have it preinstalled, so install it once over
-SSH as a user with sudo (the server's sudo user from xCloud, not the site user):
+This needs the `ffmpeg` program, and **the deploy sets it up for you**: the `npm install` build command (step 1) runs
+`tools/install-ffmpeg.js`, which downloads a static ffmpeg build (about 150 MB, from
+[BtbN/FFmpeg-Builds](https://github.com/BtbN/FFmpeg-Builds), checked against its published SHA-256) into
+`~/.cache/game-animation-library/ffmpeg` in the site user's home. No sudo is needed, it survives later deploys, and it
+is skipped once ffmpeg is there. If the build command is left empty, the app does the same download in the background
+the first time it starts (set `AUTO_INSTALL_FFMPEG=0` in `.env` to turn that off). It works on Linux x64 and arm64
+servers and needs `tar` with xz support, which Ubuntu has.
+
+Check the app log after a deploy: it says `Video uploads: on (ffmpeg …)` once ffmpeg is found, and the review page
+shows "Video uploads: on" next to the tabs. To install it by hand instead, either run `npm run install-ffmpeg` in the
+site folder, or install the system package over SSH as the server's sudo user:
 
 ```bash
 sudo apt update && sudo apt install -y ffmpeg
-ffmpeg -version | head -1     # check it worked
 ```
 
-Then restart the app in xCloud. The app log says `Video uploads: on (ffmpeg …)` at startup, and the review page shows
-"Video uploads: on" next to the tabs. If ffmpeg is missing, the log says `Video uploads: OFF, ffmpeg was not found`
-and the review page says so too; the form then only offers GIF, WebP and MP4 (an MP4 is kept as a video, as before),
-and other video files are refused with a clear message. If ffmpeg is installed somewhere unusual, set
-`FFMPEG_PATH=/full/path/to/ffmpeg` in `.env`.
+The app uses `FFMPEG_PATH` from `.env` if set, else `ffmpeg` on the PATH (the apt package), else the downloaded copy.
+Restart the app after installing by hand. If ffmpeg can't be found or downloaded, the log says
+`Video uploads: OFF, ffmpeg was not found` and the review page says so too; the form then only offers GIF, WebP and MP4
+(an MP4 is kept as a video, as before), and other video files are refused with a clear message.
 
 ## 5. What is public
 
