@@ -178,6 +178,20 @@
      "host": "Tenor",
      "local": "gifs/locomotion.combat-idle-stance-0.webp",
      "source_url": "https://media.tenor.com/nJ7jDiDAfSUAAAA1/abyss-watchers-dark-souls-3-fight-fight-me-en-garde.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/street-fighter-v-m-bison-street-fighter-idle-animation-same-gif-16559130",
+     "media_url": "https://media.tenor.com/iip5-OwMNT4AAAA1/street-fighter-v-m-bison.webp",
+     "title": "M. Bison's guard-up idle loop beside an alternate-colour Bison",
+     "game": "Street Fighter V",
+     "host": "Tenor",
+     "local": "gifs/locomotion.combat-idle-stance-1.webp",
+     "source_url": "https://media.tenor.com/iip5-OwMNT4AAAA1/street-fighter-v-m-bison.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "M. Bison's guard-up idle loop beside an alternate-colour Bison"
+     }
     }
    ]
   },
@@ -257,6 +271,20 @@
      "host": "Tenor",
      "local": "gifs/locomotion.idle-fidget-breakaway-2.webp",
      "source_url": "https://media.tenor.com/b8HEh2DtF28AAAA1/hollow-knight-hk-hollowknight-grim-troupe-master.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/brewmaster-world-of-warcraft-vulpera-gif-27538226",
+     "media_url": "https://media.tenor.com/6yf-KgY4Pa4AAAA1/brewmaster-world-of-warcraft.webp",
+     "title": "Vulpera Brewmaster's idle loop: shifting weight and flexing a hand",
+     "game": "World of Warcraft",
+     "host": "Tenor",
+     "local": "gifs/locomotion.idle-fidget-breakaway-0.webp",
+     "source_url": "https://media.tenor.com/6yf-KgY4Pa4AAAA1/brewmaster-world-of-warcraft.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Vulpera Brewmaster's idle loop: shifting weight and flexing a hand"
+     }
     }
    ]
   },
@@ -329,6 +357,20 @@
      "host": "Tenor",
      "local": "gifs/locomotion.combat-walk-r0.webp",
      "source_url": "https://media.tenor.com/KVHSLFgPGAkAAAA1/dark-souls-sewers.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/dark-souls-gif-24580984",
+     "media_url": "https://media.tenor.com/jWhi_6_kVEYAAAA1/dark-souls.webp",
+     "title": "Knight advances through a dark cave, sword ready, as a skeleton beast closes in",
+     "game": "Dark Souls",
+     "host": "Tenor",
+     "local": "gifs/locomotion.combat-walk-0.webp",
+     "source_url": "https://media.tenor.com/jWhi_6_kVEYAAAA1/dark-souls.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight advances through a dark cave, sword ready, as a skeleton beast closes in"
+     }
     }
    ],
    "rejected_gifs": [
@@ -567,7 +609,22 @@
      "note": "Lock-on vs free movement in Dark Souls combat"
     }
    ],
-   "gifs": [],
+   "gifs": [
+    {
+     "page_url": "https://tenor.com/view/ocarina-of-time-the-legend-of-zelda-skulltula-zelda-nintendo-64-gif-23206980",
+     "media_url": "https://media.tenor.com/AChRPJGD8EIAAAA1/ocarina-of-time-the-legend-of-zelda.webp",
+     "title": "Link Z-targeted on a Skulltula, shield up, stepping in to strike",
+     "game": "The Legend of Zelda: Ocarina of Time",
+     "host": "Tenor",
+     "local": "gifs/locomotion.strafe-lock-on-movement-0.webp",
+     "source_url": "https://media.tenor.com/AChRPJGD8EIAAAA1/ocarina-of-time-the-legend-of-zelda.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Link Z-targeted on a Skulltula, shield up, stepping in to strike (weaker pick)"
+     }
+    }
+   ],
    "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/ds1-lock-on-dark-souls-gif-14549586169031928712",
@@ -1412,6 +1469,20 @@
      "title": "Titanfall pilot wall run",
      "game": "Titanfall",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/prince-of-persia-sands-of-time-wallrunning-wallrun-le-parkour-gif-24300752",
+     "media_url": "https://media.tenor.com/bZ4IfAIQG6IAAAA1/prince-of-persia-sands-of-time.webp",
+     "title": "The Prince runs along the walls of a stone shaft (dark footage)",
+     "game": "Prince of Persia: The Sands of Time",
+     "host": "Tenor",
+     "local": "gifs/locomotion.wall-run-0.webp",
+     "source_url": "https://media.tenor.com/bZ4IfAIQG6IAAAA1/prince-of-persia-sands-of-time.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "The Prince runs along the walls of a stone shaft (dark footage)"
+     }
     }
    ],
    "rejected_gifs": [
@@ -1512,6 +1583,20 @@
      "host": "Giphy",
      "local": "gifs/locomotion.wall-jump-wall-kick-2.webp",
      "source_url": "https://media.giphy.com/media/3wthwRK00REzScZnEs/200w.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/mega-man-zero-game-boy-advance-zero-mega-man-walljump-gif-23060330",
+     "media_url": "https://media.tenor.com/stsO8qEg0EsAAAA1/mega-man-zero-game-boy-advance.webp",
+     "title": "Zero kicks off the walls to climb a vertical shaft",
+     "game": "Mega Man Zero",
+     "host": "Tenor",
+     "local": "gifs/locomotion.wall-jump-wall-kick-0.webp",
+     "source_url": "https://media.tenor.com/stsO8qEg0EsAAAA1/mega-man-zero-game-boy-advance.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Zero kicks off the walls to climb a vertical shaft"
+     }
     }
    ]
   },
@@ -1741,6 +1826,20 @@
      "title": "Ezio climbing rock wall",
      "game": "Assassin's Creed Revelations",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/banjo-kazooie-smash-bros-ultimate-ledge-hanging-animation-banjo-kazooie-gif-7094415112365640557",
+     "media_url": "https://media.tenor.com/YnRs9PW3i20AAAA1/banjo-kazooie-smash-bros-ultimate.webp",
+     "title": "Banjo & Kazooie's ledge-hang animation",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Tenor",
+     "local": "gifs/locomotion.ledge-grab-hang-1.webp",
+     "source_url": "https://media.tenor.com/YnRs9PW3i20AAAA1/banjo-kazooie-smash-bros-ultimate.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Banjo & Kazooie's ledge-hang animation"
+     }
     }
    ]
   },
@@ -2352,6 +2451,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.overhead-slam-ufd-0.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/ike/IkeFSmash.gif"
+    },
+    {
+     "page_url": "https://tenor.com/view/elden-ring-gif-2016240823063010434",
+     "media_url": "https://media.tenor.com/G_sgWJhP3IIAAAA1/elden-ring.webp",
+     "title": "Player raises a flaming weapon overhead and slams it down into a huge fiery explosion",
+     "game": "Elden Ring",
+     "host": "Tenor",
+     "local": "gifs/melee.overhead-slam-1.webp",
+     "source_url": "https://media.tenor.com/G_sgWJhP3IIAAAA1/elden-ring.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Player raises a flaming weapon overhead and slams it down into a huge fiery explosion"
+     }
     }
    ],
    "rejected_gifs": [
@@ -3185,6 +3298,20 @@
      "title": "CoD melee lunge (approximate match)",
      "game": "Call of Duty",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/mathilda-anarchy-reigns-sprint-spurt-tackle-gif-23935402",
+     "media_url": "https://media.tenor.com/Od0gi3qGwJEAAAA1/mathilda-anarchy-reigns.webp",
+     "title": "Mathilda dashes across the arena and strikes an enemy on arrival",
+     "game": "Anarchy Reigns",
+     "host": "Tenor",
+     "local": "gifs/melee.sprint-attack-0.webp",
+     "source_url": "https://media.tenor.com/Od0gi3qGwJEAAAA1/mathilda-anarchy-reigns.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Mathilda dashes across the arena and strikes an enemy on arrival (weaker pick)"
+     }
     }
    ]
   },
@@ -3959,6 +4086,20 @@
      "host": "Tenor",
      "local": "gifs/melee.deathblow-0.webp",
      "source_url": "https://media.tenor.com/XIyf_MPosjUAAAA1/genichiro-sekiro-parry-deathblow.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/lies-of-p-dlc-overture-boss-battle-gif-10222937464198409191",
+     "media_url": "https://media.tenor.com/jd8rddKUK-cAAAA1/lies-of-p-dlc.webp",
+     "title": "Fatal attack on a staggered boss: heavy close-up strikes with red sparks",
+     "game": "Lies of P: Overture",
+     "host": "Tenor",
+     "local": "gifs/melee.deathblow-1.webp",
+     "source_url": "https://media.tenor.com/jd8rddKUK-cAAAA1/lies-of-p-dlc.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Fatal attack on a staggered boss: heavy close-up strikes with red sparks (weaker pick)"
+     }
     }
    ]
   },
@@ -4032,6 +4173,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.ground-pound-ufd-0.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/bowser/BowserBowserBombG.gif"
+    },
+    {
+     "page_url": "https://tenor.com/view/b3313-sm64-super-mario-64-mario-ground-pound-gif-14071869307238908249",
+     "media_url": "https://media.tenor.com/w0lSlDeygVkAAAA1/b3313-sm64.webp",
+     "title": "Mario ground-pounds, bouncing off the floor in a ring of stars",
+     "game": "Super Mario 64 (B3313 ROM hack)",
+     "host": "Tenor",
+     "local": "gifs/melee.ground-pound-1.webp",
+     "source_url": "https://media.tenor.com/w0lSlDeygVkAAAA1/b3313-sm64.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Mario ground-pounds, bouncing off the floor in a ring of stars"
+     }
     }
    ],
    "rejected_gifs": [
@@ -4356,6 +4511,20 @@
      "host": "Tenor",
      "local": "gifs/melee.dual-wield-flurry-1.webp",
      "source_url": "https://media.tenor.com/TAa826-TodQAAAA1/rellana-twin-moon-knight-knight-dual-wield-two-swords.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/rellana-elden-ring-elden-ring-rellana-gif-4655980910186518874",
+     "media_url": "https://media.tenor.com/QJ1d-Ciq2VoAAAA1/rellana-elden-ring.webp",
+     "title": "Rellana spins and slashes with her twin frost and fire moon blades",
+     "game": "Elden Ring: Shadow of the Erdtree",
+     "host": "Tenor",
+     "local": "gifs/melee.dual-wield-flurry-0.webp",
+     "source_url": "https://media.tenor.com/QJ1d-Ciq2VoAAAA1/rellana-elden-ring.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Rellana spins and slashes with her twin frost and fire moon blades"
+     }
     }
    ],
    "rejected_gifs": [
@@ -4427,6 +4596,34 @@
      "title": "Leviathan Axe vs Mjolnir throws",
      "game": "God of War Ragnarok",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/kratos-kratos-axe-god-of-war-gif-17311524",
+     "media_url": "https://media.tenor.com/zTGGsbONNtMAAAA1/kratos-kratos-axe.webp",
+     "title": "The Leviathan Axe flies back and Kratos catches it",
+     "game": "God of War (2018)",
+     "host": "Tenor",
+     "local": "gifs/melee.weapon-throw-recall-0.webp",
+     "source_url": "https://media.tenor.com/zTGGsbONNtMAAAA1/kratos-kratos-axe.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "The Leviathan Axe flies back and Kratos catches it"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/god-of-war-gow-god-of-war-gif-27033506",
+     "media_url": "https://media.tenor.com/9VJzopra2pwAAAA1/god-of.webp",
+     "title": "Kratos hurls the axe across the ice and recalls it mid-fight",
+     "game": "God of War Ragnarok",
+     "host": "Tenor",
+     "local": "gifs/melee.weapon-throw-recall-1.webp",
+     "source_url": "https://media.tenor.com/9VJzopra2pwAAAA1/god-of.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Kratos hurls the axe across the ice and recalls it mid-fight"
+     }
     }
    ],
    "rejected_gifs": [
@@ -4484,7 +4681,36 @@
      "note": "Players discuss weapon draw animations"
     }
    ],
-   "gifs": [],
+   "gifs": [
+    {
+     "page_url": "https://tenor.com/view/guns-out-jackie-welles-cyberpunk2077-ready-to-shoot-draw-weapons-gif-26927342",
+     "media_url": "https://media.tenor.com/Wptzj8N3SrwAAAA1/guns-out-jackie-welles.webp",
+     "title": "Jackie Welles pulls out and raises his twin pistols",
+     "game": "Cyberpunk 2077",
+     "host": "Tenor",
+     "local": "gifs/ranged.weapon-draw-equip-0.webp",
+     "source_url": "https://media.tenor.com/Wptzj8N3SrwAAAA1/guns-out-jackie-welles.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Jackie Welles pulls out and raises his twin pistols"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/doom-doom-eternal-doomguy-doom-slayer-doom-guy-shotgun-gif-27413588",
+     "media_url": "https://media.tenor.com/ujLwY-mn2XwAAAA1/doom-doom-eternal.webp",
+     "title": "The Doom Slayer turns, lifts his combat shotgun and settles into a ready pose",
+     "game": "Doom Eternal",
+     "host": "Tenor",
+     "local": "gifs/ranged.weapon-draw-equip-1.webp",
+     "source_url": "https://media.tenor.com/ujLwY-mn2XwAAAA1/doom-doom-eternal.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "The Doom Slayer turns, lifts his combat shotgun and settles into a ready pose"
+     }
+    }
+   ],
    "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/nazir-black-ops-6-quick-draw-bo6-nazir-bo6-gif-4748495282982330112",
@@ -4812,6 +5038,20 @@
      "title": "CS:GO firing first-person",
      "game": "Counter-Strike: Global Offensive",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/aiming-rainbow-six-siege-zen-shooting-killed-an-enemy-gif-17624239",
+     "media_url": "https://media.tenor.com/t1ZwpgTMp00AAAA1/aiming-rainbow-six-siege.webp",
+     "title": "Holo-sight rifle kicking upward through a burst of fire",
+     "game": "Rainbow Six Siege",
+     "host": "Tenor",
+     "local": "gifs/ranged.recoil-1.webp",
+     "source_url": "https://media.tenor.com/t1ZwpgTMp00AAAA1/aiming-rainbow-six-siege.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Holo-sight rifle kicking upward through a burst of fire (weaker pick)"
+     }
     }
    ]
   },
@@ -5088,6 +5328,20 @@
      "game": "Call of Duty Modern Warfare 2",
      "media_url": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/resident-evil-gif-21762699",
+     "media_url": "https://media.tenor.com/wZOTrZYXzkwAAAA1/resident-evil.webp",
+     "title": "Hand feeds shells one by one into the shotgun's tube",
+     "game": "Resident Evil (first-person)",
+     "host": "Tenor",
+     "local": "gifs/ranged.shotgun-pump-shell-load-0.webp",
+     "source_url": "https://media.tenor.com/wZOTrZYXzkwAAAA1/resident-evil.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Hand feeds shells one by one into the shotgun's tube"
+     }
     }
    ]
   },
@@ -5295,6 +5549,20 @@
      "host": "Giphy",
      "local": "gifs/ranged.bow-draw-aim-release-2.webp",
      "source_url": "https://media.giphy.com/media/rU4psyp5utC2EYDScY/200w.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/the-last-of-us-part2-the-last-of-us-part%C4%B1-the-last-of-us-part1-the-last-of-us-gif-26676455",
+     "media_url": "https://media.tenor.com/cCPgseQ0K5cAAAA1/the-last-of-us-part2-the-last-of-us-part%C4%B1.webp",
+     "title": "Ellie draws and aims her bow in the snow",
+     "game": "The Last of Us Part I",
+     "host": "Tenor",
+     "local": "gifs/ranged.bow-draw-aim-release-0.webp",
+     "source_url": "https://media.tenor.com/cCPgseQ0K5cAAAA1/the-last-of-us-part2-the-last-of-us-part%C4%B1.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Ellie draws and aims her bow in the snow"
+     }
     }
    ]
   },
@@ -5490,6 +5758,20 @@
      "host": "Tenor",
      "local": "gifs/ranged.grenade-throw-3.webp",
      "source_url": "https://media.tenor.com/1-lgoAEMwnIAAAA1/explosive-grenade-call-of-duty-black-ops-6-kaboom-fire-in-the-hole-activision.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/halo-halo-online-wraith-tank-wraith-shot-gif-22696384",
+     "media_url": "https://media.tenor.com/KRcQD54IwHsAAAA1/halo-halo-online.webp",
+     "title": "First-person throw of a plasma grenade onto a Wraith",
+     "game": "Halo Online",
+     "host": "Tenor",
+     "local": "gifs/ranged.grenade-throw-0.webp",
+     "source_url": "https://media.tenor.com/KRcQD54IwHsAAAA1/halo-halo-online.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "First-person throw of a plasma grenade onto a Wraith"
+     }
     }
    ]
   },
@@ -5546,6 +5828,34 @@
      "title": "Eivor throwing axe",
      "game": "Assassin's Creed Valhalla",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/sega-shinobi-ninja-star-ninja-80s-gif-20977099",
+     "media_url": "https://media.tenor.com/eZokCBnNK9wAAAA1/sega-shinobi.webp",
+     "title": "Joe Musashi throwing shuriken at enemies",
+     "game": "Shinobi (Sega, 1987)",
+     "host": "Tenor",
+     "local": "gifs/ranged.throwing-knife-shuriken-0.webp",
+     "source_url": "https://media.tenor.com/eZokCBnNK9wAAAA1/sega-shinobi.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Joe Musashi throwing shuriken at enemies"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/throwing-knives-jett-valorant-attack-flinging-weapon-gif-26029392",
+     "media_url": "https://media.tenor.com/g2wBs-5rnisAAAA1/throwing-knives-jett.webp",
+     "title": "Jett leaps and hurls a fan of throwing knives (cinematic trailer)",
+     "game": "Valorant",
+     "host": "Tenor",
+     "local": "gifs/ranged.throwing-knife-shuriken-1.webp",
+     "source_url": "https://media.tenor.com/g2wBs-5rnisAAAA1/throwing-knives-jett.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Jett leaps and hurls a fan of throwing knives (cinematic trailer)"
+     }
     }
    ],
    "rejected_gifs": [
@@ -5756,7 +6066,22 @@
      "note": "Cover, peek and blind-fire basics"
     }
    ],
-   "gifs": [],
+   "gifs": [
+    {
+     "page_url": "https://tenor.com/view/mass-effect2-mass-effect-trilogy-mass-effect-gifs-mass-effect-kasumi-goto-gif-27028809",
+     "media_url": "https://media.tenor.com/iPuDvaBZsw4AAAA1/mass-effect2-mass-effect-trilogy.webp",
+     "title": "Squadmate crouched behind chest-high cover rises to fire, then ducks back",
+     "game": "Mass Effect 2",
+     "host": "Tenor",
+     "local": "gifs/ranged.cover-peek-pop-up-aim-0.webp",
+     "source_url": "https://media.tenor.com/iPuDvaBZsw4AAAA1/mass-effect2-mass-effect-trilogy.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Squadmate crouched behind chest-high cover rises to fire, then ducks back"
+     }
+    }
+   ],
    "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/gears-5-gears-of-war-gears-of-war-movement-wallbounce-wallbouncing-gif-3141234246689968614",
@@ -5839,6 +6164,34 @@
      "game": "Rainbow Six Siege",
      "media_url": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/arena-tarkov-peek-win-gaming-gif-12373147594214593723",
+     "media_url": "https://media.tenor.com/q7ZALmKj1LsAAAA1/arena-tarkov.webp",
+     "title": "First-person lean out past a wall corner with the rifle raised",
+     "game": "Escape from Tarkov: Arena",
+     "host": "Tenor",
+     "local": "gifs/ranged.lean-peek-0.webp",
+     "source_url": "https://media.tenor.com/q7ZALmKj1LsAAAA1/arena-tarkov.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "First-person lean out past a wall corner with the rifle raised"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/whoa-look-at-that-soldier-game-play-gif-16841286",
+     "media_url": "https://media.tenor.com/4LasBQpPIWIAAAA1/whoa-look-at-that.webp",
+     "title": "Third-person soldier leans out of a doorway to look and aim",
+     "game": "Unidentified military shooter",
+     "host": "Tenor",
+     "local": "gifs/ranged.lean-peek-1.webp",
+     "source_url": "https://media.tenor.com/4LasBQpPIWIAAAA1/whoa-look-at-that.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Third-person soldier leans out of a doorway to look and aim (game not identified, weaker pick)"
+     }
     }
    ],
    "rejected_gifs": [
@@ -6038,6 +6391,34 @@
      "title": "Max Payne bullet time",
      "game": "Max Payne",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/stranglehold-game-graphics-glitch-ragdoll-gif-26639471",
+     "media_url": "https://media.tenor.com/yjPMKRvqJxMAAAA1/stranglehold-game.webp",
+     "title": "Tequila dives, slides and rides a rail while shooting in slow motion",
+     "game": "Stranglehold",
+     "host": "Tenor",
+     "local": "gifs/ranged.gun-kata-stylish-shooting-0.webp",
+     "source_url": "https://media.tenor.com/yjPMKRvqJxMAAAA1/stranglehold-game.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Tequila dives, slides and rides a rail while shooting in slow motion"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/max-payne-dive-comfort-furniture-gif-17851570450351742299",
+     "media_url": "https://media.tenor.com/972EvjATXVsAAAA1/max-payne-dive.webp",
+     "title": "Max shootdodges across a yacht deck and lands on his back",
+     "game": "Max Payne 3",
+     "host": "Tenor",
+     "local": "gifs/ranged.gun-kata-stylish-shooting-1.webp",
+     "source_url": "https://media.tenor.com/972EvjATXVsAAAA1/max-payne-dive.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Max shootdodges across a yacht deck and lands on his back (weaker pick)"
+     }
     }
    ],
    "rejected_gifs": [
@@ -6087,6 +6468,20 @@
      "game": "Zelda: Phantom Hourglass",
      "media_url": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/legend-of-zelda-minish-cap-magic-boomerang-ladder-gif-19144800",
+     "media_url": "https://media.tenor.com/b0JkL-HpNDsAAAA1/legend-of-zelda-minish-cap.webp",
+     "title": "Link throws the boomerang, which arcs out and returns",
+     "game": "The Legend of Zelda: The Minish Cap",
+     "host": "Tenor",
+     "local": "gifs/ranged.boomerang-returning-throw-0.webp",
+     "source_url": "https://media.tenor.com/b0JkL-HpNDsAAAA1/legend-of-zelda-minish-cap.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Link throws the boomerang, which arcs out and returns"
+     }
     }
    ],
    "rejected_gifs": [
@@ -6160,6 +6555,20 @@
      "game": "Skyrim",
      "media_url": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/conjure-gif-18153802",
+     "media_url": "https://media.tenor.com/93OMhgI1geMAAAA1/conjure.webp",
+     "title": "First-person hands cast a conjuration spell, opening a purple portal on the ground",
+     "game": "The Elder Scrolls V: Skyrim",
+     "host": "Tenor",
+     "local": "gifs/magic.spell-cast-instant-1.webp",
+     "source_url": "https://media.tenor.com/93OMhgI1geMAAAA1/conjure.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "First-person hands cast a conjuration spell, opening a purple portal on the ground"
+     }
     }
    ]
   },
@@ -6292,6 +6701,20 @@
      "title": "Skyrim spell cast in fight",
      "game": "Skyrim",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/painted-world-dark-souls-1-dark-souls-fireball-fire-orb-gif-6488227153683286675",
+     "media_url": "https://media.tenor.com/WgrQOF1WCpMAAAA1/painted-world-dark-souls-1.webp",
+     "title": "Pyromancer throws fireballs at enemies in the Painted World",
+     "game": "Dark Souls",
+     "host": "Tenor",
+     "local": "gifs/magic.projectile-cast-fireball-1.webp",
+     "source_url": "https://media.tenor.com/WgrQOF1WCpMAAAA1/painted-world-dark-souls-1.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Pyromancer throws fireballs at enemies in the Painted World"
+     }
     }
    ]
   },
@@ -6335,6 +6758,20 @@
      "title": "Goku charges and fires Kamehameha (Saiyan Saga)",
      "game": "Dragon Ball Z",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/cell-kamehameha-fighterz-gif-21259367",
+     "media_url": "https://media.tenor.com/fCkHCvU7BPoAAAA1/cell-kamehameha.webp",
+     "title": "Cell fires a full-screen Kamehameha",
+     "game": "Dragon Ball FighterZ",
+     "host": "Tenor",
+     "local": "gifs/magic.beam-attack-1.webp",
+     "source_url": "https://media.tenor.com/fCkHCvU7BPoAAAA1/cell-kamehameha.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Cell fires a full-screen Kamehameha"
+     }
     }
    ]
   },
@@ -6458,6 +6895,20 @@
       "confidence": "low",
       "what": "Fisheye, washed-out Dark Souls-style knight clip (DiabloDesu watermark); summon not clearly visible"
      }
+    },
+    {
+     "page_url": "https://tenor.com/view/diablo-4-necromancer-gif-8445608852674654361",
+     "media_url": "https://media.tenor.com/dTTUgTeRMJkAAAA1/diablo-4-necromancer.webp",
+     "title": "Necromancer's glowing skeletal minions rise and stand ready (trailer)",
+     "game": "Diablo IV",
+     "host": "Tenor",
+     "local": "gifs/magic.summon-1.webp",
+     "source_url": "https://media.tenor.com/dTTUgTeRMJkAAAA1/diablo-4-necromancer.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Necromancer's glowing skeletal minions rise and stand ready (trailer)"
+     }
     }
    ]
   },
@@ -6492,6 +6943,20 @@
      "title": "Goku Super Kaioken power-up scream",
      "game": "Dragon Ball Z",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/dbfz-kaio-ken-kaioken-x20-dbfz-kaioken-x20-gif-26952999",
+     "media_url": "https://media.tenor.com/DdLIi9NbkhYAAAA1/dbfz-kaio-ken.webp",
+     "title": "Goku powers up with Kaioken, flaring a red aura before attacking",
+     "game": "Dragon Ball FighterZ",
+     "host": "Tenor",
+     "local": "gifs/magic.self-buff-power-up-0.webp",
+     "source_url": "https://media.tenor.com/DdLIi9NbkhYAAAA1/dbfz-kaio-ken.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Goku powers up with Kaioken, flaring a red aura before attacking"
+     }
     }
    ],
    "rejected_gifs": [
@@ -6682,6 +7147,20 @@
      "host": "Tenor",
      "local": "gifs/magic.teleport-blink-0.webp",
      "source_url": "https://media.tenor.com/W1Vf-vGza-0AAAA1/blink-dishonored.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/tracer-widowmaker-ow2-overwatch-eichenwalde-gif-1817646552797724734",
+     "media_url": "https://media.tenor.com/GTmT6NK4wD4AAAA1/tracer-widowmaker.webp",
+     "title": "Tracer blinks across the courtyard in short teleport hops",
+     "game": "Overwatch 2",
+     "host": "Tenor",
+     "local": "gifs/magic.teleport-blink-1.webp",
+     "source_url": "https://media.tenor.com/GTmT6NK4wD4AAAA1/tracer-widowmaker.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Tracer blinks across the courtyard in short teleport hops"
+     }
     }
    ]
   },
@@ -6860,6 +7339,20 @@
      "game": "Dragon Ball FighterZ",
      "media_url": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/lucario-supersmashbros-charging-gif-20026345",
+     "media_url": "https://media.tenor.com/v9kpSb0IPskAAAA1/lucario-supersmashbros.webp",
+     "title": "Lucario charges Aura Sphere, the blue ball swelling between its paws",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Tenor",
+     "local": "gifs/magic.charge-up-ki-charge-1.webp",
+     "source_url": "https://media.tenor.com/v9kpSb0IPskAAAA1/lucario-supersmashbros.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Lucario charges Aura Sphere, the blue ball swelling between its paws"
+     }
     }
    ],
    "rejected_gifs": [
@@ -6986,6 +7479,20 @@
      "host": "Tenor",
      "local": "gifs/magic.ice-frost-spell-0.webp",
      "source_url": "https://media.tenor.com/1nwSmA6fnD4AAAA1/skyrim-ice-storm-frost-breath-magic.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/anivia-support-zodra-mr-zodra-league-of-legends-off-meta-gif-26690400",
+     "media_url": "https://media.tenor.com/q_l9xuqVj30AAAA1/anivia-support-zodra.webp",
+     "title": "Anivia's Frostbite and ice-shard spells cast on an enemy in lane",
+     "game": "League of Legends",
+     "host": "Tenor",
+     "local": "gifs/magic.ice-frost-spell-1.webp",
+     "source_url": "https://media.tenor.com/q_l9xuqVj30AAAA1/anivia-support-zodra.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Anivia's Frostbite and ice-shard spells cast on an enemy in lane (small, weaker pick)"
+     }
     }
    ]
   },
@@ -7355,6 +7862,20 @@
      "host": "Tenor",
      "local": "gifs/defense.block-impact-guard-hit-0.webp",
      "source_url": "https://media.tenor.com/IEkpiSATBVEAAAA1/monster-hunter-wilds-mhw-doshaguma-greatsword-block.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/genichiro-inner-ashina-sekiro-wolf-gif-425701279406695694",
+     "media_url": "https://media.tenor.com/BehlDuN3JQ4AAAA1/genichiro-inner.webp",
+     "title": "Wolf deflects Genichiro's strikes in bursts of orange sparks",
+     "game": "Sekiro: Shadows Die Twice",
+     "host": "Tenor",
+     "local": "gifs/defense.block-impact-guard-hit-1.webp",
+     "source_url": "https://media.tenor.com/BehlDuN3JQ4AAAA1/genichiro-inner.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Wolf deflects Genichiro's strikes in bursts of orange sparks"
+     }
     }
    ]
   },
@@ -7420,6 +7941,20 @@
      "title": "Parrying Gwyn",
      "game": "Dark Souls",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/parry-sulyvahn-dark-souls-3-ds3-dark-gif-15512354248289415241",
+     "media_url": "https://media.tenor.com/10b0ADdP8EkAAAA1/parry-sulyvahn.webp",
+     "title": "Parry against Pontiff Sulyvahn's flaming sword",
+     "game": "Dark Souls III",
+     "host": "Tenor",
+     "local": "gifs/defense.parry-1.webp",
+     "source_url": "https://media.tenor.com/10b0ADdP8EkAAAA1/parry-sulyvahn.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Parry against Pontiff Sulyvahn's flaming sword"
+     }
     }
    ],
    "rejected_gifs": [
@@ -7651,6 +8186,20 @@
      "host": "Giphy",
      "local": "gifs/defense.sidestep-quickstep-2.webp",
      "source_url": "https://media.giphy.com/media/AXhPimUMmjKcPw0kBW/200w.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/heihachi-mishima-tekken-8-sidestep-electric-gif-229354178702022891",
+     "media_url": "https://media.tenor.com/Ay7UaQ1JGOsAAAA1/heihachi-mishima.webp",
+     "title": "Heihachi sidesteps an attack and answers with a Wind God Fist",
+     "game": "Tekken 8",
+     "host": "Tenor",
+     "local": "gifs/defense.sidestep-quickstep-0.webp",
+     "source_url": "https://media.tenor.com/Ay7UaQ1JGOsAAAA1/heihachi-mishima.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Heihachi sidesteps an attack and answers with a Wind God Fist"
+     }
     }
    ]
   },
@@ -7889,6 +8438,20 @@
      "title": "Bayonetta Saurian dash dodge into Witch Time",
      "game": "Bayonetta",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/bayonetta-combo-witch-time-angels-platinum-games-gif-18437241",
+     "media_url": "https://media.tenor.com/u7fv4qqEJRMAAAA1/bayonetta-combo.webp",
+     "title": "Dodge triggers Witch Time; the world slows and tints while Bayonetta combos angels",
+     "game": "Bayonetta",
+     "host": "Tenor",
+     "local": "gifs/defense.perfect-dodge-witch-time-1.webp",
+     "source_url": "https://media.tenor.com/u7fv4qqEJRMAAAA1/bayonetta-combo.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Dodge triggers Witch Time; the world slows and tints while Bayonetta combos angels"
+     }
     }
    ]
   },
@@ -8112,6 +8675,20 @@
      "title": "Black Ops soldier taking cover while shooting",
      "game": "Call of Duty: Black Ops 4",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/gears-of-war-lancer-reloaded-locust-fight-gif-15230683887560939455",
+     "media_url": "https://media.tenor.com/015CTNRV178AAAA1/gears-of-war-lancer.webp",
+     "title": "Two Gears crouched behind sandbag cover, one reloading the Lancer",
+     "game": "Gears of War (Reloaded)",
+     "host": "Tenor",
+     "local": "gifs/defense.take-cover-0.webp",
+     "source_url": "https://media.tenor.com/015CTNRV178AAAA1/gears-of-war-lancer.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Two Gears crouched behind sandbag cover, one reloading the Lancer (weaker pick)"
+     }
     }
    ],
    "rejected_gifs": [
@@ -8591,6 +9168,34 @@
      "game": "Super Smash Bros Melee",
      "media_url": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/donkey-kong-diddy-kong-super-smash-bros-brawl-subspace-donkey-kong-punch-gif-9073418811781551311",
+     "media_url": "https://media.tenor.com/fetCVhaWFM8AAAA1/donkey-kong-diddy-kong.webp",
+     "title": "Donkey Kong's charged punch launches Diddy Kong far off into the sky",
+     "game": "Super Smash Bros. for Wii U / 3DS (trailer)",
+     "host": "Tenor",
+     "local": "gifs/reactions.knockback-0.webp",
+     "source_url": "https://media.tenor.com/fetCVhaWFM8AAAA1/donkey-kong-diddy-kong.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Donkey Kong's charged punch launches Diddy Kong far off into the sky"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/bayonetta-heels-smash-wicked-weave-stomp-gif-22739168",
+     "media_url": "https://media.tenor.com/PJaXmJXDl48AAAA1/bayonetta-heels.webp",
+     "title": "Bayonetta is hit and sent flying off the stage",
+     "game": "Super Smash Bros. for Wii U",
+     "host": "Tenor",
+     "local": "gifs/reactions.knockback-1.webp",
+     "source_url": "https://media.tenor.com/PJaXmJXDl48AAAA1/bayonetta-heels.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Bayonetta is hit and sent flying off the stage"
+     }
     }
    ]
   },
@@ -8796,6 +9401,20 @@
      "host": "Tenor",
      "local": "gifs/reactions.wall-bounce-wall-splat-3.webp",
      "source_url": "https://media.tenor.com/l8HyMXNPQqYAAAA1/tekken-tekken-6-tekken-7-tekken-8-alisa.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/tekken-reina-tekken-8-wall-punch-gif-12091450243398563456",
+     "media_url": "https://media.tenor.com/p8117uEU9oAAAAA1/tekken-reina.webp",
+     "title": "Reina's punch splats Kazuya against the wall, then she follows up",
+     "game": "Tekken 8",
+     "host": "Tenor",
+     "local": "gifs/reactions.wall-bounce-wall-splat-0.webp",
+     "source_url": "https://media.tenor.com/p8117uEU9oAAAAA1/tekken-reina.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Reina's punch splats Kazuya against the wall, then she follows up"
+     }
     }
    ]
   },
@@ -8858,6 +9477,20 @@
       "verdict": "meme",
       "confidence": "low",
       "what": "Looping 2D fan animation (watermark 'Princess') of a teddy-bear brawler juggling a character in an arena; not clearly from a game"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/urien-mirrors-mirror-aegis-reflector-combo-gif-25423285",
+     "media_url": "https://media.tenor.com/j-Sa4P8WybsAAAA1/urien-mirrors.webp",
+     "title": "Urien's Aegis Reflector juggle; the opponent bounces between mirror and floor",
+     "game": "Street Fighter V",
+     "host": "Tenor",
+     "local": "gifs/reactions.ground-bounce-1.webp",
+     "source_url": "https://media.tenor.com/j-Sa4P8WybsAAAA1/urien-mirrors.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Urien's Aegis Reflector juggle; the opponent bounces between mirror and floor (weaker pick)"
      }
     }
    ],
@@ -9105,6 +9738,34 @@
      "title": "SF3 Daigo parry sequence, freeze on each parry",
      "game": "Street Fighter III: 3rd Strike",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/weapon-defeated-hit-strike-super-smash-bros-ultimate-gif-14734561",
+     "media_url": "https://media.tenor.com/IiWBOJIm6bQAAAA1/weapon-defeated.webp",
+     "title": "Finishing blow: the game freezes and zooms in on the impact before the launch",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Tenor",
+     "local": "gifs/reactions.hit-stop-hit-freeze-0.webp",
+     "source_url": "https://media.tenor.com/IiWBOJIm6bQAAAA1/weapon-defeated.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Finishing blow: the game freezes and zooms in on the impact before the launch"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/chunli-kicks-street-fighter-lightning-legs-hyakuretsukyaku-gif-17375711",
+     "media_url": "https://media.tenor.com/vpOlUK9QTfYAAAA1/chunli-kicks.webp",
+     "title": "Chun-Li's rapid kicks; each hit holds for a beat in a burst of sparks",
+     "game": "Street Fighter IV",
+     "host": "Tenor",
+     "local": "gifs/reactions.hit-stop-hit-freeze-1.webp",
+     "source_url": "https://media.tenor.com/vpOlUK9QTfYAAAA1/chunli-kicks.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Chun-Li's rapid kicks; each hit holds for a beat in a burst of sparks (weaker pick)"
+     }
     }
    ],
    "rejected_gifs": [
@@ -9169,6 +9830,20 @@
      "title": "SF2 Cammy vs Guile, fighter knocked to ground",
      "game": "Street Fighter II",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/street-fighter-6-ryu-jamie-combo-street-fighter-gif-27330014",
+     "media_url": "https://media.tenor.com/GZ0GPBZIgeIAAAA1/street-fighter-6-ryu.webp",
+     "title": "Drive Impact punish counter: Jamie slumps into a crumple, then a Critical Art finishes",
+     "game": "Street Fighter 6",
+     "host": "Tenor",
+     "local": "gifs/reactions.crumple-collapse-0.webp",
+     "source_url": "https://media.tenor.com/GZ0GPBZIgeIAAAA1/street-fighter-6-ryu.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Drive Impact punish counter: Jamie slumps into a crumple, then a Critical Art finishes (weaker pick)"
+     }
     }
    ],
    "rejected_gifs": [
@@ -9349,6 +10024,20 @@
      "host": "Tenor",
      "local": "gifs/reactions.poisoned-0.webp",
      "source_url": "https://media.tenor.com/yn-AvXBXZh8AAAA1/badly-poisoned-doof.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/mh4u-monster-hunter-4-ultimate-monster-hunter-4u-gif-10372383908196861797",
+     "media_url": "https://media.tenor.com/j_IcNZINR2UAAAA1/mh4u-monster-hunter-4-ultimate.webp",
+     "title": "Hunter is hit by a poison attack, purple poison bubbles rise, and they faint",
+     "game": "Monster Hunter 4 Ultimate",
+     "host": "Tenor",
+     "local": "gifs/reactions.poisoned-1.webp",
+     "source_url": "https://media.tenor.com/j_IcNZINR2UAAAA1/mh4u-monster-hunter-4-ultimate.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Hunter is hit by a poison attack, purple poison bubbles rise, and they faint"
+     }
     }
    ],
    "rejected_gifs": [
@@ -9593,6 +10282,20 @@
      "title": "Micah Bell shot and falls",
      "game": "Red Dead Redemption 2",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/dark-souls3-death-dead-poison-gif-25776432",
+     "media_url": "https://media.tenor.com/Z3c6g0ggO-UAAAA1/dark-souls3-death.webp",
+     "title": "Player character is cut down and crumples to the floor",
+     "game": "Dark Souls III",
+     "host": "Tenor",
+     "local": "gifs/death.death-collapse-0.webp",
+     "source_url": "https://media.tenor.com/Z3c6g0ggO-UAAAA1/dark-souls3-death.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Player character is cut down and crumples to the floor"
+     }
     }
    ],
    "rejected_gifs": [
@@ -9831,6 +10534,20 @@
      "host": "Tenor",
      "local": "gifs/death.dismemberment-0.webp",
      "source_url": "https://media.tenor.com/dcChdafs-FEAAAA1/isaac-clarke-punches-necromorph's-head-off-isaac-clarke-dead-space-2-dead-space-qte.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/metal-gear-rising-revengeance-slash-cut-cut-apart-gif-13250400119140316659",
+     "media_url": "https://media.tenor.com/t-LgtGkm9fMAAAA1/metal-gear-rising-revengeance.webp",
+     "title": "Raiden's Blade Mode slashes through an enemy cyborg",
+     "game": "Metal Gear Rising: Revengeance",
+     "host": "Tenor",
+     "local": "gifs/death.dismemberment-1.webp",
+     "source_url": "https://media.tenor.com/t-LgtGkm9fMAAAA1/metal-gear-rising-revengeance.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Raiden's Blade Mode slashes through an enemy cyborg (weaker pick, cut is small in frame)"
+     }
     }
    ]
   },
@@ -9896,6 +10613,20 @@
      "host": "Giphy",
      "local": "gifs/death.kill-cam-slow-mo-kill-2.webp",
      "source_url": "https://media.giphy.com/media/5C24713PNkXtepQP4y/200w.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/mwd-kill-cam-grenade-on-eblise-gaming-gif-16743080",
+     "media_url": "https://media.tenor.com/pIubvFkAlQ8AAAA1/mwd-kill-cam.webp",
+     "title": "KILLCAM replay of a grenade kill",
+     "game": "Call of Duty 4: Modern Warfare (Remastered)",
+     "host": "Tenor",
+     "local": "gifs/death.kill-cam-slow-mo-kill-0.webp",
+     "source_url": "https://media.tenor.com/pIubvFkAlQ8AAAA1/mwd-kill-cam.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "KILLCAM replay of a grenade kill"
+     }
     }
    ]
   },
@@ -10055,6 +10786,20 @@
      "host": "Tenor",
      "local": "gifs/death.fighting-game-ko-1.webp",
      "source_url": "https://media.tenor.com/utsy1aSl7yIAAAA1/yvezzn-tekken-soul-calibur-yoshimitsu-harakiri-double-ko.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/tekken-lili-tekken7-rage-art-fight-gif-16232804",
+     "media_url": "https://media.tenor.com/7bE-8UhqOXYAAAA1/tekken-lili.webp",
+     "title": "Lili's Rage Art finishes the round with a K.O. banner",
+     "game": "Tekken 7",
+     "host": "Tenor",
+     "local": "gifs/death.fighting-game-ko-0.webp",
+     "source_url": "https://media.tenor.com/7bE-8UhqOXYAAAA1/tekken-lili.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Lili's Rage Art finishes the round with a K.O. banner"
+     }
     }
    ]
   },
@@ -10183,6 +10928,20 @@
      "title": "Cammy win pose, SF6",
      "game": "Street Fighter 6",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/kingdom-hearts-disney-sora-kingdom-hearts-super-smash-bros-ultimate-sora-victory-gif-1261178947205777002",
+     "media_url": "https://media.tenor.com/EYCbkgpmxmoAAAA1/kingdom-hearts-disney.webp",
+     "title": "Sora's victory screen: Keyblade flourish and win pose",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Tenor",
+     "local": "gifs/fighting.victory-pose-1.webp",
+     "source_url": "https://media.tenor.com/EYCbkgpmxmoAAAA1/kingdom-hearts-disney.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Sora's victory screen: Keyblade flourish and win pose"
+     }
     }
    ]
   },
@@ -10226,6 +10985,20 @@
      "game": "Street Fighter Alpha",
      "media_url": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/young-link-drinking-milk-milk-milk-bottle-chug-gif-3653173203239913328",
+     "media_url": "https://media.tenor.com/MrKtrEoXR3AAAAA1/young-link-drinking-milk.webp",
+     "title": "Young Link's taunt: chugging a bottle of milk",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Tenor",
+     "local": "gifs/fighting.taunt-1.webp",
+     "source_url": "https://media.tenor.com/MrKtrEoXR3AAAAA1/young-link-drinking-milk.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Young Link's taunt: chugging a bottle of milk"
+     }
     }
    ]
   },
@@ -10913,6 +11686,20 @@
      "title": "Guilty Gear Burst breaking a combo",
      "game": "Guilty Gear",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/shield-gif-11994173099309860600",
+     "media_url": "https://media.tenor.com/pnPc4s7pBvgAAAA1/shield.webp",
+     "title": "Fulgore breaks out of a combo; the BREAKER! callout appears on screen",
+     "game": "Killer Instinct (1994)",
+     "host": "Tenor",
+     "local": "gifs/fighting.combo-breaker-0.webp",
+     "source_url": "https://media.tenor.com/pnPc4s7pBvgAAAA1/shield.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Fulgore breaks out of a combo; the BREAKER! callout appears on screen"
+     }
     }
    ],
    "rejected_gifs": [
@@ -10977,6 +11764,20 @@
      "game": "Valorant",
      "media_url": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/tekken-3---player-select-gif-13073012358743934623",
+     "media_url": "https://media.tenor.com/tWyrefs5Rp8AAAA1/tekken-3---player-select.webp",
+     "title": "Player-select screen cycling through fighters' portraits",
+     "game": "Tekken 3",
+     "host": "Tenor",
+     "local": "gifs/fighting.character-select-pose-0.webp",
+     "source_url": "https://media.tenor.com/tWyrefs5Rp8AAAA1/tekken-3---player-select.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Player-select screen cycling through fighters' portraits"
+     }
     }
    ],
    "rejected_gifs": [
@@ -11051,6 +11852,20 @@
      "title": "Gore Magala roar windup",
      "game": "Monster Hunter",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/parry-sulyvahn-dark-souls-3-ds3-dark-gif-15512354248289415241",
+     "media_url": "https://media.tenor.com/10b0ADdP8EkAAAA1/parry-sulyvahn.webp",
+     "title": "Pontiff Sulyvahn winds up his flaming greatsword before the swing",
+     "game": "Dark Souls III",
+     "host": "Tenor",
+     "local": "gifs/enemies.attack-telegraph-windup-1.webp",
+     "source_url": "https://media.tenor.com/10b0ADdP8EkAAAA1/parry-sulyvahn.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Pontiff Sulyvahn winds up his flaming greatsword before the swing"
+     }
     }
    ]
   },
@@ -11430,7 +12245,22 @@
      "note": "Stealth search/investigation AI design"
     }
    ],
-   "gifs": []
+   "gifs": [
+    {
+     "page_url": "https://tenor.com/view/metal-gear-solid-metal-gear-solid-guard-gameplay-playthrough-gif-17186234",
+     "media_url": "https://media.tenor.com/aTRaHrnwgcEAAAA1/metal-gear-solid-metal-gear-solid-guard.webp",
+     "title": "Guard searching a cabin doorway while the HUD shifts from Alert to Evasion",
+     "game": "Metal Gear Solid 2: Sons of Liberty",
+     "host": "Tenor",
+     "local": "gifs/enemies.search-investigate-0.webp",
+     "source_url": "https://media.tenor.com/aTRaHrnwgcEAAAA1/metal-gear-solid-metal-gear-solid-guard.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Guard searching a cabin doorway while the HUD shifts from Alert to Evasion (dark, weaker pick)"
+     }
+    }
+   ]
   },
   {
    "id": "enemies.enemy-taunt-provoke",
@@ -11458,6 +12288,20 @@
      "host": "Tenor",
      "local": "gifs/enemies.enemy-taunt-provoke-0.webp",
      "source_url": "https://media.tenor.com/E-IlYz3FABcAAAA1/genshin-genshin-impact-genshin-impact-npc-genshin-impact-enemy-npc-tepetlisaur-warrior.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/halo-2-grunt-true-rocket-halo-gif-9058269108299188610",
+     "media_url": "https://media.tenor.com/fbVvwuARSYIAAAA1/halo-2-grunt.webp",
+     "title": "Grunt waddles out waving its arms at the player",
+     "game": "Halo Infinite",
+     "host": "Tenor",
+     "local": "gifs/enemies.enemy-taunt-provoke-1.webp",
+     "source_url": "https://media.tenor.com/fbVvwuARSYIAAAA1/halo-2-grunt.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Grunt waddles out waving its arms at the player"
+     }
     }
    ]
   },
@@ -11521,6 +12365,20 @@
      "title": "Halo grunts scattering and fleeing (sauve qui peut)",
      "game": "Halo",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/halo-kayzer-grunts-sauve-qui-peut-gif-26554197",
+     "media_url": "https://media.tenor.com/FdvzqLP33noAAAA1/halo-kayzer.webp",
+     "title": "Grunt flees from the player's flashlight into the jungle",
+     "game": "Halo Infinite",
+     "host": "Tenor",
+     "local": "gifs/enemies.flee-retreat-1.webp",
+     "source_url": "https://media.tenor.com/FdvzqLP33noAAAA1/halo-kayzer.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Grunt flees from the player's flashlight into the jungle (dark, weaker pick)"
+     }
     }
    ]
   },
@@ -11584,6 +12442,20 @@
      "title": "SotC climbing a colossus",
      "game": "Shadow of the Colossus",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/shadow-of-the-colossus-sotc-climbing-cinematic-platformer-ps2-gif-22327634",
+     "media_url": "https://media.tenor.com/wnLhp2CI6kYAAAA1/shadow-of-the-colossus-sotc.webp",
+     "title": "Clinging to a colossus's armored back while it bucks",
+     "game": "Shadow of the Colossus",
+     "host": "Tenor",
+     "local": "gifs/enemies.weak-point-exposed-1.webp",
+     "source_url": "https://media.tenor.com/wnLhp2CI6kYAAAA1/shadow-of-the-colossus-sotc.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Clinging to a colossus's armored back while it bucks (weaker pick, no glowing sigil visible)"
+     }
     }
    ]
   },
@@ -11683,6 +12555,20 @@
      "host": "Tenor",
      "local": "gifs/enemies.charging-rush-2.webp",
      "source_url": "https://media.tenor.com/SC4YtVcuMIgAAAA1/diablos-monster-hunter-black-diablos-monster-hunter-world-groin-hit.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/monster-hunter-greatsword-tackle-diablos-charge-gif-27109536",
+     "media_url": "https://media.tenor.com/PBxSisix7T0AAAA1/monster-hunter-greatsword-tackle-diablos-charge.webp",
+     "title": "Diablos charges head-down at a Great Sword hunter, who tackles through it",
+     "game": "Monster Hunter: World",
+     "host": "Tenor",
+     "local": "gifs/enemies.charging-rush-0.webp",
+     "source_url": "https://media.tenor.com/PBxSisix7T0AAAA1/monster-hunter-greatsword-tackle-diablos-charge.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Diablos charges head-down at a Great Sword hunter, who tackles through it"
+     }
     }
    ],
    "rejected_gifs": [
@@ -12219,6 +13105,20 @@
      "title": "Ayaka sword slash trail",
      "game": "Genshin Impact",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/master-sword-gif-14746684018582564512",
+     "media_url": "https://media.tenor.com/zKa--86LLqAAAAA1/master-sword.webp",
+     "title": "Link's sword beam slash leaves a bright arc as he strikes at a dragon",
+     "game": "The Legend of Zelda: Breath of the Wild",
+     "host": "Tenor",
+     "local": "gifs/vfx.weapon-trail-slash-arc-0.webp",
+     "source_url": "https://media.tenor.com/zKa--86LLqAAAAA1/master-sword.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Link's sword beam slash leaves a bright arc as he strikes at a dragon"
+     }
     }
    ]
   },
@@ -12433,6 +13333,20 @@
      "title": "Engage critical hit camera",
      "game": "Fire Emblem Engage",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/fire-emblem-fire-emblem-blazing-sword-blazing-sword-athos-animation-gif-2578429414102818362",
+     "media_url": "https://media.tenor.com/I8hr5BoEXjoAAAA1/fire-emblem-fire-emblem-blazing-sword.webp",
+     "title": "Athos's critical: the screen flashes and a pillar of fire drops on the target",
+     "game": "Fire Emblem: The Blazing Blade",
+     "host": "Tenor",
+     "local": "gifs/vfx.camera-zoom-on-crit-1.webp",
+     "source_url": "https://media.tenor.com/I8hr5BoEXjoAAAA1/fire-emblem-fire-emblem-blazing-sword.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Athos's critical: the screen flashes and a pillar of fire drops on the target (crit flash rather than a camera zoom, weaker pick)"
+     }
     }
    ],
    "rejected_gifs": [
@@ -12835,6 +13749,34 @@
      "game": "Dragon Ball",
      "media_url": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/ssj4-gogeta-dbfz-dragon-ball-fighterz-super-saiyan-4-gif-2290760021208781813",
+     "media_url": "https://media.tenor.com/H8pqGjHQ0_UAAAA1/ssj4-gogeta-dbfz.webp",
+     "title": "SSJ4 Gogeta powering up inside a flaring golden aura",
+     "game": "Dragon Ball FighterZ",
+     "host": "Tenor",
+     "local": "gifs/vfx.charge-glow-power-aura-0.webp",
+     "source_url": "https://media.tenor.com/H8pqGjHQ0_UAAAA1/ssj4-gogeta-dbfz.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "SSJ4 Gogeta powering up inside a flaring golden aura"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/charge-blade-drip-charge-blade-drip-charge-blade-swag-charge-blade-chad-gif-16395990760655278939",
+     "media_url": "https://media.tenor.com/44pCuiVx01sAAAA1/charge-blade-drip.webp",
+     "title": "Charge Blade glows yellow and red as its phials charge into an attack",
+     "game": "Monster Hunter Rise",
+     "host": "Tenor",
+     "local": "gifs/vfx.charge-glow-power-aura-1.webp",
+     "source_url": "https://media.tenor.com/44pCuiVx01sAAAA1/charge-blade-drip.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Charge Blade glows yellow and red as its phials charge into an attack (weaker pick)"
+     }
     }
    ],
    "rejected_gifs": [
@@ -12932,6 +13874,20 @@
      "title": "Shield break attack",
      "game": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/lucina-shield-break-byleth-gif-21842091",
+     "media_url": "https://media.tenor.com/vmmvQxsHWiEAAAA1/lucina-shield-break.webp",
+     "title": "Lucina's shield bubble shatters and she is left dizzy",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Tenor",
+     "local": "gifs/vfx.shield-break-shatter-0.webp",
+     "source_url": "https://media.tenor.com/vmmvQxsHWiEAAAA1/lucina-shield-break.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Lucina's shield bubble shatters and she is left dizzy"
+     }
     }
    ],
    "rejected_gifs": [
@@ -13209,6 +14165,20 @@
      "title": "Game health bar taking damage",
      "game": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/ace-attorney-penalty-penalty-bar-death-ouch-gif-23785205",
+     "media_url": "https://media.tenor.com/7IKGRY1nLM0AAAA1/ace-attorney-penalty.webp",
+     "title": "Penalty bar takes a hit: the lost chunk flashes orange, then drains away",
+     "game": "Phoenix Wright: Ace Attorney",
+     "host": "Tenor",
+     "local": "gifs/ui.health-bar-drain-ghost-bar-0.webp",
+     "source_url": "https://media.tenor.com/7IKGRY1nLM0AAAA1/ace-attorney-penalty.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Penalty bar takes a hit: the lost chunk flashes orange, then drains away"
+     }
     }
    ],
    "rejected_gifs": [
@@ -13273,6 +14243,34 @@
      "title": "Borderlands attack showing damage numbers",
      "game": "Borderlands",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/jing-yuan-jing-yuan-honkai-honkai-star-rail-gif-4462659114464009015",
+     "media_url": "https://media.tenor.com/Pe6M0gdJWzcAAAA1/jing-yuan-jing.webp",
+     "title": "Jing Yuan's ultimate; a burst of damage numbers stacks over the enemies",
+     "game": "Honkai: Star Rail",
+     "host": "Tenor",
+     "local": "gifs/ui.floating-damage-numbers-0.webp",
+     "source_url": "https://media.tenor.com/Pe6M0gdJWzcAAAA1/jing-yuan-jing.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Jing Yuan's ultimate; a burst of damage numbers stacks over the enemies"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/warframe-gif-18197257",
+     "media_url": "https://media.tenor.com/m5Np8qKHbtEAAAA1/warframe.webp",
+     "title": "Melee combo with red damage numbers popping off enemies",
+     "game": "Warframe",
+     "host": "Tenor",
+     "local": "gifs/ui.floating-damage-numbers-1.webp",
+     "source_url": "https://media.tenor.com/m5Np8qKHbtEAAAA1/warframe.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Melee combo with red damage numbers popping off enemies (busy, weaker pick)"
+     }
     }
    ],
    "rejected_gifs": [
@@ -13428,7 +14426,22 @@
    "description": "The marker that snaps to a targeted enemy.",
    "search_query": "Lock-On Reticle animation video game",
    "references": [],
-   "gifs": [],
+   "gifs": [
+    {
+     "page_url": "https://tenor.com/view/wind-waker-the-legend-of-zelda-miniblin-fantasy-game-goblins-gif-1467613879241339536",
+     "media_url": "https://media.tenor.com/FF4DDCOc8pAAAAA1/wind-waker-the-legend-of-zelda.webp",
+     "title": "Link Z-targets enemies; the yellow lock-on arrow hovers over each one",
+     "game": "The Legend of Zelda: The Wind Waker",
+     "host": "Tenor",
+     "local": "gifs/ui.lock-on-reticle-0.webp",
+     "source_url": "https://media.tenor.com/FF4DDCOc8pAAAAA1/wind-waker-the-legend-of-zelda.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Link Z-targets enemies; the yellow lock-on arrow hovers over each one"
+     }
+    }
+   ],
    "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/ds1-lock-on-dark-souls-gif-14549586169031928712",
@@ -13650,6 +14663,20 @@
      "title": "Hitmarker sticker (unconfirmed; hit UI, not direction indicator)",
      "game": "Call of Duty",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/shooting-damage-rifle-clutch-call-of-duty-gif-15069888",
+     "media_url": "https://media.tenor.com/OEMmrCnFUykAAAA1/shooting-damage.webp",
+     "title": "Player takes fire: red edge flash and directional hit arcs around the crosshair",
+     "game": "Call of Duty: Black Ops 4",
+     "host": "Tenor",
+     "local": "gifs/ui.damage-direction-indicator-0.webp",
+     "source_url": "https://media.tenor.com/OEMmrCnFUykAAAA1/shooting-damage.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Player takes fire: red edge flash and directional hit arcs around the crosshair (weaker pick)"
+     }
     }
    ],
    "rejected_gifs": [
@@ -13835,6 +14862,20 @@
      "title": "Indie game run with stamina",
      "game": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/zelda-link-helicopter-zelda-zelda-bot-w-gif-26481773",
+     "media_url": "https://media.tenor.com/EueJM_3nFc4AAAA1/zelda-link-helicopter-zelda.webp",
+     "title": "Green stamina wheel drains beside Link during bullet-time archery",
+     "game": "The Legend of Zelda: Breath of the Wild",
+     "host": "Tenor",
+     "local": "gifs/ui.stamina-bar-0.webp",
+     "source_url": "https://media.tenor.com/EueJM_3nFc4AAAA1/zelda-link-helicopter-zelda.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Green stamina wheel drains beside Link during bullet-time archery"
+     }
     }
    ],
    "rejected_gifs": [
@@ -13936,6 +14977,20 @@
      "host": "Giphy",
      "local": "gifs/ui.round-start-ko-banner-4.webp",
      "source_url": "https://media.giphy.com/media/VEsz2xcsNtUQN1p8Uw/200w.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/tiger-uppercut-sagat-piesmug-smugdabeast-patient-sagat-gif-23132909",
+     "media_url": "https://media.tenor.com/Gf012KAUI7YAAAA1/tiger-uppercut-sagat.webp",
+     "title": "ROUND 1 and FIGHT! banners sweep across the screen, then Sagat uppercuts",
+     "game": "Street Fighter V",
+     "host": "Tenor",
+     "local": "gifs/ui.round-start-ko-banner-0.webp",
+     "source_url": "https://media.tenor.com/Gf012KAUI7YAAAA1/tiger-uppercut-sagat.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "ROUND 1 and FIGHT! banners sweep across the screen, then Sagat uppercuts"
+     }
     }
    ],
    "rejected_gifs": [
@@ -14038,7 +15093,22 @@
      "note": "Counter indicator and combat changes"
     }
    ],
-   "gifs": [],
+   "gifs": [
+    {
+     "page_url": "https://tenor.com/view/the-legend-of-zelda-the-wind-waker-gamecube-wind-waker-zelda-gif-18451580",
+     "media_url": "https://media.tenor.com/MSP_x0A2jUEAAAA1/the-legend-of-zelda-the-wind-waker.webp",
+     "title": "Parry prompt: the A-button icon flashes as a Moblin attacks and Link counters with a flip",
+     "game": "The Legend of Zelda: The Wind Waker",
+     "host": "Tenor",
+     "local": "gifs/ui.counter-prompt-indicator-0.webp",
+     "source_url": "https://media.tenor.com/MSP_x0A2jUEAAAA1/the-legend-of-zelda-the-wind-waker.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Parry prompt: the A-button icon flashes as a Moblin attacks and Link counters with a flip (weaker pick)"
+     }
+    }
+   ],
    "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/batman-im-not-gonna-sugarcoat-it-arkham-city-counter-gif-8508312900635790873",
@@ -14375,6 +15445,20 @@
      "title": "Mario Odyssey swimming and diving",
      "game": "Super Mario Odyssey",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/mario-swimming-super-mario-super-mario-64-nintendo-64-gif-23378374",
+     "media_url": "https://media.tenor.com/qviFMw73yI8AAAA1/mario-swimming.webp",
+     "title": "Mario swims down through Jolly Roger Bay with breaststroke kicks",
+     "game": "Super Mario 64",
+     "host": "Tenor",
+     "local": "gifs/exploration.dive-underwater-swim-0.webp",
+     "source_url": "https://media.tenor.com/qviFMw73yI8AAAA1/mario-swimming.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Mario swims down through Jolly Roger Bay with breaststroke kicks"
+     }
     }
    ]
   },
@@ -14433,6 +15517,20 @@
      "game": "Zelda: Breath of the Wild",
      "media_url": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/climbing-zelda-gif-15026406",
+     "media_url": "https://media.tenor.com/Auwo3ks10RQAAAA1/climbing-zelda.webp",
+     "title": "Link climbing a tree trunk, a tower and a cliff face",
+     "game": "The Legend of Zelda: Breath of the Wild",
+     "host": "Tenor",
+     "local": "gifs/exploration.free-climb-1.webp",
+     "source_url": "https://media.tenor.com/Auwo3ks10RQAAAA1/climbing-zelda.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Link climbing a tree trunk, a tower and a cliff face"
+     }
     }
    ]
   },
@@ -14476,6 +15574,20 @@
      "title": "Ashley climbing a ladder",
      "game": "Resident Evil 4",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/half-life-scientist-pull-up-cant-pull-up-ladder-gif-26918521",
+     "media_url": "https://media.tenor.com/gjQ0rGKjIiUAAAA1/half-life-scientist.webp",
+     "title": "Black Mesa scientist on a ladder in a vertical shaft loses grip and falls",
+     "game": "Half-Life",
+     "host": "Tenor",
+     "local": "gifs/exploration.ladder-climb-1.webp",
+     "source_url": "https://media.tenor.com/gjQ0rGKjIiUAAAA1/half-life-scientist.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Black Mesa scientist on a ladder in a vertical shaft loses grip and falls (weaker pick)"
+     }
     }
    ]
   },
@@ -14532,6 +15644,20 @@
      "title": "Aloy Shieldwing glide",
      "game": "Horizon Forbidden West",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/landing-space-to-skydive-glider-gliding-fortnite-gif-13566591",
+     "media_url": "https://media.tenor.com/W3G6t8FNQq8AAAA1/landing-space-to-skydive.webp",
+     "title": "Player skydives, then deploys the glider and floats down to the map",
+     "game": "Fortnite",
+     "host": "Tenor",
+     "local": "gifs/exploration.glide-paraglider-0.webp",
+     "source_url": "https://media.tenor.com/W3G6t8FNQq8AAAA1/landing-space-to-skydive.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Player skydives, then deploys the glider and floats down to the map"
+     }
     }
    ]
   },
@@ -14642,6 +15768,34 @@
      "host": "Tenor",
      "local": "gifs/exploration.ride-horse-gallop-2.webp",
      "source_url": "https://media.tenor.com/GwfugdVwR_oAAAA1/shadow-of-the-colossus-sotc-horse-agro-adventure.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/red-dead-redemption-2-horse-funny-need-some-help-red-dead-horse-gif-17448032067640175080",
+     "media_url": "https://media.tenor.com/8iPcuM1RKegAAAA1/red-dead-redemption-2-horse.webp",
+     "title": "Riding past a stranger whose horse throws him",
+     "game": "Red Dead Redemption 2",
+     "host": "Tenor",
+     "local": "gifs/exploration.ride-horse-gallop-0.webp",
+     "source_url": "https://media.tenor.com/8iPcuM1RKegAAAA1/red-dead-redemption-2-horse.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Riding past a stranger whose horse throws him (horse is walking, weaker pick)"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/horse-riding-immortals-fenyx-rising-stadia-i-love-to-ride-uphill-gif-20110328",
+     "media_url": "https://media.tenor.com/fK2wjHVA_OYAAAA1/horse-riding-immortals-fenyx-rising.webp",
+     "title": "Fenyx gallops uphill across a meadow on horseback",
+     "game": "Immortals Fenyx Rising",
+     "host": "Tenor",
+     "local": "gifs/exploration.ride-horse-gallop-1.webp",
+     "source_url": "https://media.tenor.com/fK2wjHVA_OYAAAA1/horse-riding-immortals-fenyx-rising.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Fenyx gallops uphill across a meadow on horseback"
+     }
     }
    ]
   },
@@ -14685,6 +15839,20 @@
      "title": "GTA racing driving",
      "game": "GTA",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/grand-theft-auto-drift-gta-car-drive-gif-17582486",
+     "media_url": "https://media.tenor.com/THDg98Ta10IAAAA1/grand-theft-auto-drift.webp",
+     "title": "Driving a white muscle car through Los Santos, drifting around corners",
+     "game": "Grand Theft Auto V",
+     "host": "Tenor",
+     "local": "gifs/exploration.drive-steer-vehicle-1.webp",
+     "source_url": "https://media.tenor.com/THDg98Ta10IAAAA1/grand-theft-auto-drift.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Driving a white muscle car through Los Santos, drifting around corners"
+     }
     }
    ]
   },
@@ -14979,6 +16147,20 @@
      "title": "Metroid Prime Morph Ball halfpipe boost",
      "game": "Metroid Prime",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/morph-ball-metroid-samus-nintendo-ball-gif-24536422",
+     "media_url": "https://media.tenor.com/CqEJohSbai0AAAA1/morph-ball-metroid.webp",
+     "title": "Samus curls into the Morph Ball, rolls through a tunnel and stands back up",
+     "game": "Metroid Dread",
+     "host": "Tenor",
+     "local": "gifs/exploration.spin-dash-roll-ball-0.webp",
+     "source_url": "https://media.tenor.com/CqEJohSbai0AAAA1/morph-ball-metroid.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Samus curls into the Morph Ball, rolls through a tunnel and stands back up"
+     }
     }
    ],
    "rejected_gifs": [
@@ -15081,6 +16263,34 @@
      "title": "Cappy capture of a frog",
      "game": "Super Mario Odyssey",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/super-mario-odyssey-bullet-bill-capture-cappy-nintendo-switch-gif-25149974",
+     "media_url": "https://media.tenor.com/N4RUki0UjaAAAAA1/super-mario-odyssey-bullet-bill.webp",
+     "title": "Mario throws Cappy at a Bullet Bill and captures it",
+     "game": "Super Mario Odyssey",
+     "host": "Tenor",
+     "local": "gifs/exploration.cap-throw-possess-0.webp",
+     "source_url": "https://media.tenor.com/N4RUki0UjaAAAAA1/super-mario-odyssey-bullet-bill.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Mario throws Cappy at a Bullet Bill and captures it"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/super-mario-odyssey-mario-cappy-throw-catch-gif-14695912",
+     "media_url": "https://media.tenor.com/As_9Y6dN4vcAAAA1/super-mario-odyssey-mario.webp",
+     "title": "Mario flings Cappy, who spins out and lands back on his head",
+     "game": "Super Mario Odyssey",
+     "host": "Tenor",
+     "local": "gifs/exploration.cap-throw-possess-1.webp",
+     "source_url": "https://media.tenor.com/As_9Y6dN4vcAAAA1/super-mario-odyssey-mario.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Mario flings Cappy, who spins out and lands back on his head"
+     }
     }
    ],
    "rejected_gifs": [
@@ -15194,6 +16404,34 @@
      "title": "Link opens chest, get item",
      "game": "Legend of Zelda",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/the-legend-of-zelda-majoras-mask-majoras-mask-the-legend-of-zelda-chest-link-gif-10991173464235784345",
+     "media_url": "https://media.tenor.com/mIh-CDB5OJkAAAA1/the-legend-of-zelda-majoras-mask-majoras-mask.webp",
+     "title": "Link opens a chest and holds the Compass up over his head",
+     "game": "The Legend of Zelda: Majora's Mask",
+     "host": "Tenor",
+     "local": "gifs/interaction.item-get-holding-aloft-0.webp",
+     "source_url": "https://media.tenor.com/mIh-CDB5OJkAAAA1/the-legend-of-zelda-majoras-mask-majoras-mask.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Link opens a chest and holds the Compass up over his head"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/super-mario-64-mario-64-sm64-star-victory-gif-4179152625614566212",
+     "media_url": "https://media.tenor.com/Of9VK7_ls0QAAAA1/super-mario-64-mario-64.webp",
+     "title": "Mario collects a Power Star and does the star-get spin and pose",
+     "game": "Super Mario 64",
+     "host": "Tenor",
+     "local": "gifs/interaction.item-get-holding-aloft-1.webp",
+     "source_url": "https://media.tenor.com/Of9VK7_ls0QAAAA1/super-mario-64-mario-64.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Mario collects a Power Star and does the star-get spin and pose"
+     }
     }
    ]
   },
@@ -15230,6 +16468,20 @@
      "game": "Zelda: Breath of the Wild",
      "media_url": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/chest-zelda-gif-17953272952694139331",
+     "media_url": "https://media.tenor.com/-SbWoUT2acMAAAA1/chest-zelda.webp",
+     "title": "Link kicks open a big chest and pulls out the Dungeon Map",
+     "game": "The Legend of Zelda: Ocarina of Time",
+     "host": "Tenor",
+     "local": "gifs/interaction.open-chest-1.webp",
+     "source_url": "https://media.tenor.com/-SbWoUT2acMAAAA1/chest-zelda.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Link kicks open a big chest and pulls out the Dungeon Map"
+     }
     }
    ],
    "rejected_gifs": [
@@ -15520,6 +16772,20 @@
      "title": "Lighting a bonfire",
      "game": "Dark Souls",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/lost-grace-bonfire-elden-ring-fantasy-fantasy-game-gif-27178102",
+     "media_url": "https://media.tenor.com/nVKpPnCCJJ8AAAA1/lost-grace-bonfire.webp",
+     "title": "Tarnished kneels at a Site of Lost Grace (LOST GRACE DISCOVERED); kneel rather than sit, weaker pick",
+     "game": "Elden Ring",
+     "host": "Tenor",
+     "local": "gifs/interaction.sit-rest-at-campfire-0.webp",
+     "source_url": "https://media.tenor.com/nVKpPnCCJJ8AAAA1/lost-grace-bonfire.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Tarnished kneels at a Site of Lost Grace (LOST GRACE DISCOVERED); kneel rather than sit, weaker pick"
+     }
     }
    ]
   },
@@ -15570,6 +16836,20 @@
      "host": "Tenor",
      "local": "gifs/interaction.sleep-lie-down-3.webp",
      "source_url": "https://media.tenor.com/-0m0cImsttEAAAA1/animal-crossing-sleep-rolling-over-cheeseboymad.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/zelda-the-legend-of-zelda-echoes-of-wisdom-bed-echo-gif-7021098478048221735",
+     "media_url": "https://media.tenor.com/YW_z3c0ZmicAAAA1/zelda-the-legend-of-zelda.webp",
+     "title": "Zelda summons a bed echo, lies down and naps to restore hearts",
+     "game": "The Legend of Zelda: Echoes of Wisdom",
+     "host": "Tenor",
+     "local": "gifs/interaction.sleep-lie-down-0.webp",
+     "source_url": "https://media.tenor.com/YW_z3c0ZmicAAAA1/zelda-the-legend-of-zelda.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Zelda summons a bed echo, lies down and naps to restore hearts"
+     }
     }
    ],
    "rejected_gifs": [
@@ -15665,6 +16945,20 @@
      "host": "Tenor",
      "local": "gifs/interaction.mine-chop-1.webp",
      "source_url": "https://media.tenor.com/hcOpQxdbtKgAAAA1/minecraft-mining-stepping-down-tunnel-seamless-loop-punch-steve-minecraft-minecraft-tunnel-minecraft-seamless-loop-brick.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/diamonds-minecraft-mining-gif-20393111",
+     "media_url": "https://media.tenor.com/Dv2Tyq7NWXIAAAA1/diamonds-minecraft.webp",
+     "title": "Pickaxe breaking a diamond ore block",
+     "game": "Minecraft",
+     "host": "Tenor",
+     "local": "gifs/interaction.mine-chop-0.webp",
+     "source_url": "https://media.tenor.com/Dv2Tyq7NWXIAAAA1/diamonds-minecraft.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Pickaxe breaking a diamond ore block"
+     }
     }
    ]
   },
@@ -15782,6 +17076,20 @@
      "title": "Palico kitchen cooking",
      "game": "Monster Hunter",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/overcooked2-oc2-oups-zut-wrong-order-gif-22215899",
+     "media_url": "https://media.tenor.com/nDR4s_gJ-iwAAAA1/overcooked2-oc2.webp",
+     "title": "Chefs chop, fry and plate orders around a busy kitchen",
+     "game": "Overcooked! 2",
+     "host": "Tenor",
+     "local": "gifs/interaction.cook-1.webp",
+     "source_url": "https://media.tenor.com/nDR4s_gJ-iwAAAA1/overcooked2-oc2.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Chefs chop, fry and plate orders around a busy kitchen"
+     }
     }
    ]
   },
@@ -15907,6 +17215,20 @@
      "host": "Tenor",
      "local": "gifs/interaction.use-tool-gadget-2.webp",
      "source_url": "https://media.tenor.com/EmupuyBq9I0AAAA1/ratchet-and-clank-up-your-arsenal-ratchet-and-clank-up-your-arsenal-ratchet-3-shotgun.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/twilight-princess-legend-of-zelda-gif-22946533",
+     "media_url": "https://media.tenor.com/sM6BaeSsHAgAAAA1/twilight-princess.webp",
+     "title": "Link hangs from a Clawshot anchored to the ceiling",
+     "game": "The Legend of Zelda: Twilight Princess",
+     "host": "Tenor",
+     "local": "gifs/interaction.use-tool-gadget-0.webp",
+     "source_url": "https://media.tenor.com/sM6BaeSsHAgAAAA1/twilight-princess.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Link hangs from a Clawshot anchored to the ceiling"
+     }
     }
    ]
   },
@@ -16185,6 +17507,34 @@
      "title": "Cid laughing",
      "game": "Final Fantasy X",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/laugh-animal-crossing-new-horizon-acnh-gif-17363433",
+     "media_url": "https://media.tenor.com/Pl8S1K34-UQAAAA1/laugh-animal-crossing.webp",
+     "title": "Player character's laugh reaction with yellow emote lines",
+     "game": "Animal Crossing: New Horizons",
+     "host": "Tenor",
+     "local": "gifs/expression.laugh-0.webp",
+     "source_url": "https://media.tenor.com/Pl8S1K34-UQAAAA1/laugh-animal-crossing.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Player character's laugh reaction with yellow emote lines"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/animal-crossing-hahaha-laughing-happy-gif-15485517",
+     "media_url": "https://media.tenor.com/uU3F6UQPjjQAAAA1/animal-crossing-hahaha.webp",
+     "title": "Villagers laughing together outside a shop",
+     "game": "Animal Crossing: New Leaf",
+     "host": "Tenor",
+     "local": "gifs/expression.laugh-1.webp",
+     "source_url": "https://media.tenor.com/uU3F6UQPjjQAAAA1/animal-crossing-hahaha.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Villagers laughing together outside a shop"
+     }
     }
    ],
    "rejected_gifs": [
@@ -16243,6 +17593,20 @@
      "title": "Pocket Camp crying emote",
      "game": "Animal Crossing Pocket Camp",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/kingdom-hearts-aqua-aqua-kh-birth-by-sleep-kingdom-hearts-birth-by-sleep-gif-4415200047531558339",
+     "media_url": "https://media.tenor.com/PUXxDO1oBcMAAAA1/kingdom-hearts-aqua.webp",
+     "title": "Aqua's face falls; she closes her eyes and looks down sadly",
+     "game": "Kingdom Hearts Birth by Sleep",
+     "host": "Tenor",
+     "local": "gifs/expression.cry-sad-1.webp",
+     "source_url": "https://media.tenor.com/PUXxDO1oBcMAAAA1/kingdom-hearts-aqua.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Aqua's face falls; she closes her eyes and looks down sadly"
+     }
     }
    ]
   },
@@ -16428,7 +17792,22 @@
      "note": "Animator essay on takes"
     }
    ],
-   "gifs": [],
+   "gifs": [
+    {
+     "page_url": "https://tenor.com/view/mario-surprised-gif-26060193",
+     "media_url": "https://media.tenor.com/6x9w1hOMHP0AAAA1/mario-surprised.webp",
+     "title": "Mario wakes face-down, lifts his head and gapes in surprise",
+     "game": "Super Mario Odyssey",
+     "host": "Tenor",
+     "local": "gifs/expression.double-take-0.webp",
+     "source_url": "https://media.tenor.com/6x9w1hOMHP0AAAA1/mario-surprised.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Mario wakes face-down, lifts his head and gapes in surprise (startled take rather than a true double take, weaker pick)"
+     }
+    }
+   ],
    "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/sorprendido-bugs-bunny-looney-tunes-qué-fue-eso-reacción-tardía-gif-16241226595635462289",
@@ -16489,6 +17868,34 @@
      "title": "ACNH curiosity reaction with question mark",
      "game": "Animal Crossing: New Horizons",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/animal-crossing-acnh-curiosity-reaction-gif-18409158",
+     "media_url": "https://media.tenor.com/vBdsmSsD97gAAAA1/animal-crossing-acnh.webp",
+     "title": "Player tilts their head under a question-mark reaction",
+     "game": "Animal Crossing: New Horizons",
+     "host": "Tenor",
+     "local": "gifs/expression.shrug-confused-0.webp",
+     "source_url": "https://media.tenor.com/vBdsmSsD97gAAAA1/animal-crossing-acnh.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Player tilts their head under a question-mark reaction"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/mamer-chmief-master-chief-fortnite-master-chief-fortnite-master-chief-shrug-gif-2344693894994742153",
+     "media_url": "https://media.tenor.com/IIoGrL4wS4kAAAA1/mamer-chmief-master-chief.webp",
+     "title": "Master Chief skin doing a palms-up shrug emote",
+     "game": "Fortnite",
+     "host": "Tenor",
+     "local": "gifs/expression.shrug-confused-1.webp",
+     "source_url": "https://media.tenor.com/IIoGrL4wS4kAAAA1/mamer-chmief-master-chief.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Master Chief skin doing a palms-up shrug emote"
+     }
     }
    ],
    "rejected_gifs": [
@@ -16531,6 +17938,34 @@
      "title": "Cuphead and Mugman cheering woohoo",
      "game": "The Cuphead Show",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/fifa-23-christian-pulisic-premier-gif-26623276",
+     "media_url": "https://media.tenor.com/TyBX60ennt8AAAA1/fifa-23.webp",
+     "title": "Goal scorer runs off and celebrates in front of the crowd",
+     "game": "FIFA 23",
+     "host": "Tenor",
+     "local": "gifs/expression.celebrate-cheer-0.webp",
+     "source_url": "https://media.tenor.com/TyBX60ennt8AAAA1/fifa-23.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Goal scorer runs off and celebrates in front of the crowd"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/zinnnox-vibe-bowser-gif-19296340",
+     "media_url": "https://media.tenor.com/7S1BYaXPcZAAAAA1/zinnnox-vibe.webp",
+     "title": "Bowser dancing in a shower of confetti on the win screen",
+     "game": "Mario Party",
+     "host": "Tenor",
+     "local": "gifs/expression.celebrate-cheer-1.webp",
+     "source_url": "https://media.tenor.com/7S1BYaXPcZAAAAA1/zinnnox-vibe.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Bowser dancing in a shower of confetti on the win screen"
+     }
     }
    ],
    "rejected_gifs": [
@@ -16668,6 +18103,20 @@
      "title": "Zaeed Massani dialogue line",
      "game": "Mass Effect 2",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/saren-mass-effect-nihlus-mass-effect-turians-saren-arterius-nihlus-kryk-gif-27594599",
+     "media_url": "https://media.tenor.com/Tob2winmLuIAAAA1/saren-mass-effect-nihlus-mass-effect.webp",
+     "title": "Saren delivers dialogue, mandibles and jaw moving with the line",
+     "game": "Mass Effect",
+     "host": "Tenor",
+     "local": "gifs/expression.lip-sync-talking-0.webp",
+     "source_url": "https://media.tenor.com/Tob2winmLuIAAAA1/saren-mass-effect-nihlus-mass-effect.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Saren delivers dialogue, mandibles and jaw moving with the line"
+     }
     }
    ]
   },
@@ -16711,6 +18160,20 @@
      "game": "Animal Crossing",
      "media_url": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/isabelle-thursday-friday-eve-animal-crossing-acnh-gif-22843801",
+     "media_url": "https://media.tenor.com/_I9BcuxOYlEAAAA1/isabelle-thursday.webp",
+     "title": "Isabelle chats in Animalese as her text bubble types out",
+     "game": "Animal Crossing: New Horizons",
+     "host": "Tenor",
+     "local": "gifs/expression.gibberish-talk-animalese-0.webp",
+     "source_url": "https://media.tenor.com/_I9BcuxOYlEAAAA1/isabelle-thursday.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Isabelle chats in Animalese as her text bubble types out"
+     }
     }
    ]
   },
@@ -16835,6 +18298,20 @@
      "title": "Ellie facial close-up in-game",
      "game": "The Last of Us",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/uncharted-nathan-drake-hows-that-how-was-that-how-is-that-gif-24674480",
+     "media_url": "https://media.tenor.com/Kgb2mtZJt1cAAAA1/uncharted-nathan-drake.webp",
+     "title": "Nathan Drake glances over at Sam mid-conversation",
+     "game": "Uncharted 4: A Thief's End",
+     "host": "Tenor",
+     "local": "gifs/expression.eye-blink-look-at-1.webp",
+     "source_url": "https://media.tenor.com/Kgb2mtZJt1cAAAA1/uncharted-nathan-drake.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Nathan Drake glances over at Sam mid-conversation"
+     }
     }
    ]
   },
@@ -16865,6 +18342,20 @@
      "host": "Tenor",
      "local": "gifs/expression.sit-idle-lean-1.webp",
      "source_url": "https://media.tenor.com/FVW_us-btWYAAAA1/arthur-morgan-tired-sigh-sitting-rdr2.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/laplace-lap-futaba-hudson-laplap-gif-844862680273574028",
+     "media_url": "https://media.tenor.com/C7mOIaWw2IwAAAA1/laplace-lap.webp",
+     "title": "Joker sits hunched on a stool, leaning on his knees, beside Futaba in Leblanc",
+     "game": "Persona 5",
+     "host": "Tenor",
+     "local": "gifs/expression.sit-idle-lean-0.webp",
+     "source_url": "https://media.tenor.com/C7mOIaWw2IwAAAA1/laplace-lap.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Joker sits hunched on a stool, leaning on his knees, beside Futaba in Leblanc"
+     }
     }
    ],
    "rejected_gifs": [
@@ -17031,6 +18522,20 @@
      "title": "Toon Meowscles squash-and-stretch emote",
      "game": "Fortnite",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/kirby-kirby-and-the-world-beyond-kirby-2027-kirby-run-gif-7487758330875928599",
+     "media_url": "https://media.tenor.com/Z-nch7PU4BcAAAA1/kirby-kirby-and-the-world-beyond.webp",
+     "title": "Kirby's soft body squashes and bounces with each step of his run",
+     "game": "Kirby and the Forgotten Land",
+     "host": "Tenor",
+     "local": "gifs/cartoon.squash-and-stretch-0.webp",
+     "source_url": "https://media.tenor.com/Z-nch7PU4BcAAAA1/kirby-kirby-and-the-world-beyond.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Kirby's soft body squashes and bounces with each step of his run (weaker pick)"
+     }
     }
    ],
    "rejected_gifs": [
@@ -17088,7 +18593,22 @@
      "note": "Step-by-step anticipation lesson"
     }
    ],
-   "gifs": [],
+   "gifs": [
+    {
+     "page_url": "https://tenor.com/view/sei-seiyans-sei-seiyan-sei-memes-sei-gifs-sei-gif-489499641842569952",
+     "media_url": "https://media.tenor.com/BssNVK21EuAAAAA1/sei-seiyans-sei-seiyan.webp",
+     "title": "Ken draws both hands back to his hip before thrusting out a Hadouken (wind-up then release)",
+     "game": "Street Fighter II",
+     "host": "Tenor",
+     "local": "gifs/cartoon.anticipation-0.webp",
+     "source_url": "https://media.tenor.com/BssNVK21EuAAAAA1/sei-seiyans-sei-seiyan.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Ken draws both hands back to his hip before thrusting out a Hadouken (wind-up then release)"
+     }
+    }
+   ],
    "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/anticipation-antic-animation-meme-2d56-vanarts-gif-4272525324837286455",
@@ -17144,7 +18664,22 @@
      "note": "Illustrated tutorial on the principle"
     }
    ],
-   "gifs": [],
+   "gifs": [
+    {
+     "page_url": "https://tenor.com/view/link-zelda-cartoon-run-wind-waker-running-gif-15545002",
+     "media_url": "https://media.tenor.com/8XUg23a3ABoAAAA1/link-zelda.webp",
+     "title": "Toon Link running; his cap and tunic trail and settle after his body",
+     "game": "The Legend of Zelda: The Wind Waker",
+     "host": "Tenor",
+     "local": "gifs/cartoon.follow-through-overlap-0.webp",
+     "source_url": "https://media.tenor.com/8XUg23a3ABoAAAA1/link-zelda.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Toon Link running; his cap and tunic trail and settle after his body (MakeAGIF watermark, weaker pick)"
+     }
+    }
+   ],
    "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/follow-through-animation-meme-animation-students-animation-principal-2d56-gif-403376068186713212",
@@ -17261,6 +18796,20 @@
      "game": "Looney Tunes",
      "media_url": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/crash-bandicoot-running-crash-bandicoot4-crash-bandicoot4its-about-time-crash-bandicoot-its-about-time-gif-17638881",
+     "media_url": "https://media.tenor.com/lS2cRGe6YqMAAAA1/crash-bandicoot-running.webp",
+     "title": "Crash sprints toward the camera with flailing, exaggerated legs",
+     "game": "Crash Bandicoot 4: It's About Time",
+     "host": "Tenor",
+     "local": "gifs/cartoon.cartoon-run-wheel-legs-1.webp",
+     "source_url": "https://media.tenor.com/lS2cRGe6YqMAAAA1/crash-bandicoot-running.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Crash sprints toward the camera with flailing, exaggerated legs (weaker pick, not a wheel blur)"
+     }
     }
    ],
    "rejected_gifs": [
@@ -17361,6 +18910,20 @@
      "title": "Coyote fail, hanging before the fall",
      "game": "Looney Tunes",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/crash-bandicoot-slippery-ice-icy-slip-gif-27274034",
+     "media_url": "https://media.tenor.com/PhKGqEriT8MAAAA1/crash-bandicoot-slippery.webp",
+     "title": "Crash slips on ice and tumbles over",
+     "game": "Crash Bandicoot 4: It's About Time",
+     "host": "Tenor",
+     "local": "gifs/cartoon.cartoon-fall-look-at-camera-0.webp",
+     "source_url": "https://media.tenor.com/PhKGqEriT8MAAAA1/crash-bandicoot-slippery.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Crash slips on ice and tumbles over (no camera look, weaker pick)"
+     }
     }
    ],
    "rejected_gifs": [
@@ -17403,6 +18966,34 @@
      "game": "Looney Tunes",
      "media_url": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/crash-crash-bandicoot-collapse-gif-27445743",
+     "media_url": "https://media.tenor.com/cdB7TjXPxM0AAAA1/crash-crash-bandicoot.webp",
+     "title": "Crash's model crumples down into a flat heap (death animation in a model viewer)",
+     "game": "Crash Bandicoot",
+     "host": "Tenor",
+     "local": "gifs/cartoon.flattened-accordion-0.webp",
+     "source_url": "https://media.tenor.com/cdB7TjXPxM0AAAA1/crash-crash-bandicoot.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Crash's model crumples down into a flat heap (death animation in a model viewer)"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/hideout-secret-bonkler-deirdre-sad-gif-6657833480236949372",
+     "media_url": "https://media.tenor.com/XGVgRos533wAAAA1/hideout-secret.webp",
+     "title": "Mario is crushed flat under a falling block (TOO BAD!)",
+     "game": "Super Mario Galaxy 2",
+     "host": "Tenor",
+     "local": "gifs/cartoon.flattened-accordion-1.webp",
+     "source_url": "https://media.tenor.com/XGVgRos533wAAAA1/hideout-secret.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Mario is crushed flat under a falling block (TOO BAD!)"
+     }
     }
    ],
    "rejected_gifs": [
@@ -17478,6 +19069,20 @@
       "verdict": "unclear",
       "confidence": "low",
       "what": "Zoomed pixel Sonic with chicks circling his head; looks like a fan sprite animation rather than an actual game"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/mario-dizzy-gif-8189533",
+     "media_url": "https://media.tenor.com/AYtjh5a8tSsAAAA1/mario-dizzy.webp",
+     "title": "Mario reels dizzily with X eyes after a hit",
+     "game": "Super Mario 64",
+     "host": "Tenor",
+     "local": "gifs/cartoon.dizzy-stars-birds-0.webp",
+     "source_url": "https://media.tenor.com/AYtjh5a8tSsAAAA1/mario-dizzy.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Mario reels dizzily with X eyes after a hit"
      }
     }
    ]
@@ -17995,6 +19600,20 @@
      "game": "Red Dead Redemption 2",
      "media_url": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/okami-howl-victory-amy-pose-gif-4166982387662661913",
+     "media_url": "https://media.tenor.com/OdQYZ2nxKRkAAAA1/okami-howl.webp",
+     "title": "Amaterasu trots and runs through a forest, then howls in a victory pose",
+     "game": "Okami",
+     "host": "Tenor",
+     "local": "gifs/creature.quadruped-walk-trot-1.webp",
+     "source_url": "https://media.tenor.com/OdQYZ2nxKRkAAAA1/okami-howl.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Amaterasu trots and runs through a forest, then howls in a victory pose"
+     }
     }
    ]
   },
@@ -18067,6 +19686,20 @@
      "title": "Kaa slithering (classic cartoon)",
      "game": "The Jungle Book",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/google-snake-8-eight-tail-gif-2875075313972170170",
+     "media_url": "https://media.tenor.com/J-ZRw-fOTboAAAA1/google-snake.webp",
+     "title": "Snake game body sliding segment by segment",
+     "game": "Google Snake",
+     "host": "Tenor",
+     "local": "gifs/creature.slither-0.webp",
+     "source_url": "https://media.tenor.com/J-ZRw-fOTboAAAA1/google-snake.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Snake game body sliding segment by segment (simple, weaker pick)"
+     }
     }
    ]
   },
@@ -18211,6 +19844,20 @@
      "host": "Giphy",
      "local": "gifs/creature.dragon-flight-breath-3.webp",
      "source_url": "https://media.giphy.com/media/4IiYuv59t6sV8wLELI/200w.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/lichdragon-fortissax-lightning-glaive-sky-gif-12007720666279980178",
+     "media_url": "https://media.tenor.com/pqP-U4u8LJIAAAA1/lichdragon-fortissax.webp",
+     "title": "Lichdragon Fortissax flies overhead and unleashes red death lightning",
+     "game": "Elden Ring",
+     "host": "Tenor",
+     "local": "gifs/creature.dragon-flight-breath-0.webp",
+     "source_url": "https://media.tenor.com/pqP-U4u8LJIAAAA1/lichdragon-fortissax.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Lichdragon Fortissax flies overhead and unleashes red death lightning"
+     }
     }
    ],
    "rejected_gifs": [
@@ -18638,6 +20285,20 @@
      "title": "Undead warlock level up",
      "game": "World of Warcraft",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/undead-warlock-forsaken-level-up-wow-gif-26343852",
+     "media_url": "https://media.tenor.com/2jrf1Zde-hcAAAA1/undead-warlock.webp",
+     "title": "Forsaken warlock kills a zombie and levels up in a column of golden light",
+     "game": "World of Warcraft",
+     "host": "Tenor",
+     "local": "gifs/menu.level-up-rank-up-1.webp",
+     "source_url": "https://media.tenor.com/2jrf1Zde-hcAAAA1/undead-warlock.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Forsaken warlock kills a zombie and levels up in a column of golden light"
+     }
     }
    ]
   },
@@ -18696,6 +20357,20 @@
      "host": "Tenor",
      "local": "gifs/menu.loot-box-card-reveal-2.webp",
      "source_url": "https://media.tenor.com/I66Kleke3igAAAA1/citlali-genshin-genshin-impact-wishing-animation.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/hearthstone-online-online-game-gif-15287081",
+     "media_url": "https://media.tenor.com/XslQ01_87I8AAAA1/hearthstone-online.webp",
+     "title": "A card is played and flips into place on the board in a burst of light",
+     "game": "Hearthstone",
+     "host": "Tenor",
+     "local": "gifs/menu.loot-box-card-reveal-0.webp",
+     "source_url": "https://media.tenor.com/XslQ01_87I8AAAA1/hearthstone-online.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "A card is played and flips into place on the board in a burst of light (card reveal in play rather than a pack, weaker pick)"
+     }
     }
    ]
   },
@@ -18739,6 +20414,20 @@
      "title": "Vibri loading screen",
      "game": "Vib-Ribbon",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/loading-destiny-2-gif-16958926870297150783",
+     "media_url": "https://media.tenor.com/61o2IuPjhT8AAAA1/loading-destiny-2.webp",
+     "title": "Loading-screen glyph cycling through the class symbols",
+     "game": "Destiny 2",
+     "host": "Tenor",
+     "local": "gifs/menu.loading-screen-animation-0.webp",
+     "source_url": "https://media.tenor.com/61o2IuPjhT8AAAA1/loading-destiny-2.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Loading-screen glyph cycling through the class symbols"
+     }
     }
    ]
   },
@@ -18759,7 +20448,36 @@
    "description": "Text revealed character by character, often with blips.",
    "search_query": "Dialogue Box Typewriter animation video game",
    "references": [],
-   "gifs": [],
+   "gifs": [
+    {
+     "page_url": "https://tenor.com/view/i-love-pokemon-pokemon-is-the-best-pokemon-crystal-pokemon-dialogue-pokemon-chatbox-gif-12643153985398312593",
+     "media_url": "https://media.tenor.com/r3WBkDw7DpEAAAA1/i-love-pokemon-pokemon-is-the-best.webp",
+     "title": "Text box filling in letter by letter",
+     "game": "Pokemon Gold/Silver",
+     "host": "Tenor",
+     "local": "gifs/menu.dialogue-box-typewriter-0.webp",
+     "source_url": "https://media.tenor.com/r3WBkDw7DpEAAAA1/i-love-pokemon-pokemon-is-the-best.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Text box filling in letter by letter"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/ace-attorney-mia-fey-meme-song-trials-and-tribulations-gif-10084104759291605375",
+     "media_url": "https://media.tenor.com/i_Hv2cdm8X8AAAA1/ace-attorney-mia-fey.webp",
+     "title": "Mia's line types out in the dialogue box",
+     "game": "Phoenix Wright: Ace Attorney",
+     "host": "Tenor",
+     "local": "gifs/menu.dialogue-box-typewriter-1.webp",
+     "source_url": "https://media.tenor.com/i_Hv2cdm8X8AAAA1/ace-attorney-mia-fey.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Mia's line types out in the dialogue box"
+     }
+    }
+   ],
    "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/pixel-text-box-dialogue-box-bedroom-stuck-gif-5434805785681575487",
@@ -18869,6 +20587,20 @@
      "title": "Mission Complete screen",
      "game": "Metal Slug",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/ike-monsterhunterwilds-monsterhunter-palico-wilds-gif-12603189135690583615",
+     "media_url": "https://media.tenor.com/rueFvo3mTj8AAAA1/ike-monsterhunterwilds.webp",
+     "title": "QUEST COMPLETE banner stamps over the hunter after the hunt",
+     "game": "Monster Hunter Rise",
+     "host": "Tenor",
+     "local": "gifs/menu.quest-complete-banner-1.webp",
+     "source_url": "https://media.tenor.com/rueFvo3mTj8AAAA1/ike-monsterhunterwilds.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "QUEST COMPLETE banner stamps over the hunter after the hunt"
+     }
     }
    ]
   },
@@ -18905,6 +20637,20 @@
      "host": "Tenor",
      "local": "gifs/menu.achievement-trophy-pop-1.webp",
      "source_url": "https://media.tenor.com/Kswxs0bNcfYAAAA1/xbox-achievement-unlocked-achievement-unlocked-loop.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/achievement-unlocked-gif-27073940",
+     "media_url": "https://media.tenor.com/o8gSfsEC6LUAAAA1/achievement-unlocked.webp",
+     "title": "Achievement unlocked toast pops open and slides out",
+     "game": "Xbox (console UI)",
+     "host": "Tenor",
+     "local": "gifs/menu.achievement-trophy-pop-0.webp",
+     "source_url": "https://media.tenor.com/o8gSfsEC6LUAAAA1/achievement-unlocked.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Achievement unlocked toast pops open and slides out"
+     }
     }
    ]
   },
@@ -19049,6 +20795,20 @@
      "title": "Kratos and Atreus boat conversation",
      "game": "God of War",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/god-of-war-kratos-atreus-explore-world-tree-gif-26778684",
+     "media_url": "https://media.tenor.com/WjCAch7euxoAAAA1/god-of-war-kratos.webp",
+     "title": "Kratos walks behind Atreus across the snow toward the ice tree",
+     "game": "God of War Ragnarok",
+     "host": "Tenor",
+     "local": "gifs/cinematic.walk-and-talk-0.webp",
+     "source_url": "https://media.tenor.com/WjCAch7euxoAAAA1/god-of-war-kratos.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Kratos walks behind Atreus across the snow toward the ice tree (exploration walk, weaker pick)"
+     }
     }
    ]
   },
@@ -19247,6 +21007,20 @@
      "title": "FIFA free kick goal",
      "game": "FIFA",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/luigi-super-mario-strikers-victory-celebrating-confetti-gif-11724083112633875497",
+     "media_url": "https://media.tenor.com/orRPeV2yvCkAAAA1/luigi-super-mario-strikers.webp",
+     "title": "Luigi shoots and scores, then celebrates in front of the net",
+     "game": "Mario Strikers: Battle League",
+     "host": "Tenor",
+     "local": "gifs/sports.kick-shoot-football-0.webp",
+     "source_url": "https://media.tenor.com/orRPeV2yvCkAAAA1/luigi-super-mario-strikers.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Luigi shoots and scores, then celebrates in front of the net"
+     }
     }
    ]
   },
@@ -19290,6 +21064,20 @@
      "host": "Tenor",
      "local": "gifs/sports.dribble-2.webp",
      "source_url": "https://media.tenor.com/fF-SgeV7_oUAAAA1/ankle-breaker-2k-crossed-pull-up-jumper-fried.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/nba-street-v3-mario-basketball-peach-slam-dunk-gif-14659381822815872765",
+     "media_url": "https://media.tenor.com/y3CWGV_CJv0AAAA1/nba-street-v3-mario.webp",
+     "title": "Streetball player dribbles past a defender and drives to the hoop",
+     "game": "NBA Street Homecourt",
+     "host": "Tenor",
+     "local": "gifs/sports.dribble-0.webp",
+     "source_url": "https://media.tenor.com/y3CWGV_CJv0AAAA1/nba-street-v3-mario.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Streetball player dribbles past a defender and drives to the hoop"
+     }
     }
    ],
    "rejected_gifs": [
@@ -19355,6 +21143,20 @@
      "host": "Giphy",
      "local": "gifs/sports.goal-score-celebration-3.webp",
      "source_url": "https://media.giphy.com/media/IeoJP9jJb8gsygPfXC/200w.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/liverpool-fifa-world-cup-2026-coldest-celebration-sigma-england-gif-9104073303938130321",
+     "media_url": "https://media.tenor.com/flgqbzpZYZEAAAA1/liverpool-fifa-world-cup-2026.webp",
+     "title": "Scorer celebrates with hands to his head toward the crowd",
+     "game": "EA Sports FC",
+     "host": "Tenor",
+     "local": "gifs/sports.goal-score-celebration-0.webp",
+     "source_url": "https://media.tenor.com/flgqbzpZYZEAAAA1/liverpool-fifa-world-cup-2026.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Scorer celebrates with hands to his head toward the crowd"
+     }
     }
    ],
    "rejected_gifs": [
@@ -19413,6 +21215,20 @@
      "title": "Madden 21 takedown",
      "game": "Madden NFL 21",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/tackle-stadia-madden21-gotcha-takedown-gif-20107673",
+     "media_url": "https://media.tenor.com/aEVep_0BS-0AAAA1/tackle-stadia.webp",
+     "title": "Chicago defender drives a ball carrier to the turf",
+     "game": "Madden NFL 21",
+     "host": "Tenor",
+     "local": "gifs/sports.tackle-1.webp",
+     "source_url": "https://media.tenor.com/aEVep_0BS-0AAAA1/tackle-stadia.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Chicago defender drives a ball carrier to the turf"
+     }
     }
    ]
   },
@@ -19457,6 +21273,20 @@
      "host": "Tenor",
      "local": "gifs/sports.swing-golf-tennis-bat-0.webp",
      "source_url": "https://media.tenor.com/yKwT8pQSo9sAAAA1/swing-and-a-miss-wii-sports-baseball-failed-joke-l.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/super-mario-mario-tennis-tennis-mario-gif-9916104237307262879",
+     "media_url": "https://media.tenor.com/iZ0URBxx958AAAA1/super-mario-mario-tennis.webp",
+     "title": "Mario tosses the ball up and serves",
+     "game": "Mario Tennis Aces",
+     "host": "Tenor",
+     "local": "gifs/sports.swing-golf-tennis-bat-1.webp",
+     "source_url": "https://media.tenor.com/iZ0URBxx958AAAA1/super-mario-mario-tennis.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Mario tosses the ball up and serves"
+     }
     }
    ],
    "rejected_gifs": [
@@ -19574,6 +21404,20 @@
      "title": "THPS skater trick",
      "game": "Tony Hawk's Pro Skater",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/wolverine-snow-tony-hawk%27s-pro-skater-3-neversoft-2001-gif-4647355665545565709",
+     "media_url": "https://media.tenor.com/QH65WuW-Fg0AAAA1/wolverine-snow.webp",
+     "title": "Skater grinds a ledge and kicks out of a combo",
+     "game": "Tony Hawk's Pro Skater 3",
+     "host": "Tenor",
+     "local": "gifs/sports.skateboard-trick-1.webp",
+     "source_url": "https://media.tenor.com/QH65WuW-Fg0AAAA1/wolverine-snow.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Skater grinds a ledge and kicks out of a combo"
+     }
     }
    ],
    "rejected_gifs": [
@@ -19684,6 +21528,20 @@
      "host": "Tenor",
      "local": "gifs/sports.dance-performance-3.webp",
      "source_url": "https://media.tenor.com/SXbszMOWZw8AAAA1/ubisoft-just-dance-just-dance-2-just-dance-contest-winner-dance.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/dance-central-glitch-glitch-dance-central-dance-central-glitch-zesty-gif-17824358843584091515",
+     "media_url": "https://media.tenor.com/91zX7kTsFXsAAAA1/dance-central-glitch.webp",
+     "title": "Dancers perform a routine with FLAWLESS judgment popups",
+     "game": "Dance Central",
+     "host": "Tenor",
+     "local": "gifs/sports.dance-performance-0.webp",
+     "source_url": "https://media.tenor.com/91zX7kTsFXsAAAA1/dance-central-glitch.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Dancers perform a routine with FLAWLESS judgment popups"
+     }
     }
    ],
    "rejected_gifs": [

@@ -1262,14 +1262,6 @@
  ],
  "needs_replacement": [
   {
-   "animation": "locomotion.strafe-lock-on-movement",
-   "name": "Strafe (Lock-on Movement)"
-  },
-  {
-   "animation": "locomotion.wall-run",
-   "name": "Wall Run"
-  },
-  {
    "animation": "locomotion.mantle-ledge-climb",
    "name": "Mantle / Ledge Climb"
   },
@@ -1278,44 +1270,8 @@
    "name": "Shield Bash"
   },
   {
-   "animation": "melee.weapon-throw-recall",
-   "name": "Weapon Throw / Recall"
-  },
-  {
-   "animation": "ranged.weapon-draw-equip",
-   "name": "Weapon Draw / Equip"
-  },
-  {
-   "animation": "ranged.throwing-knife-shuriken",
-   "name": "Throwing Knife / Shuriken"
-  },
-  {
    "animation": "ranged.blind-fire-from-cover",
    "name": "Blind Fire from Cover"
-  },
-  {
-   "animation": "ranged.cover-peek-pop-up-aim",
-   "name": "Cover Peek / Pop-up Aim"
-  },
-  {
-   "animation": "ranged.lean-peek",
-   "name": "Lean / Peek"
-  },
-  {
-   "animation": "ranged.gun-kata-stylish-shooting",
-   "name": "Gun Kata / Stylish Shooting"
-  },
-  {
-   "animation": "ranged.boomerang-returning-throw",
-   "name": "Boomerang / Returning Throw"
-  },
-  {
-   "animation": "magic.self-buff-power-up",
-   "name": "Self Buff / Power Up"
-  },
-  {
-   "animation": "defense.take-cover",
-   "name": "Take Cover"
   },
   {
    "animation": "defense.cover-swap-slide",
@@ -1324,18 +1280,6 @@
   {
    "animation": "defense.combat-roll-shooter",
    "name": "Combat Roll (Shooter)"
-  },
-  {
-   "animation": "reactions.hit-stop-hit-freeze",
-   "name": "Hit Stop / Hit Freeze"
-  },
-  {
-   "animation": "reactions.crumple-collapse",
-   "name": "Crumple / Collapse"
-  },
-  {
-   "animation": "death.death-collapse",
-   "name": "Death (Collapse)"
   },
   {
    "animation": "death.gib-explode",
@@ -1350,48 +1294,8 @@
    "name": "Revive Ally"
   },
   {
-   "animation": "fighting.combo-breaker",
-   "name": "Combo Breaker"
-  },
-  {
-   "animation": "vfx.charge-glow-power-aura",
-   "name": "Charge Glow / Power Aura"
-  },
-  {
-   "animation": "vfx.shield-break-shatter",
-   "name": "Shield Break Shatter"
-  },
-  {
-   "animation": "ui.health-bar-drain-ghost-bar",
-   "name": "Health Bar Drain (Ghost Bar)"
-  },
-  {
-   "animation": "ui.floating-damage-numbers",
-   "name": "Floating Damage Numbers"
-  },
-  {
-   "animation": "ui.lock-on-reticle",
-   "name": "Lock-On Reticle"
-  },
-  {
    "animation": "ui.hit-marker",
    "name": "Hit Marker"
-  },
-  {
-   "animation": "ui.damage-direction-indicator",
-   "name": "Damage Direction Indicator"
-  },
-  {
-   "animation": "ui.stamina-bar",
-   "name": "Stamina Bar"
-  },
-  {
-   "animation": "ui.counter-prompt-indicator",
-   "name": "Counter Prompt Indicator"
-  },
-  {
-   "animation": "exploration.cap-throw-possess",
-   "name": "Cap Throw / Possess"
   },
   {
    "animation": "interaction.pull-lever-press-switch",
@@ -1402,52 +1306,938 @@
    "name": "Point / Beckon"
   },
   {
-   "animation": "expression.laugh",
-   "name": "Laugh"
-  },
-  {
-   "animation": "expression.double-take",
-   "name": "Double Take"
-  },
-  {
-   "animation": "expression.shrug-confused",
-   "name": "Shrug / Confused"
-  },
-  {
-   "animation": "expression.celebrate-cheer",
-   "name": "Celebrate / Cheer"
-  },
-  {
-   "animation": "cartoon.squash-and-stretch",
-   "name": "Squash and Stretch"
-  },
-  {
-   "animation": "cartoon.anticipation",
-   "name": "Anticipation"
-  },
-  {
-   "animation": "cartoon.follow-through-overlap",
-   "name": "Follow Through & Overlap"
-  },
-  {
    "animation": "cartoon.scramble-in-place-takeoff",
    "name": "Scramble in Place / Takeoff"
   },
   {
+   "animation": "menu.map-reveal-fog-of-war",
+   "name": "Map Reveal / Fog of War"
+  }
+ ],
+ "added": [
+  {
+   "animation": "expression.celebrate-cheer",
+   "clip": "expression.celebrate-cheer-0",
+   "game": "FIFA 23",
+   "what": "Goal scorer runs off and celebrates in front of the crowd",
+   "confidence": "high"
+  },
+  {
+   "animation": "expression.celebrate-cheer",
+   "clip": "expression.celebrate-cheer-1",
+   "game": "Mario Party",
+   "what": "Bowser dancing in a shower of confetti on the win screen",
+   "confidence": "high"
+  },
+  {
+   "animation": "cartoon.follow-through-overlap",
+   "clip": "cartoon.follow-through-overlap-0",
+   "game": "The Legend of Zelda: The Wind Waker",
+   "what": "Toon Link running; his cap and tunic trail and settle after his body (MakeAGIF watermark, weaker pick)",
+   "confidence": "low"
+  },
+  {
    "animation": "cartoon.cartoon-fall-look-at-camera",
-   "name": "Cartoon Fall (Look at Camera)"
+   "clip": "cartoon.cartoon-fall-look-at-camera-0",
+   "game": "Crash Bandicoot 4: It's About Time",
+   "what": "Crash slips on ice and tumbles over (no camera look, weaker pick)",
+   "confidence": "low"
   },
   {
    "animation": "cartoon.flattened-accordion",
-   "name": "Flattened / Accordion"
+   "clip": "cartoon.flattened-accordion-0",
+   "game": "Crash Bandicoot",
+   "what": "Crash's model crumples down into a flat heap (death animation in a model viewer)",
+   "confidence": "high"
+  },
+  {
+   "animation": "cartoon.flattened-accordion",
+   "clip": "cartoon.flattened-accordion-1",
+   "game": "Super Mario Galaxy 2",
+   "what": "Mario is crushed flat under a falling block (TOO BAD!)",
+   "confidence": "high"
+  },
+  {
+   "animation": "creature.slither",
+   "clip": "creature.slither-0",
+   "game": "Google Snake",
+   "what": "Snake game body sliding segment by segment (simple, weaker pick)",
+   "confidence": "low"
   },
   {
    "animation": "menu.dialogue-box-typewriter",
-   "name": "Dialogue Box Typewriter"
+   "clip": "menu.dialogue-box-typewriter-0",
+   "game": "Pokemon Gold/Silver",
+   "what": "Text box filling in letter by letter",
+   "confidence": "high"
   },
   {
-   "animation": "menu.map-reveal-fog-of-war",
-   "name": "Map Reveal / Fog of War"
+   "animation": "menu.dialogue-box-typewriter",
+   "clip": "menu.dialogue-box-typewriter-1",
+   "game": "Phoenix Wright: Ace Attorney",
+   "what": "Mia's line types out in the dialogue box",
+   "confidence": "high"
+  },
+  {
+   "animation": "cinematic.walk-and-talk",
+   "clip": "cinematic.walk-and-talk-0",
+   "game": "God of War Ragnarok",
+   "what": "Kratos walks behind Atreus across the snow toward the ice tree (exploration walk, weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "locomotion.strafe-lock-on-movement",
+   "clip": "locomotion.strafe-lock-on-movement-0",
+   "game": "The Legend of Zelda: Ocarina of Time",
+   "what": "Link Z-targeted on a Skulltula, shield up, stepping in to strike (weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "locomotion.wall-run",
+   "clip": "locomotion.wall-run-0",
+   "game": "Prince of Persia: The Sands of Time",
+   "what": "The Prince runs along the walls of a stone shaft (dark footage)",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.sprint-attack",
+   "clip": "melee.sprint-attack-0",
+   "game": "Anarchy Reigns",
+   "what": "Mathilda dashes across the arena and strikes an enemy on arrival (weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.weapon-throw-recall",
+   "clip": "melee.weapon-throw-recall-0",
+   "game": "God of War (2018)",
+   "what": "The Leviathan Axe flies back and Kratos catches it",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.weapon-throw-recall",
+   "clip": "melee.weapon-throw-recall-1",
+   "game": "God of War Ragnarok",
+   "what": "Kratos hurls the axe across the ice and recalls it mid-fight",
+   "confidence": "high"
+  },
+  {
+   "animation": "ranged.throwing-knife-shuriken",
+   "clip": "ranged.throwing-knife-shuriken-0",
+   "game": "Shinobi (Sega, 1987)",
+   "what": "Joe Musashi throwing shuriken at enemies",
+   "confidence": "high"
+  },
+  {
+   "animation": "ranged.throwing-knife-shuriken",
+   "clip": "ranged.throwing-knife-shuriken-1",
+   "game": "Valorant",
+   "what": "Jett leaps and hurls a fan of throwing knives (cinematic trailer)",
+   "confidence": "high"
+  },
+  {
+   "animation": "ranged.cover-peek-pop-up-aim",
+   "clip": "ranged.cover-peek-pop-up-aim-0",
+   "game": "Mass Effect 2",
+   "what": "Squadmate crouched behind chest-high cover rises to fire, then ducks back",
+   "confidence": "high"
+  },
+  {
+   "animation": "ranged.gun-kata-stylish-shooting",
+   "clip": "ranged.gun-kata-stylish-shooting-0",
+   "game": "Stranglehold",
+   "what": "Tequila dives, slides and rides a rail while shooting in slow motion",
+   "confidence": "high"
+  },
+  {
+   "animation": "ranged.gun-kata-stylish-shooting",
+   "clip": "ranged.gun-kata-stylish-shooting-1",
+   "game": "Max Payne 3",
+   "what": "Max shootdodges across a yacht deck and lands on his back (weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "ranged.boomerang-returning-throw",
+   "clip": "ranged.boomerang-returning-throw-0",
+   "game": "The Legend of Zelda: The Minish Cap",
+   "what": "Link throws the boomerang, which arcs out and returns",
+   "confidence": "high"
+  },
+  {
+   "animation": "reactions.knockback",
+   "clip": "reactions.knockback-0",
+   "game": "Super Smash Bros. for Wii U / 3DS (trailer)",
+   "what": "Donkey Kong's charged punch launches Diddy Kong far off into the sky",
+   "confidence": "high"
+  },
+  {
+   "animation": "reactions.knockback",
+   "clip": "reactions.knockback-1",
+   "game": "Super Smash Bros. for Wii U",
+   "what": "Bayonetta is hit and sent flying off the stage",
+   "confidence": "high"
+  },
+  {
+   "animation": "reactions.crumple-collapse",
+   "clip": "reactions.crumple-collapse-0",
+   "game": "Street Fighter 6",
+   "what": "Drive Impact punish counter: Jamie slumps into a crumple, then a Critical Art finishes (weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "death.death-collapse",
+   "clip": "death.death-collapse-0",
+   "game": "Dark Souls III",
+   "what": "Player character is cut down and crumples to the floor",
+   "confidence": "high"
+  },
+  {
+   "animation": "fighting.combo-breaker",
+   "clip": "fighting.combo-breaker-0",
+   "game": "Killer Instinct (1994)",
+   "what": "Fulgore breaks out of a combo; the BREAKER! callout appears on screen",
+   "confidence": "high"
+  },
+  {
+   "animation": "enemies.search-investigate",
+   "clip": "enemies.search-investigate-0",
+   "game": "Metal Gear Solid 2: Sons of Liberty",
+   "what": "Guard searching a cabin doorway while the HUD shifts from Alert to Evasion (dark, weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "vfx.weapon-trail-slash-arc",
+   "clip": "vfx.weapon-trail-slash-arc-0",
+   "game": "The Legend of Zelda: Breath of the Wild",
+   "what": "Link's sword beam slash leaves a bright arc as he strikes at a dragon",
+   "confidence": "high"
+  },
+  {
+   "animation": "vfx.charge-glow-power-aura",
+   "clip": "vfx.charge-glow-power-aura-0",
+   "game": "Dragon Ball FighterZ",
+   "what": "SSJ4 Gogeta powering up inside a flaring golden aura",
+   "confidence": "high"
+  },
+  {
+   "animation": "vfx.shield-break-shatter",
+   "clip": "vfx.shield-break-shatter-0",
+   "game": "Super Smash Bros. Ultimate",
+   "what": "Lucina's shield bubble shatters and she is left dizzy",
+   "confidence": "high"
+  },
+  {
+   "animation": "vfx.charge-glow-power-aura",
+   "clip": "vfx.charge-glow-power-aura-1",
+   "game": "Monster Hunter Rise",
+   "what": "Charge Blade glows yellow and red as its phials charge into an attack (weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "ui.health-bar-drain-ghost-bar",
+   "clip": "ui.health-bar-drain-ghost-bar-0",
+   "game": "Phoenix Wright: Ace Attorney",
+   "what": "Penalty bar takes a hit: the lost chunk flashes orange, then drains away",
+   "confidence": "high"
+  },
+  {
+   "animation": "ui.floating-damage-numbers",
+   "clip": "ui.floating-damage-numbers-0",
+   "game": "Honkai: Star Rail",
+   "what": "Jing Yuan's ultimate; a burst of damage numbers stacks over the enemies",
+   "confidence": "high"
+  },
+  {
+   "animation": "ui.floating-damage-numbers",
+   "clip": "ui.floating-damage-numbers-1",
+   "game": "Warframe",
+   "what": "Melee combo with red damage numbers popping off enemies (busy, weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "ui.lock-on-reticle",
+   "clip": "ui.lock-on-reticle-0",
+   "game": "The Legend of Zelda: The Wind Waker",
+   "what": "Link Z-targets enemies; the yellow lock-on arrow hovers over each one",
+   "confidence": "high"
+  },
+  {
+   "animation": "ui.damage-direction-indicator",
+   "clip": "ui.damage-direction-indicator-0",
+   "game": "Call of Duty: Black Ops 4",
+   "what": "Player takes fire: red edge flash and directional hit arcs around the crosshair (weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "ui.stamina-bar",
+   "clip": "ui.stamina-bar-0",
+   "game": "The Legend of Zelda: Breath of the Wild",
+   "what": "Green stamina wheel drains beside Link during bullet-time archery",
+   "confidence": "high"
+  },
+  {
+   "animation": "ui.counter-prompt-indicator",
+   "clip": "ui.counter-prompt-indicator-0",
+   "game": "The Legend of Zelda: The Wind Waker",
+   "what": "Parry prompt: the A-button icon flashes as a Moblin attacks and Link counters with a flip (weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "exploration.glide-paraglider",
+   "clip": "exploration.glide-paraglider-0",
+   "game": "Fortnite",
+   "what": "Player skydives, then deploys the glider and floats down to the map",
+   "confidence": "high"
+  },
+  {
+   "animation": "exploration.cap-throw-possess",
+   "clip": "exploration.cap-throw-possess-0",
+   "game": "Super Mario Odyssey",
+   "what": "Mario throws Cappy at a Bullet Bill and captures it",
+   "confidence": "high"
+  },
+  {
+   "animation": "exploration.cap-throw-possess",
+   "clip": "exploration.cap-throw-possess-1",
+   "game": "Super Mario Odyssey",
+   "what": "Mario flings Cappy, who spins out and lands back on his head",
+   "confidence": "high"
+  },
+  {
+   "animation": "interaction.item-get-holding-aloft",
+   "clip": "interaction.item-get-holding-aloft-0",
+   "game": "The Legend of Zelda: Majora's Mask",
+   "what": "Link opens a chest and holds the Compass up over his head",
+   "confidence": "high"
+  },
+  {
+   "animation": "interaction.item-get-holding-aloft",
+   "clip": "interaction.item-get-holding-aloft-1",
+   "game": "Super Mario 64",
+   "what": "Mario collects a Power Star and does the star-get spin and pose",
+   "confidence": "high"
+  },
+  {
+   "animation": "expression.laugh",
+   "clip": "expression.laugh-0",
+   "game": "Animal Crossing: New Horizons",
+   "what": "Player character's laugh reaction with yellow emote lines",
+   "confidence": "high"
+  },
+  {
+   "animation": "expression.laugh",
+   "clip": "expression.laugh-1",
+   "game": "Animal Crossing: New Leaf",
+   "what": "Villagers laughing together outside a shop",
+   "confidence": "high"
+  },
+  {
+   "animation": "expression.double-take",
+   "clip": "expression.double-take-0",
+   "game": "Super Mario Odyssey",
+   "what": "Mario wakes face-down, lifts his head and gapes in surprise (startled take rather than a true double take, weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "expression.shrug-confused",
+   "clip": "expression.shrug-confused-0",
+   "game": "Animal Crossing: New Horizons",
+   "what": "Player tilts their head under a question-mark reaction",
+   "confidence": "high"
+  },
+  {
+   "animation": "expression.shrug-confused",
+   "clip": "expression.shrug-confused-1",
+   "game": "Fortnite",
+   "what": "Master Chief skin doing a palms-up shrug emote",
+   "confidence": "high"
+  },
+  {
+   "animation": "cartoon.squash-and-stretch",
+   "clip": "cartoon.squash-and-stretch-0",
+   "game": "Kirby and the Forgotten Land",
+   "what": "Kirby's soft body squashes and bounces with each step of his run (weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "cartoon.anticipation",
+   "clip": "cartoon.anticipation-0",
+   "game": "Street Fighter II",
+   "what": "Ken draws both hands back to his hip before thrusting out a Hadouken (wind-up then release)",
+   "confidence": "high"
+  },
+  {
+   "animation": "magic.self-buff-power-up",
+   "clip": "magic.self-buff-power-up-0",
+   "game": "Dragon Ball FighterZ",
+   "what": "Goku powers up with Kaioken, flaring a red aura before attacking",
+   "confidence": "high"
+  },
+  {
+   "animation": "defense.take-cover",
+   "clip": "defense.take-cover-0",
+   "game": "Gears of War (Reloaded)",
+   "what": "Two Gears crouched behind sandbag cover, one reloading the Lancer (weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "ranged.lean-peek",
+   "clip": "ranged.lean-peek-0",
+   "game": "Escape from Tarkov: Arena",
+   "what": "First-person lean out past a wall corner with the rifle raised",
+   "confidence": "high"
+  },
+  {
+   "animation": "ranged.weapon-draw-equip",
+   "clip": "ranged.weapon-draw-equip-0",
+   "game": "Cyberpunk 2077",
+   "what": "Jackie Welles pulls out and raises his twin pistols",
+   "confidence": "high"
+  },
+  {
+   "animation": "ranged.lean-peek",
+   "clip": "ranged.lean-peek-1",
+   "game": "Unidentified military shooter",
+   "what": "Third-person soldier leans out of a doorway to look and aim (game not identified, weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "reactions.hit-stop-hit-freeze",
+   "clip": "reactions.hit-stop-hit-freeze-0",
+   "game": "Super Smash Bros. Ultimate",
+   "what": "Finishing blow: the game freezes and zooms in on the impact before the launch",
+   "confidence": "high"
+  },
+  {
+   "animation": "reactions.hit-stop-hit-freeze",
+   "clip": "reactions.hit-stop-hit-freeze-1",
+   "game": "Street Fighter IV",
+   "what": "Chun-Li's rapid kicks; each hit holds for a beat in a burst of sparks (weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "locomotion.combat-idle-stance",
+   "clip": "locomotion.combat-idle-stance-1",
+   "game": "Street Fighter V",
+   "what": "M. Bison's guard-up idle loop beside an alternate-colour Bison",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.idle-fidget-breakaway",
+   "clip": "locomotion.idle-fidget-breakaway-0",
+   "game": "World of Warcraft",
+   "what": "Vulpera Brewmaster's idle loop: shifting weight and flexing a hand",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.combat-walk",
+   "clip": "locomotion.combat-walk-0",
+   "game": "Dark Souls",
+   "what": "Knight advances through a dark cave, sword ready, as a skeleton beast closes in",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.overhead-slam",
+   "clip": "melee.overhead-slam-1",
+   "game": "Elden Ring",
+   "what": "Player raises a flaming weapon overhead and slams it down into a huge fiery explosion",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.wall-jump-wall-kick",
+   "clip": "locomotion.wall-jump-wall-kick-0",
+   "game": "Mega Man Zero",
+   "what": "Zero kicks off the walls to climb a vertical shaft",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.ledge-grab-hang",
+   "clip": "locomotion.ledge-grab-hang-1",
+   "game": "Super Smash Bros. Ultimate",
+   "what": "Banjo & Kazooie's ledge-hang animation",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.ground-pound",
+   "clip": "melee.ground-pound-1",
+   "game": "Super Mario 64 (B3313 ROM hack)",
+   "what": "Mario ground-pounds, bouncing off the floor in a ring of stars",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.deathblow",
+   "clip": "melee.deathblow-1",
+   "game": "Lies of P: Overture",
+   "what": "Fatal attack on a staggered boss: heavy close-up strikes with red sparks (weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.dual-wield-flurry",
+   "clip": "melee.dual-wield-flurry-0",
+   "game": "Elden Ring: Shadow of the Erdtree",
+   "what": "Rellana spins and slashes with her twin frost and fire moon blades",
+   "confidence": "high"
+  },
+  {
+   "animation": "ranged.weapon-draw-equip",
+   "clip": "ranged.weapon-draw-equip-1",
+   "game": "Doom Eternal",
+   "what": "The Doom Slayer turns, lifts his combat shotgun and settles into a ready pose",
+   "confidence": "high"
+  },
+  {
+   "animation": "ranged.recoil",
+   "clip": "ranged.recoil-1",
+   "game": "Rainbow Six Siege",
+   "what": "Holo-sight rifle kicking upward through a burst of fire (weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "ranged.shotgun-pump-shell-load",
+   "clip": "ranged.shotgun-pump-shell-load-0",
+   "game": "Resident Evil (first-person)",
+   "what": "Hand feeds shells one by one into the shotgun's tube",
+   "confidence": "high"
+  },
+  {
+   "animation": "ranged.grenade-throw",
+   "clip": "ranged.grenade-throw-0",
+   "game": "Halo Online",
+   "what": "First-person throw of a plasma grenade onto a Wraith",
+   "confidence": "high"
+  },
+  {
+   "animation": "ranged.bow-draw-aim-release",
+   "clip": "ranged.bow-draw-aim-release-0",
+   "game": "The Last of Us Part I",
+   "what": "Ellie draws and aims her bow in the snow",
+   "confidence": "high"
+  },
+  {
+   "animation": "magic.spell-cast-instant",
+   "clip": "magic.spell-cast-instant-1",
+   "game": "The Elder Scrolls V: Skyrim",
+   "what": "First-person hands cast a conjuration spell, opening a purple portal on the ground",
+   "confidence": "high"
+  },
+  {
+   "animation": "magic.projectile-cast-fireball",
+   "clip": "magic.projectile-cast-fireball-1",
+   "game": "Dark Souls",
+   "what": "Pyromancer throws fireballs at enemies in the Painted World",
+   "confidence": "high"
+  },
+  {
+   "animation": "magic.beam-attack",
+   "clip": "magic.beam-attack-1",
+   "game": "Dragon Ball FighterZ",
+   "what": "Cell fires a full-screen Kamehameha",
+   "confidence": "high"
+  },
+  {
+   "animation": "magic.summon",
+   "clip": "magic.summon-1",
+   "game": "Diablo IV",
+   "what": "Necromancer's glowing skeletal minions rise and stand ready (trailer)",
+   "confidence": "high"
+  },
+  {
+   "animation": "magic.teleport-blink",
+   "clip": "magic.teleport-blink-1",
+   "game": "Overwatch 2",
+   "what": "Tracer blinks across the courtyard in short teleport hops",
+   "confidence": "high"
+  },
+  {
+   "animation": "magic.ice-frost-spell",
+   "clip": "magic.ice-frost-spell-1",
+   "game": "League of Legends",
+   "what": "Anivia's Frostbite and ice-shard spells cast on an enemy in lane (small, weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "magic.charge-up-ki-charge",
+   "clip": "magic.charge-up-ki-charge-1",
+   "game": "Super Smash Bros. Ultimate",
+   "what": "Lucario charges Aura Sphere, the blue ball swelling between its paws",
+   "confidence": "high"
+  },
+  {
+   "animation": "defense.block-impact-guard-hit",
+   "clip": "defense.block-impact-guard-hit-1",
+   "game": "Sekiro: Shadows Die Twice",
+   "what": "Wolf deflects Genichiro's strikes in bursts of orange sparks",
+   "confidence": "high"
+  },
+  {
+   "animation": "defense.parry",
+   "clip": "defense.parry-1",
+   "game": "Dark Souls III",
+   "what": "Parry against Pontiff Sulyvahn's flaming sword",
+   "confidence": "high"
+  },
+  {
+   "animation": "defense.sidestep-quickstep",
+   "clip": "defense.sidestep-quickstep-0",
+   "game": "Tekken 8",
+   "what": "Heihachi sidesteps an attack and answers with a Wind God Fist",
+   "confidence": "high"
+  },
+  {
+   "animation": "defense.perfect-dodge-witch-time",
+   "clip": "defense.perfect-dodge-witch-time-1",
+   "game": "Bayonetta",
+   "what": "Dodge triggers Witch Time; the world slows and tints while Bayonetta combos angels",
+   "confidence": "high"
+  },
+  {
+   "animation": "reactions.wall-bounce-wall-splat",
+   "clip": "reactions.wall-bounce-wall-splat-0",
+   "game": "Tekken 8",
+   "what": "Reina's punch splats Kazuya against the wall, then she follows up",
+   "confidence": "high"
+  },
+  {
+   "animation": "reactions.ground-bounce",
+   "clip": "reactions.ground-bounce-1",
+   "game": "Street Fighter V",
+   "what": "Urien's Aegis Reflector juggle; the opponent bounces between mirror and floor (weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "reactions.poisoned",
+   "clip": "reactions.poisoned-1",
+   "game": "Monster Hunter 4 Ultimate",
+   "what": "Hunter is hit by a poison attack, purple poison bubbles rise, and they faint",
+   "confidence": "high"
+  },
+  {
+   "animation": "death.dismemberment",
+   "clip": "death.dismemberment-1",
+   "game": "Metal Gear Rising: Revengeance",
+   "what": "Raiden's Blade Mode slashes through an enemy cyborg (weaker pick, cut is small in frame)",
+   "confidence": "low"
+  },
+  {
+   "animation": "death.kill-cam-slow-mo-kill",
+   "clip": "death.kill-cam-slow-mo-kill-0",
+   "game": "Call of Duty 4: Modern Warfare (Remastered)",
+   "what": "KILLCAM replay of a grenade kill",
+   "confidence": "high"
+  },
+  {
+   "animation": "death.fighting-game-ko",
+   "clip": "death.fighting-game-ko-0",
+   "game": "Tekken 7",
+   "what": "Lili's Rage Art finishes the round with a K.O. banner",
+   "confidence": "high"
+  },
+  {
+   "animation": "fighting.victory-pose",
+   "clip": "fighting.victory-pose-1",
+   "game": "Super Smash Bros. Ultimate",
+   "what": "Sora's victory screen: Keyblade flourish and win pose",
+   "confidence": "high"
+  },
+  {
+   "animation": "fighting.taunt",
+   "clip": "fighting.taunt-1",
+   "game": "Super Smash Bros. Ultimate",
+   "what": "Young Link's taunt: chugging a bottle of milk",
+   "confidence": "high"
+  },
+  {
+   "animation": "fighting.character-select-pose",
+   "clip": "fighting.character-select-pose-0",
+   "game": "Tekken 3",
+   "what": "Player-select screen cycling through fighters' portraits",
+   "confidence": "high"
+  },
+  {
+   "animation": "enemies.attack-telegraph-windup",
+   "clip": "enemies.attack-telegraph-windup-1",
+   "game": "Dark Souls III",
+   "what": "Pontiff Sulyvahn winds up his flaming greatsword before the swing",
+   "confidence": "high"
+  },
+  {
+   "animation": "enemies.enemy-taunt-provoke",
+   "clip": "enemies.enemy-taunt-provoke-1",
+   "game": "Halo Infinite",
+   "what": "Grunt waddles out waving its arms at the player",
+   "confidence": "high"
+  },
+  {
+   "animation": "enemies.weak-point-exposed",
+   "clip": "enemies.weak-point-exposed-1",
+   "game": "Shadow of the Colossus",
+   "what": "Clinging to a colossus's armored back while it bucks (weaker pick, no glowing sigil visible)",
+   "confidence": "low"
+  },
+  {
+   "animation": "enemies.flee-retreat",
+   "clip": "enemies.flee-retreat-1",
+   "game": "Halo Infinite",
+   "what": "Grunt flees from the player's flashlight into the jungle (dark, weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "enemies.charging-rush",
+   "clip": "enemies.charging-rush-0",
+   "game": "Monster Hunter: World",
+   "what": "Diablos charges head-down at a Great Sword hunter, who tackles through it",
+   "confidence": "high"
+  },
+  {
+   "animation": "vfx.camera-zoom-on-crit",
+   "clip": "vfx.camera-zoom-on-crit-1",
+   "game": "Fire Emblem: The Blazing Blade",
+   "what": "Athos's critical: the screen flashes and a pillar of fire drops on the target (crit flash rather than a camera zoom, weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "ui.round-start-ko-banner",
+   "clip": "ui.round-start-ko-banner-0",
+   "game": "Street Fighter V",
+   "what": "ROUND 1 and FIGHT! banners sweep across the screen, then Sagat uppercuts",
+   "confidence": "high"
+  },
+  {
+   "animation": "exploration.dive-underwater-swim",
+   "clip": "exploration.dive-underwater-swim-0",
+   "game": "Super Mario 64",
+   "what": "Mario swims down through Jolly Roger Bay with breaststroke kicks",
+   "confidence": "high"
+  },
+  {
+   "animation": "exploration.free-climb",
+   "clip": "exploration.free-climb-1",
+   "game": "The Legend of Zelda: Breath of the Wild",
+   "what": "Link climbing a tree trunk, a tower and a cliff face",
+   "confidence": "high"
+  },
+  {
+   "animation": "exploration.ladder-climb",
+   "clip": "exploration.ladder-climb-1",
+   "game": "Half-Life",
+   "what": "Black Mesa scientist on a ladder in a vertical shaft loses grip and falls (weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "exploration.drive-steer-vehicle",
+   "clip": "exploration.drive-steer-vehicle-1",
+   "game": "Grand Theft Auto V",
+   "what": "Driving a white muscle car through Los Santos, drifting around corners",
+   "confidence": "high"
+  },
+  {
+   "animation": "exploration.spin-dash-roll-ball",
+   "clip": "exploration.spin-dash-roll-ball-0",
+   "game": "Metroid Dread",
+   "what": "Samus curls into the Morph Ball, rolls through a tunnel and stands back up",
+   "confidence": "high"
+  },
+  {
+   "animation": "exploration.ride-horse-gallop",
+   "clip": "exploration.ride-horse-gallop-0",
+   "game": "Red Dead Redemption 2",
+   "what": "Riding past a stranger whose horse throws him (horse is walking, weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "interaction.open-chest",
+   "clip": "interaction.open-chest-1",
+   "game": "The Legend of Zelda: Ocarina of Time",
+   "what": "Link kicks open a big chest and pulls out the Dungeon Map",
+   "confidence": "high"
+  },
+  {
+   "animation": "interaction.sit-rest-at-campfire",
+   "clip": "interaction.sit-rest-at-campfire-0",
+   "game": "Elden Ring",
+   "what": "Tarnished kneels at a Site of Lost Grace (LOST GRACE DISCOVERED); kneel rather than sit, weaker pick",
+   "confidence": "low"
+  },
+  {
+   "animation": "interaction.sleep-lie-down",
+   "clip": "interaction.sleep-lie-down-0",
+   "game": "The Legend of Zelda: Echoes of Wisdom",
+   "what": "Zelda summons a bed echo, lies down and naps to restore hearts",
+   "confidence": "high"
+  },
+  {
+   "animation": "interaction.mine-chop",
+   "clip": "interaction.mine-chop-0",
+   "game": "Minecraft",
+   "what": "Pickaxe breaking a diamond ore block",
+   "confidence": "high"
+  },
+  {
+   "animation": "interaction.cook",
+   "clip": "interaction.cook-1",
+   "game": "Overcooked! 2",
+   "what": "Chefs chop, fry and plate orders around a busy kitchen",
+   "confidence": "high"
+  },
+  {
+   "animation": "interaction.use-tool-gadget",
+   "clip": "interaction.use-tool-gadget-0",
+   "game": "The Legend of Zelda: Twilight Princess",
+   "what": "Link hangs from a Clawshot anchored to the ceiling",
+   "confidence": "high"
+  },
+  {
+   "animation": "expression.cry-sad",
+   "clip": "expression.cry-sad-1",
+   "game": "Kingdom Hearts Birth by Sleep",
+   "what": "Aqua's face falls; she closes her eyes and looks down sadly",
+   "confidence": "high"
+  },
+  {
+   "animation": "expression.lip-sync-talking",
+   "clip": "expression.lip-sync-talking-0",
+   "game": "Mass Effect",
+   "what": "Saren delivers dialogue, mandibles and jaw moving with the line",
+   "confidence": "high"
+  },
+  {
+   "animation": "expression.gibberish-talk-animalese",
+   "clip": "expression.gibberish-talk-animalese-0",
+   "game": "Animal Crossing: New Horizons",
+   "what": "Isabelle chats in Animalese as her text bubble types out",
+   "confidence": "high"
+  },
+  {
+   "animation": "expression.eye-blink-look-at",
+   "clip": "expression.eye-blink-look-at-1",
+   "game": "Uncharted 4: A Thief's End",
+   "what": "Nathan Drake glances over at Sam mid-conversation",
+   "confidence": "high"
+  },
+  {
+   "animation": "expression.sit-idle-lean",
+   "clip": "expression.sit-idle-lean-0",
+   "game": "Persona 5",
+   "what": "Joker sits hunched on a stool, leaning on his knees, beside Futaba in Leblanc",
+   "confidence": "high"
+  },
+  {
+   "animation": "cartoon.cartoon-run-wheel-legs",
+   "clip": "cartoon.cartoon-run-wheel-legs-1",
+   "game": "Crash Bandicoot 4: It's About Time",
+   "what": "Crash sprints toward the camera with flailing, exaggerated legs (weaker pick, not a wheel blur)",
+   "confidence": "low"
+  },
+  {
+   "animation": "cartoon.dizzy-stars-birds",
+   "clip": "cartoon.dizzy-stars-birds-0",
+   "game": "Super Mario 64",
+   "what": "Mario reels dizzily with X eyes after a hit",
+   "confidence": "high"
+  },
+  {
+   "animation": "creature.quadruped-walk-trot",
+   "clip": "creature.quadruped-walk-trot-1",
+   "game": "Okami",
+   "what": "Amaterasu trots and runs through a forest, then howls in a victory pose",
+   "confidence": "high"
+  },
+  {
+   "animation": "creature.dragon-flight-breath",
+   "clip": "creature.dragon-flight-breath-0",
+   "game": "Elden Ring",
+   "what": "Lichdragon Fortissax flies overhead and unleashes red death lightning",
+   "confidence": "high"
+  },
+  {
+   "animation": "menu.level-up-rank-up",
+   "clip": "menu.level-up-rank-up-1",
+   "game": "World of Warcraft",
+   "what": "Forsaken warlock kills a zombie and levels up in a column of golden light",
+   "confidence": "high"
+  },
+  {
+   "animation": "menu.loot-box-card-reveal",
+   "clip": "menu.loot-box-card-reveal-0",
+   "game": "Hearthstone",
+   "what": "A card is played and flips into place on the board in a burst of light (card reveal in play rather than a pack, weaker pick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "menu.loading-screen-animation",
+   "clip": "menu.loading-screen-animation-0",
+   "game": "Destiny 2",
+   "what": "Loading-screen glyph cycling through the class symbols",
+   "confidence": "high"
+  },
+  {
+   "animation": "menu.quest-complete-banner",
+   "clip": "menu.quest-complete-banner-1",
+   "game": "Monster Hunter Rise",
+   "what": "QUEST COMPLETE banner stamps over the hunter after the hunt",
+   "confidence": "high"
+  },
+  {
+   "animation": "menu.achievement-trophy-pop",
+   "clip": "menu.achievement-trophy-pop-0",
+   "game": "Xbox (console UI)",
+   "what": "Achievement unlocked toast pops open and slides out",
+   "confidence": "high"
+  },
+  {
+   "animation": "sports.kick-shoot-football",
+   "clip": "sports.kick-shoot-football-0",
+   "game": "Mario Strikers: Battle League",
+   "what": "Luigi shoots and scores, then celebrates in front of the net",
+   "confidence": "high"
+  },
+  {
+   "animation": "sports.dribble",
+   "clip": "sports.dribble-0",
+   "game": "NBA Street Homecourt",
+   "what": "Streetball player dribbles past a defender and drives to the hoop",
+   "confidence": "high"
+  },
+  {
+   "animation": "sports.goal-score-celebration",
+   "clip": "sports.goal-score-celebration-0",
+   "game": "EA Sports FC",
+   "what": "Scorer celebrates with hands to his head toward the crowd",
+   "confidence": "high"
+  },
+  {
+   "animation": "sports.tackle",
+   "clip": "sports.tackle-1",
+   "game": "Madden NFL 21",
+   "what": "Chicago defender drives a ball carrier to the turf",
+   "confidence": "high"
+  },
+  {
+   "animation": "sports.swing-golf-tennis-bat",
+   "clip": "sports.swing-golf-tennis-bat-1",
+   "game": "Mario Tennis Aces",
+   "what": "Mario tosses the ball up and serves",
+   "confidence": "high"
+  },
+  {
+   "animation": "sports.skateboard-trick",
+   "clip": "sports.skateboard-trick-1",
+   "game": "Tony Hawk's Pro Skater 3",
+   "what": "Skater grinds a ledge and kicks out of a combo",
+   "confidence": "high"
+  },
+  {
+   "animation": "sports.dance-performance",
+   "clip": "sports.dance-performance-0",
+   "game": "Dance Central",
+   "what": "Dancers perform a routine with FLAWLESS judgment popups",
+   "confidence": "high"
+  },
+  {
+   "animation": "exploration.ride-horse-gallop",
+   "clip": "exploration.ride-horse-gallop-1",
+   "game": "Immortals Fenyx Rising",
+   "what": "Fenyx gallops uphill across a meadow on horseback",
+   "confidence": "high"
   }
  ]
 }
