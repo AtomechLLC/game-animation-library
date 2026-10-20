@@ -207,7 +207,7 @@ const st={gif:false,mark:false,flag:false,need:false,q:'',dom:'all',cat:null,tag
 // {local:true} is the owner's workstation copy (serve_local.py) where entries and GIFs can be marked ✕ into marks.json.
 let CFG={};try{CFG=JSON.parse(document.getElementById('cfg').textContent)||{}}catch(e){}
 // needs: entries (animation id) and library GIFs (gkey) the admin marked "needs replacement"; admin: CSRF token when signed in on /admin
-const CS={tally:{},mine:{},community:{},flagged:new Set(),needs:new Set(),admin:null,max:8388608,on:false};
+const CS={tally:{},mine:{},community:{},flagged:new Set(),needs:new Set(),admin:null,max:8388608,video:null,on:false};
 let MARKS={marks:[]};
 function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
 const voterToken=(()=>{let t=store('voterToken');if(!t||!/^[A-Za-z0-9_-]{16,64}$/.test(t)){t=Array.from(crypto.getRandomValues(new Uint8Array(24)),b=>b.toString(16).padStart(2,'0')).join('');store('voterToken',t)}return t})();
@@ -261,7 +261,8 @@ function comItem(a,c,tv){
 function sugForm(a,rep){
   const g=a&&rep&&a.gifs.find(x=>gkey(a,x)===rep);
   const pick=a?'':`<label>Which entry is it for?<select name="animation" required><option value="">Choose an entry…</option>${D.categories.map(c=>`<optgroup label="${esc(c.name)}">${A.filter(x=>x.category===c.id).map(x=>`<option value="${esc(x.id)}">${esc(x.name)}</option>`).join('')}</optgroup>`).join('')}</select></label>`;
-  const file=CS.on?`<div class="row"><label style="flex:1 1 200px">…or upload a file (GIF, WebP or MP4, up to ${Math.round(CS.max/1048576)} MB)<input name="file" type="file" accept=".gif,.webp,.mp4,image/gif,image/webp,video/mp4"></label></div>`:'';
+  const file=!CS.on?'':CS.video?`<div class="row"><label style="flex:1 1 200px">…or upload a file: a GIF or WebP (up to ${Math.round(CS.max/1048576)} MB), or a short video (MP4, MOV or WebM, up to ${CS.video.max_seconds} s and ${Math.round(CS.video.max_upload/1048576)} MB) that we turn into a GIF<input name="file" type="file" accept=".gif,.webp,.mp4,.m4v,.mov,.webm,.mkv,.avi,image/gif,image/webp,video/*"></label></div>`
+    :`<div class="row"><label style="flex:1 1 200px">…or upload a file (GIF, WebP or MP4, up to ${Math.round(CS.max/1048576)} MB)<input name="file" type="file" accept=".gif,.webp,.mp4,image/gif,image/webp,video/mp4"></label></div>`;
   return `<form class="sug" id="sugForm" data-a="${esc(a?a.id:'')}"><b>${g?'Suggest a replacement for “'+esc(g.title||'this GIF')+'”':a?'Submit a better GIF for '+esc(a.name):'Submit a GIF'}</b>
   ${pick}<input type="hidden" name="replaces" value="${esc(g?rep:'')}">
   <div class="row"><label style="flex:1 1 200px">GIF link (a Giphy or Tenor page, or a direct .gif/.webp/.mp4)<input name="url" type="url" placeholder="https://"></label></div>
@@ -396,9 +397,10 @@ document.addEventListener('submit',async e=>{
   if(!file||!file.size)fd.delete('file');
   if(!url)fd.delete('url');
   if(!url===!(file&&file.size)){msg.textContent='Add a link or a file (just one).';return}
-  if(file&&file.size>CS.max){msg.textContent='That file is too large.';return}
-  f.querySelector('button[type=submit]').disabled=true;msg.textContent='Sending…';
-  try{await api('submit',{method:'POST',body:fd});f.outerHTML='<p class="flagged" style="color:var(--calm);border-color:var(--calm)">Thanks! Your suggestion is waiting for review.</p>'}
+  const isVid=file&&file.size&&(/^video\//.test(file.type)||/\.(mp4|m4v|mov|webm|mkv|avi)$/i.test(file.name));
+  if(file&&file.size>(isVid&&CS.video?CS.video.max_upload:CS.max)){msg.textContent='That file is too large.';return}
+  f.querySelector('button[type=submit]').disabled=true;msg.textContent=isVid&&CS.video?'Uploading video…':'Sending…';
+  try{await api('submit',{method:'POST',body:fd});f.outerHTML=`<p class="flagged" style="color:var(--calm);border-color:var(--calm)">Thanks! Your suggestion is waiting for review.${isVid&&CS.video?' Your video is being turned into a GIF for it.':''}</p>`}
   catch(err){msg.textContent='Not sent: '+err.message;f.querySelector('button[type=submit]').disabled=false}
 });
 async function boot(){
@@ -407,7 +409,7 @@ async function boot(){
     try{const r=await fetch((CFG.marks||'marks.json')+'?t='+Date.now());if(r.ok)MARKS=await r.json();MARKS.marks=MARKS.marks||[]}catch(e){}
   }
   if(CFG.api){
-    try{const s=await api('state');Object.assign(CS,{tally:s.tally||{},mine:s.mine||{},community:s.community||{},flagged:new Set(s.flagged||[]),needs:new Set((s.needs||[]).map(n=>n.gif||n.animation)),admin:s.admin||null,max:s.max_upload||CS.max,on:true});$('#flagOnly').hidden=!CS.flagged.size;if(CS.admin)$('#mode').textContent=' · signed in as admin'}
+    try{const s=await api('state');Object.assign(CS,{tally:s.tally||{},mine:s.mine||{},community:s.community||{},flagged:new Set(s.flagged||[]),needs:new Set((s.needs||[]).map(n=>n.gif||n.animation)),admin:s.admin||null,max:s.max_upload||CS.max,video:s.video||null,on:true});$('#flagOnly').hidden=!CS.flagged.size;if(CS.admin)$('#mode').textContent=' · signed in as admin'}
     catch(e){console.warn('Community features unavailable:',e)}
   }
   render();route();
