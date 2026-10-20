@@ -110,6 +110,10 @@ public page until you approve them there. You can:
   entry, or **⚑ Mark GIF for replacement** on a single GIF. Visitors then see a "Needs replacement" badge and a
   prompt to suggest a better GIF. The review page lists everything marked, with **Clear mark**, and a GIF's mark
   clears itself when you approve a replacement for it. Marks are saved in `library-data/db.json` like everything else,
+- **Remove GIF** on a marked GIF (after a confirm) hides that library GIF from the atlas. The repo files are untouched:
+  the removal is saved in `library-data/db.json`, so a deploy does not bring it back. **Removed GIFs** lists them
+  with **Restore**,
+- edit a submitter's note (shown publicly with the GIF once approved) on any submission card with **Save note**,
 - **Export approved JSON** to fold approved GIFs into `library.json` later.
 
 A submitted video shows **Converting video to GIF…** until its GIF is made, then **Converted from MP4 video, 4.2 s**
