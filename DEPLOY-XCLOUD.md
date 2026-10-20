@@ -75,6 +75,10 @@ public page until you approve them there. You can:
   **Delete** removes it and its stored file,
 - on the Approved tab, **Restore original** / **Use as replacement** switch an approved GIF between the two,
 - see GIFs flagged by downvotes, run a search, or dismiss the flag with **Keep this GIF**,
+- **mark entries for replacement**: while signed in, open the atlas and use **⚑ Mark entry for replacement** on an
+  entry, or **⚑ Mark GIF for replacement** on a single GIF. Visitors then see a "Needs replacement" badge and a
+  prompt to suggest a better GIF. The review page lists everything marked, with **Clear mark**, and a GIF's mark
+  clears itself when you approve a replacement for it. Marks are saved in `library-data/db.json` like everything else,
 - **Export approved JSON** to fold approved GIFs into `library.json` later.
 
 **Where submissions are stored.** Uploads *and* links are saved on the site: a submitted Giphy/Tenor page or direct
