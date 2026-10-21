@@ -56,7 +56,7 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(cfg.port, cfg.host, () => {
-  console.log(`Animation atlas on http://${cfg.host}:${cfg.port}  (data in ${cfg.dataDir})`);
+  console.log(`Game Animation Library on http://${cfg.host}:${cfg.port}  (data in ${cfg.dataDir})`);
   if (!cfg.adminPasswordHash) console.log('ADMIN_PASSWORD_HASH is not set, so /admin is disabled. Run: npm run hash-password');
 });
 
