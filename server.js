@@ -9,18 +9,26 @@ const api = require('./lib/api');
 const admin = require('./lib/admin');
 const { searchFlagged } = require('./lib/media');
 const video = require('./lib/video');
+const store = require('./lib/store');
 const { send } = require('./lib/http');
 
 const TYPES = { '.webp': 'image/webp', '.gif': 'image/gif', '.png': 'image/png', '.jpg': 'image/jpeg', '.mp4': 'video/mp4' };
 
-/** template.html + library.json, with community features pointed at /api. Same output as build_page.py. */
+/**
+ * template.html + library.json, with community features pointed at /api. Same output as build_page.py,
+ * except that GIFs on the blocklist (removed on /admin, or in gif-blocklist.json) are left out.
+ */
 let pageCache = null;
 function renderPage() {
   const files = ['template.html', 'library.json'].map(f => path.join(cfg.ROOT, f));
-  const stamp = files.map(f => fs.statSync(f).mtimeMs).join();
+  const list = store.blocklist();
+  const stamp = files.map(f => fs.statSync(f).mtimeMs).join() + '|' + list.version;
   if (pageCache?.stamp !== stamp) {
     const dump = o => JSON.stringify(o).replace(/<\//g, '<\\/');
     const data = JSON.parse(fs.readFileSync(files[1], 'utf8'));
+    if (list.urls.size || list.hashes.size || Object.keys(store.db().hidden).length) {
+      for (const a of data.animations) if (a.gifs) a.gifs = a.gifs.filter(g => !store.isBlockedGif(a.id, g, list));
+    }
     const html = fs.readFileSync(files[0], 'utf8').replace('__DATA__', () => dump(data)).replace('__CONFIG__', () => dump({ api: 'api' }));
     pageCache = { stamp, html };
   }

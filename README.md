@@ -30,6 +30,15 @@ To add animations: append lines to taxonomy.txt, rebuild index.json, rerun merge
 - `gifs/` — downloaded copies (Tenor's 200px animated WebP, Giphy's 200w WebP), one per GIF that could be fetched. `local` is the path, `source_url` the file it came from. Tenor links whose page id is 18-20 digits map straight to a media URL; older 7-8 digit ids could not be resolved, so those links stay page-only.
 - `add_ufd.py` — adds Super Smash Bros. Ultimate hitbox GIFs from [Ultimate Frame Data](https://ultimateframedata.com) to 29 melee, fighting, defense and reaction entries, saved as 400px WebP at `gifs/<id>-ufd-<n>.webp` (host `Ultimate Frame Data`). The move-to-entry mapping is in the script; rerunning skips GIFs already present.
 
+## Removed GIFs (blocklist)
+
+`gif-blocklist.json` lists GIFs removed for good on the review page: their `page_url`, `media_url`, `source_url` and the
+SHA-256 of the file. Refresh it from the site with **Export blocklist** on /admin (or
+`python blocklist.py --from https://YOUR-SITE/api?action=blocklist`), then run `python blocklist.py`: it moves every
+matching GIF in `library.json` to `rejected_gifs` (verdict `blocklisted`) and deletes its file from `gifs/`.
+Any pass that adds GIFs must skip candidates on the list: `from blocklist import load, blocked` and drop a candidate
+when `blocked(load(), gif, file_bytes)` is true. The site reads `gif-blocklist.json` too.
+
 ## Clip screening
 
 `gif-screening.json` records a frame-by-frame check of every downloaded clip for memes, reaction edits, TV/anime/real-life footage and clips that don't show the named move. Clips flagged at medium or high confidence were deleted from `gifs/` and moved to the animation's `rejected_gifs` list (with a `screened` note) so the page no longer shows them. Low-confidence or unclear calls stay in `gifs` with a `screened` note for a human to check. `needs_replacement` lists animations left with no screened local clip.
