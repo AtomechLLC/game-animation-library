@@ -110,9 +110,13 @@ public page until you approve them there. You can:
   entry, or **⚑ Mark GIF for replacement** on a single GIF. Visitors then see a "Needs replacement" badge and a
   prompt to suggest a better GIF. The review page lists everything marked, with **Clear mark**, and a GIF's mark
   clears itself when you approve a replacement for it. Marks are saved in `library-data/db.json` like everything else,
-- **Remove GIF** on a marked GIF (after a confirm) hides that library GIF from the atlas. The repo files are untouched:
-  the removal is saved in `library-data/db.json`, so a deploy does not bring it back. **Removed GIFs** lists them
-  with **Restore**,
+- **Remove GIF** on a marked GIF (after a confirm) takes that library GIF off the site for good. A whole-entry mark lists
+  each of the entry's GIFs with its own **Remove** button. Removed GIFs go on the blocklist, saved in
+  `library-data/db.json`: they stay off the page across deploys (also if the same clip comes back under another file
+  name), can't be suggested again, and are skipped by replacement searches. **Removed GIFs** lists them with **Restore**.
+  To keep GIF-gathering scripts from fetching them again, use **Export blocklist** and commit the file as
+  `gif-blocklist.json`, then run `python blocklist.py` (see README); a GIF listed there stays blocked even after
+  **Restore** until you take it out of the file,
 - edit a submitter's note (shown publicly with the GIF once approved) on any submission card with **Save note**,
 - **Export approved JSON** to fold approved GIFs into `library.json` later.
 

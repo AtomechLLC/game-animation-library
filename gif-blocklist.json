@@ -1,0 +1,4 @@
+{
+ "about": "GIFs removed from the library for good. Do not add a GIF whose page_url, media_url or source_url matches, or whose file has this sha256.",
+ "blocked": []
+}

@@ -409,10 +409,7 @@ async function boot(){
     try{const r=await fetch((CFG.marks||'marks.json')+'?t='+Date.now());if(r.ok)MARKS=await r.json();MARKS.marks=MARKS.marks||[]}catch(e){}
   }
   if(CFG.api){
-    try{const s=await api('state');Object.assign(CS,{tally:s.tally||{},mine:s.mine||{},community:s.community||{},flagged:new Set(s.flagged||[]),needs:new Set((s.needs||[]).map(n=>n.gif||n.animation)),admin:s.admin||null,max:s.max_upload||CS.max,video:s.video||null,on:true});$('#flagOnly').hidden=!CS.flagged.size;
-      // GIFs the admin removed (kept in the server's data, so a redeploy of library.json does not bring them back)
-      const hid=new Set(s.hidden||[]);if(hid.size)A.forEach(a=>{a.gifs=a.gifs.filter(g=>!hid.has(gkey(a,g)))});
-      if(CS.admin)$('#mode').textContent=' · signed in as admin'}
+    try{const s=await api('state');Object.assign(CS,{tally:s.tally||{},mine:s.mine||{},community:s.community||{},flagged:new Set(s.flagged||[]),needs:new Set((s.needs||[]).map(n=>n.gif||n.animation)),admin:s.admin||null,max:s.max_upload||CS.max,video:s.video||null,on:true});$('#flagOnly').hidden=!CS.flagged.size;if(CS.admin)$('#mode').textContent=' · signed in as admin'}
     catch(e){console.warn('Community features unavailable:',e)}
   }
   render();route();
