@@ -1262,28 +1262,8 @@
  ],
  "needs_replacement": [
   {
-   "animation": "locomotion.mantle-ledge-climb",
-   "name": "Mantle / Ledge Climb"
-  },
-  {
-   "animation": "melee.shield-bash",
-   "name": "Shield Bash"
-  },
-  {
-   "animation": "ranged.blind-fire-from-cover",
-   "name": "Blind Fire from Cover"
-  },
-  {
-   "animation": "defense.cover-swap-slide",
-   "name": "Cover Swap / Slide"
-  },
-  {
    "animation": "defense.combat-roll-shooter",
    "name": "Combat Roll (Shooter)"
-  },
-  {
-   "animation": "death.gib-explode",
-   "name": "Gib / Explode"
   },
   {
    "animation": "death.downed-bleeding-out",
@@ -1304,14 +1284,6 @@
   {
    "animation": "expression.point-beckon",
    "name": "Point / Beckon"
-  },
-  {
-   "animation": "cartoon.scramble-in-place-takeoff",
-   "name": "Scramble in Place / Takeoff"
-  },
-  {
-   "animation": "menu.map-reveal-fog-of-war",
-   "name": "Map Reveal / Fog of War"
   }
  ],
  "added": [
@@ -2238,6 +2210,328 @@
    "game": "Immortals Fenyx Rising",
    "what": "Fenyx gallops uphill across a meadow on horseback",
    "confidence": "high"
+  },
+  {
+   "animation": "cartoon.squash-and-stretch",
+   "clip": "cartoon.squash-and-stretch-1",
+   "game": "Fortnite",
+   "what": "The Toon Meowscles skin's Squash & Stretch emote, a rubber-hose dance that squashes and stretches the body",
+   "confidence": "low"
+  },
+  {
+   "animation": "death.death-collapse",
+   "clip": "death.death-collapse-1",
+   "game": "Red Dead Redemption 2",
+   "what": "Micah Bell is shot, staggers backward through the snow and falls face-down",
+   "confidence": "high"
+  },
+  {
+   "animation": "defense.take-cover",
+   "clip": "defense.take-cover-1",
+   "game": "Call of Duty: Black Ops 4",
+   "what": "Soldier crouched behind cover, firing over it",
+   "confidence": "high"
+  },
+  {
+   "animation": "exploration.glide-paraglider",
+   "clip": "exploration.glide-paraglider-1",
+   "game": "Horizon Forbidden West",
+   "what": "Aloy jumps and opens the Shieldwing glider",
+   "confidence": "high"
+  },
+  {
+   "animation": "exploration.wall-slide",
+   "clip": "exploration.wall-slide-0",
+   "game": "Mega Man Zero",
+   "what": "Zero clings to and kicks off the walls of a vertical shaft",
+   "confidence": "high"
+  },
+  {
+   "animation": "fighting.forward-back-dash",
+   "clip": "fighting.forward-back-dash-1",
+   "game": "Street Fighter",
+   "what": "Makoto and Ken dash in and out between exchanges (dashes are quick)",
+   "confidence": "low"
+  },
+  {
+   "animation": "interaction.gather-harvest",
+   "clip": "interaction.gather-harvest-0",
+   "game": "Animal Crossing: New Horizons",
+   "what": "Villager shakes a tree to knock down twigs",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.start-stop-transitions",
+   "clip": "locomotion.start-stop-transitions-0",
+   "game": "Red Dead Redemption 2",
+   "what": "Arthur runs down a muddy street; no clear start or stop shown",
+   "confidence": "low"
+  },
+  {
+   "animation": "locomotion.wall-run",
+   "clip": "locomotion.wall-run-1",
+   "game": "Titanfall",
+   "what": "Pilots wall-run across buildings and jump between them",
+   "confidence": "high"
+  },
+  {
+   "animation": "magic.shout-roar-ability",
+   "clip": "magic.shout-roar-ability-1",
+   "game": "Skyrim",
+   "what": "Dragonborn shouts on a mountainside and launches an enemy",
+   "confidence": "high"
+  },
+  {
+   "animation": "magic.shout-roar-ability",
+   "clip": "magic.shout-roar-ability-2",
+   "game": "Skyrim",
+   "what": "Unrelenting Force blasts a group of guards off a bridge",
+   "confidence": "high"
+  },
+  {
+   "animation": "menu.button-hover-press",
+   "clip": "menu.button-hover-press-0",
+   "game": "Persona 5",
+   "what": "Battle command menu: selecting a Persona skill and attacking",
+   "confidence": "high"
+  },
+  {
+   "animation": "menu.button-hover-press",
+   "clip": "menu.button-hover-press-1",
+   "game": "Persona 5",
+   "what": "Menu cursor moving between options in Persona 5's animated UI",
+   "confidence": "high"
+  },
+  {
+   "animation": "menu.inventory-item-rotate",
+   "clip": "menu.inventory-item-rotate-1",
+   "game": "Resident Evil (Remake)",
+   "what": "Inventory screen: an item is selected, examined and rotated in 3D",
+   "confidence": "high"
+  },
+  {
+   "animation": "menu.inventory-item-rotate",
+   "clip": "menu.inventory-item-rotate-2",
+   "game": "Resident Evil 4",
+   "what": "Leon opens the attache case to manage items",
+   "confidence": "high"
+  },
+  {
+   "animation": "ranged.boomerang-returning-throw",
+   "clip": "ranged.boomerang-returning-throw-1",
+   "game": "Zelda: Phantom Hourglass",
+   "what": "Link throws the boomerang along a drawn path and it returns",
+   "confidence": "high"
+  },
+  {
+   "animation": "reactions.directional-hit-reaction",
+   "clip": "reactions.directional-hit-reaction-0",
+   "game": "Mortal Kombat",
+   "what": "Kung Lao's combo knocks the opponent around from different directions",
+   "confidence": "low"
+  },
+  {
+   "animation": "reactions.electrocuted-shocked",
+   "clip": "reactions.electrocuted-shocked-0",
+   "game": "Street Fighter III",
+   "what": "Ibuki's sprite flashes to a skeleton outline while electrocuted",
+   "confidence": "high"
+  },
+  {
+   "animation": "reactions.grabbed-struggle-button-mash",
+   "clip": "reactions.grabbed-struggle-button-mash-0",
+   "game": "Resident Evil 4",
+   "what": "Ganado grabs Leon; a SHAKE OFF prompt appears to break free",
+   "confidence": "high"
+  },
+  {
+   "animation": "reactions.knockdown",
+   "clip": "reactions.knockdown-0",
+   "game": "Street Fighter",
+   "what": "Ibuki's super knocks Urien flat",
+   "confidence": "high"
+  },
+  {
+   "animation": "reactions.light-flinch-hit-react",
+   "clip": "reactions.light-flinch-hit-react-1",
+   "game": "God of War Ragnarok",
+   "what": "Heimdall flinches back from each of Kratos's axe hits",
+   "confidence": "high"
+  },
+  {
+   "animation": "stealth.air-assassination",
+   "clip": "stealth.air-assassination-0",
+   "game": "Assassin's Creed Rogue",
+   "what": "Assassin leaps from a rooftop and drops onto a guard below",
+   "confidence": "high"
+  },
+  {
+   "animation": "vfx.weapon-trail-slash-arc",
+   "clip": "vfx.weapon-trail-slash-arc-1",
+   "game": "Devil May Cry 5",
+   "what": "Vergil's slashes leave bright blue arcs",
+   "confidence": "high"
+  },
+  {
+   "animation": "stealth.ledge-takedown",
+   "clip": "stealth.ledge-takedown-0",
+   "game": "Assassin's Creed Unity",
+   "what": "Arno grabs a guard from below a balcony railing and pulls him over the edge",
+   "confidence": "high"
+  },
+  {
+   "animation": "death.gib-explode",
+   "clip": "death.gib-explode-0",
+   "game": "Doom (2016)",
+   "what": "Glory kill: the Doom Slayer rips a demon apart in a spray of gore",
+   "confidence": "high"
+  },
+  {
+   "animation": "death.gib-explode",
+   "clip": "death.gib-explode-1",
+   "game": "Doom (2016)",
+   "what": "Glory kill: a demon is torn apart up close",
+   "confidence": "high"
+  },
+  {
+   "animation": "menu.map-reveal-fog-of-war",
+   "clip": "menu.map-reveal-fog-of-war-0",
+   "game": "Assassin's Creed Unity",
+   "what": "Synchronizing at a viewpoint: the camera sweeps around and out over Paris",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.shield-bash",
+   "clip": "melee.shield-bash-0",
+   "game": "Overwatch 2",
+   "what": "Reinhardt Charge: shield-first rush that pins an enemy (a charge rather than a bash)",
+   "confidence": "low"
+  },
+  {
+   "animation": "ranged.blind-fire-from-cover",
+   "clip": "ranged.blind-fire-from-cover-0",
+   "game": "Vanquish",
+   "what": "Sam crouched behind sandbag cover, firing over the top",
+   "confidence": "low"
+  },
+  {
+   "animation": "defense.cover-swap-slide",
+   "clip": "defense.cover-swap-slide-0",
+   "game": "Gears of War 4",
+   "what": "Crouched roadie run from cover with the camera low and shaking",
+   "confidence": "low"
+  },
+  {
+   "animation": "cartoon.scramble-in-place-takeoff",
+   "clip": "cartoon.scramble-in-place-takeoff-0",
+   "game": "Looney Tunes (The Bugs Bunny/Road Runner Movie)",
+   "what": "Road Runner revs his legs in place, then rockets off leaving a dust cloud (from the cartoon the entry cites, not a game)",
+   "confidence": "low"
+  },
+  {
+   "animation": "locomotion.backpedal",
+   "clip": "locomotion.backpedal-1",
+   "game": "Michael Jackson's Moonwalker",
+   "what": "Sprite moonwalks backward across the club floor (weaker pick, sprite is small)",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.sprint-attack",
+   "clip": "melee.sprint-attack-1",
+   "game": "Super Smash Bros. Melee",
+   "what": "Bowser's dash attack, a belly-first slide along the stage",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.rolling-attack",
+   "clip": "melee.rolling-attack-1",
+   "game": "Sonic fan RPG (sprite)",
+   "what": "Sonic's spinning ball attack rams an enemy (sprite)",
+   "confidence": "low"
+  },
+  {
+   "animation": "ranged.weapon-swap",
+   "clip": "ranged.weapon-swap-1",
+   "game": "Counter-Strike: Global Offensive",
+   "what": "First-person swaps from the knife to a pistol to an AWP",
+   "confidence": "high"
+  },
+  {
+   "animation": "ranged.bolt-action-cycle",
+   "clip": "ranged.bolt-action-cycle-1",
+   "game": "Battlefield V",
+   "what": "First-person Kar98k: work the bolt, then aim",
+   "confidence": "high"
+  },
+  {
+   "animation": "magic.spell-channel",
+   "clip": "magic.spell-channel-1",
+   "game": "World of Warcraft",
+   "what": "Character-select idle: a mage holds a staff and channels a glowing green spell",
+   "confidence": "low"
+  },
+  {
+   "animation": "enemies.monster-grab-pin",
+   "clip": "enemies.monster-grab-pin-0",
+   "game": "Unidentified horror game",
+   "what": "Werewolf leaps through the snow and pounces at the camera (the lunge before a pin)",
+   "confidence": "low"
+  },
+  {
+   "animation": "vfx.shell-ejection",
+   "clip": "vfx.shell-ejection-0",
+   "game": "Roblox (Centaura)",
+   "what": "First-person double-barrel shotgun breaks open and reloads (shells are small in frame)",
+   "confidence": "low"
+  },
+  {
+   "animation": "vfx.slow-motion-impact",
+   "clip": "vfx.slow-motion-impact-0",
+   "game": "Burnout Paradise",
+   "what": "Takedown crash plays in slow motion as the cars crumple, then WRECKED",
+   "confidence": "high"
+  },
+  {
+   "animation": "ui.lock-on-reticle",
+   "clip": "ui.lock-on-reticle-1",
+   "game": "Unidentified flight game",
+   "what": "Missile-lock reticle tracks a jet, then turns red when the lock completes",
+   "confidence": "low"
+  },
+  {
+   "animation": "exploration.walk-cycle",
+   "clip": "exploration.walk-cycle-0",
+   "game": "Grand Theft Auto: San Andreas",
+   "what": "CJ walks through the streets of Los Santos",
+   "confidence": "high"
+  },
+  {
+   "animation": "exploration.walk-cycle",
+   "clip": "exploration.walk-cycle-1",
+   "game": "Journey",
+   "what": "The robed traveler walks off across the desert ruins",
+   "confidence": "high"
+  },
+  {
+   "animation": "exploration.zipline",
+   "clip": "exploration.zipline-1",
+   "game": "Stray",
+   "what": "The cat rides a bucket along a cable over the slums (a zipline-style ride)",
+   "confidence": "low"
+  },
+  {
+   "animation": "expression.victory-fanfare",
+   "clip": "expression.victory-fanfare-0",
+   "game": "Final Fantasy VI",
+   "what": "Party members do their victory poses after a battle",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.mantle-ledge-climb",
+   "clip": "locomotion.mantle-ledge-climb-0",
+   "game": "Uncharted 4: A Thief's End",
+   "what": "Nathan Drake climbs a ruined tower hand over hand (ledge climbing rather than a clean mantle)",
+   "confidence": "low"
   }
  ]
 }

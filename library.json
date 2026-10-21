@@ -703,6 +703,20 @@
      "host": "Tenor",
      "local": "gifs/locomotion.backpedal-0.webp",
      "source_url": "https://media.tenor.com/4jv9u-KKreAAAAA1/ashley-graham-back-walk-resident-evil-4-chapter-3-4-presidents-daughter.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/michael-jackson-moonwalker-moonwalk-sega-master-system-gif-15715290145381215889",
+     "media_url": "",
+     "title": "Michael Jackson Moonwalker",
+     "game": "Michael Jackson's Moonwalker",
+     "host": "Tenor",
+     "local": "gifs/locomotion.backpedal-1.webp",
+     "source_url": "https://media.tenor.com/2hftH8Gk7pEAAAA1/michael-jackson-moonwalker.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Sprite moonwalks backward across the club floor (weaker pick, sprite is small)"
+     }
     }
    ]
   },
@@ -814,7 +828,14 @@
      "media_url": "",
      "title": "RDR2 cowboy running down muddy street (run cycle, start/stop unconfirmed)",
      "game": "Red Dead Redemption 2",
-     "host": "Tenor"
+     "host": "Tenor",
+     "local": "gifs/locomotion.start-stop-transitions-0.webp",
+     "source_url": "https://media.tenor.com/9krQggcaAB8AAAA1/rdr2-running-man.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Arthur runs down a muddy street; no clear start or stop shown"
+     }
     },
     {
      "page_url": "https://tenor.com/view/uncharted-4-nathan-drake-3rd-person-shooter-naughty-dog-video-game-gif-14101569275154297913",
@@ -1461,7 +1482,14 @@
      "media_url": "",
      "title": "Titanfall pilots wall running",
      "game": "Titanfall",
-     "host": "Tenor"
+     "host": "Tenor",
+     "local": "gifs/locomotion.wall-run-1.webp",
+     "source_url": "https://media.tenor.com/M6Yi49wZpuwAAAA1/titanfall-wall-running.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Pilots wall-run across buildings and jump between them"
+     }
     },
     {
      "page_url": "https://tenor.com/view/titanfall-pilot-wall-running-gif-24979028",
@@ -1741,6 +1769,20 @@
      "title": "Fenyx climbing up a cliff",
      "game": "Immortals Fenyx Rising",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://makeagif.com/gif/uncharted-4-its-all-about-the-climb-featuring-miley-cyrus-Emo3sS",
+     "media_url": "",
+     "title": "Uncharted 4 Its All About The Climb Featuring Miley Cyrus",
+     "game": "Uncharted 4: A Thief's End",
+     "host": "MakeAGIF",
+     "local": "gifs/locomotion.mantle-ledge-climb-0.webp",
+     "source_url": "https://i.makeagif.com/media/7-09-2017/Emo3sS.mp4",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Nathan Drake climbs a ruined tower hand over hand (ledge climbing rather than a clean mantle)"
+     }
     }
    ],
    "rejected_gifs": [
@@ -3312,6 +3354,20 @@
       "confidence": "low",
       "what": "Mathilda dashes across the arena and strikes an enemy on arrival (weaker pick)"
      }
+    },
+    {
+     "page_url": "https://tenor.com/view/super-smash-bros-melee-bowser-melee-koopa-king-koopa-gif-24358856",
+     "media_url": "",
+     "title": "Super Smash Bros Melee Bowser",
+     "game": "Super Smash Bros. Melee",
+     "host": "Tenor",
+     "local": "gifs/melee.sprint-attack-1.webp",
+     "source_url": "https://media.tenor.com/LGzXS9FeLxwAAAA1/super-smash-bros-melee-bowser.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Bowser's dash attack, a belly-first slide along the stage"
+     }
     }
    ]
   },
@@ -3363,6 +3419,20 @@
      "host": "Tenor",
      "local": "gifs/melee.rolling-attack-0.webp",
      "source_url": "https://media.tenor.com/WtaeLE9ADcQAAAA1/dodgeroll-dodge-roll-dark-souls-matthewmatosis.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/sonic-rpg-game-attack-sonic-the-hedgehog-rpg-rpg-game-gif-26027975",
+     "media_url": "",
+     "title": "Sonic Rpg Game Attack Sonic The Hedgehog",
+     "game": "Sonic fan RPG (sprite)",
+     "host": "Tenor",
+     "local": "gifs/melee.rolling-attack-1.webp",
+     "source_url": "https://media.tenor.com/wf1JC0flS0IAAAA1/sonic-rpg-game-attack-sonic-the-hedgehog.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Sonic's spinning ball attack rams an enemy (sprite)"
+     }
     }
    ],
    "rejected_gifs": [
@@ -3782,6 +3852,20 @@
      "title": "For Honor shield-wielders fighting (Conqueror)",
      "game": "For Honor",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/overwatch-2-ow2-reinhardt-charge-orisa-gif-8649722649177923713",
+     "media_url": "",
+     "title": "Overwatch 2 Ow2",
+     "game": "Overwatch 2",
+     "host": "Tenor",
+     "local": "gifs/melee.shield-bash-0.webp",
+     "source_url": "https://media.tenor.com/eAn869XmoIEAAAA1/overwatch-2-ow2.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Reinhardt Charge: shield-first rush that pins an enemy (a charge rather than a bash)"
+     }
     }
    ],
    "rejected_gifs": [
@@ -4833,6 +4917,20 @@
      "host": "Tenor",
      "local": "gifs/ranged.weapon-swap-0.webp",
      "source_url": "https://media.tenor.com/mkBKi_PWRYwAAAA1/doom-eternal-quick-switch-boiii-quickswap-archvile.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/counter-strike-cs-weapons-game-gif-14706810",
+     "media_url": "",
+     "title": "Counter Strike Cs",
+     "game": "Counter-Strike: Global Offensive",
+     "host": "Tenor",
+     "local": "gifs/ranged.weapon-swap-1.webp",
+     "source_url": "https://media.tenor.com/y3WOlkKu8vUAAAA1/counter-strike-cs.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "First-person swaps from the knife to a pistol to an AWP"
+     }
     }
    ]
   },
@@ -5393,6 +5491,20 @@
      "host": "Tenor",
      "local": "gifs/ranged.bolt-action-cycle-0.webp",
      "source_url": "https://media.tenor.com/biVhTRsVIJ8AAAA1/huntshowdown-levering-hunt.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/kar98k-bolt-action-rifle-bfv-bfv-reloads-tactical-reload-gif-21185995",
+     "media_url": "",
+     "title": "Kar98k Bolt Action Rifle",
+     "game": "Battlefield V",
+     "host": "Tenor",
+     "local": "gifs/ranged.bolt-action-cycle-1.webp",
+     "source_url": "https://media.tenor.com/pjM8FaLIqQIAAAA1/kar98k-bolt-action-rifle.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "First-person Kar98k: work the bolt, then aim"
+     }
     }
    ]
   },
@@ -5990,7 +6102,22 @@
      "note": "Roadie run, cover and blind fire basics"
     }
    ],
-   "gifs": [],
+   "gifs": [
+    {
+     "page_url": "https://tenor.com/view/sam-gideon-vanquish-sega-platinumgames-platinum-gif-5494813236484035373",
+     "media_url": "",
+     "title": "Sam Gideon Vanquish",
+     "game": "Vanquish",
+     "host": "Tenor",
+     "local": "gifs/ranged.blind-fire-from-cover-0.webp",
+     "source_url": "https://media.tenor.com/TEF_hpu-0y0AAAA1/sam-gideon-vanquish.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Sam crouched behind sandbag cover, firing over the top"
+     }
+    }
+   ],
    "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/blindfire-shooter-in-the-dark-double11-gif-11573967063507683210",
@@ -6467,7 +6594,14 @@
      "title": "Phantom Hourglass boomerang",
      "game": "Zelda: Phantom Hourglass",
      "media_url": "",
-     "host": "Tenor"
+     "host": "Tenor",
+     "local": "gifs/ranged.boomerang-returning-throw-1.webp",
+     "source_url": "https://media.tenor.com/c5aQOwKW2aAAAAA1/phantom-hourglass-nintendo-ds.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Link throws the boomerang along a drawn path and it returns"
+     }
     },
     {
      "page_url": "https://tenor.com/view/legend-of-zelda-minish-cap-magic-boomerang-ladder-gif-19144800",
@@ -6635,6 +6769,20 @@
      "title": "Cast bar filling",
      "game": "World of Warcraft",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/character-selection-mage-wizard-witch-gif-14317715",
+     "media_url": "",
+     "title": "Character Selection",
+     "game": "World of Warcraft",
+     "host": "Tenor",
+     "local": "gifs/magic.spell-channel-1.webp",
+     "source_url": "https://media.tenor.com/hWNw_KWa-eMAAAA1/character-selection.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Character-select idle: a mage holds a staff and channels a glowing green spell"
+     }
     }
    ]
   },
@@ -7705,14 +7853,28 @@
      "title": "Fus Ro Dah launching guards",
      "game": "Skyrim",
      "media_url": "",
-     "host": "Tenor"
+     "host": "Tenor",
+     "local": "gifs/magic.shout-roar-ability-2.webp",
+     "source_url": "https://media.tenor.com/O8zaeaYI8NkAAAA1/fus-roh-dah-skyrim.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Unrelenting Force blasts a group of guards off a bridge"
+     }
     },
     {
      "page_url": "https://tenor.com/view/unrelenting-force-fus-ro-da-gif-12260139",
      "title": "Unrelenting Force shout",
      "game": "Skyrim",
      "media_url": "",
-     "host": "Tenor"
+     "host": "Tenor",
+     "local": "gifs/magic.shout-roar-ability-1.webp",
+     "source_url": "https://media.tenor.com/CWV7klJfPQQAAAA1/unrelenting-force.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Dragonborn shouts on a mountainside and launches an enemy"
+     }
     }
    ]
   },
@@ -8674,7 +8836,14 @@
      "media_url": "",
      "title": "Black Ops soldier taking cover while shooting",
      "game": "Call of Duty: Black Ops 4",
-     "host": "Tenor"
+     "host": "Tenor",
+     "local": "gifs/defense.take-cover-1.webp",
+     "source_url": "https://media.tenor.com/482Ojk9bN1oAAAA1/take-cover-shooting.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Soldier crouched behind cover, firing over it"
+     }
     },
     {
      "page_url": "https://tenor.com/view/gears-of-war-lancer-reloaded-locust-fight-gif-15230683887560939455",
@@ -8766,7 +8935,22 @@
      "note": "Cover mechanics incl. swaps across games"
     }
    ],
-   "gifs": [],
+   "gifs": [
+    {
+     "page_url": "https://tenor.com/view/gears-of-war-4-gears-eliud-gifs-gears-of-war-run-gears-of-war-running-gears-of-war-correr-gif-12852752262619919402",
+     "media_url": "",
+     "title": "Gears Of War 4 Gears Eliud Gifs",
+     "game": "Gears of War 4",
+     "host": "Tenor",
+     "local": "gifs/defense.cover-swap-slide-0.webp",
+     "source_url": "https://media.tenor.com/sl4mFgeO9CoAAAA1/gears-of-war-4-gears-eliud-gifs.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Crouched roadie run from cover with the camera low and shaking"
+     }
+    }
+   ],
    "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/gears-5-gears-of-war-gears-of-war-movement-wallbounce-wallbouncing-gif-3141234246689968614",
@@ -8954,7 +9138,14 @@
      "media_url": "",
      "title": "Heimdall hit by axe",
      "game": "God of War Ragnarok",
-     "host": "Tenor"
+     "host": "Tenor",
+     "local": "gifs/reactions.light-flinch-hit-react-1.webp",
+     "source_url": "https://media.tenor.com/vm1pgDjhv9YAAAA1/heimdall-god-of-war.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Heimdall flinches back from each of Kratos's axe hits"
+     }
     },
     {
      "page_url": "https://tenor.com/view/god-of-war-ragnarok-wolf-hit-kratos-god-of-war-ragnarok-wolf-fenrir-hit-gif-27080242",
@@ -9031,7 +9222,14 @@
      "title": "Kung Lao flying knee hit",
      "game": "Mortal Kombat",
      "media_url": "",
-     "host": "Tenor"
+     "host": "Tenor",
+     "local": "gifs/reactions.directional-hit-reaction-0.webp",
+     "source_url": "https://media.tenor.com/fX1z_zdQPp0AAAA1/flying-knee-ouch.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Kung Lao's combo knocks the opponent around from different directions"
+     }
     },
     {
      "page_url": "https://giphy.com/gifs/fCTp1ebazF23hH6dEk",
@@ -9244,7 +9442,14 @@
      "media_url": "",
      "title": "Ibuki knocks opponent down",
      "game": "Street Fighter",
-     "host": "Tenor"
+     "host": "Tenor",
+     "local": "gifs/reactions.knockdown-0.webp",
+     "source_url": "https://media.tenor.com/sA5KMGd1HkEAAAA1/street-fighter-ibuki.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Ibuki's super knocks Urien flat"
+     }
     },
     {
      "page_url": "https://tenor.com/view/akuma-gouki-street-fighter-knock-out-knockback-gif-19415417",
@@ -9985,7 +10190,14 @@
      "title": "Ibuki electrocuted sprite",
      "game": "Street Fighter III",
      "media_url": "",
-     "host": "Tenor"
+     "host": "Tenor",
+     "local": "gifs/reactions.electrocuted-shocked-0.webp",
+     "source_url": "https://media.tenor.com/QJnv2ne_fY4AAAA1/street-fighter-ibuki.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Ibuki's sprite flashes to a skeleton outline while electrocuted"
+     }
     },
     {
      "page_url": "https://tenor.com/view/bioshock-plasmid-electro-bolt-gif-24121733",
@@ -10092,7 +10304,14 @@
      "media_url": "",
      "title": "RE4 Ganado grab with 'shake off' prompt",
      "game": "Resident Evil 4",
-     "host": "Tenor"
+     "host": "Tenor",
+     "local": "gifs/reactions.grabbed-struggle-button-mash-0.webp",
+     "source_url": "https://media.tenor.com/85oqCCbPcrwAAAA1/resident-evil-4-command-grab.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Ganado grabs Leon; a SHAKE OFF prompt appears to break free"
+     }
     },
     {
      "page_url": "https://tenor.com/view/resident-evil-grab-got-you-gif-21570221",
@@ -10281,7 +10500,14 @@
      "media_url": "",
      "title": "Micah Bell shot and falls",
      "game": "Red Dead Redemption 2",
-     "host": "Tenor"
+     "host": "Tenor",
+     "local": "gifs/death.death-collapse-1.webp",
+     "source_url": "https://media.tenor.com/ZV8owdn7RrEAAAA1/micah-bell-red-dead2.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Micah Bell is shot, staggers backward through the snow and falls face-down"
+     }
     },
     {
      "page_url": "https://tenor.com/view/dark-souls3-death-dead-poison-gif-25776432",
@@ -10491,7 +10717,36 @@
      "note": "Concept page listing games with gibbing"
     }
    ],
-   "gifs": [],
+   "gifs": [
+    {
+     "page_url": "https://makeagif.com/gif/doom-glory-kill-from-above-WknbXE",
+     "media_url": "",
+     "title": "Doom Glory Kill From Above",
+     "game": "Doom (2016)",
+     "host": "MakeAGIF",
+     "local": "gifs/death.gib-explode-0.webp",
+     "source_url": "https://i.makeagif.com/media/9-26-2016/WknbXE.mp4",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Glory kill: the Doom Slayer rips a demon apart in a spray of gore"
+     }
+    },
+    {
+     "page_url": "https://makeagif.com/gif/doom-all-glory-kills-including-chainsaw-single-player-M5d45Z",
+     "media_url": "",
+     "title": "Doom All Glory Kills Including Chainsaw Single Player",
+     "game": "Doom (2016)",
+     "host": "MakeAGIF",
+     "local": "gifs/death.gib-explode-1.webp",
+     "source_url": "https://i.makeagif.com/media/7-14-2016/M5d45Z.mp4",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Glory kill: a demon is torn apart up close"
+     }
+    }
+   ],
    "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/doom-slayer-cannon-doomguy-crash-explosion-gif-9591314586502621637",
@@ -11034,7 +11289,14 @@
      "media_url": "",
      "title": "Makoto dash punch",
      "game": "Street Fighter",
-     "host": "Tenor"
+     "host": "Tenor",
+     "local": "gifs/fighting.forward-back-dash-1.webp",
+     "source_url": "https://media.tenor.com/zTDCVkSOjg8AAAA1/makoto-street-fighter-makoto.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Makoto and Ken dash in and out between exchanges (dashes are quick)"
+     }
     }
    ]
   },
@@ -12497,6 +12759,20 @@
       "confidence": "low",
       "what": "Night first-person scene: a figure is flung up into the sky; no grab or pin visible"
      }
+    },
+    {
+     "page_url": "https://tenor.com/view/werewolf-jump-gif-12650202",
+     "media_url": "",
+     "title": "狼人 飛撲",
+     "game": "Unidentified horror game",
+     "host": "Tenor",
+     "local": "gifs/enemies.monster-grab-pin-0.webp",
+     "source_url": "https://media.tenor.com/NxGJhApyHGcAAAA1/werewolf-jump.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Werewolf leaps through the snow and pounces at the camera (the lunge before a pin)"
+     }
     }
    ],
    "rejected_gifs": [
@@ -12664,7 +12940,14 @@
      "media_url": "",
      "title": "Air assassination from rooftop",
      "game": "Assassin's Creed Rogue",
-     "host": "Tenor"
+     "host": "Tenor",
+     "local": "gifs/stealth.air-assassination-0.webp",
+     "source_url": "https://media.tenor.com/CyF04nNXsE4AAAA1/assassins-creed-air-assassination.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Assassin leaps from a rooftop and drops onto a guard below"
+     }
     },
     {
      "page_url": "https://tenor.com/view/assassin's-creed-unity-assassins-creed-unity-acu-arno-dorian-arno-victor-dorian-gif-9541464647616693438",
@@ -12750,6 +13033,20 @@
       "verdict": "unclear",
       "confidence": "low",
       "what": "Same dark Batman Arkham predator montage as cover-takedown-1; no ledge takedown discernible"
+     }
+    },
+    {
+     "page_url": "https://makeagif.com/gif/ledge-assassination-assassins-creed-unity-3497qj",
+     "media_url": "",
+     "title": "Ledge Assassination Assassins Creed Unity",
+     "game": "Assassin's Creed Unity",
+     "host": "MakeAGIF",
+     "local": "gifs/stealth.ledge-takedown-0.webp",
+     "source_url": "https://i.makeagif.com/media/12-17-2014/3497qj.mp4",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Arno grabs a guard from below a balcony railing and pulls him over the edge"
      }
     }
    ],
@@ -13097,7 +13394,14 @@
      "media_url": "",
      "title": "Vergil Drive slash arcs",
      "game": "Devil May Cry 5",
-     "host": "Tenor"
+     "host": "Tenor",
+     "local": "gifs/vfx.weapon-trail-slash-arc-1.webp",
+     "source_url": "https://media.tenor.com/eDVuNUm5ym0AAAA1/vergil-dmc5-vergil-dmc.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Vergil's slashes leave bright blue arcs"
+     }
     },
     {
      "page_url": "https://tenor.com/view/ayaka-sword-genshin-impact-inazuma-kamisato-gif-22352581",
@@ -13452,6 +13756,20 @@
      "host": "Tenor",
      "local": "gifs/vfx.shell-ejection-2.webp",
      "source_url": "https://media.tenor.com/wsh3k8nJHb4AAAA1/shooting-call-of-duty-modern-warfare2-firing-pulling-the-trigger-gunfire.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/roblox-centaura-reload-reload-animation-roblox-reload-gif-10799793520519763044",
+     "media_url": "",
+     "title": "Roblox Centaura",
+     "game": "Roblox (Centaura)",
+     "host": "Tenor",
+     "local": "gifs/vfx.shell-ejection-0.webp",
+     "source_url": "https://media.tenor.com/leCS_LYlVGQAAAA1/roblox-centaura.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "First-person double-barrel shotgun breaks open and reloads (shells are small in frame)"
+     }
     }
    ]
   },
@@ -13997,6 +14315,20 @@
      "host": "Giphy",
      "local": "gifs/vfx.slow-motion-impact-2.webp",
      "source_url": "https://media.giphy.com/media/mE1Tfz3Yt7VLSVszz9/200w.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/burnout-burnout-paradise-burnout-crash-burnout-slowmotion-racing-game-crash-gif-12190574500013726301",
+     "media_url": "",
+     "title": "Burnout Burnout Paradise",
+     "game": "Burnout Paradise",
+     "host": "Tenor",
+     "local": "gifs/vfx.slow-motion-impact-0.webp",
+     "source_url": "https://media.tenor.com/qS2e61lA2l0AAAA1/burnout-burnout-paradise.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Takedown crash plays in slow motion as the cars crumple, then WRECKED"
+     }
     }
    ]
   },
@@ -14439,6 +14771,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Link Z-targets enemies; the yellow lock-on arrow hovers over each one"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/lock-missile-top-gun-missiles-gif-24200367",
+     "media_url": "",
+     "title": "Lock Missile",
+     "game": "Unidentified flight game",
+     "host": "Tenor",
+     "local": "gifs/ui.lock-on-reticle-1.webp",
+     "source_url": "https://media.tenor.com/NssXdjiE29wAAAA1/lock-missile.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Missile-lock reticle tracks a jet, then turns red when the lock completes"
      }
     }
    ],
@@ -15229,6 +15575,34 @@
       "confidence": "low",
       "what": "Fan-made 'Super Mario walk cycle comparison' edit putting together sprites from several Mario games (the sprites themselves are real)"
      }
+    },
+    {
+     "page_url": "https://tenor.com/view/cj-walking-cj-walking-gta-san-andreas-gta-gif-8212727282868241623",
+     "media_url": "",
+     "title": "Cj Walking",
+     "game": "Grand Theft Auto: San Andreas",
+     "host": "Tenor",
+     "local": "gifs/exploration.walk-cycle-0.webp",
+     "source_url": "https://media.tenor.com/cfl382yFRNcAAAA1/cj-walking.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "CJ walks through the streets of Los Santos"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/journey-game-video-game-desert-gif-3502043",
+     "media_url": "",
+     "title": "\"Journey.\" Play And Write About The Game At #rgmooc Http://Bit.Ly/Rgmoocourse",
+     "game": "Journey",
+     "host": "Tenor",
+     "local": "gifs/exploration.walk-cycle-1.webp",
+     "source_url": "https://media.tenor.com/ig5NkF19A3oAAAA1/journey-game.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "The robed traveler walks off across the desert ruins"
+     }
     }
    ],
    "rejected_gifs": [
@@ -15643,7 +16017,14 @@
      "media_url": "",
      "title": "Aloy Shieldwing glide",
      "game": "Horizon Forbidden West",
-     "host": "Tenor"
+     "host": "Tenor",
+     "local": "gifs/exploration.glide-paraglider-1.webp",
+     "source_url": "https://media.tenor.com/Jwfb_zG23kEAAAA1/horion-forbidden-west-guerilla-games.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Aloy jumps and opens the Shieldwing glider"
+     }
     },
     {
      "page_url": "https://tenor.com/view/landing-space-to-skydive-glider-gliding-fortnite-gif-13566591",
@@ -16058,6 +16439,20 @@
      "game": "Roblox",
      "media_url": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://tenor.com/view/stray-stray-game-cat-funny-cyber-punk-gif-26746517",
+     "media_url": "",
+     "title": "Stray Stray Game",
+     "game": "Stray",
+     "host": "Tenor",
+     "local": "gifs/exploration.zipline-1.webp",
+     "source_url": "https://media.tenor.com/V1-2hEpmtPYAAAA1/stray-stray-game.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "The cat rides a bucket along a cable over the slums (a zipline-style ride)"
+     }
     }
    ]
   },
@@ -16203,7 +16598,14 @@
      "media_url": "",
      "title": "Zero wall sliding and wall jumping",
      "game": "Mega Man Zero",
-     "host": "Tenor"
+     "host": "Tenor",
+     "local": "gifs/exploration.wall-slide-0.webp",
+     "source_url": "https://media.tenor.com/stsO8qEg0EsAAAA1/mega-man-zero-game-boy-advance.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Zero clings to and kicks off the walls of a vertical shaft"
+     }
     },
     {
      "page_url": "https://tenor.com/view/super-mario-bros-wonder-wall-jump-walljump-jumping-2d-platformer-gif-3577387900414231037",
@@ -16891,7 +17293,14 @@
      "media_url": "",
      "title": "Shaking a tree for twigs",
      "game": "Animal Crossing: New Horizons",
-     "host": "Tenor"
+     "host": "Tenor",
+     "local": "gifs/interaction.gather-harvest-0.webp",
+     "source_url": "https://media.tenor.com/E55TK3DPSVcAAAA1/shake-tree-animal-crossing-twigs.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Villager shakes a tree to knock down twigs"
+     }
     },
     {
      "page_url": "https://tenor.com/view/animal-crossing-cutting-trees-gif-25389070",
@@ -18038,6 +18447,20 @@
      "host": "Tenor",
      "local": "gifs/expression.victory-fanfare-2.webp",
      "source_url": "https://media.tenor.com/aMZs2OehZAwAAAA1/final-fantasy-ffv-final-fantasy-5-rpg-frog.webp"
+    },
+    {
+     "page_url": "https://tenor.com/view/final-fantasy-sion-gif-25695835",
+     "media_url": "",
+     "title": "Final Fantasy Sion",
+     "game": "Final Fantasy VI",
+     "host": "Tenor",
+     "local": "gifs/expression.victory-fanfare-0.webp",
+     "source_url": "https://media.tenor.com/2AXFSVW8ovEAAAA1/final-fantasy-sion.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Party members do their victory poses after a battle"
+     }
     }
    ]
   },
@@ -18521,7 +18944,14 @@
      "media_url": "",
      "title": "Toon Meowscles squash-and-stretch emote",
      "game": "Fortnite",
-     "host": "Tenor"
+     "host": "Tenor",
+     "local": "gifs/cartoon.squash-and-stretch-1.webp",
+     "source_url": "https://media.tenor.com/cB3NyiYucYMAAAA1/fortnite-toon-meowscles.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "The Toon Meowscles skin's Squash & Stretch emote, a rubber-hose dance that squashes and stretches the body"
+     }
     },
     {
      "page_url": "https://tenor.com/view/kirby-kirby-and-the-world-beyond-kirby-2027-kirby-run-gif-7487758330875928599",
@@ -18846,7 +19276,22 @@
    "description": "Legs spinning in place before zooming off.",
    "search_query": "Scramble in Place / Takeoff animation video game",
    "references": [],
-   "gifs": [],
+   "gifs": [
+    {
+     "page_url": "https://tenor.com/view/the-bugs-bunny-and-roadrunner-movie-the-bugs-bunny-and-road-runner-movie-road-runner-roadrunner-gif-11247078020177937150",
+     "media_url": "",
+     "title": "The Bugs Bunny And Roadrunner Movie The Bugs Bunny And Road Runner Movie",
+     "game": "Looney Tunes (The Bugs Bunny/Road Runner Movie)",
+     "host": "Tenor",
+     "local": "gifs/cartoon.scramble-in-place-takeoff-0.webp",
+     "source_url": "https://media.tenor.com/nBWl3qnPQv4AAAA1/the-bugs-bunny-and-roadrunner-movie-the-bugs-bunny-and-road-runner-movie.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Road Runner revs his legs in place, then rockets off leaving a dust cloud (from the cartoon the entry cites, not a game)"
+     }
+    }
+   ],
    "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/looney-tunes-porky-pig-running-run-running-in-place-gif-16110701",
@@ -20175,14 +20620,28 @@
      "media_url": "",
      "title": "Persona 5 battle command menu animation",
      "game": "Persona 5",
-     "host": "Tenor"
+     "host": "Tenor",
+     "local": "gifs/menu.button-hover-press-0.webp",
+     "source_url": "https://media.tenor.com/yM4iiMPj9qEAAAA1/persona5-jrpg.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Battle command menu: selecting a Persona skill and attacking"
+     }
     },
     {
      "page_url": "https://tenor.com/view/persona-5-ui-gui-menu-stylish-gif-25726924",
      "media_url": "",
      "title": "Persona 5 stylish map/menu UI",
      "game": "Persona 5",
-     "host": "Tenor"
+     "host": "Tenor",
+     "local": "gifs/menu.button-hover-press-1.webp",
+     "source_url": "https://media.tenor.com/RJ3G9NSqHcoAAAA1/persona-5-ui.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Menu cursor moving between options in Persona 5's animated UI"
+     }
     },
     {
      "page_url": "https://tenor.com/view/persona-joker-morgana-cat-menus-gif-18091888",
@@ -20234,14 +20693,28 @@
      "media_url": "",
      "title": "RE4 briefcase item arranging",
      "game": "Resident Evil 4",
-     "host": "Tenor"
+     "host": "Tenor",
+     "local": "gifs/menu.inventory-item-rotate-2.webp",
+     "source_url": "https://media.tenor.com/HFKpz6fPxzAAAAA1/resident-evil-4-inventory.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Leon opens the attache case to manage items"
+     }
     },
     {
      "page_url": "https://tenor.com/view/inventory-resident-evil-remake-resident-evil-resident-evil-1-survival-horror-gif-23638971",
      "media_url": "",
      "title": "RE Remake inventory screen",
      "game": "Resident Evil (Remake)",
-     "host": "Tenor"
+     "host": "Tenor",
+     "local": "gifs/menu.inventory-item-rotate-1.webp",
+     "source_url": "https://media.tenor.com/tpThbQUVnIUAAAA1/inventory-resident-evil-remake.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Inventory screen: an item is selected, examined and rotated in 3D"
+     }
     }
    ]
   },
@@ -20537,7 +21010,22 @@
    "description": "Map areas unveiling as they are explored.",
    "search_query": "Map Reveal / Fog of War animation video game",
    "references": [],
-   "gifs": [],
+   "gifs": [
+    {
+     "page_url": "https://makeagif.com/gif/ac-unity-viewpoint-DYibHr",
+     "media_url": "",
+     "title": "Ac Unity Viewpoint",
+     "game": "Assassin's Creed Unity",
+     "host": "MakeAGIF",
+     "local": "gifs/menu.map-reveal-fog-of-war-0.webp",
+     "source_url": "https://i.makeagif.com/media/11-11-2014/DYibHr.mp4",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Synchronizing at a viewpoint: the camera sweeps around and out over Paris"
+     }
+    }
+   ],
    "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/hollow-knight-reading-map-pixel-art-gif-8043633549067461458",
