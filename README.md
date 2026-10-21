@@ -34,6 +34,8 @@ To add animations: append lines to taxonomy.txt, rebuild index.json, rerun merge
 
 `gif-screening.json` records a frame-by-frame check of every downloaded clip for memes, reaction edits, TV/anime/real-life footage and clips that don't show the named move. Clips flagged at medium or high confidence were deleted from `gifs/` and moved to the animation's `rejected_gifs` list (with a `screened` note) so the page no longer shows them. Low-confidence or unclear calls stay in `gifs` with a `screened` note for a human to check. `needs_replacement` lists animations left with no screened local clip.
 
+Clips added later to fill empty or single-clip entries are listed under `added` in `gif-screening.json` and carry a `screened` note with verdict `added`; confidence `low` marks a weaker match worth a second look.
+
 ## Community features (xCloud / any Node.js host)
 
 `server.js` (Node.js 20+, no dependencies) serves the atlas with voting (▲/▼ on every GIF), "Suggest a replacement" /
