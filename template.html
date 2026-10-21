@@ -266,7 +266,7 @@ function sugForm(a,rep){
   return `<form class="sug" id="sugForm" data-a="${esc(a?a.id:'')}"><b>${g?'Suggest a replacement for “'+esc(g.title||'this GIF')+'”':a?'Submit a better GIF for '+esc(a.name):'Submit a GIF'}</b>
   ${pick}<input type="hidden" name="replaces" value="${esc(g?rep:'')}">
   <div class="row"><label style="flex:1 1 200px">GIF link (a Giphy or Tenor page, or a direct .gif/.webp/.mp4)<input name="url" type="url" placeholder="https://"></label></div>
-  ${file}<label>Why is it a better example? (optional)<textarea name="note" rows="2" maxlength="500"></textarea></label>
+  ${file}<label>Why is it a better example? (optional, shown publicly next to the GIF if it is approved; we may edit it)<textarea name="note" rows="2" maxlength="500"></textarea></label>
   <label>Your name for the credit (optional)<input name="name" maxlength="60"></label>
   <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
   <div class="row"><button type="submit">${CS.on?'Send for review':'Continue on GitHub ↗'}</button><button type="button" class="tbtn" data-sugclose="1">Cancel</button><span class="msg" role="status"></span></div>
@@ -409,7 +409,10 @@ async function boot(){
     try{const r=await fetch((CFG.marks||'marks.json')+'?t='+Date.now());if(r.ok)MARKS=await r.json();MARKS.marks=MARKS.marks||[]}catch(e){}
   }
   if(CFG.api){
-    try{const s=await api('state');Object.assign(CS,{tally:s.tally||{},mine:s.mine||{},community:s.community||{},flagged:new Set(s.flagged||[]),needs:new Set((s.needs||[]).map(n=>n.gif||n.animation)),admin:s.admin||null,max:s.max_upload||CS.max,video:s.video||null,on:true});$('#flagOnly').hidden=!CS.flagged.size;if(CS.admin)$('#mode').textContent=' · signed in as admin'}
+    try{const s=await api('state');Object.assign(CS,{tally:s.tally||{},mine:s.mine||{},community:s.community||{},flagged:new Set(s.flagged||[]),needs:new Set((s.needs||[]).map(n=>n.gif||n.animation)),admin:s.admin||null,max:s.max_upload||CS.max,video:s.video||null,on:true});$('#flagOnly').hidden=!CS.flagged.size;
+      // GIFs the admin removed (kept in the server's data, so a redeploy of library.json does not bring them back)
+      const hid=new Set(s.hidden||[]);if(hid.size)A.forEach(a=>{a.gifs=a.gifs.filter(g=>!hid.has(gkey(a,g)))});
+      if(CS.admin)$('#mode').textContent=' · signed in as admin'}
     catch(e){console.warn('Community features unavailable:',e)}
   }
   render();route();
