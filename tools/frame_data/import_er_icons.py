@@ -4,7 +4,7 @@
 
 Run after import_er_nyasu.py (it reads the cached armaments list). Icons are the game's own inventory icons, taken from
 the Elden Ring wiki on wiki.gg ("ER Icon Weapon <name>.png"), with the Elden Ring Fan API (https://eldenring.fanapis.com)
-as a fallback. Each is saved as a 96px WebP; frame-data/icons/elden-ring/index.json maps weapon name to file and source.
+as a fallback. Each is saved as a 96px WebP; frame-data/icons/elden-ring/icons.json maps weapon name to file and source.
 Weapons without an icon fall back to a lettered tile on the page.
 """
 import io, json, os, re, urllib.parse, urllib.request
@@ -72,7 +72,7 @@ def main():
             im.thumbnail((96, 96))
             im.save(path, 'WEBP', quality=82, method=6)
         index[n] = {'file': fn, 'source': src[1]}
-    with open(os.path.join(OUT, 'index.json'), 'w', encoding='utf-8') as f:
+    with open(os.path.join(OUT, 'icons.json'), 'w', encoding='utf-8') as f:
         json.dump({'sources': [{'name': 'Elden Ring Wiki (wiki.gg)', 'url': 'https://eldenring.wiki.gg'},
                                {'name': 'Elden Ring Fan API', 'url': 'https://eldenring.fanapis.com'}],
                    'note': 'Icons are the game\'s inventory art, (c) FromSoftware / Bandai Namco.',

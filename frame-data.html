@@ -247,7 +247,7 @@ const icoHtml=(n,cls='ico')=>{const s=iconSrc(n);return s?`<img class="${cls}" l
 async function loadGame(id){
   G=GAMES.find(g=>g.id===id)||GAMES[0];st.game=G.id;
   $('#table').innerHTML='<div class="empty">Loading frame data…</div>';
-  const [d,ic]=await Promise.all([fetch(G.data).then(r=>r.json()),fetch(G.icons+'index.json').then(r=>r.ok?r.json():{icons:{}}).catch(()=>({icons:{}}))]);
+  const [d,ic]=await Promise.all([fetch(G.data).then(r=>r.json()),fetch(G.icons+'icons.json').then(r=>r.ok?r.json():{icons:{}}).catch(()=>({icons:{}}))]);
   D=d;ICONS=ic.icons||{};
   T=Object.fromEntries(D.moveTypes.map((t,i)=>[t.id,{...t,i}]));
   CL=Object.fromEntries(D.classes.map((c,i)=>[c.id,{...c,i}]));

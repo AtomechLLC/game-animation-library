@@ -6,10 +6,10 @@ only has to write the same format.
 
 ## Files
 
-- `games.json` — the games the tab offers: `id`, `name`, `data` (the game's JSON) and `icons` (folder with `index.json`).
+- `games.json` — the games the tab offers: `id`, `name`, `data` (the game's JSON) and `icons` (folder with `icons.json`).
 - `elden-ring.json` — Elden Ring, patch 1.17. Built by `tools/frame_data/import_er_nyasu.py` from the
   [Elden Ring Frame Data Explorer](https://er-frame-data.nyasu.business) by Emilia (sovietspaceship).
-- `icons/elden-ring/` — 96px WebP inventory icons per weapon and `index.json` (weapon name → file, source page). Built by
+- `icons/elden-ring/` — 96px WebP inventory icons per weapon and `icons.json` (weapon name → file, source page). Built by
   `tools/frame_data/import_er_icons.py` from the [Elden Ring Wiki](https://eldenring.wiki.gg), with the
   [Elden Ring Fan API](https://eldenring.fanapis.com) as fallback.
 
