@@ -1,0 +1,6 @@
+{
+ "schema": "frame-data/1",
+ "games": [
+  {"id": "elden-ring", "name": "Elden Ring", "data": "frame-data/elden-ring.json", "icons": "frame-data/icons/elden-ring/"}
+ ]
+}

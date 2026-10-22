@@ -15,6 +15,13 @@ python merge.py
 
 On every push to `main`, `.github/workflows/static.yml` runs `python3 build_page.py index.html` (template.html + library.json) and publishes the repo root, so the site always matches the committed `library.json`. Run `python build_page.py` locally to preview `index.html`.
 
+## Frame Data tab
+
+`frame-data.html` is a second tab with per-move frame data (startup, active, recovery, cancels, hyper armor, damage), starting
+with Elden Ring: browse by weapon class and weapon (icon index), then by move type, or sort and filter every class at once.
+It is a static page that loads `frame-data/games.json` and one JSON file per game, so it works on GitHub Pages, `server.js`
+(`/frame-data`) and `serve_local.py` alike. Data format, sources and rebuild steps: [frame-data/README.md](frame-data/README.md).
+
 ## Source data
 
 - `taxonomy.txt` — the hand-written index. One `# CAT id | Name | description` line per category, then one line per animation: `Name | Subcategory | tags,comma,separated | Game;Game;Game | Description`.

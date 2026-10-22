@@ -13,6 +13,7 @@ const store = require('./lib/store');
 const { send } = require('./lib/http');
 
 const TYPES = { '.webp': 'image/webp', '.gif': 'image/gif', '.png': 'image/png', '.jpg': 'image/jpeg', '.mp4': 'video/mp4' };
+const FRAME_TYPES = { '.json': 'application/json; charset=utf-8', '.webp': 'image/webp', '.png': 'image/png' };
 
 /**
  * template.html + library.json, with community features pointed at /api. Same output as build_page.py,
@@ -35,15 +36,16 @@ function renderPage() {
   return pageCache.html;
 }
 
-/** Only the GIF folder is public; everything else in the repo stays private. */
-function serveGif(res, pathname) {
+/** Only the GIF and frame data folders are public; everything else in the repo stays private. */
+function serveFile(res, pathname, dir, types, maxAge) {
   const rel = decodeURIComponent(pathname).replace(/^\/+/, '');
   const file = path.join(cfg.ROOT, rel);
-  const type = TYPES[path.extname(file).toLowerCase()];
-  if (!file.startsWith(path.join(cfg.ROOT, 'gifs') + path.sep) || !type || !fs.existsSync(file) || !fs.statSync(file).isFile()) return send(res, 404, 'Not found');
-  res.writeHead(200, { 'Content-Type': type, 'Content-Length': fs.statSync(file).size, 'Cache-Control': 'public, max-age=604800', 'X-Content-Type-Options': 'nosniff' });
+  const type = types[path.extname(file).toLowerCase()];
+  if (!file.startsWith(path.join(cfg.ROOT, dir) + path.sep) || !type || !fs.existsSync(file) || !fs.statSync(file).isFile()) return send(res, 404, 'Not found');
+  res.writeHead(200, { 'Content-Type': type, 'Content-Length': fs.statSync(file).size, 'Cache-Control': `public, max-age=${maxAge}`, 'X-Content-Type-Options': 'nosniff' });
   fs.createReadStream(file).pipe(res);
 }
+const serveGif = (res, p) => serveFile(res, p, 'gifs', TYPES, 604800);
 
 const server = http.createServer(async (req, res) => {
   try {
@@ -55,6 +57,9 @@ const server = http.createServer(async (req, res) => {
     if (p === '/api' || p === '/api.php') return await api.handle(req, res, u.searchParams); // api.php: older GitHub Pages builds
     if (p === '/admin' || p === '/admin.php') return await admin.handle(req, res, u.searchParams);
     if (p.startsWith('/gifs/')) return serveGif(res, p);
+    // Frame data tab: a static page that loads frame-data/games.json and one JSON file per game
+    if (p === '/frame-data' || p === '/frame-data.html') return serveFile(res, '/frame-data.html', '', { '.html': 'text/html; charset=utf-8' }, 0);
+    if (p.startsWith('/frame-data/')) return serveFile(res, p, 'frame-data', FRAME_TYPES, 3600);
     if (p === '/healthz') return send(res, 200, 'ok');
     send(res, 404, 'Not found');
   } catch (e) {

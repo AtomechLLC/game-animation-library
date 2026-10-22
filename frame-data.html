@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Frame Data · Game Animation Library</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Same shell as template.html (sticky timeline header, filter rail, slide-over sheet), with a weapon icon index and frame tables. */
+:root{
+  --bg:#f3f2ee; --panel:#ffffff; --sunk:#e9e7e1; --fg:#1c1b19; --muted:#6b6860; --line:#d8d5cc;
+  --key:#e08a00; --key-ink:#8a5200; --combat:#c2412d; --calm:#2f7a6b; --chip:#efece5;
+  --f-start:#cfcbc0; --f-active:#c2412d; --f-gap:#e6b8ae; --f-rec:#e08a00; --f-free:#2f7a6b40; --f-armor:#4b5bd6; --f-iframe:#0e9bb8;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
+  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; color-scheme:dark;
+  --f-start:#4a4b52; --f-active:#ff7a63; --f-gap:#6b3a33; --f-rec:#ffb020; --f-free:#62c9b14d; --f-armor:#8f9bff; --f-iframe:#4cc9e8}}
+:root[data-theme="dark"]{
+  --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
+  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; color-scheme:dark;
+  --f-start:#4a4b52; --f-active:#ff7a63; --f-gap:#6b3a33; --f-rec:#ffb020; --f-free:#62c9b14d; --f-armor:#8f9bff; --f-iframe:#4cc9e8}
+*{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:14px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--panel)}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--key);outline-offset:2px}
+[hidden]{display:none!important}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--panel);border-bottom:1px solid var(--line)}
+.hrow{display:flex;align-items:center;gap:16px;padding-block:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:baseline;gap:10px;min-width:0}
+.club{display:inline-flex;align-items:center;gap:7px;color:var(--fg);text-decoration:none;font-family:var(--display);font-weight:700;font-size:14px;white-space:nowrap;padding:4px 10px 4px 8px;border:1px solid var(--line);border-radius:6px}
+.club:hover{border-color:#5865f2}
+.club svg{width:20px;height:20px;fill:#5865f2;flex:none}
+.brand h1{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.brand .ver{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.tabs{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.tabs a{padding:7px 12px;font-size:13px;font-weight:500;text-decoration:none}
+.tabs a[aria-current="page"]{background:var(--fg);color:var(--bg)}
+.tabs a:not([aria-current]):hover{background:var(--chip)}
+.search{flex:1 1 240px;display:flex;align-items:center;gap:8px;background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:0 10px;min-width:0}
+.search input{flex:1;min-width:0;border:0;background:transparent;color:var(--fg);font:inherit;padding:9px 0;outline:none}
+.search kbd{font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:0 5px}
+.domain{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.domain button{border:0;background:transparent;padding:7px 12px;cursor:pointer;font-size:13px;font-weight:500}
+.domain button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.ruler{position:relative;height:30px;border-top:1px solid var(--line);overflow:hidden;font-family:var(--mono);font-size:10px;color:var(--muted)}
+.ruler .ticks{position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 12px);opacity:.9;height:8px}
+.ruler .keys{position:absolute;inset:8px 0 0 0;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding-inline:max(16px,env(safe-area-inset-left,0px))}
+.ruler .keys::-webkit-scrollbar{display:none}
+.kf{display:flex;align-items:center;gap:5px;white-space:nowrap;border:0;background:transparent;cursor:pointer;padding:2px 8px 2px 4px;border-radius:3px;font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.kf i{width:8px;height:8px;transform:rotate(45deg);background:var(--line);display:inline-block}
+.kf:hover{color:var(--fg)}
+.kf[aria-pressed="true"]{color:var(--key-ink)}
+.kf[aria-pressed="true"] i{background:var(--key)}
+.playhead{position:absolute;top:0;bottom:0;width:2px;background:var(--combat);left:0;animation:scrub 14s linear infinite;pointer-events:none}
+@keyframes scrub{to{left:100%}}
+@media (prefers-reduced-motion: reduce){.playhead{animation:none;left:24%}}
+.shell{display:grid;grid-template-columns:240px minmax(0,1fr);gap:24px;padding-block:20px}
+aside{position:sticky;top:120px;align-self:start;max-height:calc(100vh - 140px);overflow:auto;display:grid;gap:20px;padding-right:4px}
+aside h2{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px;font-weight:600}
+.flist{display:grid;gap:1px}
+.fitem{display:flex;justify-content:space-between;gap:8px;border:0;background:transparent;text-align:left;padding:4px 8px;border-radius:4px;cursor:pointer;font-size:13px}
+.fitem:hover{background:var(--chip)}
+.fitem[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.fitem span:last-child{font-family:var(--mono);font-size:11px;opacity:.7;font-variant-numeric:tabular-nums}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.chip{border:1px solid var(--line);background:var(--chip);border-radius:3px;padding:1px 7px;font-size:12px;cursor:pointer;font-family:var(--mono)}
+.chip[aria-pressed="true"]{background:var(--key);border-color:var(--key);color:#1c1b19}
+.range{display:grid;gap:4px;font-size:12px;color:var(--muted)}
+.range input{width:100%;accent-color:var(--key)}
+.range b{font-family:var(--mono);color:var(--fg);font-weight:600}
+.status{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.status h2{font-family:var(--display);font-size:28px;font-weight:700;letter-spacing:-.02em;margin:0;text-wrap:balance;display:flex;align-items:center;gap:10px}
+.status h2 img{width:40px;height:40px}
+.status p{margin:2px 0 0;color:var(--muted);max-width:70ch}
+.count{font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.active{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.active button{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:2px 10px;font-size:12px;cursor:pointer}
+.sect{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:18px 0 8px;font-weight:600;display:flex;gap:8px;align-items:center}
+.sect::after{content:"";flex:1;border-top:1px dashed var(--line)}
+/* visual index: class tiles and weapon tiles */
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:8px}
+.tile{display:grid;justify-items:center;align-content:start;gap:4px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:10px 6px 8px;cursor:pointer;text-align:center;min-width:0;position:relative}
+.tile:hover{border-color:var(--key)}
+.tile[aria-pressed="true"]{border-color:var(--key);box-shadow:inset 0 0 0 1px var(--key);background:var(--sunk)}
+.ico{width:64px;height:64px;object-fit:contain;display:block;background:radial-gradient(circle at 50% 55%,var(--sunk) 0 60%,transparent 61%)}
+.ico.ph{display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:24px;color:var(--muted);border-radius:50%}
+.tile b{font-family:var(--display);font-size:13.5px;line-height:1.15;font-weight:700;text-wrap:balance;overflow-wrap:anywhere}
+.tile small{font-family:var(--mono);font-size:10.5px;color:var(--muted)}
+.wtiles{display:flex;flex-wrap:wrap;gap:6px;padding-bottom:6px;margin-bottom:6px}
+.wtiles .tile{flex:0 0 96px;padding:8px 4px 6px}
+.wtiles .ico{width:52px;height:52px}
+.wtiles b{font-size:11.5px;font-family:var(--body);font-weight:600}
+.wtiles .tile.def .ico{font-size:13px;font-family:var(--mono);letter-spacing:.04em}
+/* frame table */
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--muted);margin:4px 0 10px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:14px;height:8px;border-radius:2px;display:inline-block}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
+th,td{padding:6px 8px;text-align:left;white-space:nowrap;border-bottom:1px solid var(--line)}
+th{position:sticky;top:0;background:var(--sunk);font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600;z-index:1}
+th button{border:0;background:transparent;padding:0;cursor:pointer;font:inherit;color:inherit;text-transform:inherit;letter-spacing:inherit;display:inline-flex;gap:3px;align-items:center}
+th button:hover{color:var(--fg)}
+th[aria-sort] button{color:var(--key-ink)}
+th[aria-sort="ascending"] button::after{content:"▲";font-size:8px}
+th[aria-sort="descending"] button::after{content:"▼";font-size:8px}
+td.n,th.n{text-align:right}
+td.mono{font-family:var(--mono);font-size:12px}
+tbody tr{cursor:pointer}
+tbody tr:hover td{background:var(--chip)}
+tr.grp td{background:var(--sunk);font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;cursor:default}
+tr.grp:hover td{background:var(--sunk)}
+tr.grp td small{text-transform:none;letter-spacing:0;font-family:var(--body);margin-left:8px;font-weight:400}
+.mname{font-weight:600}
+.gr{font-family:var(--mono);font-size:10.5px;border:1px solid var(--line);border-radius:3px;padding:0 4px;color:var(--muted)}
+.fast{color:var(--calm);font-weight:600}
+.slow{color:var(--combat)}
+.tag{font-family:var(--mono);font-size:10.5px;border-radius:3px;padding:0 4px;margin-left:4px}
+.tag.ha{background:var(--f-armor);color:#fff}
+.tag.np{border:1px solid var(--combat);color:var(--combat)}
+.cls{display:inline-flex;align-items:center;gap:6px}
+.cls img{width:22px;height:22px}
+/* frame strip: one cell per frame, scaled to the longest move in view */
+.strip{position:relative;height:14px;width:220px;background:var(--sunk);border-radius:2px;overflow:hidden}
+.strip span{position:absolute;top:0;bottom:0}
+.strip .ar{top:auto;height:3px;bottom:0;background:var(--f-armor)}
+.strip .ifr{top:0;height:3px;background:var(--f-iframe)}
+.big .strip{width:100%;height:26px}
+.big .ruler2{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px}
+.more{display:block;margin:10px auto 0;border:1px solid var(--line);background:var(--panel);border-radius:6px;padding:7px 14px;cursor:pointer}
+.empty{padding:40px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:6px}
+/* detail sheet */
+.scrim{position:fixed;inset:0;background:rgb(0 0 0 / .35);z-index:20}
+.sheet{position:fixed;top:0;right:0;bottom:0;width:min(600px,100%);background:var(--panel);z-index:21;border-left:1px solid var(--line);overflow:auto;padding:calc(20px + env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) calc(28px + env(safe-area-inset-bottom,0px)) 20px;display:grid;gap:18px;align-content:start}
+.sheet .top{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.sheet h2{font-family:var(--display);font-size:30px;font-weight:800;letter-spacing:-.02em;margin:4px 0 0;line-height:1.1;text-wrap:balance}
+.sheet h3{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;font-weight:600}
+.close{border:1px solid var(--line);background:var(--sunk);border-radius:4px;padding:4px 10px;cursor:pointer}
+.src{font-family:var(--mono);font-size:10.5px;color:var(--key-ink);text-transform:uppercase;letter-spacing:.05em}
+.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}
+.stat{border:1px solid var(--line);border-radius:5px;padding:8px 10px;display:grid;gap:0}
+.stat small{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.stat b{font-family:var(--display);font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
+.meta{display:grid;grid-template-columns:130px minmax(0,1fr);gap:6px 12px;font-size:13px;margin:0}
+.meta dt{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-top:2px}
+.meta dd{margin:0;font-variant-numeric:tabular-nums}
+.wlist{display:flex;flex-wrap:wrap;gap:6px}
+.wlist button{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--sunk);border-radius:4px;padding:2px 8px 2px 2px;cursor:pointer;font-size:12px}
+.wlist button:hover{border-color:var(--key)}
+.wlist img,.wlist .ph{width:26px;height:26px}
+.quick{display:flex;flex-wrap:wrap;gap:6px}
+.quick a{border:1px solid var(--line);border-radius:4px;padding:5px 10px;text-decoration:none;font-size:13px;background:var(--sunk)}
+.quick a:hover{border-color:var(--key)}
+.note{font-size:12px;color:var(--muted);max-width:70ch}
+.rail-toggle{display:none}
+footer{color:var(--muted);font-size:12px;padding-block:24px;border-top:1px solid var(--line);margin-top:24px}
+footer p{max-width:85ch;margin:0 0 8px}
+@media (max-width:820px){
+  .shell{grid-template-columns:minmax(0,1fr)}
+  aside{position:static;max-height:none;display:none}
+  aside.open{display:grid}
+  .rail-toggle{display:inline-block;border:1px solid var(--line);background:var(--panel);border-radius:6px;padding:7px 12px;cursor:pointer}
+  .status h2{font-size:22px}
+  .strip{width:140px}
+  .wtiles{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap hrow">
+    <a class="club" href="http://funsmith.club" aria-label="Funsmith club"><svg viewBox="0 0 127.14 96.36" aria-hidden="true"><path d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0a105.89 105.89 0 0 0-26.25 8.09C2.79 32.65-1.71 56.6.54 80.21a105.73 105.73 0 0 0 32.17 16.15 77.7 77.7 0 0 0 6.89-11.11 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.66 2a68.68 68.68 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1 105.25 105.25 0 0 0 32.19-16.14c2.64-27.38-4.51-51.11-18.9-72.15ZM42.45 65.69C36.18 65.69 31 60 31 53s5-12.74 11.43-12.74S54 46 53.89 53s-5.05 12.69-11.44 12.69Zm42.24 0C78.41 65.69 73.25 60 73.25 53s5-12.74 11.44-12.74S96.23 46 96.12 53s-5.04 12.69-11.43 12.69Z"/></svg><span>Funsmith club</span></a>
+    <div class="brand"><h1>Game Animation Library</h1><span class="ver" id="ver"></span></div>
+    <nav class="tabs" aria-label="Sections"><a href="./">Animations</a><a href="frame-data.html" aria-current="page">Frame Data</a></nav>
+    <label class="search" for="q"><span aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Search moves, weapons…" autocomplete="off"><kbd>/</kbd></label>
+    <div class="domain" role="group" aria-label="Game" id="games"></div>
+    <button class="rail-toggle" id="railBtn" aria-expanded="false">Filters</button>
+  </div>
+  <div class="ruler"><div class="ticks"></div><div class="keys" id="keys"></div><div class="playhead"></div></div>
+</header>
+
+<div class="wrap shell">
+  <aside id="rail">
+    <section><h2>Move type</h2><div class="flist" id="types"></div></section>
+    <section><h2>Grip</h2><div class="chips" id="grips"></div></section>
+    <section><h2>Show</h2><div class="flist">
+      <button class="fitem" id="fArmor" aria-pressed="false"><span>Has hyper armor</span><span id="nArmor"></span></button>
+      <button class="fitem" id="fMulti" aria-pressed="false"><span>Multi-hit</span><span id="nMulti"></span></button>
+      <button class="fitem" id="fNoParry" aria-pressed="false"><span>Can't be parried</span><span id="nNoParry"></span></button>
+    </div></section>
+    <section><h2>Startup</h2><label class="range">At most <b id="maxOut"></b><input id="maxStart" type="range" min="5" max="90" step="1"></label></section>
+    <section><h2>Weapon class</h2><div class="flist" id="classes"></div></section>
+  </aside>
+  <main>
+    <div class="status"><div><h2 id="ttl">Frame data</h2><p id="sub"></p></div><span class="count" id="count"></span></div>
+    <div class="active" id="active"></div>
+    <div id="index"></div>
+    <div id="weapons"></div>
+    <div class="legend" id="legend"></div>
+    <div id="table"></div>
+    <footer id="foot"></footer>
+  </main>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<article class="sheet" id="sheet" hidden aria-modal="true" role="dialog" aria-labelledby="dName"></article>
+
+<script>
+// Frame data tab. Each game is one JSON file in the frame-data/1 format (see frame-data/README.md), listed in frame-data/games.json.
+// Whatever produced the file (a web import now, the game files later), the page only reads that format.
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const GRIP={'1h':'1H','2h':'2H','Paired':'PS','Offhand':'OH','Mounted':'Horse','any':'—'};
+const PAGE=150;
+let G=null,D=null,ICONS={},T={},CL={},FAM={};
+const st={game:null,fam:null,cls:null,w:null,types:new Set(),grips:new Set(),armor:false,multi:false,noparry:false,max:90,q:'',sort:null,dir:1,shown:PAGE};
+// Columns: key, header, value getter, numeric, tooltip
+const COLS=[
+  ['name','Move',m=>m.name,0,'Move name as the source labels it'],
+  ['class','Class',m=>m.class,0,'Weapon class'],
+  ['grip','Grip',m=>m.grip,0,'1H one-handed, 2H two-handed, PS powerstance (paired), OH off-hand'],
+  ['strip','Frames',m=>m.total||0,1,'Startup, active and recovery frames to scale'],
+  ['startup','Startup',m=>m.startup,1,'First frame the hitbox is out'],
+  ['active','Active',m=>m.activeFrames,1,'Frames with a hitbox out, across all hits'],
+  ['recovery','Recovery',m=>m.recovery,1,'Frames from the last active frame until you can dodge'],
+  ['dodge','→ Dodge',m=>m.cancels.dodge,1,'First frame you can cancel into a dodge or roll'],
+  ['attack','→ Attack',m=>m.cancels.attack,1,'First frame you can chain or cancel into an attack'],
+  ['total','Total',m=>m.total,1,'Length of the animation in frames'],
+  ['mv','MV',m=>m.damage.mv,1,'Motion value: damage multiplier of the first hit (100 = base)'],
+  ['poise','Poise',m=>m.damage.poise,1,'Poise damage of the first hit'],
+  ['dtype','Type',m=>m.damage.type,0,'Physical damage type of the first hit'],
+];
+const iconSrc=n=>n&&ICONS[n]?G.icons+ICONS[n].file:null;
+const icoHtml=(n,cls='ico')=>{const s=iconSrc(n);return s?`<img class="${cls}" loading="lazy" alt="" src="${esc(s)}">`:`<span class="${cls} ph" aria-hidden="true">${esc((n||'?').replace(/[^A-Za-z]/g,'').slice(0,1))}</span>`};
+
+async function loadGame(id){
+  G=GAMES.find(g=>g.id===id)||GAMES[0];st.game=G.id;
+  $('#table').innerHTML='<div class="empty">Loading frame data…</div>';
+  const [d,ic]=await Promise.all([fetch(G.data).then(r=>r.json()),fetch(G.icons+'index.json').then(r=>r.ok?r.json():{icons:{}}).catch(()=>({icons:{}}))]);
+  D=d;ICONS=ic.icons||{};
+  T=Object.fromEntries(D.moveTypes.map((t,i)=>[t.id,{...t,i}]));
+  CL=Object.fromEntries(D.classes.map((c,i)=>[c.id,{...c,i}]));
+  FAM=Object.fromEntries(D.families.map(f=>[f.id,f]));
+  D.moves.forEach(m=>{m.hay=(m.name+' '+m.class+' '+T[m.type].name+' '+(m.damage.type||'')+' '+m.weapons.map(i=>CL[m.class].weapons[i]).join(' ')).toLowerCase()});
+  st.max=Math.max(...D.moves.map(m=>m.startup));$('#maxStart').max=st.max;
+  fromHash();renderAll();
+}
+// The moves a selection shows: a weapon shows exactly the animations it uses; a class (or nothing) shows default movesets
+function pool(skip){
+  return D.moves.filter(m=>{
+    if(st.cls){if(m.class!==st.cls)return false;
+      if(st.w!=null){if(!m.weapons.includes(st.w))return false}else if(!m.default)return false}
+    else{if(!m.default)return false;if(st.fam&&CL[m.class].family!==st.fam)return false}
+    if(skip!=='type'&&st.types.size&&!st.types.has(m.type))return false;
+    if(skip!=='grip'&&st.grips.size&&!st.grips.has(m.grip))return false;
+    if(skip!=='armor'&&st.armor&&!m.armor.length)return false;
+    if(skip!=='multi'&&st.multi&&m.hits<2)return false;
+    if(skip!=='noparry'&&st.noparry&&m.parryable)return false;
+    if(m.startup>st.max)return false;
+    if(st.q&&!st.q.split(/\s+/).every(w=>m.hay.includes(w)))return false;
+    return true})}
+function count(list,f){const c=new Map();list.forEach(m=>{const k=f(m);c.set(k,(c.get(k)||0)+1)});return c}
+
+function renderAll(){
+  $('#games').innerHTML=GAMES.map(g=>`<button data-game="${esc(g.id)}" aria-pressed="${g.id===st.game}">${esc(g.name)}</button>`).join('');
+  $('#ver').textContent=`${D.moves.length.toLocaleString()} moves · ${D.classes.length} weapon classes · patch ${D.game.version}`;
+  $('#keys').innerHTML=`<button class="kf" data-fam="" aria-pressed="${!st.fam&&!st.cls}"><i></i>All weapons</button>`+D.families.map(f=>`<button class="kf" data-fam="${f.id}" aria-pressed="${st.fam===f.id}"><i></i>${esc(f.name)}</button>`).join('');
+  const tc=count(pool('type'),m=>m.type);
+  $('#types').innerHTML=D.moveTypes.filter(t=>tc.get(t.id)||st.types.has(t.id)).map(t=>`<button class="fitem" data-type="${t.id}" aria-pressed="${st.types.has(t.id)}" title="${esc(t.description)}"><span>${esc(t.name)}</span><span>${tc.get(t.id)||0}</span></button>`).join('');
+  const gc=count(pool('grip'),m=>m.grip);
+  $('#grips').innerHTML=D.grips.filter(g=>gc.get(g.id)||st.grips.has(g.id)).map(g=>`<button class="chip" data-grip="${g.id}" aria-pressed="${st.grips.has(g.id)}" title="${esc(g.name)}">${esc(g.name)} ${gc.get(g.id)||0}</button>`).join('');
+  $('#nArmor').textContent=pool('armor').filter(m=>m.armor.length).length;
+  $('#nMulti').textContent=pool('multi').filter(m=>m.hits>1).length;
+  $('#nNoParry').textContent=pool('noparry').filter(m=>!m.parryable).length;
+  ['fArmor','fMulti','fNoParry'].forEach((id,i)=>$('#'+id).setAttribute('aria-pressed',[st.armor,st.multi,st.noparry][i]));
+  $('#maxStart').value=st.max;$('#maxOut').textContent=st.max+' frames';
+  $('#classes').innerHTML=`<button class="fitem" data-cls="" aria-pressed="${!st.cls}"><span>All classes</span><span>${D.classes.length}</span></button>`+D.classes.filter(c=>!st.fam||c.family===st.fam).map(c=>`<button class="fitem" data-cls="${esc(c.id)}" aria-pressed="${st.cls===c.id}"><span>${esc(c.name)}</span><span>${c.weapons.length}</span></button>`).join('');
+  renderHead();renderIndex();renderTable();
+  $('#foot').innerHTML=`<p><b>Source.</b> ${esc(D.game.name)} data comes from the <a href="${esc(D.source.url)}" target="_blank" rel="noopener">${esc(D.source.name)}</a> by ${esc(D.source.author)} (patch ${esc(D.game.version)}, retrieved ${esc(D.source.retrieved)}), reshaped here into weapon classes and move types. Every move links back to it. ${D.source.note?esc(D.source.note.replace(/https?:\S+/,'')):''}<a href="https://ko-fi.com/sovietspaceship" target="_blank" rel="noopener">Ko-fi ↗</a></p>
+  <p>Weapon icons are the game's inventory art from the <a href="https://eldenring.wiki.gg" target="_blank" rel="noopener">Elden Ring Wiki</a> and the <a href="https://eldenring.fanapis.com" target="_blank" rel="noopener">Elden Ring Fan API</a>. ${esc(D.game.name)} © FromSoftware / Bandai Namco.</p>
+  <p>${esc(D.game.frameNote)} Values cover the first hit of a move; open a move for every window.</p>`;
+  writeHash();
+}
+function renderHead(){
+  const c=st.cls&&CL[st.cls],w=c&&st.w!=null?c.weapons[st.w]:null,f=st.fam&&FAM[st.fam];
+  $('#ttl').innerHTML=c?`${icoHtml(w||c.icon,'')} ${esc(w||c.name)}`:esc(f?f.name:`${D.game.name} frame data`);
+  $('#sub').textContent=c?(w?`${c.name} · the animations this weapon uses, by move type.`:`${c.name} · default moveset, by move type. Pick a weapon below for its exact moveset.`)
+    :'Pick a weapon class to see its moveset by move type, or filter and sort every class at once below.';
+  const act=[];if(st.q)act.push(['q',`“${st.q}”`]);st.types.forEach(t=>act.push(['type:'+t,T[t].name]));st.grips.forEach(g=>act.push(['grip:'+g,GRIP[g]]));
+  if(st.armor)act.push(['armor','Hyper armor']);if(st.multi)act.push(['multi','Multi-hit']);if(st.noparry)act.push(['noparry',"Can't be parried"]);
+  if(st.max<+$('#maxStart').max)act.push(['max',`Startup ≤ ${st.max}`]);
+  $('#active').innerHTML=act.map(([k,l])=>`<button data-clear="${esc(k)}">${esc(l)} ✕</button>`).join('')+(act.length>1?`<button data-clear="all">Clear all</button>`:'');
+}
+function renderIndex(){
+  if(st.cls){
+    const c=CL[st.cls];$('#index').innerHTML='';
+    $('#weapons').innerHTML=`<div class="sect">${c.weapons.length} weapon${c.weapons.length===1?'':'s'} · ${esc(c.name)} <button class="chip" data-cls="" style="margin-left:4px">All classes</button></div>
+    <div class="wtiles" role="group" aria-label="Weapon">${[`<button class="tile def" data-w="" aria-pressed="${st.w==null}"><span class="ico ph">ALL</span><b>Class default</b></button>`]
+      .concat(c.weapons.map((w,i)=>`<button class="tile" data-w="${i}" aria-pressed="${st.w===i}" title="${esc(w)}">${icoHtml(w)}<b>${esc(w)}</b></button>`)).join('')}</div>`;
+    return}
+  $('#weapons').innerHTML='';
+  const fams=D.families.filter(f=>!st.fam||f.id===st.fam);
+  $('#index').innerHTML=fams.map(f=>`<div class="sect">${esc(f.name)}</div><div class="tiles">${D.classes.filter(c=>c.family===f.id).map(c=>`<button class="tile" data-cls="${esc(c.id)}">${icoHtml(c.icon)}<b>${esc(c.name)}</b><small>${c.weapons.length} weapon${c.weapons.length===1?'':'s'}</small></button>`).join('')}</div>`).join('');
+}
+// One bar per move: startup, active (gaps between hits lighter), recovery until dodge, then free frames to the end.
+function stripHtml(m,scale){
+  const end=Math.max(m.total||0,m.cancels.dodge||0,m.active[m.active.length-1][1]);
+  const pc=f=>(f/scale*100).toFixed(2)+'%',seg=(a,b,c,cls='')=>b>a?`<span class="${cls}" style="left:${pc(a)};width:${pc(b-a)};background:var(${c})"></span>`:'';
+  let h=seg(0,m.startup-1,'--f-start');
+  m.active.forEach(([s,e],i)=>{if(i)h+=seg(m.active[i-1][1],s-1,'--f-gap');h+=seg(s-1,e,'--f-active')});
+  const last=m.active[m.active.length-1][1],dodge=m.cancels.dodge?m.cancels.dodge-1:null;
+  if(dodge!=null){h+=seg(last,dodge,'--f-rec');h+=seg(dodge,end,'--f-free')}else h+=seg(last,end,'--f-rec');
+  m.armor.forEach(([s,e])=>h+=`<span class="ar" style="left:${pc(s-1)};width:${pc(Math.min(e,end)-s+1)}"></span>`);
+  m.iframes.forEach(([s,e])=>h+=`<span class="ifr" style="left:${pc(s-1)};width:${pc(Math.min(e,end)-s+1)}"></span>`);
+  return `<div class="strip" title="Startup ${m.startup} · active ${m.active.map(a=>a.join('–')).join(', ')} · dodge ${m.cancels.dodge??'—'} · total ${m.total??'—'}">${h}</div>`}
+function legendHtml(){return [['--f-start','Startup'],['--f-active','Active'],['--f-gap','Between hits'],['--f-rec','Recovery'],['--f-free','Can dodge'],['--f-armor','Hyper armor'],['--f-iframe','I-frames']].map(([c,l])=>`<span><i style="background:var(${c})"></i>${l}</span>`).join('')}
+function cell(k,m,scale){
+  const v=COLS.find(c=>c[0]===k)[2](m);
+  switch(k){
+    case 'name':return `<td><span class="mname">${esc(m.name)}</span>${m.armor.length?'<span class="tag ha" title="Hyper armor">HA</span>':''}${m.parryable?'':'<span class="tag np" title="Cannot be parried">NP</span>'}${m.hits>1?`<span class="tag" style="border:1px solid var(--line)" title="Hits">×${m.hits}</span>`:''}</td>`;
+    case 'class':return `<td><span class="cls">${icoHtml(CL[m.class].icon,'')}${esc(m.class)}</span></td>`;
+    case 'grip':return `<td><span class="gr" title="${esc((D.grips.find(g=>g.id===m.grip)||{}).name)}">${GRIP[m.grip]}</span></td>`;
+    case 'strip':return `<td>${stripHtml(m,scale)}</td>`;
+    case 'startup':return `<td class="n mono ${v<=12?'fast':v>=30?'slow':''}">${v}</td>`;
+    case 'dtype':return `<td>${esc(v??'—')}</td>`;
+    default:return `<td class="n mono">${v??'—'}</td>`}}
+function sorted(list){
+  if(!st.sort)return list;const c=COLS.find(x=>x[0]===st.sort),f=c[2];
+  return [...list].sort((a,b)=>{const x=f(a),y=f(b);if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;return (c[3]?x-y:String(x).localeCompare(String(y)))*st.dir})}
+function renderTable(){
+  const list=pool(),cols=COLS.filter(c=>c[0]!=='class'||!st.cls).map(c=>c[0]);
+  $('#count').textContent=`${list.length.toLocaleString()} moves`;
+  $('#legend').innerHTML=list.length?legendHtml():'';
+  if(!list.length){$('#table').innerHTML='<div class="empty">No moves match these filters. Clear a filter or widen the startup limit.</div>';return}
+  const scale=Math.min(150,Math.max(...list.map(m=>Math.max(m.total||0,m.cancels.dodge||0))));
+  const head=`<thead><tr>${cols.map(k=>{const c=COLS.find(x=>x[0]===k);return `<th class="${c[3]&&k!=='strip'?'n':''}" ${st.sort===k?`aria-sort="${st.dir>0?'ascending':'descending'}"`:''} title="${esc(c[4])}"><button data-sort="${k}">${esc(c[1])}</button></th>`}).join('')}</tr></thead>`;
+  const row=m=>`<tr data-m="${esc(m.class+'|'+m.id)}">${cols.map(k=>cell(k,m,scale)).join('')}</tr>`;
+  let body;
+  if(st.cls&&!st.sort){
+    // class view: grouped by move type in play order
+    const by=new Map();list.forEach(m=>{if(!by.has(m.type))by.set(m.type,[]);by.get(m.type).push(m)});
+    body=[...by].sort((a,b)=>T[a[0]].i-T[b[0]].i).map(([t,ms])=>`<tr class="grp"><td colspan="${cols.length}">${esc(T[t].name)} · ${ms.length}<small>${esc(T[t].description)}</small></td></tr>`+ms.map(row).join('')).join('');
+    $('#table').innerHTML=`<div class="tablewrap"><table>${head}<tbody>${body}</tbody></table></div>`;return}
+  const s=sorted(list),shown=s.slice(0,st.shown);
+  body=shown.map(row).join('');
+  $('#table').innerHTML=`${!st.cls?'<div class="sect">Every class · default movesets</div>':''}<div class="tablewrap"><table>${head}<tbody>${body}</tbody></table></div>${s.length>shown.length?`<button class="more" id="more">Show ${Math.min(PAGE,s.length-shown.length)} more of ${(s.length-shown.length).toLocaleString()}</button>`:''}`;
+}
+function openMove(key){
+  const [cls,id]=key.split('|'),m=D.moves.find(x=>x.class===cls&&x.id===id);if(!m)return;
+  const c=CL[m.class],end=Math.max(m.total||0,m.cancels.dodge||0);
+  const win=a=>a.length?a.map(([s,e])=>s===e?s:`${s}–${e}`).join(', '):'—';
+  const can=[['attack','Attack'],['dodge','Dodge / roll'],['block','Block'],['skill','Skill'],['item','Item'],['move','Walk / run']].filter(([k])=>m.cancels[k]).map(([k,l])=>`<dt>${l}</dt><dd>from frame ${m.cancels[k]}</dd>`).join('');
+  const ws=m.weapons.length?m.weapons:[];
+  $('#sheet').innerHTML=`<div class="top"><div><div class="src">${esc(D.game.name)} · ${esc(c.name)} › ${esc(T[m.type].name)} · ${GRIP[m.grip]}</div><h2 id="dName">${esc(m.name)}</h2></div><button class="close" id="close">Close</button></div>
+  <div class="stats"><div class="stat"><small>Startup</small><b>${m.startup}</b></div><div class="stat"><small>Active</small><b>${m.activeFrames}</b></div><div class="stat"><small>Recovery</small><b>${m.recovery??'—'}</b></div><div class="stat"><small>Total</small><b>${m.total??'—'}</b></div></div>
+  <section class="big"><h3>Timeline (${D.game.fps} fps)</h3>${stripHtml(m,end||1)}<div class="ruler2"><span>1</span><span>${Math.round(end/2)}</span><span>${end}</span></div><div class="legend" style="margin-top:8px">${legendHtml()}</div></section>
+  <section><h3>Windows</h3><dl class="meta"><dt>Active</dt><dd>${win(m.active)} (${m.hits} hit${m.hits>1?'s':''})</dd><dt>Hyper armor</dt><dd>${win(m.armor)}</dd><dt>I-frames</dt><dd>${win(m.iframes)}</dd><dt>Parryable</dt><dd>${m.parryable?'Yes':'No'}</dd></dl></section>
+  <section><h3>Cancels</h3><dl class="meta">${can||'<dt>—</dt><dd>No cancel windows recorded</dd>'}</dl></section>
+  <section><h3>First hit</h3><dl class="meta"><dt>Damage type</dt><dd>${esc(m.damage.type??'—')}</dd><dt>Motion value</dt><dd>${m.damage.mv??'—'}</dd><dt>Poise damage</dt><dd>${m.damage.poise??'—'}</dd><dt>Damage level</dt><dd title="How hard the hit staggers">${m.damage.level??'—'}</dd><dt>Stamina</dt><dd>${m.damage.stamina??'—'}</dd></dl></section>
+  <section><h3>Used by (${ws.length||'default moveset'})</h3>${ws.length?`<div class="wlist">${ws.map(i=>`<button data-pickw="${i}" data-pickc="${esc(c.id)}">${icoHtml(c.weapons[i],'')}${esc(c.weapons[i])}</button>`).join('')}</div>`:'<p class="note">Part of the class default moveset.</p>'}</section>
+  <section><h3>Source</h3><div class="quick"><a target="_blank" rel="noopener" href="${esc(D.source.moveUrl.replace('{id}',m.id))}">Open in ${esc(D.source.name)} ↗</a><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(D.game.name+' '+c.name+' '+m.name.replace(/^(1h|2h)\s/,''))}">YouTube ↗</a></div><p class="note">Animation ${esc(m.id)}. ${esc(D.game.frameNote)}</p></section>`;
+  $('#sheet').hidden=false;$('#scrim').hidden=false;$('#close').focus()}
+function closeSheet(){$('#sheet').hidden=true;$('#scrim').hidden=true}
+// Shareable state in the hash: #g=elden-ring&c=Katana&w=Moonveil&t=light,heavy
+function writeHash(){
+  const p=new URLSearchParams();if(st.game&&st.game!==GAMES[0].id)p.set('g',st.game);if(st.fam&&!st.cls)p.set('f',st.fam);if(st.cls)p.set('c',st.cls);
+  if(st.cls&&st.w!=null)p.set('w',CL[st.cls].weapons[st.w]);if(st.types.size)p.set('t',[...st.types].join(','));if(st.grips.size)p.set('grip',[...st.grips].join(','));
+  if(st.sort)p.set('s',(st.dir<0?'-':'')+st.sort);const h=p.toString();
+  try{history.replaceState(null,'',h?'#'+h:location.pathname+location.search)}catch(e){}}
+function fromHash(){
+  const p=new URLSearchParams(location.hash.slice(1));
+  st.fam=FAM[p.get('f')]?p.get('f'):null;st.cls=CL[p.get('c')]?p.get('c'):null;
+  const wi=st.cls?CL[st.cls].weapons.indexOf(p.get('w')):-1;st.w=wi>=0?wi:null;
+  st.types=new Set((p.get('t')||'').split(',').filter(t=>T[t]));st.grips=new Set((p.get('grip')||'').split(',').filter(g=>GRIP[g]));
+  const s=p.get('s');if(s&&COLS.find(c=>c[0]===s.replace('-',''))){st.sort=s.replace('-','');st.dir=s[0]==='-'?-1:1}}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('button,tr[data-m]');if(!t)return;
+  const d=t.dataset;
+  if(d.m){openMove(d.m);return}
+  if(d.game!==undefined){if(d.game!==st.game)loadGame(d.game);return}
+  if(d.fam!==undefined){st.fam=d.fam&&st.fam!==d.fam?d.fam:null;st.cls=null;st.w=null;st.shown=PAGE;renderAll();return}
+  if(d.cls!==undefined){st.cls=d.cls||null;st.w=null;st.shown=PAGE;if(st.cls){st.fam=CL[st.cls].family;st.sort=null}renderAll();scrollTo({top:0,behavior:'smooth'});return}
+  if(d.w!==undefined){st.w=d.w===''?null:+d.w;renderAll();return}
+  if(d.pickw!==undefined){st.cls=d.pickc;st.fam=CL[st.cls].family;st.w=+d.pickw;closeSheet();renderAll();scrollTo({top:0,behavior:'smooth'});return}
+  if(d.type){st.types.has(d.type)?st.types.delete(d.type):st.types.add(d.type);st.shown=PAGE;renderAll();return}
+  if(d.grip){st.grips.has(d.grip)?st.grips.delete(d.grip):st.grips.add(d.grip);st.shown=PAGE;renderAll();return}
+  if(d.sort){if(st.sort===d.sort){if(st.dir>0)st.dir=-1;else{st.sort=null;st.dir=1}}else{st.sort=d.sort;st.dir=1}renderAll();return}
+  if(d.clear){const k=d.clear;
+    if(k==='all'){st.q='';$('#q').value='';st.types.clear();st.grips.clear();st.armor=st.multi=st.noparry=false;st.max=+$('#maxStart').max}
+    else if(k==='q'){st.q='';$('#q').value=''}else if(k.startsWith('type:'))st.types.delete(k.slice(5));else if(k.startsWith('grip:'))st.grips.delete(k.slice(5));
+    else if(k==='max')st.max=+$('#maxStart').max;else st[k]=false;renderAll();return}
+  if(t.id==='fArmor'){st.armor=!st.armor;renderAll();return}
+  if(t.id==='fMulti'){st.multi=!st.multi;renderAll();return}
+  if(t.id==='fNoParry'){st.noparry=!st.noparry;renderAll();return}
+  if(t.id==='more'){st.shown+=PAGE;renderTable();return}
+  if(t.id==='close'){closeSheet();return}
+  if(t.id==='railBtn'){const r=$('#rail');r.classList.toggle('open');t.setAttribute('aria-expanded',r.classList.contains('open'))}
+});
+$('#scrim').onclick=closeSheet;
+let qt;$('#q').addEventListener('input',e=>{clearTimeout(qt);qt=setTimeout(()=>{st.q=e.target.value.trim().toLowerCase();st.shown=PAGE;renderAll()},120)});
+$('#maxStart').addEventListener('input',e=>{st.max=+e.target.value;st.shown=PAGE;renderAll()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#sheet').hidden)closeSheet();if(e.key==='/'&&document.activeElement!==$('#q')){e.preventDefault();$('#q').focus()}});
+addEventListener('hashchange',()=>{if(D){fromHash();renderAll()}});
+let GAMES=[];
+fetch('frame-data/games.json').then(r=>r.json()).then(j=>{GAMES=j.games;const g=new URLSearchParams(location.hash.slice(1)).get('g');return loadGame(g||GAMES[0].id)})
+  .catch(e=>{$('#table').innerHTML=`<div class="empty">Could not load frame data (${esc(e.message)}). Open this page through a web server, not as a file.</div>`});
+</script>
+</body>
+</html>
