@@ -4,10 +4,11 @@
     python tools/frame_data/import_er_nyasu.py 1.14.1     # another patch the explorer publishes
 
 The explorer is by Emilia (sovietspaceship), built from the game's TAE events and params. This script only reshapes
-its published JSON into the site's game-agnostic frame data format (see frame-data/README.md). A later importer that
-reads the game files directly only has to write the same format.
+its published JSON into the site's game-agnostic frame data format (see frame-data/README.md). import_er_game.py
+reads the game files directly and writes the same format.
 """
 import json, os, re, sys, urllib.request, datetime
+from er_common import CLASS_FAMILY, build as wrap, grip, move_type
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 BASE = 'https://er-frame-data.nyasu.business'
@@ -22,74 +23,6 @@ def fetch(name):
         req = urllib.request.Request(f'{BASE}/generated/{VERSION}/{name}', headers={'User-Agent': 'game-animation-library frame-data import'})
         with urllib.request.urlopen(req) as r, open(path, 'wb') as f: f.write(r.read())
     return json.load(open(path, encoding='utf-8'))
-
-# Weapon families for the class list (sidebar groups), in display order.
-FAMILIES = [
-    ('blades', 'Swords & daggers', ['Dagger', 'Throwing Blade', 'Straight Sword', 'Light Greatsword', 'Greatsword', 'Colossal Sword', 'Curved Sword', 'Curved Greatsword', 'Backhand Blade', 'Katana', 'Great Katana', 'Twinblade']),
-    ('thrust', 'Thrusting', ['Thrusting Sword', 'Heavy Thrusting Sword', 'Spear', 'Great Spear', 'Halberd', 'Reaper']),
-    ('blunt', 'Axes & hammers', ['Axe', 'Greataxe', 'Hammer', 'Great Hammer', 'Flail', 'Colossal Weapon']),
-    ('unarmed', 'Fists & claws', ['Fist', 'Hand-to-Hand', 'Claw', 'Beast Claw']),
-    ('flexible', 'Whips, tools & throwables', ['Whip', 'Torch', 'Perfume Bottle', 'Throwing Weapon']),
-    ('ranged', 'Bows & crossbows', ['Light Bow', 'Bow', 'Greatbow', 'Crossbow', 'Ballista']),
-    ('shields', 'Shields', ['Small Shield', 'Medium Shield', 'Greatshield', 'Thrusting Shield']),
-]
-# The weapon whose icon stands for each class in the visual index: a well-known pick players recognise.
-ICONIC = {
-    'Dagger': ['Black Knife'], 'Throwing Blade': ['Smithscript Dagger'], 'Straight Sword': ['Longsword'],
-    'Light Greatsword': ['Milady'], 'Greatsword': ['Claymore'], 'Colossal Sword': ['Greatsword'],
-    'Curved Sword': ['Scimitar', 'Shamshir'], 'Curved Greatsword': ["Bloodhound's Fang"], 'Backhand Blade': ['Backhand Blade'],
-    'Katana': ['Moonveil', 'Uchigatana'], 'Great Katana': ["Rakshasa's Great Katana"], 'Twinblade': ['Godskin Peeler'],
-    'Thrusting Sword': ["Rogier's Rapier"], 'Heavy Thrusting Sword': ['Great Epee'], 'Spear': ['Bolt of Gransax'],
-    'Great Spear': ["Siluria's Tree"], 'Halberd': ['Golden Halberd'], 'Reaper': ['Winged Scythe'], 'Axe': ['Battle Axe'],
-    'Greataxe': ['Rusted Anchor'], 'Hammer': ['Morning Star'], 'Great Hammer': ['Brick Hammer'], 'Flail': ['Nightrider Flail'],
-    'Colossal Weapon': ['Giant-Crusher'], 'Fist': ['Caestus'], 'Hand-to-Hand': ['Dryleaf Arts'], 'Claw': ['Bloodhound Claws'],
-    'Beast Claw': ['Beast Claw'], 'Whip': ["Hoslow's Petal Whip"], 'Torch': ['Torch'], 'Perfume Bottle': ['Firespark Perfume Bottle'],
-    'Throwing Weapon': ['Smithscript Dagger'], 'Light Bow': ['Shortbow'], 'Bow': ['Longbow'], 'Greatbow': ['Golem Greatbow'],
-    'Crossbow': ['Pulley Crossbow'], 'Ballista': ['Hand Ballista'], 'Small Shield': ['Buckler'], 'Medium Shield': ['Heater Shield', 'Brass Shield'],
-    'Greatshield': ['Fingerprint Stone Shield'], 'Thrusting Shield': ['Dueling Shield'],
-}
-CLASS_FAMILY = {c: fid for fid, _, cs in FAMILIES for c in cs}
-
-# Move types, in the order a player meets them. Matched against the explorer's animation names.
-MOVE_TYPES = [
-    ('light', 'Light chain', 'R1 / L1 combo strings'),
-    ('heavy', 'Heavy', 'R2 strikes, uncharged and charged'),
-    ('feint', 'Heavy feint', 'Charged R2 cancelled into a feint'),
-    ('running', 'Running', 'Attacks out of a sprint'),
-    ('rolling', 'Rolling', 'Attacks out of a roll'),
-    ('backstep', 'Backstep', 'Attacks out of a backstep'),
-    ('crouch', 'Crouch', 'Attacks from crouch or sneak'),
-    ('jumping', 'Jumping', 'Jump attacks, airborne and landing'),
-    ('guard-counter', 'Guard counter', 'Counter after blocking a hit'),
-    ('critical', 'Criticals', 'Backstabs and ripostes'),
-    ('parry', 'Parry', 'Parries and parry-like skills'),
-    ('shieldpoke', 'Shield poke', 'Thrusting-shield attacks from guard'),
-    ('buffed', 'Skill-buffed heavy', 'R2 variants while War Cry or Barbaric Roar is active'),
-    ('mounted', 'Mounted', 'Attacks on Torrent'),
-]
-
-def move_type(name):
-    n = name
-    if n.startswith('Mounted'): return 'mounted'
-    if 'War Cry' in n or 'Barbaric Roar' in n or 'Buffed' in n: return 'buffed'
-    if 'Feint' in n: return 'feint'
-    if 'Guard Counter' in n: return 'guard-counter'
-    if n.startswith(('Backstab', 'Riposte')) or 'Riposte' in n: return 'critical'
-    if 'Parry' in n: return 'parry'
-    if 'Shieldpoke' in n: return 'shieldpoke'
-    if 'Running' in n: return 'running'
-    if 'Rolling' in n: return 'rolling'
-    if 'Backstep' in n: return 'backstep'
-    if 'Crouch' in n: return 'crouch'
-    if 'Jumping' in n or 'Landing' in n: return 'jumping'
-    if re.search(r'\bR2\b', n): return 'heavy'
-    if re.search(r'\b[RL]1\b', n): return 'light'
-    return None
-
-def grip(name):
-    for g, label in (('1h', 'One-handed'), ('2h', 'Two-handed'), ('Paired', 'Powerstance'), ('Offhand', 'Off-hand'), ('Mounted', 'Mounted')):
-        if name.startswith(g): return g
-    return 'any'
 
 def start(c, *types):
     s = [c[t] for t in types if t in c]
@@ -145,40 +78,12 @@ def build():
                 'weapons': users,
             }
             moves.append(m)
-    # A class's default moveset is its most-used animation section; weapons with their own animations list them.
-    classes = []
-    for fid, _, names in FAMILIES:
-        for cls in names:
-            cm = [m for m in moves if m['class'] == cls]
-            if not cm: continue
-            secs = {}
-            for m in cm: secs[m['id'].split('_')[0]] = secs.get(m['id'].split('_')[0], 0) + 1
-            base = max(secs, key=secs.get)
-            ws = sorted(weapons_by_class.get(cls, []))
-            pos = {w: i for i, w in enumerate(ws)}
-            for m in cm:
-                m['default'] = m['id'].startswith(base + '_')
-                # Indexes into the class's weapon list; empty means the class's default moveset only
-                m['weapons'] = [pos[w] for w in m['weapons'] if w in pos]
-            icon = next((w for w in ICONIC.get(cls, []) if w in pos), ws[0] if ws else (ICONIC.get(cls) or [None])[0])
-            classes.append({'id': cls, 'name': cls, 'family': fid, 'icon': icon, 'weapons': ws, 'moves': len(cm)})
-    order = {t[0]: i for i, t in enumerate(MOVE_TYPES)}
-    corder = {c['id']: i for i, c in enumerate(classes)}
-    moves.sort(key=lambda m: (corder[m['class']], order[m['type']], m['grip'], m['name'], m['id']))
-    return {
-        'schema': 'frame-data/1',
-        'game': {'id': 'elden-ring', 'name': 'Elden Ring', 'fps': 30, 'version': VERSION,
-                 'frameNote': 'Frames are animation (TAE) frames at 30 fps, 1-based: startup is the first frame the hitbox is out.'},
-        'source': {'name': 'Elden Ring Frame Data Explorer', 'url': BASE, 'moveUrl': BASE + '/?animation={id}', 'author': 'Emilia (sovietspaceship)',
-                   'retrieved': datetime.date.today().isoformat(), 'method': 'import_er_nyasu.py',
-                   'note': 'Data extracted from the game by the explorer and reshaped here. Support the original author: https://ko-fi.com/sovietspaceship'},
-        'families': [{'id': f, 'name': n} for f, n, _ in FAMILIES],
-        'classes': classes,
-        'moveTypes': [{'id': i, 'name': n, 'description': d} for i, n, d in MOVE_TYPES],
-        'grips': [{'id': '1h', 'name': 'One-handed'}, {'id': '2h', 'name': 'Two-handed'}, {'id': 'Paired', 'name': 'Powerstance'},
-                  {'id': 'Offhand', 'name': 'Off-hand'}, {'id': 'Mounted', 'name': 'Mounted'}, {'id': 'any', 'name': 'Other'}],
-        'moves': moves,
-    }
+    return wrap(moves, weapons_by_class,
+        {'id': 'elden-ring', 'name': 'Elden Ring', 'fps': 30, 'version': VERSION,
+         'frameNote': 'Frames are animation (TAE) frames at 30 fps, 1-based: startup is the first frame the hitbox is out.'},
+        {'name': 'Elden Ring Frame Data Explorer', 'url': BASE, 'moveUrl': BASE + '/?animation={id}', 'author': 'Emilia (sovietspaceship)',
+         'retrieved': datetime.date.today().isoformat(), 'method': 'import_er_nyasu.py',
+         'note': 'Data extracted from the game by the explorer and reshaped here. Support the original author: https://ko-fi.com/sovietspaceship'})
 
 if __name__ == '__main__':
     data = build()
