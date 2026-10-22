@@ -20,3 +20,6 @@ index.html
 .env
 library-data/
 node_modules/
+
+# Frame data import downloads
+.cache/
