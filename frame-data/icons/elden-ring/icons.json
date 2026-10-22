@@ -1,0 +1,1931 @@
+{
+ "sources": [
+  {
+   "name": "Elden Ring Wiki (wiki.gg)",
+   "url": "https://eldenring.wiki.gg"
+  },
+  {
+   "name": "Elden Ring Fan API",
+   "url": "https://eldenring.fanapis.com"
+  }
+ ],
+ "note": "Icons are the game's inventory art, (c) FromSoftware / Bandai Namco.",
+ "icons": {
+  "Academy Glintstone Staff": {
+   "file": "academy-glintstone-staff.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Academy_Glintstone_Staff.png"
+  },
+  "Alabaster Lord's Sword": {
+   "file": "alabaster-lord-s-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Alabaster_Lord%27s_Sword.png"
+  },
+  "Albinauric Bow": {
+   "file": "albinauric-bow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Albinauric_Bow.png"
+  },
+  "Albinauric Shield": {
+   "file": "albinauric-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Albinauric_Shield.png"
+  },
+  "Albinauric Staff": {
+   "file": "albinauric-staff.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Albinauric_Staff.png"
+  },
+  "Ancient Meteoric Ore Greatsword": {
+   "file": "ancient-meteoric-ore-greatsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Ancient_Meteoric_Ore_Greatsword.png"
+  },
+  "Ansbach's Longbow": {
+   "file": "ansbach-s-longbow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Ansbach%27s_Longbow.png"
+  },
+  "Ant's Skull Plate": {
+   "file": "ant-s-skull-plate.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Ant%27s_Skull_Plate.png"
+  },
+  "Antspur Rapier": {
+   "file": "antspur-rapier.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Antspur_Rapier.png"
+  },
+  "Anvil Hammer": {
+   "file": "anvil-hammer.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Anvil_Hammer.png"
+  },
+  "Arbalest": {
+   "file": "arbalest.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Arbalest.png"
+  },
+  "Astrologer's Staff": {
+   "file": "astrologer-s-staff.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Astrologer%27s_Staff.png"
+  },
+  "Axe of Godfrey": {
+   "file": "axe-of-godfrey.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Axe_of_Godfrey.png"
+  },
+  "Axe of Godrick": {
+   "file": "axe-of-godrick.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Axe_of_Godrick.png"
+  },
+  "Azur's Glintstone Staff": {
+   "file": "azur-s-glintstone-staff.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Azur%27s_Glintstone_Staff.png"
+  },
+  "Backhand Blade": {
+   "file": "backhand-blade.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Backhand_Blade.png"
+  },
+  "Bandit's Curved Sword": {
+   "file": "bandit-s-curved-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Bandit%27s_Curved_Sword.png"
+  },
+  "Banished Knight's Greatsword": {
+   "file": "banished-knight-s-greatsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Banished_Knight%27s_Greatsword.png"
+  },
+  "Banished Knight's Halberd": {
+   "file": "banished-knight-s-halberd.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Banished_Knight%27s_Halberd.png"
+  },
+  "Banished Knight's Shield": {
+   "file": "banished-knight-s-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Banished_Knight%27s_Shield.png"
+  },
+  "Barbed Staff-Spear": {
+   "file": "barbed-staff-spear.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Barbed_Staff-Spear.png"
+  },
+  "Bastard Sword": {
+   "file": "bastard-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Bastard_Sword.png"
+  },
+  "Bastard's Stars": {
+   "file": "bastard-s-stars.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Bastard%27s_Stars.png"
+  },
+  "Battle Axe": {
+   "file": "battle-axe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Battle_Axe.png"
+  },
+  "Battle Hammer": {
+   "file": "battle-hammer.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Battle_Hammer.png"
+  },
+  "Beast Claw": {
+   "file": "beast-claw.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Beast_Claw.png"
+  },
+  "Beast Crest Heater Shield": {
+   "file": "beast-crest-heater-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Beast_Crest_Heater_Shield.png"
+  },
+  "Beast-Repellent Torch": {
+   "file": "beast-repellent-torch.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Beast-Repellent_Torch.png"
+  },
+  "Beastclaw Greathammer": {
+   "file": "beastclaw-greathammer.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Beastclaw_Greathammer.png"
+  },
+  "Beastman's Cleaver": {
+   "file": "beastman-s-cleaver.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Beastman%27s_Cleaver.png"
+  },
+  "Beastman's Curved Sword": {
+   "file": "beastman-s-curved-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Beastman%27s_Curved_Sword.png"
+  },
+  "Beastman's Jar-Shield": {
+   "file": "beastman-s-jar-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Beastman%27s_Jar-Shield.png"
+  },
+  "Black Bow": {
+   "file": "black-bow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Black_Bow.png"
+  },
+  "Black Knife": {
+   "file": "black-knife.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Black_Knife.png"
+  },
+  "Black Leather Shield": {
+   "file": "black-leather-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Black_Leather_Shield.png"
+  },
+  "Black Steel Greathammer": {
+   "file": "black-steel-greathammer.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Black_Steel_Greathammer.png"
+  },
+  "Black Steel Greatshield": {
+   "file": "black-steel-greatshield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Black_Steel_Greatshield.png"
+  },
+  "Black Steel Twinblade": {
+   "file": "black-steel-twinblade.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Black_Steel_Twinblade.png"
+  },
+  "Blade of Calling": {
+   "file": "blade-of-calling.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Blade_of_Calling.png"
+  },
+  "Blasphemous Blade": {
+   "file": "blasphemous-blade.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Blasphemous_Blade.png"
+  },
+  "Bloodfiend's Arm": {
+   "file": "bloodfiend-s-arm.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Bloodfiend%27s_Arm.png"
+  },
+  "Bloodfiend's Fork": {
+   "file": "bloodfiend-s-fork.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Bloodfiend%27s_Fork.png"
+  },
+  "Bloodfiend's Sacred Spear": {
+   "file": "bloodfiend-s-sacred-spear.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Bloodfiend%27s_Sacred_Spear.png"
+  },
+  "Bloodhound Claws": {
+   "file": "bloodhound-claws.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Bloodhound_Claws.png"
+  },
+  "Bloodhound's Fang": {
+   "file": "bloodhound-s-fang.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Bloodhound%27s_Fang.png"
+  },
+  "Bloodstained Dagger": {
+   "file": "bloodstained-dagger.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Bloodstained_Dagger.png"
+  },
+  "Bloody Helice": {
+   "file": "bloody-helice.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Bloody_Helice.png"
+  },
+  "Blue Crest Heater Shield": {
+   "file": "blue-crest-heater-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Blue_Crest_Heater_Shield.png"
+  },
+  "Blue-Gold Kite Shield": {
+   "file": "blue-gold-kite-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Blue-Gold_Kite_Shield.png"
+  },
+  "Blue-White Wooden Shield": {
+   "file": "blue-white-wooden-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Blue-White_Wooden_Shield.png"
+  },
+  "Bolt of Gransax": {
+   "file": "bolt-of-gransax.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Bolt_of_Gransax.png"
+  },
+  "Bone Bow": {
+   "file": "bone-bow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Bone_Bow.png"
+  },
+  "Bonny Butchering Knife": {
+   "file": "bonny-butchering-knife.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Butchering_Knife.png"
+  },
+  "Brass Shield": {
+   "file": "brass-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Brass_Shield.png"
+  },
+  "Briar Greatshield": {
+   "file": "briar-greatshield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Briar_Greatshield.png"
+  },
+  "Brick Hammer": {
+   "file": "brick-hammer.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Brick_Hammer.png"
+  },
+  "Broadsword": {
+   "file": "broadsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Broadsword.png"
+  },
+  "Buckler": {
+   "file": "buckler.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Buckler.png"
+  },
+  "Butchering Knife": {
+   "file": "butchering-knife.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Butchering_Knife.png"
+  },
+  "Caestus": {
+   "file": "caestus.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Caestus.png"
+  },
+  "Candletree Wooden Shield": {
+   "file": "candletree-wooden-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Candletree_Wooden_Shield.png"
+  },
+  "Cane Sword": {
+   "file": "cane-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Cane_Sword.png"
+  },
+  "Carian Glintblade Staff": {
+   "file": "carian-glintblade-staff.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Carian_Glintblade_Staff.png"
+  },
+  "Carian Glintstone Staff": {
+   "file": "carian-glintstone-staff.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Carian_Glintstone_Staff.png"
+  },
+  "Carian Knight's Shield": {
+   "file": "carian-knight-s-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Carian_Knight%27s_Shield.png"
+  },
+  "Carian Knight's Sword": {
+   "file": "carian-knight-s-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Carian_Knight%27s_Sword.png"
+  },
+  "Carian Regal Scepter": {
+   "file": "carian-regal-scepter.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Carian_Regal_Scepter.png"
+  },
+  "Carian Sorcery Sword": {
+   "file": "carian-sorcery-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Carian_Sorcery_Sword.png"
+  },
+  "Carian Thrusting Shield": {
+   "file": "carian-thrusting-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Carian_Thrusting_Shield.png"
+  },
+  "Celebrant's Cleaver": {
+   "file": "celebrant-s-cleaver.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Celebrant%27s_Cleaver.png"
+  },
+  "Celebrant's Rib-Rake": {
+   "file": "celebrant-s-rib-rake.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Celebrant%27s_Rib-Rake.png"
+  },
+  "Celebrant's Sickle": {
+   "file": "celebrant-s-sickle.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Celebrant%27s_Sickle.png"
+  },
+  "Celebrant's Skull": {
+   "file": "celebrant-s-skull.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Celebrant%27s_Skull.png"
+  },
+  "Chainlink Flail": {
+   "file": "chainlink-flail.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Chainlink_Flail.png"
+  },
+  "Chilling Perfume Bottle": {
+   "file": "chilling-perfume-bottle.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Chilling_Perfume_Bottle.png"
+  },
+  "Cinquedea": {
+   "file": "cinquedea.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Cinquedea.png"
+  },
+  "Cipher Pata": {
+   "file": "cipher-pata.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Cipher_Pata.png"
+  },
+  "Clawmark Seal": {
+   "file": "clawmark-seal.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Clawmark_Seal.png"
+  },
+  "Claws of Night": {
+   "file": "claws-of-night.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Claws_of_Night.png"
+  },
+  "Clayman's Harpoon": {
+   "file": "clayman-s-harpoon.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Clayman%27s_Harpoon.png"
+  },
+  "Claymore": {
+   "file": "claymore.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Claymore.png"
+  },
+  "Cleanrot Knight's Sword": {
+   "file": "cleanrot-knight-s-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Cleanrot_Knight%27s_Sword.png"
+  },
+  "Cleanrot Spear": {
+   "file": "cleanrot-spear.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Cleanrot_Spear.png"
+  },
+  "Clinging Bone": {
+   "file": "clinging-bone.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Clinging_Bone.png"
+  },
+  "Club": {
+   "file": "club.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Club.png"
+  },
+  "Coded Sword": {
+   "file": "coded-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Coded_Sword.png"
+  },
+  "Coil Shield": {
+   "file": "coil-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Coil_Shield.png"
+  },
+  "Commander's Standard": {
+   "file": "commander-s-standard.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Commander%27s_Standard.png"
+  },
+  "Composite Bow": {
+   "file": "composite-bow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Composite_Bow.png"
+  },
+  "Cranial Vessel Candlestand": {
+   "file": "cranial-vessel-candlestand.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Cranial_Vessel_Candlestand.png"
+  },
+  "Crepus's Black-Key Crossbow": {
+   "file": "crepus-s-black-key-crossbow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Crepus%27s_Black-Key_Crossbow.png"
+  },
+  "Crescent Moon Axe": {
+   "file": "crescent-moon-axe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Crescent_Moon_Axe.png"
+  },
+  "Cross-Naginata": {
+   "file": "cross-naginata.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Cross-Naginata.png"
+  },
+  "Crossed-Tree Towershield": {
+   "file": "crossed-tree-towershield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Crossed-Tree_Towershield.png"
+  },
+  "Crucible Hornshield": {
+   "file": "crucible-hornshield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Crucible_Hornshield.png"
+  },
+  "Crystal Knife": {
+   "file": "crystal-knife.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Crystal_Knife.png"
+  },
+  "Crystal Spear": {
+   "file": "crystal-spear.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Crystal_Spear.png"
+  },
+  "Crystal Staff": {
+   "file": "crystal-staff.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Crystal_Staff.png"
+  },
+  "Crystal Sword": {
+   "file": "crystal-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Crystal_Sword.png"
+  },
+  "Cuckoo Greatshield": {
+   "file": "cuckoo-greatshield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Cuckoo_Greatshield.png"
+  },
+  "Curseblade's Cirque": {
+   "file": "curseblade-s-cirque.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Curseblade%27s_Cirque.png"
+  },
+  "Curved Club": {
+   "file": "curved-club.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Curved_Club.png"
+  },
+  "Curved Great Club": {
+   "file": "curved-great-club.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Curved_Great_Club.png"
+  },
+  "Dagger": {
+   "file": "dagger.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Dagger.png"
+  },
+  "Dancing Blade of Ranah": {
+   "file": "dancing-blade-of-ranah.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Dancing_Blade_of_Ranah.png"
+  },
+  "Dane's Footwork": {
+   "file": "dane-s-footwork.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Dane%27s_Footwork.png"
+  },
+  "Dark Moon Greatsword": {
+   "file": "dark-moon-greatsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Dark_Moon_Greatsword.png"
+  },
+  "Deadly Poison Perfume Bottle": {
+   "file": "deadly-poison-perfume-bottle.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Deadly_Poison_Perfume_Bottle.png"
+  },
+  "Death Knight's Longhaft Axe": {
+   "file": "death-knight-s-longhaft-axe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Death_Knight%27s_Longhaft_Axe.png"
+  },
+  "Death Knight's Twin Axes": {
+   "file": "death-knight-s-twin-axes.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Death_Knight%27s_Twin_Axes.png"
+  },
+  "Death Ritual Spear": {
+   "file": "death-ritual-spear.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Death_Ritual_Spear.png"
+  },
+  "Death's Poker": {
+   "file": "death-s-poker.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Death%27s_Poker.png"
+  },
+  "Demi-Human Queen's Staff": {
+   "file": "demi-human-queen-s-staff.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Demi-Human_Queen%27s_Staff.png"
+  },
+  "Devonia's Hammer": {
+   "file": "devonia-s-hammer.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Devonia%27s_Hammer.png"
+  },
+  "Devourer's Scepter": {
+   "file": "devourer-s-scepter.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Devourer%27s_Scepter.png"
+  },
+  "Digger's Staff": {
+   "file": "digger-s-staff.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Digger%27s_Staff.png"
+  },
+  "Dismounter": {
+   "file": "dismounter.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Dismounter.png"
+  },
+  "Distinguished Greatshield": {
+   "file": "distinguished-greatshield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Distinguished_Greatshield.png"
+  },
+  "Dragon Communion Seal": {
+   "file": "dragon-communion-seal.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Dragon_Communion_Seal.png"
+  },
+  "Dragon Greatclaw": {
+   "file": "dragon-greatclaw.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Dragon_Greatclaw.png"
+  },
+  "Dragon Halberd": {
+   "file": "dragon-halberd.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Dragon_Halberd.png"
+  },
+  "Dragon King's Cragblade": {
+   "file": "dragon-king-s-cragblade.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Dragon_King%27s_Cragblade.png"
+  },
+  "Dragon Towershield": {
+   "file": "dragon-towershield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Dragon_Towershield.png"
+  },
+  "Dragon-Hunter's Great Katana": {
+   "file": "dragon-hunter-s-great-katana.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Dragon-Hunter%27s_Great_Katana.png"
+  },
+  "Dragonclaw Shield": {
+   "file": "dragonclaw-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Dragonclaw_Shield.png"
+  },
+  "Dragonscale Blade": {
+   "file": "dragonscale-blade.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Dragonscale_Blade.png"
+  },
+  "Dryleaf Arts": {
+   "file": "dryleaf-arts.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Dryleaf_Arts.png"
+  },
+  "Dryleaf Seal": {
+   "file": "dryleaf-seal.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Dryleaf_Seal.png"
+  },
+  "Dueling Shield": {
+   "file": "dueling-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Dueling_Shield.png"
+  },
+  "Duelist Greataxe": {
+   "file": "duelist-greataxe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Duelist_Greataxe.png"
+  },
+  "Eclipse Crest Greatshield": {
+   "file": "eclipse-crest-greatshield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Eclipse_Crest_Greatshield.png"
+  },
+  "Eclipse Crest Heater Shield": {
+   "file": "eclipse-crest-heater-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Eclipse_Crest_Heater_Shield.png"
+  },
+  "Eclipse Shotel": {
+   "file": "eclipse-shotel.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Eclipse_Shotel.png"
+  },
+  "Eleonora's Poleblade": {
+   "file": "eleonora-s-poleblade.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Eleonora%27s_Poleblade.png"
+  },
+  "Envoy's Greathorn": {
+   "file": "envoy-s-greathorn.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Envoy%27s_Greathorn.png"
+  },
+  "Envoy's Horn": {
+   "file": "envoy-s-horn.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Envoy%27s_Horn.png"
+  },
+  "Envoy's Long Horn": {
+   "file": "envoy-s-long-horn.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Envoy%27s_Long_Horn.png"
+  },
+  "Erdsteel Dagger": {
+   "file": "erdsteel-dagger.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Erdsteel_Dagger.png"
+  },
+  "Erdtree Bow": {
+   "file": "erdtree-bow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Erdtree_Bow.png"
+  },
+  "Erdtree Greatbow": {
+   "file": "erdtree-greatbow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Erdtree_Greatbow.png"
+  },
+  "Erdtree Greatshield": {
+   "file": "erdtree-greatshield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Erdtree_Greatshield.png"
+  },
+  "Erdtree Seal": {
+   "file": "erdtree-seal.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Erdtree_Seal.png"
+  },
+  "Estoc": {
+   "file": "estoc.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Estoc.png"
+  },
+  "Euporia": {
+   "file": "euporia.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Euporia.png"
+  },
+  "Executioner's Greataxe": {
+   "file": "executioner-s-greataxe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Executioner%27s_Greataxe.png"
+  },
+  "Falchion": {
+   "file": "falchion.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Falchion.png"
+  },
+  "Fallingstar Beast Jaw": {
+   "file": "fallingstar-beast-jaw.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Fallingstar_Beast_Jaw.png"
+  },
+  "Falx": {
+   "file": "falx.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Falx.png"
+  },
+  "Family Heads": {
+   "file": "family-heads.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Family_Heads.png"
+  },
+  "Finger Seal": {
+   "file": "finger-seal.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Finger_Seal.png"
+  },
+  "Fingerprint Stone Shield": {
+   "file": "fingerprint-stone-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Fingerprint_Stone_Shield.png"
+  },
+  "Fire Knight's Greatsword": {
+   "file": "fire-knight-s-greatsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Fire_Knight%27s_Greatsword.png"
+  },
+  "Fire Knight's Seal": {
+   "file": "fire-knight-s-seal.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Fire_Knight%27s_Seal.png"
+  },
+  "Fire Knight's Shortsword": {
+   "file": "fire-knight-s-shortsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Fire_Knight%27s_Shortsword.png"
+  },
+  "Firespark Perfume Bottle": {
+   "file": "firespark-perfume-bottle.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Firespark_Perfume_Bottle.png"
+  },
+  "Flail": {
+   "file": "flail.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Flail.png"
+  },
+  "Flamberge": {
+   "file": "flamberge.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Flamberge.png"
+  },
+  "Flame Crest Wooden Shield": {
+   "file": "flame-crest-wooden-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Flame_Crest_Wooden_Shield.png"
+  },
+  "Flowerstone Gavel": {
+   "file": "flowerstone-gavel.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Flowerstone_Gavel.png"
+  },
+  "Flowing Curved Sword": {
+   "file": "flowing-curved-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Flowing_Curved_Sword.png"
+  },
+  "Forked Greatsword": {
+   "file": "forked-greatsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Forked_Greatsword.png"
+  },
+  "Forked Hatchet": {
+   "file": "forked-hatchet.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Forked_Hatchet.png"
+  },
+  "Forked-Tongue Hatchet": {
+   "file": "forked-tongue-hatchet.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Forked-Tongue_Hatchet.png"
+  },
+  "Frenzied Flame Seal": {
+   "file": "frenzied-flame-seal.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Frenzied_Flame_Seal.png"
+  },
+  "Frenzyflame Perfume Bottle": {
+   "file": "frenzyflame-perfume-bottle.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Frenzyflame_Perfume_Bottle.png"
+  },
+  "Freyja's Greatsword": {
+   "file": "freyja-s-greatsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Freyja%27s_Greatsword.png"
+  },
+  "Frozen Needle": {
+   "file": "frozen-needle.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Frozen_Needle.png"
+  },
+  "Full Moon Crossbow": {
+   "file": "full-moon-crossbow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Full_Moon_Crossbow.png"
+  },
+  "Gargoyle's Black Axe": {
+   "file": "gargoyle-s-black-axe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Gargoyle%27s_Black_Axe.png"
+  },
+  "Gargoyle's Black Blades": {
+   "file": "gargoyle-s-black-blades.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Gargoyle%27s_Black_Blades.png"
+  },
+  "Gargoyle's Black Halberd": {
+   "file": "gargoyle-s-black-halberd.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Gargoyle%27s_Black_Halberd.png"
+  },
+  "Gargoyle's Blackblade": {
+   "file": "gargoyle-s-blackblade.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Gargoyle%27s_Blackblade.png"
+  },
+  "Gargoyle's Great Axe": {
+   "file": "gargoyle-s-great-axe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Gargoyle%27s_Great_Axe.png"
+  },
+  "Gargoyle's Greatsword": {
+   "file": "gargoyle-s-greatsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Gargoyle%27s_Greatsword.png"
+  },
+  "Gargoyle's Halberd": {
+   "file": "gargoyle-s-halberd.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Gargoyle%27s_Halberd.png"
+  },
+  "Gargoyle's Twinblade": {
+   "file": "gargoyle-s-twinblade.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Gargoyle%27s_Twinblade.png"
+  },
+  "Gazing Finger": {
+   "file": "gazing-finger.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Gazing_Finger.png"
+  },
+  "Gelmir Glintstone Staff": {
+   "file": "gelmir-glintstone-staff.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Gelmir_Glintstone_Staff.png"
+  },
+  "Ghiza's Wheel": {
+   "file": "ghiza-s-wheel.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Ghiza%27s_Wheel.png"
+  },
+  "Ghostflame Torch": {
+   "file": "ghostflame-torch.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Ghostflame_Torch.png"
+  },
+  "Giant's Red Braid": {
+   "file": "giant-s-red-braid.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Giant%27s_Red_Braid.png"
+  },
+  "Giant's Seal": {
+   "file": "giant-s-seal.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Giant%27s_Seal.png"
+  },
+  "Giant-Crusher": {
+   "file": "giant-crusher.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Giant-Crusher.png"
+  },
+  "Gilded Greatshield": {
+   "file": "gilded-greatshield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Gilded_Greatshield.png"
+  },
+  "Gilded Iron Shield": {
+   "file": "gilded-iron-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Gilded_Iron_Shield.png"
+  },
+  "Glaive": {
+   "file": "glaive.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Glaive.png"
+  },
+  "Glintstone Kris": {
+   "file": "glintstone-kris.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Glintstone_Kris.png"
+  },
+  "Glintstone Staff": {
+   "file": "glintstone-staff.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Glintstone_Staff.png"
+  },
+  "Godskin Peeler": {
+   "file": "godskin-peeler.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Godskin_Peeler.png"
+  },
+  "Godskin Stitcher": {
+   "file": "godskin-stitcher.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Godskin_Stitcher.png"
+  },
+  "Godslayer's Greatsword": {
+   "file": "godslayer-s-greatsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Godslayer%27s_Greatsword.png"
+  },
+  "Godslayer's Seal": {
+   "file": "godslayer-s-seal.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Godslayer%27s_Seal.png"
+  },
+  "Golden Beast Crest Shield": {
+   "file": "golden-beast-crest-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Golden_Beast_Crest_Shield.png"
+  },
+  "Golden Epitaph": {
+   "file": "golden-epitaph.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Golden_Epitaph.png"
+  },
+  "Golden Greatshield": {
+   "file": "golden-greatshield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Golden_Greatshield.png"
+  },
+  "Golden Halberd": {
+   "file": "golden-halberd.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Golden_Halberd.png"
+  },
+  "Golden Lion Shield": {
+   "file": "golden-lion-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Shield_Golden_Lion_Shield.png"
+  },
+  "Golden Order Greatsword": {
+   "file": "golden-order-greatsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Golden_Order_Greatsword.png"
+  },
+  "Golden Order Seal": {
+   "file": "golden-order-seal.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Golden_Order_Seal.png"
+  },
+  "Golem Fist": {
+   "file": "golem-fist.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Golem_Fist.png"
+  },
+  "Golem Greatbow": {
+   "file": "golem-greatbow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Golem_Greatbow.png"
+  },
+  "Golem's Halberd": {
+   "file": "golem-s-halberd.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Golem%27s_Halberd.png"
+  },
+  "Grafted Blade Greatsword": {
+   "file": "grafted-blade-greatsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Grafted_Blade_Greatsword.png"
+  },
+  "Grafted Dragon": {
+   "file": "grafted-dragon.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Grafted_Dragon.png"
+  },
+  "Grave Scythe": {
+   "file": "grave-scythe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Grave_Scythe.png"
+  },
+  "Gravel Stone Seal": {
+   "file": "gravel-stone-seal.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Gravel_Stone_Seal.png"
+  },
+  "Great Club": {
+   "file": "great-club.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Great_Club.png"
+  },
+  "Great Katana": {
+   "file": "great-katana.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Great_Katana.png"
+  },
+  "Great Knife": {
+   "file": "great-knife.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Great_Knife.png"
+  },
+  "Great Mace": {
+   "file": "great-mace.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Great_Mace.png"
+  },
+  "Great Omenkiller Cleaver": {
+   "file": "great-omenkiller-cleaver.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Great_Omenkiller_Cleaver.png"
+  },
+  "Great Stars": {
+   "file": "great-stars.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Great_Stars.png"
+  },
+  "Great Turtle Shell": {
+   "file": "great-turtle-shell.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Great_Turtle_Shell.png"
+  },
+  "Great Épée": {
+   "file": "great-p-e.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Great_%C3%89p%C3%A9e.png"
+  },
+  "Greataxe": {
+   "file": "greataxe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Greataxe.png"
+  },
+  "Greatbow": {
+   "file": "greatbow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Greatbow.png"
+  },
+  "Greathorn Hammer": {
+   "file": "greathorn-hammer.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Greathorn_Hammer.png"
+  },
+  "Greatsword": {
+   "file": "greatsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Greatsword.png"
+  },
+  "Greatsword of Damnation": {
+   "file": "greatsword-of-damnation.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Greatsword_of_Damnation.png"
+  },
+  "Greatsword of Radahn (Light)": {
+   "file": "greatsword-of-radahn-light.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Greatsword_of_Radahn.png"
+  },
+  "Greatsword of Radahn (Lord)": {
+   "file": "greatsword-of-radahn-lord.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Greatsword_of_Radahn_(Lord).png"
+  },
+  "Greatsword of Solitude": {
+   "file": "greatsword-of-solitude.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Greatsword_of_Solitude.png"
+  },
+  "Grossmesser": {
+   "file": "grossmesser.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Grossmesser.png"
+  },
+  "Guardian's Swordspear": {
+   "file": "guardian-s-swordspear.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Guardian%27s_Swordspear.png"
+  },
+  "Halberd": {
+   "file": "halberd.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Halberd.png"
+  },
+  "Haligtree Crest Greatshield": {
+   "file": "haligtree-crest-greatshield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Haligtree_Crest_Greatshield.png"
+  },
+  "Halo Scythe": {
+   "file": "halo-scythe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Halo_Scythe.png"
+  },
+  "Hammer": {
+   "file": "hammer.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Hammer.png"
+  },
+  "Hand Axe": {
+   "file": "hand-axe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Hand_Axe.png"
+  },
+  "Hand Ballista": {
+   "file": "hand-ballista.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Hand_Ballista.png"
+  },
+  "Hand of Malenia": {
+   "file": "hand-of-malenia.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Hand_of_Malenia.png"
+  },
+  "Harp Bow": {
+   "file": "harp-bow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Harp_Bow.png"
+  },
+  "Hawk Crest Wooden Shield": {
+   "file": "hawk-crest-wooden-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Hawk_Crest_Wooden_Shield.png"
+  },
+  "Heater Shield": {
+   "file": "heater-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Heater_Shield.png"
+  },
+  "Heavy Crossbow": {
+   "file": "heavy-crossbow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Heavy_Crossbow.png"
+  },
+  "Helphen's Steeple": {
+   "file": "helphen-s-steeple.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Helphen%27s_Steeple.png"
+  },
+  "Highland Axe": {
+   "file": "highland-axe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Highland_Axe.png"
+  },
+  "Hookclaws": {
+   "file": "hookclaws.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Hookclaws.png"
+  },
+  "Horn Bow": {
+   "file": "horn-bow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Horn_Bow.png"
+  },
+  "Horned Warrior's Greatsword": {
+   "file": "horned-warrior-s-greatsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Horned_Warrior%27s_Greatsword.png"
+  },
+  "Horned Warrior's Sword": {
+   "file": "horned-warrior-s-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Horned_Warrior%27s_Sword.png"
+  },
+  "Horse Crest Wooden Shield": {
+   "file": "horse-crest-wooden-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Horse_Crest_Wooden_Shield.png"
+  },
+  "Hoslow's Petal Whip": {
+   "file": "hoslow-s-petal-whip.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Hoslow%27s_Petal_Whip.png"
+  },
+  "Ice Crest Shield": {
+   "file": "ice-crest-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Ice_Crest_Shield.png"
+  },
+  "Icerind Hatchet": {
+   "file": "icerind-hatchet.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Icerind_Hatchet.png"
+  },
+  "Icon Shield": {
+   "file": "icon-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Icon_Shield.png"
+  },
+  "Igon's Greatbow": {
+   "file": "igon-s-greatbow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Igon%27s_Greatbow.png"
+  },
+  "Inquisitor's Girandole": {
+   "file": "inquisitor-s-girandole.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Inquisitor%27s_Girandole.png"
+  },
+  "Inseparable Sword": {
+   "file": "inseparable-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Inseparable_Sword.png"
+  },
+  "Inverted Hawk Heater Shield": {
+   "file": "inverted-hawk-heater-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Inverted_Hawk_Heater_Shield.png"
+  },
+  "Inverted Hawk Towershield": {
+   "file": "inverted-hawk-towershield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Inverted_Hawk_Towershield.png"
+  },
+  "Iron Ball": {
+   "file": "iron-ball.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Iron_Ball.png"
+  },
+  "Iron Cleaver": {
+   "file": "iron-cleaver.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Iron_Cleaver.png"
+  },
+  "Iron Greatsword": {
+   "file": "iron-greatsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Iron_Greatsword.png"
+  },
+  "Iron Roundshield": {
+   "file": "iron-roundshield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Iron_Roundshield.png"
+  },
+  "Iron Spear": {
+   "file": "iron-spear.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Iron_Spear.png"
+  },
+  "Ivory Sickle": {
+   "file": "ivory-sickle.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Ivory_Sickle.png"
+  },
+  "Jar Cannon": {
+   "file": "jar-cannon.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Jar_Cannon.png"
+  },
+  "Jawbone Axe": {
+   "file": "jawbone-axe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Jawbone_Axe.png"
+  },
+  "Jellyfish Shield": {
+   "file": "jellyfish-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Jellyfish_Shield.png"
+  },
+  "Katar": {
+   "file": "katar.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Katar.png"
+  },
+  "Kite Shield": {
+   "file": "kite-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Kite_Shield.png"
+  },
+  "Knight's Greatsword": {
+   "file": "knight-s-greatsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Knight%27s_Greatsword.png"
+  },
+  "Lamenting Visage": {
+   "file": "lamenting-visage.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Lamenting_Visage.png"
+  },
+  "Lance": {
+   "file": "lance.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Lance.png"
+  },
+  "Large Club": {
+   "file": "large-club.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Large_Club.png"
+  },
+  "Large Leather Shield": {
+   "file": "large-leather-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Large_Leather_Shield.png"
+  },
+  "Lazuli Glintstone Sword": {
+   "file": "lazuli-glintstone-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Lazuli_Glintstone_Sword.png"
+  },
+  "Leda's Sword": {
+   "file": "leda-s-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Leda%27s_Sword.png"
+  },
+  "Light Crossbow": {
+   "file": "light-crossbow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Light_Crossbow.png"
+  },
+  "Lightning Perfume Bottle": {
+   "file": "lightning-perfume-bottle.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Lightning_Perfume_Bottle.png"
+  },
+  "Lion Greatbow": {
+   "file": "lion-greatbow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Lion_Greatbow.png"
+  },
+  "Lizard Greatsword": {
+   "file": "lizard-greatsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Lizard_Greatsword.png"
+  },
+  "Longbow": {
+   "file": "longbow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Longbow.png"
+  },
+  "Longhaft Axe": {
+   "file": "longhaft-axe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Longhaft_Axe.png"
+  },
+  "Longsword": {
+   "file": "longsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Longsword.png"
+  },
+  "Lordsworn's Greatsword": {
+   "file": "lordsworn-s-greatsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Lordsworn%27s_Greatsword.png"
+  },
+  "Lordsworn's Shield": {
+   "file": "lordsworn-s-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Lordsworn%27s_Shield.png"
+  },
+  "Lordsworn's Straight Sword": {
+   "file": "lordsworn-s-straight-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Lordsworn%27s_Straight_Sword.png"
+  },
+  "Loretta's War Sickle": {
+   "file": "loretta-s-war-sickle.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Loretta%27s_War_Sickle.png"
+  },
+  "Lucerne": {
+   "file": "lucerne.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Lucerne.png"
+  },
+  "Lusat's Glintstone Staff": {
+   "file": "lusat-s-glintstone-staff.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Lusat%27s_Glintstone_Staff.png"
+  },
+  "Mace": {
+   "file": "mace.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Mace.png"
+  },
+  "Madding Hand": {
+   "file": "madding-hand.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Madding_Hand.png"
+  },
+  "Magma Blade": {
+   "file": "magma-blade.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Magma_Blade.png"
+  },
+  "Magma Whip Candlestick": {
+   "file": "magma-whip-candlestick.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Magma_Whip_Candlestick.png"
+  },
+  "Magma Wyrm's Scalesword": {
+   "file": "magma-wyrm-s-scalesword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Magma_Wyrm%27s_Scalesword.png"
+  },
+  "Main-gauche": {
+   "file": "main-gauche.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Main-gauche.png"
+  },
+  "Maliketh's Black Blade": {
+   "file": "maliketh-s-black-blade.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Maliketh%27s_Black_Blade.png"
+  },
+  "Man-Serpent's Shield": {
+   "file": "man-serpent-s-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Man-Serpent%27s_Shield.png"
+  },
+  "Manor Towershield": {
+   "file": "manor-towershield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Manor_Towershield.png"
+  },
+  "Mantis Blade": {
+   "file": "mantis-blade.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Mantis_Blade.png"
+  },
+  "Marais Executioner's Sword": {
+   "file": "marais-executioner-s-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Marais_Executioner%27s_Sword.png"
+  },
+  "Marika's Hammer": {
+   "file": "marika-s-hammer.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Marika%27s_Hammer.png"
+  },
+  "Marred Leather Shield": {
+   "file": "marred-leather-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Marred_Leather_Shield.png"
+  },
+  "Marred Wooden Shield": {
+   "file": "marred-wooden-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Marred_Wooden_Shield.png"
+  },
+  "Maternal Staff": {
+   "file": "maternal-staff.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Maternal_Staff.png"
+  },
+  "Messmer Soldier Shield": {
+   "file": "messmer-soldier-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Messmer_Soldier_Shield.png"
+  },
+  "Messmer Soldier's Axe": {
+   "file": "messmer-soldier-s-axe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Messmer_Soldier%27s_Axe.png"
+  },
+  "Messmer Soldier's Spear": {
+   "file": "messmer-soldier-s-spear.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Messmer_Soldier%27s_Spear.png"
+  },
+  "Meteoric Ore Blade": {
+   "file": "meteoric-ore-blade.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Meteoric_Ore_Blade.png"
+  },
+  "Meteorite Staff": {
+   "file": "meteorite-staff.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Meteorite_Staff.png"
+  },
+  "Milady": {
+   "file": "milady.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Milady.png"
+  },
+  "Miquellan Knight's Sword": {
+   "file": "miquellan-knight-s-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Miquellan_Knight%27s_Sword.png"
+  },
+  "Misbegotten Shortbow": {
+   "file": "misbegotten-shortbow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Misbegotten_Shortbow.png"
+  },
+  "Miséricorde": {
+   "file": "mis-ricorde.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Mis%C3%A9ricorde.png"
+  },
+  "Mohgwyn's Sacred Spear": {
+   "file": "mohgwyn-s-sacred-spear.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Mohgwyn%27s_Sacred_Spear.png"
+  },
+  "Monk's Flameblade": {
+   "file": "monk-s-flameblade.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Monk%27s_Flameblade.png"
+  },
+  "Monk's Flamemace": {
+   "file": "monk-s-flamemace.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Monk%27s_Flamemace.png"
+  },
+  "Moonrithyll's Knight Sword": {
+   "file": "moonrithyll-s-knight-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Troll_Knight%27s_Sword.png"
+  },
+  "Moonveil": {
+   "file": "moonveil.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Moonveil.png"
+  },
+  "Morgott's Cursed Sword": {
+   "file": "morgott-s-cursed-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Morgott%27s_Cursed_Sword.png"
+  },
+  "Morning Star": {
+   "file": "morning-star.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Morning_Star.png"
+  },
+  "Nagakiba": {
+   "file": "nagakiba.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Nagakiba.png"
+  },
+  "Nanaya's Torch": {
+   "file": "nanaya-s-torch.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Nanaya%27s_Torch.png"
+  },
+  "Nightrider Flail": {
+   "file": "nightrider-flail.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Nightrider_Flail.png"
+  },
+  "Nightrider Glaive": {
+   "file": "nightrider-glaive.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Nightrider_Glaive.png"
+  },
+  "Noble's Estoc": {
+   "file": "noble-s-estoc.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Noble%27s_Estoc.png"
+  },
+  "Noble's Slender Sword": {
+   "file": "noble-s-slender-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Noble%27s_Slender_Sword.png"
+  },
+  "Nox Flowing Hammer": {
+   "file": "nox-flowing-hammer.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Nox_Flowing_Hammer.png"
+  },
+  "Nox Flowing Sword": {
+   "file": "nox-flowing-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Nox_Flowing_Sword.png"
+  },
+  "Obsidian Lamina": {
+   "file": "obsidian-lamina.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Obsidian_Lamina.png"
+  },
+  "Omen Cleaver": {
+   "file": "omen-cleaver.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Omen_Cleaver.png"
+  },
+  "One-Eyed Shield": {
+   "file": "one-eyed-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_One-Eyed_Shield.png"
+  },
+  "Onyx Lord's Greatsword": {
+   "file": "onyx-lord-s-greatsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Onyx_Lord%27s_Greatsword.png"
+  },
+  "Ordovis's Greatsword": {
+   "file": "ordovis-s-greatsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Ordovis%27s_Greatsword.png"
+  },
+  "Ornamental Straight Sword": {
+   "file": "ornamental-straight-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Ornamental_Straight_Sword.png"
+  },
+  "Parrying Dagger": {
+   "file": "parrying-dagger.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Parrying_Dagger.png"
+  },
+  "Partisan": {
+   "file": "partisan.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Partisan.png"
+  },
+  "Pata": {
+   "file": "pata.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Pata.png"
+  },
+  "Perfumer's Shield": {
+   "file": "perfumer-s-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Perfumer%27s_Shield.png"
+  },
+  "Pest's Glaive": {
+   "file": "pest-s-glaive.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Pest%27s_Glaive.png"
+  },
+  "Pickaxe": {
+   "file": "pickaxe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Pickaxe.png"
+  },
+  "Pike": {
+   "file": "pike.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Pike.png"
+  },
+  "Pillory Shield": {
+   "file": "pillory-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Pillory_Shield.png"
+  },
+  "Poisoned Hand": {
+   "file": "poisoned-hand.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Poisoned_Hand.png"
+  },
+  "Poleblade of the Bud": {
+   "file": "poleblade-of-the-bud.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Poleblade_of_the_Bud.png"
+  },
+  "Prelate's Inferno Crozier": {
+   "file": "prelate-s-inferno-crozier.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Prelate%27s_Inferno_Crozier.png"
+  },
+  "Prince of Death's Staff": {
+   "file": "prince-of-death-s-staff.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Prince_of_Death%27s_Staff.png"
+  },
+  "Pulley Bow": {
+   "file": "pulley-bow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Pulley_Bow.png"
+  },
+  "Pulley Crossbow": {
+   "file": "pulley-crossbow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Pulley_Crossbow.png"
+  },
+  "Putrescence Cleaver": {
+   "file": "putrescence-cleaver.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Putrescence_Cleaver.png"
+  },
+  "Queelign's Greatsword": {
+   "file": "queelign-s-greatsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Queelign%27s_Greatsword.png"
+  },
+  "Rabbath's Cannon": {
+   "file": "rabbath-s-cannon.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Rabbath%27s_Cannon.png"
+  },
+  "Rakshasa's Great Katana": {
+   "file": "rakshasa-s-great-katana.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Rakshasa%27s_Great_Katana.png"
+  },
+  "Rapier": {
+   "file": "rapier.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Rapier.png"
+  },
+  "Raptor Talons": {
+   "file": "raptor-talons.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Raptor_Talons.png"
+  },
+  "Red Bear's Claw": {
+   "file": "red-bear-s-claw.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Red_Bear%27s_Claw.png"
+  },
+  "Red Branch Shortbow": {
+   "file": "red-branch-shortbow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Red_Branch_Shortbow.png"
+  },
+  "Red Crest Heater Shield": {
+   "file": "red-crest-heater-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Red_Crest_Heater_Shield.png"
+  },
+  "Red Thorn Roundshield": {
+   "file": "red-thorn-roundshield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Red_Thorn_Roundshield.png"
+  },
+  "Redmane Greatshield": {
+   "file": "redmane-greatshield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Redmane_Greatshield.png"
+  },
+  "Reduvia": {
+   "file": "reduvia.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Reduvia.png"
+  },
+  "Regalia of Eochaid": {
+   "file": "regalia-of-eochaid.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Regalia_of_Eochaid.png"
+  },
+  "Rellana's Twin Blades": {
+   "file": "rellana-s-twin-blades.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Rellana%27s_Twin_Blades.png"
+  },
+  "Repeating Crossbow": {
+   "file": "repeating-crossbow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Repeating_Crossbow.png"
+  },
+  "Rickety Shield": {
+   "file": "rickety-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Rickety_Shield.png"
+  },
+  "Rift Shield": {
+   "file": "rift-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Rift_Shield.png"
+  },
+  "Ringed Finger": {
+   "file": "ringed-finger.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Ringed_Finger.png"
+  },
+  "Ripple Blade": {
+   "file": "ripple-blade.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Ripple_Blade.png"
+  },
+  "Ripple Crescent Halberd": {
+   "file": "ripple-crescent-halberd.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Ripple_Crescent_Halberd.png"
+  },
+  "Rivers of Blood": {
+   "file": "rivers-of-blood.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Rivers_of_Blood.png"
+  },
+  "Riveted Wooden Shield": {
+   "file": "riveted-wooden-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Riveted_Wooden_Shield.png"
+  },
+  "Rogier's Rapier": {
+   "file": "rogier-s-rapier.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Rogier%27s_Rapier.png"
+  },
+  "Rosus' Axe": {
+   "file": "rosus-axe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Rosus%27_Axe.png"
+  },
+  "Rotten Battle Hammer": {
+   "file": "rotten-battle-hammer.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Rotten_Battle_Hammer.png"
+  },
+  "Rotten Crystal Spear": {
+   "file": "rotten-crystal-spear.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Rotten_Crystal_Spear.png"
+  },
+  "Rotten Crystal Staff": {
+   "file": "rotten-crystal-staff.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Rotten_Crystal_Staff.png"
+  },
+  "Rotten Crystal Sword": {
+   "file": "rotten-crystal-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Rotten_Crystal_Sword.png"
+  },
+  "Rotten Greataxe": {
+   "file": "rotten-greataxe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Rotten_Greataxe.png"
+  },
+  "Rotten Staff": {
+   "file": "rotten-staff.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Rotten_Staff.png"
+  },
+  "Round Shield": {
+   "file": "round-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Round_Shield.png"
+  },
+  "Royal Greatsword": {
+   "file": "royal-greatsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Royal_Greatsword.png"
+  },
+  "Ruins Greatsword": {
+   "file": "ruins-greatsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Ruins_Greatsword.png"
+  },
+  "Rusted Anchor": {
+   "file": "rusted-anchor.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Rusted_Anchor.png"
+  },
+  "Sacred Relic Sword": {
+   "file": "sacred-relic-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Sacred_Relic_Sword.png"
+  },
+  "Sacrificial Axe": {
+   "file": "sacrificial-axe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Sacrificial_Axe.png"
+  },
+  "Scavenger's Curved Sword": {
+   "file": "scavenger-s-curved-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Scavenger%27s_Curved_Sword.png"
+  },
+  "Scepter of the All-Knowing": {
+   "file": "scepter-of-the-all-knowing.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Scepter_of_the_All-Knowing.png"
+  },
+  "Scimitar": {
+   "file": "scimitar.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Scimitar.png"
+  },
+  "Scorpion Kite Shield": {
+   "file": "scorpion-kite-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Scorpion_Kite_Shield.png"
+  },
+  "Scorpion's Stinger": {
+   "file": "scorpion-s-stinger.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Scorpion%27s_Stinger.png"
+  },
+  "Scripture Wooden Shield": {
+   "file": "scripture-wooden-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Scripture_Wooden_Shield.png"
+  },
+  "Scythe": {
+   "file": "scythe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Scythe.png"
+  },
+  "Sentry's Torch": {
+   "file": "sentry-s-torch.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Sentry%27s_Torch.png"
+  },
+  "Serpent Bow": {
+   "file": "serpent-bow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Serpent_Bow.png"
+  },
+  "Serpent Crest Shield": {
+   "file": "serpent-crest-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Shield_Serpent_Crest_Shield.png"
+  },
+  "Serpent Flail": {
+   "file": "serpent-flail.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Serpent_Flail.png"
+  },
+  "Serpent-God's Curved Sword": {
+   "file": "serpent-god-s-curved-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Serpent-God%27s_Curved_Sword.png"
+  },
+  "Serpent-Hunter": {
+   "file": "serpent-hunter.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Serpent-Hunter.png"
+  },
+  "Serpentbone Blade": {
+   "file": "serpentbone-blade.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Serpentbone_Blade.png"
+  },
+  "Shadow Sunflower Blossom": {
+   "file": "shadow-sunflower-blossom.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Shadow_Sunflower_Blossom.png"
+  },
+  "Shamshir": {
+   "file": "shamshir.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Shamshir.png"
+  },
+  "Shield of Night": {
+   "file": "shield-of-night.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Shield_of_Night.png"
+  },
+  "Shield of the Guilty": {
+   "file": "shield-of-the-guilty.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Shield_of_the_Guilty.png"
+  },
+  "Short Spear": {
+   "file": "short-spear.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Short_Spear.png"
+  },
+  "Short Sword": {
+   "file": "short-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Short_Sword.png"
+  },
+  "Shortbow": {
+   "file": "shortbow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Shortbow.png"
+  },
+  "Shotel": {
+   "file": "shotel.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Shotel.png"
+  },
+  "Siluria's Tree": {
+   "file": "siluria-s-tree.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Siluria%27s_Tree.png"
+  },
+  "Silver Mirrorshield": {
+   "file": "silver-mirrorshield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Silver_Mirrorshield.png"
+  },
+  "Smithscript Axe": {
+   "file": "smithscript-axe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Smithscript_Axe.png"
+  },
+  "Smithscript Cirque": {
+   "file": "smithscript-cirque.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Smithscript_Cirque.png"
+  },
+  "Smithscript Dagger": {
+   "file": "smithscript-dagger.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Smithscript_Dagger.png"
+  },
+  "Smithscript Greathammer": {
+   "file": "smithscript-greathammer.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Smithscript_Greathammer.png"
+  },
+  "Smithscript Shield": {
+   "file": "smithscript-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Shield_Smithscript_Shield.png"
+  },
+  "Smithscript Spear": {
+   "file": "smithscript-spear.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Smithscript_Spear.png"
+  },
+  "Smoldering Shield": {
+   "file": "smoldering-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Smoldering_Shield.png"
+  },
+  "Soldier's Crossbow": {
+   "file": "soldier-s-crossbow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Soldier%27s_Crossbow.png"
+  },
+  "Spear": {
+   "file": "spear.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Spear.png"
+  },
+  "Spear of the Impaler": {
+   "file": "spear-of-the-impaler.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Spear_of_the_Impaler.png"
+  },
+  "Spiked Caestus": {
+   "file": "spiked-caestus.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Spiked_Caestus.png"
+  },
+  "Spiked Club": {
+   "file": "spiked-club.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Spiked_Club.png"
+  },
+  "Spiked Palisade Shield": {
+   "file": "spiked-palisade-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Spiked_Palisade_Shield.png"
+  },
+  "Spiked Spear": {
+   "file": "spiked-spear.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Spiked_Spear.png"
+  },
+  "Spiralhorn Shield": {
+   "file": "spiralhorn-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Spiralhorn_Shield.png"
+  },
+  "Spiraltree Seal": {
+   "file": "spiraltree-seal.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Spiraltree_Seal.png"
+  },
+  "Spirit Glaive": {
+   "file": "spirit-glaive.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Spirit_Glaive.png"
+  },
+  "Spirit Sword": {
+   "file": "spirit-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Spirit_Sword.png"
+  },
+  "Spread Crossbow": {
+   "file": "spread-crossbow.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Spread_Crossbow.png"
+  },
+  "St. Trina's Torch": {
+   "file": "st-trina-s-torch.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_St._Trina%27s_Torch.png"
+  },
+  "Staff of Loss": {
+   "file": "staff-of-loss.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Staff_of_Loss.png"
+  },
+  "Staff of the Avatar": {
+   "file": "staff-of-the-avatar.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Staff_of_the_Avatar.png"
+  },
+  "Staff of the Great Beyond": {
+   "file": "staff-of-the-great-beyond.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Staff_of_the_Great_Beyond.png"
+  },
+  "Staff of the Guilty": {
+   "file": "staff-of-the-guilty.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Staff_of_the_Guilty.png"
+  },
+  "Star Fist": {
+   "file": "star-fist.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Star_Fist.png"
+  },
+  "Star-Lined Sword": {
+   "file": "star-lined-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Star-Lined_Sword.png"
+  },
+  "Starscourge Greatsword": {
+   "file": "starscourge-greatsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Starscourge_Greatsword.png"
+  },
+  "Steel-Wire Torch": {
+   "file": "steel-wire-torch.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Steel-Wire_Torch.png"
+  },
+  "Stone Club": {
+   "file": "stone-club.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Stone_Club.png"
+  },
+  "Stone-Sheathed Sword": {
+   "file": "stone-sheathed-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Stone-Sheathed_Sword.png"
+  },
+  "Stormhawk Axe": {
+   "file": "stormhawk-axe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Stormhawk_Axe.png"
+  },
+  "Sun Realm Shield": {
+   "file": "sun-realm-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Sun_Realm_Shield.png"
+  },
+  "Swift Spear": {
+   "file": "swift-spear.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Swift_Spear.png"
+  },
+  "Sword Lance": {
+   "file": "sword-lance.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Sword_Lance.png"
+  },
+  "Sword of Darkness": {
+   "file": "sword-of-darkness.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Sword_of_Darkness.png"
+  },
+  "Sword of Light": {
+   "file": "sword-of-light.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Sword_of_Light.png"
+  },
+  "Sword of Milos": {
+   "file": "sword-of-milos.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Sword_of_Milos.png"
+  },
+  "Sword of Night": {
+   "file": "sword-of-night.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Sword_of_Night.png"
+  },
+  "Sword of Night and Flame": {
+   "file": "sword-of-night-and-flame.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Sword_of_Night_and_Flame.png"
+  },
+  "Sword of St. Trina": {
+   "file": "sword-of-st-trina.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Sword_of_St._Trina.png"
+  },
+  "Thiollier's Hidden Needle": {
+   "file": "thiollier-s-hidden-needle.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Thiollier%27s_Hidden_Needle.png"
+  },
+  "Thorned Whip": {
+   "file": "thorned-whip.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Thorned_Whip.png"
+  },
+  "Tooth Whip": {
+   "file": "tooth-whip.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Tooth_Whip.png"
+  },
+  "Torch": {
+   "file": "torch.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Torch.png"
+  },
+  "Torchpole": {
+   "file": "torchpole.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Torchpole.png"
+  },
+  "Treespear": {
+   "file": "treespear.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Treespear.png"
+  },
+  "Troll Knight's Sword": {
+   "file": "troll-knight-s-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Troll_Knight%27s_Sword.png"
+  },
+  "Troll's Golden Sword": {
+   "file": "troll-s-golden-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Troll%27s_Golden_Sword.png"
+  },
+  "Troll's Hammer": {
+   "file": "troll-s-hammer.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Troll%27s_Hammer.png"
+  },
+  "Twinbird Kite Shield": {
+   "file": "twinbird-kite-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Twinbird_Kite_Shield.png"
+  },
+  "Twinblade": {
+   "file": "twinblade.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Twinblade.png"
+  },
+  "Twinned Knight Swords": {
+   "file": "twinned-knight-swords.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Twinned_Knight_Swords.png"
+  },
+  "Uchigatana": {
+   "file": "uchigatana.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Uchigatana.png"
+  },
+  "Urumi": {
+   "file": "urumi.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Urumi.png"
+  },
+  "Varré's Bouquet": {
+   "file": "varr-s-bouquet.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Varr%C3%A9%27s_Bouquet.png"
+  },
+  "Velvet Sword of St. Trina": {
+   "file": "velvet-sword-of-st-trina.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Weapon_Velvet_Sword_of_St._Trina.png"
+  },
+  "Venomous Fang": {
+   "file": "venomous-fang.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Venomous_Fang.png"
+  },
+  "Verdigris Greatshield": {
+   "file": "verdigris-greatshield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Shield_Verdigris_Greatshield.png"
+  },
+  "Veteran's Prosthesis": {
+   "file": "veteran-s-prosthesis.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Veteran%27s_Prosthesis.png"
+  },
+  "Visage Shield": {
+   "file": "visage-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Visage_Shield.png"
+  },
+  "Vulgar Militia Saw": {
+   "file": "vulgar-militia-saw.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Vulgar_Militia_Saw.png"
+  },
+  "Vulgar Militia Shotel": {
+   "file": "vulgar-militia-shotel.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Vulgar_Militia_Shotel.png"
+  },
+  "Vyke's War Spear": {
+   "file": "vyke-s-war-spear.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Vyke%27s_War_Spear.png"
+  },
+  "Wakizashi": {
+   "file": "wakizashi.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Wakizashi.png"
+  },
+  "Warhawk's Talon": {
+   "file": "warhawk-s-talon.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Warhawk%27s_Talon.png"
+  },
+  "Warped Axe": {
+   "file": "warped-axe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Warped_Axe.png"
+  },
+  "Warpick": {
+   "file": "warpick.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Warpick.png"
+  },
+  "Watchdog's Greatsword": {
+   "file": "watchdog-s-greatsword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Watchdog%27s_Greatsword.png"
+  },
+  "Watchdog's Staff": {
+   "file": "watchdog-s-staff.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Watchdog%27s_Staff.png"
+  },
+  "Weathered Straight Sword": {
+   "file": "weathered-straight-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Weathered_Straight_Sword.png"
+  },
+  "Whip": {
+   "file": "whip.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Whip.png"
+  },
+  "Wing of Astel": {
+   "file": "wing-of-astel.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Wing_of_Astel.png"
+  },
+  "Winged Greathorn": {
+   "file": "winged-greathorn.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Winged_Greathorn.png"
+  },
+  "Winged Scythe": {
+   "file": "winged-scythe.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Winged_Scythe.png"
+  },
+  "Wolf Crest Shield": {
+   "file": "wolf-crest-shield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_Shield_Wolf_Crest_Shield.png"
+  },
+  "Wooden Greatshield": {
+   "file": "wooden-greatshield.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_shield_Wooden_Greatshield.png"
+  },
+  "Zamor Curved Sword": {
+   "file": "zamor-curved-sword.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Zamor_Curved_Sword.png"
+  },
+  "Zweihander": {
+   "file": "zweihander.webp",
+   "source": "https://eldenring.wiki.gg/wiki/File:ER_Icon_weapon_Zweihander.png"
+  }
+ }
+}
