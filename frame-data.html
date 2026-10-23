@@ -403,6 +403,8 @@ function openMove(key){
   $('#sheet').hidden=false;$('#scrim').hidden=false;$('#close').focus()}
 // 3D preview, docked above the table: one viewer per game with exported models (games.json "models"); clicking a
 // row it covers swaps the move in place, other rows open the detail sheet
+// Bump ?v= whenever viewer3d.js changes: browsers and Pages cache it, and a stale copy next to a new page breaks the dock
+const VIEWER='./frame-data/viewer3d.js?v=2';
 const DOCK={key:null,view:null,game:null,cls:null,seq:0};
 function frameState(m,f){
   const inW=w=>w.some(([s,e])=>f>=s&&f<=e),last=m.active[m.active.length-1][1];
@@ -413,7 +415,7 @@ async function dock(list){
   const sec=$('#dock'),seq=++DOCK.seq;
   if(!G.models||!st.cls){sec.hidden=true;return}
   try{
-    const v=await import('./frame-data/viewer3d.js'),man=await v.manifest(G.models);
+    const v=await import(VIEWER),man=await v.manifest(G.models);
     if(seq!==DOCK.seq)return;
     const ok=list.filter(m=>man.moves[m.class+'|'+m.id]);
     if(!ok.length){sec.hidden=true;return}
@@ -429,7 +431,7 @@ async function preview(m){
   document.querySelector(`tbody tr[data-m="${CSS.escape(key)}"]`)?.classList.add('on');
   $('#dockSrc').textContent=`${CL[m.class].name} › ${T[m.type].name} · ${GRIP[m.grip]}`;
   $('#dockName').textContent=`${m.name} · startup ${m.startup}, active ${m.active.map(([s,e])=>s===e?s:s+'–'+e).join(', ')}`;
-  const view=await DOCK.view,man=await (await import('./frame-data/viewer3d.js')).manifest(G.models);
+  const view=await DOCK.view,man=await (await import(VIEWER)).manifest(G.models);
   if(DOCK.key!==key)return;
   view.show(m,{strip:stripHtml(m,man.moves[key].frames),state:f=>frameState(m,f)});
 }
