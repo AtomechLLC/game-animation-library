@@ -1,0 +1,78 @@
+{
+ "fps": 60,
+ "kinds": {
+  "p": "Hurtbox",
+  "v": "Other vulnerability",
+  "a": "Attack",
+  "t": "Throw",
+  "ta": "Throwable",
+  "pu": "Pushbox"
+ },
+ "source": {
+  "name": "Baston",
+  "url": "http://ensabahnur.free.fr/BastonNew/",
+  "author": "ensabahnur"
+ },
+ "classes": {
+  "alex": {
+   "file": "moves/alex.json"
+  },
+  "ryu": {
+   "file": "moves/ryu.json"
+  },
+  "yun": {
+   "file": "moves/yun.json"
+  },
+  "dudley": {
+   "file": "moves/dudley.json"
+  },
+  "necro": {
+   "file": "moves/necro.json"
+  },
+  "hugo": {
+   "file": "moves/hugo.json"
+  },
+  "ibuki": {
+   "file": "moves/ibuki.json"
+  },
+  "elena": {
+   "file": "moves/elena.json"
+  },
+  "oro": {
+   "file": "moves/oro.json"
+  },
+  "yang": {
+   "file": "moves/yang.json"
+  },
+  "ken": {
+   "file": "moves/ken.json"
+  },
+  "sean": {
+   "file": "moves/sean.json"
+  },
+  "urien": {
+   "file": "moves/urien.json"
+  },
+  "gouki": {
+   "file": "moves/gouki.json"
+  },
+  "chun-li": {
+   "file": "moves/chun-li.json"
+  },
+  "makoto": {
+   "file": "moves/makoto.json"
+  },
+  "q": {
+   "file": "moves/q.json"
+  },
+  "twelve": {
+   "file": "moves/twelve.json"
+  },
+  "remy": {
+   "file": "moves/remy.json"
+  },
+  "gill": {
+   "file": "moves/gill.json"
+  }
+ }
+}
