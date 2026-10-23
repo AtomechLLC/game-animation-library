@@ -1,0 +1,402 @@
+[
+ {
+  "id": "oneHanded-quickStepFront",
+  "label": "Quickstep forward",
+  "want": "quickstep / dodge"
+ },
+ {
+  "id": "oneHanded-quickStepBack",
+  "label": "Quickstep back",
+  "want": "quickstep / dodge"
+ },
+ {
+  "id": "oneHanded-quickStepL",
+  "label": "Quickstep left",
+  "want": "quickstep / dodge"
+ },
+ {
+  "id": "oneHanded-quickStepR",
+  "label": "Quickstep right",
+  "want": "quickstep / dodge"
+ },
+ {
+  "id": "oneHanded-quickStepL45",
+  "label": "Quickstep forward-left",
+  "want": "quickstep / dodge"
+ },
+ {
+  "id": "oneHanded-quickStepR45",
+  "label": "Quickstep forward-right",
+  "want": "quickstep / dodge"
+ },
+ {
+  "id": "oneHanded-quickStepL135",
+  "label": "Quickstep back-left",
+  "want": "quickstep / dodge"
+ },
+ {
+  "id": "oneHanded-quickStepR135",
+  "label": "Quickstep back-right",
+  "want": "quickstep / dodge"
+ },
+ {
+  "id": "oneHanded-quickStepRunL90",
+  "label": "Quickstep left out of a run",
+  "want": "quickstep / dodge"
+ },
+ {
+  "id": "oneHanded-quickStepRunR90",
+  "label": "Quickstep right out of a run",
+  "want": "quickstep / dodge"
+ },
+ {
+  "id": "oneHanded-quickStepRunBack180",
+  "label": "Quickstep turning back out of a run",
+  "want": "quickstep / dodge"
+ },
+ {
+  "id": "oneHanded-roll",
+  "label": "Roll forward",
+  "want": "dodge roll"
+ },
+ {
+  "id": "oneHanded-combatRoll",
+  "label": "Roll forward (combat stance)",
+  "want": "dodge roll"
+ },
+ {
+  "id": "oneHanded-combatRollBack",
+  "label": "Roll back",
+  "want": "dodge roll"
+ },
+ {
+  "id": "oneHanded-combatRollL90",
+  "label": "Roll left",
+  "want": "dodge roll"
+ },
+ {
+  "id": "oneHanded-combatRollR90",
+  "label": "Roll right",
+  "want": "dodge roll"
+ },
+ {
+  "id": "oneHanded-rollToIdle",
+  "label": "Roll recovery to idle",
+  "want": "dodge roll"
+ },
+ {
+  "id": "oneHanded-combatFatRoll",
+  "label": "Roll forward (overloaded)",
+  "want": "dodge roll"
+ },
+ {
+  "id": "oneHanded-combatFatRollL90",
+  "label": "Roll left (overloaded)",
+  "want": "dodge roll"
+ },
+ {
+  "id": "oneHanded-combatFatRoll180",
+  "label": "Roll turning back (overloaded)",
+  "want": "dodge roll"
+ },
+ {
+  "id": "oneHanded-sneakIdle",
+  "label": "Crouch idle (sneak)",
+  "want": "crouch idle"
+ },
+ {
+  "id": "oneHanded-sneakWalk",
+  "label": "Crouch walk (sneak)",
+  "want": "crouch walk"
+ },
+ {
+  "id": "oneHanded-up0_5M",
+  "label": "Vault up a 0.5 m ledge",
+  "want": "vault (low)"
+ },
+ {
+  "id": "oneHanded-up1M",
+  "label": "Climb up a 1 m ledge",
+  "want": "mantle (low)"
+ },
+ {
+  "id": "oneHanded-up2M",
+  "label": "Climb up a 2 m ledge",
+  "want": "mantle (high)"
+ },
+ {
+  "id": "oneHanded-ledgeClamber",
+  "label": "Ledge clamber",
+  "want": "ledge climb"
+ },
+ {
+  "id": "oneHanded-ledgeClamberQuick",
+  "label": "Ledge clamber (quick)",
+  "want": "ledge climb"
+ },
+ {
+  "id": "oneHanded-autoJump",
+  "label": "Jump across a gap",
+  "want": "vault / jump gap"
+ },
+ {
+  "id": "greatHammers-quickStepFront",
+  "label": "Quickstep forward (heavy two-hander)",
+  "want": "quickstep / dodge"
+ },
+ {
+  "id": "greatHammers-quickStepBack",
+  "label": "Quickstep back (heavy two-hander)",
+  "want": "quickstep / dodge"
+ },
+ {
+  "id": "greatHammers-quickStepL",
+  "label": "Quickstep left (heavy two-hander)",
+  "want": "quickstep / dodge"
+ },
+ {
+  "id": "greatHammers-quickStepR",
+  "label": "Quickstep right (heavy two-hander)",
+  "want": "quickstep / dodge"
+ },
+ {
+  "id": "greatHammers-roll",
+  "label": "Roll forward (heavy two-hander)",
+  "want": "dodge roll"
+ },
+ {
+  "id": "greatHammers-combatRollBack",
+  "label": "Roll back (heavy two-hander)",
+  "want": "dodge roll"
+ },
+ {
+  "id": "greatHammers-combatRollL90",
+  "label": "Roll left (heavy two-hander)",
+  "want": "dodge roll"
+ },
+ {
+  "id": "greatHammers-sneakIdle",
+  "label": "Crouch idle (heavy two-hander)",
+  "want": "crouch idle"
+ },
+ {
+  "id": "greatHammers-sneakWalk",
+  "label": "Crouch walk (heavy two-hander)",
+  "want": "crouch walk"
+ },
+ {
+  "id": "greatHammers-up1M",
+  "label": "Climb up a 1 m ledge (heavy two-hander)",
+  "want": "mantle (low)"
+ },
+ {
+  "id": "greatHammers-up2M",
+  "label": "Climb up a 2 m ledge (heavy two-hander)",
+  "want": "mantle (high)"
+ },
+ {
+  "id": "greatHammers-up0_5M",
+  "label": "Vault up a 0.5 m ledge (heavy two-hander)",
+  "want": "vault (low)"
+ },
+ {
+  "id": "swimIdleBlendSpace-idle",
+  "label": "Swim idle (treading water)",
+  "want": "swim"
+ },
+ {
+  "id": "swimIdleBlendSpace-idleTurnL",
+  "label": "Swim idle turning left",
+  "want": "swim"
+ },
+ {
+  "id": "swimStokeBlendSpace-stroke",
+  "label": "Swim stroke (slow swim loop)",
+  "want": "swim"
+ },
+ {
+  "id": "swimStokeBlendSpace-strokeL",
+  "label": "Swim stroke turning left",
+  "want": "swim"
+ },
+ {
+  "id": "swimStokeBlendSpace-strokeR",
+  "label": "Swim stroke turning right",
+  "want": "swim"
+ },
+ {
+  "id": "swimCrawlBlendSpace-crawl",
+  "label": "Swim crawl (fast swim loop)",
+  "want": "swim"
+ },
+ {
+  "id": "swimCrawlBlendSpace-crawlL90",
+  "label": "Swim crawl turning left",
+  "want": "swim"
+ },
+ {
+  "id": "swimCrawlBlendSpace-crawlR90",
+  "label": "Swim crawl turning right",
+  "want": "swim"
+ },
+ {
+  "id": "swimStruggleBlendSpace-idleStruggle",
+  "label": "Swim struggle idle (out of stamina)",
+  "want": "swim"
+ },
+ {
+  "id": "swimStruggleBlendSpace-crawlStruggle",
+  "label": "Swim struggle forward (out of stamina)",
+  "want": "swim"
+ },
+ {
+  "id": "hero-drowned",
+  "label": "Drowning",
+  "want": "swim"
+ },
+ {
+  "id": "heroSneakingData-idleL",
+  "label": "Wall shimmy idle",
+  "want": "ledge hang / shimmy"
+ },
+ {
+  "id": "heroSneakingData-idleToSlidingL",
+  "label": "Wall shimmy start",
+  "want": "ledge hang / shimmy"
+ },
+ {
+  "id": "heroSneakingData-slidingL90",
+  "label": "Wall shimmy left",
+  "want": "ledge hang / shimmy"
+ },
+ {
+  "id": "heroSneakingData-slidingR90",
+  "label": "Wall shimmy right",
+  "want": "ledge hang / shimmy"
+ },
+ {
+  "id": "heroSneakingData-wallTap",
+  "label": "Wall shimmy tap",
+  "want": "ledge hang / shimmy"
+ },
+ {
+  "id": "heroSneakingData-exit",
+  "label": "Wall shimmy exit",
+  "want": "ledge hang / shimmy"
+ },
+ {
+  "id": "ladder-getOnBottom",
+  "label": "Ladder get on (bottom)",
+  "want": "ladder climb"
+ },
+ {
+  "id": "ladder-climbUp",
+  "label": "Ladder climb up",
+  "want": "ladder climb"
+ },
+ {
+  "id": "ladder-idleLFoot",
+  "label": "Ladder idle",
+  "want": "ladder climb"
+ },
+ {
+  "id": "ladder-getOffTop",
+  "label": "Ladder get off (top)",
+  "want": "ladder climb"
+ },
+ {
+  "id": "ladder-getOnTopSideStep",
+  "label": "Ladder get on (top)",
+  "want": "ladder climb"
+ },
+ {
+  "id": "ladder-slideDown",
+  "label": "Ladder slide down",
+  "want": "ladder climb"
+ },
+ {
+  "id": "ladder-slideDownToIdleLFoot",
+  "label": "Ladder slide stop",
+  "want": "ladder climb"
+ },
+ {
+  "id": "ladder-getOffBottom",
+  "label": "Ladder get off (bottom)",
+  "want": "ladder climb"
+ },
+ {
+  "id": "heroWallClimbingGetOnBottomData-getOnBottom",
+  "label": "Wall climb get on",
+  "want": "wall climb"
+ },
+ {
+  "id": "hero-getOnBottomFromRun",
+  "label": "Wall climb get on from a run",
+  "want": "wall climb"
+ },
+ {
+  "id": "hero-fallGrab",
+  "label": "Wall climb grab while falling",
+  "want": "wall climb"
+ },
+ {
+  "id": "climbIdleBlend-climbIdleLeft",
+  "label": "Wall climb idle",
+  "want": "wall climb"
+ },
+ {
+  "id": "climbMovementBlend-climbUp",
+  "label": "Wall climb up",
+  "want": "wall climb"
+ },
+ {
+  "id": "climbMovementBlend-climbDown",
+  "label": "Wall climb down",
+  "want": "wall climb"
+ },
+ {
+  "id": "climbMovementBlend-climbSideLeft",
+  "label": "Wall climb left",
+  "want": "wall climb"
+ },
+ {
+  "id": "climbMovementBlend-climbSideRight",
+  "label": "Wall climb right",
+  "want": "wall climb"
+ },
+ {
+  "id": "climbMovementBlend-climbDiagonalLeft",
+  "label": "Wall climb up-left",
+  "want": "wall climb"
+ },
+ {
+  "id": "climbFastMovementBlend-climbUpFast",
+  "label": "Wall climb up (fast)",
+  "want": "wall climb"
+ },
+ {
+  "id": "hero-getOnTopRight",
+  "label": "Wall climb get on (top)",
+  "want": "wall climb"
+ },
+ {
+  "id": "hero-ropeClimbingIn",
+  "label": "Rope climb get on",
+  "want": "rope climb"
+ },
+ {
+  "id": "hero-ropeClimbingSlow",
+  "label": "Rope climb up",
+  "want": "rope climb"
+ },
+ {
+  "id": "hero-ropeClimbingOut",
+  "label": "Rope climb get off (top)",
+  "want": "rope climb"
+ },
+ {
+  "id": "hero-ropeGetOnTopLeft",
+  "label": "Rope get on (top)",
+  "want": "rope climb"
+ }
+]
