@@ -104,8 +104,8 @@ export async function createViewer(el, base) {
   const sphereG = new THREE.SphereGeometry(1, 20, 12), cylG = new THREE.CylinderGeometry(1, 1, 1, 20, 1, true);
   const v1 = new THREE.Vector3(), v2 = new THREE.Vector3(), up = new THREE.Vector3(0, 1, 0);
   const pelvis = bone(sk.follow || 'Pelvis') || body, follow = new THREE.Vector3();
-  // Per-frame boxes (No Rest for the Wicked): the simulation's own collider transforms, in root motion space
-  const boxG = new THREE.BoxGeometry(2, 2, 2), q1 = new THREE.Quaternion(), q2 = new THREE.Quaternion(), qtmp = [0, 0, 0, 1];
+  // Weapon boxes (No Rest for the Wicked): the weapon's collider box in its hand socket's space
+  const boxG = new THREE.BoxGeometry(2, 2, 2), qtmp = [0, 0, 0, 1];
 
   // The move on show
   let info = null, anim = null, defHand = 'R', tracks = [], shapes = [], boxes = [], opts = {}, N = 1;
@@ -148,13 +148,8 @@ export async function createViewer(el, base) {
     const showAll = $('.v3d-ghost').checked, on = $('.v3d-hb').checked;
     for (const x of boxes) {
       const active = frame >= x.h.start && frame <= x.h.end;
-      x.m.visible = on && (active || showAll) && frame >= x.h.start && frame <= x.h.start + x.h.p.length - 1;
-      if (!x.m.visible) continue;
+      x.m.visible = on && (active || showAll);
       x.m.material = active ? mat : ghostMat;
-      const k = frame - x.h.start, p = x.h.p[k], q = x.h.q[k];
-      q1.set(q[0], q[1], q[2], q[3]);
-      x.m.position.set(x.b.o[0], x.b.o[1], x.b.o[2]).applyQuaternion(q1).add(v1.set(p[0], p[1], p[2]));
-      x.m.quaternion.copy(q1).multiply(q2.set(x.b.r[0], x.b.r[1], x.b.r[2], x.b.r[3]));
     }
     for (const x of shapes) {
       const active = frame >= x.h.start && frame <= x.h.end;
@@ -260,12 +255,13 @@ export async function createViewer(el, base) {
     for (const hand of ['R', 'L']) hold(hand, held.includes(hand) || dual ? name : null, weaponG);
     tracks = anim.bones.map(b => bone(b.name));
     for (const x of shapes) scene.remove(x.g);
-    for (const x of boxes) motion.remove(x.m);
+    for (const x of boxes) x.m.parent?.remove(x.m);
     shapes = []; boxes = [];
     const own = (c.boxes || {})[name] || {};
-    for (const h of info.hits) if (h.p && own[h.collider]) {
-      const b = own[h.collider], m = new THREE.Mesh(boxG, mat);
-      m.scale.set(b.e[0], b.e[1], b.e[2]); motion.add(m); boxes.push({h, b, m});
+    for (const h of info.hits) if (own[h.collider]) {
+      const b = own[h.collider], m = new THREE.Mesh(boxG, mat), sock = hands[b.hand || def].bone;
+      m.position.set(b.o[0], b.o[1], b.o[2]); m.quaternion.set(b.r[0], b.r[1], b.r[2], b.r[3]);
+      m.scale.set(b.e[0], b.e[1], b.e[2]); sock.add(m); boxes.push({h, b, m});
     }
     const atk = (c.attacks || {})[man.weapons[name].variation] || {};
     for (const h of info.hits) for (const s of atk[h.judge] || []) {

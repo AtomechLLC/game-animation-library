@@ -140,14 +140,18 @@ meshes, textures and Mecanim clips; no AssetRipper or FBX step):
 - `anim/<action>.bin`: the action's clips (qanim → SourceAnim → AnimationClip; streamed Hermite, dense and constant
   curves) at 60 fps, `FDA2` with the header's spare byte = 2: bone poses every second frame, which the viewer
   interpolates; root motion (root_JNT's translation) every frame. Only the 114 bones the armor skins are kept.
-- `moves/<class>.json`: per move its `anim`, `frames`, preview `weapon` and `hits`, each with the simulation's own
-  per-frame collider transform (`p`, `q`, in root_JNT space, from the action's baked WeaponColliders curves; forward
-  kinematics of the clip reproduces them to the millimetre), and `boxes` per weapon: its ColliderData box per collider
-  id (`e` half extents, `o` centre, `r` rotation). A box runs from its Offset along the socket's +Y for twice its
-  Y extent, which matches each weapon's own trail markers.
+- `moves/<class>.json`: per move its `anim`, `frames`, preview `weapon` and `hits` (window and collider id), and
+  `boxes` per weapon: its ColliderData box per collider id (`e` half extents, `o` centre, `r` rotation, `hand` L for
+  left-hand colliders), drawn on the hand socket. A box runs from its Offset along the socket's +Y for twice its Y
+  extent: that lands on each weapon's own mesh (Claymore blade, scythe head, spear shaft).
+- Timing: the game retimes clips (segment `RetimingFrames`, an Animations FrameCount shorter than the clip). Each
+  action's baked WeaponColliders curves record the hand socket's path per game frame (root_JNT space, rotation
+  included), so the exporter time-warps the clip to follow that path and uses the result when it stays within 8 cm
+  while the hitbox is out (about half the moves); otherwise the clip plays at its own speed. On those moves the baked
+  path doesn't follow the visual clip at any timing, which is why boxes are anchored to the socket, not to the path.
 
-About 32 MB in all: 19 MB of animation for 558 actions (1,339 moves), 11 MB of weapon models (162), 1.2 MB of
-armor, 1.7 MB of move files. Not covered yet: other armor sets (`EXPORT`), runes' projectiles and spawned areas
+About 33 MB in all: 18 MB of animation for 558 actions (1,339 moves), 13 MB of weapon models (162; Gutterpig and
+Reibach's Claws have no mesh yet), 1.2 MB of armor and the move files. Not covered yet: other armor sets (`EXPORT`), runes' projectiles and spawned areas
 (their active frames show, no shape), and cloth.
 
 These are Moon Studios' assets, under the same terms as the Elden Ring files above.
