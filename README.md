@@ -39,14 +39,18 @@ To add animations: append lines to taxonomy.txt, rebuild index.json, rerun merge
 
 ## Elden Ring renders
 
-`tools/er_gifs/` renders moves from the Frame Data tab's 3D preview to animated WebP for library entries whose clips
-are missing or weak. `jobs.json` maps an entry to an Elden Ring class and move id; `node tools/er_gifs/render.js`
-(Playwright + ffmpeg) loads `render.html`, which runs `frame-data/viewer3d.js` paused and steps it frame by frame,
-crops every frame to the character over the whole move and writes `gifs/<entry>-er<n>.webp` (360 px, 15 fps). Then
-`python tools/er_gifs/add_to_library.py` adds each render to its entry (host `Elden Ring render`, linked to the move
-in the Frame Data tab) and to `added` in `gif-screening.json`. The preview only holds weapon movesets (attacks,
-criticals), so only attack-type entries can be filled this way.
+`tools/er_gifs/` renders Elden Ring animations with the Frame Data tab's 3D preview to animated WebP for library
+entries. `jobs.json` maps an entry to a class and move id (or several ids played in a row); `node tools/er_gifs/render.js`
+(Playwright + ffmpeg) loads `render.html`, which runs `frame-data/viewer3d.js` paused, seeks it frame by frame, reads each
+frame off the canvas, crops to the character over the whole job and writes `gifs/<entry>-er<n>.webp` (360 px, 15 fps).
+Then `python tools/er_gifs/add_to_library.py` adds each render to its entry (and any `also` entries) with host
+`Elden Ring render`, and to `added` in `gif-screening.json`.
 
+Weapon moves come from the weapon classes. Rolls, backsteps, locomotion, hit reactions, guard, deaths, object actions and
+gestures come from the `Common` class: `python tools/frame_data/export_er_common.py "<install>"` bakes the ids listed in
+`tools/er_gifs/common_anims.json` (each with a label and what it was wanted for) into the same `anim/` folder.
+`render.js --sheet DIR [id or want ...]` draws 8-frame contact sheets of those ids, which is how the ids in `jobs.json`
+were picked. Clips the game shows against props (ladder, door, item) are rendered without the prop.
 ## Removed GIFs (blocklist)
 
 `gif-blocklist.json` lists GIFs removed for good on the review page: their `page_url`, `media_url`, `source_url` and the

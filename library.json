@@ -192,6 +192,20 @@
       "confidence": "high",
       "what": "M. Bison's guard-up idle loop beside an alternate-colour Bison"
      }
+    },
+    {
+     "page_url": "gifs/locomotion.combat-idle-stance-er0.webp",
+     "media_url": "",
+     "title": "Two-handed idle stance, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/locomotion.combat-idle-stance-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Player idle holding the sword two-handed, breathing loop"
+     }
     }
    ]
   },
@@ -371,6 +385,20 @@
       "confidence": "high",
       "what": "Knight advances through a dark cave, sword ready, as a skeleton beast closes in"
      }
+    },
+    {
+     "page_url": "gifs/exploration.walk-cycle-er0.webp",
+     "media_url": "",
+     "title": "Walk forward, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/exploration.walk-cycle-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Player walk loop, two cycles"
+     }
     }
    ],
    "rejected_gifs": [
@@ -465,6 +493,20 @@
      "title": "Tarnished running/riding",
      "game": "Elden Ring",
      "host": "Tenor"
+    },
+    {
+     "page_url": "gifs/locomotion.run-cycle-er0.webp",
+     "media_url": "",
+     "title": "Run forward, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/locomotion.run-cycle-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Player run loop, two cycles"
+     }
     }
    ]
   },
@@ -552,6 +594,20 @@
      "host": "Tenor",
      "local": "gifs/locomotion.sprint-3.webp",
      "source_url": "https://media.tenor.com/vCxvUToMgzwAAAA1/running-call-of-duty-modern-warfare-iii-i'm-coming-to-you-i-am-otw-call-of-duty.webp"
+    },
+    {
+     "page_url": "gifs/locomotion.sprint-er0.webp",
+     "media_url": "",
+     "title": "Sprint, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/locomotion.sprint-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Player sprint loop, two cycles"
+     }
     }
    ]
   },
@@ -610,6 +666,20 @@
     }
    ],
    "gifs": [
+    {
+     "page_url": "gifs/locomotion.strafe-lock-on-movement-er0.webp",
+     "media_url": "",
+     "title": "Lock-on strafe left, then right, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/locomotion.strafe-lock-on-movement-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Locked-on strafe walk left, then right"
+     }
+    },
     {
      "page_url": "https://tenor.com/view/ocarina-of-time-the-legend-of-zelda-skulltula-zelda-nintendo-64-gif-23206980",
      "media_url": "https://media.tenor.com/AChRPJGD8EIAAAA1/ocarina-of-time-the-legend-of-zelda.webp",
@@ -717,6 +787,20 @@
       "confidence": "low",
       "what": "Sprite moonwalks backward across the club floor (weaker pick, sprite is small)"
      }
+    },
+    {
+     "page_url": "gifs/locomotion.backpedal-er0.webp",
+     "media_url": "",
+     "title": "Lock-on walk backward, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/locomotion.backpedal-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Locked-on walk backward loop"
+     }
     }
    ]
   },
@@ -774,6 +858,20 @@
     }
    ],
    "gifs": [
+    {
+     "page_url": "gifs/locomotion.turn-in-place-er0.webp",
+     "media_url": "",
+     "title": "Turn 180 in place, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/locomotion.turn-in-place-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Standing 180-degree turn in place"
+     }
+    },
     {
      "page_url": "https://tenor.com/view/scarfox-animation-puppet-rig-turn-around-gif-25050861",
      "media_url": "",
@@ -845,6 +943,20 @@
      "host": "Tenor",
      "local": "gifs/locomotion.start-stop-transitions-1.webp",
      "source_url": "https://media.tenor.com/w7LWit0idDkAAAA1/uncharted-4-nathan-drake-3rd-person-shooter-naughty-dog-video-game.webp"
+    },
+    {
+     "page_url": "gifs/locomotion.start-stop-transitions-er0.webp",
+     "media_url": "",
+     "title": "Sprint stop, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/locomotion.start-stop-transitions-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Skidding stop out of a sprint"
+     }
     }
    ]
   },
@@ -894,7 +1006,22 @@
      "note": "Data-driven locomotion technique explained with examples"
     }
    ],
-   "gifs": []
+   "gifs": [
+    {
+     "page_url": "gifs/locomotion.pivot-hard-turn-er0.webp",
+     "media_url": "",
+     "title": "Quick 180 turn, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/locomotion.pivot-hard-turn-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Quick pivot turn out of a run"
+     }
+    }
+   ]
   },
   {
    "id": "locomotion.jump",
@@ -969,6 +1096,20 @@
      "host": "Tenor",
      "local": "gifs/locomotion.jump-2.webp",
      "source_url": "https://media.tenor.com/9KfuKBskwUQAAAA1/spin-jump-super-mario-world-mario-spinning-jump-spinjump.webp"
+    },
+    {
+     "page_url": "gifs/locomotion.jump-er0.webp",
+     "media_url": "",
+     "title": "Running jump, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/locomotion.jump-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Running jump: takeoff, airborne, landing"
+     }
     }
    ]
   },
@@ -1118,6 +1259,20 @@
      "host": "Tenor",
      "local": "gifs/locomotion.fall-loop-1.webp",
      "source_url": "https://media.tenor.com/PfWp97HysKsAAAA1/tomb-raider-iii-3-remastered-lara-croft-falling-lara-croft-tomb-raider-lara-croft-falling-lara-croft-falls.webp"
+    },
+    {
+     "page_url": "gifs/locomotion.fall-loop-er0.webp",
+     "media_url": "",
+     "title": "Fall, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/locomotion.fall-loop-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Stepping off into a fall, then the airborne loop"
+     }
     }
    ]
   },
@@ -1183,6 +1338,20 @@
      "host": "Tenor",
      "local": "gifs/locomotion.landing-soft-hard-1.webp",
      "source_url": "https://media.tenor.com/wO2vYF9-yVcAAAA1/making-an-entrance-peni-parker-marvel-rivals-superhero-landing-marvel-games.webp"
+    },
+    {
+     "page_url": "gifs/locomotion.landing-soft-hard-er0.webp",
+     "media_url": "",
+     "title": "Soft landing, then heavy landing, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/locomotion.landing-soft-hard-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Light landing, then a heavy landing from height"
+     }
     }
    ]
   },
@@ -8029,6 +8198,20 @@
      "game": "For Honor",
      "media_url": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "gifs/defense.block-guard-er0.webp",
+     "media_url": "",
+     "title": "Shield guard, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/defense.block-guard-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Holding a shield up to guard"
+     }
     }
    ]
   },
@@ -8093,6 +8276,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Wolf deflects Genichiro's strikes in bursts of orange sparks"
+     }
+    },
+    {
+     "page_url": "gifs/defense.block-impact-guard-hit-er0.webp",
+     "media_url": "",
+     "title": "Shield guard hit, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/defense.block-impact-guard-hit-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Shield takes a medium hit while guarding"
      }
     }
    ]
@@ -8353,6 +8550,34 @@
      "host": "Tenor",
      "local": "gifs/defense.dodge-roll-3.webp",
      "source_url": "https://media.tenor.com/_4jn6BIHXpsAAAA1/enter-the-gungeon-roguelike-indie-games-dodgeroll.webp"
+    },
+    {
+     "page_url": "gifs/defense.dodge-roll-er0.webp",
+     "media_url": "",
+     "title": "Dodge roll (medium load), rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/defense.dodge-roll-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Forward dodge roll at medium equip load"
+     }
+    },
+    {
+     "page_url": "gifs/defense.dodge-roll-er1.webp",
+     "media_url": "",
+     "title": "Dodge rolls: light, medium, heavy load, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/defense.dodge-roll-er1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Forward roll at light, medium and heavy equip load in a row"
+     }
     }
    ]
   },
@@ -8467,6 +8692,20 @@
       "verdict": "unclear",
       "confidence": "low",
       "what": "Tiny isolated figure tumbling/rolling on a white background; source and move hard to identify"
+     }
+    },
+    {
+     "page_url": "gifs/defense.backstep-backflip-er0.webp",
+     "media_url": "",
+     "title": "Backstep (medium load), rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/defense.backstep-backflip-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Quick hop backward out of range"
      }
     }
    ]
@@ -9209,6 +9448,20 @@
      "title": "Fenrir wolf hit reaction",
      "game": "God of War Ragnarok",
      "host": "Tenor"
+    },
+    {
+     "page_url": "gifs/reactions.light-flinch-hit-react-er0.webp",
+     "media_url": "",
+     "title": "Small hit from the front, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/reactions.light-flinch-hit-react-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Small flinch from a hit in front"
+     }
     }
    ]
   },
@@ -9266,6 +9519,20 @@
     }
    ],
    "gifs": [
+    {
+     "page_url": "gifs/reactions.directional-hit-reaction-er0.webp",
+     "media_url": "",
+     "title": "Hit reactions from front, back, left, right, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/reactions.directional-hit-reaction-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Medium hit reaction from the front, back, left and right in turn"
+     }
+    },
     {
      "page_url": "https://tenor.com/view/flying-kick-ouch-hit-kick-kitana-gif-14317702",
      "title": "Baraka hit by flying kick",
@@ -9373,6 +9640,20 @@
      "host": "Tenor",
      "local": "gifs/reactions.heavy-stagger-2.webp",
      "source_url": "https://media.tenor.com/XIyf_MPosjUAAAA1/genichiro-sekiro-parry-deathblow.webp"
+    },
+    {
+     "page_url": "gifs/reactions.heavy-stagger-er0.webp",
+     "media_url": "",
+     "title": "Large hit from the front, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/reactions.heavy-stagger-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Heavy stagger from a large hit in front"
+     }
     }
    ]
   },
@@ -9522,6 +9803,20 @@
      "host": "Tenor",
      "local": "gifs/reactions.knockdown-2.webp",
      "source_url": "https://media.tenor.com/aGJBRlXOZAoAAAA1/makoto-street-fighter-sf3-3rd-strike-hurt.webp"
+    },
+    {
+     "page_url": "gifs/reactions.knockdown-er0.webp",
+     "media_url": "",
+     "title": "Knockdown and get up, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/reactions.knockdown-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knocked flat from the front, then getting up"
+     }
     }
    ]
   },
@@ -9949,6 +10244,20 @@
      "host": "Tenor",
      "local": "gifs/reactions.posture-break-0.webp",
      "source_url": "https://media.tenor.com/XIyf_MPosjUAAAA1/genichiro-sekiro-parry-deathblow.webp"
+    },
+    {
+     "page_url": "gifs/reactions.posture-break-er0.webp",
+     "media_url": "",
+     "title": "Stance break, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/reactions.posture-break-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Stance broken: stagger, dazed loop, recovery"
+     }
     }
    ]
   },
@@ -10435,6 +10744,20 @@
      "title": "Pixel sumo fighter blocking",
      "game": "Street Fighter II",
      "host": "Tenor"
+    },
+    {
+     "page_url": "gifs/reactions.block-stun-chip-damage-er0.webp",
+     "media_url": "",
+     "title": "Small guard hit, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/reactions.block-stun-chip-damage-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Small block stun on the shield"
+     }
     }
    ]
   },
@@ -10479,6 +10802,20 @@
      "host": "Tenor",
      "local": "gifs/reactions.pushback-on-block-0.webp",
      "source_url": "https://media.tenor.com/elxXI3KpP7IAAAA1/kbrad2007-street-fighter-5-im-gonna-block-this-wackass-mixup-kage-demon-airdash-combo-stun.webp"
+    },
+    {
+     "page_url": "gifs/reactions.pushback-on-block-er0.webp",
+     "media_url": "",
+     "title": "Guard pushback, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/reactions.pushback-on-block-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Pushed back while guarding"
+     }
     }
    ],
    "rejected_gifs": [
@@ -10577,6 +10914,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Player character is cut down and crumples to the floor"
+     }
+    },
+    {
+     "page_url": "gifs/death.death-collapse-er0.webp",
+     "media_url": "",
+     "title": "Death, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/death.death-collapse-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Stagger and collapse to the ground"
      }
     }
    ],
@@ -15659,6 +16010,20 @@
       "confidence": "high",
       "what": "The robed traveler walks off across the desert ruins"
      }
+    },
+    {
+     "page_url": "gifs/exploration.walk-cycle-er0.webp",
+     "media_url": "",
+     "title": "Walk forward, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/exploration.walk-cycle-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Player walk loop, two cycles"
+     }
     }
    ],
    "rejected_gifs": [
@@ -15736,6 +16101,20 @@
       "verdict": "meme",
       "confidence": "low",
       "what": "Hand-drawn 2D fan-art run cycle of an anime girl on a cream background; not game footage"
+     }
+    },
+    {
+     "page_url": "gifs/locomotion.run-cycle-er0.webp",
+     "media_url": "",
+     "title": "Run forward, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/locomotion.run-cycle-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Player run loop, two cycles"
      }
     }
    ]
@@ -16017,6 +16396,20 @@
       "verdict": "added",
       "confidence": "low",
       "what": "Black Mesa scientist on a ladder in a vertical shaft loses grip and falls (weaker pick)"
+     }
+    },
+    {
+     "page_url": "gifs/exploration.ladder-climb-er0.webp",
+     "media_url": "",
+     "title": "Ladder climb up, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/exploration.ladder-climb-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ladder climb-up cycle (the ladder itself is not drawn)"
      }
     }
    ]
@@ -16820,6 +17213,20 @@
      "host": "Tenor",
      "local": "gifs/interaction.pick-up-item-2.webp",
      "source_url": "https://media.tenor.com/J6Ti_kTLKfIAAAA1/the-legend-of-zelda-majoras-mask-majoras-mask-the-legend-of-zelda-chest-link.webp"
+    },
+    {
+     "page_url": "gifs/interaction.pick-up-item-er0.webp",
+     "media_url": "",
+     "title": "Pick up item, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/interaction.pick-up-item-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Crouching to pick an item off the ground"
+     }
     }
    ]
   },
@@ -16976,6 +17383,20 @@
    "search_query": "Open / Kick Door animation video game",
    "references": [],
    "gifs": [
+    {
+     "page_url": "gifs/interaction.open-kick-door-er0.webp",
+     "media_url": "",
+     "title": "Object action (door), rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/interaction.open-kick-door-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Pushing a door open with both hands (the door is not drawn)"
+     }
+    },
     {
      "page_url": "https://tenor.com/view/doom-here's-johnny-doom-slayer-doom-marine-doom-the-dark-ages-gif-17410219135160097011",
      "media_url": "",
@@ -17243,6 +17664,20 @@
       "verdict": "added",
       "confidence": "low",
       "what": "Tarnished kneels at a Site of Lost Grace (LOST GRACE DISCOVERED); kneel rather than sit, weaker pick"
+     }
+    },
+    {
+     "page_url": "gifs/interaction.sit-rest-at-campfire-er0.webp",
+     "media_url": "",
+     "title": "Rest at a Site of Grace, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/interaction.sit-rest-at-campfire-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Sitting down to rest at a Site of Grace"
      }
     }
    ]
@@ -17873,7 +18308,22 @@
      "note": "Related hand-raise gesture for comparison"
     }
    ],
-   "gifs": [],
+   "gifs": [
+    {
+     "page_url": "gifs/expression.point-beckon-er0.webp",
+     "media_url": "",
+     "title": "Point Forwards and Beckon gestures, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/expression.point-beckon-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "The Point Forwards gesture, then Beckon"
+     }
+    }
+   ],
    "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/dark-souls-3-point-dark-souls-point-dark-souls-point-forward-dark-souls-3-point-forward-dark-souls-3-purple-phantom-gif-13811536828249137742",
@@ -18924,6 +19374,20 @@
    "search_query": "Photo Mode Pose animation video game",
    "references": [],
    "gifs": [
+    {
+     "page_url": "gifs/expression.photo-mode-pose-er0.webp",
+     "media_url": "",
+     "title": "Pose gesture, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/expression.photo-mode-pose-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "A held pose gesture"
+     }
+    },
     {
      "page_url": "https://tenor.com/view/motion-wallpapers-techburstco-ghost-of-tsushima-ps4-photomode-gif-18209298",
      "media_url": "",

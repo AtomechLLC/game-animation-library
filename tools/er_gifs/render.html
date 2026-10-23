@@ -15,12 +15,23 @@ html,body{margin:0;background:#1d1f24}
 import * as THREE from 'three';
 const q = new URLSearchParams(location.search);
 import {createViewer} from '../../frame-data/viewer3d.js';
-// the viewer keeps its scene to itself: catch its grid and lights as they are added, to toggle the grid and raise the lights
-const grids = [], add = THREE.Object3D.prototype.add;
+// the viewer keeps its scene to itself: catch the grid, lights, bones and held weapons as they are added, and the
+// camera when it updates, to toggle the grid, raise the lights and find the character on screen
+const grids = [], held = [], skel = [], cams = [], add = THREE.Object3D.prototype.add;
 THREE.Object3D.prototype.add = function (...objs) {
-  for (const o of objs) { if (o.type === 'GridHelper') grids.push(o); if (o.isLight && this.isScene) o.intensity *= +(q.get('light') || 1.5) }
+  for (const o of objs) {
+    if (o.type === 'GridHelper') grids.push(o);
+    if (o.isLight && this.isScene) { o.intensity *= +(q.get('light') || 1.5); this.background = new THREE.Color(0x1d1f24) }
+    if (this.isBone && !o.isBone) held.push([this, o]);
+    o.traverse(x => { if (x.isBone) skel.push(x) });
+  }
   return add.apply(this, objs);
 };
+// keep the drawing buffer so frames can be read straight off the canvas (screenshots take seconds under SwiftShader)
+const gc = HTMLCanvasElement.prototype.getContext;
+HTMLCanvasElement.prototype.getContext = function (t, o) { return gc.call(this, t, /webgl/.test(t) ? {...o, preserveDrawingBuffer: true} : o) };
+const upm = THREE.PerspectiveCamera.prototype.updateProjectionMatrix;
+THREE.PerspectiveCamera.prototype.updateProjectionMatrix = function () { if (!cams.includes(this)) cams.push(this); return upm.call(this) };
 const el = document.getElementById('v'), base = '../../frame-data/models/elden-ring/';
 el.style.setProperty('--w', (q.get('w') || 360) + 'px'); el.style.setProperty('--h', (q.get('h') || 360) + 'px');
 const view = await createViewer(el, base);
@@ -30,8 +41,23 @@ $('.v3d-hb').checked = q.get('hitboxes') === '1';
 const frames = () => +$('.v3d-scrub input').max;
 const raf = () => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
 window.ER = {
-  async show(m, weapon) { const ok = await view.show(m, {weapon}); await raf(); return ok && frames() },
+  async show(m, weapon, bare) {
+    const ok = await view.show(m, {weapon});
+    for (const [bone, o] of held) o.visible = !bare;
+    await raf(); return ok && frames();
+  },
   async grid(on) { grids.forEach(g => g.visible = on); await raf() },
+  // the character's screen box: every bone plus the weapons in hand, in canvas pixels
+  box() {
+    const cam = cams[0], c = el.querySelector('canvas'), w = c.clientWidth, h = c.clientHeight, v = new THREE.Vector3(), b = new THREE.Box3();
+    let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+    const put = p => { v.copy(p).project(cam); if (!Number.isFinite(v.x + v.y)) return; const x = (v.x + 1) / 2 * w, y = (1 - v.y) / 2 * h; x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y) };
+    for (const k of skel) if (k.parent && k.name && !/Weapon|Sheath|Master|Root/i.test(k.name)) put(k.getWorldPosition(v.clone()));
+    for (const [bone, o] of held) if (o.parent === bone && o.visible) { b.setFromObject(o); if (!b.isEmpty()) for (let i = 0; i < 8; i++) put(new THREE.Vector3(i & 1 ? b.max.x : b.min.x, i & 2 ? b.max.y : b.min.y, i & 4 ? b.max.z : b.min.z)) }
+    return [x0, y0, x1, y1];
+  },
+  frame() { return el.querySelector('canvas').toDataURL('image/png').split(',')[1] },
+  async seek(f) { const i = $('.v3d-scrub input'); i.value = f; i.dispatchEvent(new Event('input')); await raf(); return +i.value },
   async step() { $('.v3d-next').click(); await raf(); return +$('.v3d-scrub input').value },
 };
 window.READY = true;
