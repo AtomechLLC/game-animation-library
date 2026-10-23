@@ -3677,6 +3677,24 @@
       "confidence": "high",
       "what": "Bowser's dash attack, a belly-first slide along the stage"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/captain_falcon",
+     "media_url": "https://ultimateframedata.com/hitboxes/captain_falcon/CaptainFalconDashAttack.gif",
+     "title": "Captain Falcon dash attack, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.sprint-attack-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/captain_falcon/CaptainFalconDashAttack.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/fox",
+     "media_url": "https://ultimateframedata.com/hitboxes/fox/FoxDashAttack.gif",
+     "title": "Fox dash attack, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.sprint-attack-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/fox/FoxDashAttack.gif"
     }
    ]
   },
@@ -3756,6 +3774,15 @@
       "confidence": "low",
       "what": "Sonic's spinning ball attack rams an enemy (sprite)"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/sonic",
+     "media_url": "https://ultimateframedata.com/hitboxes/sonic/SonicSpinDashAerial.gif",
+     "title": "Sonic Spin Dash, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.rolling-attack-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/sonic/SonicSpinDashAerial.gif"
     }
    ],
    "rejected_gifs": [
@@ -4388,6 +4415,24 @@
      "host": "Tenor",
      "local": "gifs/melee.riposte-1.webp",
      "source_url": "https://media.tenor.com/anEX8Jy7880AAAA1/dark-souls-enb-epicnamebro-backstab-parry.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ike",
+     "media_url": "https://ultimateframedata.com/hitboxes/ike/IkeCounterHit.gif",
+     "title": "Ike Counter, counterattack, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.riposte-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ike/IkeCounterHit.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/lucina",
+     "media_url": "https://ultimateframedata.com/hitboxes/lucina/LucinaCounterHit.gif",
+     "title": "Lucina Counter, counterattack, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.riposte-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/lucina/LucinaCounterHit.gif"
     }
    ]
   },
@@ -4988,6 +5033,15 @@
       "confidence": "high",
       "what": "Rellana spins and slashes with her twin frost and fire moon blades"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/pit",
+     "media_url": "https://ultimateframedata.com/hitboxes/pit/PitJabRapid.gif",
+     "title": "Pit rapid jab with twin blades, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.dual-wield-flurry-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/pit/PitJabRapid.gif"
     }
    ],
    "rejected_gifs": [
@@ -6176,6 +6230,15 @@
      "host": "Tenor",
      "local": "gifs/ranged.charge-shot-2.webp",
      "source_url": "https://media.tenor.com/ZrR_vMvZRFEAAAA1/x-buster-megaman-maverick-hunter-x-high-definition-charge-shot.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/samus",
+     "media_url": "https://ultimateframedata.com/hitboxes/samus/SamusChargeShotMax.gif",
+     "title": "Samus Charge Shot, fully charged, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/ranged.charge-shot-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/samus/SamusChargeShotMax.gif"
     }
    ]
   },
@@ -7082,6 +7145,15 @@
       "confidence": "high",
       "what": "First-person hands cast a conjuration spell, opening a purple portal on the ground"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/hero",
+     "media_url": "https://ultimateframedata.com/hitboxes/hero/Sizzle.gif",
+     "title": "Hero Sizzle, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.spell-cast-instant-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/hero/Sizzle.gif"
     }
    ]
   },
@@ -7242,6 +7314,15 @@
       "confidence": "high",
       "what": "Pyromancer throws fireballs at enemies in the Painted World"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ness",
+     "media_url": "https://ultimateframedata.com/hitboxes/ness/NessPKFireG.gif",
+     "title": "Ness PK Fire, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.projectile-cast-fireball-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ness/NessPKFireG.gif"
     }
    ]
   },
@@ -7299,6 +7380,15 @@
       "confidence": "high",
       "what": "Cell fires a full-screen Kamehameha"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/kazuya",
+     "media_url": "https://ultimateframedata.com/hitboxes/kazuya/Shoto4DevilBlasterG.gif",
+     "title": "Kazuya Devil Blaster, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.beam-attack-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/kazuya/Shoto4DevilBlasterG.gif"
     }
    ]
   },
@@ -7637,6 +7727,24 @@
      "host": "Tenor",
      "local": "gifs/magic.shield-barrier-2.webp",
      "source_url": "https://media.tenor.com/lK1wVo3ecR0AAAA1/overwatch-2-ow2-ramattra-shield-vortex.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/fox",
+     "media_url": "https://ultimateframedata.com/hitboxes/fox/FoxReflector.gif",
+     "title": "Fox Reflector, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.shield-barrier-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/fox/FoxReflector.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/mega_man",
+     "media_url": "https://ultimateframedata.com/hitboxes/mega_man/MegaManLeafShield.gif",
+     "title": "Mega Man Leaf Shield, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.shield-barrier-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/mega_man/MegaManLeafShield.gif"
     }
    ]
   },
@@ -7688,6 +7796,24 @@
       "confidence": "high",
       "what": "Tracer blinks across the courtyard in short teleport hops"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/zelda",
+     "media_url": "https://ultimateframedata.com/hitboxes/zelda/ZeldaFaroresWindG.gif",
+     "title": "Zelda Farore's Wind, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.teleport-blink-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/zelda/ZeldaFaroresWindG.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/sheik",
+     "media_url": "https://ultimateframedata.com/hitboxes/sheik/SheikVanishG.gif",
+     "title": "Sheik Vanish, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.teleport-blink-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/sheik/SheikVanishG.gif"
     }
    ]
   },
@@ -7954,6 +8080,15 @@
      "host": "Tenor",
      "local": "gifs/magic.lightning-strike-4.webp",
      "source_url": "https://media.tenor.com/B0vHD28mhNcAAAA1/elden-ring-dragonlord-nuke-ancient-dragon-lightning-spear-elden-ring-mods-elden-ring-incantation.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/pikachu",
+     "media_url": "https://ultimateframedata.com/hitboxes/pikachu/PikachuThunder.gif",
+     "title": "Pikachu Thunder, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.lightning-strike-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/pikachu/PikachuThunder.gif"
     }
    ]
   },
@@ -9091,6 +9226,15 @@
       "confidence": "high",
       "what": "Dodge triggers Witch Time; the world slows and tints while Bayonetta combos angels"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/bayonetta",
+     "media_url": "https://ultimateframedata.com/hitboxes/bayonetta/BayonettaWitchTime.gif",
+     "title": "Bayonetta Witch Time, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.perfect-dodge-witch-time-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/bayonetta/BayonettaWitchTime.gif"
     }
    ]
   },

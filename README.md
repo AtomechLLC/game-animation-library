@@ -35,7 +35,7 @@ It is a static page that loads `frame-data/games.json` and one JSON file per gam
 To add animations: append lines to taxonomy.txt, rebuild index.json, rerun merge.py, republish the page.
 
 - `gifs/` — downloaded copies (Tenor's 200px animated WebP, Giphy's 200w WebP), one per GIF that could be fetched. `local` is the path, `source_url` the file it came from. Tenor links whose page id is 18-20 digits map straight to a media URL; older 7-8 digit ids could not be resolved, so those links stay page-only.
-- `add_ufd.py` — adds Super Smash Bros. Ultimate hitbox GIFs from [Ultimate Frame Data](https://ultimateframedata.com) to 29 melee, fighting, defense and reaction entries, saved as 400px WebP at `gifs/<id>-ufd-<n>.webp` (host `Ultimate Frame Data`). The move-to-entry mapping is in the script; rerunning skips GIFs already present.
+- `add_ufd.py` — adds Super Smash Bros. Ultimate hitbox GIFs from [Ultimate Frame Data](https://ultimateframedata.com) to 45 melee, magic, ranged, fighting, defense and reaction entries, saved as 400px WebP at `gifs/<id>-ufd-<n>.webp` (host `Ultimate Frame Data`). The move-to-entry mapping is in the script; rerunning skips GIFs already present.
 
 ## Street Fighter III: 3rd Strike (Baston)
 
