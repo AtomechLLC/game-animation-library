@@ -5,7 +5,7 @@ The page knows nothing about where the numbers came from, so every source only h
 
 ## Files
 
-- `games.json` — the games the tab offers: `id`, `name`, `data` (the game's JSON), `icons` (folder with `icons.json`) and optionally `models` (folder with `models.json`, for the 3D preview).
+- `games.json` — the games the tab offers: `id`, `name`, `data` (the game's JSON), `icons` (folder with `icons.json`) optionally `models` (folder with `models.json`, for the 3D preview) or `clips` (folder of per-move hitbox clips).
 - `elden-ring.json` — Elden Ring, patch 1.17.3. Built by `tools/frame_data/import_er_game.py` straight from an installed
   copy of the game (see below). `tools/frame_data/import_er_nyasu.py` builds the same file from the
   [Elden Ring Frame Data Explorer](https://er-frame-data.nyasu.business) by Emilia (sovietspaceship) instead.
@@ -15,6 +15,11 @@ The page knows nothing about where the numbers came from, so every source only h
 - `street-fighter-3-third-strike.json` — Street Fighter III: 3rd Strike, 60 fps, all 20 characters. Built by
   `tools/frame_data/import_baston_sf3.py` from [Baston](http://ensabahnur.free.fr/BastonNew/) (see
   [Street Fighter III: 3rd Strike](#street-fighter-iii-3rd-strike)), which also writes `icons/street-fighter-3-third-strike/`.
+- `super-smash-bros-ultimate.json` — Super Smash Bros. Ultimate, 60 fps, all 89 characters. Built by
+  `tools/frame_data/import_ufd_ssbu.py` from [Ultimate Frame Data](https://ultimateframedata.com/smash) (see
+  [Super Smash Bros. Ultimate](#super-smash-bros-ultimate)), which also writes `icons/super-smash-bros-ultimate/` and
+  the hitbox clips in `clips/super-smash-bros-ultimate/`.
+- `clipviewer.js` — the hitbox clip preview docked above the move table for games with `clips` (see [Hitbox clips](#hitbox-clips)).
 - `models/elden-ring/` and `viewer3d.js` — the 3D preview docked above the move table (see [3D preview](#3d-preview)).
 - `icons/elden-ring/` — 96px WebP inventory icons per weapon and `icons.json` (weapon name → file, source page). Built by
   `tools/frame_data/import_er_icons.py` from the [Elden Ring Wiki](https://eldenring.wiki.gg), with the
@@ -96,6 +101,41 @@ those groups and grips are stances (standing, crouching, air).
   are known); recovery is total minus the last active frame.
 - Advantage on block, hit and crouching hit, damage, stun, guard (H/L), cancels (SA, SP, SC, NC, DC, SJ), kara and
   throw range and super bar gain come from the tables. Movement rows have a length only.
+
+## Super Smash Bros. Ultimate
+
+```bash
+python tools/frame_data/import_ufd_ssbu.py            # 90 pages at one a second, cached in .cache/ufd/
+python tools/frame_data/import_ufd_ssbu.py --clips    # also every move's hitbox GIF (~3,200, a couple of hours)
+```
+
+Ultimate Frame Data (MetalMusicMan, Zeckemyro and contributors) has a page per character with ground attacks,
+aerials, specials, grabs/throws and dodges. Classes are characters (no weapons), move types are those sections, and
+grips are ground and air. Misc Info (stats, ledge options) is left out.
+
+- Startup, total frames and endlag (the tab's recovery) are the site's; where a cell has several values (`6/15`,
+  `5...`) the first is used and the cell is kept under More. Active windows come from the active frames text: every
+  frame or range in it, parenthesised later hitboxes included (`6—9(10—25)` is 6–9 and 10–25).
+- On shield (`blockAdv`), shield stun (`shieldStun`), landing lag (`landingLag`) and damage are kept as the site
+  writes them: a number, or text when the move has several hitboxes (`-15/-16`, read with the "Values are for"
+  line under More). Shield lag, autocancel hops and notes go under More.
+- I-frames and armor come from the notes ("Intangible on frame 3-21", "heavy armor (4%) on frame 7-9"); partial
+  intangibility (arm, head) counts too, so read the note.
+- Each move's `clips` are its hitbox GIFs: `file` (under the game's clips folder), `frames`, `label` and `source`.
+  A GIF frame is a game frame (Mario's jab: 19 frames, 19 total), so frame N of a clip is frame N in the table.
+
+Footage is Nintendo's and the GIFs are Ultimate Frame Data's; every move links to its character page and each
+clip to its GIF.
+
+## Hitbox clips
+
+For a game whose `games.json` entry has `clips` (a folder) and a character picked, `clipviewer.js` docks the move's
+hitbox clip above the table instead of the 3D preview, with the same controls: play/pause, one-frame steps,
+scrubbing on the frame strip and speed (¼× by default, about the site's own speed). Moves with several clips (angled
+tilts and smashes, early/late) get a button per clip. Frames are decoded once with `ImageDecoder` (kept for the last
+six clips); browsers without it get the WebP playing by itself.
+
+Clips are animated WebPs fitted in 440×280 at quality 50, about 60 KB each.
 
 ## 3D preview
 
@@ -217,11 +257,12 @@ These are Moon Studios' assets, under the same terms as the Elden Ring files abo
 }
 ```
 
-Optional, for fighting games (3rd Strike uses them): `labels` (wording: `class`, `classes`, `allClasses`, `allFamilies`,
+Optional, for fighting games (3rd Strike and Ultimate use them): `labels` (wording: `class`, `classes`, `allClasses`, `allFamilies`,
 `grip`, `everyClass`, `patch`, `pickClass`, `classView`, `recovery`, `search`), `columns` (which table columns show,
-by key: `input`, `blockAdv`, `hitAdv`, `dmg`, `stun`, `guard`, `cancel` beside the defaults), and per move `input`,
+by key: `input`, `blockAdv`, `hitAdv`, `dmg`, `stun`, `guard`, `cancel`, `landing`, `sstun` beside the defaults),
+`columnNames` (`{key: name}` or `{key: [name, tooltip]}` to rename a column), and per move `input`,
 `blockAdv` / `hitAdv` / `crHitAdv` (a number, or text such as `KD` or a range), `damage.amount` / `stun` / `guard`,
-`cancelTo` (list of cancel tags), `extra` ({label: value} shown under More) and `url` (its own source link, which
+`cancelTo` (list of cancel tags), `landingLag`, `shieldStun`, `clips` (see [Hitbox clips](#hitbox-clips)), `extra` ({label: value} shown under More) and `url` (its own source link, which
 wins over `moveUrl`). A class with an empty `weapons` list shows all its moves without a weapon picker, and a move
 with an empty `active` list (movement) draws its length only. `icons.json` may give `lead`, the footer's wording.
 
