@@ -32,8 +32,8 @@ export async function mount(el, base, m, opts = {}) {
     <div class="v3d-hud"><b class="v3d-f">1</b><span class="v3d-state"></span></div></div>
     <div class="v3d-bar">
       <button class="v3d-play" aria-label="Pause">❚❚</button>
-      <button class="v3d-prev" aria-label="Previous frame">◀︎</button>
-      <button class="v3d-next" aria-label="Next frame">▶︎</button>
+      <button class="v3d-prev" aria-label="Back one frame" title="Back one frame (,)">−1 f</button>
+      <button class="v3d-next" aria-label="Forward one frame" title="Forward one frame (.)">+1 f</button>
       <div class="v3d-scrub">${opts.strip || ''}<input type="range" min="1" max="${info.frames}" step="1" value="1" aria-label="Frame"></div>
       <select class="v3d-speed" aria-label="Playback speed"><option value="1">1×</option><option value="0.5">½×</option><option value="0.25">¼×</option><option value="0.1">0.1×</option></select>
     </div>
@@ -171,6 +171,21 @@ export async function mount(el, base, m, opts = {}) {
   };
   document.addEventListener('keydown', onKey);
   setPlaying(playing);
+  // Frame the whole move: every weapon point and the body over all frames, relative to the pelvis the camera follows
+  const box = new THREE.Box3(), pts = [...Object.values(weapon.dummies), [0, 0.25, 0]];
+  for (let k = 1; k <= N; k++) {
+    pose(k);
+    const ox = follow.x, oz = follow.z;
+    for (const d of pts) box.expandByPoint(v1.set(d[0], d[1], d[2]).applyMatrix4(wpn.matrixWorld).sub(v2.set(ox, 0, oz)));
+    for (const n of ['Head', 'L_Toe0', 'R_Toe0', 'L_Hand', 'R_Hand']) { const b = bone(n); if (b) box.expandByPoint(b.getWorldPosition(v1).sub(v2.set(ox, 0, oz))) }
+  }
+  const sphere = box.getBoundingSphere(new THREE.Sphere()), reach = sphere.radius + Math.max(0, ...shapes.map(x => x.s.r));
+  // a sphere around a box overstates its size seen from the side, so pull in a little
+  const dist = reach / Math.sin(THREE.MathUtils.degToRad(camera.fov / 2)) * 0.72;
+  const dir = new THREE.Vector3(2.9, 0.9, -2.3).normalize();
+  follow.set(0, 0, 0);
+  controls.target.copy(sphere.center); camera.position.copy(sphere.center).addScaledVector(dir, dist);
+  camera.far = dist * 10; camera.updateProjectionMatrix(); controls.update();
   go(1);
   const tick = now => {
     if (disposed) return;
