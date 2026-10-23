@@ -2560,6 +2560,237 @@
    "game": "Elden Ring",
    "what": "Greatsword two-handed running heavy: a spinning lunge into a low slam out of a sprint",
    "confidence": "high"
+  },
+  {
+   "animation": "locomotion.combat-idle-stance",
+   "clip": "locomotion.combat-idle-stance-er0",
+   "game": "Elden Ring",
+   "what": "Player idle holding the sword two-handed, breathing loop",
+   "confidence": "high"
+  },
+  {
+   "animation": "exploration.walk-cycle",
+   "clip": "exploration.walk-cycle-er0",
+   "game": "Elden Ring",
+   "what": "Player walk loop, two cycles",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.combat-walk",
+   "clip": "exploration.walk-cycle-er0",
+   "game": "Elden Ring",
+   "what": "Player walk loop, two cycles",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.run-cycle",
+   "clip": "locomotion.run-cycle-er0",
+   "game": "Elden Ring",
+   "what": "Player run loop, two cycles",
+   "confidence": "high"
+  },
+  {
+   "animation": "exploration.jog-run-explore",
+   "clip": "locomotion.run-cycle-er0",
+   "game": "Elden Ring",
+   "what": "Player run loop, two cycles",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.sprint",
+   "clip": "locomotion.sprint-er0",
+   "game": "Elden Ring",
+   "what": "Player sprint loop, two cycles",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.strafe-lock-on-movement",
+   "clip": "locomotion.strafe-lock-on-movement-er0",
+   "game": "Elden Ring",
+   "what": "Locked-on strafe walk left, then right",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.backpedal",
+   "clip": "locomotion.backpedal-er0",
+   "game": "Elden Ring",
+   "what": "Locked-on walk backward loop",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.turn-in-place",
+   "clip": "locomotion.turn-in-place-er0",
+   "game": "Elden Ring",
+   "what": "Standing 180-degree turn in place",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.pivot-hard-turn",
+   "clip": "locomotion.pivot-hard-turn-er0",
+   "game": "Elden Ring",
+   "what": "Quick pivot turn out of a run",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.start-stop-transitions",
+   "clip": "locomotion.start-stop-transitions-er0",
+   "game": "Elden Ring",
+   "what": "Skidding stop out of a sprint",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.jump",
+   "clip": "locomotion.jump-er0",
+   "game": "Elden Ring",
+   "what": "Running jump: takeoff, airborne, landing",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.fall-loop",
+   "clip": "locomotion.fall-loop-er0",
+   "game": "Elden Ring",
+   "what": "Stepping off into a fall, then the airborne loop",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.landing-soft-hard",
+   "clip": "locomotion.landing-soft-hard-er0",
+   "game": "Elden Ring",
+   "what": "Light landing, then a heavy landing from height",
+   "confidence": "high"
+  },
+  {
+   "animation": "defense.dodge-roll",
+   "clip": "defense.dodge-roll-er0",
+   "game": "Elden Ring",
+   "what": "Forward dodge roll at medium equip load",
+   "confidence": "high"
+  },
+  {
+   "animation": "defense.dodge-roll",
+   "clip": "defense.dodge-roll-er1",
+   "game": "Elden Ring",
+   "what": "Forward roll at light, medium and heavy equip load in a row",
+   "confidence": "high"
+  },
+  {
+   "animation": "defense.backstep-backflip",
+   "clip": "defense.backstep-backflip-er0",
+   "game": "Elden Ring",
+   "what": "Quick hop backward out of range",
+   "confidence": "high"
+  },
+  {
+   "animation": "exploration.ladder-climb",
+   "clip": "exploration.ladder-climb-er0",
+   "game": "Elden Ring",
+   "what": "Ladder climb-up cycle (the ladder itself is not drawn)",
+   "confidence": "low"
+  },
+  {
+   "animation": "reactions.light-flinch-hit-react",
+   "clip": "reactions.light-flinch-hit-react-er0",
+   "game": "Elden Ring",
+   "what": "Small flinch from a hit in front",
+   "confidence": "high"
+  },
+  {
+   "animation": "reactions.directional-hit-reaction",
+   "clip": "reactions.directional-hit-reaction-er0",
+   "game": "Elden Ring",
+   "what": "Medium hit reaction from the front, back, left and right in turn",
+   "confidence": "high"
+  },
+  {
+   "animation": "reactions.heavy-stagger",
+   "clip": "reactions.heavy-stagger-er0",
+   "game": "Elden Ring",
+   "what": "Heavy stagger from a large hit in front",
+   "confidence": "high"
+  },
+  {
+   "animation": "reactions.knockdown",
+   "clip": "reactions.knockdown-er0",
+   "game": "Elden Ring",
+   "what": "Knocked flat from the front, then getting up",
+   "confidence": "high"
+  },
+  {
+   "animation": "reactions.posture-break",
+   "clip": "reactions.posture-break-er0",
+   "game": "Elden Ring",
+   "what": "Stance broken: stagger, dazed loop, recovery",
+   "confidence": "low"
+  },
+  {
+   "animation": "defense.block-guard",
+   "clip": "defense.block-guard-er0",
+   "game": "Elden Ring",
+   "what": "Holding a shield up to guard",
+   "confidence": "high"
+  },
+  {
+   "animation": "defense.block-impact-guard-hit",
+   "clip": "defense.block-impact-guard-hit-er0",
+   "game": "Elden Ring",
+   "what": "Shield takes a medium hit while guarding",
+   "confidence": "high"
+  },
+  {
+   "animation": "reactions.block-stun-chip-damage",
+   "clip": "reactions.block-stun-chip-damage-er0",
+   "game": "Elden Ring",
+   "what": "Small block stun on the shield",
+   "confidence": "high"
+  },
+  {
+   "animation": "reactions.pushback-on-block",
+   "clip": "reactions.pushback-on-block-er0",
+   "game": "Elden Ring",
+   "what": "Pushed back while guarding",
+   "confidence": "low"
+  },
+  {
+   "animation": "death.death-collapse",
+   "clip": "death.death-collapse-er0",
+   "game": "Elden Ring",
+   "what": "Stagger and collapse to the ground",
+   "confidence": "high"
+  },
+  {
+   "animation": "interaction.open-kick-door",
+   "clip": "interaction.open-kick-door-er0",
+   "game": "Elden Ring",
+   "what": "Pushing a door open with both hands (the door is not drawn)",
+   "confidence": "low"
+  },
+  {
+   "animation": "interaction.pick-up-item",
+   "clip": "interaction.pick-up-item-er0",
+   "game": "Elden Ring",
+   "what": "Crouching to pick an item off the ground",
+   "confidence": "low"
+  },
+  {
+   "animation": "interaction.sit-rest-at-campfire",
+   "clip": "interaction.sit-rest-at-campfire-er0",
+   "game": "Elden Ring",
+   "what": "Sitting down to rest at a Site of Grace",
+   "confidence": "high"
+  },
+  {
+   "animation": "expression.point-beckon",
+   "clip": "expression.point-beckon-er0",
+   "game": "Elden Ring",
+   "what": "The Point Forwards gesture, then Beckon",
+   "confidence": "high"
+  },
+  {
+   "animation": "expression.photo-mode-pose",
+   "clip": "expression.photo-mode-pose-er0",
+   "game": "Elden Ring",
+   "what": "A held pose gesture",
+   "confidence": "low"
   }
  ]
 }

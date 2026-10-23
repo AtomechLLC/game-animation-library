@@ -1,0 +1,1227 @@
+[
+ {
+  "id": "a000_000000",
+  "label": "Idle (one-handed)",
+  "want": "idle"
+ },
+ {
+  "id": "a002_000000",
+  "label": "Idle (heavy weapon stance)",
+  "want": "idle"
+ },
+ {
+  "id": "a010_000000",
+  "label": "Idle (two-handed)",
+  "want": "idle"
+ },
+ {
+  "id": "a000_000030",
+  "label": "Idle variant 030",
+  "want": "idle"
+ },
+ {
+  "id": "a000_000050",
+  "label": "Idle variant 050",
+  "want": "idle"
+ },
+ {
+  "id": "a000_020000",
+  "label": "Walk forward",
+  "want": "walk loop"
+ },
+ {
+  "id": "a000_020090",
+  "label": "Walk forward (variant 090)",
+  "want": "walk loop"
+ },
+ {
+  "id": "a000_023000",
+  "label": "Walk forward (free move)",
+  "want": "walk loop"
+ },
+ {
+  "id": "a000_020001",
+  "label": "Walk backward (lock-on)",
+  "want": "walk backward"
+ },
+ {
+  "id": "a000_020002",
+  "label": "Strafe walk left (lock-on)",
+  "want": "lock-on strafe walk"
+ },
+ {
+  "id": "a000_020003",
+  "label": "Strafe walk right (lock-on)",
+  "want": "lock-on strafe walk"
+ },
+ {
+  "id": "a000_020023",
+  "label": "Strafe walk right (variant 020)",
+  "want": "lock-on strafe walk"
+ },
+ {
+  "id": "a000_020100",
+  "label": "Run forward",
+  "want": "run loop"
+ },
+ {
+  "id": "a000_020101",
+  "label": "Run backward (lock-on)",
+  "want": "run loop"
+ },
+ {
+  "id": "a000_020102",
+  "label": "Run left (lock-on)",
+  "want": "run loop"
+ },
+ {
+  "id": "a000_020103",
+  "label": "Run right (lock-on)",
+  "want": "run loop"
+ },
+ {
+  "id": "a000_020110",
+  "label": "Run forward (variant 110)",
+  "want": "run loop"
+ },
+ {
+  "id": "a000_023100",
+  "label": "Run forward (free move)",
+  "want": "run loop"
+ },
+ {
+  "id": "a000_020200",
+  "label": "Sprint",
+  "want": "sprint loop"
+ },
+ {
+  "id": "a000_020210",
+  "label": "Sprint (variant 210)",
+  "want": "sprint loop"
+ },
+ {
+  "id": "a000_020220",
+  "label": "Sprint (variant 220)",
+  "want": "sprint loop"
+ },
+ {
+  "id": "a000_020230",
+  "label": "Sprint (variant 230)",
+  "want": "sprint loop"
+ },
+ {
+  "id": "a000_023200",
+  "label": "Sprint (free move)",
+  "want": "sprint loop"
+ },
+ {
+  "id": "a000_022200",
+  "label": "Sprint stop",
+  "want": "sprint stop"
+ },
+ {
+  "id": "a000_022100",
+  "label": "Run stop forward",
+  "want": "sprint stop"
+ },
+ {
+  "id": "a000_022101",
+  "label": "Run stop (back)",
+  "want": "sprint stop"
+ },
+ {
+  "id": "a000_022102",
+  "label": "Run stop (left)",
+  "want": "sprint stop"
+ },
+ {
+  "id": "a000_022103",
+  "label": "Run stop (right)",
+  "want": "sprint stop"
+ },
+ {
+  "id": "a000_020070",
+  "label": "Crouch walk forward",
+  "want": "sneak"
+ },
+ {
+  "id": "a000_020072",
+  "label": "Crouch walk left",
+  "want": "sneak"
+ },
+ {
+  "id": "a000_020080",
+  "label": "Crouch walk forward (variant 080)",
+  "want": "sneak"
+ },
+ {
+  "id": "a000_029000",
+  "label": "Crouch/stand transition 029000",
+  "want": "sneak"
+ },
+ {
+  "id": "a000_029020",
+  "label": "Crouch/stand transition 029020",
+  "want": "sneak"
+ },
+ {
+  "id": "a000_029100",
+  "label": "Crouch/stand transition 029100",
+  "want": "sneak"
+ },
+ {
+  "id": "a000_026001",
+  "label": "Turn 90 left",
+  "want": "turn"
+ },
+ {
+  "id": "a000_026011",
+  "label": "Turn 90 right",
+  "want": "turn"
+ },
+ {
+  "id": "a000_026021",
+  "label": "Turn 180 left",
+  "want": "turn"
+ },
+ {
+  "id": "a000_026031",
+  "label": "Turn 180 right",
+  "want": "turn"
+ },
+ {
+  "id": "a000_026250",
+  "label": "Quick 180 turn",
+  "want": "turn"
+ },
+ {
+  "id": "a000_027000",
+  "label": "Backstep (light load)",
+  "want": "backstep"
+ },
+ {
+  "id": "a000_027010",
+  "label": "Backstep (medium load)",
+  "want": "backstep"
+ },
+ {
+  "id": "a000_027020",
+  "label": "Backstep (heavy load)",
+  "want": "backstep"
+ },
+ {
+  "id": "a000_027030",
+  "label": "Backstep (overloaded)",
+  "want": "backstep"
+ },
+ {
+  "id": "a000_027100",
+  "label": "Roll forward (light load)",
+  "want": "roll"
+ },
+ {
+  "id": "a000_027102",
+  "label": "Roll left (light load)",
+  "want": "roll"
+ },
+ {
+  "id": "a000_027103",
+  "label": "Roll right (light load)",
+  "want": "roll"
+ },
+ {
+  "id": "a000_027101",
+  "label": "Roll backward (light load)",
+  "want": "roll"
+ },
+ {
+  "id": "a000_027110",
+  "label": "Roll forward (medium load)",
+  "want": "roll"
+ },
+ {
+  "id": "a000_027112",
+  "label": "Roll left (medium load)",
+  "want": "roll"
+ },
+ {
+  "id": "a000_027113",
+  "label": "Roll right (medium load)",
+  "want": "roll"
+ },
+ {
+  "id": "a000_027111",
+  "label": "Roll backward (medium load)",
+  "want": "roll"
+ },
+ {
+  "id": "a000_027120",
+  "label": "Roll forward (heavy load)",
+  "want": "roll"
+ },
+ {
+  "id": "a000_027122",
+  "label": "Roll left (heavy load)",
+  "want": "roll"
+ },
+ {
+  "id": "a000_027123",
+  "label": "Roll right (heavy load)",
+  "want": "roll"
+ },
+ {
+  "id": "a000_027130",
+  "label": "Roll forward (overloaded)",
+  "want": "roll"
+ },
+ {
+  "id": "a000_027132",
+  "label": "Roll left (overloaded)",
+  "want": "roll"
+ },
+ {
+  "id": "a000_027500",
+  "label": "Roll forward (from crouch?)",
+  "want": "roll"
+ },
+ {
+  "id": "a000_027502",
+  "label": "Roll left (from crouch?)",
+  "want": "roll"
+ },
+ {
+  "id": "a000_027140",
+  "label": "Quick dodge forward 027140",
+  "want": "quickstep"
+ },
+ {
+  "id": "a000_027142",
+  "label": "Quick dodge left 027142",
+  "want": "quickstep"
+ },
+ {
+  "id": "a000_027143",
+  "label": "Quick dodge right 027143",
+  "want": "quickstep"
+ },
+ {
+  "id": "a000_202000",
+  "label": "Jump standing",
+  "want": "jump"
+ },
+ {
+  "id": "a000_202010",
+  "label": "Jump walking forward",
+  "want": "jump"
+ },
+ {
+  "id": "a000_202012",
+  "label": "Jump walking left",
+  "want": "jump"
+ },
+ {
+  "id": "a000_202020",
+  "label": "Jump running forward",
+  "want": "jump"
+ },
+ {
+  "id": "a000_202030",
+  "label": "Jump sprinting",
+  "want": "jump"
+ },
+ {
+  "id": "a000_202040",
+  "label": "Airborne loop",
+  "want": "jump"
+ },
+ {
+  "id": "a000_202100",
+  "label": "Land standing",
+  "want": "jump"
+ },
+ {
+  "id": "a000_202110",
+  "label": "Land moving forward",
+  "want": "jump"
+ },
+ {
+  "id": "a000_202115",
+  "label": "Land running forward",
+  "want": "jump"
+ },
+ {
+  "id": "a000_202120",
+  "label": "Land 202120",
+  "want": "jump"
+ },
+ {
+  "id": "a000_202125",
+  "label": "Land sprinting",
+  "want": "jump"
+ },
+ {
+  "id": "a000_202130",
+  "label": "Land 202130",
+  "want": "jump"
+ },
+ {
+  "id": "a000_202140",
+  "label": "Heavy landing 202140",
+  "want": "jump"
+ },
+ {
+  "id": "a000_202300",
+  "label": "Land 202300",
+  "want": "jump"
+ },
+ {
+  "id": "a000_202200",
+  "label": "Fall start 202200",
+  "want": "fall"
+ },
+ {
+  "id": "a000_202210",
+  "label": "Fall start 202210",
+  "want": "fall"
+ },
+ {
+  "id": "a000_202310",
+  "label": "Hard landing (fall)",
+  "want": "fall"
+ },
+ {
+  "id": "a000_004050",
+  "label": "Fall 004050",
+  "want": "fall"
+ },
+ {
+  "id": "a000_004060",
+  "label": "Fall 004060",
+  "want": "fall"
+ },
+ {
+  "id": "a000_004070",
+  "label": "Fall 004070",
+  "want": "fall"
+ },
+ {
+  "id": "a000_004080",
+  "label": "Fall 004080",
+  "want": "fall"
+ },
+ {
+  "id": "a000_004200",
+  "label": "Landing light 004200",
+  "want": "fall"
+ },
+ {
+  "id": "a000_004210",
+  "label": "Landing medium 004210",
+  "want": "fall"
+ },
+ {
+  "id": "a000_004220",
+  "label": "Landing hard 004220",
+  "want": "fall"
+ },
+ {
+  "id": "a000_004260",
+  "label": "Landing to ground 004260",
+  "want": "fall"
+ },
+ {
+  "id": "a000_004270",
+  "label": "Landing to ground 004270",
+  "want": "fall"
+ },
+ {
+  "id": "a000_004280",
+  "label": "Landing roll 004280",
+  "want": "fall"
+ },
+ {
+  "id": "a000_004540",
+  "label": "Slide down slope",
+  "want": "fall"
+ },
+ {
+  "id": "a000_028002",
+  "label": "Ladder get on (bottom)",
+  "want": "ladder"
+ },
+ {
+  "id": "a000_028003",
+  "label": "Ladder 028003",
+  "want": "ladder"
+ },
+ {
+  "id": "a000_028011",
+  "label": "Ladder climb up (right)",
+  "want": "ladder"
+ },
+ {
+  "id": "a000_028012",
+  "label": "Ladder climb up (left)",
+  "want": "ladder"
+ },
+ {
+  "id": "a000_028021",
+  "label": "Ladder climb down (right)",
+  "want": "ladder"
+ },
+ {
+  "id": "a000_028022",
+  "label": "Ladder climb down (left)",
+  "want": "ladder"
+ },
+ {
+  "id": "a000_028013",
+  "label": "Ladder get off (top)",
+  "want": "ladder"
+ },
+ {
+  "id": "a000_028020",
+  "label": "Ladder get on (top)",
+  "want": "ladder"
+ },
+ {
+  "id": "a000_028023",
+  "label": "Ladder get off (bottom)",
+  "want": "ladder"
+ },
+ {
+  "id": "a000_028030",
+  "label": "Ladder idle",
+  "want": "ladder"
+ },
+ {
+  "id": "a000_028050",
+  "label": "Ladder slide down",
+  "want": "ladder"
+ },
+ {
+  "id": "a000_028100",
+  "label": "Ladder 028100",
+  "want": "ladder"
+ },
+ {
+  "id": "a000_005000",
+  "label": "Flinch 005000",
+  "want": "hit small"
+ },
+ {
+  "id": "a000_005100",
+  "label": "Hit small from front",
+  "want": "hit small"
+ },
+ {
+  "id": "a000_005101",
+  "label": "Hit small from back",
+  "want": "hit small"
+ },
+ {
+  "id": "a000_005102",
+  "label": "Hit small from left",
+  "want": "hit small"
+ },
+ {
+  "id": "a000_005103",
+  "label": "Hit small from right",
+  "want": "hit small"
+ },
+ {
+  "id": "a000_005104",
+  "label": "Hit small 005104",
+  "want": "hit small"
+ },
+ {
+  "id": "a000_005200",
+  "label": "Hit medium from front",
+  "want": "hit medium"
+ },
+ {
+  "id": "a000_005201",
+  "label": "Hit medium from back",
+  "want": "hit medium"
+ },
+ {
+  "id": "a000_005202",
+  "label": "Hit medium from left",
+  "want": "hit medium"
+ },
+ {
+  "id": "a000_005203",
+  "label": "Hit medium from right",
+  "want": "hit medium"
+ },
+ {
+  "id": "a000_005300",
+  "label": "Hit large from front",
+  "want": "hit large"
+ },
+ {
+  "id": "a000_005301",
+  "label": "Hit large from back",
+  "want": "hit large"
+ },
+ {
+  "id": "a000_005302",
+  "label": "Hit large from left",
+  "want": "hit large"
+ },
+ {
+  "id": "a000_005303",
+  "label": "Hit large from right",
+  "want": "hit large"
+ },
+ {
+  "id": "a000_005304",
+  "label": "Hit large 005304",
+  "want": "hit large"
+ },
+ {
+  "id": "a000_005350",
+  "label": "Hit blown 005350",
+  "want": "hit large"
+ },
+ {
+  "id": "a000_005351",
+  "label": "Hit blown 005351",
+  "want": "hit large"
+ },
+ {
+  "id": "a000_005352",
+  "label": "Hit blown back 005352",
+  "want": "hit large"
+ },
+ {
+  "id": "a000_005353",
+  "label": "Hit blown forward 005353",
+  "want": "hit large"
+ },
+ {
+  "id": "a000_005500",
+  "label": "Hit 005500",
+  "want": "hit large"
+ },
+ {
+  "id": "a000_005550",
+  "label": "Hit 005550",
+  "want": "hit large"
+ },
+ {
+  "id": "a000_005400",
+  "label": "Knockdown from front + get up",
+  "want": "knockdown"
+ },
+ {
+  "id": "a000_005410",
+  "label": "Knockdown from back + get up",
+  "want": "knockdown"
+ },
+ {
+  "id": "a000_005420",
+  "label": "Knockdown from left + get up",
+  "want": "knockdown"
+ },
+ {
+  "id": "a000_005430",
+  "label": "Knockdown from right + get up",
+  "want": "knockdown"
+ },
+ {
+  "id": "a000_005450",
+  "label": "Launched from front + get up",
+  "want": "knockdown"
+ },
+ {
+  "id": "a000_005460",
+  "label": "Launched from back + get up",
+  "want": "knockdown"
+ },
+ {
+  "id": "a000_005600",
+  "label": "Knockdown 005600",
+  "want": "knockdown"
+ },
+ {
+  "id": "a000_005610",
+  "label": "Knockdown 005610",
+  "want": "knockdown"
+ },
+ {
+  "id": "a000_005700",
+  "label": "Down 005700",
+  "want": "knockdown"
+ },
+ {
+  "id": "a000_005710",
+  "label": "Launched up 005710",
+  "want": "knockdown"
+ },
+ {
+  "id": "a000_005711",
+  "label": "Launched high 005711",
+  "want": "knockdown"
+ },
+ {
+  "id": "a000_006000",
+  "label": "Stagger 006000",
+  "want": "knockdown"
+ },
+ {
+  "id": "a000_006001",
+  "label": "Stagger loop 006001",
+  "want": "knockdown"
+ },
+ {
+  "id": "a000_006002",
+  "label": "Stagger end 006002",
+  "want": "knockdown"
+ },
+ {
+  "id": "a000_005800",
+  "label": "Guard broken 005800",
+  "want": "guard break"
+ },
+ {
+  "id": "a000_005810",
+  "label": "Guard broken 005810",
+  "want": "guard break"
+ },
+ {
+  "id": "a000_005820",
+  "label": "Stagger 005820",
+  "want": "guard break"
+ },
+ {
+  "id": "a000_005830",
+  "label": "Stagger 005830",
+  "want": "guard break"
+ },
+ {
+  "id": "a000_005840",
+  "label": "Stagger 005840",
+  "want": "guard break"
+ },
+ {
+  "id": "a000_000100",
+  "label": "Guard hold 000100",
+  "want": "guard"
+ },
+ {
+  "id": "a000_000110",
+  "label": "Guard hold 000110",
+  "want": "guard"
+ },
+ {
+  "id": "a010_000100",
+  "label": "Guard hold (two-handed)",
+  "want": "guard"
+ },
+ {
+  "id": "a000_019000",
+  "label": "Guard hit 019000",
+  "want": "guard"
+ },
+ {
+  "id": "a000_019010",
+  "label": "Guard hit 019010",
+  "want": "guard"
+ },
+ {
+  "id": "a000_019100",
+  "label": "Guard 019100",
+  "want": "guard"
+ },
+ {
+  "id": "a000_019150",
+  "label": "Guard 019150",
+  "want": "guard"
+ },
+ {
+  "id": "a000_019200",
+  "label": "Guard hit small",
+  "want": "guard"
+ },
+ {
+  "id": "a000_019210",
+  "label": "Guard hit medium",
+  "want": "guard"
+ },
+ {
+  "id": "a000_019220",
+  "label": "Guard hit large / pushed",
+  "want": "guard"
+ },
+ {
+  "id": "a000_019500",
+  "label": "Guard 019500",
+  "want": "guard"
+ },
+ {
+  "id": "a000_019600",
+  "label": "Guard pushback 019600",
+  "want": "guard"
+ },
+ {
+  "id": "a000_019601",
+  "label": "Guard pushback 019601",
+  "want": "guard"
+ },
+ {
+  "id": "a000_000101",
+  "label": "Guard pushback 000101",
+  "want": "guard"
+ },
+ {
+  "id": "a000_017002",
+  "label": "Death 017002",
+  "want": "death"
+ },
+ {
+  "id": "a000_017003",
+  "label": "Death 017003",
+  "want": "death"
+ },
+ {
+  "id": "a000_017012",
+  "label": "Death 017012",
+  "want": "death"
+ },
+ {
+  "id": "a000_017013",
+  "label": "Death 017013",
+  "want": "death"
+ },
+ {
+  "id": "a000_017022",
+  "label": "Death 017022",
+  "want": "death"
+ },
+ {
+  "id": "a000_017032",
+  "label": "Death 017032",
+  "want": "death"
+ },
+ {
+  "id": "a000_017050",
+  "label": "Death blown 017050",
+  "want": "death"
+ },
+ {
+  "id": "a000_017052",
+  "label": "Death blown 017052",
+  "want": "death"
+ },
+ {
+  "id": "a000_017060",
+  "label": "Death 017060",
+  "want": "death"
+ },
+ {
+  "id": "a000_017080",
+  "label": "Death 017080",
+  "want": "death"
+ },
+ {
+  "id": "a000_017110",
+  "label": "Death 017110",
+  "want": "death"
+ },
+ {
+  "id": "a000_017130",
+  "label": "Death 017130",
+  "want": "death"
+ },
+ {
+  "id": "a000_017140",
+  "label": "Death 017140",
+  "want": "death"
+ },
+ {
+  "id": "a000_017170",
+  "label": "Death 017170",
+  "want": "death"
+ },
+ {
+  "id": "a000_017200",
+  "label": "Death 017200",
+  "want": "death"
+ },
+ {
+  "id": "a000_017070",
+  "label": "Fall death 017070",
+  "want": "fall death"
+ },
+ {
+  "id": "a000_017160",
+  "label": "Fall death 017160",
+  "want": "fall death"
+ },
+ {
+  "id": "a000_017090",
+  "label": "Death 017090",
+  "want": "fall death"
+ },
+ {
+  "id": "a000_060000",
+  "label": "Object action 060000",
+  "want": "lever / door / object"
+ },
+ {
+  "id": "a000_060001",
+  "label": "Object action 060001",
+  "want": "lever / door / object"
+ },
+ {
+  "id": "a000_060002",
+  "label": "Object action 060002",
+  "want": "lever / door / object"
+ },
+ {
+  "id": "a000_060010",
+  "label": "Object action 060010",
+  "want": "lever / door / object"
+ },
+ {
+  "id": "a000_060020",
+  "label": "Push large door 060020",
+  "want": "lever / door / object"
+ },
+ {
+  "id": "a000_060030",
+  "label": "Push door 060030",
+  "want": "lever / door / object"
+ },
+ {
+  "id": "a000_060060",
+  "label": "Push door 060060",
+  "want": "lever / door / object"
+ },
+ {
+  "id": "a000_060070",
+  "label": "Lever 060070",
+  "want": "lever / door / object"
+ },
+ {
+  "id": "a000_060071",
+  "label": "Lever 060071",
+  "want": "lever / door / object"
+ },
+ {
+  "id": "a000_060080",
+  "label": "Open chest 060080",
+  "want": "lever / door / object"
+ },
+ {
+  "id": "a000_060200",
+  "label": "Pick up 060200",
+  "want": "lever / door / object"
+ },
+ {
+  "id": "a000_060240",
+  "label": "Object action 060240",
+  "want": "lever / door / object"
+ },
+ {
+  "id": "a000_060250",
+  "label": "Object action 060250",
+  "want": "lever / door / object"
+ },
+ {
+  "id": "a000_060470",
+  "label": "Push door 060470",
+  "want": "lever / door / object"
+ },
+ {
+  "id": "a000_060480",
+  "label": "Object action 060480",
+  "want": "lever / door / object"
+ },
+ {
+  "id": "a000_068000",
+  "label": "Touch grace 068000",
+  "want": "site of grace"
+ },
+ {
+  "id": "a000_068001",
+  "label": "Grace 068001",
+  "want": "site of grace"
+ },
+ {
+  "id": "a000_068010",
+  "label": "Sit at grace",
+  "want": "site of grace"
+ },
+ {
+  "id": "a000_068011",
+  "label": "Sit at grace (loop)",
+  "want": "site of grace"
+ },
+ {
+  "id": "a000_068012",
+  "label": "Stand up from grace",
+  "want": "site of grace"
+ },
+ {
+  "id": "a000_068020",
+  "label": "Sit 068020",
+  "want": "site of grace"
+ },
+ {
+  "id": "a000_068021",
+  "label": "Sit loop 068021",
+  "want": "site of grace"
+ },
+ {
+  "id": "a000_068030",
+  "label": "Sit 068030",
+  "want": "site of grace"
+ },
+ {
+  "id": "a000_068031",
+  "label": "Sit loop 068031",
+  "want": "site of grace"
+ },
+ {
+  "id": "a000_050340",
+  "label": "Ring Spirit Calling Bell (summon spirit ashes)",
+  "want": "items"
+ },
+ {
+  "id": "a000_050320",
+  "label": "Blow Spectral Steed Whistle",
+  "want": "items"
+ },
+ {
+  "id": "a000_050100",
+  "label": "Drink flask",
+  "want": "items"
+ },
+ {
+  "id": "a000_050510",
+  "label": "Wraith Calling Bell",
+  "want": "items"
+ },
+ {
+  "id": "a401_045000",
+  "label": "Sorcery: Glintstone Pebble (start)",
+  "want": "spell cast"
+ },
+ {
+  "id": "a401_045010",
+  "label": "Sorcery: Glintstone Pebble cast",
+  "want": "spell cast"
+ },
+ {
+  "id": "a401_045020",
+  "label": "Sorcery: Glintstone Pebble 045020",
+  "want": "spell cast"
+ },
+ {
+  "id": "a434_045000",
+  "label": "Incantation: Heal (start)",
+  "want": "spell cast"
+ },
+ {
+  "id": "a434_045011",
+  "label": "Incantation: Heal cast",
+  "want": "spell cast"
+ },
+ {
+  "id": "a436_045000",
+  "label": "Incantation: Lightning Spear (start)",
+  "want": "spell cast"
+ },
+ {
+  "id": "a436_045010",
+  "label": "Incantation: Lightning Spear cast",
+  "want": "spell cast"
+ },
+ {
+  "id": "a436_045011",
+  "label": "Incantation: Lightning Spear 045011",
+  "want": "spell cast"
+ },
+ {
+  "id": "a000_080200",
+  "label": "Gesture: Point Forwards",
+  "want": "gesture"
+ },
+ {
+  "id": "a000_080230",
+  "label": "Gesture: Beckon",
+  "want": "gesture"
+ },
+ {
+  "id": "a000_080070",
+  "label": "Gesture: Wave",
+  "want": "gesture"
+ },
+ {
+  "id": "a000_080000",
+  "label": "Gesture: Bow",
+  "want": "gesture"
+ },
+ {
+  "id": "a000_080010",
+  "label": "Gesture: Polite Bow",
+  "want": "gesture"
+ },
+ {
+  "id": "a000_080100",
+  "label": "Gesture: As You Wish",
+  "want": "gesture"
+ },
+ {
+  "id": "a000_080040",
+  "label": "Gesture: Reverential Bow",
+  "want": "gesture"
+ },
+ {
+  "id": "a000_080090",
+  "label": "Gesture: Strength!",
+  "want": "gesture"
+ },
+ {
+  "id": "a000_080600",
+  "label": "Gesture: Bravo!",
+  "want": "gesture"
+ },
+ {
+  "id": "a000_080700",
+  "label": "Gesture: Jump for Joy",
+  "want": "gesture"
+ },
+ {
+  "id": "a000_080720",
+  "label": "Gesture: Fancy Spin",
+  "want": "gesture"
+ },
+ {
+  "id": "a000_080500",
+  "label": "Gesture: Rallying Cry",
+  "want": "gesture"
+ },
+ {
+  "id": "a000_080520",
+  "label": "Gesture: By My Sword",
+  "want": "gesture"
+ },
+ {
+  "id": "a000_080800",
+  "label": "Pose gesture 080800 (start)",
+  "want": "pose"
+ },
+ {
+  "id": "a000_080801",
+  "label": "Pose gesture 080801 (loop)",
+  "want": "pose"
+ },
+ {
+  "id": "a000_080900",
+  "label": "Pose gesture 080900 (start)",
+  "want": "pose"
+ },
+ {
+  "id": "a000_080901",
+  "label": "Pose gesture 080901 (loop)",
+  "want": "pose"
+ },
+ {
+  "id": "a000_080910",
+  "label": "Pose gesture 080910 (start)",
+  "want": "pose"
+ },
+ {
+  "id": "a000_080911",
+  "label": "Pose gesture 080911 (loop)",
+  "want": "pose"
+ },
+ {
+  "id": "a000_080920",
+  "label": "Pose gesture 080920",
+  "want": "pose"
+ },
+ {
+  "id": "a000_080930",
+  "label": "Pose gesture 080930",
+  "want": "pose"
+ },
+ {
+  "id": "a000_080980",
+  "label": "Pose gesture 080980",
+  "want": "pose"
+ },
+ {
+  "id": "a000_080981",
+  "label": "Pose gesture 080981 (loop)",
+  "want": "pose"
+ },
+ {
+  "id": "a000_081020",
+  "label": "Pose gesture 081020",
+  "want": "pose"
+ },
+ {
+  "id": "a000_081030",
+  "label": "Pose gesture 081030",
+  "want": "pose"
+ },
+ {
+  "id": "a000_101000",
+  "label": "Torrent 101000 (mount?)",
+  "want": "torrent"
+ },
+ {
+  "id": "a000_101001",
+  "label": "Torrent 101001 (mount?)",
+  "want": "torrent"
+ },
+ {
+  "id": "a000_101002",
+  "label": "Torrent 101002 (mount?)",
+  "want": "torrent"
+ },
+ {
+  "id": "a000_101003",
+  "label": "Torrent 101003 (mount?)",
+  "want": "torrent"
+ },
+ {
+  "id": "a000_101004",
+  "label": "Torrent 101004",
+  "want": "torrent"
+ },
+ {
+  "id": "a000_101104",
+  "label": "Torrent 101104 (running mount?)",
+  "want": "torrent"
+ },
+ {
+  "id": "a000_101011",
+  "label": "Dismount Torrent 101011",
+  "want": "torrent"
+ },
+ {
+  "id": "a000_101012",
+  "label": "Dismount Torrent 101012",
+  "want": "torrent"
+ },
+ {
+  "id": "a000_101013",
+  "label": "Dismount Torrent 101013",
+  "want": "torrent"
+ },
+ {
+  "id": "a000_109010",
+  "label": "Dismount Torrent 109010",
+  "want": "torrent"
+ },
+ {
+  "id": "a000_100000",
+  "label": "Riding Torrent idle",
+  "want": "torrent"
+ }
+]
