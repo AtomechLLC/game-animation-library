@@ -12,6 +12,9 @@ The page knows nothing about where the numbers came from, so every source only h
 - `no-rest-for-the-wicked.json` — No Rest for the Wicked (Steam build 22928553), 60 fps. Built by
   `tools/frame_data/import_nrftw_game.py` from an installed copy (see [No Rest for the Wicked](#no-rest-for-the-wicked)),
   which also writes `icons/no-rest-for-the-wicked/`.
+- `street-fighter-3-third-strike.json` — Street Fighter III: 3rd Strike, 60 fps, all 20 characters. Built by
+  `tools/frame_data/import_baston_sf3.py` from [Baston](http://ensabahnur.free.fr/BastonNew/) (see
+  [Street Fighter III: 3rd Strike](#street-fighter-iii-3rd-strike)), which also writes `icons/street-fighter-3-third-strike/`.
 - `models/elden-ring/` and `viewer3d.js` — the 3D preview docked above the move table (see [3D preview](#3d-preview)).
 - `icons/elden-ring/` — 96px WebP inventory icons per weapon and `icons.json` (weapon name → file, source page). Built by
   `tools/frame_data/import_er_icons.py` from the [Elden Ring Wiki](https://eldenring.wiki.gg), with the
@@ -72,6 +75,27 @@ names come from the `qdb_assets` Addressables bundle.
 
 Not read yet: damage numbers (they scale with the weapon's stats), stamina (weight-based), the `PowerArmour` level
 some attacks carry, and the per-weapon damage overrides in each `.actions` slot.
+
+## Street Fighter III: 3rd Strike
+
+```bash
+python tools/frame_data/import_baston_sf3.py      # ~1,300 pages from a hobby site, fetched slowly and cached in .cache/baston/
+```
+
+Baston (by ensabahnur, data from the CPS3 emulator FBA-RR; hitbox work by LennethEX, Dammit, C_cube and
+ComedyBlissOption) has per character a table per move group (normals, specials, Super Arts, Yun's Genei-Jin moves,
+movement) and per move a hitbox page with every frame's boxes. Classes are characters (no weapons), move types are
+those groups and grips are stances (standing, crouching, air).
+
+- Startup is the table's startup + 1 (Baston counts the frames before the hit). Active windows come from the hitbox
+  pages: a frame is active when the character or a projectile has an attack box, or the character a throw box.
+  Superfreeze frames are dropped, so Super Arts are timed from the end of the freeze. A projectile's box shows a frame
+  before the table counts it, so windows start no earlier than the startup; where the capture's first box comes much
+  later (Denjin Hadouken fully charged) the capture wins. Hitbox startup and the table agree on 92% of moves.
+- Total is the hitbox page's length (it agrees with startup + active + recovery on 707 of 760 moves where all three
+  are known); recovery is total minus the last active frame.
+- Advantage on block, hit and crouching hit, damage, stun, guard (H/L), cancels (SA, SP, SC, NC, DC, SJ), kara and
+  throw range and super bar gain come from the tables. Movement rows have a length only.
 
 ## 3D preview
 
@@ -186,6 +210,14 @@ These are Moon Studios' assets, under the same terms as the Elden Ring files abo
   }]
 }
 ```
+
+Optional, for fighting games (3rd Strike uses them): `labels` (wording: `class`, `classes`, `allClasses`, `allFamilies`,
+`grip`, `everyClass`, `patch`, `pickClass`, `classView`, `recovery`, `search`), `columns` (which table columns show,
+by key: `input`, `blockAdv`, `hitAdv`, `dmg`, `stun`, `guard`, `cancel` beside the defaults), and per move `input`,
+`blockAdv` / `hitAdv` / `crHitAdv` (a number, or text such as `KD` or a range), `damage.amount` / `stun` / `guard`,
+`cancelTo` (list of cancel tags), `extra` ({label: value} shown under More) and `url` (its own source link, which
+wins over `moveUrl`). A class with an empty `weapons` list shows all its moves without a weapon picker, and a move
+with an empty `active` list (movement) draws its length only. `icons.json` may give `lead`, the footer's wording.
 
 Picking a weapon shows the moves whose `weapons` include it; with no weapon picked, a class shows its `default` moves.
 Any field a source can't provide can be `null` or left out, and the page shows "—".

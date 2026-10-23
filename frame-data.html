@@ -228,14 +228,14 @@ tbody tr.on td{background:var(--chip);box-shadow:inset 0 1px var(--key),inset 0 
 <div class="wrap shell">
   <aside id="rail">
     <section><h2>Move type</h2><div class="flist" id="types"></div></section>
-    <section><h2>Grip</h2><div class="chips" id="grips"></div></section>
+    <section><h2 id="hGrip">Grip</h2><div class="chips" id="grips"></div></section>
     <section><h2>Show</h2><div class="flist">
       <button class="fitem" id="fArmor" aria-pressed="false"><span>Has hyper armor</span><span id="nArmor"></span></button>
       <button class="fitem" id="fMulti" aria-pressed="false"><span>Multi-hit</span><span id="nMulti"></span></button>
       <button class="fitem" id="fNoParry" aria-pressed="false"><span>Can't be parried</span><span id="nNoParry"></span></button>
     </div></section>
     <section><h2>Startup</h2><label class="range">At most <b id="maxOut"></b><input id="maxStart" type="range" min="5" max="90" step="1"></label></section>
-    <section><h2>Weapon class</h2><div class="flist" id="classes"></div></section>
+    <section><h2 id="hClass">Weapon class</h2><div class="flist" id="classes"></div></section>
   </aside>
   <main>
     <div class="pick" id="pick">
@@ -280,7 +280,23 @@ const COLS=[
   ['mv','MV',m=>m.damage.mv,1,'Motion value: damage multiplier of the first hit (100 = base)'],
   ['poise','Poise',m=>m.damage.poise,1,'Poise damage of the first hit'],
   ['dtype','Type',m=>m.damage.type,0,'Physical damage type of the first hit'],
+  // fighting-game columns, shown when a game lists them in "columns"
+  ['input','Input',m=>m.input,0,'Command input'],
+  ['blockAdv','On block',m=>m.blockAdv,1,'Frame advantage on block (KD: knockdown)'],
+  ['hitAdv','On hit',m=>m.hitAdv,1,'Frame advantage on hit (KD: knockdown)'],
+  ['dmg','Damage',m=>m.damage.amount,1,'Damage of the move'],
+  ['stun','Stun',m=>m.damage.stun,1,'Stun damage of the move'],
+  ['guard','Guard',m=>m.damage.guard,0,'How it is blocked or parried: H high, L low, H+L either'],
+  ['cancel','Cancels',m=>(m.cancelTo||[]).join(' '),0,'What the move cancels into'],
 ];
+const DEFAULT_COLS=['name','class','grip','strip','startup','active','recovery','dodge','attack','total','mv','poise','dtype'];
+// Wording a game can override with "labels" (Elden Ring's defaults)
+const LABELS={class:'Weapon class',classes:'weapon classes',allClasses:'All classes',allFamilies:'All weapons',grip:'Grip',everyClass:'Every class · default movesets',patch:'patch ',
+  pickClass:'Pick a weapon class to see its moveset by move type, or filter and sort every class at once below.',classView:'default moveset, by move type. Pick a weapon below for its exact moveset.',
+  recovery:'Frames from the last active frame until you can dodge'};
+let L=LABELS,SHOW=DEFAULT_COLS;
+const lastActive=m=>m.active.length?m.active[m.active.length-1][1]:0;
+const num=v=>typeof v==='number'?v:v==null?null:Number.isFinite(parseFloat(v))?parseFloat(v):null;
 const iconSrc=n=>n&&ICONS[n]?G.icons+ICONS[n].file:null;
 const icoHtml=(n,cls='ico')=>{const s=iconSrc(n);return s?`<img class="${cls}" loading="lazy" alt="" src="${esc(s)}">`:`<span class="${cls} ph" aria-hidden="true">${esc((n||'?').replace(/[^A-Za-z]/g,'').slice(0,1))}</span>`};
 
@@ -293,8 +309,11 @@ async function loadGame(id){
   T=Object.fromEntries(D.moveTypes.map((t,i)=>[t.id,{...t,i}]));
   CL=Object.fromEntries(D.classes.map((c,i)=>[c.id,{...c,i}]));
   FAM=Object.fromEntries(D.families.map(f=>[f.id,f]));
-  D.moves.forEach(m=>{m.hay=(m.name+' '+m.class+' '+T[m.type].name+' '+(m.damage.type||'')+' '+m.weapons.map(i=>CL[m.class].weapons[i]).join(' ')).toLowerCase()});
-  st.max=Math.max(...D.moves.map(m=>m.startup));$('#maxStart').max=st.max;
+  L={...LABELS,...(D.labels||{})};SHOW=D.columns||DEFAULT_COLS;
+  $('#hClass').textContent=L.class;$('#q').placeholder=L.search||'Search moves, weapons…';$('#hGrip').textContent=L.grip;
+  $('#fArmor').hidden=!D.moves.some(m=>m.armor.length);
+  D.moves.forEach(m=>{m.hay=(m.name+' '+m.class+' '+CL[m.class].name+' '+T[m.type].name+' '+(m.damage.type||'')+' '+(m.input||'')+' '+m.weapons.map(i=>CL[m.class].weapons[i]).join(' ')).toLowerCase()});
+  st.max=Math.max(...D.moves.map(m=>m.startup||0));$('#maxStart').max=st.max;
   fromHash();renderAll();
 }
 // The moves a selection shows: a weapon shows exactly the animations it uses; a class (or nothing) shows default movesets
@@ -308,15 +327,15 @@ function pool(skip){
     if(skip!=='armor'&&st.armor&&!m.armor.length)return false;
     if(skip!=='multi'&&st.multi&&m.hits<2)return false;
     if(skip!=='noparry'&&st.noparry&&m.parryable)return false;
-    if(m.startup>st.max)return false;
+    if(m.startup!=null&&m.startup>st.max)return false;
     if(st.q&&!st.q.split(/\s+/).every(w=>m.hay.includes(w)))return false;
     return true})}
 function count(list,f){const c=new Map();list.forEach(m=>{const k=f(m);c.set(k,(c.get(k)||0)+1)});return c}
 
 function renderAll(){
   $('#games').innerHTML=GAMES.map(g=>`<button data-game="${esc(g.id)}" aria-pressed="${g.id===st.game}">${esc(g.name)}</button>`).join('');
-  $('#ver').textContent=`${D.moves.length.toLocaleString()} moves · ${D.classes.length} weapon classes · patch ${D.game.version}`;
-  $('#keys').innerHTML=`<button class="kf" data-fam="" aria-pressed="${!st.fam&&!st.cls}"><i></i>All weapons</button>`+D.families.map(f=>`<button class="kf" data-fam="${f.id}" aria-pressed="${st.fam===f.id}"><i></i>${esc(f.name)}</button>`).join('');
+  $('#ver').textContent=`${D.moves.length.toLocaleString()} moves · ${D.classes.length} ${L.classes} · ${L.patch}${D.game.version}`;
+  $('#keys').innerHTML=`<button class="kf" data-fam="" aria-pressed="${!st.fam&&!st.cls}"><i></i>${esc(L.allFamilies)}</button>`+D.families.map(f=>`<button class="kf" data-fam="${f.id}" aria-pressed="${st.fam===f.id}"><i></i>${esc(f.name)}</button>`).join('');
   const tc=count(pool('type'),m=>m.type);
   $('#types').innerHTML=D.moveTypes.filter(t=>tc.get(t.id)||st.types.has(t.id)).map(t=>`<button class="fitem" data-type="${t.id}" aria-pressed="${st.types.has(t.id)}" title="${esc(t.description)}"><span>${esc(t.name)}</span><span>${tc.get(t.id)||0}</span></button>`).join('');
   const gc=count(pool('grip'),m=>m.grip);
@@ -326,20 +345,20 @@ function renderAll(){
   $('#nNoParry').textContent=pool('noparry').filter(m=>!m.parryable).length;
   ['fArmor','fMulti','fNoParry'].forEach((id,i)=>$('#'+id).setAttribute('aria-pressed',[st.armor,st.multi,st.noparry][i]));
   $('#maxStart').value=st.max;$('#maxOut').textContent=st.max+' frames';
-  $('#classes').innerHTML=`<button class="fitem" data-cls="" aria-pressed="${!st.cls}"><span>All classes</span><span>${D.classes.length}</span></button>`+D.classes.filter(c=>!st.fam||c.family===st.fam).map(c=>`<button class="fitem" data-cls="${esc(c.id)}" aria-pressed="${st.cls===c.id}"><span>${esc(c.name)}</span><span>${c.weapons.length}</span></button>`).join('');
+  $('#classes').innerHTML=`<button class="fitem" data-cls="" aria-pressed="${!st.cls}"><span>${esc(L.allClasses)}</span><span>${D.classes.length}</span></button>`+D.classes.filter(c=>!st.fam||c.family===st.fam).map(c=>`<button class="fitem" data-cls="${esc(c.id)}" aria-pressed="${st.cls===c.id}"><span>${esc(c.name)}</span><span>${c.weapons.length||c.moves}</span></button>`).join('');
   renderHead();renderIndex();renderTable();
   const ext=(u,t)=>`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a>`;
   $('#foot').innerHTML=(D.source.links?`<p><b>Source.</b> ${esc(D.source.note)} ${D.source.links.map(l=>ext(l.url,l.name+' ↗')).join(' ')}</p>`
     :`<p><b>Source.</b> ${esc(D.game.name)} data comes from the ${ext(D.source.url,D.source.name)} by ${esc(D.source.author)} (patch ${esc(D.game.version)}, retrieved ${esc(D.source.retrieved)}), reshaped here into weapon classes and move types. Every move links back to it. ${D.source.note?esc(D.source.note.replace(/https?:\S+/,'')):''}${ext('https://ko-fi.com/sovietspaceship','Ko-fi ↗')}</p>`)+`
-  ${ICONSET.sources?`<p>Weapon icons are the game's inventory art, from ${ICONSET.sources.map(x=>ext(x.url,x.name)).join(' and ')}. ${esc((ICONSET.note||'').replace(/^Icons are the game's inventory art, /,''))}</p>`:''}
+  ${ICONSET.sources?`<p>${esc(ICONSET.lead||"Weapon icons are the game's inventory art")}, from ${ICONSET.sources.map(x=>ext(x.url,x.name)).join(' and ')}. ${esc((ICONSET.note||'').replace(/^Icons are the game's inventory art, /,''))}</p>`:''}
   <p>${esc(D.game.frameNote)} Values cover the first hit of a move; open a move for every window.</p>`;
   writeHash();
 }
 function renderHead(){
   const c=st.cls&&CL[st.cls],w=c&&st.w!=null?c.weapons[st.w]:null,f=st.fam&&FAM[st.fam];
   $('#ttl').innerHTML=c?`${icoHtml(w||c.icon,'')} ${esc(w||c.name)}`:esc(f?f.name:`${D.game.name} frame data`);
-  $('#sub').textContent=c?(w?`${c.name} · the animations this weapon uses, by move type.`:`${c.name} · default moveset, by move type. Pick a weapon below for its exact moveset.`)
-    :'Pick a weapon class to see its moveset by move type, or filter and sort every class at once below.';
+  $('#sub').textContent=c?(w?`${c.name} · the animations this weapon uses, by move type.`:`${c.name} · ${L.classView}`)
+    :L.pickClass;
   const act=[];if(st.q)act.push(['q',`“${st.q}”`]);st.types.forEach(t=>act.push(['type:'+t,T[t].name]));st.grips.forEach(g=>act.push(['grip:'+g,GR[g]]));
   if(st.armor)act.push(['armor','Hyper armor']);if(st.multi)act.push(['multi','Multi-hit']);if(st.noparry)act.push(['noparry',"Can't be parried"]);
   if(st.max<+$('#maxStart').max)act.push(['max',`Startup ≤ ${st.max}`]);
@@ -348,46 +367,51 @@ function renderHead(){
 function renderIndex(){
   if(st.cls){
     const c=CL[st.cls];$('#index').innerHTML='';
+    if(!c.weapons.length){$('#weapons').innerHTML=`<div class="sect">${c.moves} moves · ${esc(c.name)} <button class="chip" data-cls="" style="margin-left:4px">${esc(L.allClasses)}</button></div>`;return}
     $('#weapons').innerHTML=`<div class="sect">${c.weapons.length} weapon${c.weapons.length===1?'':'s'} · ${esc(c.name)} <button class="chip" data-cls="" style="margin-left:4px">All classes</button></div>
     <div class="wtiles" role="group" aria-label="Weapon">${[`<button class="tile def" data-w="" aria-pressed="${st.w==null}"><span class="ico ph">ALL</span><b>Class default</b></button>`]
       .concat(c.weapons.map((w,i)=>`<button class="tile" data-w="${i}" aria-pressed="${st.w===i}" title="${esc(w)}">${icoHtml(w)}<b>${esc(w)}</b></button>`)).join('')}</div>`;
     return}
   $('#weapons').innerHTML='';
   const fams=D.families.filter(f=>!st.fam||f.id===st.fam);
-  $('#index').innerHTML=fams.map(f=>`<div class="sect">${esc(f.name)}</div><div class="tiles">${D.classes.filter(c=>c.family===f.id).map(c=>`<button class="tile" data-cls="${esc(c.id)}">${icoHtml(c.icon)}<b>${esc(c.name)}</b><small>${c.weapons.length} weapon${c.weapons.length===1?'':'s'}</small></button>`).join('')}</div>`).join('');
+  $('#index').innerHTML=fams.map(f=>`<div class="sect">${esc(f.name)}</div><div class="tiles">${D.classes.filter(c=>c.family===f.id).map(c=>`<button class="tile" data-cls="${esc(c.id)}">${icoHtml(c.icon)}<b>${esc(c.name)}</b><small>${c.weapons.length?`${c.weapons.length} weapon${c.weapons.length===1?'':'s'}`:`${c.moves} moves`}</small></button>`).join('')}</div>`).join('');
 }
 // One bar per move: startup, active (gaps between hits lighter), recovery until dodge, then free frames to the end.
 function stripHtml(m,scale){
-  const end=Math.max(m.total||0,m.cancels.dodge||0,m.active[m.active.length-1][1]);
+  const end=Math.max(m.total||0,m.cancels.dodge||0,lastActive(m));
   const pc=f=>(f/scale*100).toFixed(2)+'%',seg=(a,b,c,cls='')=>b>a?`<span class="${cls}" style="left:${pc(a)};width:${pc(b-a)};background:var(${c})"></span>`:'';
-  let h=seg(0,m.startup-1,'--f-start');
+  let h=m.active.length?seg(0,m.startup-1,'--f-start'):'';
   m.active.forEach(([s,e],i)=>{if(i)h+=seg(m.active[i-1][1],s-1,'--f-gap');h+=seg(s-1,e,'--f-active')});
-  const last=m.active[m.active.length-1][1],dodge=m.cancels.dodge?m.cancels.dodge-1:null;
-  if(dodge!=null){h+=seg(last,dodge,'--f-rec');h+=seg(dodge,end,'--f-free')}else h+=seg(last,end,'--f-rec');
+  const last=lastActive(m),dodge=m.cancels.dodge?m.cancels.dodge-1:null;
+  if(!m.active.length)h+=seg(0,end,'--f-start');else if(dodge!=null){h+=seg(last,dodge,'--f-rec');h+=seg(dodge,end,'--f-free')}else h+=seg(last,end,'--f-rec');
   m.armor.forEach(([s,e])=>h+=`<span class="ar" style="left:${pc(s-1)};width:${pc(Math.min(e,end)-s+1)}"></span>`);
   m.iframes.forEach(([s,e])=>h+=`<span class="ifr" style="left:${pc(s-1)};width:${pc(Math.min(e,end)-s+1)}"></span>`);
-  return `<div class="strip" title="Startup ${m.startup} · active ${m.active.map(a=>a.join('–')).join(', ')} · dodge ${m.cancels.dodge??'—'} · total ${m.total??'—'}">${h}</div>`}
-function legendHtml(){return [['--f-start','Startup'],['--f-active','Active'],['--f-gap','Between hits'],['--f-rec','Recovery'],['--f-free','Can dodge'],['--f-armor','Hyper armor'],['--f-iframe','I-frames']].map(([c,l])=>`<span><i style="background:var(${c})"></i>${l}</span>`).join('')}
+  return `<div class="strip" title="Startup ${m.startup??'—'} · active ${m.active.map(a=>a.join('–')).join(', ')} · dodge ${m.cancels.dodge??'—'} · total ${m.total??'—'}">${h}</div>`}
+function legendHtml(){const has=k=>D.moves.some(m=>k==='free'?m.cancels.dodge:m[k].length);
+  return [['--f-start','Startup'],['--f-active','Active'],['--f-gap','Between hits'],['--f-rec','Recovery'],['--f-free','Can dodge','free'],['--f-armor','Hyper armor','armor'],['--f-iframe','I-frames','iframes']].filter(x=>!x[2]||has(x[2])).map(([c,l])=>`<span><i style="background:var(${c})"></i>${l}</span>`).join('')}
 function cell(k,m,scale){
   const v=COLS.find(c=>c[0]===k)[2](m);
   switch(k){
-    case 'name':return `<td><span class="mname">${esc(m.name)}</span>${m.armor.length?'<span class="tag ha" title="Hyper armor">HA</span>':''}${m.parryable?'':'<span class="tag np" title="Cannot be parried">NP</span>'}${m.hits>1?`<span class="tag" style="border:1px solid var(--line)" title="Hits">×${m.hits}</span>`:''}</td>`;
-    case 'class':return `<td><span class="cls">${icoHtml(CL[m.class].icon,'')}${esc(m.class)}</span></td>`;
+    case 'name':return `<td><span class="mname">${esc(m.name)}</span>${m.armor.length?'<span class="tag ha" title="Hyper armor">HA</span>':''}${m.parryable!==false||!m.active.length?'':'<span class="tag np" title="Cannot be parried">NP</span>'}${m.hits>1?`<span class="tag" style="border:1px solid var(--line)" title="Hits">×${m.hits}</span>`:''}</td>`;
+    case 'class':return `<td><span class="cls">${icoHtml(CL[m.class].icon,'')}${esc(CL[m.class].weapons.length?m.class:CL[m.class].name)}</span></td>`;
     case 'grip':return `<td><span class="gr" title="${esc((D.grips.find(g=>g.id===m.grip)||{}).name)}">${GR[m.grip]}</span></td>`;
     case 'strip':return `<td>${stripHtml(m,scale)}</td>`;
-    case 'startup':return `<td class="n mono ${v<=12?'fast':v>=30?'slow':''}">${v}</td>`;
-    case 'dtype':return `<td>${esc(v??'—')}</td>`;
+    case 'startup':return `<td class="n mono ${v==null?'':v<=12?'fast':v>=30?'slow':''}">${v??'—'}</td>`;
+    case 'dtype':case 'input':case 'guard':return `<td>${esc(v||'—')}</td>`;
+    case 'cancel':return `<td class="mono">${esc(v||'—')}</td>`;
+    case 'blockAdv':case 'hitAdv':{const n=num(v);return `<td class="n mono ${n==null?'':n>0?'fast':n<0?'slow':''}">${v==null?'—':esc(typeof v==='number'&&v>0?'+'+v:v)}</td>`}
     default:return `<td class="n mono">${v??'—'}</td>`}}
 function sorted(list){
   if(!st.sort)return list;const c=COLS.find(x=>x[0]===st.sort),f=c[2];
-  return [...list].sort((a,b)=>{const x=f(a),y=f(b);if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;return (c[3]?x-y:String(x).localeCompare(String(y)))*st.dir})}
+  const g=c[3]?m=>num(f(m)):m=>f(m)||null;
+  return [...list].sort((a,b)=>{const x=g(a),y=g(b);if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;return (c[3]?x-y:String(x).localeCompare(String(y)))*st.dir})}
 function renderTable(){
-  const list=pool(),cols=COLS.filter(c=>c[0]!=='class'||!st.cls).map(c=>c[0]);
+  const list=pool(),cols=SHOW.filter(k=>COLS.some(c=>c[0]===k)&&(k!=='class'||!st.cls));
   $('#count').textContent=`${list.length.toLocaleString()} moves`;
   $('#legend').innerHTML=list.length?legendHtml():'';
   if(!list.length){dock(list);$('#table').innerHTML='<div class="empty">No moves match these filters. Clear a filter or widen the startup limit.</div>';return}
   const scale=Math.min(150,Math.max(...list.map(m=>Math.max(m.total||0,m.cancels.dodge||0))));
-  const head=`<thead><tr>${cols.map(k=>{const c=COLS.find(x=>x[0]===k);return `<th class="${c[3]&&k!=='strip'?'n':''}" ${st.sort===k?`aria-sort="${st.dir>0?'ascending':'descending'}"`:''} title="${esc(c[4])}"><button data-sort="${k}">${esc(c[1])}</button></th>`}).join('')}<th class="more-c"><span class="vh">Details</span></th></tr></thead>`;
+  const head=`<thead><tr>${cols.map(k=>{const c=COLS.find(x=>x[0]===k);return `<th class="${c[3]&&k!=='strip'?'n':''}" ${st.sort===k?`aria-sort="${st.dir>0?'ascending':'descending'}"`:''} title="${esc(k==='recovery'?L.recovery:c[4])}"><button data-sort="${k}">${esc(k==='class'?L.class:c[1])}</button></th>`}).join('')}<th class="more-c"><span class="vh">Details</span></th></tr></thead>`;
   const row=m=>`<tr data-m="${esc(m.class+'|'+m.id)}"${DOCK.key===m.class+'|'+m.id?' class="on"':''}>${cols.map(k=>cell(k,m,scale)).join('')}<td class="more-c"><button class="rowmore" data-open="${esc(m.class+'|'+m.id)}" title="Frame details" aria-label="Frame details for ${esc(m.name)}">…</button></td></tr>`;
   let body;
   if(st.cls&&!st.sort){
@@ -398,7 +422,7 @@ function renderTable(){
   const s=sorted(list),shown=s.slice(0,st.shown);
   body=shown.map(row).join('');
   dock(list);
-  $('#table').innerHTML=`${!st.cls?'<div class="sect">Every class · default movesets</div>':''}<div class="tablewrap"><table>${head}<tbody>${body}</tbody></table></div>${s.length>shown.length?`<button class="more" id="more">Show ${Math.min(PAGE,s.length-shown.length)} more of ${(s.length-shown.length).toLocaleString()}</button>`:''}`;
+  $('#table').innerHTML=`${!st.cls?`<div class="sect">${esc(L.everyClass)}</div>`:''}<div class="tablewrap"><table>${head}<tbody>${body}</tbody></table></div>${s.length>shown.length?`<button class="more" id="more">Show ${Math.min(PAGE,s.length-shown.length)} more of ${(s.length-shown.length).toLocaleString()}</button>`:''}`;
 }
 function openMove(key){
   const [cls,id]=key.split('|'),m=D.moves.find(x=>x.class===cls&&x.id===id);if(!m)return;
@@ -406,14 +430,20 @@ function openMove(key){
   const win=a=>a.length?a.map(([s,e])=>s===e?s:`${s}–${e}`).join(', '):'—';
   const can=[['attack','Attack'],['dodge','Dodge / roll'],['block','Block'],['skill','Skill'],['item','Item'],['move','Walk / run']].filter(([k])=>m.cancels[k]).map(([k,l])=>`<dt>${l}</dt><dd>from frame ${m.cancels[k]}</dd>`).join('');
   const ws=m.weapons.length?m.weapons:[];
-  $('#sheet').innerHTML=`<div class="top"><div><div class="src">${esc(D.game.name)} · ${esc(c.name)} › ${esc(T[m.type].name)} · ${GR[m.grip]}</div><h2 id="dName">${esc(m.name)}</h2></div><button class="close" id="close">Close</button></div>
-  <div class="stats"><div class="stat"><small>Startup</small><b>${m.startup}</b></div><div class="stat"><small>Active</small><b>${m.activeFrames}</b></div><div class="stat"><small>Recovery</small><b>${m.recovery??'—'}</b></div><div class="stat"><small>Total</small><b>${m.total??'—'}</b></div></div>
+  const fmt=v=>typeof v==='number'&&v>0?'+'+v:v??'—';
+  const DMG=[['type','Damage type'],['amount','Damage'],['stun','Stun'],['guard','Guard'],['mv','Motion value'],['poise','Poise damage'],['level','Damage level'],['stamina','Stamina']];
+  const dm=c.weapons.length?DMG.filter(([k])=>['type','mv','poise','level','stamina'].includes(k)):DMG.filter(([k])=>m.damage[k]!=null);
+  const adv=['blockAdv','hitAdv','crHitAdv'].some(k=>k in m)?`<section><h3>Advantage</h3><dl class="meta"><dt>On block</dt><dd>${esc(fmt(m.blockAdv))}</dd><dt>On hit</dt><dd>${esc(fmt(m.hitAdv))}</dd><dt>On crouching hit</dt><dd>${esc(fmt(m.crHitAdv))}</dd></dl></section>`:'';
+  const ext=m.extra?`<section><h3>More</h3><dl class="meta">${Object.entries(m.extra).map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl></section>`:'';
+  const cto=m.cancelTo?`<dt>Cancels into</dt><dd>${esc(m.cancelTo.join(', ')||'Nothing')}</dd>`:'';
+  $('#sheet').innerHTML=`<div class="top"><div><div class="src">${esc(D.game.name)} · ${esc(c.name)} › ${esc(T[m.type].name)} · ${GR[m.grip]}</div><h2 id="dName">${esc(m.name)}</h2>${m.input?`<div class="src">${esc(m.input)}</div>`:''}</div><button class="close" id="close">Close</button></div>
+  <div class="stats"><div class="stat"><small>Startup</small><b>${m.startup??'—'}</b></div><div class="stat"><small>Active</small><b>${m.activeFrames??'—'}</b></div><div class="stat"><small>Recovery</small><b>${m.recovery??'—'}</b></div><div class="stat"><small>Total</small><b>${m.total??'—'}</b></div></div>
   <section class="big"><h3>Timeline (${D.game.fps} fps)</h3>${stripHtml(m,end||1)}<div class="ruler2"><span>1</span><span>${Math.round(end/2)}</span><span>${end}</span></div><div class="legend" style="margin-top:8px">${legendHtml()}</div></section>
-  <section><h3>Windows</h3><dl class="meta"><dt>Active</dt><dd>${win(m.active)} (${m.hits} hit${m.hits>1?'s':''})</dd><dt>Hyper armor</dt><dd>${win(m.armor)}</dd><dt>I-frames</dt><dd>${win(m.iframes)}</dd>${m.charge?`<dt>Charge</dt><dd title="Frames the button is held before this charged version comes out">${m.charge} frames held</dd>`:''}<dt>Parryable</dt><dd>${m.parryable?'Yes':'No'}</dd></dl></section>
-  <section><h3>Cancels</h3><dl class="meta">${can||'<dt>—</dt><dd>No cancel windows recorded</dd>'}</dl></section>
-  <section><h3>First hit</h3><dl class="meta"><dt>Damage type</dt><dd>${esc(m.damage.type??'—')}</dd><dt>Motion value</dt><dd>${m.damage.mv??'—'}</dd><dt>Poise damage</dt><dd>${m.damage.poise??'—'}</dd><dt>Damage level</dt><dd title="How hard the hit staggers">${m.damage.level??'—'}</dd><dt>Stamina</dt><dd>${m.damage.stamina??'—'}</dd></dl></section>
-  <section><h3>Used by (${ws.length||'default moveset'})</h3>${ws.length?`<div class="wlist">${ws.map(i=>`<button data-pickw="${i}" data-pickc="${esc(c.id)}">${icoHtml(c.weapons[i],'')}${esc(c.weapons[i])}</button>`).join('')}</div>`:'<p class="note">Part of the class default moveset.</p>'}</section>
-  <section><h3>Source</h3><div class="quick">${D.source.moveUrl?`<a target="_blank" rel="noopener" href="${esc(D.source.moveUrl.replace('{id}',m.id))}">Open in ${esc(D.source.moveName||D.source.name)} ↗</a>`:''}<a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(D.game.name+' '+c.name+' '+m.name.replace(/^(1h|2h)\s/,''))}">YouTube ↗</a></div><p class="note">Animation ${esc(m.id)}. ${esc(D.game.frameNote)}</p></section>`;
+  <section><h3>Windows</h3><dl class="meta"><dt>Active</dt><dd>${win(m.active)} (${m.hits} hit${m.hits===1?'':'s'})</dd><dt>Hyper armor</dt><dd>${win(m.armor)}</dd><dt>I-frames</dt><dd>${win(m.iframes)}</dd>${m.charge?`<dt>Charge</dt><dd title="Frames the button is held before this charged version comes out">${m.charge} frames held</dd>`:''}<dt>Parryable</dt><dd>${m.parryable?'Yes':'No'}</dd></dl></section>
+  <section><h3>Cancels</h3><dl class="meta">${can||cto||'<dt>—</dt><dd>No cancel windows recorded</dd>'}${can?cto:''}</dl></section>
+  ${adv}${dm.length?`<section><h3>${c.weapons.length?'First hit':'Damage'}</h3><dl class="meta">${dm.map(([k,l])=>`<dt${k==='level'?' title="How hard the hit staggers"':''}>${l}</dt><dd>${esc(m.damage[k]??'—')}</dd>`).join('')}</dl></section>`:''}${ext}
+  ${c.weapons.length?`<section><h3>Used by (${ws.length||'default moveset'})</h3>${ws.length?`<div class="wlist">${ws.map(i=>`<button data-pickw="${i}" data-pickc="${esc(c.id)}">${icoHtml(c.weapons[i],'')}${esc(c.weapons[i])}</button>`).join('')}</div>`:'<p class="note">Part of the class default moveset.</p>'}</section>`:''}
+  <section><h3>Source</h3><div class="quick">${m.url||D.source.moveUrl?`<a target="_blank" rel="noopener" href="${esc(m.url||D.source.moveUrl.replace('{id}',m.id))}">Open in ${esc(D.source.moveName||D.source.name)} ↗</a>`:''}<a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(D.game.name+' '+c.name+' '+m.name.replace(/^(1h|2h)\s/,''))}">YouTube ↗</a></div><p class="note">Animation ${esc(m.id)}. ${esc(D.game.frameNote)}</p></section>`;
   $('#sheet').hidden=false;$('#scrim').hidden=false;$('#close').focus()}
 // 3D preview, docked above the table: one viewer per game with exported models (games.json "models"); clicking a
 // row it covers swaps the move in place, other rows open the detail sheet. It holds the picked weapon, else each
@@ -423,7 +453,7 @@ const VIEWER='./frame-data/viewer3d.js?v=6';
 const DOCK={key:null,view:null,game:null,cls:null,w:null,cm:null,seq:0};
 const pickName=()=>st.cls&&st.w!=null?CL[st.cls].weapons[st.w]:null;
 function frameState(m,f){
-  const inW=w=>w.some(([s,e])=>f>=s&&f<=e),last=m.active[m.active.length-1][1];
+  const inW=w=>w.some(([s,e])=>f>=s&&f<=e),last=lastActive(m);
   const s=f<m.startup?'Startup':inW(m.active)?'Active':f<last?'Between hits':m.cancels.dodge&&f>=m.cancels.dodge?'Can dodge':'Recovery';
   return s+(inW(m.armor)?' · hyper armor':'')+(inW(m.iframes)?' · i-frames':'')}
 const moveOf=key=>{const [cls,id]=key.split('|');return D.moves.find(x=>x.class===cls&&x.id===id)};
