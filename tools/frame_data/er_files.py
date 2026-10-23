@@ -208,6 +208,20 @@ def read_tae(data):
         anims[aid] = (events, imported)
     return tae_id - 2000, anims
 
+def read_tae_hkx(data):
+    """TAE -> {anim id: full anim id whose .hkx it plays} for animations that borrow another one's motion (a standard
+    header with ImportsHKX set) rather than shipping their own."""
+    tae_id, n, off = struct.unpack_from('<iiq', data, 0x50)
+    out = {}
+    for i in range(n):
+        aid, ao = struct.unpack_from('<qq', data, off + i*16)
+        af, = struct.unpack_from('<q', data, ao + 24)
+        kind, = struct.unpack_from('<i', data, af)
+        if kind == 0 and data[af + 0x19]:
+            src, = struct.unpack_from('<i', data, af + 0x1C)
+            if src > 0: out[aid] = src
+    return out
+
 def frame_clock(events, fps=30):
     """Seconds of TAE time -> frames of real time. Event 608 changes playback speed linearly from its first to its
     second float over its range, so the same TAE time can play out faster or slower."""

@@ -415,10 +415,12 @@ function openMove(key){
   <section><h3>Source</h3><div class="quick">${D.source.moveUrl?`<a target="_blank" rel="noopener" href="${esc(D.source.moveUrl.replace('{id}',m.id))}">Open in ${esc(D.source.moveName||D.source.name)} ↗</a>`:''}<a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(D.game.name+' '+c.name+' '+m.name.replace(/^(1h|2h)\s/,''))}">YouTube ↗</a></div><p class="note">Animation ${esc(m.id)}. ${esc(D.game.frameNote)}</p></section>`;
   $('#sheet').hidden=false;$('#scrim').hidden=false;$('#close').focus()}
 // 3D preview, docked above the table: one viewer per game with exported models (games.json "models"); clicking a
-// row it covers swaps the move in place, other rows open the detail sheet
+// row it covers swaps the move in place, other rows open the detail sheet. It holds the picked weapon, else each
+// move's class preview weapon.
 // Bump ?v= whenever viewer3d.js changes: browsers and Pages cache it, and a stale copy next to a new page breaks the dock
-const VIEWER='./frame-data/viewer3d.js?v=2';
-const DOCK={key:null,view:null,game:null,cls:null,seq:0};
+const VIEWER='./frame-data/viewer3d.js?v=3';
+const DOCK={key:null,view:null,game:null,cls:null,w:null,cm:null,seq:0};
+const pickName=()=>st.cls&&st.w!=null?CL[st.cls].weapons[st.w]:null;
 function frameState(m,f){
   const inW=w=>w.some(([s,e])=>f>=s&&f<=e),last=m.active[m.active.length-1][1];
   const s=f<m.startup?'Startup':inW(m.active)?'Active':f<last?'Between hits':m.cancels.dodge&&f>=m.cancels.dodge?'Can dodge':'Recovery';
@@ -430,15 +432,17 @@ async function dock(list){
   const sec=$('#dock'),seq=++DOCK.seq;
   if(!G.models||!st.cls){dockOn(false);return}
   try{
-    const v=await import(VIEWER),man=await v.manifest(G.models);
+    const v=await import(VIEWER),cm=await v.classData(G.models,st.cls);
     if(seq!==DOCK.seq)return;
-    const ok=list.filter(m=>man.moves[m.class+'|'+m.id]);
+    const ok=cm?list.filter(m=>cm.moves[m.id]):[];
     if(!ok.length){dockOn(false);return}
-    dockOn(true);
+    dockOn(true);DOCK.cm=cm;
     if(DOCK.game!==G.id){if(DOCK.view)DOCK.view.then(x=>x.dispose());DOCK.view=v.createViewer($('#dockView'),G.models);DOCK.game=G.id;DOCK.key=null}
-    // keep the move on show while it is still in the list; otherwise show the list's first move
-    if(DOCK.cls!==st.cls||!ok.some(m=>m.class+'|'+m.id===DOCK.key))preview(ok[0]);
-    DOCK.cls=st.cls;
+    // keep the move on show while it is still in the list (re-shown when the picked weapon changes); otherwise show
+    // the list's first move
+    const cur=ok.find(m=>m.class+'|'+m.id===DOCK.key);
+    if(DOCK.cls!==st.cls||!cur)preview(ok[0]);else if(DOCK.w!==st.w)preview(cur);
+    DOCK.cls=st.cls;DOCK.w=st.w;
   }catch(e){if(seq===DOCK.seq){dockOn(true);$('#dockView').innerHTML=`<div class="empty">Could not load the 3D preview (${esc(e.message)}).</div>`}}}
 async function preview(m){
   const key=m.class+'|'+m.id;DOCK.key=key;
@@ -446,9 +450,9 @@ async function preview(m){
   document.querySelector(`tbody tr[data-m="${CSS.escape(key)}"]`)?.classList.add('on');
   $('#dockSrc').textContent=`${CL[m.class].name} › ${T[m.type].name} · ${GRIP[m.grip]}`;
   $('#dockName').textContent=`${m.name} · startup ${m.startup}, active ${m.active.map(([s,e])=>s===e?s:s+'–'+e).join(', ')}`;
-  const view=await DOCK.view,man=await (await import(VIEWER)).manifest(G.models);
-  if(DOCK.key!==key)return;
-  view.show(m,{strip:stripHtml(m,man.moves[key].frames),state:f=>frameState(m,f)});
+  const view=await DOCK.view;
+  if(DOCK.key!==key||!DOCK.cm)return;
+  view.show(m,{weapon:pickName(),strip:stripHtml(m,DOCK.cm.moves[m.id].frames),state:f=>frameState(m,f)});
 }
 function closeSheet(){$('#sheet').hidden=true;$('#scrim').hidden=true}
 // Shareable state in the hash: #g=elden-ring&c=Katana&w=Moonveil&t=light,heavy
@@ -467,7 +471,7 @@ document.addEventListener('click',e=>{
   const t=e.target.closest('button,tr[data-m]');if(!t)return;
   const d=t.dataset;
   if(d.open){openMove(d.open);return}
-  if(d.m){const m=moveOf(d.m);if(!$('#dock').hidden&&DOCK.view&&m){DOCK.view.then(v=>v.has(m)?preview(m):openMove(d.m))}else openMove(d.m);return}
+  if(d.m){const m=moveOf(d.m);if(!$('#dock').hidden&&DOCK.view&&m&&m.class===DOCK.cls&&DOCK.cm?.moves[m.id])preview(m);else openMove(d.m);return}
   if(t.id==='dockMore'){if(DOCK.key)openMove(DOCK.key);return}
   if(t.id==='pickMin'){pickMin(!$('#pick').classList.contains('min'));return}
   if(d.game!==undefined){if(d.game!==st.game)loadGame(d.game);return}
@@ -496,7 +500,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#sheet').hidden
 addEventListener('hashchange',()=>{if(D){fromHash();renderAll()}});
 // the docked preview sticks under the header; prefetch a row's animation while the pointer is on it
 new ResizeObserver(()=>document.documentElement.style.setProperty('--hdr',$('header').offsetHeight+'px')).observe($('header'));
-document.addEventListener('pointerover',e=>{const r=e.target.closest('tr[data-m]');if(r&&DOCK.view&&!$('#dock').hidden){const m=moveOf(r.dataset.m);if(m)DOCK.view.then(v=>v.prefetch(m))}});
+document.addEventListener('pointerover',e=>{const r=e.target.closest('tr[data-m]');if(r&&DOCK.view&&!$('#dock').hidden){const m=moveOf(r.dataset.m);if(m)DOCK.view.then(v=>v.prefetch(m,pickName()))}});
 try{if(localStorage.getItem('fd-pick-min'))pickMin(true)}catch(e){}
 let GAMES=[];
 fetch('frame-data/games.json').then(r=>r.json()).then(j=>{GAMES=j.games;const g=new URLSearchParams(location.hash.slice(1)).get('g');return loadGame(g||GAMES[0].id)})

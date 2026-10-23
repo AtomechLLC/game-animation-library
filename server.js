@@ -14,7 +14,7 @@ const { send } = require('./lib/http');
 
 const TYPES = { '.webp': 'image/webp', '.gif': 'image/gif', '.png': 'image/png', '.jpg': 'image/jpeg', '.mp4': 'video/mp4' };
 const FRAME_TYPES = { '.json': 'application/json; charset=utf-8', '.webp': 'image/webp', '.png': 'image/png',
-  '.js': 'text/javascript; charset=utf-8', '.glb': 'model/gltf-binary' };
+  '.js': 'text/javascript; charset=utf-8', '.glb': 'model/gltf-binary', '.bin': 'application/octet-stream' };
 
 /**
  * template.html + library.json, with community features pointed at /api. Same output as build_page.py,
