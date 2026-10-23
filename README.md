@@ -51,6 +51,19 @@ sprite capture of every frame, extracted from the CPS3 emulator FBA-RR. Two scri
 
 Sprites are Capcom's; every clip and move links back to its Baston hitbox viewer.
 
+## Super Smash Bros. Ultimate (Ultimate Frame Data)
+
+[Ultimate Frame Data](https://ultimateframedata.com/smash) by MetalMusicMan (with Zeckemyro and the contributors
+credited on the site) has every character's moves with frame data and hitbox GIFs captured from the game.
+
+- `python tools/frame_data/import_ufd_ssbu.py --clips` writes `frame-data/super-smash-bros-ultimate.json` (all 89
+  characters, 3,589 moves), the character icons in `frame-data/icons/super-smash-bros-ultimate/` and each move's hitbox
+  GIFs as small animated WebPs in `frame-data/clips/super-smash-bros-ultimate/`, which the Frame Data tab's docked
+  previewer steps through frame by frame. One request a second, cached in `.cache/ufd/`.
+- `add_ufd.py` (above) puts some of the same GIFs into library entries.
+
+The footage is Nintendo's and the hitbox GIFs are Ultimate Frame Data's; every move and clip links back to the site.
+
 ## Elden Ring renders
 
 `tools/er_gifs/` renders Elden Ring animations with the Frame Data tab's 3D preview to animated WebP for library
