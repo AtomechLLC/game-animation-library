@@ -37,6 +37,16 @@ To add animations: append lines to taxonomy.txt, rebuild index.json, rerun merge
 - `gifs/` — downloaded copies (Tenor's 200px animated WebP, Giphy's 200w WebP), one per GIF that could be fetched. `local` is the path, `source_url` the file it came from. Tenor links whose page id is 18-20 digits map straight to a media URL; older 7-8 digit ids could not be resolved, so those links stay page-only.
 - `add_ufd.py` — adds Super Smash Bros. Ultimate hitbox GIFs from [Ultimate Frame Data](https://ultimateframedata.com) to 29 melee, fighting, defense and reaction entries, saved as 400px WebP at `gifs/<id>-ufd-<n>.webp` (host `Ultimate Frame Data`). The move-to-entry mapping is in the script; rerunning skips GIFs already present.
 
+## Elden Ring renders
+
+`tools/er_gifs/` renders moves from the Frame Data tab's 3D preview to animated WebP for library entries whose clips
+are missing or weak. `jobs.json` maps an entry to an Elden Ring class and move id; `node tools/er_gifs/render.js`
+(Playwright + ffmpeg) loads `render.html`, which runs `frame-data/viewer3d.js` paused and steps it frame by frame,
+crops every frame to the character over the whole move and writes `gifs/<entry>-er<n>.webp` (360 px, 15 fps). Then
+`python tools/er_gifs/add_to_library.py` adds each render to its entry (host `Elden Ring render`, linked to the move
+in the Frame Data tab) and to `added` in `gif-screening.json`. The preview only holds weapon movesets (attacks,
+criticals), so only attack-type entries can be filled this way.
+
 ## Removed GIFs (blocklist)
 
 `gif-blocklist.json` lists GIFs removed for good on the review page: their `page_url`, `media_url`, `source_url` and the

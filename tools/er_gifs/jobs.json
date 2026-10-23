@@ -1,0 +1,6 @@
+[
+ {"out": "melee.shield-bash-er0", "class": "Greatshield", "move": "a047_030000", "label": "1h R1 shield bash", "what": "Greatshield R1: the shield is rammed forward into the target"},
+ {"out": "melee.deathblow-er0", "class": "Katana", "move": "a029_031700", "label": "riposte", "what": "Katana riposte on a staggered enemy: grab, run through and kick off (target not shown)", "confidence": "low"},
+ {"out": "melee.rolling-attack-er0", "class": "Katana", "move": "a029_032300", "label": "2h rolling R1", "what": "Katana two-handed attack straight out of a roll (starts as the roll ends)"},
+ {"out": "melee.sprint-attack-er0", "class": "Greatsword", "move": "a025_032210", "label": "2h running R2", "what": "Greatsword two-handed running heavy: a spinning lunge into a low slam out of a sprint"}
+]
