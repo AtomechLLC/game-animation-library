@@ -263,7 +263,7 @@ const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const GRIP={'1h':'1H','2h':'2H','Paired':'PS','Offhand':'OH','Mounted':'Horse','any':'—'};
 const PAGE=150;
-let G=null,D=null,ICONS={},T={},CL={},FAM={};
+let G=null,D=null,ICONS={},ICONSET={},T={},CL={},FAM={},GR=GRIP;
 const st={game:null,fam:null,cls:null,w:null,types:new Set(),grips:new Set(),armor:false,multi:false,noparry:false,max:90,q:'',sort:null,dir:1,shown:PAGE};
 // Columns: key, header, value getter, numeric, tooltip
 const COLS=[
@@ -288,7 +288,8 @@ async function loadGame(id){
   G=GAMES.find(g=>g.id===id)||GAMES[0];st.game=G.id;
   $('#table').innerHTML='<div class="empty">Loading frame data…</div>';
   const [d,ic]=await Promise.all([fetch(G.data).then(r=>r.json()),fetch(G.icons+'icons.json').then(r=>r.ok?r.json():{icons:{}}).catch(()=>({icons:{}}))]);
-  D=d;ICONS=ic.icons||{};
+  D=d;ICONS=ic.icons||{};ICONSET=ic;
+  GR={...GRIP,...Object.fromEntries((D.grips||[]).filter(g=>g.short).map(g=>[g.id,g.short]))};
   T=Object.fromEntries(D.moveTypes.map((t,i)=>[t.id,{...t,i}]));
   CL=Object.fromEntries(D.classes.map((c,i)=>[c.id,{...c,i}]));
   FAM=Object.fromEntries(D.families.map(f=>[f.id,f]));
@@ -330,7 +331,7 @@ function renderAll(){
   const ext=(u,t)=>`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a>`;
   $('#foot').innerHTML=(D.source.links?`<p><b>Source.</b> ${esc(D.source.note)} ${D.source.links.map(l=>ext(l.url,l.name+' ↗')).join(' ')}</p>`
     :`<p><b>Source.</b> ${esc(D.game.name)} data comes from the ${ext(D.source.url,D.source.name)} by ${esc(D.source.author)} (patch ${esc(D.game.version)}, retrieved ${esc(D.source.retrieved)}), reshaped here into weapon classes and move types. Every move links back to it. ${D.source.note?esc(D.source.note.replace(/https?:\S+/,'')):''}${ext('https://ko-fi.com/sovietspaceship','Ko-fi ↗')}</p>`)+`
-  <p>Weapon icons are the game's inventory art from the <a href="https://eldenring.wiki.gg" target="_blank" rel="noopener">Elden Ring Wiki</a> and the <a href="https://eldenring.fanapis.com" target="_blank" rel="noopener">Elden Ring Fan API</a>. ${esc(D.game.name)} © FromSoftware / Bandai Namco.</p>
+  ${ICONSET.sources?`<p>Weapon icons are the game's inventory art, from ${ICONSET.sources.map(x=>ext(x.url,x.name)).join(' and ')}. ${esc((ICONSET.note||'').replace(/^Icons are the game's inventory art, /,''))}</p>`:''}
   <p>${esc(D.game.frameNote)} Values cover the first hit of a move; open a move for every window.</p>`;
   writeHash();
 }
@@ -339,7 +340,7 @@ function renderHead(){
   $('#ttl').innerHTML=c?`${icoHtml(w||c.icon,'')} ${esc(w||c.name)}`:esc(f?f.name:`${D.game.name} frame data`);
   $('#sub').textContent=c?(w?`${c.name} · the animations this weapon uses, by move type.`:`${c.name} · default moveset, by move type. Pick a weapon below for its exact moveset.`)
     :'Pick a weapon class to see its moveset by move type, or filter and sort every class at once below.';
-  const act=[];if(st.q)act.push(['q',`“${st.q}”`]);st.types.forEach(t=>act.push(['type:'+t,T[t].name]));st.grips.forEach(g=>act.push(['grip:'+g,GRIP[g]]));
+  const act=[];if(st.q)act.push(['q',`“${st.q}”`]);st.types.forEach(t=>act.push(['type:'+t,T[t].name]));st.grips.forEach(g=>act.push(['grip:'+g,GR[g]]));
   if(st.armor)act.push(['armor','Hyper armor']);if(st.multi)act.push(['multi','Multi-hit']);if(st.noparry)act.push(['noparry',"Can't be parried"]);
   if(st.max<+$('#maxStart').max)act.push(['max',`Startup ≤ ${st.max}`]);
   $('#active').innerHTML=act.map(([k,l])=>`<button data-clear="${esc(k)}">${esc(l)} ✕</button>`).join('')+(act.length>1?`<button data-clear="all">Clear all</button>`:'');
@@ -372,7 +373,7 @@ function cell(k,m,scale){
   switch(k){
     case 'name':return `<td><span class="mname">${esc(m.name)}</span>${m.armor.length?'<span class="tag ha" title="Hyper armor">HA</span>':''}${m.parryable?'':'<span class="tag np" title="Cannot be parried">NP</span>'}${m.hits>1?`<span class="tag" style="border:1px solid var(--line)" title="Hits">×${m.hits}</span>`:''}</td>`;
     case 'class':return `<td><span class="cls">${icoHtml(CL[m.class].icon,'')}${esc(m.class)}</span></td>`;
-    case 'grip':return `<td><span class="gr" title="${esc((D.grips.find(g=>g.id===m.grip)||{}).name)}">${GRIP[m.grip]}</span></td>`;
+    case 'grip':return `<td><span class="gr" title="${esc((D.grips.find(g=>g.id===m.grip)||{}).name)}">${GR[m.grip]}</span></td>`;
     case 'strip':return `<td>${stripHtml(m,scale)}</td>`;
     case 'startup':return `<td class="n mono ${v<=12?'fast':v>=30?'slow':''}">${v}</td>`;
     case 'dtype':return `<td>${esc(v??'—')}</td>`;
@@ -405,10 +406,10 @@ function openMove(key){
   const win=a=>a.length?a.map(([s,e])=>s===e?s:`${s}–${e}`).join(', '):'—';
   const can=[['attack','Attack'],['dodge','Dodge / roll'],['block','Block'],['skill','Skill'],['item','Item'],['move','Walk / run']].filter(([k])=>m.cancels[k]).map(([k,l])=>`<dt>${l}</dt><dd>from frame ${m.cancels[k]}</dd>`).join('');
   const ws=m.weapons.length?m.weapons:[];
-  $('#sheet').innerHTML=`<div class="top"><div><div class="src">${esc(D.game.name)} · ${esc(c.name)} › ${esc(T[m.type].name)} · ${GRIP[m.grip]}</div><h2 id="dName">${esc(m.name)}</h2></div><button class="close" id="close">Close</button></div>
+  $('#sheet').innerHTML=`<div class="top"><div><div class="src">${esc(D.game.name)} · ${esc(c.name)} › ${esc(T[m.type].name)} · ${GR[m.grip]}</div><h2 id="dName">${esc(m.name)}</h2></div><button class="close" id="close">Close</button></div>
   <div class="stats"><div class="stat"><small>Startup</small><b>${m.startup}</b></div><div class="stat"><small>Active</small><b>${m.activeFrames}</b></div><div class="stat"><small>Recovery</small><b>${m.recovery??'—'}</b></div><div class="stat"><small>Total</small><b>${m.total??'—'}</b></div></div>
   <section class="big"><h3>Timeline (${D.game.fps} fps)</h3>${stripHtml(m,end||1)}<div class="ruler2"><span>1</span><span>${Math.round(end/2)}</span><span>${end}</span></div><div class="legend" style="margin-top:8px">${legendHtml()}</div></section>
-  <section><h3>Windows</h3><dl class="meta"><dt>Active</dt><dd>${win(m.active)} (${m.hits} hit${m.hits>1?'s':''})</dd><dt>Hyper armor</dt><dd>${win(m.armor)}</dd><dt>I-frames</dt><dd>${win(m.iframes)}</dd><dt>Parryable</dt><dd>${m.parryable?'Yes':'No'}</dd></dl></section>
+  <section><h3>Windows</h3><dl class="meta"><dt>Active</dt><dd>${win(m.active)} (${m.hits} hit${m.hits>1?'s':''})</dd><dt>Hyper armor</dt><dd>${win(m.armor)}</dd><dt>I-frames</dt><dd>${win(m.iframes)}</dd>${m.charge?`<dt>Charge</dt><dd title="Frames the button is held before this charged version comes out">${m.charge} frames held</dd>`:''}<dt>Parryable</dt><dd>${m.parryable?'Yes':'No'}</dd></dl></section>
   <section><h3>Cancels</h3><dl class="meta">${can||'<dt>—</dt><dd>No cancel windows recorded</dd>'}</dl></section>
   <section><h3>First hit</h3><dl class="meta"><dt>Damage type</dt><dd>${esc(m.damage.type??'—')}</dd><dt>Motion value</dt><dd>${m.damage.mv??'—'}</dd><dt>Poise damage</dt><dd>${m.damage.poise??'—'}</dd><dt>Damage level</dt><dd title="How hard the hit staggers">${m.damage.level??'—'}</dd><dt>Stamina</dt><dd>${m.damage.stamina??'—'}</dd></dl></section>
   <section><h3>Used by (${ws.length||'default moveset'})</h3>${ws.length?`<div class="wlist">${ws.map(i=>`<button data-pickw="${i}" data-pickc="${esc(c.id)}">${icoHtml(c.weapons[i],'')}${esc(c.weapons[i])}</button>`).join('')}</div>`:'<p class="note">Part of the class default moveset.</p>'}</section>
@@ -448,7 +449,7 @@ async function preview(m){
   const key=m.class+'|'+m.id;DOCK.key=key;
   document.querySelectorAll('tbody tr.on').forEach(r=>r.classList.remove('on'));
   document.querySelector(`tbody tr[data-m="${CSS.escape(key)}"]`)?.classList.add('on');
-  $('#dockSrc').textContent=`${CL[m.class].name} › ${T[m.type].name} · ${GRIP[m.grip]}`;
+  $('#dockSrc').textContent=`${CL[m.class].name} › ${T[m.type].name} · ${GR[m.grip]}`;
   $('#dockName').textContent=`${m.name} · startup ${m.startup}, active ${m.active.map(([s,e])=>s===e?s:s+'–'+e).join(', ')}`;
   const view=await DOCK.view;
   if(DOCK.key!==key||!DOCK.cm)return;
@@ -465,7 +466,7 @@ function fromHash(){
   const p=new URLSearchParams(location.hash.slice(1));
   st.fam=FAM[p.get('f')]?p.get('f'):null;st.cls=CL[p.get('c')]?p.get('c'):null;
   const wi=st.cls?CL[st.cls].weapons.indexOf(p.get('w')):-1;st.w=wi>=0?wi:null;
-  st.types=new Set((p.get('t')||'').split(',').filter(t=>T[t]));st.grips=new Set((p.get('grip')||'').split(',').filter(g=>GRIP[g]));
+  st.types=new Set((p.get('t')||'').split(',').filter(t=>T[t]));st.grips=new Set((p.get('grip')||'').split(',').filter(g=>GR[g]));
   const s=p.get('s');if(s&&COLS.find(c=>c[0]===s.replace('-',''))){st.sort=s.replace('-','');st.dir=s[0]==='-'?-1:1}}
 document.addEventListener('click',e=>{
   const t=e.target.closest('button,tr[data-m]');if(!t)return;

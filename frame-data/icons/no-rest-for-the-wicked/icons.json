@@ -1,0 +1,659 @@
+{
+ "sources": [
+  {
+   "name": "No Rest for the Wicked game files",
+   "url": "https://github.com/AtomechLLC/game-animation-library/blob/main/tools/frame_data/import_nrftw_game.py"
+  }
+ ],
+ "note": "Icons are the game's inventory art, (c) Moon Studios / Private Division.",
+ "icons": {
+  "A Singular Purpose": {
+   "file": "a-singular-purpose.webp",
+   "source": "Assets/armaments/root/oneHanded/daggers/aSingularPurpose/aSingularPurpose.asset"
+  },
+  "All Is Known": {
+   "file": "all-is-known.webp",
+   "source": "Assets/armaments/root/oneHanded/wands/allIsKnown/allIsKnown.asset"
+  },
+  "Amberhusk": {
+   "file": "amberhusk.webp",
+   "source": "Assets/armaments/root/oneHanded/wands/amberhusk/amberhusk.asset"
+  },
+  "Answered Prayer": {
+   "file": "answered-prayer.webp",
+   "source": "Assets/armaments/root/twoHanded/bows/answeredPrayer/answeredPrayer.asset"
+  },
+  "Ash Soothed Daggers": {
+   "file": "ash-soothed-daggers.webp",
+   "source": "Assets/armaments/root/dualWield/doubleDaggers/ashSoothedDaggers/ashSoothedDaggers.asset"
+  },
+  "Assegai": {
+   "file": "assegai.webp",
+   "source": "Assets/armaments/root/oneHanded/spears/assegai/assegai.asset"
+  },
+  "Azure Blade": {
+   "file": "azure-blade.webp",
+   "source": "Assets/armaments/root/oneHanded/straightSwords/azureBlade/azureBlade.asset"
+  },
+  "Balak Talon": {
+   "file": "balak-talon.webp",
+   "source": "Assets/armaments/root/twoHanded/bows/balakTalon/balakTalon.asset"
+  },
+  "Bandit's Cleaver": {
+   "file": "bandit-s-cleaver.webp",
+   "source": "Assets/armaments/root/twoHanded/greatAxes/banditsCleaver/banditsCleaver.asset"
+  },
+  "Blacksmith’s Folly": {
+   "file": "blacksmith-s-folly.webp",
+   "source": "Assets/armaments/root/oneHanded/clubs/blacksmithsFolly/blacksmithsFolly.asset"
+  },
+  "Bleeder's Delight": {
+   "file": "bleeder-s-delight.webp",
+   "source": "Assets/armaments/root/dualWield/doubleDaggers/bleedersDelight/bleedersDelight.asset"
+  },
+  "Blister": {
+   "file": "blister.webp",
+   "source": "Assets/armaments/root/twoHanded/greatSwords/blister/blister.asset"
+  },
+  "Blood-Rusted Sword": {
+   "file": "blood-rusted-sword.webp",
+   "source": "Assets/armaments/root/oneHanded/straightSwords/bloodRustedSword/bloodRustedSword.asset"
+  },
+  "Boarskin Reaper": {
+   "file": "boarskin-reaper.webp",
+   "source": "Assets/armaments/root/twoHanded/greatAxes/boarskinReaper/boarskinReaper.asset"
+  },
+  "Boarskin Tusk": {
+   "file": "boarskin-tusk.webp",
+   "source": "Assets/armaments/root/oneHanded/axes/boarskinTusk/boarskinTusk.asset"
+  },
+  "Broken Fang": {
+   "file": "broken-fang.webp",
+   "source": "Assets/armaments/root/twoHanded/greatAxes/brokenFang/brokenFang.asset"
+  },
+  "Broken Forge": {
+   "file": "broken-forge.webp",
+   "source": "Assets/armaments/root/oneHanded/hammers/brokenForge/brokenForge.asset"
+  },
+  "Brothers Keepers": {
+   "file": "brothers-keepers.webp",
+   "source": "Assets/armaments/root/dualWield/doubleDaggers/brothersKeepers/brothersKeepers.asset"
+  },
+  "Brutal Maul": {
+   "file": "brutal-maul.webp",
+   "source": "Assets/armaments/root/oneHanded/hammers/brutalMaul/brutalMaul.asset"
+  },
+  "Brutish Cudgel": {
+   "file": "brutish-cudgel.webp",
+   "source": "Assets/armaments/root/twoHanded/greatClubs/brutishCudgel/brutishCudgel.asset"
+  },
+  "Bud of the Everlasting Tree": {
+   "file": "bud-of-the-everlasting-tree.webp",
+   "source": "Assets/armaments/root/twoHanded/greatHammers/budOfTheEverlastingTree/budOfTheEverlastingTree.asset"
+  },
+  "Buried Shamshir": {
+   "file": "buried-shamshir.webp",
+   "source": "Assets/armaments/root/oneHanded/curvedSwords/buriedShamshir/buriedShamshir.asset"
+  },
+  "Butcher's Work": {
+   "file": "butcher-s-work.webp",
+   "source": "Assets/armaments/root/oneHanded/daggers/butchersWork/butchersWork.asset"
+  },
+  "Caretaker's Ruined Staff": {
+   "file": "caretaker-s-ruined-staff.webp",
+   "source": "Assets/armaments/root/twoHanded/staves/caretakersRuinedStaff/caretakersRuinedStaff.asset"
+  },
+  "Cerim's Skyrend": {
+   "file": "cerim-s-skyrend.webp",
+   "source": "Assets/armaments/root/twoHanded/greatAxes/cerimsSkyrend/cerimsSkyrend.asset"
+  },
+  "Cerulean Blade": {
+   "file": "cerulean-blade.webp",
+   "source": "Assets/armaments/root/oneHanded/curvedSwords/ceruleanBlade/ceruleanBlade.asset"
+  },
+  "Chipped Daggers": {
+   "file": "chipped-daggers.webp",
+   "source": "Assets/armaments/root/dualWield/doubleDaggers/chippedDaggers/chippedDaggers.asset"
+  },
+  "Cinder & Stone": {
+   "file": "cinder-stone.webp",
+   "source": "Assets/armaments/root/twoHanded/greatHammers/cinderAndStone/cinderAndStone.asset"
+  },
+  "Claw of the Crescent Moon": {
+   "file": "claw-of-the-crescent-moon.webp",
+   "source": "Assets/armaments/root/dualWield/gauntlets/clawOfTheCrescentMoon/clawOfTheCrescentMoon.asset"
+  },
+  "Claymore": {
+   "file": "claymore.webp",
+   "source": "Assets/armaments/root/twoHanded/greatSwords/claymore/claymore.asset"
+  },
+  "Cleric's Mace": {
+   "file": "cleric-s-mace.webp",
+   "source": "Assets/armaments/root/oneHanded/maces/clericsMace/clericsMace.asset"
+  },
+  "Climber's Pick": {
+   "file": "climber-s-pick.webp",
+   "source": "Assets/armaments/root/oneHanded/hammers/climbersPick/climbersPick.asset"
+  },
+  "Coiled Dawn": {
+   "file": "coiled-dawn.webp",
+   "source": "Assets/armaments/root/oneHanded/wakizashis/coiledDawn/coiledDawn.asset"
+  },
+  "Coral Piercer": {
+   "file": "coral-piercer.webp",
+   "source": "Assets/armaments/root/oneHanded/spears/coralPiercer/coralPiercer.asset"
+  },
+  "Corpse Smeared Blade": {
+   "file": "corpse-smeared-blade.webp",
+   "source": "Assets/armaments/root/twoHanded/greatSwords/corpseSmearedBlade/corpseSmearedBlade.asset"
+  },
+  "Cronus": {
+   "file": "cronus.webp",
+   "source": "Assets/armaments/root/oneHanded/straightSwords/cronus/cronus.asset"
+  },
+  "Crooked Key": {
+   "file": "crooked-key.webp",
+   "source": "Assets/armaments/root/oneHanded/wands/crookedKey/crookedKey.asset"
+  },
+  "Crystal Fist": {
+   "file": "crystal-fist.webp",
+   "source": "Assets/armaments/root/dualWield/gauntlets/crystalFist/crystalFist.asset"
+  },
+  "Cursed Crone": {
+   "file": "cursed-crone.webp",
+   "source": "Assets/armaments/root/twoHanded/staves/cursedCrone/cursedCrone.asset"
+  },
+  "Cursed Unguis": {
+   "file": "cursed-unguis.webp",
+   "source": "Assets/armaments/root/dualWield/gauntlets/cursedUnguis/cursedUnguis.asset"
+  },
+  "Deadfang": {
+   "file": "deadfang.webp",
+   "source": "Assets/armaments/root/dualWield/gauntlets/deadfang/deadfang.asset"
+  },
+  "Demon's Key": {
+   "file": "demon-s-key.webp",
+   "source": "Assets/armaments/root/oneHanded/curvedSwords/demonsKey/demonsKey.asset"
+  },
+  "Divine Scimitar": {
+   "file": "divine-scimitar.webp",
+   "source": "Assets/armaments/root/twoHanded/curvedGreatSwords/divineScimitar/divineScimitar.asset"
+  },
+  "Dried Hive": {
+   "file": "dried-hive.webp",
+   "source": "Assets/armaments/root/twoHanded/staves/driedHive/driedHive.asset"
+  },
+  "Emerald Talons": {
+   "file": "emerald-talons.webp",
+   "source": "Assets/armaments/root/dualWield/gauntlets/emeraldTalons/emeraldTalons.asset"
+  },
+  "Endless Winter": {
+   "file": "endless-winter.webp",
+   "source": "Assets/armaments/root/twoHanded/staves/endlessWinter/endlessWinter.asset"
+  },
+  "Entwined Root": {
+   "file": "entwined-root.webp",
+   "source": "Assets/armaments/root/oneHanded/wands/entwinedRoot/entwinedRoot.asset"
+  },
+  "Etched Yatagan": {
+   "file": "etched-yatagan.webp",
+   "source": "Assets/armaments/root/oneHanded/curvedSwords/etchedYatagan/etchedYatagan.asset"
+  },
+  "Evening Star": {
+   "file": "evening-star.webp",
+   "source": "Assets/armaments/root/twoHanded/greatClubs/eveningStar/eveningStar.asset"
+  },
+  "Falling Sky": {
+   "file": "falling-sky.webp",
+   "source": "Assets/armaments/root/twoHanded/staves/fallingSky/fallingSky.asset"
+  },
+  "False Truth": {
+   "file": "false-truth.webp",
+   "source": "Assets/armaments/root/twoHanded/staves/falseTruth/falseTruth.asset"
+  },
+  "Falstead's Fury": {
+   "file": "falstead-s-fury.webp",
+   "source": "Assets/armaments/root/oneHanded/straightSwords/falsteadsFury/falsteadsFury.asset"
+  },
+  "Festering Cleft": {
+   "file": "festering-cleft.webp",
+   "source": "Assets/armaments/root/twoHanded/greatHammers/festeringCleft/festeringCleft.asset"
+  },
+  "Festering Earth": {
+   "file": "festering-earth.webp",
+   "source": "Assets/armaments/root/twoHanded/greatSwords/festeringEarth/festeringEarth.asset"
+  },
+  "Fetid Club": {
+   "file": "fetid-club.webp",
+   "source": "Assets/armaments/root/twoHanded/greatClubs/fetidClub/fetidClub.asset"
+  },
+  "Filleter": {
+   "file": "filleter.webp",
+   "source": "Assets/armaments/root/oneHanded/curvedSwords/filleter/filleter.asset"
+  },
+  "Flame Becomes Us": {
+   "file": "flame-becomes-us.webp",
+   "source": "Assets/armaments/root/oneHanded/wands/flameBecomesUs/flameBecomesUs.asset"
+  },
+  "Freiheit": {
+   "file": "freiheit.webp",
+   "source": "Assets/armaments/root/twoHanded/greatSwords/freiheit/freiheit.asset"
+  },
+  "Fungus Strung Bow": {
+   "file": "fungus-strung-bow.webp",
+   "source": "Assets/armaments/root/twoHanded/bows/fungusStrungBow/fungusStrungBow.asset"
+  },
+  "Fused Coronet": {
+   "file": "fused-coronet.webp",
+   "source": "Assets/armaments/root/oneHanded/wands/fusedCoronet/fusedCoronet.asset"
+  },
+  "Gilded Twibill": {
+   "file": "gilded-twibill.webp",
+   "source": "Assets/armaments/root/twoHanded/greatAxes/gildedTwibill/gildedTwibill.asset"
+  },
+  "Gnarled Harpoon": {
+   "file": "gnarled-harpoon.webp",
+   "source": "Assets/armaments/root/oneHanded/spears/gnarledHarpoon/gnarledHarpoon.asset"
+  },
+  "Gnarled Saw": {
+   "file": "gnarled-saw.webp",
+   "source": "Assets/armaments/root/twoHanded/greatSwords/gnarledSaw/gnarledSaw.asset"
+  },
+  "Gnarled Staff": {
+   "file": "gnarled-staff.webp",
+   "source": "Assets/armaments/root/twoHanded/staves/gnarledStaff/gnarledStaff.asset"
+  },
+  "Gossamer Gauntlets": {
+   "file": "gossamer-gauntlets.webp",
+   "source": "Assets/armaments/root/dualWield/gauntlets/gossamerGauntlets/gossamerGauntlets.asset"
+  },
+  "Governor's Dagger": {
+   "file": "governor-s-dagger.webp",
+   "source": "Assets/armaments/root/oneHanded/straightSwords/governorsDagger/governorsDagger.asset"
+  },
+  "Governor's Sword": {
+   "file": "governor-s-sword.webp",
+   "source": "Assets/armaments/root/oneHanded/straightSwords/governorsSword/governorsSword.asset"
+  },
+  "Grasping Magus Wand": {
+   "file": "grasping-magus-wand.webp",
+   "source": "Assets/armaments/root/oneHanded/wands/graspingMagusWand/graspingMagusWand.asset"
+  },
+  "Grimacing Stone": {
+   "file": "grimacing-stone.webp",
+   "source": "Assets/armaments/root/oneHanded/hammers/grimacingStone/grimacingStone.asset"
+  },
+  "Gutterpig": {
+   "file": "gutterpig.webp",
+   "source": "Assets/armaments/root/dualWield/gauntlets/gutterpig/gutterpig.asset"
+  },
+  "Harvester's Bonesaw": {
+   "file": "harvester-s-bonesaw.webp",
+   "source": "Assets/armaments/root/oneHanded/clubs/harvestersBonesaw/harvestersBonesaw.asset"
+  },
+  "Harvester's Dread": {
+   "file": "harvester-s-dread.webp",
+   "source": "Assets/armaments/root/twoHanded/greatAxes/harvestersDread/harvestersDread.asset"
+  },
+  "Hoar Frost Sickle": {
+   "file": "hoar-frost-sickle.webp",
+   "source": "Assets/armaments/root/oneHanded/wands/hoarFrostSickle/hoarFrostSickle.asset"
+  },
+  "Honed Frenzy": {
+   "file": "honed-frenzy.webp",
+   "source": "Assets/armaments/root/oneHanded/wakizashis/honedFrenzy/honedFrenzy.asset"
+  },
+  "Hope Shorn": {
+   "file": "hope-shorn.webp",
+   "source": "Assets/armaments/root/twoHanded/scythes/hopeShorn/hopeShorn.asset"
+  },
+  "Hunter's Axe": {
+   "file": "hunter-s-axe.webp",
+   "source": "Assets/armaments/root/oneHanded/axes/huntersAxe/huntersAxe.asset"
+  },
+  "Hunter's Knife": {
+   "file": "hunter-s-knife.webp",
+   "source": "Assets/armaments/root/oneHanded/daggers/huntersKnife/huntersKnife.asset"
+  },
+  "Huro's Great Axe": {
+   "file": "huro-s-great-axe.webp",
+   "source": "Assets/armaments/root/twoHanded/greatAxes/hurosGreatAxe/hurosGreatAxe.asset"
+  },
+  "Icebreaker": {
+   "file": "icebreaker.webp",
+   "source": "Assets/armaments/root/twoHanded/greatSwords/icebreaker/icebreaker.asset"
+  },
+  "Ironstud Interrogators": {
+   "file": "ironstud-interrogators.webp",
+   "source": "Assets/armaments/root/dualWield/gauntlets/ironstudInterrogators/ironstudInterrogators.asset"
+  },
+  "Jackknife": {
+   "file": "jackknife.webp",
+   "source": "Assets/armaments/root/oneHanded/daggers/jackknife/jackknife.asset"
+  },
+  "Jade-Spined Axe": {
+   "file": "jade-spined-axe.webp",
+   "source": "Assets/armaments/root/oneHanded/axes/jadeSpinedAxe/jadeSpinedAxe.asset"
+  },
+  "Lacquered Bow": {
+   "file": "lacquered-bow.webp",
+   "source": "Assets/armaments/root/twoHanded/bows/laqueredBow/laqueredBow.asset"
+  },
+  "Lord of the Muck": {
+   "file": "lord-of-the-muck.webp",
+   "source": "Assets/armaments/root/oneHanded/wands/lordOfTheMuck/lordOfTheMuck.asset"
+  },
+  "Malice": {
+   "file": "malice.webp",
+   "source": "Assets/armaments/root/oneHanded/maces/malice/malice.asset"
+  },
+  "Mayhem": {
+   "file": "mayhem.webp",
+   "source": "Assets/armaments/root/twoHanded/greatSwords/mayhem/mayhem.asset"
+  },
+  "Midnight Blade": {
+   "file": "midnight-blade.webp",
+   "source": "Assets/armaments/root/oneHanded/daggers/midnightBlade/midnightBlade.asset"
+  },
+  "Midnight Shredder": {
+   "file": "midnight-shredder.webp",
+   "source": "Assets/armaments/root/twoHanded/greatAxes/midnightShredder/midnightShredder.asset"
+  },
+  "Molten Clutch": {
+   "file": "molten-clutch.webp",
+   "source": "Assets/armaments/root/oneHanded/wands/moltenClutch/moltenClutch.asset"
+  },
+  "Moon Shard ": {
+   "file": "moon-shard.webp",
+   "source": "Assets/armaments/root/oneHanded/wands/moonShard/moonShard.asset"
+  },
+  "Moonshaft": {
+   "file": "moonshaft.webp",
+   "source": "Assets/armaments/root/oneHanded/rapiers/moonshaft/moonshaft.asset"
+  },
+  "Nail-Laden Club": {
+   "file": "nail-laden-club.webp",
+   "source": "Assets/armaments/root/oneHanded/clubs/nailLadenClub/nailLadenClub.asset"
+  },
+  "Needle Spear": {
+   "file": "needle-spear.webp",
+   "source": "Assets/armaments/root/oneHanded/spears/needleSpear/needleSpear.asset"
+  },
+  "Nith Blade": {
+   "file": "nith-blade.webp",
+   "source": "Assets/armaments/root/oneHanded/straightSwords/nithBlade/nithBlade.asset"
+  },
+  "Nith Gate": {
+   "file": "nith-gate.webp",
+   "source": "Assets/armaments/root/oneHanded/wands/nithGate/nithGate.asset"
+  },
+  "Nith Grovebinders": {
+   "file": "nith-grovebinders.webp",
+   "source": "Assets/armaments/root/dualWield/gauntlets/nithGrovebinders/nithGrovebinders.asset"
+  },
+  "Ogre's Club": {
+   "file": "ogre-s-club.webp",
+   "source": "Assets/armaments/root/oneHanded/clubs/ogresClub/ogresClub.asset"
+  },
+  "Paddle": {
+   "file": "paddle.webp",
+   "source": "Assets/armaments/root/twoHanded/greatClubs/paddle/paddle.asset"
+  },
+  "Pale Ash": {
+   "file": "pale-ash.webp",
+   "source": "Assets/armaments/root/twoHanded/bows/paleAsh/paleAsh.asset"
+  },
+  "Patience": {
+   "file": "patience.webp",
+   "source": "Assets/armaments/root/twoHanded/bows/patience/patience.asset"
+  },
+  "Petaled Spear": {
+   "file": "petaled-spear.webp",
+   "source": "Assets/armaments/root/oneHanded/spears/petaledSpear/petaledSpear.asset"
+  },
+  "Pig Sticker": {
+   "file": "pig-sticker.webp",
+   "source": "Assets/armaments/root/oneHanded/rapiers/pigSticker/pigSticker.asset"
+  },
+  "Pinwheel Staff": {
+   "file": "pinwheel-staff.webp",
+   "source": "Assets/armaments/root/twoHanded/staves/pinwheelStaff/pinwheelStaff.asset"
+  },
+  "Pound of Cadavers": {
+   "file": "pound-of-cadavers.webp",
+   "source": "Assets/armaments/root/twoHanded/greatHammers/poundOfCadavers/poundOfCadavers.asset"
+  },
+  "Proud Lance": {
+   "file": "proud-lance.webp",
+   "source": "Assets/armaments/root/oneHanded/spears/proudLance/proudLance.asset"
+  },
+  "Reaching Nail": {
+   "file": "reaching-nail.webp",
+   "source": "Assets/armaments/root/oneHanded/rapiers/reachingNail/reachingNail.asset"
+  },
+  "Reclaimer": {
+   "file": "reclaimer.webp",
+   "source": "Assets/armaments/root/oneHanded/axes/reclaimer/reclaimer.asset"
+  },
+  "Regal Cleft": {
+   "file": "regal-cleft.webp",
+   "source": "Assets/armaments/root/twoHanded/halberds/regalCleft/regalCleft.asset"
+  },
+  "Reibach's Claws": {
+   "file": "reibach-s-claws.webp",
+   "source": "Assets/armaments/root/dualWield/gauntlets/reibachsClaws/reibachsClaws.asset"
+  },
+  "Ripper": {
+   "file": "ripper.webp",
+   "source": "Assets/armaments/root/oneHanded/axes/ripper/ripper.asset"
+  },
+  "Risen Blade": {
+   "file": "risen-blade.webp",
+   "source": "Assets/armaments/root/oneHanded/curvedSwords/risenBlade/risenBlade.asset"
+  },
+  "Rogue Messer": {
+   "file": "rogue-messer.webp",
+   "source": "Assets/armaments/root/dualWield/doubleDaggers/rogueMesser/rogueMesser.asset"
+  },
+  "Rostock": {
+   "file": "rostock.webp",
+   "source": "Assets/armaments/root/oneHanded/hammers/rostock/rostock.asset"
+  },
+  "Royal Hewn Axe": {
+   "file": "royal-hewn-axe.webp",
+   "source": "Assets/armaments/root/oneHanded/axes/royalHewnAxe/royalHewnAxe.asset"
+  },
+  "Rune-Stricken Wand": {
+   "file": "rune-stricken-wand.webp",
+   "source": "Assets/armaments/root/oneHanded/wands/runeStrickenWand/runeStrickenWand.asset"
+  },
+  "Rusty Khopesh": {
+   "file": "rusty-khopesh.webp",
+   "source": "Assets/armaments/root/oneHanded/curvedSwords/rustyKhopesh/rustyKhopesh.asset"
+  },
+  "Sacrament's Sin": {
+   "file": "sacrament-s-sin.webp",
+   "source": "Assets/armaments/root/oneHanded/spears/sacramentsSin/sacramentsSin.asset"
+  },
+  "Sanglier": {
+   "file": "sanglier.webp",
+   "source": "Assets/armaments/root/oneHanded/wands/sanglier/sanglier.asset"
+  },
+  "Scimitar": {
+   "file": "scimitar.webp",
+   "source": "Assets/armaments/root/oneHanded/curvedSwords/scimitar/scimitar.asset"
+  },
+  "Scorched Broadblade": {
+   "file": "scorched-broadblade.webp",
+   "source": "Assets/armaments/root/oneHanded/straightSwords/scorchedBroadblade/scorchedBroadblade.asset"
+  },
+  "Scythe of Wretches": {
+   "file": "scythe-of-wretches.webp",
+   "source": "Assets/armaments/root/twoHanded/scythes/scytheOfWretches/scytheOfWretches.asset"
+  },
+  "Serrated Cutter": {
+   "file": "serrated-cutter.webp",
+   "source": "Assets/armaments/root/twoHanded/halberds/serratedCutter/serratedCutter.asset"
+  },
+  "Shattered Sun": {
+   "file": "shattered-sun.webp",
+   "source": "Assets/armaments/root/twoHanded/greatSwords/shatteredSun/shatteredSun.asset"
+  },
+  "Shellguard Gauntlets": {
+   "file": "shellguard-gauntlets.webp",
+   "source": "Assets/armaments/root/dualWield/gauntlets/shellguardGauntlets/shellguardGauntlets.asset"
+  },
+  "Short Bardiche": {
+   "file": "short-bardiche.webp",
+   "source": "Assets/armaments/root/twoHanded/greatAxes/shortBardiche/shortBardiche.asset"
+  },
+  "Short Bow": {
+   "file": "short-bow.webp",
+   "source": "Assets/armaments/root/twoHanded/bows/shortBow/shortBow.asset"
+  },
+  "Shrike Tree": {
+   "file": "shrike-tree.webp",
+   "source": "Assets/armaments/root/oneHanded/maces/shrikeTree/shrikeTree.asset"
+  },
+  "Shroudcleaver": {
+   "file": "shroudcleaver.webp",
+   "source": "Assets/armaments/root/oneHanded/axes/shroudcleaver/shroudcleaver.asset"
+  },
+  "Sieger": {
+   "file": "sieger.webp",
+   "source": "Assets/armaments/root/twoHanded/greatSwords/sieger/sieger.asset"
+  },
+  "Sinew": {
+   "file": "sinew.webp",
+   "source": "Assets/armaments/root/oneHanded/rapiers/sinew/sinew.asset"
+  },
+  "Singing Peal": {
+   "file": "singing-peal.webp",
+   "source": "Assets/armaments/root/oneHanded/hammers/singingPeal/singingPeal.asset"
+  },
+  "Sinner's Crown": {
+   "file": "sinner-s-crown.webp",
+   "source": "Assets/armaments/root/twoHanded/staves/sinnersCrown/sinnersCrown.asset"
+  },
+  "Siren Queen's Horn": {
+   "file": "siren-queen-s-horn.webp",
+   "source": "Assets/armaments/root/oneHanded/rapiers/sirenQueensHorn/sirenQueensHorn.asset"
+  },
+  "Siren's Call": {
+   "file": "siren-s-call.webp",
+   "source": "Assets/armaments/root/twoHanded/bows/sirensCall/sirensCall.asset"
+  },
+  "Soul Thresher": {
+   "file": "soul-thresher.webp",
+   "source": "Assets/armaments/root/twoHanded/scythes/soulThresher/soulThresher.asset"
+  },
+  "Spalled Axe": {
+   "file": "spalled-axe.webp",
+   "source": "Assets/armaments/root/twoHanded/greatAxes/spalledAxe/spalledAxe.asset"
+  },
+  "Spherin": {
+   "file": "spherin.webp",
+   "source": "Assets/armaments/root/twoHanded/staves/spherin/spherin.asset"
+  },
+  "Spirit Edge": {
+   "file": "spirit-edge.webp",
+   "source": "Assets/armaments/root/oneHanded/straightSwords/spiritEdge/spiritEdge.asset"
+  },
+  "Spliced Hammer": {
+   "file": "spliced-hammer.webp",
+   "source": "Assets/armaments/root/twoHanded/greatHammers/splicedHammer/splicedHammer.asset"
+  },
+  "Stag of Embers": {
+   "file": "stag-of-embers.webp",
+   "source": "Assets/armaments/root/twoHanded/staves/stagOfEmbers/stagOfEmbers.asset"
+  },
+  "Summer's Sting": {
+   "file": "summer-s-sting.webp",
+   "source": "Assets/armaments/root/twoHanded/greatSwords/summersSting/summersSting.asset"
+  },
+  "Sun's Scorn": {
+   "file": "sun-s-scorn.webp",
+   "source": "Assets/armaments/root/dualWield/gauntlets/sunsScorn/sunsScorn.asset"
+  },
+  "Sunbeam": {
+   "file": "sunbeam.webp",
+   "source": "Assets/armaments/root/twoHanded/curvedGreatSwords/sunbeam/sunbeam.asset"
+  },
+  "Swamp Nail": {
+   "file": "swamp-nail.webp",
+   "source": "Assets/armaments/root/dualWield/gauntlets/swampNail/swampNail.asset"
+  },
+  "Talwar": {
+   "file": "talwar.webp",
+   "source": "Assets/armaments/root/oneHanded/curvedSwords/talwar/talwar.asset"
+  },
+  "Tarnished Wand": {
+   "file": "tarnished-wand.webp",
+   "source": "Assets/armaments/root/oneHanded/wands/tarnishedWand/tarnishedWand.asset"
+  },
+  "The Dawn Never Comes": {
+   "file": "the-dawn-never-comes.webp",
+   "source": "Assets/armaments/root/dualWield/gauntlets/theDawnNeverComes/theDawnNeverComes.asset"
+  },
+  "The Last Word": {
+   "file": "the-last-word.webp",
+   "source": "Assets/armaments/root/oneHanded/maces/theLastWord/theLastWord.asset"
+  },
+  "Tongue Splitter": {
+   "file": "tongue-splitter.webp",
+   "source": "Assets/armaments/root/oneHanded/axes/tongueSplitter/tongueSplitter.asset"
+  },
+  "Tooth of the Ancient One": {
+   "file": "tooth-of-the-ancient-one.webp",
+   "source": "Assets/armaments/root/twoHanded/greatHammers/toothOfTheAncientOne/toothOfTheAncientOne.asset"
+  },
+  "Tortured Blade": {
+   "file": "tortured-blade.webp",
+   "source": "Assets/armaments/root/oneHanded/wakizashis/torturedBlade/torturedBlade.asset"
+  },
+  "Tucked Falcon": {
+   "file": "tucked-falcon.webp",
+   "source": "Assets/armaments/root/oneHanded/rapiers/tuckedFalcon/tuckedFalcon.asset"
+  },
+  "Twined Recurve Bow": {
+   "file": "twined-recurve-bow.webp",
+   "source": "Assets/armaments/root/twoHanded/bows/twinedRecurveBow/twinedRecurveBow.asset"
+  },
+  "Twinkling Short Bow": {
+   "file": "twinkling-short-bow.webp",
+   "source": "Assets/armaments/root/twoHanded/bows/twinklingShortBow/twinklingShortBow.asset"
+  },
+  "Unholy Hearth": {
+   "file": "unholy-hearth.webp",
+   "source": "Assets/armaments/root/oneHanded/clubs/unholyHearth/unholyHearth.asset"
+  },
+  "Weeping Earth": {
+   "file": "weeping-earth.webp",
+   "source": "Assets/armaments/root/twoHanded/greatHammers/weepingEarth/weepingEarth.asset"
+  },
+  "Whetted Wedge": {
+   "file": "whetted-wedge.webp",
+   "source": "Assets/armaments/root/oneHanded/straightSwords/whettedWedge/whettedWedge.asset"
+  },
+  "Wind of Death": {
+   "file": "wind-of-death.webp",
+   "source": "Assets/armaments/root/oneHanded/wakizashis/windOfDeath/windOfDeath.asset"
+  },
+  "Wooden Sword": {
+   "file": "wooden-sword.webp",
+   "source": "Assets/armaments/root/oneHanded/straightSwords/woodenSword/woodenSword.asset"
+  },
+  "Woodland Protector": {
+   "file": "woodland-protector.webp",
+   "source": "Assets/armaments/root/twoHanded/bows/woodlandProtector/woodlandProtector.asset"
+  },
+  "Woven Wraps": {
+   "file": "woven-wraps.webp",
+   "source": "Assets/armaments/root/dualWield/gauntlets/wovenWraps/wovenWraps.asset"
+  },
+  "Yew Longbow": {
+   "file": "yew-longbow.webp",
+   "source": "Assets/armaments/root/twoHanded/bows/yewLongbow/yewLongbow.asset"
+  }
+ }
+}
