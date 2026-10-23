@@ -2532,6 +2532,34 @@
    "game": "Uncharted 4: A Thief's End",
    "what": "Nathan Drake climbs a ruined tower hand over hand (ledge climbing rather than a clean mantle)",
    "confidence": "low"
+  },
+  {
+   "animation": "melee.shield-bash",
+   "clip": "melee.shield-bash-er0",
+   "game": "Elden Ring",
+   "what": "Greatshield R1: the shield is rammed forward into the target",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.deathblow",
+   "clip": "melee.deathblow-er0",
+   "game": "Elden Ring",
+   "what": "Katana riposte on a staggered enemy: grab, run through and kick off (target not shown)",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.rolling-attack",
+   "clip": "melee.rolling-attack-er0",
+   "game": "Elden Ring",
+   "what": "Katana two-handed attack straight out of a roll (starts as the roll ends)",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.sprint-attack",
+   "clip": "melee.sprint-attack-er0",
+   "game": "Elden Ring",
+   "what": "Greatsword two-handed running heavy: a spinning lunge into a low slam out of a sprint",
+   "confidence": "high"
   }
  ]
 }

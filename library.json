@@ -3335,6 +3335,20 @@
    ],
    "gifs": [
     {
+     "page_url": "frame-data.html#c=Greatsword&t=running&m=a025_032210",
+     "media_url": "",
+     "title": "Greatsword 2h running R2 (Alabaster Lord's Sword), rendered from the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/melee.sprint-attack-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Greatsword two-handed running heavy: a spinning lunge into a low slam out of a sprint"
+     }
+    },
+    {
      "page_url": "https://tenor.com/view/call-of-duty-super-punch-punch-fight-melee-gif-4715726",
      "media_url": "",
      "title": "CoD melee lunge (approximate match)",
@@ -3411,6 +3425,20 @@
     }
    ],
    "gifs": [
+    {
+     "page_url": "frame-data.html#c=Katana&t=rolling&m=a029_032300",
+     "media_url": "",
+     "title": "Katana 2h rolling R1 (Moonveil), rendered from the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/melee.rolling-attack-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Katana two-handed attack straight out of a roll (starts as the roll ends)"
+     }
+    },
     {
      "page_url": "https://tenor.com/view/dodgeroll-dodge-roll-dark-souls-matthewmatosis-gif-6545593021574942148",
      "media_url": "",
@@ -3847,6 +3875,20 @@
    ],
    "gifs": [
     {
+     "page_url": "frame-data.html#c=Greatshield&t=light&m=a047_030000",
+     "media_url": "",
+     "title": "Greatshield 1h R1 shield bash (Ant's Skull Plate), rendered from the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/melee.shield-bash-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Greatshield R1: the shield is rammed forward into the target"
+     }
+    },
+    {
      "page_url": "https://tenor.com/view/for-honor-conquer-spike-punch-exucution-gif-21485845",
      "media_url": "",
      "title": "For Honor shield-wielders fighting (Conqueror)",
@@ -4162,6 +4204,20 @@
     }
    ],
    "gifs": [
+    {
+     "page_url": "frame-data.html#c=Katana&t=critical&m=a029_031700",
+     "media_url": "",
+     "title": "Katana riposte (Moonveil), rendered from the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/melee.deathblow-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Katana riposte on a staggered enemy: grab, run through and kick off (target not shown)"
+     }
+    },
     {
      "page_url": "https://tenor.com/view/genichiro-sekiro-parry-deathblow-gif-6668881056196244021",
      "media_url": "https://media1.tenor.com/m/XIyf_MPosjUAAAAC/genichiro-sekiro.gif",
