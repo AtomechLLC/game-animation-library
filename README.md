@@ -51,7 +51,7 @@ sprite capture of every frame, extracted from the CPS3 emulator FBA-RR. Two scri
 
 Sprites are Capcom's; every clip and move links back to its Baston hitbox viewer.
 
-## Elden Ring renders
+## Elden Ring and No Rest for the Wicked renders
 
 `tools/er_gifs/` renders Elden Ring animations with the Frame Data tab's 3D preview to animated WebP for library
 entries. `jobs.json` maps an entry to a class and move id (or several ids played in a row); `node tools/er_gifs/render.js`
@@ -65,6 +65,11 @@ gestures come from the `Common` class: `python tools/frame_data/export_er_common
 `tools/er_gifs/common_anims.json` (each with a label and what it was wanted for) into the same `anim/` folder.
 `render.js --sheet DIR [id or want ...]` draws 8-frame contact sheets of those ids, which is how the ids in `jobs.json`
 were picked. Clips the game shows against props (ladder, door, item) are rendered without the prop.
+
+No Rest for the Wicked works the same way (`"game": "no-rest-for-the-wicked"` on a job, 60 fps clips rendered at 15 fps):
+`tools/frame_data/export_nrftw_common.py` bakes the player's own non-attack clips (quicksteps, rolls, crouch, swim,
+mantles, ladder and wall climbing, wall shimmy) listed in `tools/er_gifs/nrftw_common_anims.json` into its `Common`
+class, and `GAME=no-rest-for-the-wicked render.js --sheet` draws their contact sheets.
 ## Removed GIFs (blocklist)
 
 `gif-blocklist.json` lists GIFs removed for good on the review page: their `page_url`, `media_url`, `source_url` and the

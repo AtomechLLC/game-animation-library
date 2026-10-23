@@ -178,6 +178,12 @@ About 33 MB in all: 18 MB of animation for 558 actions (1,339 moves), 13 MB of w
 Reibach's Claws have no mesh yet), 1.2 MB of armor and the move files. Not covered yet: other armor sets (`EXPORT`), runes' projectiles and spawned areas
 (their active frames show, no shape), and cloth.
 
+`tools/frame_data/export_nrftw_common.py "<install>"` then adds the "Common" class (`moves/common.json`, 80 clips,
+1.6 MB): quicksteps, rolls, sneaking, swimming, mantles, ladder, wall and rope climbing, listed in
+`tools/er_gifs/nrftw_common_anims.json`. They aren't Quantum actions but ClipAnimations of the hero's
+`playerMoonAnimatorDefinition`, found by weapon group (`oneHandedAnimationSet`...) or blend space; ids are
+`<context>-<name>`.
+
 These are Moon Studios' assets, under the same terms as the Elden Ring files above.
 
 ## Format `frame-data/1`
