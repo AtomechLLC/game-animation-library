@@ -2793,6 +2793,132 @@
    "confidence": "low"
   },
   {
+   "animation": "fighting.special-move-projectile",
+   "clip": "fighting.special-move-projectile-baston-0",
+   "game": "Street Fighter III: 3rd Strike",
+   "what": "Ryu Hadouken (Fierce): sprite frames with hurtboxes and attack boxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "fighting.special-move-projectile",
+   "clip": "fighting.special-move-projectile-baston-1",
+   "game": "Street Fighter III: 3rd Strike",
+   "what": "Chun-Li Kikkoken (Fierce): sprite frames with hurtboxes and attack boxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "fighting.rising-uppercut-shoryuken",
+   "clip": "fighting.rising-uppercut-shoryuken-baston-0",
+   "game": "Street Fighter III: 3rd Strike",
+   "what": "Ken Shoryuken (Fierce): sprite frames with hurtboxes and attack boxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "fighting.spinning-kick-tatsumaki",
+   "clip": "fighting.spinning-kick-tatsumaki-baston-0",
+   "game": "Street Fighter III: 3rd Strike",
+   "what": "Ken Tatsumaki Senpuu Kyaku (Roundhouse): sprite frames with hurtboxes and attack boxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "fighting.super-critical-art",
+   "clip": "fighting.super-critical-art-baston-0",
+   "game": "Street Fighter III: 3rd Strike",
+   "what": "Ken Shippu Jinrai Kyaku, Super Art III: sprite frames with hurtboxes and attack boxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "fighting.super-critical-art",
+   "clip": "fighting.super-critical-art-baston-1",
+   "game": "Street Fighter III: 3rd Strike",
+   "what": "Chun-Li Houyoku Sen, Super Art II: sprite frames with hurtboxes and attack boxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "fighting.forward-back-dash",
+   "clip": "fighting.forward-back-dash-baston-0",
+   "game": "Street Fighter III: 3rd Strike",
+   "what": "Chun-Li forward dash: sprite frames with hurtboxes and attack boxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "fighting.forward-back-dash",
+   "clip": "fighting.forward-back-dash-baston-1",
+   "game": "Street Fighter III: 3rd Strike",
+   "what": "Ryu back dash: sprite frames with hurtboxes and attack boxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "fighting.taunt",
+   "clip": "fighting.taunt-baston-0",
+   "game": "Street Fighter III: 3rd Strike",
+   "what": "Dudley taunt (rose toss): sprite frames with hurtboxes and attack boxes",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.spin-attack",
+   "clip": "melee.spin-attack-baston-0",
+   "game": "Street Fighter III: 3rd Strike",
+   "what": "Chun-Li Spinning Bird Kick (Roundhouse): sprite frames with hurtboxes and attack boxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.dash-attack-lunge",
+   "clip": "melee.dash-attack-lunge-baston-0",
+   "game": "Street Fighter III: 3rd Strike",
+   "what": "Makoto Hayate (Fierce): sprite frames with hurtboxes and attack boxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.charged-attack",
+   "clip": "melee.charged-attack-baston-0",
+   "game": "Street Fighter III: 3rd Strike",
+   "what": "Makoto Hayate, fully charged: sprite frames with hurtboxes and attack boxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.overhead-slam",
+   "clip": "melee.overhead-slam-baston-0",
+   "game": "Street Fighter III: 3rd Strike",
+   "what": "Elena Mallet Smash (Fierce): sprite frames with hurtboxes and attack boxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.punch-combo",
+   "clip": "melee.punch-combo-baston-0",
+   "game": "Street Fighter III: 3rd Strike",
+   "what": "Dudley Machine Gun Blow (Fierce): sprite frames with hurtboxes and attack boxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.kick",
+   "clip": "melee.kick-baston-0",
+   "game": "Street Fighter III: 3rd Strike",
+   "what": "Chun-Li standing Roundhouse: sprite frames with hurtboxes and attack boxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "defense.dash",
+   "clip": "defense.dash-baston-0",
+   "game": "Street Fighter III: 3rd Strike",
+   "what": "Dudley forward dash: sprite frames with hurtboxes and attack boxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "reactions.get-up-wake-up",
+   "clip": "reactions.get-up-wake-up-baston-0",
+   "game": "Street Fighter III: 3rd Strike",
+   "what": "Chun-Li wake-up: sprite frames with hurtboxes and attack boxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "reactions.tech-recovery-breakfall",
+   "clip": "reactions.tech-recovery-breakfall-baston-0",
+   "game": "Street Fighter III: 3rd Strike",
+   "what": "Ken quick roll on wake-up: sprite frames with hurtboxes and attack boxes",
+   "confidence": "low"
+  },
+  {
    "animation": "defense.sidestep-quickstep",
    "clip": "defense.sidestep-quickstep-nr0",
    "game": "No Rest for the Wicked",

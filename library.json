@@ -2673,6 +2673,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.charged-attack-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/marth/MarthShieldbreakerMax.gif"
+    },
+    {
+     "page_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=17&sMoveType=fd_specials&sAction=w&iMove=033",
+     "media_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=17&sMoveType=fd_specials&sAction=w&iMove=033",
+     "title": "Makoto Hayate, fully charged, with hitboxes",
+     "game": "Street Fighter III: 3rd Strike",
+     "host": "Baston",
+     "local": "gifs/melee.charged-attack-baston-0.webp",
+     "source_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=17&sMoveType=fd_specials&sAction=w&iMove=033",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Makoto Hayate, fully charged: sprite frames with hurtboxes and attack boxes"
+     }
     }
    ]
   },
@@ -2745,6 +2759,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Player raises a flaming weapon overhead and slams it down into a huge fiery explosion"
+     }
+    },
+    {
+     "page_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=8&sMoveType=fd_specials&sAction=w&iMove=036",
+     "media_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=8&sMoveType=fd_specials&sAction=w&iMove=036",
+     "title": "Elena Mallet Smash (Fierce), with hitboxes",
+     "game": "Street Fighter III: 3rd Strike",
+     "host": "Baston",
+     "local": "gifs/melee.overhead-slam-baston-0.webp",
+     "source_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=8&sMoveType=fd_specials&sAction=w&iMove=036",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Elena Mallet Smash (Fierce): sprite frames with hurtboxes and attack boxes"
      }
     }
    ],
@@ -3043,6 +3071,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.spin-attack-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/bowser/BowserWhirlingFortressG.gif"
+    },
+    {
+     "page_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=16&sMoveType=fd_specials&sAction=w&iMove=046",
+     "media_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=16&sMoveType=fd_specials&sAction=w&iMove=046",
+     "title": "Chun-Li Spinning Bird Kick (Roundhouse), with hitboxes",
+     "game": "Street Fighter III: 3rd Strike",
+     "host": "Baston",
+     "local": "gifs/melee.spin-attack-baston-0.webp",
+     "source_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=16&sMoveType=fd_specials&sAction=w&iMove=046",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Chun-Li Spinning Bird Kick (Roundhouse): sprite frames with hurtboxes and attack boxes"
+     }
     }
    ]
   },
@@ -3523,6 +3565,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.dash-attack-lunge-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/ike/IkeDashAttack.gif"
+    },
+    {
+     "page_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=17&sMoveType=fd_specials&sAction=w&iMove=036",
+     "media_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=17&sMoveType=fd_specials&sAction=w&iMove=036",
+     "title": "Makoto Hayate (Fierce), with hitboxes",
+     "game": "Street Fighter III: 3rd Strike",
+     "host": "Baston",
+     "local": "gifs/melee.dash-attack-lunge-baston-0.webp",
+     "source_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=17&sMoveType=fd_specials&sAction=w&iMove=036",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Makoto Hayate (Fierce): sprite frames with hurtboxes and attack boxes"
+     }
     }
    ]
   },
@@ -3883,6 +3939,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.kick-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/ken/KenFTiltHeavy.gif"
+    },
+    {
+     "page_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=16&sMoveType=fd_normals&sAction=w&iMove=016",
+     "media_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=16&sMoveType=fd_normals&sAction=w&iMove=016",
+     "title": "Chun-Li standing Roundhouse, with hitboxes",
+     "game": "Street Fighter III: 3rd Strike",
+     "host": "Baston",
+     "local": "gifs/melee.kick-baston-0.webp",
+     "source_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=16&sMoveType=fd_normals&sAction=w&iMove=016",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Chun-Li standing Roundhouse: sprite frames with hurtboxes and attack boxes"
+     }
     }
    ]
   },
@@ -3978,6 +4048,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.punch-combo-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/little_mac/LittleMacJab3.gif"
+    },
+    {
+     "page_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=4&sMoveType=fd_specials&sAction=w&iMove=034",
+     "media_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=4&sMoveType=fd_specials&sAction=w&iMove=034",
+     "title": "Dudley Machine Gun Blow (Fierce), with hitboxes",
+     "game": "Street Fighter III: 3rd Strike",
+     "host": "Baston",
+     "local": "gifs/melee.punch-combo-baston-0.webp",
+     "source_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=4&sMoveType=fd_specials&sAction=w&iMove=034",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Dudley Machine Gun Blow (Fierce): sprite frames with hurtboxes and attack boxes"
+     }
     }
    ]
   },
@@ -8844,6 +8928,20 @@
      "host": "Tenor",
      "local": "gifs/defense.dash-1.webp",
      "source_url": "https://media.tenor.com/aIfLY_RVua0AAAA1/celeste-wavedash-move.webp"
+    },
+    {
+     "page_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=4&sMoveType=dashForwardFull&sAction=w&iMove=dashForwardFull",
+     "media_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=4&sMoveType=dashForwardFull&sAction=w&iMove=dashForwardFull",
+     "title": "Dudley forward dash, with hitboxes",
+     "game": "Street Fighter III: 3rd Strike",
+     "host": "Baston",
+     "local": "gifs/defense.dash-baston-0.webp",
+     "source_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=4&sMoveType=dashForwardFull&sAction=w&iMove=dashForwardFull",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Dudley forward dash: sprite frames with hurtboxes and attack boxes"
+     }
     }
    ]
   },
@@ -10203,6 +10301,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/reactions.get-up-wake-up-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/link/linkGetupAttackU.gif"
+    },
+    {
+     "page_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=16&sMoveType=wakeUp&sAction=w&iMove=wakeUp",
+     "media_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=16&sMoveType=wakeUp&sAction=w&iMove=wakeUp",
+     "title": "Chun-Li wake-up, with hitboxes",
+     "game": "Street Fighter III: 3rd Strike",
+     "host": "Baston",
+     "local": "gifs/reactions.get-up-wake-up-baston-0.webp",
+     "source_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=16&sMoveType=wakeUp&sAction=w&iMove=wakeUp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Chun-Li wake-up: sprite frames with hurtboxes and attack boxes"
+     }
     }
    ]
   },
@@ -10232,6 +10344,20 @@
      "host": "Giphy",
      "local": "gifs/reactions.tech-recovery-breakfall-0.webp",
      "source_url": "https://media.giphy.com/media/c3ZLA5m61QEjm/200w.webp"
+    },
+    {
+     "page_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=11&sMoveType=wakeUpQuickRoll&sAction=w&iMove=wakeUpQuickRoll",
+     "media_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=11&sMoveType=wakeUpQuickRoll&sAction=w&iMove=wakeUpQuickRoll",
+     "title": "Ken quick roll on wake-up, with hitboxes",
+     "game": "Street Fighter III: 3rd Strike",
+     "host": "Baston",
+     "local": "gifs/reactions.tech-recovery-breakfall-baston-0.webp",
+     "source_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=11&sMoveType=wakeUpQuickRoll&sAction=w&iMove=wakeUpQuickRoll",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ken quick roll on wake-up: sprite frames with hurtboxes and attack boxes"
+     }
     }
    ]
   },
@@ -11745,6 +11871,20 @@
       "confidence": "high",
       "what": "Young Link's taunt: chugging a bottle of milk"
      }
+    },
+    {
+     "page_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=4&sMoveType=fd_normals&sAction=w&iMove=027",
+     "media_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=4&sMoveType=fd_normals&sAction=w&iMove=027",
+     "title": "Dudley taunt (rose toss), with hitboxes",
+     "game": "Street Fighter III: 3rd Strike",
+     "host": "Baston",
+     "local": "gifs/fighting.taunt-baston-0.webp",
+     "source_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=4&sMoveType=fd_normals&sAction=w&iMove=027",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Dudley taunt (rose toss): sprite frames with hurtboxes and attack boxes"
+     }
     }
    ]
   },
@@ -11787,6 +11927,34 @@
       "verdict": "added",
       "confidence": "low",
       "what": "Makoto and Ken dash in and out between exchanges (dashes are quick)"
+     }
+    },
+    {
+     "page_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=16&sMoveType=dashForwardFull&sAction=w&iMove=dashForwardFull",
+     "media_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=16&sMoveType=dashForwardFull&sAction=w&iMove=dashForwardFull",
+     "title": "Chun-Li forward dash, with hitboxes",
+     "game": "Street Fighter III: 3rd Strike",
+     "host": "Baston",
+     "local": "gifs/fighting.forward-back-dash-baston-0.webp",
+     "source_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=16&sMoveType=dashForwardFull&sAction=w&iMove=dashForwardFull",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Chun-Li forward dash: sprite frames with hurtboxes and attack boxes"
+     }
+    },
+    {
+     "page_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=2&sMoveType=dashBackwardFull&sAction=w&iMove=dashBackwardFull",
+     "media_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=2&sMoveType=dashBackwardFull&sAction=w&iMove=dashBackwardFull",
+     "title": "Ryu back dash, with hitboxes",
+     "game": "Street Fighter III: 3rd Strike",
+     "host": "Baston",
+     "local": "gifs/fighting.forward-back-dash-baston-1.webp",
+     "source_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=2&sMoveType=dashBackwardFull&sAction=w&iMove=dashBackwardFull",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Ryu back dash: sprite frames with hurtboxes and attack boxes"
      }
     }
    ]
@@ -11908,6 +12076,34 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/fighting.special-move-projectile-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/terry/TerryPowerWaveGStrong.gif"
+    },
+    {
+     "page_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=2&sMoveType=fd_specials&sAction=w&iMove=035",
+     "media_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=2&sMoveType=fd_specials&sAction=w&iMove=035",
+     "title": "Ryu Hadouken (Fierce), with hitboxes",
+     "game": "Street Fighter III: 3rd Strike",
+     "host": "Baston",
+     "local": "gifs/fighting.special-move-projectile-baston-0.webp",
+     "source_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=2&sMoveType=fd_specials&sAction=w&iMove=035",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Ryu Hadouken (Fierce): sprite frames with hurtboxes and attack boxes"
+     }
+    },
+    {
+     "page_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=16&sMoveType=fd_specials&sAction=w&iMove=038",
+     "media_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=16&sMoveType=fd_specials&sAction=w&iMove=038",
+     "title": "Chun-Li Kikkoken (Fierce), with hitboxes",
+     "game": "Street Fighter III: 3rd Strike",
+     "host": "Baston",
+     "local": "gifs/fighting.special-move-projectile-baston-1.webp",
+     "source_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=16&sMoveType=fd_specials&sAction=w&iMove=038",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Chun-Li Kikkoken (Fierce): sprite frames with hurtboxes and attack boxes"
+     }
     }
    ]
   },
@@ -11996,6 +12192,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/fighting.rising-uppercut-shoryuken-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/ken/KenShoryukenHeavy.gif"
+    },
+    {
+     "page_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=11&sMoveType=fd_specials&sAction=w&iMove=043",
+     "media_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=11&sMoveType=fd_specials&sAction=w&iMove=043",
+     "title": "Ken Shoryuken (Fierce), with hitboxes",
+     "game": "Street Fighter III: 3rd Strike",
+     "host": "Baston",
+     "local": "gifs/fighting.rising-uppercut-shoryuken-baston-0.webp",
+     "source_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=11&sMoveType=fd_specials&sAction=w&iMove=043",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Ken Shoryuken (Fierce): sprite frames with hurtboxes and attack boxes"
+     }
     }
    ]
   },
@@ -12057,6 +12267,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/fighting.spinning-kick-tatsumaki-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/ken/KenTatsumakiSenpukyakuStrongGrounded.gif"
+    },
+    {
+     "page_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=11&sMoveType=fd_specials&sAction=w&iMove=047",
+     "media_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=11&sMoveType=fd_specials&sAction=w&iMove=047",
+     "title": "Ken Tatsumaki Senpuu Kyaku (Roundhouse), with hitboxes",
+     "game": "Street Fighter III: 3rd Strike",
+     "host": "Baston",
+     "local": "gifs/fighting.spinning-kick-tatsumaki-baston-0.webp",
+     "source_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=11&sMoveType=fd_specials&sAction=w&iMove=047",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Ken Tatsumaki Senpuu Kyaku (Roundhouse): sprite frames with hurtboxes and attack boxes"
+     }
     }
    ]
   },
@@ -12232,6 +12456,34 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/fighting.super-critical-art-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/terry/TerryBusterWolf.gif"
+    },
+    {
+     "page_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=11&sMoveType=fd_supers&sAction=w&iMove=055",
+     "media_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=11&sMoveType=fd_supers&sAction=w&iMove=055",
+     "title": "Ken Shippu Jinrai Kyaku, Super Art III, with hitboxes",
+     "game": "Street Fighter III: 3rd Strike",
+     "host": "Baston",
+     "local": "gifs/fighting.super-critical-art-baston-0.webp",
+     "source_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=11&sMoveType=fd_supers&sAction=w&iMove=055",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Ken Shippu Jinrai Kyaku, Super Art III: sprite frames with hurtboxes and attack boxes"
+     }
+    },
+    {
+     "page_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=16&sMoveType=fd_supers&sAction=w&iMove=053",
+     "media_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=16&sMoveType=fd_supers&sAction=w&iMove=053",
+     "title": "Chun-Li Houyoku Sen, Super Art II, with hitboxes",
+     "game": "Street Fighter III: 3rd Strike",
+     "host": "Baston",
+     "local": "gifs/fighting.super-critical-art-baston-1.webp",
+     "source_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=16&sMoveType=fd_supers&sAction=w&iMove=053",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Chun-Li Houyoku Sen, Super Art II: sprite frames with hurtboxes and attack boxes"
+     }
     }
    ]
   },
