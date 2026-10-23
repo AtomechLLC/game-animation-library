@@ -1,0 +1,92 @@
+{
+ "sources": [
+  {
+   "name": "Baston",
+   "url": "http://ensabahnur.free.fr/BastonNew/"
+  }
+ ],
+ "lead": "Character icons are the game's stance animations",
+ "note": "Sprites (c) Capcom.",
+ "icons": {
+  "Alex": {
+   "file": "alex.webp",
+   "source": "http://ensabahnur.free.fr/BastonNew/ImagesCharacters/alex-stance.gif"
+  },
+  "Ryu": {
+   "file": "ryu.webp",
+   "source": "http://ensabahnur.free.fr/BastonNew/ImagesCharacters/ryu-stance.gif"
+  },
+  "Yun": {
+   "file": "yun.webp",
+   "source": "http://ensabahnur.free.fr/BastonNew/ImagesCharacters/yun-stance.gif"
+  },
+  "Dudley": {
+   "file": "dudley.webp",
+   "source": "http://ensabahnur.free.fr/BastonNew/ImagesCharacters/dudley-stance.gif"
+  },
+  "Necro": {
+   "file": "necro.webp",
+   "source": "http://ensabahnur.free.fr/BastonNew/ImagesCharacters/necro-stance.gif"
+  },
+  "Hugo": {
+   "file": "hugo.webp",
+   "source": "http://ensabahnur.free.fr/BastonNew/ImagesCharacters/hugo-stance.gif"
+  },
+  "Ibuki": {
+   "file": "ibuki.webp",
+   "source": "http://ensabahnur.free.fr/BastonNew/ImagesCharacters/ibuki-stance.gif"
+  },
+  "Elena": {
+   "file": "elena.webp",
+   "source": "http://ensabahnur.free.fr/BastonNew/ImagesCharacters/elena-stance.gif"
+  },
+  "Oro": {
+   "file": "oro.webp",
+   "source": "http://ensabahnur.free.fr/BastonNew/ImagesCharacters/oro-stance.gif"
+  },
+  "Yang": {
+   "file": "yang.webp",
+   "source": "http://ensabahnur.free.fr/BastonNew/ImagesCharacters/yang-stance.gif"
+  },
+  "Ken": {
+   "file": "ken.webp",
+   "source": "http://ensabahnur.free.fr/BastonNew/ImagesCharacters/ken-stance.gif"
+  },
+  "Sean": {
+   "file": "sean.webp",
+   "source": "http://ensabahnur.free.fr/BastonNew/ImagesCharacters/sean-stance.gif"
+  },
+  "Urien": {
+   "file": "urien.webp",
+   "source": "http://ensabahnur.free.fr/BastonNew/ImagesCharacters/urien-stance.gif"
+  },
+  "Gouki (Akuma)": {
+   "file": "gouki.webp",
+   "source": "http://ensabahnur.free.fr/BastonNew/ImagesCharacters/gouki-stance.gif"
+  },
+  "Chun-Li": {
+   "file": "chun-li.webp",
+   "source": "http://ensabahnur.free.fr/BastonNew/ImagesCharacters/chun-li-stance.gif"
+  },
+  "Makoto": {
+   "file": "makoto.webp",
+   "source": "http://ensabahnur.free.fr/BastonNew/ImagesCharacters/makoto-stance.gif"
+  },
+  "Q": {
+   "file": "q.webp",
+   "source": "http://ensabahnur.free.fr/BastonNew/ImagesCharacters/q-stance.gif"
+  },
+  "Twelve": {
+   "file": "twelve.webp",
+   "source": "http://ensabahnur.free.fr/BastonNew/ImagesCharacters/twelve-stance.gif"
+  },
+  "Remy": {
+   "file": "remy.webp",
+   "source": "http://ensabahnur.free.fr/BastonNew/ImagesCharacters/remy-stance.gif"
+  },
+  "Gill": {
+   "file": "gill.webp",
+   "source": "http://ensabahnur.free.fr/BastonNew/ImagesCharacters/gill-stance.gif"
+  }
+ }
+}

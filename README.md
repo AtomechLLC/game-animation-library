@@ -37,6 +37,20 @@ To add animations: append lines to taxonomy.txt, rebuild index.json, rerun merge
 - `gifs/` — downloaded copies (Tenor's 200px animated WebP, Giphy's 200w WebP), one per GIF that could be fetched. `local` is the path, `source_url` the file it came from. Tenor links whose page id is 18-20 digits map straight to a media URL; older 7-8 digit ids could not be resolved, so those links stay page-only.
 - `add_ufd.py` — adds Super Smash Bros. Ultimate hitbox GIFs from [Ultimate Frame Data](https://ultimateframedata.com) to 29 melee, fighting, defense and reaction entries, saved as 400px WebP at `gifs/<id>-ufd-<n>.webp` (host `Ultimate Frame Data`). The move-to-entry mapping is in the script; rerunning skips GIFs already present.
 
+## Street Fighter III: 3rd Strike (Baston)
+
+[Baston](http://ensabahnur.free.fr/BastonNew/) by ensabahnur is a 3rd Strike frame data site with hitboxes and a
+sprite capture of every frame, extracted from the CPS3 emulator FBA-RR. Two scripts bring it in:
+
+- `python tools/frame_data/import_baston_sf3.py` writes `frame-data/street-fighter-3-third-strike.json` (all 20
+  characters, 1,303 moves) and the animated stance icons in `frame-data/icons/street-fighter-3-third-strike/`, for the
+  Frame Data tab. Downloads are cached in `.cache/baston/`.
+- `python add_baston.py` (after the importer) renders mapped moves from those frame captures, with Baston's hurtboxes
+  and attack boxes drawn on, to `gifs/<id>-baston-<n>.webp` (60 fps, host `Baston`) and adds them to `library.json`
+  and to `added` in `gif-screening.json`. The move-to-entry mapping is `MAP` in the script.
+
+Sprites are Capcom's; every clip and move links back to its Baston hitbox viewer.
+
 ## Elden Ring renders
 
 `tools/er_gifs/` renders Elden Ring animations with the Frame Data tab's 3D preview to animated WebP for library
