@@ -10,7 +10,10 @@ import json, os, subprocess, tempfile
 GAME = 'Super Smash Bros. Ultimate'
 NAMES = {'link': 'Link', 'marth': 'Marth', 'ike': 'Ike', 'ganondorf': 'Ganondorf', 'ryu': 'Ryu', 'ken': 'Ken',
          'little_mac': 'Little Mac', 'simon': 'Simon', 'bowser': 'Bowser', 'terry': 'Terry', 'cloud': 'Cloud',
-         'incineroar': 'Incineroar', 'sephiroth': 'Sephiroth', 'sheik': 'Sheik'}
+         'incineroar': 'Incineroar', 'sephiroth': 'Sephiroth', 'sheik': 'Sheik', 'captain_falcon': 'Captain Falcon',
+         'fox': 'Fox', 'sonic': 'Sonic', 'lucina': 'Lucina', 'pit': 'Pit', 'samus': 'Samus', 'snake': 'Snake',
+         'pikachu': 'Pikachu', 'zelda': 'Zelda', 'mega_man': 'Mega Man', 'kazuya': 'Kazuya', 'hero': 'Hero',
+         'ness': 'Ness', 'bayonetta': 'Bayonetta'}
 
 # animation id -> [(character page, gif name, move label)]
 MAP = {
@@ -42,6 +45,18 @@ MAP = {
  'fighting.spinning-kick-tatsumaki': [('ryu', 'RyuTatsumakiSenpukyakuHeavyGrounded', 'Tatsumaki Senpukyaku'), ('ken', 'KenTatsumakiSenpukyakuStrongGrounded', 'Tatsumaki Senpukyaku')],
  'fighting.command-grab': [('ganondorf', 'GanondorfFlameChokeG', 'Flame Choke'), ('incineroar', 'IncineroarAlolanWhipG', 'Alolan Whip')],
  'fighting.super-critical-art': [('terry', 'TerryPowerGeyser', 'Power Geyser'), ('terry', 'TerryBusterWolf', 'Buster Wolf')],
+ 'melee.sprint-attack': [('captain_falcon', 'CaptainFalconDashAttack', 'dash attack'), ('fox', 'FoxDashAttack', 'dash attack')],
+ 'melee.rolling-attack': [('sonic', 'SonicSpinDashAerial', 'Spin Dash')],
+ 'melee.riposte': [('ike', 'IkeCounterHit', 'Counter, counterattack'), ('lucina', 'LucinaCounterHit', 'Counter, counterattack')],
+ 'melee.dual-wield-flurry': [('pit', 'PitJabRapid', 'rapid jab with twin blades')],
+ 'ranged.charge-shot': [('samus', 'SamusChargeShotMax', 'Charge Shot, fully charged')],
+ 'magic.lightning-strike': [('pikachu', 'PikachuThunder', 'Thunder')],
+ 'magic.teleport-blink': [('zelda', 'ZeldaFaroresWindG', "Farore's Wind"), ('sheik', 'SheikVanishG', 'Vanish')],
+ 'magic.shield-barrier': [('fox', 'FoxReflector', 'Reflector'), ('mega_man', 'MegaManLeafShield', 'Leaf Shield')],
+ 'magic.beam-attack': [('kazuya', 'Shoto4DevilBlasterG', 'Devil Blaster')],
+ 'magic.projectile-cast-fireball': [('ness', 'NessPKFireG', 'PK Fire')],
+ 'magic.spell-cast-instant': [('hero', 'Sizzle', 'Sizzle')],
+ 'defense.perfect-dodge-witch-time': [('bayonetta', 'BayonettaWitchTime', 'Witch Time')],
  'fighting.drive-impact-armor-attack': [('ryu', 'RyuFocusAttackLvl3', 'Focus Attack level 3'), ('ken', 'KenFocusAttackLv3', 'Focus Attack level 3')],
 }
 
