@@ -45,6 +45,9 @@ sprite capture of every frame, extracted from the CPS3 emulator FBA-RR. Two scri
 - `python tools/frame_data/import_baston_sf3.py` writes `frame-data/street-fighter-3-third-strike.json` (all 20
   characters, 1,303 moves) and the animated stance icons in `frame-data/icons/street-fighter-3-third-strike/`, for the
   Frame Data tab. Downloads are cached in `.cache/baston/`.
+- `python tools/frame_data/export_baston_sprites.py` (after the importer) packs every move's frame captures and boxes into
+  `frame-data/sprites/street-fighter-3-third-strike/` (~50 MB) for the hitbox preview docked above the 3rd Strike move
+  table (`frame-data/sprites2d.js`, in place of the 3D preview).
 - `python add_baston.py` (after the importer) renders mapped moves from those frame captures, with Baston's hurtboxes
   and attack boxes drawn on, to `gifs/<id>-baston-<n>.webp` (60 fps, host `Baston`) and adds them to `library.json`
   and to `added` in `gif-screening.json`. The move-to-entry mapping is `MAP` in the script.

@@ -15,6 +15,8 @@ The page knows nothing about where the numbers came from, so every source only h
 - `street-fighter-3-third-strike.json` — Street Fighter III: 3rd Strike, 60 fps, all 20 characters. Built by
   `tools/frame_data/import_baston_sf3.py` from [Baston](http://ensabahnur.free.fr/BastonNew/) (see
   [Street Fighter III: 3rd Strike](#street-fighter-iii-3rd-strike)), which also writes `icons/street-fighter-3-third-strike/`.
+- `sprites/street-fighter-3-third-strike/` and `sprites2d.js` — the 2D hitbox preview docked for 3rd Strike (see
+  [2D preview](#2d-preview)).
 - `models/elden-ring/` and `viewer3d.js` — the 3D preview docked above the move table (see [3D preview](#3d-preview)).
 - `icons/elden-ring/` — 96px WebP inventory icons per weapon and `icons.json` (weapon name → file, source page). Built by
   `tools/frame_data/import_er_icons.py` from the [Elden Ring Wiki](https://eldenring.wiki.gg), with the
@@ -96,6 +98,31 @@ those groups and grips are stances (standing, crouching, air).
   are known); recovery is total minus the last active frame.
 - Advantage on block, hit and crouching hit, damage, stun, guard (H/L), cancels (SA, SP, SC, NC, DC, SJ), kara and
   throw range and super bar gain come from the tables. Movement rows have a length only.
+
+## 2D preview
+
+When `games.json` gives a game a `sprites` folder instead of `models`, the dock above the move table plays moves from
+sprite sheets with their boxes drawn on, like [Baston](http://ensabahnur.free.fr/BastonNew/)'s hitbox viewer:
+play/pause, one-frame steps (`−1 f` / `+1 f`, or `,` `.`), scrubbing on the frame strip, slow motion, and a toggle per
+box kind (hurtbox, other vulnerability, attack, throw, throwable, pushbox). `frame-data/sprites2d.js` has the same
+interface as `viewer3d.js` (`classData`, `createViewer` → `show`, `prefetch`, `dispose`), so the page docks either.
+
+```bash
+python tools/frame_data/export_baston_sprites.py              # after import_baston_sf3.py; ~50,000 frames, cached
+python tools/frame_data/export_baston_sprites.py ken ryu.special.035   # only these characters or moves
+```
+
+writes `sprites/street-fighter-3-third-strike/` from Baston's per-frame captures (384x224, character on a key colour)
+and boxes:
+
+- `sheets/<move id>.webp`: the move's frames, keyed to transparency, cropped to the character, its projectiles and its
+  boxes over the whole move, packed left to right and top to bottom in one lossless WebP. Frames are the tab's frames:
+  superfreeze, the commit frame and the closing neutral frame are left out, so frame N is frame N in the table.
+- `moves/<character>.json`: per move id `sheet`, cell size `w` x `h`, `cols`, and `frames`: per frame a list of boxes
+  `[kind, x1, y1, x2, y2]` in cell pixels, inclusive. Kinds are `p`, `v`, `a` (projectiles included), `t`, `ta`, `pu`.
+- `sprites.json`: `fps`, box kind names, `source`, and per character its moves file.
+
+The sprites are Capcom's, the captures and boxes Baston's; the dock credits Baston under the controls.
 
 ## 3D preview
 

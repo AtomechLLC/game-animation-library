@@ -450,37 +450,40 @@ function openMove(key){
 // move's class preview weapon.
 // Bump ?v= whenever viewer3d.js changes: browsers and Pages cache it, and a stale copy next to a new page breaks the dock
 const VIEWER='./frame-data/viewer3d.js?v=6';
+// games with sprite sheets instead of models (games.json "sprites") dock the 2D preview, same interface
+const VIEWER2D='./frame-data/sprites2d.js?v=1';
+const previewBase=()=>G.models||G.sprites;
 const DOCK={key:null,view:null,game:null,cls:null,w:null,cm:null,seq:0};
 const pickName=()=>st.cls&&st.w!=null?CL[st.cls].weapons[st.w]:null;
 function frameState(m,f){
   const inW=w=>w.some(([s,e])=>f>=s&&f<=e),last=lastActive(m);
-  const s=f<m.startup?'Startup':inW(m.active)?'Active':f<last?'Between hits':m.cancels.dodge&&f>=m.cancels.dodge?'Can dodge':'Recovery';
+  const s=!m.active.length?'':f<m.startup?'Startup':inW(m.active)?'Active':f<last?'Between hits':m.cancels.dodge&&f>=m.cancels.dodge?'Can dodge':'Recovery';
   return s+(inW(m.armor)?' · hyper armor':'')+(inW(m.iframes)?' · i-frames':'')}
 const moveOf=key=>{const [cls,id]=key.split('|');return D.moves.find(x=>x.class===cls&&x.id===id)};
 function dockOn(on){$('#dock').hidden=!on;$('#pick').classList.toggle('dockon',on)}
 function pickMin(min){$('#pick').classList.toggle('min',min);$('#pickMin').textContent=min?'Show':'Hide';$('#pickMin').setAttribute('aria-expanded',!min);try{localStorage.setItem('fd-pick-min',min?'1':'')}catch(e){}}
 async function dock(list){
   const sec=$('#dock'),seq=++DOCK.seq;
-  if(!G.models||!st.cls){dockOn(false);return}
+  if(!previewBase()||!st.cls){dockOn(false);return}
   try{
-    const v=await import(VIEWER),cm=await v.classData(G.models,st.cls);
+    const v=await import(G.models?VIEWER:VIEWER2D),cm=await v.classData(previewBase(),st.cls);
     if(seq!==DOCK.seq)return;
     const ok=cm?list.filter(m=>cm.moves[m.id]):[];
     if(!ok.length){dockOn(false);return}
     dockOn(true);DOCK.cm=cm;
-    if(DOCK.game!==G.id){if(DOCK.view)DOCK.view.then(x=>x.dispose());DOCK.view=v.createViewer($('#dockView'),G.models);DOCK.game=G.id;DOCK.key=null}
+    if(DOCK.game!==G.id){if(DOCK.view)DOCK.view.then(x=>x.dispose());DOCK.view=v.createViewer($('#dockView'),previewBase());DOCK.game=G.id;DOCK.key=null;$('#dock').setAttribute('aria-label',G.models?'3D preview':'Hitbox preview')}
     // keep the move on show while it is still in the list (re-shown when the picked weapon changes); otherwise show
     // the list's first move
     const cur=ok.find(m=>m.class+'|'+m.id===DOCK.key);
     if(DOCK.cls!==st.cls||!cur)preview(ok[0]);else if(DOCK.w!==st.w)preview(cur);
     DOCK.cls=st.cls;DOCK.w=st.w;
-  }catch(e){if(seq===DOCK.seq){dockOn(true);$('#dockView').innerHTML=`<div class="empty">Could not load the 3D preview (${esc(e.message)}).</div>`}}}
+  }catch(e){if(seq===DOCK.seq){dockOn(true);$('#dockView').innerHTML=`<div class="empty">Could not load the ${G.models?'3D':'hitbox'} preview (${esc(e.message)}).</div>`}}}
 async function preview(m){
   const key=m.class+'|'+m.id;DOCK.key=key;
   document.querySelectorAll('tbody tr.on').forEach(r=>r.classList.remove('on'));
   document.querySelector(`tbody tr[data-m="${CSS.escape(key)}"]`)?.classList.add('on');
   $('#dockSrc').textContent=`${CL[m.class].name} › ${T[m.type].name} · ${GR[m.grip]}`;
-  $('#dockName').textContent=`${m.name} · startup ${m.startup}, active ${m.active.map(([s,e])=>s===e?s:s+'–'+e).join(', ')}`;
+  $('#dockName').textContent=m.active.length?`${m.name} · startup ${m.startup}, active ${m.active.map(([s,e])=>s===e?s:s+'–'+e).join(', ')}`:`${m.name} · ${m.total??'—'} frames`;
   const view=await DOCK.view;
   if(DOCK.key!==key||!DOCK.cm)return;
   view.show(m,{weapon:pickName(),strip:stripHtml(m,DOCK.cm.moves[m.id].frames),state:f=>frameState(m,f)});
