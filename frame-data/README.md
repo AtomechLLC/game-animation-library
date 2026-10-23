@@ -9,6 +9,9 @@ The page knows nothing about where the numbers came from, so every source only h
 - `elden-ring.json` — Elden Ring, patch 1.17.3. Built by `tools/frame_data/import_er_game.py` straight from an installed
   copy of the game (see below). `tools/frame_data/import_er_nyasu.py` builds the same file from the
   [Elden Ring Frame Data Explorer](https://er-frame-data.nyasu.business) by Emilia (sovietspaceship) instead.
+- `no-rest-for-the-wicked.json` — No Rest for the Wicked (Steam build 22928553), 60 fps. Built by
+  `tools/frame_data/import_nrftw_game.py` from an installed copy (see [No Rest for the Wicked](#no-rest-for-the-wicked)),
+  which also writes `icons/no-rest-for-the-wicked/`.
 - `models/elden-ring/` and `viewer3d.js` — the 3D preview docked above the move table (see [3D preview](#3d-preview)).
 - `icons/elden-ring/` — 96px WebP inventory icons per weapon and `icons.json` (weapon name → file, source page). Built by
   `tools/frame_data/import_er_icons.py` from the [Elden Ring Wiki](https://eldenring.wiki.gg), with the
@@ -40,6 +43,35 @@ header keys from [UXM Selective Unpack](https://github.com/Nordgaren/UXM-Selecti
 Against the explorer's 1.17 data, startup, cancels, totals and armor agree on 96–98% of moves and the weapon lists on all
 of them. Not read yet: poise damage, damage of skill-buffed heavies (War Cry, Barbaric Roar) and i-frames beyond
 the jump table's dodge flag.
+
+## No Rest for the Wicked
+
+```bash
+python tools/frame_data/import_nrftw_game.py "Z:/SteamLibrary/steamapps/common/NoRestForTheWicked"   # ~1 minute
+```
+
+Reads only (UnityPy and lz4). The gameplay simulation is Photon Quantum, so every combat number lives in
+`StreamingAssets/quantumDatabase.bin` (LZ4 MessagePack with field names, decoded by `nrftw_files.py` and cached in
+`.cache/nrftw/`), and enum names come from the unencrypted IL2CPP metadata (`nrftw_il2cpp.py`). Asset paths and English
+names come from the `qdb_assets` Addressables bundle.
+
+- `worldlut.asset` lists every weapon with its class filter, moveset (`.actions`) and collider data. A class filter's
+  `.actions` is the class default; a weapon's own `.actions` replaces whole slots. Slots are `ArmamentActionType`:
+  runes, normal combos, run, quickstep, roll, knockdown (get-up), plunge and parry, each a list in combo order. Each
+  weapon builds its own combo from shared animations, so a move row is one action at one combo step
+  (`<class>.<type><step>.<action>`), and `weapons` lists who uses it there.
+- Combo steps are usually windup actions holding a tap version (`light`) and a hold version (`charged`, with `charge`
+  = frames held, from the windup's `AllowChargeAttack` section).
+- Per action, `TimelineData`: `WeaponColliders` windows are the hitboxes (projectile and spawned-entity times for
+  bows, wands and runes, the parry window for parries); `Sections` give cancels (`InterruptibleByAll`,
+  `InterruptibleByMovement`, `InterruptibleByNextAttack`, and `InterruptibleByAction` with an `ActionType` mask:
+  dodge, block, melee, special), `Invincibility` i-frames and `Immunity*` armor windows; `Duration` the total.
+  `DamageConfig` gives the damage school and whether it can be parried. The action's `Segments` (designer
+  startup/active/recovery) agree with the hitbox startup on 89% of moves; the rest have hitboxes later than the
+  segment says, and the hitboxes win.
+
+Not read yet: damage numbers (they scale with the weapon's stats), stamina (weight-based), the `PowerArmour` level
+some attacks carry, and the per-weapon damage overrides in each `.actions` slot.
 
 ## 3D preview
 

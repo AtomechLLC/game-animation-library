@@ -1,6 +1,7 @@
 {
  "schema": "frame-data/1",
  "games": [
-  {"id": "elden-ring", "name": "Elden Ring", "data": "frame-data/elden-ring.json", "icons": "frame-data/icons/elden-ring/", "models": "frame-data/models/elden-ring/"}
+  {"id": "elden-ring", "name": "Elden Ring", "data": "frame-data/elden-ring.json", "icons": "frame-data/icons/elden-ring/", "models": "frame-data/models/elden-ring/"},
+  {"id": "no-rest-for-the-wicked", "name": "No Rest for the Wicked", "data": "frame-data/no-rest-for-the-wicked.json", "icons": "frame-data/icons/no-rest-for-the-wicked/"}
  ]
 }

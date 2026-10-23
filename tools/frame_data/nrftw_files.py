@@ -55,10 +55,18 @@ class Reader:
         raise ValueError(f'MessagePack type {t:#x} at {self.o-1}')
 
     def _map(self, n):
-        d = {}
+        """A few of Moon's custom formatters (armament SelectionData, ImmunitySections) write two values for one key.
+        The second comes back under '<key>$1'."""
+        d, prev = {}, None
         for _ in range(n):
             k = self.read()
+            extra = 1
+            while not isinstance(k, (str, int)) and isinstance(prev, str):
+                d[f'{prev}${extra}'] = k
+                extra += 1
+                k = self.read()
             d[k if isinstance(k, (str, int)) else repr(k)] = self.read()
+            prev = k
         return d
 
     def _ext(self, n):
@@ -125,6 +133,61 @@ def asset_guids(game_dir):
             g = obj.read_typetree().get('AssetGuid')
             if g: guids[path] = g['Value']
     return guids
+
+class Game:
+    """The decoded database plus asset paths, cached in .cache/nrftw/ (keyed by the database's size and date) because a
+    full decode takes about half a minute. game.path[guid] / game.guid[path] / game.asset(guid or path)."""
+    def __init__(self, game_dir, cache_dir=None):
+        import pickle
+        self.dir = game_dir
+        db = os.path.join(game_dir, DATA, 'quantumDatabase.bin')
+        st = os.stat(db)
+        cache = os.path.join(cache_dir or os.path.join(os.path.dirname(__file__), '..', '..', '.cache', 'nrftw'),
+                             f'qdb-{st.st_size}-{int(st.st_mtime)}.pkl')
+        if os.path.exists(cache):
+            self.guid, self.assets = pickle.load(open(cache, 'rb'))
+        else:
+            self.guid = asset_guids(game_dir)
+            self.assets = qdb_assets(unpack_qdb(db))
+            os.makedirs(os.path.dirname(cache), exist_ok=True)
+            with open(cache, 'wb') as f: pickle.dump((self.guid, self.assets), f, protocol=5)
+        self.path = {g: p for p, g in self.guid.items()}
+        self._env = None
+
+    def asset(self, key):
+        """The asset for a guid, an asset path or a {'Id': {'Value': guid}} reference; None when missing."""
+        if isinstance(key, dict): key = key['Id']['Value']
+        if isinstance(key, str): key = self.guid.get(key)
+        return self.assets.get(key, (None, None))[1]
+
+    def type_of(self, key):
+        if isinstance(key, str): key = self.guid.get(key)
+        return self.assets.get(key, (None, None))[0]
+
+    def bundle(self):
+        """The qdb_assets bundle (UnityPy), whose MonoBehaviours carry names, icons and prefab references, loaded with
+        static_assets and world_assets, which hold the icon sprites and their textures."""
+        if self._env is None:
+            import UnityPy
+            folder = os.path.join(self.dir, DATA, 'aa/StandaloneWindows64')
+            self._env = UnityPy.load(*[os.path.join(folder, f) for f in sorted(os.listdir(folder))
+                                       if f.startswith(('qdb_assets_all_', 'static_assets_all_', 'world_assets_all_'))])
+        return self._env
+
+    def icon(self, path):
+        """An item's inventory icon (PIL image), or None."""
+        try: ref = self.bundle().container[path].read().ItemIcon
+        except (KeyError, AttributeError): return None
+        if not ref.m_PathID: return None
+        return ref.read().image
+
+    def english(self, path, field='ItemNameMsg'):
+        """English text of an item's localised message (ItemNameMsg, DescriptionData...), or None."""
+        try: obj = self.bundle().container[path]
+        except KeyError: return None
+        ref = obj.read_typetree().get(field)
+        if not ref or not ref.get('m_PathID') or ref.get('m_FileID'): return None
+        return obj.assetsfile.objects[ref['m_PathID']].read_typetree().get('English') or None
 
 if __name__ == '__main__':
     game_dir, suffix = sys.argv[1], sys.argv[2]
