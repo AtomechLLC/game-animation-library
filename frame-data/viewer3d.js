@@ -73,7 +73,10 @@ export async function mount(el, base, m, opts = {}) {
   const body = armorG.scene; motion.add(body);
   body.traverse(o => { if (o.isMesh) { o.frustumCulled = false } });
   const bone = n => body.getObjectByName(n);
-  const wpn = weaponG.scene.clone(); const hand = bone(man.skeleton.weaponBone); hand.add(wpn);
+  // Weapon models point down -Y while R_Weapon's +Y points out of the fist; the models' own Ctrl_Sword node carries
+  // the same half turn about Z
+  const wpn = weaponG.scene.clone(); wpn.rotation.z = Math.PI;
+  const hand = bone(man.skeleton.weaponBone); hand.add(wpn);
   const rest = new Map();
   body.traverse(o => rest.set(o.name, {p: o.position.clone(), q: o.quaternion.clone()}));
   const tracks = anim.bones.map(n => bone(n));
