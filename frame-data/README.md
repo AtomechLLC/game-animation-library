@@ -123,6 +123,35 @@ These files are FromSoftware's assets, converted from a retail install. Hosting 
 site owner accepts; they are kept small (low-res textures, one armor set) and can be removed by deleting `models/` and
 the `models` entry in `games.json`.
 
+### No Rest for the Wicked
+
+```bash
+python tools/frame_data/export_nrftw_models.py "Z:/SteamLibrary/steamapps/common/NoRestForTheWicked"   # ~2 minutes
+```
+
+writes `models/no-rest-for-the-wicked/` in the same layout, read-only, with UnityPy (`nrftw_unity.py` reads prefabs,
+meshes, textures and Mecanim clips; no AssetRipper or FBX step):
+
+- `armor-knight.glb`: the Knight set (male), its four part prefabs skinned to the `playerRig.fbx` skeleton. The armor
+  meshes' bone lists are stripped in the prefabs, so joints come from each mesh's bone name hashes (CRC32 of the bone
+  path). 512 px albedo, each texture stored once. Unity space, mirrored at the root like Elden Ring.
+- `weapon-<name>.glb`: each weapon's view prefab, node `R` (and `L` for dual weapons) at the grip, attached to
+  `armR1_hand_weapon_socket` / `armL1_hand_weapon_socket`. 256 px textures, int16 positions.
+- `anim/<action>.bin`: the action's clips (qanim → SourceAnim → AnimationClip; streamed Hermite, dense and constant
+  curves) at 60 fps, `FDA2` with the header's spare byte = 2: bone poses every second frame, which the viewer
+  interpolates; root motion (root_JNT's translation) every frame. Only the 114 bones the armor skins are kept.
+- `moves/<class>.json`: per move its `anim`, `frames`, preview `weapon` and `hits`, each with the simulation's own
+  per-frame collider transform (`p`, `q`, in root_JNT space, from the action's baked WeaponColliders curves; forward
+  kinematics of the clip reproduces them to the millimetre), and `boxes` per weapon: its ColliderData box per collider
+  id (`e` half extents, `o` centre, `r` rotation). A box runs from its Offset along the socket's +Y for twice its
+  Y extent, which matches each weapon's own trail markers.
+
+About 32 MB in all: 19 MB of animation for 558 actions (1,339 moves), 11 MB of weapon models (162), 1.2 MB of
+armor, 1.7 MB of move files. Not covered yet: other armor sets (`EXPORT`), runes' projectiles and spawned areas
+(their active frames show, no shape), and cloth.
+
+These are Moon Studios' assets, under the same terms as the Elden Ring files above.
+
 ## Format `frame-data/1`
 
 ```jsonc

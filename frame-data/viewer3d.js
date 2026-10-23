@@ -1,6 +1,7 @@
 // 3D preview for the Frame Data tab: plays a move on the game's own character, armor and weapon models and draws its
-// hitboxes on the frames they are out. Everything it loads is written by tools/frame_data/export_er_models.py
-// (format in frame-data/README.md, "3D preview"). Frames here are the tab's frames: 1-based, 30 fps real time.
+// hitboxes on the frames they are out. Everything it loads is written by tools/frame_data/export_er_models.py or
+// export_nrftw_models.py (format in frame-data/README.md, "3D preview"). Frames here are the tab's frames: 1-based, at
+// the game's frame rate (models.json fps, 30 for Elden Ring).
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
@@ -18,15 +19,17 @@ export const classData = async (base, cls) => { const m = await manifest(base), 
 
 // anim/<id>.bin: one pose per tab frame (layout in export_er_models.py, "baked animation"). Each bone gets a
 // Float32Array of quaternions and one of translations, either one per frame or a single value for the whole move.
+// The header's spare byte is a step (No Rest for the Wicked: 2): per-frame tracks then hold a pose every step frames.
 function decodeAnim(buf, names) {
   const dv = new DataView(buf), B = dv.getUint16(4, true), N = dv.getUint16(6, true), hasRoot = dv.getUint8(8);
+  const step = dv.getUint8(9) || 1, M = Math.ceil(N / step);
   let o = 10;
   const ids = [], flags = [];
   for (let k = 0; k < B; k++, o += 2) ids.push(dv.getUint16(o, true));
   for (let k = 0; k < B; k++, o++) flags.push(dv.getUint8(o));
   const S = Math.SQRT1_2, bones = [];
   for (let k = 0; k < B; k++) {
-    const nr = flags[k] & 1 ? N : 1, np = flags[k] & 2 ? N : 1, rot = new Float32Array(nr * 4), pos = new Float32Array(np * 3);
+    const nr = flags[k] & 1 ? M : 1, np = flags[k] & 2 ? M : 1, rot = new Float32Array(nr * 4), pos = new Float32Array(np * 3);
     for (let i = 0; i < nr; i++, o += 4) {
       // smallest three: the top 2 bits name the dropped (largest, positive) component, then three 10-bit values
       const v = dv.getUint32(o, true), big = v >>> 30;
@@ -39,7 +42,7 @@ function decodeAnim(buf, names) {
   }
   let root = null;
   if (hasRoot) { root = new Float32Array(N * 3); for (let i = 0; i < N * 3; i++, o += 4) root[i] = dv.getFloat32(o, true) }
-  return {frames: N, bones, root};
+  return {frames: N, step, bones, root};
 }
 
 const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim() || '#c2412d';
@@ -80,6 +83,7 @@ export async function createViewer(el, base) {
   const resize = () => { const w = stage.clientWidth, h = stage.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix() };
   const ro = new ResizeObserver(resize); ro.observe(stage); resize();
 
+  const FPS = man.fps || 30, sk = man.skeleton;
   const armorG = await glb(base + man.armor.file);
   $('.v3d-msg').hidden = true;
   // Game files are left-handed: mirror X once at the top so everything below stays in game space
@@ -99,17 +103,19 @@ export async function createViewer(el, base) {
   const ghostMat = new THREE.MeshBasicMaterial({color: hitColor, transparent: true, opacity: .12, depthWrite: false, wireframe: true});
   const sphereG = new THREE.SphereGeometry(1, 20, 12), cylG = new THREE.CylinderGeometry(1, 1, 1, 20, 1, true);
   const v1 = new THREE.Vector3(), v2 = new THREE.Vector3(), up = new THREE.Vector3(0, 1, 0);
-  const pelvis = bone('Pelvis') || body, follow = new THREE.Vector3();
+  const pelvis = bone(sk.follow || 'Pelvis') || body, follow = new THREE.Vector3();
+  // Per-frame boxes (No Rest for the Wicked): the simulation's own collider transforms, in root motion space
+  const boxG = new THREE.BoxGeometry(2, 2, 2), q1 = new THREE.Quaternion(), q2 = new THREE.Quaternion(), qtmp = [0, 0, 0, 1];
 
   // The move on show
-  let info = null, anim = null, defHand = 'R', tracks = [], shapes = [], opts = {}, N = 1;
+  let info = null, anim = null, defHand = 'R', tracks = [], shapes = [], boxes = [], opts = {}, N = 1;
   let f = 1, playing = !matchMedia('(prefers-reduced-motion: reduce)').matches, speed = 1, acc = 0, last = performance.now(), token = 0;
 
   function point(id, hand, out) {
     let src = 'any', k = id;
     if (id >= 10000) { const g = Math.floor(id / 1000); k = id % 1000; src = g >= 10 && g < 20 ? 'weapon' : 'none' }
     const h = hands[hand].obj ? hands[hand] : hands[defHand];
-    const w = src !== 'none' && h.obj && h.dummies[k];
+    const w = src !== 'none' && h.obj && h.dummies && h.dummies[k];
     if (w) return out.set(w[0], w[1], w[2]).applyMatrix4(h.root.matrixWorld);
     const d = src === 'any' && man.body[k];
     if (d) { const b = bone(d[0]); if (b) return out.set(d[1], d[2], d[3]).applyMatrix4(b.matrixWorld) }
@@ -119,10 +125,19 @@ export async function createViewer(el, base) {
   // f is the tab's 1-based frame; the animation holds one pose per frame
   function pose(frame) {
     const i = Math.min(Math.max(frame - 1, 0), anim.frames - 1);
+    const u = i / anim.step, k0 = Math.floor(u), t = u - k0;
     anim.bones.forEach((a, k) => {
       const b = tracks[k]; if (!b) return;
-      b.quaternion.fromArray(a.rot, (a.nr > 1 ? i : 0) * 4);
-      b.position.fromArray(a.pos, (a.np > 1 ? i : 0) * 3);
+      if (a.nr > 1) {
+        const k1 = Math.min(k0 + 1, a.nr - 1);
+        if (t) { THREE.Quaternion.slerpFlat(qtmp, 0, a.rot, k0 * 4, a.rot, k1 * 4, t); b.quaternion.fromArray(qtmp) }
+        else b.quaternion.fromArray(a.rot, k0 * 4);
+      } else b.quaternion.fromArray(a.rot, 0);
+      if (a.np > 1) {
+        const k1 = Math.min(k0 + 1, a.np - 1);
+        b.position.fromArray(a.pos, k0 * 3);
+        if (t) b.position.lerp(v2.fromArray(a.pos, k1 * 3), t);
+      } else b.position.fromArray(a.pos, 0);
     });
     if (anim.root && $('.v3d-rm').checked) motion.position.fromArray(anim.root, i * 3);
     else motion.position.set(0, 0, 0);
@@ -131,6 +146,16 @@ export async function createViewer(el, base) {
     pelvis.getWorldPosition(v1); v1.y = 0;
     camera.position.add(v2.subVectors(v1, follow)); controls.target.add(v2); follow.copy(v1);
     const showAll = $('.v3d-ghost').checked, on = $('.v3d-hb').checked;
+    for (const x of boxes) {
+      const active = frame >= x.h.start && frame <= x.h.end;
+      x.m.visible = on && (active || showAll) && frame >= x.h.start && frame <= x.h.start + x.h.p.length - 1;
+      if (!x.m.visible) continue;
+      x.m.material = active ? mat : ghostMat;
+      const k = frame - x.h.start, p = x.h.p[k], q = x.h.q[k];
+      q1.set(q[0], q[1], q[2], q[3]);
+      x.m.position.set(x.b.o[0], x.b.o[1], x.b.o[2]).applyQuaternion(q1).add(v1.set(p[0], p[1], p[2]));
+      x.m.quaternion.copy(q1).multiply(q2.set(x.b.r[0], x.b.r[1], x.b.r[2], x.b.r[3]));
+    }
     for (const x of shapes) {
       const active = frame >= x.h.start && frame <= x.h.end;
       x.g.visible = on && (active || showAll);
@@ -148,7 +173,7 @@ export async function createViewer(el, base) {
       }
     }
     // skill-buffed hits fire projectiles whose shapes the export doesn't read yet
-    const missing = info.hits.some(h => frame >= h.start && frame <= h.end && !shapes.some(x => x.h === h));
+    const missing = info.hits.some(h => frame >= h.start && frame <= h.end && !shapes.some(x => x.h === h) && !boxes.some(x => x.h === h));
     $('.v3d-f').textContent = frame;
     $('.v3d-state').textContent = (opts.state ? opts.state(frame) : '') + (missing ? ' · hitbox shape not in data' : '');
     $('.v3d-scrub input').value = frame;
@@ -178,10 +203,11 @@ export async function createViewer(el, base) {
     for (let k = 1; k <= N; k++) {
       pose(k);
       o.set(follow.x, 0, follow.z);
-      for (const h of held) for (const d of [...Object.values(h.dummies), [0, 0.25, 0]]) box.expandByPoint(v1.set(d[0], d[1], d[2]).applyMatrix4(h.root.matrixWorld).sub(o));
-      for (const n of ['Head', 'L_Toe0', 'R_Toe0', 'L_Hand', 'R_Hand']) { const b = bone(n); if (b) box.expandByPoint(b.getWorldPosition(v1).sub(o)) }
+      for (const h of held) for (const d of [...Object.values(h.dummies || {}), [0, 0.25, 0]]) box.expandByPoint(v1.set(d[0], d[1], d[2]).applyMatrix4((h.root || h.obj).matrixWorld).sub(o));
+      for (const n of sk.fit || ['Head', 'L_Toe0', 'R_Toe0', 'L_Hand', 'R_Hand']) { const b = bone(n); if (b) box.expandByPoint(b.getWorldPosition(v1).sub(o)) }
+      for (const x of boxes) if (x.m.visible) box.expandByPoint(x.m.getWorldPosition(v1).sub(o));
     }
-    box.expandByScalar(Math.max(0, ...shapes.map(x => x.s.r)));
+    box.expandByScalar(Math.max(0, ...shapes.map(x => x.s.r), ...boxes.map(x => Math.max(...x.b.e))));
     // the nearest camera distance along `dir` that keeps every corner of the box inside both fields of view
     const c = box.getCenter(new THREE.Vector3()), tanV = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)), tanH = tanV * camera.aspect;
     const right = new THREE.Vector3().crossVectors(up, dir).normalize(), upv = new THREE.Vector3().crossVectors(dir, right);
@@ -197,7 +223,7 @@ export async function createViewer(el, base) {
   }
 
   const loadWeapon = name => { const f = base + man.weapons[name].file; return once(f, () => glb(f)) };
-  const loadAnim = id => once(base + 'anim/' + id, () => bin(base + 'anim/' + id + '.bin').then(b => decodeAnim(b, man.skeleton.bones)));
+  const loadAnim = id => once(base + 'anim/' + id, () => bin(base + 'anim/' + id + '.bin').then(b => decodeAnim(b, sk.bones)));
   // the weapon on show: the one picked (the page only lists a picked weapon's own moves), else the class's preview
   // weapon for this move
   const weaponFor = (mv, pick) => pick && man.weapons[pick] ? pick : mv.weapon;
@@ -210,11 +236,14 @@ export async function createViewer(el, base) {
     const h = hands[hand];
     if (h.name === name) return;
     if (h.obj) h.bone.remove(h.obj);
-    h.name = name; h.obj = null;
+    h.name = name; h.obj = null; h.root = null; h.dummies = null;
     if (!name) return;
     // Weapon models point down -Y. R_Weapon's +Y points out of the fist (the models' own Ctrl_Sword node carries the
     // same half turn about Z); L_Weapon mirrors R_Weapon, so the left hand takes the model as it is
-    h.obj = g.scene.clone(); if (hand === 'R') h.obj.rotation.z = Math.PI;
+    // Dual weapons (No Rest for the Wicked) carry one root per hand, named R and L
+    const part = g.scene.getObjectByName(hand) && g.scene.getObjectByName('L') ? g.scene.getObjectByName(hand) : g.scene;
+    h.obj = part.clone(); if (hand === 'R' && man.weaponTurn !== false) h.obj.rotation.z = Math.PI;
+    if (part !== g.scene) h.obj.position.set(0, 0, 0);
     h.obj.traverse(x => { if (x.userData.dummies) { h.root = x; h.dummies = x.userData.dummies } });
     h.bone.add(h.obj);
   }
@@ -223,15 +252,22 @@ export async function createViewer(el, base) {
     const my = ++token, c = await classData(base, m.class), mv = c && c.moves[m.id];
     if (!mv || my !== token) return false;
     const name = weaponFor(mv, o.weapon), [def, held] = handsFor(m);
-    const [weaponG, a] = await Promise.all([loadWeapon(name), loadAnim(m.id)]);
+    const [weaponG, a] = await Promise.all([loadWeapon(name), loadAnim(mv.anim || m.id)]);
     if (my !== token || disposed) return false;
     info = mv; anim = a; opts = o; N = a.frames; defHand = def;
     for (const [obj, p, q] of rest) { obj.position.copy(p); obj.quaternion.copy(q) }
-    for (const hand of ['R', 'L']) hold(hand, held.includes(hand) ? name : null, weaponG);
+    const dual = !!weaponG.scene.getObjectByName('L');
+    for (const hand of ['R', 'L']) hold(hand, held.includes(hand) || dual ? name : null, weaponG);
     tracks = anim.bones.map(b => bone(b.name));
     for (const x of shapes) scene.remove(x.g);
-    shapes = [];
-    const atk = c.attacks[man.weapons[name].variation] || {};
+    for (const x of boxes) motion.remove(x.m);
+    shapes = []; boxes = [];
+    const own = (c.boxes || {})[name] || {};
+    for (const h of info.hits) if (h.p && own[h.collider]) {
+      const b = own[h.collider], m = new THREE.Mesh(boxG, mat);
+      m.scale.set(b.e[0], b.e[1], b.e[2]); motion.add(m); boxes.push({h, b, m});
+    }
+    const atk = (c.attacks || {})[man.weapons[name].variation] || {};
     for (const h of info.hits) for (const s of atk[h.judge] || []) {
       const g = new THREE.Group(), sa = new THREE.Mesh(sphereG, mat), sb = new THREE.Mesh(sphereG, mat), cy = new THREE.Mesh(cylG, mat);
       g.add(sa, sb, cy); scene.add(g); shapes.push({h, s, g, hand: h.hand || def, a: sa, b: sb, c: cy});
@@ -247,12 +283,13 @@ export async function createViewer(el, base) {
     if (disposed) return;
     raf = requestAnimationFrame(tick);
     const dt = Math.min(now - last, 100); last = now;
-    if (playing && anim) { acc += dt * speed * 30 / 1000; if (acc >= 1) { const n = Math.floor(acc); acc -= n; go(f + n) } }
+    if (playing && anim) { acc += dt * speed * FPS / 1000; if (acc >= 1) { const n = Math.floor(acc); acc -= n; go(f + n) } }
     controls.update(); renderer.render(scene, camera);
   };
   raf = requestAnimationFrame(tick);
   return {
     show,
+    debug: {THREE, scene, camera, controls, body, motion, bone, go: f => go(f), boxes: () => boxes, hands},
     // warm the cache for the row under the pointer, so the swap on click is instant
     async prefetch(m, pick) {
       const c = await classData(base, m.class).catch(() => null), mv = c && c.moves[m.id];
@@ -260,7 +297,7 @@ export async function createViewer(el, base) {
     },
     dispose() {
       disposed = true; cancelAnimationFrame(raf); ro.disconnect(); document.removeEventListener('keydown', onKey);
-      controls.dispose(); renderer.dispose(); sphereG.dispose(); cylG.dispose(); mat.dispose(); ghostMat.dispose();
+      controls.dispose(); renderer.dispose(); sphereG.dispose(); cylG.dispose(); boxG.dispose(); mat.dispose(); ghostMat.dispose();
     },
   };
 }
