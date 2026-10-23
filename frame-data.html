@@ -203,6 +203,10 @@ footer p{max-width:85ch;margin:0 0 8px}
 .pick.min .wtiles,.pick.min .v3d,.pick.min #sub,.pick.min #active{display:none}
 @media (min-width:821px) and (min-height:640px){.pick.dockon{position:sticky;top:var(--hdr,0px);z-index:4;background:var(--bg);border-bottom:1px solid var(--line);padding-bottom:8px}}
 @media (max-width:820px){.pick.dockon{grid-template-columns:minmax(0,1fr)}}
+.more-c{width:1%;text-align:right;padding-left:4px!important}
+.rowmore{border:1px solid var(--line);background:var(--sunk);border-radius:4px;padding:0 9px;height:24px;cursor:pointer;font-weight:700;line-height:1}
+.rowmore:hover{border-color:var(--key)}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 tbody tr.on td{background:var(--chip);box-shadow:inset 0 1px var(--key),inset 0 -1px var(--key)}
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
@@ -382,13 +386,13 @@ function renderTable(){
   $('#legend').innerHTML=list.length?legendHtml():'';
   if(!list.length){dock(list);$('#table').innerHTML='<div class="empty">No moves match these filters. Clear a filter or widen the startup limit.</div>';return}
   const scale=Math.min(150,Math.max(...list.map(m=>Math.max(m.total||0,m.cancels.dodge||0))));
-  const head=`<thead><tr>${cols.map(k=>{const c=COLS.find(x=>x[0]===k);return `<th class="${c[3]&&k!=='strip'?'n':''}" ${st.sort===k?`aria-sort="${st.dir>0?'ascending':'descending'}"`:''} title="${esc(c[4])}"><button data-sort="${k}">${esc(c[1])}</button></th>`}).join('')}</tr></thead>`;
-  const row=m=>`<tr data-m="${esc(m.class+'|'+m.id)}"${DOCK.key===m.class+'|'+m.id?' class="on"':''}>${cols.map(k=>cell(k,m,scale)).join('')}</tr>`;
+  const head=`<thead><tr>${cols.map(k=>{const c=COLS.find(x=>x[0]===k);return `<th class="${c[3]&&k!=='strip'?'n':''}" ${st.sort===k?`aria-sort="${st.dir>0?'ascending':'descending'}"`:''} title="${esc(c[4])}"><button data-sort="${k}">${esc(c[1])}</button></th>`}).join('')}<th class="more-c"><span class="vh">Details</span></th></tr></thead>`;
+  const row=m=>`<tr data-m="${esc(m.class+'|'+m.id)}"${DOCK.key===m.class+'|'+m.id?' class="on"':''}>${cols.map(k=>cell(k,m,scale)).join('')}<td class="more-c"><button class="rowmore" data-open="${esc(m.class+'|'+m.id)}" title="Frame details" aria-label="Frame details for ${esc(m.name)}">…</button></td></tr>`;
   let body;
   if(st.cls&&!st.sort){
     // class view: grouped by move type in play order
     const by=new Map();list.forEach(m=>{if(!by.has(m.type))by.set(m.type,[]);by.get(m.type).push(m)});
-    body=[...by].sort((a,b)=>T[a[0]].i-T[b[0]].i).map(([t,ms])=>`<tr class="grp"><td colspan="${cols.length}">${esc(T[t].name)} · ${ms.length}<small>${esc(T[t].description)}</small></td></tr>`+ms.map(row).join('')).join('');
+    body=[...by].sort((a,b)=>T[a[0]].i-T[b[0]].i).map(([t,ms])=>`<tr class="grp"><td colspan="${cols.length+1}">${esc(T[t].name)} · ${ms.length}<small>${esc(T[t].description)}</small></td></tr>`+ms.map(row).join('')).join('');
     $('#table').innerHTML=`<div class="tablewrap"><table>${head}<tbody>${body}</tbody></table></div>`;dock(list);return}
   const s=sorted(list),shown=s.slice(0,st.shown);
   body=shown.map(row).join('');
@@ -462,6 +466,7 @@ function fromHash(){
 document.addEventListener('click',e=>{
   const t=e.target.closest('button,tr[data-m]');if(!t)return;
   const d=t.dataset;
+  if(d.open){openMove(d.open);return}
   if(d.m){const m=moveOf(d.m);if(!$('#dock').hidden&&DOCK.view&&m){DOCK.view.then(v=>v.has(m)?preview(m):openMove(d.m))}else openMove(d.m);return}
   if(t.id==='dockMore'){if(DOCK.key)openMove(DOCK.key);return}
   if(t.id==='pickMin'){pickMin(!$('#pick').classList.contains('min'));return}
