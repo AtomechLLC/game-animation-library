@@ -43,10 +43,12 @@ the jump table's dodge flag.
 
 ## 3D preview
 
-A move's detail sheet shows the move played on the game's own models when `games.json` gives the game a `models`
-folder and that folder's `models.json` lists the move: play/pause, frame stepping (`,` `.` or the arrow buttons),
-scrubbing on the frame strip, slow motion, and the move's hitboxes drawn on exactly the frames the table calls active.
-`frame-data/viewer3d.js` does this with three.js (loaded from jsDelivr through the page's import map).
+When a weapon class is picked and `games.json` gives the game a `models` folder whose `models.json` covers the
+class's moves, a 3D preview docks above the move table (sticky under the header on wide screens). Clicking a row swaps
+that move in place without reloading the models; "Frame details" opens the detail sheet. It plays the move on the
+game's own models: play/pause, one-frame steps (`−1 f` / `+1 f`, or `,` `.`), scrubbing on the frame strip, slow
+motion, and the move's hitboxes drawn on exactly the frames the table calls active. `frame-data/viewer3d.js` does
+this with three.js (loaded from jsDelivr through the page's import map).
 
 ```bash
 python tools/frame_data/export_er_models.py "D:/SteamLibrary/steamapps/common/ELDEN RING"   # ~1 minute
