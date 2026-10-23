@@ -211,17 +211,21 @@ def read_tae(data):
 def frame_clock(events, fps=30):
     """Seconds of TAE time -> frames of real time. Event 608 changes playback speed linearly from its first to its
     second float over its range, so the same TAE time can play out faster or slower."""
+    clock = real_clock(events)
+    return lambda t: round(clock(t) * fps)
+
+def real_clock(events):
+    """Seconds of TAE time -> seconds of real time, unrounded (see frame_clock)."""
     segs = sorted((s, e, *struct.unpack_from('<ff', p)) for t, s, e, p in events if t == 608 and e < 1e6)
-    def frame(t):
-        real, cur = 0.0, 0.0
+    def real(t):
+        out, cur = 0.0, 0.0
         for s, e, a, b in segs:
             if s >= t: break
-            real += max(0.0, s - cur)
+            out += max(0.0, s - cur)
             hi = min(e, t)
             if hi > s and a > 0 and b > 0:
-                if abs(b - a) < 1e-6: real += (hi - s) / a
-                else: real += (e - s) / (b - a) * math.log((a + (b - a) * (hi - s) / (e - s)) / a)
+                if abs(b - a) < 1e-6: out += (hi - s) / a
+                else: out += (e - s) / (b - a) * math.log((a + (b - a) * (hi - s) / (e - s)) / a)
             cur = max(cur, hi)
-        real += max(0.0, t - cur)
-        return round(real * fps)
-    return frame
+        return out + max(0.0, t - cur)
+    return real

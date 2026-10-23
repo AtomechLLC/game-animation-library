@@ -174,7 +174,25 @@ footer p{max-width:85ch;margin:0 0 8px}
   .strip{width:140px}
   .wtiles{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}
 }
+/* 3D preview (frame-data/viewer3d.js) */
+.v3d{display:grid;gap:8px}
+.v3d-stage{position:relative;aspect-ratio:4/3;background:radial-gradient(ellipse at 50% 35%,var(--panel),var(--sunk));border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.v3d-stage canvas{display:block;width:100%;height:100%;touch-action:none}
+.v3d-msg{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:13px;text-align:center;padding:16px}
+.v3d-hud{position:absolute;left:10px;top:8px;display:flex;align-items:baseline;gap:8px;pointer-events:none}
+.v3d-hud b{font-family:var(--display);font-size:28px;font-weight:800;font-variant-numeric:tabular-nums}
+.v3d-hud span{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.v3d-bar{display:flex;align-items:center;gap:6px}
+.v3d-bar button,.v3d-bar select{border:1px solid var(--line);background:var(--sunk);border-radius:4px;height:30px;min-width:34px;cursor:pointer;font-size:12px}
+.v3d-scrub{position:relative;flex:1;min-width:0}
+.v3d-scrub .strip{width:100%;height:26px}
+.v3d-scrub::after{content:"";position:absolute;top:-3px;bottom:-3px;left:var(--v3d-at,0%);width:2px;margin-left:-1px;background:var(--fg);pointer-events:none}
+.v3d-scrub input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.v3d-opts{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--muted);align-items:center}
+.v3d-opts label{display:inline-flex;gap:5px;align-items:center;cursor:pointer}
+.v3d-who{margin-left:auto;font-family:var(--mono);font-size:10.5px}
 </style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 </head>
 <body>
 
@@ -366,14 +384,32 @@ function openMove(key){
   const ws=m.weapons.length?m.weapons:[];
   $('#sheet').innerHTML=`<div class="top"><div><div class="src">${esc(D.game.name)} · ${esc(c.name)} › ${esc(T[m.type].name)} · ${GRIP[m.grip]}</div><h2 id="dName">${esc(m.name)}</h2></div><button class="close" id="close">Close</button></div>
   <div class="stats"><div class="stat"><small>Startup</small><b>${m.startup}</b></div><div class="stat"><small>Active</small><b>${m.activeFrames}</b></div><div class="stat"><small>Recovery</small><b>${m.recovery??'—'}</b></div><div class="stat"><small>Total</small><b>${m.total??'—'}</b></div></div>
+  ${G.models?`<section class="big v3d" id="v3d" hidden><h3>3D preview</h3><div></div></section>`:''}
   <section class="big"><h3>Timeline (${D.game.fps} fps)</h3>${stripHtml(m,end||1)}<div class="ruler2"><span>1</span><span>${Math.round(end/2)}</span><span>${end}</span></div><div class="legend" style="margin-top:8px">${legendHtml()}</div></section>
   <section><h3>Windows</h3><dl class="meta"><dt>Active</dt><dd>${win(m.active)} (${m.hits} hit${m.hits>1?'s':''})</dd><dt>Hyper armor</dt><dd>${win(m.armor)}</dd><dt>I-frames</dt><dd>${win(m.iframes)}</dd><dt>Parryable</dt><dd>${m.parryable?'Yes':'No'}</dd></dl></section>
   <section><h3>Cancels</h3><dl class="meta">${can||'<dt>—</dt><dd>No cancel windows recorded</dd>'}</dl></section>
   <section><h3>First hit</h3><dl class="meta"><dt>Damage type</dt><dd>${esc(m.damage.type??'—')}</dd><dt>Motion value</dt><dd>${m.damage.mv??'—'}</dd><dt>Poise damage</dt><dd>${m.damage.poise??'—'}</dd><dt>Damage level</dt><dd title="How hard the hit staggers">${m.damage.level??'—'}</dd><dt>Stamina</dt><dd>${m.damage.stamina??'—'}</dd></dl></section>
   <section><h3>Used by (${ws.length||'default moveset'})</h3>${ws.length?`<div class="wlist">${ws.map(i=>`<button data-pickw="${i}" data-pickc="${esc(c.id)}">${icoHtml(c.weapons[i],'')}${esc(c.weapons[i])}</button>`).join('')}</div>`:'<p class="note">Part of the class default moveset.</p>'}</section>
   <section><h3>Source</h3><div class="quick">${D.source.moveUrl?`<a target="_blank" rel="noopener" href="${esc(D.source.moveUrl.replace('{id}',m.id))}">Open in ${esc(D.source.moveName||D.source.name)} ↗</a>`:''}<a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(D.game.name+' '+c.name+' '+m.name.replace(/^(1h|2h)\s/,''))}">YouTube ↗</a></div><p class="note">Animation ${esc(m.id)}. ${esc(D.game.frameNote)}</p></section>`;
-  $('#sheet').hidden=false;$('#scrim').hidden=false;$('#close').focus()}
-function closeSheet(){$('#sheet').hidden=true;$('#scrim').hidden=true}
+  $('#sheet').hidden=false;$('#scrim').hidden=false;$('#close').focus();mount3d(m)}
+// 3D preview: only for games with exported models (games.json "models") and moves the export covers
+let V3D=null,v3dSeq=0;
+function frameState(m,f){
+  const inW=w=>w.some(([s,e])=>f>=s&&f<=e),last=m.active[m.active.length-1][1];
+  const s=f<m.startup?'Startup':inW(m.active)?'Active':f<last?'Between hits':m.cancels.dodge&&f>=m.cancels.dodge?'Can dodge':'Recovery';
+  return s+(inW(m.armor)?' · hyper armor':'')+(inW(m.iframes)?' · i-frames':'')}
+async function mount3d(m){
+  if(V3D){V3D.dispose();V3D=null}
+  const sec=$('#v3d'),seq=++v3dSeq;if(!sec)return;
+  try{
+    const v=await import('./frame-data/viewer3d.js'),man=await v.manifest(G.models);
+    const info=man.moves[m.class+'|'+m.id];if(seq!==v3dSeq||!info)return;
+    sec.hidden=false;
+    const h=await v.mount(sec.querySelector('div'),G.models,m,{strip:stripHtml(m,info.frames),state:f=>frameState(m,f)});
+    if(seq!==v3dSeq){h.dispose();return}
+    V3D=h;
+  }catch(e){if(seq===v3dSeq&&!sec.hidden)sec.querySelector('div').innerHTML=`<div class="empty">Could not load the 3D preview (${esc(e.message)}).</div>`}}
+function closeSheet(){$('#sheet').hidden=true;$('#scrim').hidden=true;v3dSeq++;if(V3D){V3D.dispose();V3D=null}}
 // Shareable state in the hash: #g=elden-ring&c=Katana&w=Moonveil&t=light,heavy
 function writeHash(){
   const p=new URLSearchParams();if(st.game&&st.game!==GAMES[0].id)p.set('g',st.game);if(st.fam&&!st.cls)p.set('f',st.fam);if(st.cls)p.set('c',st.cls);
