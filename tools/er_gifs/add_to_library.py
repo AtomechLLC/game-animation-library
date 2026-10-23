@@ -1,9 +1,9 @@
-"""Add the Elden Ring renders from tools/er_gifs/render.js to library.json and gif-screening.json.
+"""Add the Elden Ring and No Rest for the Wicked renders from tools/er_gifs/render.js to library.json and gif-screening.json.
 
-Each job in jobs.json with a rendered gifs/<out>.webp gets a `gifs` record on its entry (host "Elden Ring render",
+Each job in jobs.json with a rendered gifs/<out>.webp gets a `gifs` record on its entry (host "<game> render",
 page_url = the move in the Frame Data tab). Safe to rerun: records already present (same local file) are skipped.
 """
-import json, os
+import json, os, re
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.join(HERE, '..', '..')
@@ -15,7 +15,9 @@ lib_path, scr_path = os.path.join(ROOT, 'library.json'), os.path.join(ROOT, 'gif
 lib, scr = json.load(open(lib_path)), json.load(open(scr_path))
 byid = {a['id']: a for a in lib['animations']}
 added = 0
+GAMES = {'elden-ring': 'Elden Ring', 'no-rest-for-the-wicked': 'No Rest for the Wicked'}
 for j in jobs:
+    game = GAMES[j.get('game', 'elden-ring')]
     local = 'gifs/%s.webp' % j['out']
     if not os.path.exists(os.path.join(ROOT, local)):
         continue
@@ -27,7 +29,7 @@ for j in jobs:
         title = '%s %s (%s), rendered from the Frame Data 3D preview' % (j['class'], j['label'], weapon)
         page = 'frame-data.html#c=%s&t=%s&m=%s' % (j['class'].replace(' ', '+'), moves[(j['class'], j['move'])]['type'], j['move'])
     # `also` lists further entries that show the same render
-    for entry in [j['out'].rsplit('-er', 1)[0]] + j.get('also', []):
+    for entry in [re.sub(r'-(er|nr)\d+$', '', j['out'])] + j.get('also', []):
         a = byid[entry]
         if any(g.get('local') == local for g in a['gifs']):
             continue
@@ -36,10 +38,10 @@ for j in jobs:
                     and (g.get('screened') or {}).get('verdict', 'added') == 'added' for g in a['gifs'])
         a['gifs'].insert(len(a['gifs']) if solid else 0, {
             'page_url': page,
-            'media_url': '', 'title': title, 'game': 'Elden Ring', 'host': 'Elden Ring render', 'local': local, 'source_url': '',
+            'media_url': '', 'title': title, 'game': game, 'host': game + ' render', 'local': local, 'source_url': '',
             'screened': {'verdict': 'added', 'confidence': j.get('confidence', 'high'), 'what': j['what']},
         })
-        scr['added'].append({'animation': entry, 'clip': j['out'], 'game': 'Elden Ring', 'what': j['what'],
+        scr['added'].append({'animation': entry, 'clip': j['out'], 'game': game, 'what': j['what'],
                              'confidence': j.get('confidence', 'high')})
         added += 1
 json.dump(lib, open(lib_path, 'w'), indent=1, ensure_ascii=False)

@@ -2791,6 +2791,76 @@
    "game": "Elden Ring",
    "what": "A held pose gesture",
    "confidence": "low"
+  },
+  {
+   "animation": "defense.sidestep-quickstep",
+   "clip": "defense.sidestep-quickstep-nr0",
+   "game": "No Rest for the Wicked",
+   "what": "Short quickstep dodge to the left, right, back and forward in turn",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.crouch",
+   "clip": "locomotion.crouch-nr0",
+   "game": "No Rest for the Wicked",
+   "what": "Crouched sneaking stance, idle loop",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.crouch-walk",
+   "clip": "locomotion.crouch-walk-nr0",
+   "game": "No Rest for the Wicked",
+   "what": "Crouched sneak walk loop, two cycles",
+   "confidence": "high"
+  },
+  {
+   "animation": "exploration.sneak-tiptoe",
+   "clip": "locomotion.crouch-walk-nr0",
+   "game": "No Rest for the Wicked",
+   "what": "Crouched sneak walk loop, two cycles",
+   "confidence": "high"
+  },
+  {
+   "animation": "exploration.swim-surface",
+   "clip": "exploration.swim-surface-nr0",
+   "game": "No Rest for the Wicked",
+   "what": "Surface swimming: the slow stroke loop, then the fast crawl",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.mantle-ledge-climb",
+   "clip": "locomotion.mantle-ledge-climb-nr0",
+   "game": "No Rest for the Wicked",
+   "what": "Mantling up a 1 m ledge, then a 2 m ledge (the ledge is not drawn)",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.vault",
+   "clip": "locomotion.vault-nr0",
+   "game": "No Rest for the Wicked",
+   "what": "Quick vault up onto a waist-high ledge (the ledge is not drawn)",
+   "confidence": "low"
+  },
+  {
+   "animation": "locomotion.ledge-grab-hang",
+   "clip": "locomotion.ledge-grab-hang-nr0",
+   "game": "No Rest for the Wicked",
+   "what": "Sidling along a narrow ledge with the back to the wall (the wall is not drawn)",
+   "confidence": "low"
+  },
+  {
+   "animation": "exploration.free-climb",
+   "clip": "exploration.free-climb-nr0",
+   "game": "No Rest for the Wicked",
+   "what": "Free climbing up a wall, then sideways (the wall is not drawn)",
+   "confidence": "high"
+  },
+  {
+   "animation": "exploration.ladder-climb",
+   "clip": "exploration.ladder-climb-nr0",
+   "game": "No Rest for the Wicked",
+   "what": "Ladder climb-up cycle (the ladder is not drawn)",
+   "confidence": "high"
   }
  ]
 }

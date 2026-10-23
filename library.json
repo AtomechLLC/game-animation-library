@@ -1419,6 +1419,20 @@
      "host": "Tenor",
      "local": "gifs/locomotion.crouch-r1.webp",
      "source_url": "https://media.tenor.com/xznp3Kq1W8oAAAA1/ticklefiend-tickle-fiend.webp"
+    },
+    {
+     "page_url": "gifs/locomotion.crouch-nr0.webp",
+     "media_url": "",
+     "title": "Crouch idle, rendered with the Frame Data 3D preview",
+     "game": "No Rest for the Wicked",
+     "host": "No Rest for the Wicked render",
+     "local": "gifs/locomotion.crouch-nr0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Crouched sneaking stance, idle loop"
+     }
     }
    ],
    "rejected_gifs": [
@@ -1517,6 +1531,20 @@
      "host": "Tenor",
      "local": "gifs/locomotion.crouch-walk-1.webp",
      "source_url": "https://media.tenor.com/FTRxt4ssmYYAAAA1/ghost-babel-metal-gear-ghost-babel-solid-snake-sneaking-stealth-game.webp"
+    },
+    {
+     "page_url": "gifs/locomotion.crouch-walk-nr0.webp",
+     "media_url": "",
+     "title": "Crouch walk, rendered with the Frame Data 3D preview",
+     "game": "No Rest for the Wicked",
+     "host": "No Rest for the Wicked render",
+     "local": "gifs/locomotion.crouch-walk-nr0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Crouched sneak walk loop, two cycles"
+     }
     }
    ]
   },
@@ -1868,6 +1896,20 @@
      "host": "Giphy",
      "local": "gifs/locomotion.vault-2.webp",
      "source_url": "https://media.giphy.com/media/rmCu1PvcFDn8s9tdDz/200w.webp"
+    },
+    {
+     "page_url": "gifs/locomotion.vault-nr0.webp",
+     "media_url": "",
+     "title": "Vault up a 0.5 m ledge, rendered with the Frame Data 3D preview",
+     "game": "No Rest for the Wicked",
+     "host": "No Rest for the Wicked render",
+     "local": "gifs/locomotion.vault-nr0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Quick vault up onto a waist-high ledge (the ledge is not drawn)"
+     }
     }
    ]
   },
@@ -1925,6 +1967,20 @@
     }
    ],
    "gifs": [
+    {
+     "page_url": "gifs/locomotion.mantle-ledge-climb-nr0.webp",
+     "media_url": "",
+     "title": "Climb up a 1 m, then a 2 m ledge, rendered with the Frame Data 3D preview",
+     "game": "No Rest for the Wicked",
+     "host": "No Rest for the Wicked render",
+     "local": "gifs/locomotion.mantle-ledge-climb-nr0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Mantling up a 1 m ledge, then a 2 m ledge (the ledge is not drawn)"
+     }
+    },
     {
      "page_url": "https://tenor.com/view/ezio-climbing-revelations-assasins-creed-gif-10868698",
      "media_url": "",
@@ -2050,6 +2106,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Banjo & Kazooie's ledge-hang animation"
+     }
+    },
+    {
+     "page_url": "gifs/locomotion.ledge-grab-hang-nr0.webp",
+     "media_url": "",
+     "title": "Wall shimmy, rendered with the Frame Data 3D preview",
+     "game": "No Rest for the Wicked",
+     "host": "No Rest for the Wicked render",
+     "local": "gifs/locomotion.ledge-grab-hang-nr0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Sidling along a narrow ledge with the back to the wall (the wall is not drawn)"
      }
     }
    ]
@@ -8642,6 +8712,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Heihachi sidesteps an attack and answers with a Wind God Fist"
+     }
+    },
+    {
+     "page_url": "gifs/defense.sidestep-quickstep-nr0.webp",
+     "media_url": "",
+     "title": "Quickstep left, right, back, forward, rendered with the Frame Data 3D preview",
+     "game": "No Rest for the Wicked",
+     "host": "No Rest for the Wicked render",
+     "local": "gifs/defense.sidestep-quickstep-nr0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Short quickstep dodge to the left, right, back and forward in turn"
      }
     }
    ]
@@ -16160,6 +16244,20 @@
      "host": "Tenor",
      "local": "gifs/exploration.sneak-tiptoe-3.webp",
      "source_url": "https://media.tenor.com/b_XdV17BtTgAAAA1/luigi-luigi's-mansion-luigis-mansion-funny-walk-gameboy-horror.webp"
+    },
+    {
+     "page_url": "gifs/locomotion.crouch-walk-nr0.webp",
+     "media_url": "",
+     "title": "Crouch walk, rendered with the Frame Data 3D preview",
+     "game": "No Rest for the Wicked",
+     "host": "No Rest for the Wicked render",
+     "local": "gifs/locomotion.crouch-walk-nr0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Crouched sneak walk loop, two cycles"
+     }
     }
    ],
    "rejected_gifs": [
@@ -16211,6 +16309,20 @@
      "title": "Zora Link swimming",
      "game": "Zelda: Majora's Mask",
      "host": "Tenor"
+    },
+    {
+     "page_url": "gifs/exploration.swim-surface-nr0.webp",
+     "media_url": "",
+     "title": "Swim stroke, then crawl, rendered with the Frame Data 3D preview",
+     "game": "No Rest for the Wicked",
+     "host": "No Rest for the Wicked render",
+     "local": "gifs/exploration.swim-surface-nr0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Surface swimming: the slow stroke loop, then the fast crawl"
+     }
     }
    ]
   },
@@ -16340,6 +16452,20 @@
       "confidence": "high",
       "what": "Link climbing a tree trunk, a tower and a cliff face"
      }
+    },
+    {
+     "page_url": "gifs/exploration.free-climb-nr0.webp",
+     "media_url": "",
+     "title": "Wall climb up, then sideways, rendered with the Frame Data 3D preview",
+     "game": "No Rest for the Wicked",
+     "host": "No Rest for the Wicked render",
+     "local": "gifs/exploration.free-climb-nr0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Free climbing up a wall, then sideways (the wall is not drawn)"
+     }
     }
    ]
   },
@@ -16410,6 +16536,20 @@
       "verdict": "added",
       "confidence": "low",
       "what": "Ladder climb-up cycle (the ladder itself is not drawn)"
+     }
+    },
+    {
+     "page_url": "gifs/exploration.ladder-climb-nr0.webp",
+     "media_url": "",
+     "title": "Ladder climb up, rendered with the Frame Data 3D preview",
+     "game": "No Rest for the Wicked",
+     "host": "No Rest for the Wicked render",
+     "local": "gifs/exploration.ladder-climb-nr0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Ladder climb-up cycle (the ladder is not drawn)"
      }
     }
    ]
