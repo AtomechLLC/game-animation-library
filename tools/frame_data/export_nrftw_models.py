@@ -20,10 +20,12 @@ frame-data/models/no-rest-for-the-wicked/:
                             export_er_models.py ('FDA2'), bone poses every 2nd frame (STEP); root_JNT's translation
                             becomes the per-frame root motion track; bones the armor doesn't skin are left out
 
-Hitboxes come straight from the simulation: each WeaponColliders entry of an action carries its socket's baked
-position and rotation per frame (Moon's fixed-point curve ext types 13 and 14, in root_JNT space: forward kinematics of
-the clip without root motion matches them to the millimetre), and
-the weapon's ColliderData gives the box (half extents, offset and rotation in socket space) for that collider id.
+Hitboxes: each WeaponColliders entry of an action gives the frames a collider is out and its socket's baked path
+(Moon's fixed-point curve ext types 13 and 14, in root_JNT space), and
+the weapon's ColliderData gives the box (half extents, offset and rotation in socket space) for that collider id. The
+viewer puts the box on the hand socket: where the clip's timing can be fitted to the baked path (see warp), the two are
+identical, rotation included. On the other half of the moves the baked path doesn't follow the visual clip at any
+timing, so drawing it would leave the box away from the weapon; anchoring to the socket keeps it on the blade.
 """
 import io, json, math, os, re, struct, sys
 import numpy as np
@@ -240,9 +242,16 @@ class Exporter:
             mf, mr = U.comps(go, 'MeshFilter'), U.comps(go, 'MeshRenderer')
             n = g.node(name=name, **kw)
             g.j['nodes'][parent].setdefault('children', []).append(n)
+            mesh = mats = None
             if mf and mr and mf[0].m_Mesh.m_PathID and mr[0].m_Enabled:
                 mats = [m.read() for m in mr[0].m_Materials if m.m_PathID]
                 mesh = mf[0].m_Mesh.read()
+            for smr in U.comps(go, 'SkinnedMeshRenderer'):
+                # bows and some spears and staves are rigged: shown rigid, in their bind pose
+                ms = [m.read() for m in smr.m_Materials if m.m_PathID]
+                if smr.m_Mesh.m_PathID and smr.m_Enabled and ms and not ms[0].m_Shader.read().m_ParsedForm.m_Name.endswith('baseSimple'):
+                    mats, mesh = ms, smr.m_Mesh.read()
+            if mesh is not None:
                 mi, off, scale = add_mesh(g, U.mesh_data(mesh), U.albedo(mats[0]) if mats else None, mesh.m_Name,
                                           WEAPON_TEX_SIZE, quant=True, textures=textures)
                 g.node(name=mesh.m_Name + '_q', mesh=mi, translation=off.tolist(), scale=[scale] * 3)
@@ -281,6 +290,11 @@ class Exporter:
             if a >= frames: continue
             idx = np.arange(a, frames if seg is action['Animations'][-1] else min(frames, a + n))
             times = np.clip((idx - a) / FPS, 0, U.clip_length(clip))
+            warp = self.warp(action, clip) if len(action['Animations']) == 1 and a == 0 else None
+            if warp is not None:
+                k = min(len(warp), len(times))
+                times[:k] = warp[:k]
+                if len(times) > k: times[k:] = np.clip(warp[-1] + np.arange(1, len(times) - k + 1) / FPS, 0, U.clip_length(clip))
             s = U.sample_clip(clip, times)
             for (h, attr), v in s.items():
                 bi = self.by_hash.get(h)
@@ -302,19 +316,72 @@ class Exporter:
                 if np.dot(R[i], R[i - 1]) < 0: R[i] = -R[i]
         return frames, bake(tracks, frames, self.bone_index, root)
 
+    # -- timing --
+    def socket_track(self, clip, times, sock):
+        """Positions of a socket relative to root_JNT at clip times (forward kinematics of the clip)."""
+        root = self.bone_index['root_JNT']
+        tr = {}
+        for (h, attr), v in U.sample_clip(clip, times).items():
+            bi = self.by_hash.get(h)
+            if bi is not None and attr in (1, 2): tr.setdefault(bi, {})[attr] = v
+        chain, b = [], sock
+        while b != root and b >= 0: chain.append(b); b = self.nodes[b][1]
+        n = len(times)
+        P, Rm = np.zeros((n, 3)), np.tile(np.eye(3), (n, 1, 1))
+        for b in reversed(chain):
+            t0, q0, _ = self.rest[b]
+            t = tr.get(b, {}).get(1, np.tile(t0, (n, 1))); q = tr.get(b, {}).get(2, np.tile(q0, (n, 1)))
+            x, y, z, w = q.T
+            M = np.stack([np.stack([1-2*(y*y+z*z), 2*(x*y-z*w), 2*(x*z+y*w)], -1),
+                          np.stack([2*(x*y+z*w), 1-2*(x*x+z*z), 2*(y*z-x*w)], -1),
+                          np.stack([2*(x*z-y*w), 2*(y*z+x*w), 1-2*(x*x+y*y)], -1)], -2)
+            P = P + np.einsum('nij,nj->ni', Rm, t); Rm = Rm @ M
+        return P
+
+    def warp(self, action, clip, grid_hz=120, max_step=10, tolerance=0.08):
+        """Clip time per action frame, or None. The game retimes clips (segment RetimingFrames, Animations
+        FrameCount shorter than the clip), and its baked collider track records where the weapon socket really is each
+        frame. Dynamic time warping of the clip's own socket path onto that track recovers the timing; it is used only
+        when the fitted path stays within `tolerance` metres of the track while the hitbox is out (about half the
+        moves; the rest keep the clip's own speed)."""
+        wcs = [w for w in action['TimelineData'].get('WeaponColliders', []) if fp_curve(w['PositionCurve']['Keys'], 3) is not None]
+        if not wcs: return None
+        wc = wcs[0]; pc = fp_curve(wc['PositionCurve']['Keys'], 3)
+        s = int(round(N_fx(wc['StartTime']) * FPS)); e = int(round(N_fx(wc['EndTime']) * FPS))
+        L = U.clip_length(clip)
+        grid = np.arange(0, L + 1e-9, 1 / grid_hz)
+        F = int(round(pc[-1, 0] * FPS)) + 1
+        target = sample_curve(pc, np.arange(F) / FPS)
+        best = None
+        for sock in ('armR1_hand_weapon_socket', 'armL1_hand_weapon_socket'):
+            P = self.socket_track(clip, grid, self.bone_index[sock])
+            cost = np.linalg.norm(P[None] - target[:, None], axis=2)
+            G, nat = len(grid), grid_hz / FPS
+            D = cost[0] + 0.02 * np.arange(G) / grid_hz
+            back = np.zeros((F, G), int)
+            for f in range(1, F):
+                bestc = np.full(G, np.inf); arg = np.zeros(G, int)
+                for k in range(max_step + 1):
+                    prev = np.full(G, np.inf); prev[k:] = D[:G - k] if k else D
+                    cand = prev + 0.002 * abs(k - nat)
+                    m = cand < bestc; bestc[m] = cand[m]; arg[m] = (np.arange(G) - k)[m]
+                D = bestc + cost[f]; back[f] = arg
+            j = int(np.argmin(D)); path = [j]
+            for f in range(F - 1, 0, -1): j = back[f][j]; path.append(j)
+            path = path[::-1]
+            err = cost[np.arange(F), path][s:e + 1].max() if e < F else np.inf
+            if best is None or err < best[0]: best = (err, grid[path])
+        return best[1] if best[0] < tolerance else None
+
     # -- hitboxes --
     def hits(self, action):
+        """Hitbox windows and the collider each one uses; the viewer puts the weapon's box for that collider on the
+        hand socket (the baked collider tracks are that socket's path, rotation included)."""
         out = []
         for wc in action['TimelineData'].get('WeaponColliders', []):
             s = int(round(N_fx(wc['StartTime']) * FPS)) + 1
             e = max(s, int(round(N_fx(wc['EndTime']) * FPS)))
-            pc, rc = fp_curve(wc['PositionCurve']['Keys'], 3), fp_curve(wc['RotationCurve']['Keys'], 4)
-            if pc is None or rc is None: continue
-            t = (np.arange(s, e + 1) - 1) / FPS
-            p, q = sample_curve(pc, t), sample_curve(rc, t)
-            q /= np.maximum(np.linalg.norm(q, axis=1, keepdims=True), 1e-9)
-            out.append({'start': s, 'end': e, 'collider': str(wc['ColliderIdRef']['Id']['Value']),
-                        'p': np.round(p, 4).tolist(), 'q': np.round(q, 4).tolist()})
+            out.append({'start': s, 'end': e, 'collider': str(wc['ColliderIdRef']['Id']['Value'])})
         return out
 
     def colliders(self, arm, filt):
@@ -327,7 +394,9 @@ class Exporter:
                 e, o = fx(c['Extents']), fx(c['Offset'])
                 # The box runs from Offset along the socket's +Y (the blade) for twice Extents.Y, centred on X and Z:
                 # that is where every weapon's own trail markers put its blade
-                out[str(c['ColliderID']['Id']['Value'])] = {'e': e, 'o': [o[0], round(o[1] + e[1], 4), o[2]], 'r': fx(c['RotOffset'])}
+                box = {'e': e, 'o': [o[0], round(o[1] + e[1], 4), o[2]], 'r': fx(c['RotOffset'])}
+                if 'left' in c['Name'].lower(): box['hand'] = 'L'      # dual weapons: leftBlade / leftFist...
+                out[str(c['ColliderID']['Id']['Value'])] = box
         return out
 
 def N_fx(v):
