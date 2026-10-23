@@ -9,7 +9,7 @@ The page knows nothing about where the numbers came from, so every source only h
 - `elden-ring.json` — Elden Ring, patch 1.17.3. Built by `tools/frame_data/import_er_game.py` straight from an installed
   copy of the game (see below). `tools/frame_data/import_er_nyasu.py` builds the same file from the
   [Elden Ring Frame Data Explorer](https://er-frame-data.nyasu.business) by Emilia (sovietspaceship) instead.
-- `models/elden-ring/` and `viewer3d.js` — the 3D preview in each move's sheet (see [3D preview](#3d-preview)).
+- `models/elden-ring/` and `viewer3d.js` — the 3D preview docked above the move table (see [3D preview](#3d-preview)).
 - `icons/elden-ring/` — 96px WebP inventory icons per weapon and `icons.json` (weapon name → file, source page). Built by
   `tools/frame_data/import_er_icons.py` from the [Elden Ring Wiki](https://eldenring.wiki.gg), with the
   [Elden Ring Fan API](https://eldenring.fanapis.com) as fallback.
@@ -50,33 +50,46 @@ game's own models: play/pause, one-frame steps (`−1 f` / `+1 f`, or `,` `.`), 
 motion, and the move's hitboxes drawn on exactly the frames the table calls active. `frame-data/viewer3d.js` does
 this with three.js (loaded from jsDelivr through the page's import map).
 
+It holds the weapon picked above the table; with no weapon picked, each move plays with its class's preview weapon
+(`EXPORT` in the exporter: the class's first weapon, Katana → Moonveil) or, when that weapon doesn't use the move, the
+first weapon that does. Powerstance moves hold the weapon in both hands, off-hand attacks and bows in the left.
+
 ```bash
-python tools/frame_data/export_er_models.py "D:/SteamLibrary/steamapps/common/ELDEN RING"   # ~1 minute
+python tools/frame_data/export_er_models.py "D:/SteamLibrary/steamapps/common/ELDEN RING"   # ~15 minutes
+python tools/frame_data/export_er_models.py "<install>" Katana "Great Katana"                # only these classes
 ```
 
-writes `models/elden-ring/` from the install (read-only, same archive readers as above):
+writes `models/elden-ring/` for every class and weapon in `elden-ring.json` (read-only, same archive readers as above):
 
 - `armor-raging-wolf.glb`: the Raging Wolf set skinned to the c0000 skeleton (`chr/c0000.anibnd` → `Skeleton.hkx`),
   rest pose = the Havok reference pose, meshes the set's own `invisibleFlag`s hide left out, low-res (`_l`) albedo
   textures only. Game space is left-handed, so the viewer mirrors X once at the root.
-- `weapon-<name>.glb`: weapon models (`parts/wp_a_XXXX`), origin at the grip; the viewer attaches them to `R_Weapon`.
-  Each class previews its icon weapon (`EXPORT` in the script, Katana → Moonveil); moves that weapon doesn't use play
-  with the first weapon that does.
-- `anim/<move id>.json`: the move's animation (`chr/c0000_aXx.anibnd`, spline-compressed Havok 2018, decoded by
-  `tools/frame_data/er_havok.py`): per-frame local rotations (int16 quaternions, base64) for the animated bones,
-  translations where they move, root motion, and `time`, the animation time of each real frame after TAE speed changes.
-- `models.json`: per move (`<class>|<id>`) its weapon, frame count and hits: TAE hitbox events (event 1 / 304) with
-  real-frame `start`/`end`, resolved through BehaviorParam_PC → AtkParam_Pc to shapes (`a`, `b` dummy poly ids, `r`
-  radius; a capsule when `b` is set). Dummy points are listed per weapon (weapon model space) and for the body (`body`:
-  bone, offset in that bone's space). Ids from 10000 up name their source (10xxx right weapon).
+- `weapon-wp_a_XXXX.glb`: one file per weapon model (`parts/wp_a_XXXX`; a few weapons share one), origin at the grip,
+  256 px textures, int16 positions and int8 normals (`KHR_mesh_quantization`). The root node's `extras.dummies` holds
+  the model's dummy points (weapon model space). The viewer attaches it to `R_Weapon` and/or `L_Weapon`.
+- `anim/<move id>.bin`: the move's animation baked to one pose per tab frame (30 fps real time, after TAE speed
+  changes), so frame N in the preview is frame N in the table. Motion comes from `chr/c0000_aXx.anibnd`, or
+  `c0000_dlc01` / `c0000_dlc02` for DLC movesets (spline-compressed Havok 2018, decoded by
+  `tools/frame_data/er_havok.py`); animations that borrow another's motion (TAE header ImportsHKX) are followed. Per
+  bone: 32-bit smallest-three quaternions and int16 millimetre translations, per frame or once when constant; then
+  root motion. Byte layout at `bake()` in the exporter.
+- `models.json`: skeleton bone names, the armor, every weapon (`model`, `file`, behavior `variation`), body dummy
+  points (`body`: bone, offset in that bone's space), and per class its preview `weapon`, `hand` (`L` for bows) and
+  moves `file`.
+- `moves/<class>.json`: per move id its `frames`, preview `weapon` and `hits`: TAE hitbox events (event 1 / 304) with
+  tab-frame `start`/`end`, the behavior `judge` and, for powerstance, the `hand` that swings. `attacks` resolves
+  variation → judge through BehaviorParam_PC → AtkParam_Pc to shapes (`a`, `b` dummy poly ids, `r` radius; a capsule
+  when `b` is set), so each weapon shows its own hitboxes. Ids from 10000 up name their source (10xxx weapon).
 
-Not covered yet: other classes and armor sets (change `EXPORT`), hitboxes of skill-buffed heavies (War Cry, Barbaric
-Roar fire projectiles, BulletParam isn't read), weapon-specific animations (sheaths, Moonveil's scabbard), cloth
-physics, and the left hand.
+About 115 MB in all: ~60 MB of animation for 3,700 moves, ~50 MB of weapon models, 3.5 MB of armor.
+
+Not covered yet: other armor sets (change `EXPORT`), hitboxes of skill-buffed heavies (War Cry, Barbaric Roar fire
+projectiles, BulletParam isn't read), weapon-specific animation (sheaths, Moonveil's scabbard, whip and flail
+chains) and cloth physics.
 
 These files are FromSoftware's assets, converted from a retail install. Hosting them publicly is a legal exposure the
-site owner accepts; they are kept small (low-res textures, one set, a few weapons) and can be removed by deleting
-`models/` and the `models` entry in `games.json`.
+site owner accepts; they are kept small (low-res textures, one armor set) and can be removed by deleting `models/` and
+the `models` entry in `games.json`.
 
 ## Format `frame-data/1`
 
