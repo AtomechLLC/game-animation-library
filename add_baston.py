@@ -21,7 +21,8 @@ SCALE = 2  # sprites are tiny; scale up with nearest neighbour
 # frame-data/street-fighter-3-third-strike.json
 MAP = {
  'fighting.special-move-projectile': [('ryu.special.035', 'Ryu Hadouken (Fierce)'), ('chun-li.special.038', 'Chun-Li Kikkoken (Fierce)')],
- 'fighting.rising-uppercut-shoryuken': [('ken.special.043', 'Ken Shoryuken (Fierce)')],
+ 'fighting.rising-uppercut-shoryuken': [('ken.special.043', 'Ken Shoryuken (Fierce)'), ('ryu.special.039', 'Ryu Shoryuken (Fierce)')],
+ 'fighting.command-grab': [('hugo.super.044', 'Hugo Gigas Breaker, Super Art I')],
  'fighting.spinning-kick-tatsumaki': [('ken.special.047', 'Ken Tatsumaki Senpuu Kyaku (Roundhouse)')],
  'fighting.super-critical-art': [('ken.super.055', 'Ken Shippu Jinrai Kyaku, Super Art III'), ('chun-li.super.053', 'Chun-Li Houyoku Sen, Super Art II')],
  'fighting.forward-back-dash': [('chun-li.movement.dashForwardFull', 'Chun-Li forward dash'), ('ryu.movement.dashBackwardFull', 'Ryu back dash')],

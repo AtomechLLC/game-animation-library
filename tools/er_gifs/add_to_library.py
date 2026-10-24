@@ -1,4 +1,4 @@
-"""Add the Elden Ring and No Rest for the Wicked renders from tools/er_gifs/render.js to library.json and gif-screening.json.
+"""Add the Elden Ring, No Rest for the Wicked and Devil May Cry 3 renders from tools/er_gifs/render.js to library.json and gif-screening.json.
 
 Each job in jobs.json with a rendered gifs/<out>.webp gets a `gifs` record on its entry (host "<game> render",
 page_url = the move in the Frame Data tab). Safe to rerun: records already present (same local file) are skipped.
@@ -8,28 +8,35 @@ import json, os, re
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.join(HERE, '..', '..')
 jobs = json.load(open(os.path.join(HERE, 'jobs.json')))
-fd = json.load(open(os.path.join(ROOT, 'frame-data', 'elden-ring.json')))
-moves = {(m['class'], m['id']): m for m in fd['moves']}
-models = json.load(open(os.path.join(ROOT, 'frame-data', 'models', 'elden-ring', 'models.json')))
+fdata, mdata = {}, {}
+fdOf = lambda g: fdata.get(g) or fdata.setdefault(g, {(m['class'], m['id']): m for m in json.load(open(os.path.join(ROOT, 'frame-data', g + '.json')))['moves']})
+modelsOf = lambda g: mdata.get(g) or mdata.setdefault(g, json.load(open(os.path.join(ROOT, 'frame-data', 'models', g, 'models.json'))))
 lib_path, scr_path = os.path.join(ROOT, 'library.json'), os.path.join(ROOT, 'gif-screening.json')
 lib, scr = json.load(open(lib_path)), json.load(open(scr_path))
 byid = {a['id']: a for a in lib['animations']}
 added = 0
-GAMES = {'elden-ring': 'Elden Ring', 'no-rest-for-the-wicked': 'No Rest for the Wicked'}
+GAMES = {'elden-ring': 'Elden Ring', 'no-rest-for-the-wicked': 'No Rest for the Wicked', 'devil-may-cry-3': 'Devil May Cry 3'}
 for j in jobs:
-    game = GAMES[j.get('game', 'elden-ring')]
+    gid = j.get('game', 'elden-ring')
+    game = GAMES[gid]
     local = 'gifs/%s.webp' % j['out']
     if not os.path.exists(os.path.join(ROOT, local)):
         continue
     if j['class'] == 'Common':                                  # no frame-data row to link: the render itself
         title, page = '%s, rendered with the Frame Data 3D preview' % j['label'], local
     else:
-        weapon = j.get('weapon') or json.load(open(os.path.join(ROOT, 'frame-data', 'models', 'elden-ring',
+        models = modelsOf(gid)
+        weapon = j.get('weapon') or json.load(open(os.path.join(ROOT, 'frame-data', 'models', gid,
                                                                 models['classes'][j['class']]['file'])))['moves'][j['move']]['weapon']
-        title = '%s %s (%s), rendered from the Frame Data 3D preview' % (j['class'], j['label'], weapon)
-        page = 'frame-data.html#c=%s&t=%s&m=%s' % (j['class'].replace(' ', '+'), moves[(j['class'], j['move'])]['type'], j['move'])
+        move = fdOf(gid)[(j['class'], j['move'])]
+        if gid == 'elden-ring':
+            title = '%s %s (%s), rendered from the Frame Data 3D preview' % (j['class'], j['label'], weapon)
+            page = 'frame-data.html#c=%s&t=%s&m=%s' % (j['class'].replace(' ', '+'), move['type'], j['move'])
+        else:                                                   # Devil May Cry 3: Dante's moves, linked with the game
+            title = "Dante's %s (%s), rendered from the Frame Data 3D preview" % (j['label'], weapon)
+            page = 'frame-data.html#g=%s&c=%s&t=%s&m=%s' % (gid, j['class'], move['type'], j['move'])
     # `also` lists further entries that show the same render
-    for entry in [re.sub(r'-(er|nr)\d+$', '', j['out'])] + j.get('also', []):
+    for entry in [re.sub(r'-(er|nr|dmc)\d+$', '', j['out'])] + j.get('also', []):
         a = byid[entry]
         if any(g.get('local') == local for g in a['gifs']):
             continue
