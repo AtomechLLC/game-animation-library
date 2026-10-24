@@ -40,8 +40,10 @@ class Sprites:
         if hasattr(p, 'get_raw_data'): return p
         return self.g.resolve(p, assets)
 
-    def atlas(self, coll, material_id):
-        mat_ptr = coll['materials'][material_id]
+    def atlas(self, coll, material_id, mat_ptr=None):
+        """The atlas page a sprite is cut from: the sprite's own material when it names one (a collection's
+        materials list can be out of step with its sprites' materialId), else materials[materialId]."""
+        if not (mat_ptr and mat_ptr.get('m_PathID')): mat_ptr = coll['materials'][material_id]
         obj = self._resolve(mat_ptr, coll['_obj'])
         key = (obj.assets_file.name, obj.path_id)
         if key not in self._atlas:
@@ -58,7 +60,7 @@ class Sprites:
         sd = coll['spriteDefinitions'][sprite_id]
         cache = sd.get('_img')
         if cache: return cache
-        atlas = self.atlas(coll, sd['materialId'])
+        atlas = self.atlas(coll, sd['materialId'], sd.get('material'))
         P, U = sd['positions'], sd['uvs']
         tex = sd['texelSize']['x'] or 1 / 64
         x0, y0, x1, y1 = P[0]['x'], P[0]['y'], P[3]['x'], P[3]['y']

@@ -604,7 +604,14 @@ class BossBuilder(Builder):
                         clips = [(t, lib['byName'][c]) for t, (tg, c) in run.all('childclip')
                                  if self.resolve(fsm, tg) == p and c in lib['byName']]
                         clips = clips or ([(spans[0][0], defclip)] if defclip else [])
-                        if clips: tl.sprite(a.coll_of(o), clips, spans[0][0], spans[-1][1], a.sprite_xf(p), z=1)
+                        # Silksong scenes carry stale copies of some other characters' collections (Phantom's needle
+                        # flash points into Hornet's atlas), so effects only draw from the boss's own collections
+                        own = getattr(self, 'own_colls', None)
+                        if own is None:
+                            own = self.own_colls = {a.coll_of(a.go)(fr)['spriteCollectionName'] for c in a.lib['clips'] for fr in c['frames'][:1]}
+                        if clips and (not getattr(self, 'silksong', False) or
+                                      a.coll_of(o)(clips[0][1]['frames'][0])['spriteCollectionName'] in own):
+                            tl.sprite(a.coll_of(o), clips, spans[0][0], spans[-1][1], a.sprite_xf(p), z=1)
                 # children that are simply always on are contact or arena hazards, not this attack: leave them out
                 if 'DamageHero' not in kinds or not ev: continue
                 def size(shp):
@@ -679,7 +686,7 @@ def main():
         print('hornetSilksong', len(sb.moves), 'moves')
         for cfg in SILKSONG_BOSSES:
             go, hm = find_actor(g2, cfg['level'], cfg['go'])
-            bb = BossBuilder(Actor(g2, go, sb.k.sp), cfg, hm); bb.build(); bb.silksong = True; builders.append(bb)
+            bb = BossBuilder(Actor(g2, go, sb.k.sp), cfg, hm); bb.silksong = True; bb.build(); builders.append(bb)
             print(cfg['id'], len(bb.moves), 'moves')
     data = {
         'schema': 'frame-data/1',
