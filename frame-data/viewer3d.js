@@ -4,7 +4,8 @@
 // the game's frame rate (models.json fps, 30 for Elden Ring).
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
-import {createBlenderNavigation} from './navigation3d.js?v=3';
+import {createBlenderNavigation, anglesOf} from './navigation3d.js?v=3';
+import {OrientationGizmo} from './orientation-gizmo.js?v=1';
 
 const loader = new GLTFLoader();
 const cache = new Map();
@@ -56,6 +57,7 @@ const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).
 export async function createViewer(el, base) {
   const man = await manifest(base);
   el.innerHTML = `<div class="v3d-stage" tabindex="0" aria-label="3D view. Drag with the left or middle button to orbit, add Shift or use the right button to pan, wheel to zoom or orbit. Numpad 1, 3 and 7 for front, right and top. F frames the move, D restores the default camera, Tab switches between mouse and trackpad."><canvas></canvas><div class="v3d-msg">Loading models…</div>
+    <div class="v3d-gizmo"><canvas role="img" aria-label="Orientation gizmo: click an axis to align the view"></canvas></div>
     <div class="v3d-hud"><b class="v3d-f">1</b><span class="v3d-state"></span></div></div>
     <div class="v3d-bar">
       <button class="v3d-play" aria-label="Pause">❚❚</button>
@@ -79,6 +81,10 @@ export async function createViewer(el, base) {
   const DEFAULT_DIR = new THREE.Vector3(2.9, 0.5, -2.3).normalize();
   const nav = createBlenderNavigation({camera, dom: stage, views: VIEWS, onFrame: () => { fit(); go(f) }, onDefault: () => { fit(DEFAULT_DIR); go(f) }});
   nav.frameTo(new THREE.Vector3(0, 1, 0), DEFAULT_DIR, 3.7, 2);
+  // a click on an axis looks along it at the current distance; presses and wheel turns on it stay off the stage
+  const gizmo = new OrientationGizmo(camera, $('.v3d-gizmo canvas'), {size: 100, padding: 8});
+  gizmo.onAxisSelected = ({direction}) => { const a = anglesOf(direction); nav.setAngles(a.azimuth, a.elevation) };
+  for (const t of ['pointerdown', 'wheel']) $('.v3d-gizmo').addEventListener(t, e => e.stopPropagation());
   scene.add(new THREE.HemisphereLight(0xffffff, 0x5a5a62, 2.4));
   const sun = new THREE.DirectionalLight(0xffffff, 2.6); sun.position.set(3, 5, -3); scene.add(sun);
   const grid = new THREE.GridHelper(8, 16, 0x888888, 0x555555); grid.material.transparent = true; grid.material.opacity = .35; scene.add(grid);
@@ -298,12 +304,12 @@ export async function createViewer(el, base) {
     raf = requestAnimationFrame(tick);
     const dt = Math.min(now - last, 100); last = now;
     if (playing && anim) { acc += dt * speed * FPS / 1000; if (acc >= 1) { const n = Math.floor(acc); acc -= n; go(f + n) } }
-    renderer.render(scene, camera);
+    gizmo.update(); renderer.render(scene, camera);
   };
   raf = requestAnimationFrame(tick);
   return {
     show, view, setView,
-    debug: {THREE, scene, camera, nav, body, motion, bone, go: f => go(f), boxes: () => boxes, hands},
+    debug: {THREE, scene, camera, nav, gizmo, body, motion, bone, go: f => go(f), boxes: () => boxes, hands},
     // warm the cache for the row under the pointer, so the swap on click is instant
     async prefetch(m, pick) {
       const c = await classData(base, m.class).catch(() => null), mv = c && c.moves[m.id];
@@ -311,7 +317,7 @@ export async function createViewer(el, base) {
     },
     dispose() {
       disposed = true; cancelAnimationFrame(raf); ro.disconnect(); document.removeEventListener('keydown', onKey);
-      nav.dispose(); renderer.dispose(); sphereG.dispose(); cylG.dispose(); boxG.dispose(); mat.dispose(); ghostMat.dispose();
+      nav.dispose(); gizmo.dispose(); renderer.dispose(); sphereG.dispose(); cylG.dispose(); boxG.dispose(); mat.dispose(); ghostMat.dispose();
     },
   };
 }
