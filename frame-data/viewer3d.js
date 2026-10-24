@@ -4,7 +4,7 @@
 // the game's frame rate (models.json fps, 30 for Elden Ring).
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
-import {createBlenderNavigation, anglesOf} from './navigation3d.js?v=4';
+import {createBlenderNavigation, anglesOf} from './navigation3d.js?v=5';
 import {OrientationGizmo} from './orientation-gizmo.js?v=1';
 
 const loader = new GLTFLoader();

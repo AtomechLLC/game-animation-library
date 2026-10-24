@@ -75,11 +75,11 @@ export function createBlenderNavigation({camera, dom, views, onFrame, onDefault,
     if (!drag || drag.id !== e.pointerId) return;
     const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
     if (drag.mode === 'pan') {
-      // as in Blender the view follows the pointer sideways: dragging right moves the camera left. Pan by the step
-      // since the last move, not from where the drag started, so it adds to the root-motion follow during playback
-      // (viewer3d.js shifts the camera every frame) instead of undoing it
+      // as in Blender the view follows the pointer: dragging right moves the camera left, dragging down moves it up.
+      // Pan by the step since the last move, not from where the drag started, so it adds to the root-motion follow
+      // during playback (viewer3d.js shifts the camera every frame) instead of undoing it
       drag.x = e.clientX; drag.y = e.clientY;
-      shift(drag.right.clone().multiplyScalar(-dx * drag.s).addScaledVector(drag.upv, -dy * drag.s));
+      shift(drag.right.clone().multiplyScalar(-dx * drag.s).addScaledVector(drag.upv, dy * drag.s));
     } else {
       azimuth = drag.azimuth - dx * ORBIT_SENSITIVITY;
       elevation = clampEl(drag.elevation + dy * ORBIT_SENSITIVITY);
