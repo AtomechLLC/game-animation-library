@@ -56,12 +56,14 @@ const helpHTML = mode => `<p class="v3d-help-title" id="v3d-help-title">Help</p>
   <p class="v3d-help-note">Click the 3D view first so keys go to it (outlined). Close Help: ${kbd('/', '?')}</p>
   <p class="v3d-help-title">${mode === 'trackpad' ? 'Trackpad' : 'Mouse'}</p>
   <ul>${mode === 'trackpad'
-    ? row('Two-finger drag', 'Orbit') + row('Shift + two-finger drag', 'Pan') + row('Pinch / Ctrl + scroll', 'Zoom') + row('Click and drag', 'Orbit')
+    ? row('Two-finger drag', 'Orbit') + row('Shift + two-finger drag', 'Pan') + row('Pinch / Ctrl + scroll', 'Zoom') + row('Click and drag', 'Orbit') + row('Right drag / Shift + click and drag', 'Pan')
     : row('Left or middle drag', 'Orbit') + row('Right drag / Shift + drag', 'Pan') + row('Scroll wheel', 'Zoom') + row('Ctrl + scroll', 'Zoom, faster')}</ul>
-  <p class="v3d-help-title">Viewport</p>
-  <ul>${row(kbd('Tab', 'Shift + Tab'), 'Input mode') + row(kbd('F', 'Home', 'Numpad .'), 'Frame') + row(kbd('D', 'Numpad 0'), 'Default camera') + row(kbd('Z'), 'Floor grid') + row(kbd('B'), 'Bounds box')
-    + row(kbd('Space'), 'Play / pause') + row(kbd(',', '.', '←', '→'), 'Previous / next frame') + row(kbd('Ctrl + ←', 'Ctrl + →'), 'Back / forward 1 second')
-    + row(kbd('Shift + ←', 'Shift + →'), 'First / last frame') + row(kbd('/', '?'), 'Help')}</ul>
+  <p class="v3d-help-title">View</p>
+  <ul>${row(kbd('F', 'Home', 'Numpad .'), 'Frame the move') + row(kbd('D', 'Numpad 0'), 'Default camera') + row(kbd('Z'), 'Floor grid')
+    + row(kbd('B'), 'Bounds box (current pose)') + row(kbd('Tab', 'Shift + Tab'), 'Mouse / Trackpad') + row(kbd('/', '?'), 'Help')}</ul>
+  <p class="v3d-help-title">Playback</p>
+  <ul>${row(kbd('Space'), 'Play / pause') + row(kbd(',', '.', '←', '→'), 'Previous / next frame') + row(kbd('Ctrl + ←', 'Ctrl + →'), 'Back / forward 1 second')
+    + row(kbd('Shift + ←', 'Shift + →'), 'First / last frame')}</ul>
   <p class="v3d-help-title">Numpad</p>
   <ul>${row('2 / 4 / 6 / 8', 'Orbit') + row('1 / 3 / 7', 'Front / Right / Top') + row('Ctrl + 7', 'Bottom') + row('9', 'Opposite view') + row('+ / −', 'Zoom in / out')}</ul>`;
 
@@ -73,12 +75,8 @@ const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).
 export async function createViewer(el, base) {
   const man = await manifest(base);
   el.innerHTML = `<div class="v3d-stage" tabindex="0" aria-label="3D view. Drag with the left or middle button to orbit, add Shift or use the right button to pan, wheel to zoom or orbit. Numpad 1, 3 and 7 for front, right and top. F frames the move, D restores the default camera, Z shows or hides the floor grid, B shows or hides the bounds box, Tab switches between mouse and trackpad, left and right arrows step a frame, slash opens Help."><canvas></canvas><div class="v3d-msg">Loading models…</div>
-    <div class="v3d-corner"><fieldset class="v3d-mode" aria-label="Viewport input device"><button type="button" data-mode="mouse">Mouse</button><button type="button" data-mode="trackpad">Trackpad</button></fieldset></div>
+    <div class="v3d-corner"><fieldset class="v3d-mode" aria-label="Viewport input device"><button type="button" data-mode="mouse" aria-label="Mouse" title="Mouse (Tab switches)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="3" width="11" height="18" rx="5.5"/><path d="M12 7v3"/></svg></button><button type="button" data-mode="trackpad" aria-label="Trackpad" title="Trackpad (Tab switches)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3 15h18M12 15v4"/></svg></button></fieldset></div>
     <div class="v3d-side"><div class="v3d-tools">
-      <button type="button" class="v3d-grid" aria-pressed="true">Grid <span>${kbd('Z')}</span></button>
-      <button type="button" class="v3d-bounds" aria-pressed="false">Bounds <span>${kbd('B')}</span></button>
-      <button type="button" class="v3d-default">Default camera <span>${kbd('D', 'Numpad 0')}</span></button>
-      <button type="button" class="v3d-frame">Frame <span>${kbd('F', 'Home', 'Numpad .')}</span></button>
       <button type="button" class="v3d-help-toggle" aria-pressed="false" aria-label="Toggle Help panel (shortcut / or ?)">? ${kbd('/')}</button></div>
       <section class="v3d-help" aria-labelledby="v3d-help-title" hidden></section></div>
     <div class="v3d-hud"><b class="v3d-f">1</b><span class="v3d-state"></span></div></div>
@@ -111,25 +109,24 @@ export async function createViewer(el, base) {
   syncMode(nav.mode);
   // the overlay buttons hand the keyboard to the stage; presses and wheel turns on the overlays don't navigate
   for (const b of el.querySelectorAll('.v3d-stage button')) b.addEventListener('mousedown', e => { e.preventDefault(); stage.focus({preventScroll: true}) });
-  $('.v3d-default').onclick = defaultCamera; $('.v3d-frame').onclick = frameMove; helpToggle.onclick = toggleHelp;
+  helpToggle.onclick = toggleHelp;
   for (const b of el.querySelectorAll('.v3d-mode button')) b.onclick = () => nav.setMode(b.dataset.mode);
   for (const t of ['pointerdown', 'wheel']) for (const o of [$('.v3d-mode'), help]) o.addEventListener(t, e => e.stopPropagation());
   nav.frameTo(new THREE.Vector3(0, 1, 0), DEFAULT_DIR, 3.7, 2);
   scene.add(new THREE.HemisphereLight(0xffffff, 0x5a5a62, 2.4));
   const sun = new THREE.DirectionalLight(0xffffff, 2.6); sun.position.set(3, 5, -3); scene.add(sun);
   const grid = new THREE.GridHelper(8, 16, 0x888888, 0x555555); grid.material.transparent = true; grid.material.opacity = .35; scene.add(grid);
-  // Z (as in the centerpiece viewer) or the Grid button hides the floor, e.g. for a clean view in class
-  const toggleGrid = () => { grid.visible = !grid.visible; $('.v3d-grid').setAttribute('aria-pressed', grid.visible) };
-  $('.v3d-grid').onclick = toggleGrid;
-  // B (as in the centerpiece viewer) or the Bounds button shows a box around the pose on show: the body, the weapons and
+  // The view is a previewer, so its tools are keys only (listed under ?): D, F, and Z (as in the centerpiece viewer)
+  // hides the floor, e.g. for a clean view in class
+  const toggleGrid = () => { grid.visible = !grid.visible };
+  // B (as in the centerpiece viewer) shows a box around the pose on show: the body, the weapons and
   // the hitboxes out on this frame. Off by default; measured only while it shows
   // drawn in the collider green of engine gizmos (Unity's collider outline), apart from the red hitboxes; the page's
   // --v3d-bounds gives a deeper green on the light theme, read on each measure so a theme switch follows
   const bbox = new THREE.Box3(), bounds = new THREE.Box3Helper(bbox, new THREE.Color(0x91f48b));
   Object.assign(bounds.material, {transparent: true, opacity: .9, depthWrite: false, toneMapped: false});
   bounds.visible = false; scene.add(bounds);
-  const toggleBounds = () => { bounds.visible = !bounds.visible; $('.v3d-bounds').setAttribute('aria-pressed', bounds.visible); go(f) };
-  $('.v3d-bounds').onclick = toggleBounds;
+  const toggleBounds = () => { bounds.visible = !bounds.visible; go(f) };
   stage.addEventListener('keydown', e => {
     if (e.shiftKey || e.ctrlKey || e.metaKey || e.altKey) return;
     const k = e.key.toLowerCase();
