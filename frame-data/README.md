@@ -336,6 +336,23 @@ game's own models: play/pause, one-frame steps (`−1 f` / `+1 f`, or `,` `.`), 
 motion, and the move's hitboxes drawn on exactly the frames the table calls active. `frame-data/viewer3d.js` does
 this with three.js (loaded from jsDelivr through the page's import map).
 
+The camera uses Blender-style viewport navigation (`frame-data/navigation3d.js`), ported from the centerpiece splat
+viewer in wia-seasonal-ui-asset-generator. Click the 3D view first (it gets an outline) so the keys go to it:
+
+- Mouse: left or middle drag orbits; right drag, or Shift with left or middle drag, pans. The wheel zooms in
+  **Mouse** mode and orbits in **Trackpad** mode (Shift + two-finger drag pans, pinch or Ctrl + scroll zooms).
+  The mode toggle sits under the gizmo, `Tab` switches it, and the choice is kept in `localStorage`
+  (`moveExplorerViewportInputMode:v1`; Trackpad on a first visit). Left and right drag are additions; Blender and the
+  source viewer orbit with the middle button only.
+- Numpad: `1` / `3` / `7` front, right and top of the character (it faces −Z), `Ctrl + 7` bottom, `2` `4` `6` `8`
+  orbit 15°, `9` the opposite side, `+` / `−` zoom.
+- `F`, `Home` or `Numpad .` frames the whole move from the current angle; `D` or `Numpad 0` returns to the opening
+  three-quarter view. Both are also buttons over the view, next to `?` (or `/`), which opens the shortcut list.
+- `Z` or the **Grid** button shows or hides the floor grid.
+- The orientation gizmo at the bottom left (`frame-data/orientation-gizmo.js`, after joezappie's
+  three-orientation-gizmo, ISC) shows the three.js world axes; clicking one looks along it. X is mirrored from game
+  space (see the armor note below).
+
 It holds the weapon picked above the table; with no weapon picked, each move plays with its class's preview weapon
 (`EXPORT` in the exporter: the class's first weapon, Katana → Moonveil) or, when that weapon doesn't use the move, the
 first weapon that does. Powerstance moves hold the weapon in both hands, off-hand attacks and bows in the left.

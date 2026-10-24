@@ -16,6 +16,7 @@ export function createViewer(el, base) {
       <div class="v3d-scrub"><div class="v3d-strip"></div><input type="range" min="1" max="1" step="1" value="1" aria-label="Frame"></div>
       ${speedHtml(0.25)}
     </div>
+    <p class="v3d-keys"><span><kbd>Space</kbd> Play / pause</span><span><kbd>,</kbd> <kbd>.</kbd> or <kbd>←</kbd> <kbd>→</kbd> Previous / next frame</span><span><kbd>Ctrl</kbd> + <kbd>←</kbd> <kbd>→</kbd> Back / forward 1 second</span><span><kbd>Shift</kbd> + <kbd>←</kbd> <kbd>→</kbd> First / last frame</span></p>
     <div class="v3d-opts"><span class="clip-alts" role="group" aria-label="Clip"></span><a class="v3d-who" target="_blank" rel="noopener"></a></div>`;
   const $ = s => el.querySelector(s);
   const canvas = $('canvas'), ctx = canvas.getContext('2d'), img = $('img'), msg = $('.v3d-msg');
@@ -70,7 +71,18 @@ export function createViewer(el, base) {
   speed = bindSpeed($('.v3d-speed'), speed, v => { speed = v });
   const onKey = e => {
     if (e.target.closest('input,select,textarea') && e.target.type !== 'range') return;
-    if (e.key === ',') { setPlaying(false); go(f - 1) }
+    if (e.code === 'Space' && !e.repeat && !e.target.closest('button')) { e.preventDefault(); setPlaying(!playing) }
+    else if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && e.ctrlKey !== e.shiftKey && !e.altKey && !e.metaKey) {
+      // Ctrl jumps one second of the animation (clamped at the ends), Shift goes to the first or last frame
+      e.preventDefault(); setPlaying(false);
+      const d = e.key === 'ArrowLeft' ? -1 : 1;
+      go(e.shiftKey ? (d < 0 ? 1 : N) : Math.min(N, Math.max(1, f + d * FPS)));
+    }
+    // with focus in the viewer (the 3D stage or a control), plain arrows step a frame, like , and .; elsewhere on the page
+    // they step the weapon type
+    else if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && !e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey
+      && el.contains(e.target) && e.target.type !== 'range') { e.preventDefault(); setPlaying(false); go(f + (e.key === 'ArrowLeft' ? -1 : 1)) }
+    else if (e.key === ',') { setPlaying(false); go(f - 1) }
     else if (e.key === '.') { setPlaying(false); go(f + 1) }
   };
   document.addEventListener('keydown', onKey);
@@ -98,6 +110,19 @@ export function createViewer(el, base) {
     } catch (e) { if (t === token) msg.textContent = `Could not load the clip (${e.message}).` }
   }
 
+  // The view a link can carry (frame, speed, overlay toggles), as changes from this viewer's defaults so links stay short
+  const sel = $('.v3d-speed'), defSpeed = ([...sel.options].find(o => o.defaultSelected) || sel.options[0]).value;
+  const toggles = () => [...el.querySelectorAll('.v3d-opts input[type=checkbox]')], tkey = i => i.dataset.k || i.className.replace('v3d-', '');
+  const view = () => ({clip: m && m.clips.indexOf(clip) > 0 ? m.clips.indexOf(clip) : null, frame: f, speed: sel.value === defSpeed ? null : sel.value,
+    show: toggles().filter(i => i.checked && !i.defaultChecked).map(tkey), hide: toggles().filter(i => !i.checked && i.defaultChecked).map(tkey)});
+  async function setView(v) {
+    if (v.clip != null && m?.clips[v.clip] && clip !== m.clips[v.clip]) await pick(v.clip);
+    setPlaying(false);
+    if (v.speed && [...sel.options].some(o => o.value === v.speed)) { sel.value = v.speed; speed = +v.speed }
+    for (const i of toggles()) { const k = tkey(i); if (v.show?.includes(k)) i.checked = true; if (v.hide?.includes(k)) i.checked = false }
+    go(Math.min(Math.max(1, v.frame || 1), N));
+  }
+
   const tick = now => {
     if (disposed) return;
     raf = requestAnimationFrame(tick);
@@ -115,6 +140,7 @@ export function createViewer(el, base) {
       alts.querySelectorAll('button').forEach(b => b.onclick = e => { e.stopPropagation(); pick(+b.dataset.clip) });
       return pick(0);
     },
+    view, setView,
     // warm the HTTP cache only: decoding every hovered row would push the clips on show out of the frame cache
     prefetch(move) { const c = move.clips?.[0]; if (c && !warm.has(c.file)) { warm.add(c.file); fetch(base + c.file).catch(() => {}) } },
     dispose() {

@@ -36,6 +36,7 @@ export async function createViewer(el, base) {
       <div class="v3d-scrub"><div class="v3d-strip"></div><input type="range" min="1" max="1" step="1" value="1" aria-label="Frame"></div>
       ${speedHtml(0.5)}
     </div>
+    <p class="v3d-keys"><span><kbd>Space</kbd> Play / pause</span><span><kbd>,</kbd> <kbd>.</kbd> or <kbd>←</kbd> <kbd>→</kbd> Previous / next frame</span><span><kbd>Ctrl</kbd> + <kbd>←</kbd> <kbd>→</kbd> Back / forward 1 second</span><span><kbd>Shift</kbd> + <kbd>←</kbd> <kbd>→</kbd> First / last frame</span></p>
     <div class="v3d-opts">${Object.entries(man.kinds).map(([k, l]) => `<label title="${l}"><input type="checkbox" data-k="${k}"${ON[k] ? ' checked' : ''}><i style="display:inline-block;width:10px;height:10px;border:1px solid ${COLORS[k]};background:${COLORS[k]}55"></i>${l}</label>`).join('')}
       <span class="v3d-who">Sprites and boxes: <a href="${man.source.url}" target="_blank" rel="noopener">${man.source.name}</a></span></div>`;
   const $ = s => el.querySelector(s);
@@ -92,7 +93,18 @@ export async function createViewer(el, base) {
   el.querySelectorAll('.v3d-opts input').forEach(i => i.onchange = draw);
   const onKey = e => {
     if (e.target.closest('input,select,textarea') && e.target.type !== 'range') return;
-    if (e.key === ',') { setPlaying(false); go(f - 1) }
+    if (e.code === 'Space' && !e.repeat && !e.target.closest('button')) { e.preventDefault(); setPlaying(!playing) }
+    else if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && e.ctrlKey !== e.shiftKey && !e.altKey && !e.metaKey) {
+      // Ctrl jumps one second of the animation (clamped at the ends), Shift goes to the first or last frame
+      e.preventDefault(); setPlaying(false);
+      const d = e.key === 'ArrowLeft' ? -1 : 1;
+      go(e.shiftKey ? (d < 0 ? 1 : N) : Math.min(N, Math.max(1, f + d * FPS)));
+    }
+    // with focus in the viewer (the 3D stage or a control), plain arrows step a frame, like , and .; elsewhere on the page
+    // they step the weapon type
+    else if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && !e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey
+      && el.contains(e.target) && e.target.type !== 'range') { e.preventDefault(); setPlaying(false); go(f + (e.key === 'ArrowLeft' ? -1 : 1)) }
+    else if (e.key === ',') { setPlaying(false); go(f - 1) }
     else if (e.key === '.') { setPlaying(false); go(f + 1) }
   };
   document.addEventListener('keydown', onKey);
@@ -113,6 +125,18 @@ export async function createViewer(el, base) {
     acc = 0; go(1);
     return true;
   }
+  // The view a link can carry (frame, speed, overlay toggles), as changes from this viewer's defaults so links stay short
+  const sel = $('.v3d-speed'), defSpeed = ([...sel.options].find(o => o.defaultSelected) || sel.options[0]).value;
+  const toggles = () => [...el.querySelectorAll('.v3d-opts input[type=checkbox]')], tkey = i => i.dataset.k || i.className.replace('v3d-', '');
+  const view = () => ({frame: f, speed: sel.value === defSpeed ? null : sel.value,
+    show: toggles().filter(i => i.checked && !i.defaultChecked).map(tkey), hide: toggles().filter(i => !i.checked && i.defaultChecked).map(tkey)});
+  function setView(v) {
+    setPlaying(false);
+    if (v.speed && [...sel.options].some(o => o.value === v.speed)) { sel.value = v.speed; speed = +v.speed }
+    for (const i of toggles()) { const k = tkey(i); if (v.show?.includes(k)) i.checked = true; if (v.hide?.includes(k)) i.checked = false }
+    go(Math.min(Math.max(1, v.frame || 1), N));
+  }
+
   const tick = now => {
     if (disposed) return;
     raf = requestAnimationFrame(tick);
@@ -121,7 +145,7 @@ export async function createViewer(el, base) {
   };
   raf = requestAnimationFrame(tick);
   return {
-    show,
+    show, view, setView,
     async prefetch(m) { const c = await classData(base, m.class).catch(() => null); if (c && c.moves[m.id]) loadSheet(m, c).catch(() => {}) },
     dispose() { disposed = true; cancelAnimationFrame(raf); ro.disconnect(); document.removeEventListener('keydown', onKey) },
   };

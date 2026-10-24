@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22%238a3fc9%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20transform%3D%22translate%284%204%29%22%3E%3Crect%20x%3D%222%22%20y%3D%224%22%20width%3D%228%22%20height%3D%2212%22%20rx%3D%221.6%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%227%22%20y%3D%224%22%20width%3D%228%22%20height%3D%2212%22%20rx%3D%221.6%22%20opacity%3D%22.6%22%2F%3E%3Crect%20x%3D%2212%22%20y%3D%224%22%20width%3D%2210%22%20height%3D%2212%22%20rx%3D%221.8%22%2F%3E%3Ccircle%20cx%3D%2217%22%20cy%3D%2210%22%20r%3D%222.6%22%20fill%3D%22none%22%20stroke%3D%22%238a3fc9%22%20stroke-width%3D%221.6%22%2F%3E%3Crect%20x%3D%222%22%20y%3D%2218.6%22%20width%3D%2220%22%20height%3D%221.6%22%20rx%3D%22.8%22%2F%3E%3Crect%20x%3D%2216%22%20y%3D%2216.8%22%20width%3D%222.2%22%20height%3D%225.2%22%20rx%3D%221.1%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Frame Data · Game Animation Library</title>
+<title>Move Explorer · Game Animation Library</title>
 <meta name="description" content="Game Animation Library: learn from the legends of combat design.">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,800&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
 /* Same shell as template.html (sticky timeline header, filter rail, slide-over sheet), with a weapon icon index and frame tables. */
 :root{
   --bg:#f3f2ee; --panel:#ffffff; --sunk:#e9e7e1; --fg:#1c1b19; --muted:#6b6860; --line:#d8d5cc;
-  --key:#e08a00; --key-ink:#8a5200; --combat:#c2412d; --calm:#2f7a6b; --chip:#efece5;
+  --key:#e08a00; --key-ink:#8a5200; --combat:#c2412d; --calm:#2f7a6b; --chip:#efece5; --playhead:#d92d20;
   --f-start:#cfcbc0; --f-active:#c2412d; --f-gap:#e6b8ae; --f-rec:#e08a00; --f-free:#2f7a6b40; --f-armor:#4b5bd6; --f-iframe:#0e9bb8;
   --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
   --body:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
@@ -20,11 +21,11 @@
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
-  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; color-scheme:dark;
+  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; color-scheme:dark;
   --f-start:#4a4b52; --f-active:#ff7a63; --f-gap:#6b3a33; --f-rec:#ffb020; --f-free:#62c9b14d; --f-armor:#8f9bff; --f-iframe:#4cc9e8}}
 :root[data-theme="dark"]{
   --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
-  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; color-scheme:dark;
+  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; color-scheme:dark;
   --f-start:#4a4b52; --f-active:#ff7a63; --f-gap:#6b3a33; --f-rec:#ffb020; --f-free:#62c9b14d; --f-armor:#8f9bff; --f-iframe:#4cc9e8}
 *{box-sizing:border-box}
 html,body{max-width:100%;overflow-x:clip}
@@ -42,12 +43,33 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var
 .club:hover{border-color:#5865f2}
 .club svg{width:20px;height:20px;fill:#5865f2;flex:none}
 .brand h1{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.brand h1 a{color:inherit;text-decoration:none}
+.brand h1 a:hover{text-decoration:underline;text-underline-offset:3px}
+/* logo: the Game Design Skills mark (a controller cut by a sword) with a play button for animation, and its bold italic wordmark */
+.logo{display:inline-flex;align-items:center;gap:9px}
+.brand h1 a.logo:hover{text-decoration:none}
+.logo svg{width:40px;height:40px;flex:none;border-radius:7px}
+.logo .wm{display:flex;flex-direction:column;gap:2px;font-family:"Open Sans",var(--display);font-style:italic;font-weight:800;text-transform:uppercase;line-height:1}
+.logo .wm b{font-weight:inherit;font-size:17px;letter-spacing:-.01em}
+.logo .wm i{font-size:11.5px;letter-spacing:.24em}
 .brand .tagline{font-size:13px;color:var(--muted);font-style:italic}
 .brand .ver{font-family:var(--mono);font-size:11px;color:var(--muted)}
-.tabs{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
-.tabs a{padding:7px 12px;font-size:13px;font-weight:500;text-decoration:none}
-.tabs a[aria-current="page"]{background:var(--fg);color:var(--bg)}
-.tabs a:not([aria-current]):hover{background:var(--chip)}
+/* app switcher: its own row with the brand, styled as underlined tabs so it never reads as one of the filled filter toggles below */
+.approw{padding-bottom:0;border-bottom:1px solid var(--line);align-items:flex-end}
+.approw .club,.approw .brand{align-self:center;margin-bottom:12px}
+.toolrow{padding-top:10px}
+.apps{display:flex;gap:0 28px;flex-wrap:wrap;margin-left:8px}
+.apps a{display:flex;gap:8px;align-items:flex-start;padding:4px 2px 9px;margin-bottom:-1px;border-bottom:3px solid transparent;color:var(--muted);text-decoration:none}
+/* each app has its own badge colour and glyph (also its favicon); the colour also marks the current app */
+.apps .ico{display:grid;place-items:center;width:28px;height:28px;flex:none;border-radius:7px;background:var(--app)}
+.apps .ico svg{width:20px;height:20px;fill:#fff}
+.apps a[aria-current="page"]{color:var(--fg);border-bottom-color:var(--app)}
+.apps a:not([aria-current]) .ico{opacity:.8}
+.apps a:not([aria-current]):hover{color:var(--fg);border-bottom-color:var(--line)}
+.apps a:not([aria-current]):hover .ico{opacity:1}
+.apps b{display:block;font-family:var(--display);font-size:17px;font-weight:700;line-height:1.25}
+.apps small{display:block;font-size:12px}
+@media (max-width:820px){.apps{margin-left:0;gap:0 20px}.apps small{display:none}.apps b{font-size:15px}}
 .search{flex:1 1 240px;display:flex;align-items:center;gap:8px;background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:0 10px;min-width:0}
 .search input{flex:1;min-width:0;border:0;background:transparent;color:var(--fg);font:inherit;padding:9px 0;outline:none}
 .search kbd{font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:0 5px}
@@ -59,16 +81,23 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var
 .domain button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
 .ruler{position:relative;height:30px;border-top:1px solid var(--line);overflow:hidden;font-family:var(--mono);font-size:10px;color:var(--muted)}
 .ruler .ticks{position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 12px);opacity:.9;height:8px}
-.ruler .keys{position:absolute;inset:8px 0 0 0;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding-inline:max(16px,env(safe-area-inset-left,0px))}
+.ruler .keys{position:absolute;inset:0;display:flex;overflow-x:auto;scrollbar-width:none;padding-top:8px;padding-inline:max(16px,env(safe-area-inset-left,0px))}
+.ruler .kfs{display:flex;gap:2px;flex:none}
 .ruler .keys::-webkit-scrollbar{display:none}
+.ruler .keys{cursor:grab}
+.ruler .keys.dragging,.ruler .keys.dragging .kf{cursor:grabbing;user-select:none}
+/* after being pulled past an end the key row springs back, overshooting slightly */
+.ruler .keys.settle{transition:transform .45s cubic-bezier(.25,1.3,.5,1)}
 .kf{display:flex;align-items:center;gap:5px;white-space:nowrap;border:0;background:transparent;cursor:pointer;padding:2px 8px 2px 4px;border-radius:3px;font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
 .kf i{width:8px;height:8px;transform:rotate(45deg);background:var(--line);display:inline-block}
 .kf:hover{color:var(--fg)}
 .kf[aria-pressed="true"]{color:var(--key-ink)}
-.kf[aria-pressed="true"] i{background:var(--key)}
-.playhead{position:absolute;top:0;bottom:0;width:2px;background:var(--combat);left:0;animation:scrub 14s linear infinite;pointer-events:none}
-@keyframes scrub{to{left:100%}}
-@media (prefers-reduced-motion: reduce){.playhead{animation:none;left:24%}}
+.kf[aria-pressed="true"] i{background:var(--playhead)}
+/* the red playhead points at the selected key and slides to the next one, overshooting it slightly */
+.playhead{position:absolute;left:0;top:0;width:2px;height:12px;background:var(--playhead);pointer-events:none;transition:transform .34s cubic-bezier(.25,1.1,.5,1)}
+.playhead::before{content:"";position:absolute;left:-4px;top:0;border:5px solid transparent;border-top:6px solid var(--playhead);border-bottom:0}
+.playhead.still{transition:none}
+@media (prefers-reduced-motion:reduce){.playhead{transition:none}}
 .shell{display:grid;grid-template-columns:240px minmax(0,1fr);gap:24px;padding-block:20px}
 aside{position:sticky;top:120px;align-self:start;max-height:calc(100vh - 140px);overflow:auto;display:grid;gap:20px;padding-right:4px}
 aside h2{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px;font-weight:600}
@@ -193,6 +222,27 @@ footer p{max-width:85ch;margin:0 0 8px}
 .v3d{display:grid;gap:8px}
 .v3d-stage{position:relative;aspect-ratio:4/3;background:radial-gradient(ellipse at 50% 35%,var(--panel),var(--sunk));border:1px solid var(--line);border-radius:6px;overflow:hidden}
 .v3d-stage canvas{display:block;width:100%;height:100%;touch-action:none}
+/* orientation gizmo (frame-data/orientation-gizmo.js), bottom left of the 3D stage */
+.v3d-corner{position:absolute;left:12px;bottom:12px;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.v3d-gizmo{border-radius:50%;transition:background-color .15s}.v3d-gizmo:hover{background:rgba(255,255,255,.2)}.v3d-gizmo canvas{display:block;cursor:pointer;width:100px;height:100px}
+/* viewport overlays (frame-data/viewer3d.js): Mouse | Trackpad under the gizmo, camera buttons and Help top right */
+.v3d-stage kbd,.v3d-keys kbd{border:1px solid var(--line);background:var(--sunk);border-radius:3px;padding:0 4px;font-family:var(--mono);font-size:10px;font-weight:500;color:var(--muted)}
+.v3d-mode{display:flex;margin:0;padding:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:color-mix(in srgb,var(--panel) 80%,transparent);backdrop-filter:blur(6px)}
+.v3d-mode button{border:0;background:none;padding:4px 10px;font-size:10px;font-weight:700;color:var(--muted);cursor:pointer}.v3d-mode button:hover{color:var(--fg)}
+.v3d-mode button[aria-pressed=true]{background:var(--key);color:#fff}
+.v3d-side{position:absolute;top:10px;right:10px;bottom:10px;display:flex;flex-direction:column;align-items:flex-end;gap:8px;pointer-events:none}
+.v3d-tools{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px}
+.v3d-tools button{pointer-events:auto;display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:color-mix(in srgb,var(--panel) 85%,transparent);backdrop-filter:blur(6px);border-radius:999px;padding:4px 10px;font-size:12px;font-weight:700;color:var(--fg);cursor:pointer}
+.v3d-tools button:hover,.v3d-tools button[aria-pressed=true]{border-color:var(--key)}
+.v3d-tools button span{display:flex;align-items:center;gap:2px;font-family:var(--mono);font-size:10px;color:var(--muted)}
+.v3d-help{pointer-events:auto;width:240px;min-height:0;overflow-y:auto;overscroll-behavior:contain;border:1px solid var(--line);border-radius:10px;background:color-mix(in srgb,var(--panel) 92%,transparent);backdrop-filter:blur(6px);padding:10px 12px;font-size:11px}
+.v3d-help-title{margin:0 0 4px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.v3d-help-note{margin:0 0 8px;font-size:10px;color:var(--muted)}
+.v3d-help ul{list-style:none;margin:0 0 8px;padding:0;display:grid;gap:4px}
+.v3d-help li{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.v3d-help li span{display:flex;flex-wrap:wrap;align-items:center;gap:2px;font-family:var(--mono);font-size:10.5px;color:var(--muted)}.v3d-help li b{flex-shrink:0;text-align:right}
+/* the 3D stage takes keyboard focus for its navigation keys (frame-data/navigation3d.js); the ring shows when they apply */
+.v3d-stage[tabindex]{outline:none}.v3d-stage[tabindex]:focus{border-color:var(--key);box-shadow:0 0 0 1px var(--key)}
 .v3d-msg{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:13px;text-align:center;padding:16px}
 .v3d-hud{position:absolute;left:10px;top:8px;display:flex;align-items:baseline;gap:8px;pointer-events:none}
 .v3d-hud b{font-family:var(--display);font-size:28px;font-weight:800;font-variant-numeric:tabular-nums}
@@ -205,6 +255,7 @@ footer p{max-width:85ch;margin:0 0 8px}
 .v3d-scrub .strip{width:100%;height:26px}
 .v3d-scrub::after{content:"";position:absolute;top:-3px;bottom:-3px;left:var(--v3d-at,0%);width:2px;margin-left:-1px;background:var(--fg);pointer-events:none}
 .v3d-scrub input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.v3d-keys{display:flex;flex-wrap:wrap;gap:4px 14px;margin:0;font-size:11px;color:var(--muted)}
 .v3d-opts{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--muted);align-items:center}
 .v3d-opts label{display:inline-flex;gap:5px;align-items:center;cursor:pointer}
 .v3d-who{margin-left:auto;font-family:var(--mono);font-size:10.5px}
@@ -213,21 +264,54 @@ footer p{max-width:85ch;margin:0 0 8px}
 .clip-stage canvas,.clip-stage img{display:block;width:100%;height:100%;object-fit:contain}
 .clip-stage .v3d-hud{color:#fff;text-shadow:0 1px 2px #000}.clip-stage .v3d-hud span{color:#ddd}
 .clip-alts{display:flex;flex-wrap:wrap;gap:4px}
-/* weapon buttons and the preview share a row that floats under the header while the table scrolls; Hide folds it */
-.pick.dockon{display:grid;grid-template-columns:minmax(0,1fr) minmax(340px,46%);gap:0 20px;align-items:start;margin-bottom:12px}
+/* the study panel: the viewer with the inspector beside it, full width under the weapon buttons; once a class is
+   picked it floats under the header while the table scrolls. Hide folds it */
 .pick-l{min-width:0}
-.dock{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;padding-top:4px;min-width:0}
+.dock{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;padding-top:4px;min-width:0;margin-bottom:12px}
+.study{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,32%);gap:14px;align-items:stretch}
+/* the inspector scrolls inside the viewer's height, so the panel never grows past it */
+.insp{position:relative;min-height:240px;border:1px solid var(--line);background:var(--panel);border-radius:6px}
+.insp>div{position:absolute;inset:0;overflow:auto;padding:10px 12px;font-size:13px}
+.insp h4{font-family:var(--mono);font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:12px 0 4px}
+.insp .who{margin:6px 0 0;color:var(--muted);font-size:12px}
+.insp .who code{font-family:var(--mono);font-size:11px;color:var(--fg)}
+.insp .now{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.insp .now b{font-family:var(--display);font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1}
+.insp .now small{font-family:var(--mono);font-size:10.5px;color:var(--muted);text-transform:uppercase}
+.insp .ph{border-radius:999px;padding:2px 9px;font-size:12px;font-weight:600;color:#1c1b19;background:var(--ph,var(--chip))}
+.insp .ph:empty,.insp .tag:empty{display:none}
+.insp .tag{border-radius:999px;padding:2px 9px;font-size:12px;border:1px solid var(--line)}
+.insp .r{display:flex;justify-content:space-between;gap:10px;padding:2px 6px;border-radius:4px;border-left:3px solid transparent}
+.insp .r span{color:var(--muted)}
+.insp .r b{font-family:var(--mono);font-weight:500;text-align:right}
+.insp .r.on{background:var(--chip);border-left-color:var(--fg)}
+.insp .r.on span{color:var(--fg)}
+.insp .r.open b{color:var(--calm);font-weight:700}
+.insp .r.open b::after{content:" \2713  open";font-weight:500}
+/* ten weapons to a row, sized to the inspector's width */
+.insp .iw{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:4px}
+.insp .iw button{aspect-ratio:1;min-width:0;padding:2px;border:1px solid var(--line);background:var(--sunk);border-radius:4px;cursor:pointer}
+.insp .iw button[aria-pressed="true"]{border-color:var(--key);background:var(--chip)}
+.insp .iw img{width:100%;height:100%;object-fit:contain}
+.insp .src{margin:12px 0 0;font-size:12px}
 .dock-head{display:flex;align-items:end;justify-content:space-between;gap:10px}
 .dock-head small{font-family:var(--mono);font-size:10.5px;color:var(--key-ink);text-transform:uppercase;letter-spacing:.05em}
 .dock-head h3{font-family:var(--display);font-size:16px;font-weight:800;margin:0;line-height:1.2}
 /* one line each, so the stage sits at the same height whichever game or move is shown */
 .dock-head>div{min-width:0}
 .dock-head small,.dock-head h3{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dock-btns{display:flex;gap:6px;flex:none}
-.dock .v3d-stage{aspect-ratio:auto;height:clamp(200px,30vh,330px)}
-.pick.min .wtiles,.pick.min .v3d,.pick.min #sub,.pick.min #active{display:none}
-@media (min-width:821px) and (min-height:640px){.pick.dockon{position:sticky;top:var(--hdr,0px);z-index:4;background:var(--bg);border-bottom:1px solid var(--line);padding-bottom:8px}}
-@media (max-width:820px){.pick.dockon{grid-template-columns:minmax(0,1fr)}}
+.dock-btns{display:flex;gap:6px;flex:none;align-items:center}
+/* the share action stands out from the plain chips: Move Explorer's colour, a link icon, a tick once copied */
+.linkbtn{display:inline-flex;align-items:center;gap:5px;border:1px solid #8a3fc9;background:#8a3fc9;color:#fff;border-radius:999px;padding:3px 11px 3px 8px;font-size:12px;font-weight:600;cursor:pointer}
+.linkbtn:hover{background:#7533b0;border-color:#7533b0}
+.linkbtn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.linkbtn .i-ok,.linkbtn.done .i-link{display:none}
+.linkbtn.done .i-ok{display:block}
+.linkbtn.done{background:var(--calm);border-color:var(--calm)}
+.dock .v3d-stage{aspect-ratio:auto;height:clamp(240px,38vh,440px)}
+.pick.min .wtiles,.pick.min #sub,.pick.min #active,.dock.min .study{display:none}
+@media (min-width:821px) and (min-height:800px){.dock.stick{position:sticky;top:var(--hdr,0px);z-index:4;background:var(--bg);border-bottom:1px solid var(--line);padding-bottom:8px}}
+@media (max-width:820px){.study{grid-template-columns:minmax(0,1fr)}.insp{min-height:320px}}
 /* phones: the header scrolls away compacted (one-line game chips, no tagline) and the preview alone sticks to the top,
    so a move can be picked from the table while it plays; .pick steps aside so the dock sticks against the whole page */
 @media (max-width:820px){
@@ -238,7 +322,6 @@ footer p{max-width:85ch;margin:0 0 8px}
   .brand{flex:1 1 0}
   .brand h1{font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .brand .tagline{display:none}
-  .tabs a{padding:6px 10px}
   .search{flex-basis:160px}
   .grow{gap:4px 12px;padding-bottom:8px}
   .domain{overflow-x:auto;scrollbar-width:none}
@@ -261,15 +344,17 @@ tbody tr.on td{background:var(--chip);box-shadow:inset 0 1px var(--key),inset 0 
 <body>
 
 <header>
-  <div class="wrap hrow">
+  <div class="wrap hrow approw">
     <a class="club" href="https://funsmith.club" aria-label="Funsmith club"><svg viewBox="0 0 127.14 96.36" aria-hidden="true"><path d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0a105.89 105.89 0 0 0-26.25 8.09C2.79 32.65-1.71 56.6.54 80.21a105.73 105.73 0 0 0 32.17 16.15 77.7 77.7 0 0 0 6.89-11.11 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.66 2a68.68 68.68 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1 105.25 105.25 0 0 0 32.19-16.14c2.64-27.38-4.51-51.11-18.9-72.15ZM42.45 65.69C36.18 65.69 31 60 31 53s5-12.74 11.43-12.74S54 46 53.89 53s-5.05 12.69-11.44 12.69Zm42.24 0C78.41 65.69 73.25 60 73.25 53s5-12.74 11.44-12.74S96.23 46 96.12 53s-5.04 12.69-11.43 12.69Z"/></svg><span>Funsmith club</span></a>
-    <div class="brand"><h1>Game Animation Library</h1><span class="tagline">learn from the legends of combat design</span></div>
-    <nav class="tabs" aria-label="Sections"><a href="./">Animations</a><a href="frame-data.html" aria-current="page">Frame Data</a><a href="trends.html">Trends</a></nav>
+    <div class="brand"><h1><a class="logo" href="./" aria-label="Game Animation Library"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="18" fill="#282c6c"/><g fill="none" stroke="#fff" stroke-width="4.4" stroke-linecap="round"><rect x="14" y="36" width="72" height="32" rx="14"/><path d="M33 44.6v14.8M24.6 52H47"/></g><path d="M56.7 30L43.3 74" stroke="#282c6c" stroke-width="11"/><g fill="#fff"><path d="M55.54 26.92l3.82 1.16-17.05 56.1-3.37 4.19-.45-5.35z"/><path d="M50.9 25.7h14l-.6 3.6h-14z"/><path d="M55.98 27l2.92.97 5.9-17.92-2.92-.95z"/><ellipse cx="63.4" cy="9.6" rx="3.4" ry="3.1"/><path d="M64 45.2v13.6l11.4-6.8z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></g></svg><span class="wm"><b>Game Animation</b><i>Library</i></span></a></h1><span class="tagline">learn from the legends of combat design</span></div>
+    <nav class="apps" aria-label="Apps"><a href="./" style="--app:#2f62c9"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="9" height="13" rx="1.8" transform="rotate(-14 7 12.5)" opacity=".5"/><rect x="12.5" y="6" width="9" height="13" rx="1.8" transform="rotate(14 17 12.5)" opacity=".5"/><rect x="7" y="4" width="10" height="15" rx="2"/><path d="M12 8.2l3.3 3.3-3.3 3.3-3.3-3.3z" fill="#2f62c9"/></svg></span><span><b>Action Atlas</b><small>Compare one action across games</small></span></a><a href="frame-data.html" style="--app:#8a3fc9" aria-current="page"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="8" height="12" rx="1.6" opacity=".35"/><rect x="7" y="4" width="8" height="12" rx="1.6" opacity=".6"/><rect x="12" y="4" width="10" height="12" rx="1.8"/><circle cx="17" cy="10" r="2.6" fill="none" stroke="#8a3fc9" stroke-width="1.6"/><rect x="2" y="18.6" width="20" height="1.6" rx=".8"/><rect x="16" y="16.8" width="2.2" height="5.2" rx="1.1"/></svg></span><span><b>Move Explorer</b><small>Step through moves frame by frame · 7 games</small></span></a><a href="trends.html" style="--app:#1f8a6e"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="4" height="8" rx="1" opacity=".55"/><rect x="10" y="9" width="4" height="12" rx="1" opacity=".75"/><rect x="17" y="5" width="4" height="16" rx="1"/><path d="M5 10l7-4 7-4" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>Trends</b><small>Compare timing across games</small></span></a></nav>
+  </div>
+  <div class="wrap hrow toolrow">
     <label class="search" for="q"><span aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Search moves, weapons…" autocomplete="off"><kbd>/</kbd></label>
     <button class="rail-toggle" id="railBtn" aria-expanded="false">Filters</button>
   </div>
   <div class="wrap grow"><div class="domain" role="group" aria-label="Game" id="games"></div><span class="ver" id="ver"></span></div>
-  <div class="ruler"><div class="ticks"></div><div class="keys" id="keys"></div><div class="playhead"></div></div>
+  <div class="ruler"><div class="ticks"></div><div class="keys"><div class="kfs" id="keys"></div><span class="playhead" id="playhead" hidden></span></div></div>
 </header>
 
 <div class="wrap shell">
@@ -287,13 +372,13 @@ tbody tr.on td{background:var(--chip);box-shadow:inset 0 1px var(--key),inset 0 
   <main>
     <div class="pick" id="pick">
       <div class="pick-l">
-        <div class="status"><div class="head1"><h2 id="ttl">Frame data</h2><p id="sub"></p><p class="buy" id="buy"></p></div><span class="count" id="count"></span></div>
+        <div class="status"><div class="head1"><h2 id="ttl">Move Explorer</h2><p id="sub"></p><p class="buy" id="buy"></p></div><span class="count" id="count"></span></div>
         <div class="active" id="active"></div>
         <div id="index"></div>
         <div id="weapons"></div>
       </div>
-      <section class="dock" id="dock" hidden aria-label="3D preview"><div class="dock-head"><div><small id="dockSrc"></small><h3 id="dockName">3D preview</h3></div><span class="dock-btns"><button class="chip" id="dockMore">Frame details</button><button class="chip" id="pickMin" aria-expanded="true" title="Hide the weapon buttons and preview">Hide</button></span></div><div class="v3d" id="dockView"></div></section>
     </div>
+    <section class="dock" id="dock" hidden aria-label="3D preview"><div class="dock-head"><div><small id="dockSrc"></small><h3 id="dockName">3D preview</h3></div><span class="dock-btns"><button class="linkbtn" id="dockLink" aria-label="Copy link to this frame" title="Copy a link that opens this move paused on this frame, with the same speed and overlays"><svg class="i-link" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3.2-3.2a4.5 4.5 0 0 0-6.4-6.4l-1.1 1.1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3.2 3.2a4.5 4.5 0 0 0 6.4 6.4l1.1-1.1"/></svg><svg class="i-ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Copy link</span></button><button class="chip" id="dockMore">Frame details</button><button class="chip" id="pickMin" aria-expanded="true" title="Hide the weapon buttons and preview">Hide</button></span></div><div class="study"><div class="v3d" id="dockView"></div><div class="insp" id="insp" role="region" aria-label="Move inspector"></div></div></section>
     <div class="legend" id="legend"></div>
     <div id="table"></div>
     <footer id="foot"></footer>
@@ -341,7 +426,7 @@ const COLS=[
 const DEFAULT_COLS=['name','class','grip','strip','startup','active','recovery','dodge','attack','total','mv','poise','dtype'];
 // Wording a game can override with "labels" (Elden Ring's defaults)
 const LABELS={class:'Weapon class',classes:'weapon classes',allClasses:'All classes',allFamilies:'All weapons',grip:'Grip',everyClass:'Every class · default movesets',patch:'patch ',
-  pickClass:'Pick a weapon class to see its moveset by move type, or filter and sort every class at once below.',classView:'default moveset, by move type. Pick a weapon below for its exact moveset.',
+  pickClass:'Pick a weapon class to step through its moves in 3D, frame by frame, or filter and sort every class at once below.',classView:'default moveset, by move type. Pick a weapon below for its exact moveset.',
   recovery:'Frames from the last active frame until you can dodge'};
 let L=LABELS,SHOW=DEFAULT_COLS,CN={};
 // a game can rename a column with "columnNames": {key: name} or {key: [name, tooltip]}
@@ -366,7 +451,7 @@ async function loadGame(id){
   $('#fArmor').hidden=!D.moves.some(m=>m.armor.length);
   D.moves.forEach(m=>{m.hay=(m.name+' '+m.class+' '+CL[m.class].name+' '+T[m.type].name+' '+(m.damage.type||'')+' '+(m.input||'')+' '+m.weapons.map(i=>CL[m.class].weapons[i]).join(' ')).toLowerCase()});
   st.max=Math.max(...D.moves.map(m=>m.startup||0));$('#maxStart').max=st.max;
-  fromHash();renderAll();
+  fromHash();phStill=true;renderAll();
 }
 // The moves a selection shows: a weapon shows exactly the animations it uses; a class (or nothing) shows default movesets
 function pool(skip){
@@ -389,7 +474,10 @@ function renderAll(){
   // on phones the game bar is one scrolling row: bring the current game into view
   {const bar=$('#games'),on=bar.querySelector('[aria-pressed="true"]');if(on&&bar.scrollWidth>bar.clientWidth)bar.scrollLeft+=on.getBoundingClientRect().left-bar.getBoundingClientRect().left-(bar.clientWidth-on.offsetWidth)/2}
   $('#ver').title=$('#ver').textContent=`${D.moves.length.toLocaleString()} moves · ${D.classes.length} ${L.classes} · ${L.patch}${D.game.version}`;
-  $('#keys').innerHTML=`<button class="kf" data-fam="" aria-pressed="${!st.fam&&!st.cls}"><i></i>${esc(L.allFamilies)}</button>`+D.families.map(f=>`<button class="kf" data-fam="${f.id}" aria-pressed="${st.fam===f.id}"><i></i>${esc(f.name)}</button>`).join('');
+  // a game with a single family (a fighting game's roster) keys its characters instead
+  $('#keys').innerHTML=D.families.length===1
+    ?`<button class="kf" data-cls="" aria-pressed="${!st.cls}"><i></i>${esc(L.allClasses)}</button>`+D.classes.map(c=>`<button class="kf" data-cls="${esc(c.id)}" aria-pressed="${st.cls===c.id}"><i></i>${esc(c.name)}</button>`).join('')
+    :`<button class="kf" data-fam="" aria-pressed="${!st.fam&&!st.cls}"><i></i>${esc(L.allFamilies)}</button>`+D.families.map(f=>`<button class="kf" data-fam="${f.id}" aria-pressed="${st.fam===f.id}"><i></i>${esc(f.name)}</button>`).join('');placePlayhead();
   const tc=count(pool('type'),m=>m.type);
   $('#types').innerHTML=D.moveTypes.filter(t=>tc.get(t.id)||st.types.has(t.id)).map(t=>`<button class="fitem" data-type="${t.id}" aria-pressed="${st.types.has(t.id)}" title="${esc(t.description)}"><span>${esc(t.name)}</span><span>${tc.get(t.id)||0}</span></button>`).join('');
   const gc=count(pool('grip'),m=>m.grip);
@@ -413,7 +501,7 @@ function renderAll(){
 }
 function renderHead(){
   const c=st.cls&&CL[st.cls],w=c&&st.w!=null?c.weapons[st.w]:null,f=st.fam&&FAM[st.fam];
-  $('#ttl').innerHTML=c?`${icoHtml(w||c.icon,'')} ${esc(w||c.name)}`:esc(f?f.name:`${D.game.name} frame data`);
+  $('#ttl').innerHTML=c?`${icoHtml(w||c.icon,'')} ${esc(w||c.name)}`:esc(f?f.name:`${D.game.name} move explorer`);
   $('#sub').textContent=$('#sub').title=c?(w?`${c.name} · the animations this weapon uses, by move type.`:`${c.name} · ${L.classView}`)
     :L.pickClass;
   const act=[];if(st.q)act.push(['q',`“${st.q}”`]);st.types.forEach(t=>act.push(['type:'+t,T[t].name]));st.grips.forEach(g=>act.push(['grip:'+g,GR[g]]));
@@ -470,7 +558,7 @@ function renderTable(){
   if(!list.length){dock(list);$('#table').innerHTML='<div class="empty">No moves match these filters. Clear a filter or widen the startup limit.</div>';return}
   const scale=Math.min(150,Math.max(...list.map(m=>Math.max(m.total||0,m.cancels.dodge||0))));
   const head=`<thead><tr>${cols.map(k=>{const c=COLS.find(x=>x[0]===k);return `<th class="${c[3]&&k!=='strip'?'n':''}" ${st.sort===k?`aria-sort="${st.dir>0?'ascending':'descending'}"`:''} title="${esc(colTip(c))}"><button data-sort="${k}">${esc(k==='class'?L.class:colName(c))}</button></th>`}).join('')}<th class="more-c"><span class="vh">Details</span></th></tr></thead>`;
-  const row=m=>`<tr data-m="${esc(m.class+'|'+m.id)}"${DOCK.key===m.class+'|'+m.id?' class="on"':''}>${cols.map(k=>cell(k,m,scale)).join('')}<td class="more-c"><button class="rowmore" data-open="${esc(m.class+'|'+m.id)}" title="Frame details" aria-label="Frame details for ${esc(m.name)}">…</button></td></tr>`;
+  const row=m=>`<tr data-m="${esc(m.class+'|'+m.id)}"${st.cls&&DOCK.key===m.class+'|'+m.id?' class="on"':''}>${cols.map(k=>cell(k,m,scale)).join('')}<td class="more-c"><button class="rowmore" data-open="${esc(m.class+'|'+m.id)}" title="Frame details" aria-label="Frame details for ${esc(m.name)}">…</button></td></tr>`;
   let body;
   if(st.cls&&!st.sort){
     // class view: grouped by move type in play order
@@ -508,59 +596,132 @@ function openMove(key){
 // sprite sheets ("sprites") the 2D hitbox viewer, games with hitbox clips ("clips") the clip viewer. Clicking a row it
 // covers swaps the move in place, other rows open the detail sheet. The 3D viewer holds the picked weapon, else each
 // move's class preview weapon.
-// Bump ?v= whenever viewer3d.js, sprites2d.js or clipviewer.js changes: browsers and Pages cache them, and a stale copy next to a new page breaks the dock
-const VIEWER='./frame-data/viewer3d.js?v=7',VIEWER2D='./frame-data/sprites2d.js?v=3',CLIPVIEWER='./frame-data/clipviewer.js?v=2';
+// Bump ?v= whenever viewer3d.js (and the ?v= on its navigation3d.js import), sprites2d.js or clipviewer.js changes: browsers and Pages cache them, and a stale copy next to a new page breaks the dock
+const VIEWER='./frame-data/viewer3d.js?v=14',VIEWER2D='./frame-data/sprites2d.js?v=6',CLIPVIEWER='./frame-data/clipviewer.js?v=5';
 // the models and sprites viewers load per class (classData); the clip viewer reads each move's clips
 const byClass=()=>G.models||G.sprites;
 const DOCK={key:null,view:null,game:null,cls:null,w:null,cm:null,seq:0};
 const pickName=()=>st.cls&&st.w!=null?CL[st.cls].weapons[st.w]:null;
-// whether the docked viewer can show a move, and its length there
-const canDock=m=>byClass()?m.class===DOCK.cls&&!!DOCK.cm?.moves[m.id]:!!m.clips?.length;
+// whether the docked viewer can show a move, and its length there (rows only drive it once a class is picked)
+const canDock=m=>byClass()?!!st.cls&&m.class===DOCK.cls&&!!DOCK.cm?.moves[m.id]:!!m.clips?.length;
 function frameState(m,f){
   const inW=w=>w.some(([s,e])=>f>=s&&f<=e),last=lastActive(m);
   const s=!m.active.length?'':f<m.startup?'Startup':inW(m.active)?'Active':f<last?'Between hits':m.cancels.dodge&&f>=m.cancels.dodge?'Can dodge':'Recovery';
   return [s,inW(m.armor)&&'hyper armor',inW(m.iframes)&&'i-frames'].filter(Boolean).join(' · ')}
+// Inspector beside the viewer: the move's numbers in one place, with the frame on show marked as it plays or steps.
+// Fields a game leaves empty (Elden Ring's poise and i-frames) are left out rather than shown as dashes.
+const CANCELS=[['attack','Attack'],['dodge','Dodge / roll'],['block','Block'],['skill','Skill'],['item','Item'],['move','Walk / run']];
+const PHASE={startup:['Startup','--f-start'],active:['Active','--f-active'],gap:['Between hits','--f-gap'],recovery:['Recovery','--f-rec'],free:['Can dodge','--f-free']};
+function phaseAt(m,f){
+  if(!m.active.length)return ['',0];
+  const hit=m.active.findIndex(([s,e])=>f>=s&&f<=e);
+  return [f<m.startup?'startup':hit>=0?'active':f<lastActive(m)?'gap':m.cancels.dodge&&f>=m.cancels.dodge?'free':'recovery',hit+1]}
+function renderInsp(m){
+  const c=CL[m.class],dm=m.damage||{},win=a=>a.map(([s,e])=>s===e?s:`${s}–${e}`).join(', ');
+  const row=(l,v,attr='')=>`<div class="r"${attr}><span>${esc(l)}</span><b>${esc(v)}</b></div>`;
+  const sgn=v=>typeof v==='number'&&v>0?'+'+v:v;
+  const can=CANCELS.filter(([k])=>m.cancels[k]);
+  const adv=[['blockAdv','On block'],['hitAdv','On hit']].filter(([k])=>m[k]!=null);
+  const dmg=[['type','Damage type'],['amount','Damage'],['stun','Stun'],['guard','Guard'],['mv','Motion value'],['poise','Poise damage'],['level','Damage level'],['stamina','Stamina']].filter(([k])=>dm[k]!=null&&dm[k]!=='');
+  const ws=c.weapons.length?m.weapons:[],url=m.url||D.source.moveUrl?.replace('{id}',m.id);
+  $('#insp').innerHTML=`<div>
+    <div class="now"><small>Frame</small><b id="iF">1</b><span class="ph" id="iPh"></span><span class="tag" id="iArm"></span></div>
+    <p class="who">${esc(c.name)} › ${esc(T[m.type].name)} · ${GR[m.grip]}${pickName()?` · ${esc(pickName())}`:''} · <code>${esc(m.id)}</code></p>
+    ${m.active.length?`<h4>Timing · ${D.game.fps} fps</h4>${row('Startup',m.startup??'—',' data-ph="startup"')}${row('Active',win(m.active)+(m.hits>1?` · ${m.hits} hits`:''),' data-ph="active"')}${m.recovery!=null?row('Recovery',m.recovery+' frames',' data-ph="recovery"'):''}${m.armor.length?row('Hyper armor',win(m.armor),' data-arm'):''}${m.iframes.length?row('I-frames',win(m.iframes)):''}`:''}
+    ${can.length?`<h4>Can cancel into</h4>${can.map(([k,l])=>row(l,'from '+m.cancels[k],` data-can="${m.cancels[k]}"`)).join('')}`:''}
+    ${m.cancelTo?.length?`<h4>Cancels into</h4><p class="who">${esc(m.cancelTo.join(', '))}</p>`:''}
+    ${adv.length?`<h4>Advantage</h4>${adv.map(([k,l])=>row(l,sgn(m[k]))).join('')}`:''}
+    ${dmg.length?`<h4>${c.weapons.length?'First hit only':'Damage'}</h4>${dmg.map(([k,l])=>row(l,dm[k])).join('')}`:''}
+    ${ws.length?`<h4>Used by ${ws.length} weapon${ws.length===1?'':'s'}</h4><div class="iw">${ws.map(i=>`<button data-pickw="${i}" data-pickc="${esc(c.id)}" aria-pressed="${st.cls===c.id&&st.w===i}" title="${esc(c.weapons[i])}">${icoHtml(c.weapons[i],'')}</button>`).join('')}</div>`:''}
+    ${url?`<p class="src"><a href="${esc(url)}" target="_blank" rel="noopener">Open in ${esc(D.source.moveName||D.source.name)} ↗</a></p>`:''}
+  </div>`}
+function inspFrame(m,f){
+  if(DOCK.key!==m.class+'|'+m.id||!$('#iF'))return;
+  const [ph,hit]=phaseAt(m,f),p=PHASE[ph],inW=w=>w.some(([s,e])=>f>=s&&f<=e);
+  $('#iF').textContent=f;
+  $('#iPh').textContent=p?p[0]+(ph==='active'&&m.hits>1?` · hit ${hit} of ${m.hits}`:''):'';
+  $('#iPh').style.setProperty('--ph',p?`var(${p[1]})`:'');
+  $('#iArm').textContent=inW(m.armor)?'Hyper armor':'';
+  const on=ph==='gap'?'active':ph==='free'?'recovery':ph;
+  document.querySelectorAll('#insp [data-ph]').forEach(r=>r.classList.toggle('on',r.dataset.ph===on));
+  document.querySelector('#insp [data-arm]')?.classList.toggle('on',inW(m.armor));
+  document.querySelectorAll('#insp [data-can]').forEach(r=>r.classList.toggle('open',f>=+r.dataset.can))}
 const moveOf=key=>{const [cls,id]=key.split('|');return D.moves.find(x=>x.class===cls&&x.id===id)};
 function dockOn(on){$('#dock').hidden=!on;$('#pick').classList.toggle('dockon',on)}
-function pickMin(min){$('#pick').classList.toggle('min',min);$('#pickMin').textContent=min?'Show':'Hide';$('#pickMin').setAttribute('aria-expanded',!min);try{localStorage.setItem('fd-pick-min',min?'1':'')}catch(e){}}
+// before a class is picked the panel sits above the long class index, so the example is on the first screen; after,
+// it sits between the weapon buttons and the table and sticks under the header
+function placeDock(browse){const d=$('#dock');d.classList.toggle('stick',!browse);
+  if(browse){if(d.nextElementSibling!==$('#index'))$('#index').before(d)}else if(d.previousElementSibling!==$('#pick'))$('#pick').after(d)}
+function pickMin(min){$('#pick').classList.toggle('min',min);$('#dock').classList.toggle('min',min);$('#pickMin').textContent=min?'Show':'Hide';$('#pickMin').setAttribute('aria-expanded',!min);try{localStorage.setItem('fd-pick-min',min?'1':'')}catch(e){}}
 async function dock(list){
   const sec=$('#dock'),seq=++DOCK.seq;
-  if(!(byClass()||G.clips)||!st.cls){dockOn(false);return}
+  // with no class picked, model and sprite games still show an example: the first default move of the selected weapon
+  // type's first class (or the first class when none is selected), so the viewer is on screen from the start (it then
+  // neither follows the other filters nor sticks under the header)
+  const cls=st.cls||(byClass()?(D.classes.find(c=>c.family===st.fam)||D.classes[0])?.id:null);
+  $('#pick').classList.toggle('browse',!st.cls);placeDock(!st.cls);
+  if(!(byClass()||G.clips)||!cls){dockOn(false);openLinked();return}
   try{
-    const v=await import(G.models?VIEWER:G.sprites?VIEWER2D:CLIPVIEWER),cm=byClass()?await v.classData(byClass(),st.cls):null;
+    const v=await import(G.models?VIEWER:G.sprites?VIEWER2D:CLIPVIEWER),cm=byClass()?await v.classData(byClass(),cls):null;
     if(seq!==DOCK.seq)return;
-    const ok=byClass()?(cm?list.filter(m=>cm.moves[m.id]):[]):list.filter(m=>m.clips?.length);
-    if(!ok.length){dockOn(false);return}
+    const src=st.cls?list:D.moves.filter(m=>m.class===cls&&m.default);
+    const ok=byClass()?(cm?src.filter(m=>cm.moves[m.id]):[]):src.filter(m=>m.clips?.length);
+    if(!ok.length){dockOn(false);openLinked();return}
     dockOn(true);DOCK.cm=cm;
     sec.setAttribute('aria-label',G.models?'3D preview':G.sprites?'Hitbox preview':'Hitbox clip');
     if(DOCK.game!==G.id){if(DOCK.view)DOCK.view.then(x=>x.dispose());DOCK.view=Promise.resolve(v.createViewer($('#dockView'),byClass()||G.clips));DOCK.game=G.id;DOCK.key=null}
     // keep the move on show while it is still in the list (re-shown when the picked weapon changes); otherwise show
     // the list's first move
-    const cur=ok.find(m=>m.class+'|'+m.id===DOCK.key);
-    if(DOCK.cls!==st.cls||!cur)preview(ok[0]);else if(DOCK.w!==st.w)preview(cur);
-    DOCK.cls=st.cls;DOCK.w=st.w;
+    const cur=ok.find(m=>m.class+'|'+m.id===DOCK.key),linked=LINKED&&ok.find(m=>m.class+'|'+m.id===LINKED);
+    if(linked){LINKED=null;preview(linked)}else{openLinked();if(DOCK.cls!==cls||!cur)preview(ok[0]);else if(DOCK.w!==st.w)preview(cur)}
+    DOCK.cls=cls;DOCK.w=st.w;
   }catch(e){if(seq===DOCK.seq){dockOn(true);$('#dockView').innerHTML=`<div class="empty">Could not load the preview (${esc(e.message)}).</div>`}}}
 async function preview(m){
-  const key=m.class+'|'+m.id;DOCK.key=key;
+  const key=m.class+'|'+m.id;DOCK.key=key;if(LINKVIEW&&LINKVIEW.key!==key)LINKVIEW=null;
   document.querySelectorAll('tbody tr.on').forEach(r=>r.classList.remove('on'));
-  document.querySelector(`tbody tr[data-m="${CSS.escape(key)}"]`)?.classList.add('on');
-  $('#dockSrc').textContent=`${CL[m.class].name} › ${T[m.type].name} · ${GR[m.grip]}`;
-  $('#dockName').title=$('#dockName').textContent=`${m.name} · `+(m.active.length?`startup ${m.startup}, active ${m.active.map(([s,e])=>s===e?s:s+'–'+e).join(', ')}`:`${m.total??'—'} frames`);
+  if(st.cls)document.querySelector(`tbody tr[data-m="${CSS.escape(key)}"]`)?.classList.add('on');
+  writeHash();
+  $('#dockSrc').textContent=`${st.cls?'':'Example · '}${CL[m.class].name} › ${T[m.type].name} · ${GR[m.grip]}`;
+  $('#dockName').title=$('#dockName').textContent=m.name;renderInsp(m);
   const view=await DOCK.view;
   if(DOCK.key!==key)return;
-  if(byClass()){if(!DOCK.cm)return;view.show(m,{weapon:pickName(),strip:stripHtml(m,DOCK.cm.moves[m.id].frames),state:f=>frameState(m,f)})}
-  else view.show(m,{strip:n=>stripHtml(m,n),state:f=>frameState(m,f)});
+  let shown;
+  if(byClass()){if(!DOCK.cm)return;shown=await view.show(m,{weapon:pickName(),strip:stripHtml(m,DOCK.cm.moves[m.id].frames),state:f=>{inspFrame(m,f);return frameState(m,f)}})}
+  else shown=await view.show(m,{strip:n=>stripHtml(m,n),state:f=>{inspFrame(m,f);return frameState(m,f)}});
+  // a link's frame, speed and overlays apply once, to the move it names
+  if(LINKVIEW?.key===key&&DOCK.key===key&&shown!==false){const v=LINKVIEW;LINKVIEW=null;await view.setView?.(v)}
 }
 function closeSheet(){$('#sheet').hidden=true;$('#scrim').hidden=true}
-// Shareable state in the hash: #g=elden-ring&c=Katana&w=Moonveil&t=light,heavy
+// Shareable state in the hash: #g=elden-ring&c=Katana&w=Moonveil&t=light,heavy&m=a020_030000 (m: the move in the viewer)
+// A move named by a link (class|id), shown in the viewer if it can be, else in the detail sheet, once
+// with the view it asks for (fr frame, sp speed, show/hide overlay toggles, cl clip), which the viewer applies paused
+let LINKED=null,LINKVIEW=null;
+function openLinked(){if(LINKED){const k=LINKED;LINKED=LINKVIEW=null;if(moveOf(k))openMove(k)}}
 function writeHash(){
+  const h=hashParams().toString();
+  try{history.replaceState(null,'',h?'#'+h:location.pathname+location.search)}catch(e){}}
+function hashParams(){
   const p=new URLSearchParams();if(st.game&&st.game!==GAMES[0].id)p.set('g',st.game);if(st.fam&&!st.cls)p.set('f',st.fam);if(st.cls)p.set('c',st.cls);
   if(st.cls&&st.w!=null)p.set('w',CL[st.cls].weapons[st.w]);if(st.types.size)p.set('t',[...st.types].join(','));if(st.grips.size)p.set('grip',[...st.grips].join(','));
-  if(st.sort)p.set('s',(st.dir<0?'-':'')+st.sort);const h=p.toString();
-  try{history.replaceState(null,'',h?'#'+h:location.pathname+location.search)}catch(e){}}
+  if(st.sort)p.set('s',(st.dir<0?'-':'')+st.sort);if(st.cls&&DOCK.key?.startsWith(st.cls+'|'))p.set('m',DOCK.key.split('|')[1]);
+  return p}
+// "Copy link to this frame": the page's state (only the game when no class is picked, since filters could hide the
+// move) plus the move and the viewer's frame, speed and overlays
+async function copyLink(btn){
+  if(!DOCK.key||!DOCK.view)return;
+  const [cls,id]=DOCK.key.split('|'),v=(await DOCK.view).view?.()||{};
+  const p=st.cls?hashParams():new URLSearchParams(st.game!==GAMES[0].id?{g:st.game}:{});
+  p.set('c',cls);p.set('m',id);if(v.clip)p.set('cl',v.clip);p.set('fr',v.frame||1);if(v.speed)p.set('sp',v.speed);
+  if(v.show?.length)p.set('show',v.show.join(','));if(v.hide?.length)p.set('hide',v.hide.join(','));
+  let ok=false;try{await navigator.clipboard.writeText(location.origin+location.pathname+'#'+p);ok=true}catch(e){}
+  const l=btn.querySelector('span');btn.classList.toggle('done',ok);l.textContent=ok?'Link copied':'Could not copy';
+  clearTimeout(btn.t);btn.t=setTimeout(()=>{btn.classList.remove('done');l.textContent='Copy link'},1600)}
 function fromHash(){
   const p=new URLSearchParams(location.hash.slice(1));
   st.fam=FAM[p.get('f')]?p.get('f'):null;st.cls=CL[p.get('c')]?p.get('c'):null;
+  const mid=p.get('m'),lm=mid&&D.moves.find(m=>m.id===mid&&(!st.cls||m.class===st.cls));
+  LINKED=lm?lm.class+'|'+lm.id:null;const list=k=>(p.get(k)||'').split(',').filter(Boolean);
+  LINKVIEW=lm&&['fr','sp','show','hide','cl'].some(k=>p.has(k))?{key:LINKED,frame:+p.get('fr')||1,speed:p.get('sp'),show:list('show'),hide:list('hide'),clip:p.has('cl')?+p.get('cl'):null}:null;if(lm&&!st.cls){st.cls=lm.class;st.fam=CL[lm.class].family}
   const wi=st.cls?CL[st.cls].weapons.indexOf(p.get('w')):-1;st.w=wi>=0?wi:null;
   st.types=new Set((p.get('t')||'').split(',').filter(t=>T[t]));st.grips=new Set((p.get('grip')||'').split(',').filter(g=>GR[g]));
   const s=p.get('s');if(s&&COLS.find(c=>c[0]===s.replace('-',''))){st.sort=s.replace('-','');st.dir=s[0]==='-'?-1:1}}
@@ -570,6 +731,7 @@ document.addEventListener('click',e=>{
   if(d.open){openMove(d.open);return}
   if(d.m){const m=moveOf(d.m);if(!$('#dock').hidden&&DOCK.view&&m&&canDock(m))preview(m);else openMove(d.m);return}
   if(t.id==='dockMore'){if(DOCK.key)openMove(DOCK.key);return}
+  if(t.id==='dockLink'){copyLink(t);return}
   if(t.id==='pickMin'){pickMin(!$('#pick').classList.contains('min'));return}
   if(d.game!==undefined){if(d.game!==st.game)loadGame(d.game);return}
   if(d.fam!==undefined){st.fam=d.fam&&st.fam!==d.fam?d.fam:null;st.cls=null;st.w=null;st.shown=PAGE;renderAll();return}
@@ -593,8 +755,57 @@ document.addEventListener('click',e=>{
 $('#scrim').onclick=closeSheet;
 let qt;$('#q').addEventListener('input',e=>{clearTimeout(qt);qt=setTimeout(()=>{st.q=e.target.value.trim().toLowerCase();st.shown=PAGE;renderAll()},120)});
 $('#maxStart').addEventListener('input',e=>{st.max=+e.target.value;st.shown=PAGE;renderAll()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#sheet').hidden)closeSheet();if(e.key==='/'&&document.activeElement!==$('#q')){e.preventDefault();$('#q').focus()}});
-addEventListener('hashchange',()=>{if(D){fromHash();renderAll()}});
+// the playhead appears in place (no slide) on load, after a resize and after being hidden; the key row scrolls to keep it in view
+let phStill=true;
+function placePlayhead(){
+  const ph=$('#playhead'),k=$('#keys .kf[aria-pressed="true"]');
+  if(!k){ph.hidden=true;phStill=true;return}
+  const i=k.querySelector('i'),x=i.offsetLeft+i.offsetWidth/2,row=ph.parentNode;
+  ph.classList.toggle('still',phStill);ph.hidden=false;phStill=false;
+  ph.style.transform=`translateX(${x-1}px)`;
+  if(row.scrollWidth>row.clientWidth&&(x<row.scrollLeft+40||x>row.scrollLeft+row.clientWidth-60))row.scrollTo({left:x-row.clientWidth/2,behavior:'smooth'})}
+addEventListener('resize',()=>{phStill=true;placePlayhead()});
+document.fonts?.ready.then(()=>{phStill=true;placePlayhead()});
+// the key row scrolls sideways by dragging (a flick glides on) or by the wheel; pulled past either end it stretches with
+// growing resistance and springs back. A vertical wheel moves the row only while it can, then scrolls the page
+function elasticRow(row){
+  const calm=matchMedia('(prefers-reduced-motion: reduce)'),max=()=>Math.max(0,row.scrollWidth-row.clientWidth);
+  let p=0,v=0,glide=0,drag=null,dragged=false,wt;
+  const show=()=>{const c=Math.min(max(),Math.max(0,p)),o=p-c;row.scrollLeft=c;row.style.transform=o?`translateX(${(-o*.5/(1+Math.abs(o)/160)).toFixed(1)}px)`:''};
+  const settle=()=>{p=Math.min(max(),Math.max(0,p));if(!row.style.transform)return;row.classList.toggle('settle',!calm.matches);row.style.transform=''};
+  const stop=()=>{cancelAnimationFrame(glide);glide=0;row.classList.remove('settle')};
+  // past an end the glide brakes hard, so a flick into the end stretches the row briefly before it springs back
+  const fly=()=>{v*=p<0||p>max()?.6:.95;p+=v;show();if(Math.abs(v)>.5)glide=requestAnimationFrame(fly);else{glide=0;settle()}};
+  row.addEventListener('transitionend',e=>{if(e.target===row)row.classList.remove('settle')});
+  row.addEventListener('pointerdown',e=>{if(e.button||e.pointerType==='touch')return;stop();p=row.scrollLeft;v=0;dragged=false;drag={id:e.pointerId,x:e.clientX,p,t:e.timeStamp}});
+  row.addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.id)return;const dx=e.clientX-drag.x;
+    if(!dragged){if(Math.abs(dx)<4)return;dragged=true;row.setPointerCapture(e.pointerId);row.classList.add('dragging')}
+    const np=drag.p-dx;v=(np-p)/Math.max(1,e.timeStamp-drag.t)*16;drag.t=e.timeStamp;p=np;show()});
+  const end=e=>{if(!drag||e.pointerId!==drag.id)return;const still=e.timeStamp-drag.t>80;drag=null;row.classList.remove('dragging');if(!dragged)return;
+    if(!calm.matches&&!still&&Math.abs(v)>1&&p>=0&&p<=max())glide=requestAnimationFrame(fly);else settle()};
+  row.addEventListener('pointerup',end);row.addEventListener('pointercancel',end);
+  // a drag that ends over a key doesn't select it
+  row.addEventListener('click',e=>{if(dragged){dragged=false;e.stopPropagation();e.preventDefault()}},true);
+  row.addEventListener('wheel',e=>{if(e.ctrlKey)return;
+    const k=e.deltaMode===1?16:e.deltaMode===2?row.clientWidth:1,dx=e.deltaX*k,dy=e.deltaY*k,m=max();
+    if(Math.abs(dx)<=Math.abs(dy)&&!e.shiftKey){
+      if(!m||(dy<0?row.scrollLeft<=0:row.scrollLeft>=m-1))return;
+      e.preventDefault();stop();row.scrollLeft+=dy;return}
+    e.preventDefault();stop();if(!row.style.transform)p=row.scrollLeft;p+=Math.abs(dx)>Math.abs(dy)?dx:dy;show();
+    clearTimeout(wt);wt=setTimeout(settle,120)},{passive:false})}
+elasticRow($('#keys').parentNode);
+// Left/Right step through the ruler's keys like keyframes, stopping at the first and last; returns the key to select
+function stepKey(e){
+  if((e.key!=='ArrowLeft'&&e.key!=='ArrowRight')||e.ctrlKey||e.shiftKey||e.altKey||e.metaKey||e.defaultPrevented)return null;
+  if(e.target.closest?.('input,select,textarea,[contenteditable],#dock')||!$('#sheet').hidden)return null;
+  const ks=[...document.querySelectorAll('#keys .kf')];if(!ks.length)return null;
+  const i=ks.findIndex(k=>k.getAttribute('aria-pressed')==='true'),d=e.key==='ArrowLeft'?-1:1;
+  const n=i<0?(d>0?0:ks.length-1):Math.min(ks.length-1,Math.max(0,i+d));
+  e.preventDefault();return n===i?null:ks[n]}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#sheet').hidden)closeSheet();if(e.key==='/'&&document.activeElement!==$('#q')){e.preventDefault();$('#q').focus()};const k=stepKey(e);if(k){
+  if(k.dataset.cls!==undefined){st.cls=k.dataset.cls||null;if(st.cls){st.fam=CL[st.cls].family;st.sort=null}}else{st.fam=k.dataset.fam||null;st.cls=null}
+  st.w=null;st.shown=PAGE;renderAll()}});
+addEventListener('hashchange',()=>{if(!D)return;const g=new URLSearchParams(location.hash.slice(1)).get('g')||GAMES[0].id;if(g!==st.game)loadGame(g);else{fromHash();renderAll()}});
 // the docked preview sticks under the header; prefetch a row's animation while the pointer is on it
 new ResizeObserver(()=>document.documentElement.style.setProperty('--hdr',$('header').offsetHeight+'px')).observe($('header'));
 document.addEventListener('pointerover',e=>{const r=e.target.closest('tr[data-m]');if(r&&DOCK.view&&!$('#dock').hidden){const m=moveOf(r.dataset.m);if(m)DOCK.view.then(v=>v.prefetch(m,pickName()))}});

@@ -2,27 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22%232f62c9%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20transform%3D%22translate%284%204%29%22%3E%3Crect%20x%3D%222.5%22%20y%3D%226%22%20width%3D%229%22%20height%3D%2213%22%20rx%3D%221.8%22%20transform%3D%22rotate%28-14%207%2012.5%29%22%20opacity%3D%22.5%22%2F%3E%3Crect%20x%3D%2212.5%22%20y%3D%226%22%20width%3D%229%22%20height%3D%2213%22%20rx%3D%221.8%22%20transform%3D%22rotate%2814%2017%2012.5%29%22%20opacity%3D%22.5%22%2F%3E%3Crect%20x%3D%227%22%20y%3D%224%22%20width%3D%2210%22%20height%3D%2215%22%20rx%3D%222%22%2F%3E%3Cpath%20d%3D%22M12%208.2l3.3%203.3-3.3%203.3-3.3-3.3z%22%20fill%3D%22%232f62c9%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Game Animation Library</title>
 <meta name="description" content="Game Animation Library: learn from the legends of combat design.">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,800&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
 /* Layout: animation-software shell. Sticky timeline header, filter rail on the left, card grid of "shots", slide-over detail sheet. */
 :root{
   --bg:#f3f2ee; --panel:#ffffff; --sunk:#e9e7e1; --fg:#1c1b19; --muted:#6b6860; --line:#d8d5cc;
-  --key:#e08a00; --key-ink:#8a5200; --combat:#c2412d; --calm:#2f7a6b; --chip:#efece5;
+  --key:#e08a00; --key-ink:#8a5200; --combat:#c2412d; --calm:#2f7a6b; --chip:#efece5; --playhead:#d92d20;
   --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
   --body:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
-  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; color-scheme:dark}}
+  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
-  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; color-scheme:dark}
+  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; color-scheme:dark}
 *{box-sizing:border-box}
 html,body{max-width:100%;overflow-x:clip}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:14px;line-height:1.5}
@@ -38,32 +39,61 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var
 .club:hover{border-color:#5865f2}
 .club svg{width:20px;height:20px;fill:#5865f2;flex:none}
 .brand h1{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.brand h1 a{color:inherit;text-decoration:none}
+.brand h1 a:hover{text-decoration:underline;text-underline-offset:3px}
+/* logo: the Game Design Skills mark (a controller cut by a sword) with a play button for animation, and its bold italic wordmark */
+.logo{display:inline-flex;align-items:center;gap:9px}
+.brand h1 a.logo:hover{text-decoration:none}
+.logo svg{width:40px;height:40px;flex:none;border-radius:7px}
+.logo .wm{display:flex;flex-direction:column;gap:2px;font-family:"Open Sans",var(--display);font-style:italic;font-weight:800;text-transform:uppercase;line-height:1}
+.logo .wm b{font-weight:inherit;font-size:17px;letter-spacing:-.01em}
+.logo .wm i{font-size:11.5px;letter-spacing:.24em}
 .brand .tagline{font-size:13px;color:var(--muted);font-style:italic}
-.brand .ver{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.vermeta{white-space:nowrap}
+.ver{font-family:var(--mono);font-size:11px;color:var(--muted)}
 .search{flex:1 1 280px;display:flex;align-items:center;gap:8px;background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:0 10px;min-width:0}
 .search input{flex:1;min-width:0;border:0;background:transparent;color:var(--fg);font:inherit;padding:9px 0;outline:none}
 .search kbd{font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:0 5px}
 .domain{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
-.tabs{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
-.tabs a{padding:7px 12px;font-size:13px;font-weight:500;text-decoration:none}
-.tabs a[aria-current="page"]{background:var(--fg);color:var(--bg)}
-.tabs a:not([aria-current]):hover{background:var(--chip)}
+/* app switcher: its own row with the brand, styled as underlined tabs so it never reads as one of the filled filter toggles below */
+.approw{padding-bottom:0;border-bottom:1px solid var(--line);align-items:flex-end}
+.approw .club,.approw .brand{align-self:center;margin-bottom:12px}
+.toolrow{padding-top:10px}
+.apps{display:flex;gap:0 28px;flex-wrap:wrap;margin-left:8px}
+.apps a{display:flex;gap:8px;align-items:flex-start;padding:4px 2px 9px;margin-bottom:-1px;border-bottom:3px solid transparent;color:var(--muted);text-decoration:none}
+/* each app has its own badge colour and glyph (also its favicon); the colour also marks the current app */
+.apps .ico{display:grid;place-items:center;width:28px;height:28px;flex:none;border-radius:7px;background:var(--app)}
+.apps .ico svg{width:20px;height:20px;fill:#fff}
+.apps a[aria-current="page"]{color:var(--fg);border-bottom-color:var(--app)}
+.apps a:not([aria-current]) .ico{opacity:.8}
+.apps a:not([aria-current]):hover{color:var(--fg);border-bottom-color:var(--line)}
+.apps a:not([aria-current]):hover .ico{opacity:1}
+.apps b{display:block;font-family:var(--display);font-size:17px;font-weight:700;line-height:1.25}
+.apps small{display:block;font-size:12px}
+@media (max-width:820px){.apps{margin-left:0;gap:0 20px}.apps small{display:none}.apps b{font-size:15px}}
 .domain button{border:0;background:transparent;padding:7px 12px;cursor:pointer;font-size:13px;font-weight:500}
 .domain button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
 /* timeline ruler: frame numbers across the header, keyframe diamonds = categories */
 .ruler{position:relative;height:30px;border-top:1px solid var(--line);overflow:hidden;font-family:var(--mono);font-size:10px;color:var(--muted)}
 .ruler .ticks{position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 12px);opacity:.9;height:8px}
-.ruler .keys{position:absolute;inset:8px 0 0 0;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding-inline:max(16px,env(safe-area-inset-left,0px))}
+.ruler .keys{position:absolute;inset:0;display:flex;overflow-x:auto;scrollbar-width:none;padding-top:8px;padding-inline:max(16px,env(safe-area-inset-left,0px))}
+.ruler .kfs{display:flex;gap:2px;flex:none}
 .ruler .keys::-webkit-scrollbar{display:none}
+.ruler .keys{cursor:grab}
+.ruler .keys.dragging,.ruler .keys.dragging .kf{cursor:grabbing;user-select:none}
+/* after being pulled past an end the key row springs back, overshooting slightly */
+.ruler .keys.settle{transition:transform .45s cubic-bezier(.25,1.3,.5,1)}
 .ruler .keys{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 48px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 48px),transparent)}
 .kf{display:flex;align-items:center;gap:5px;white-space:nowrap;border:0;background:transparent;cursor:pointer;padding:2px 8px 2px 4px;border-radius:3px;font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
 .kf i{width:8px;height:8px;transform:rotate(45deg);background:var(--line);display:inline-block}
 .kf:hover{color:var(--fg)}
 .kf[aria-pressed="true"]{color:var(--key-ink)}
-.kf[aria-pressed="true"] i{background:var(--key)}
-.playhead{position:absolute;top:0;bottom:0;width:2px;background:var(--combat);left:0;animation:scrub 14s linear infinite;pointer-events:none}
-@keyframes scrub{to{left:100%}}
-@media (prefers-reduced-motion: reduce){.playhead{animation:none;left:24%}}
+.kf[aria-pressed="true"] i{background:var(--playhead)}
+/* the red playhead points at the selected key and slides to the next one, overshooting it slightly */
+.playhead{position:absolute;left:0;top:0;width:2px;height:12px;background:var(--playhead);pointer-events:none;transition:transform .34s cubic-bezier(.25,1.1,.5,1)}
+.playhead::before{content:"";position:absolute;left:-4px;top:0;border:5px solid transparent;border-top:6px solid var(--playhead);border-bottom:0}
+.playhead.still{transition:none}
+@media (prefers-reduced-motion:reduce){.playhead{transition:none}}
 .shell{display:grid;grid-template-columns:240px minmax(0,1fr);gap:24px;padding-block:20px}
 aside{position:sticky;top:120px;align-self:start;max-height:calc(100vh - 140px);overflow:auto;display:grid;gap:20px;padding-right:4px}
 aside h2{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px;font-weight:600}
@@ -152,6 +182,12 @@ footer .contrib .lead{font-family:var(--display);font-weight:700;font-size:18px;
 a.tbtn{text-decoration:none;display:inline-block}
 .subcta{font-size:12px;margin-top:6px}
 .subcta a{color:var(--key-ink)}
+/* pointer to the other app, for learners who want to step through a move rather than watch a clip */
+.xapp{display:inline-flex;align-items:center;gap:8px;margin-top:10px;padding:6px 12px 6px 6px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--fg);text-decoration:none;font-size:13px}
+.xapp:hover{border-color:var(--app)}
+.xapp .ico{display:grid;place-items:center;width:24px;height:24px;flex:none;border-radius:6px;background:var(--app)}
+.xapp .ico svg{width:17px;height:17px;fill:#fff}
+.xapp b{font-weight:600}
 footer{color:var(--muted);font-size:12px;padding-block:24px;border-top:1px solid var(--line);margin-top:24px}
 @media (max-width:820px){
   .shell{grid-template-columns:minmax(0,1fr)}
@@ -165,17 +201,20 @@ footer{color:var(--muted);font-size:12px;padding-block:24px;border-top:1px solid
 <body>
 
 <header>
-  <div class="wrap hrow">
+  <div class="wrap hrow approw">
     <a class="club" href="https://funsmith.club" aria-label="Funsmith club"><svg viewBox="0 0 127.14 96.36" aria-hidden="true"><path d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0a105.89 105.89 0 0 0-26.25 8.09C2.79 32.65-1.71 56.6.54 80.21a105.73 105.73 0 0 0 32.17 16.15 77.7 77.7 0 0 0 6.89-11.11 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.66 2a68.68 68.68 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1 105.25 105.25 0 0 0 32.19-16.14c2.64-27.38-4.51-51.11-18.9-72.15ZM42.45 65.69C36.18 65.69 31 60 31 53s5-12.74 11.43-12.74S54 46 53.89 53s-5.05 12.69-11.44 12.69Zm42.24 0C78.41 65.69 73.25 60 73.25 53s5-12.74 11.44-12.74S96.23 46 96.12 53s-5.04 12.69-11.43 12.69Z"/></svg><span>Funsmith club</span></a>
-    <div class="brand"><h1>Game Animation Library</h1><span class="tagline">learn from the legends of combat design</span><span class="ver" id="ver"></span><span class="modebar" id="mode"></span></div>
-    <nav class="tabs" aria-label="Sections"><a href="./" aria-current="page">Animations</a><a href="frame-data.html">Frame Data</a><a href="trends.html">Trends</a></nav>
+    <div class="brand"><h1><a class="logo" href="./" aria-label="Game Animation Library"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="18" fill="#282c6c"/><g fill="none" stroke="#fff" stroke-width="4.4" stroke-linecap="round"><rect x="14" y="36" width="72" height="32" rx="14"/><path d="M33 44.6v14.8M24.6 52H47"/></g><path d="M56.7 30L43.3 74" stroke="#282c6c" stroke-width="11"/><g fill="#fff"><path d="M55.54 26.92l3.82 1.16-17.05 56.1-3.37 4.19-.45-5.35z"/><path d="M50.9 25.7h14l-.6 3.6h-14z"/><path d="M55.98 27l2.92.97 5.9-17.92-2.92-.95z"/><ellipse cx="63.4" cy="9.6" rx="3.4" ry="3.1"/><path d="M64 45.2v13.6l11.4-6.8z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></g></svg><span class="wm"><b>Game Animation</b><i>Library</i></span></a></h1><span class="tagline">learn from the legends of combat design</span></div>
+    <nav class="apps" aria-label="Apps"><a href="./" style="--app:#2f62c9" aria-current="page"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="9" height="13" rx="1.8" transform="rotate(-14 7 12.5)" opacity=".5"/><rect x="12.5" y="6" width="9" height="13" rx="1.8" transform="rotate(14 17 12.5)" opacity=".5"/><rect x="7" y="4" width="10" height="15" rx="2"/><path d="M12 8.2l3.3 3.3-3.3 3.3-3.3-3.3z" fill="#2f62c9"/></svg></span><span><b>Action Atlas</b><small>Compare one action across games</small></span></a><a href="frame-data.html" style="--app:#8a3fc9"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="8" height="12" rx="1.6" opacity=".35"/><rect x="7" y="4" width="8" height="12" rx="1.6" opacity=".6"/><rect x="12" y="4" width="10" height="12" rx="1.8"/><circle cx="17" cy="10" r="2.6" fill="none" stroke="#8a3fc9" stroke-width="1.6"/><rect x="2" y="18.6" width="20" height="1.6" rx=".8"/><rect x="16" y="16.8" width="2.2" height="5.2" rx="1.1"/></svg></span><span><b>Move Explorer</b><small>Step through moves frame by frame · 7 games</small></span></a><a href="trends.html" style="--app:#1f8a6e"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="4" height="8" rx="1" opacity=".55"/><rect x="10" y="9" width="4" height="12" rx="1" opacity=".75"/><rect x="17" y="5" width="4" height="16" rx="1"/><path d="M5 10l7-4 7-4" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>Trends</b><small>Compare timing across games</small></span></a></nav>
+  </div>
+  <div class="wrap hrow toolrow">
     <label class="search" for="q"><span aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Search animations, games, tags…" autocomplete="off"><kbd>/</kbd></label>
     <div class="domain" role="group" aria-label="Domain">
       <button data-d="all" aria-pressed="true">All</button><button data-d="combat" aria-pressed="false">Combat</button><button data-d="non-combat" aria-pressed="false">Non-combat</button>
     </div>
+    <span class="vermeta"><span class="ver" id="ver"></span><span class="modebar" id="mode"></span></span>
     <button class="rail-toggle" id="railBtn" aria-expanded="false">Filters</button>
   </div>
-  <div class="ruler"><div class="ticks"></div><div class="keys" id="keys"></div><div class="playhead"></div></div>
+  <div class="ruler"><div class="ticks"></div><div class="keys"><div class="kfs" id="keys"></div><span class="playhead" id="playhead" hidden></span></div></div>
 </header>
 
 <div class="wrap shell">
@@ -186,7 +225,7 @@ footer{color:var(--muted);font-size:12px;padding-block:24px;border-top:1px solid
     <section><h2>Example games</h2><div class="flist" id="games"></div></section>
   </aside>
   <main>
-    <div class="status"><div><h2 id="ttl">All animations</h2><p id="sub"></p><p class="subcta">Community-built and growing. Know a better example? <a href="#submit">Submit a GIF</a>.</p></div><span class="count" id="count"></span></div>
+    <div class="status"><div><h2 id="ttl">All animations</h2><p id="sub"></p><p class="subcta">Community-built and growing. Know a better example? <a href="#submit">Submit a GIF</a>.</p><a class="xapp" href="frame-data.html#g=elden-ring" style="--app:#8a3fc9"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="8" height="12" rx="1.6" opacity=".35"/><rect x="7" y="4" width="8" height="12" rx="1.6" opacity=".6"/><rect x="12" y="4" width="10" height="12" rx="1.8"/><circle cx="17" cy="10" r="2.6" fill="none" stroke="#8a3fc9" stroke-width="1.6"/><rect x="2" y="18.6" width="20" height="1.6" rx=".8"/><rect x="16" y="16.8" width="2.2" height="5.2" rx="1.1"/></svg></span><span>Want to step through a move frame by frame, with its hitboxes? <b>Open Elden Ring in Move Explorer →</b></span></a></div><span class="count" id="count"></span></div>
     <div class="active" id="active"></div>
     <div class="grid" id="grid"></div>
     <footer>
@@ -306,7 +345,7 @@ function render(){
   const list=base();
   // keyframe ruler
   const cc=counts(base('cat'),a=>[a.category]);
-  $('#keys').innerHTML=D.categories.filter(c=>st.dom==='all'||c.domain===st.dom).map(c=>`<button class="kf" data-cat="${c.id}" aria-pressed="${st.cat===c.id}"><i></i>${esc(c.name)}</button>`).join('');
+  $('#keys').innerHTML=D.categories.filter(c=>st.dom==='all'||c.domain===st.dom).map(c=>`<button class="kf" data-cat="${c.id}" aria-pressed="${st.cat===c.id}"><i></i>${esc(c.name)}</button>`).join('');placePlayhead();
   $('#cats').innerHTML=`<button class="fitem" data-cat="" aria-pressed="${!st.cat}"><span>All categories</span><span>${base('cat').length}</span></button>`+D.categories.filter(c=>st.dom==='all'||c.domain===st.dom).map(c=>`<button class="fitem" data-cat="${c.id}" aria-pressed="${st.cat===c.id}"><span>${esc(c.name)}</span><span>${cc.get(c.id)||0}</span></button>`).join('');
   const tc=[...counts(base('tag'),a=>a.tags)].sort((x,y)=>y[1]-x[1]||x[0].localeCompare(y[0])).slice(0,48);
   st.tags.forEach(t=>{if(!tc.find(x=>x[0]===t))tc.unshift([t,0])});
@@ -372,7 +411,54 @@ document.addEventListener('click',e=>{
 });
 $('#scrim').onclick=closeSheet;
 $('#q').addEventListener('input',e=>{st.q=e.target.value.trim().toLowerCase();render()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#sheet').hidden)closeSheet();if(e.key==='/'&&document.activeElement!==$('#q')){e.preventDefault();$('#q').focus()}});
+// the playhead appears in place (no slide) on load, after a resize and after being hidden; the key row scrolls to keep it in view
+let phStill=true;
+function placePlayhead(){
+  const ph=$('#playhead'),k=$('#keys .kf[aria-pressed="true"]');
+  if(!k){ph.hidden=true;phStill=true;return}
+  const i=k.querySelector('i'),x=i.offsetLeft+i.offsetWidth/2,row=ph.parentNode;
+  ph.classList.toggle('still',phStill);ph.hidden=false;phStill=false;
+  ph.style.transform=`translateX(${x-1}px)`;
+  if(row.scrollWidth>row.clientWidth&&(x<row.scrollLeft+40||x>row.scrollLeft+row.clientWidth-60))row.scrollTo({left:x-row.clientWidth/2,behavior:'smooth'})}
+addEventListener('resize',()=>{phStill=true;placePlayhead()});
+document.fonts?.ready.then(()=>{phStill=true;placePlayhead()});
+// the key row scrolls sideways by dragging (a flick glides on) or by the wheel; pulled past either end it stretches with
+// growing resistance and springs back. A vertical wheel moves the row only while it can, then scrolls the page
+function elasticRow(row){
+  const calm=matchMedia('(prefers-reduced-motion: reduce)'),max=()=>Math.max(0,row.scrollWidth-row.clientWidth);
+  let p=0,v=0,glide=0,drag=null,dragged=false,wt;
+  const show=()=>{const c=Math.min(max(),Math.max(0,p)),o=p-c;row.scrollLeft=c;row.style.transform=o?`translateX(${(-o*.5/(1+Math.abs(o)/160)).toFixed(1)}px)`:''};
+  const settle=()=>{p=Math.min(max(),Math.max(0,p));if(!row.style.transform)return;row.classList.toggle('settle',!calm.matches);row.style.transform=''};
+  const stop=()=>{cancelAnimationFrame(glide);glide=0;row.classList.remove('settle')};
+  // past an end the glide brakes hard, so a flick into the end stretches the row briefly before it springs back
+  const fly=()=>{v*=p<0||p>max()?.6:.95;p+=v;show();if(Math.abs(v)>.5)glide=requestAnimationFrame(fly);else{glide=0;settle()}};
+  row.addEventListener('transitionend',e=>{if(e.target===row)row.classList.remove('settle')});
+  row.addEventListener('pointerdown',e=>{if(e.button||e.pointerType==='touch')return;stop();p=row.scrollLeft;v=0;dragged=false;drag={id:e.pointerId,x:e.clientX,p,t:e.timeStamp}});
+  row.addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.id)return;const dx=e.clientX-drag.x;
+    if(!dragged){if(Math.abs(dx)<4)return;dragged=true;row.setPointerCapture(e.pointerId);row.classList.add('dragging')}
+    const np=drag.p-dx;v=(np-p)/Math.max(1,e.timeStamp-drag.t)*16;drag.t=e.timeStamp;p=np;show()});
+  const end=e=>{if(!drag||e.pointerId!==drag.id)return;const still=e.timeStamp-drag.t>80;drag=null;row.classList.remove('dragging');if(!dragged)return;
+    if(!calm.matches&&!still&&Math.abs(v)>1&&p>=0&&p<=max())glide=requestAnimationFrame(fly);else settle()};
+  row.addEventListener('pointerup',end);row.addEventListener('pointercancel',end);
+  // a drag that ends over a key doesn't select it
+  row.addEventListener('click',e=>{if(dragged){dragged=false;e.stopPropagation();e.preventDefault()}},true);
+  row.addEventListener('wheel',e=>{if(e.ctrlKey)return;
+    const k=e.deltaMode===1?16:e.deltaMode===2?row.clientWidth:1,dx=e.deltaX*k,dy=e.deltaY*k,m=max();
+    if(Math.abs(dx)<=Math.abs(dy)&&!e.shiftKey){
+      if(!m||(dy<0?row.scrollLeft<=0:row.scrollLeft>=m-1))return;
+      e.preventDefault();stop();row.scrollLeft+=dy;return}
+    e.preventDefault();stop();if(!row.style.transform)p=row.scrollLeft;p+=Math.abs(dx)>Math.abs(dy)?dx:dy;show();
+    clearTimeout(wt);wt=setTimeout(settle,120)},{passive:false})}
+elasticRow($('#keys').parentNode);
+// Left/Right step through the ruler's keys like keyframes, stopping at the first and last; returns the key to select
+function stepKey(e){
+  if((e.key!=='ArrowLeft'&&e.key!=='ArrowRight')||e.ctrlKey||e.shiftKey||e.altKey||e.metaKey||e.defaultPrevented)return null;
+  if(e.target.closest?.('input,select,textarea,[contenteditable]')||!$('#sheet').hidden)return null;
+  const ks=[...document.querySelectorAll('#keys .kf')];if(!ks.length)return null;
+  const i=ks.findIndex(k=>k.getAttribute('aria-pressed')==='true'),d=e.key==='ArrowLeft'?-1:1;
+  const n=i<0?(d>0?0:ks.length-1):Math.min(ks.length-1,Math.max(0,i+d));
+  e.preventDefault();return n===i?null:ks[n]}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#sheet').hidden)closeSheet();if(e.key==='/'&&document.activeElement!==$('#q')){e.preventDefault();$('#q').focus()};const k=stepKey(e);if(k){st.cat=k.dataset.cat;render()}});
 $('#ver').textContent=`${A.length} entries · ${D.categories.length} categories`;
 async function vote(b){
   const t=b.dataset.t,want=+b.dataset.vote,cur=CS.mine[t]||0,value=cur===want?0:want;
