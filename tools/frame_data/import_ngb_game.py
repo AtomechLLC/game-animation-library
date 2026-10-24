@@ -172,22 +172,59 @@ def render_move(T, bank, m, total, wins):
     return sheet, w, h, cols, boxes
 
 
-def write_icon(sdir, mv, frame):
-    """Dragon Sword icon: one preview frame (mid-swing) fitted in 96 px."""
+def write_icon(kmd_bytes):
+    """Dragon Sword icon: katana.kmd drawn side on, blade up and to the right, as the weapon menu shows the model
+    (the game has no 2D weapon icons: its menus spin the 3D models). A small z-buffered rasteriser, 4x then 96 px."""
     from PIL import Image
-    sheet = Image.open(os.path.join(sdir, mv['sheet']))
-    i = frame - 1
-    cell = sheet.crop(((i % mv['cols']) * mv['w'], (i // mv['cols']) * mv['h'], (i % mv['cols'] + 1) * mv['w'], (i // mv['cols'] + 1) * mv['h']))
-    cell = cell.crop(cell.getbbox())
-    cell.thumbnail((92, 92), Image.LANCZOS)
-    icon = Image.new('RGBA', (96, 96), (0, 0, 0, 0))
-    icon.paste(cell, ((96 - cell.width) // 2, (96 - cell.height) // 2))
+    kmd = nf.KMD(kmd_bytes)
+    m, S = kmd.meshes[0], 384
+    a = np.radians(45)
+    R = np.array([[np.cos(a), -np.sin(a), 0], [np.sin(a), np.cos(a), 0], [0, 0, 1]])
+    P = m['pos'][:, [2, 0, 1]] @ R.T                         # blade (+z) to screen x, edge (x) to screen y
+    N = m['nrm'][:, [2, 0, 1]] @ R.T
+    lo, hi = P[:, :2].min(0), P[:, :2].max(0)
+    sc, c = S * 0.94 / max(hi - lo), (lo + hi) / 2
+    X, Y, Z = (P[:, 0] - c[0]) * sc + S / 2, S / 2 - (P[:, 1] - c[1]) * sc, P[:, 2]
+    img, zb = np.zeros((S, S, 4)), np.full((S, S), -1e9)
+    light = np.array([-0.4, 0.6, 0.7]) / np.linalg.norm([-0.4, 0.6, 0.7])
+    for s in m['subs']:
+        if not len(s['strip']):
+            continue
+        t = s['tex'][0] if s['tex'] and s['tex'][0] >= 0 else None
+        tex = np.asarray(kmd.texture(t).convert('RGBA')) / 255 if t is not None else None
+        for tri in nf.strip_triangles(s['strip']):
+            xs, ys = X[tri], Y[tri]
+            x0, x1 = max(0, int(xs.min())), min(S - 1, int(np.ceil(xs.max())))
+            y0, y1 = max(0, int(ys.min())), min(S - 1, int(np.ceil(ys.max())))
+            d = (ys[1] - ys[2]) * (xs[0] - xs[2]) + (xs[2] - xs[1]) * (ys[0] - ys[2])
+            if x1 < x0 or y1 < y0 or abs(d) < 1e-9:
+                continue
+            gx, gy = np.meshgrid(np.arange(x0, x1 + 1) + .5, np.arange(y0, y1 + 1) + .5)
+            w0 = ((ys[1] - ys[2]) * (gx - xs[2]) + (xs[2] - xs[1]) * (gy - ys[2])) / d
+            w1 = ((ys[2] - ys[0]) * (gx - xs[2]) + (xs[0] - xs[2]) * (gy - ys[2])) / d
+            W = np.stack([w0, w1, 1 - w0 - w1], -1)
+            inside = (W >= 0).all(-1)
+            if not inside.any():
+                continue
+            z, n = W @ Z[tri], W @ N[tri]
+            n /= np.maximum(np.linalg.norm(n, axis=-1, keepdims=True), 1e-6)
+            if tex is not None:
+                uv, (h, w) = W @ m['uv'][tri], tex.shape[:2]
+                col = tex[(uv[..., 1] % 1 * h).astype(int) % h, (uv[..., 0] % 1 * w).astype(int) % w]
+            else:
+                col = np.broadcast_to([.6, .6, .6, 1.], z.shape + (4,))
+            zt, out = zb[y0:y1 + 1, x0:x1 + 1], img[y0:y1 + 1, x0:x1 + 1]
+            ok = inside & (col[..., 3] > 0.5) & (z > zt)
+            zt[ok] = z[ok]
+            out[ok, :3] = np.clip(col[ok, :3] * (0.45 + 0.75 * np.abs(n[ok] @ light))[:, None], 0, 1)
+            out[ok, 3] = 1
+    icon = Image.fromarray((img * 255).astype(np.uint8), 'RGBA').resize((96, 96), Image.LANCZOS)
     idir = os.path.join(ROOT, 'frame-data', 'icons', GAME_ID)
     os.makedirs(idir, exist_ok=True)
-    icon.save(os.path.join(idir, 'dragonSword.webp'), 'WEBP', quality=80)
+    icon.save(os.path.join(idir, 'dragonSword.webp'), 'WEBP', quality=85)
     with open(os.path.join(idir, 'icons.json'), 'w') as f:
-        json.dump({'lead': 'The icon is a frame of the preview figure',
-                   'note': 'Posed from Team Ninja\'s animation data.',
+        json.dump({'lead': 'The icon is the game\'s own Dragon Sword model',
+                   'note': 'Drawn from katana.kmd, as the weapon menu shows it. Art (c) Tecmo.',
                    'icons': {'Dragon Sword': {'file': 'dragonSword.webp'}}}, f, indent=1)
 
 
@@ -238,6 +275,7 @@ def main():
     with open(path, 'w', encoding='utf-8') as f:
         json.dump(out, f, ensure_ascii=False, indent=1)
     print('wrote', path, len(moves), 'moves')
+    write_icon(cmn['katana.kmd'])
     if args.no_sprites:
         return
     T, _ = nf.kmd_skeleton(nf.afs(disc.read('chr_ryu.afs'))['ryu.kmd'])
@@ -258,7 +296,6 @@ def main():
         name, w, h, cols, boxes = done[key]
         mv[r['id']] = {'sheet': name, 'w': w, 'h': h, 'cols': cols, 'frames': boxes}
         print('  sheet', r['id'], len(boxes), 'frames')
-    write_icon(sdir, mv['x2'], 13)
     with open(os.path.join(sdir, 'moves', 'dragonSword.json'), 'w') as f:
         json.dump({'moves': mv}, f, separators=(',', ':'))
     with open(os.path.join(sdir, 'sprites.json'), 'w') as f:

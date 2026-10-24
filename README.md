@@ -98,6 +98,14 @@ No Rest for the Wicked works the same way (`"game": "no-rest-for-the-wicked"` on
 `tools/frame_data/export_nrftw_common.py` bakes the player's own non-attack clips (quicksteps, rolls, crouch, swim,
 mantles, ladder and wall climbing, wall shimmy) listed in `tools/er_gifs/nrftw_common_anims.json` into its `Common`
 class, and `GAME=no-rest-for-the-wicked render.js --sheet` draws their contact sheets.
+
+Devil May Cry 3 jobs (`"game": "devil-may-cry-3"`, out `<entry>-dmc<n>`) play Dante's frame data moves by class and move
+id (`ebony-ivory` / `ebony-ivory.rain-storm`); `add_to_library.py` links them to the move in the Frame Data tab.
+
+Where a render now shows a move that an entry only had a weak clip for (flagged for review as a meme, trailer or
+unclear shot), the weak clip was taken out: it moved to the entry's `rejected_gifs` and to `removed` in
+`gif-screening.json` with the verdict `replaced`, and went on `gif-blocklist.json` so it is not fetched again.
+
 ## Removed GIFs (blocklist)
 
 `gif-blocklist.json` lists GIFs removed for good on the review page: their `page_url`, `media_url`, `source_url` and the
