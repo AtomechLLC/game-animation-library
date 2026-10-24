@@ -15,7 +15,7 @@ export function createViewer(el, base) {
       <div class="v3d-scrub"><div class="v3d-strip"></div><input type="range" min="1" max="1" step="1" value="1" aria-label="Frame"></div>
       <select class="v3d-speed" aria-label="Playback speed"><option value="1">1×</option><option value="0.5">½×</option><option value="0.25" selected>¼×</option><option value="0.125">⅛×</option></select>
     </div>
-    <p class="v3d-keys"><span><kbd>Space</kbd> Play / pause</span><span><kbd>,</kbd> <kbd>.</kbd> Previous / next frame</span><span><kbd>Ctrl</kbd> + <kbd>←</kbd> <kbd>→</kbd> Back / forward 1 second</span><span><kbd>Shift</kbd> + <kbd>←</kbd> <kbd>→</kbd> First / last frame</span></p>
+    <p class="v3d-keys"><span><kbd>Space</kbd> Play / pause</span><span><kbd>,</kbd> <kbd>.</kbd> or <kbd>←</kbd> <kbd>→</kbd> Previous / next frame</span><span><kbd>Ctrl</kbd> + <kbd>←</kbd> <kbd>→</kbd> Back / forward 1 second</span><span><kbd>Shift</kbd> + <kbd>←</kbd> <kbd>→</kbd> First / last frame</span></p>
     <div class="v3d-opts"><span class="clip-alts" role="group" aria-label="Clip"></span><a class="v3d-who" target="_blank" rel="noopener"></a></div>`;
   const $ = s => el.querySelector(s);
   const canvas = $('canvas'), ctx = canvas.getContext('2d'), img = $('img'), msg = $('.v3d-msg');
@@ -77,6 +77,10 @@ export function createViewer(el, base) {
       const d = e.key === 'ArrowLeft' ? -1 : 1;
       go(e.shiftKey ? (d < 0 ? 1 : N) : Math.min(N, Math.max(1, f + d * FPS)));
     }
+    // with focus in the viewer (the 3D stage or a control), plain arrows step a frame, like , and .; elsewhere on the page
+    // they step the weapon type
+    else if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && !e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey
+      && el.contains(e.target) && e.target.type !== 'range') { e.preventDefault(); setPlaying(false); go(f + (e.key === 'ArrowLeft' ? -1 : 1)) }
     else if (e.key === ',') { setPlaying(false); go(f - 1) }
     else if (e.key === '.') { setPlaying(false); go(f + 1) }
   };

@@ -558,7 +558,7 @@ function openMove(key){
 // covers swaps the move in place, other rows open the detail sheet. The 3D viewer holds the picked weapon, else each
 // move's class preview weapon.
 // Bump ?v= whenever viewer3d.js (and the ?v= on its navigation3d.js import), sprites2d.js or clipviewer.js changes: browsers and Pages cache them, and a stale copy next to a new page breaks the dock
-const VIEWER='./frame-data/viewer3d.js?v=12',VIEWER2D='./frame-data/sprites2d.js?v=4',CLIPVIEWER='./frame-data/clipviewer.js?v=3';
+const VIEWER='./frame-data/viewer3d.js?v=13',VIEWER2D='./frame-data/sprites2d.js?v=5',CLIPVIEWER='./frame-data/clipviewer.js?v=4';
 // the models and sprites viewers load per class (classData); the clip viewer reads each move's clips
 const byClass=()=>G.models||G.sprites;
 const DOCK={key:null,view:null,game:null,cls:null,w:null,cm:null,seq:0};
@@ -730,7 +730,7 @@ document.fonts?.ready.then(()=>{phStill=true;placePlayhead()});
 // Left/Right step through the ruler's keys like keyframes, stopping at the first and last; returns the key to select
 function stepKey(e){
   if((e.key!=='ArrowLeft'&&e.key!=='ArrowRight')||e.ctrlKey||e.shiftKey||e.altKey||e.metaKey||e.defaultPrevented)return null;
-  if(e.target.closest?.('input,select,textarea,[contenteditable]')||!$('#sheet').hidden)return null;
+  if(e.target.closest?.('input,select,textarea,[contenteditable],#dock')||!$('#sheet').hidden)return null;
   const ks=[...document.querySelectorAll('#keys .kf')];if(!ks.length)return null;
   const i=ks.findIndex(k=>k.getAttribute('aria-pressed')==='true'),d=e.key==='ArrowLeft'?-1:1;
   const n=i<0?(d>0?0:ks.length-1):Math.min(ks.length-1,Math.max(0,i+d));

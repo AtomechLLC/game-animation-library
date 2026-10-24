@@ -60,7 +60,7 @@ const helpHTML = mode => `<p class="v3d-help-title" id="v3d-help-title">Help</p>
     : row('Left or middle drag', 'Orbit') + row('Right drag / Shift + drag', 'Pan') + row('Scroll wheel', 'Zoom') + row('Ctrl + scroll', 'Zoom, faster')}</ul>
   <p class="v3d-help-title">Viewport</p>
   <ul>${row(kbd('Tab', 'Shift + Tab'), 'Input mode') + row(kbd('F', 'Home', 'Numpad .'), 'Frame') + row(kbd('D', 'Numpad 0'), 'Default camera') + row(kbd('Z'), 'Floor grid')
-    + row(kbd('Space'), 'Play / pause') + row(kbd(',', '.'), 'Previous / next frame') + row(kbd('Ctrl + ←', 'Ctrl + →'), 'Back / forward 1 second')
+    + row(kbd('Space'), 'Play / pause') + row(kbd(',', '.', '←', '→'), 'Previous / next frame') + row(kbd('Ctrl + ←', 'Ctrl + →'), 'Back / forward 1 second')
     + row(kbd('Shift + ←', 'Shift + →'), 'First / last frame') + row(kbd('/', '?'), 'Help')}</ul>
   <p class="v3d-help-title">Numpad</p>
   <ul>${row('2 / 4 / 6 / 8', 'Orbit') + row('1 / 3 / 7', 'Front / Right / Top') + row('Ctrl + 7', 'Bottom') + row('9', 'Opposite view') + row('+ / −', 'Zoom in / out')}</ul>`;
@@ -72,7 +72,7 @@ const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).
 // label next to the frame number.
 export async function createViewer(el, base) {
   const man = await manifest(base);
-  el.innerHTML = `<div class="v3d-stage" tabindex="0" aria-label="3D view. Drag with the left or middle button to orbit, add Shift or use the right button to pan, wheel to zoom or orbit. Numpad 1, 3 and 7 for front, right and top. F frames the move, D restores the default camera, Z shows or hides the floor grid, Tab switches between mouse and trackpad, slash opens Help."><canvas></canvas><div class="v3d-msg">Loading models…</div>
+  el.innerHTML = `<div class="v3d-stage" tabindex="0" aria-label="3D view. Drag with the left or middle button to orbit, add Shift or use the right button to pan, wheel to zoom or orbit. Numpad 1, 3 and 7 for front, right and top. F frames the move, D restores the default camera, Z shows or hides the floor grid, Tab switches between mouse and trackpad, left and right arrows step a frame, slash opens Help."><canvas></canvas><div class="v3d-msg">Loading models…</div>
     <div class="v3d-corner"><div class="v3d-gizmo"><canvas role="img" aria-label="Orientation gizmo: click an axis to align the view"></canvas></div>
       <fieldset class="v3d-mode" aria-label="Viewport input device"><button type="button" data-mode="mouse">Mouse</button><button type="button" data-mode="trackpad">Trackpad</button></fieldset></div>
     <div class="v3d-side"><div class="v3d-tools">
@@ -89,7 +89,7 @@ export async function createViewer(el, base) {
       <div class="v3d-scrub"><div class="v3d-strip"></div><input type="range" min="1" max="1" step="1" value="1" aria-label="Frame"></div>
       <select class="v3d-speed" aria-label="Playback speed"><option value="1">1×</option><option value="0.5">½×</option><option value="0.25">¼×</option><option value="0.1">0.1×</option></select>
     </div>
-    <p class="v3d-keys"><span><kbd>Space</kbd> Play / pause</span><span><kbd>,</kbd> <kbd>.</kbd> Previous / next frame</span><span><kbd>Ctrl</kbd> + <kbd>←</kbd> <kbd>→</kbd> Back / forward 1 second</span><span><kbd>Shift</kbd> + <kbd>←</kbd> <kbd>→</kbd> First / last frame</span></p>
+    <p class="v3d-keys"><span><kbd>Space</kbd> Play / pause</span><span><kbd>,</kbd> <kbd>.</kbd> or <kbd>←</kbd> <kbd>→</kbd> Previous / next frame</span><span><kbd>Ctrl</kbd> + <kbd>←</kbd> <kbd>→</kbd> Back / forward 1 second</span><span><kbd>Shift</kbd> + <kbd>←</kbd> <kbd>→</kbd> First / last frame</span></p>
     <div class="v3d-opts"><label><input type="checkbox" class="v3d-hb" checked> Hitboxes</label>
       <label><input type="checkbox" class="v3d-ghost"> Show hitboxes on every frame</label>
       <label><input type="checkbox" class="v3d-rm" checked> Root motion</label>
@@ -240,6 +240,10 @@ export async function createViewer(el, base) {
       const d = e.key === 'ArrowLeft' ? -1 : 1;
       go(e.shiftKey ? (d < 0 ? 1 : N) : Math.min(N, Math.max(1, f + d * FPS)));
     }
+    // with focus in the viewer (the 3D stage or a control), plain arrows step a frame, like , and .; elsewhere on the page
+    // they step the weapon type
+    else if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && !e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey
+      && el.contains(e.target) && e.target.type !== 'range') { e.preventDefault(); setPlaying(false); go(f + (e.key === 'ArrowLeft' ? -1 : 1)) }
     else if (e.key === ',') { setPlaying(false); go(f - 1) }
     else if (e.key === '.') { setPlaying(false); go(f + 1) }
   };
