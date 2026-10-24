@@ -48,6 +48,10 @@ Combine deliberate content improvement with contributions from knowledgeable use
 - The Move Explorer 3D viewport is a previewer, not a modelling tool: simplicity and elegance come first.
 - Apply this direction within the active task. Product goals guide decisions; they do not independently authorize additional features or a wider redesign.
 
+## Terminology
+
+- **Frame** refers only to a single unit of animation time. Name other things differently, for example "Fit to view" for the camera action that brings the whole move into view.
+
 ## Basis and interpretation
 
 This direction is grounded in Xelnath's project discussion beginning on 20 October 2026 and his follow-up answers shared by Sungkuk Park. His stated aims include student learning through observation and cross-game comparison, classroom use of interactive references, better examples, easy contribution, and discovery of Jacopo's class.
