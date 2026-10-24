@@ -121,7 +121,7 @@ aside h2{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transf
 /* the way back from a class to its family, in the weapon row's heading, in the page's accent colour */
 .back{flex:none;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--key);background:var(--panel);color:var(--key-ink);border-radius:999px;padding:3px 12px 3px 9px;font:600 13px var(--body);letter-spacing:0;text-transform:none;cursor:pointer}
 .back:hover{background:var(--key);color:#1c1b19}
-.back kbd,.wtiles .def kbd{border:1px solid currentColor;border-radius:3px;padding:0 4px;font:500 10px var(--mono);opacity:.8}
+.back kbd,.wtiles .def kbd,.wbtn kbd{border:1px solid currentColor;border-radius:3px;padding:0 4px;font:500 10px var(--mono);opacity:.8}
 /* Class default keeps the key's line while it is off, so the weapon row does not change height */
 .wtiles .def kbd{color:var(--muted)}.wtiles .def kbd.off{visibility:hidden}
 .head1 #sub{flex:1 1 16ch;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -645,7 +645,7 @@ function moveList(list,scale){
   const th=k=>{const c=COLS.find(x=>x[0]===k),n=c[3]&&k!=='strip'?'n':'';
     return WIDE?`<th class="${n}" ${st.sort===k?`aria-sort="${st.dir>0?'ascending':'descending'}"`:''} title="${esc(colTip(c))}"><button data-sort="${k}">${esc(colName(c))}</button></th>`
       :`<th class="${n}" title="${esc(colTip(c))}">${esc(colName(c))}</th>`};
-  const head=`<thead><tr>${cols.map(th).join('')}<th class="mx"><button class="wbtn" id="mlistWide" aria-expanded="${WIDE}" title="${WIDE?'Back to the short list beside the inspector':'Show every column of the moveset'}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${WIDE?'M10 5l-7 7 7 7M14 5l7 7-7 7':'M3 12h18M7 7l-5 5 5 5M17 7l5 5-5 5'}"/></svg>${WIDE?'Collapse':'Expand'}</button></th></tr></thead>`;
+  const head=`<thead><tr>${cols.map(th).join('')}<th class="mx"><button class="wbtn" id="mlistWide" aria-expanded="${WIDE}" aria-keyshortcuts="Tab" title="${WIDE?'Back to the short list beside the inspector':'Show every column of the moveset'}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${WIDE?'M10 5l-7 7 7 7M14 5l7 7-7 7':'M3 12h18M7 7l-5 5 5 5M17 7l5 5-5 5'}"/></svg>${WIDE?'Collapse':'Expand'} <kbd>Tab</kbd></button></th></tr></thead>`;
   const row=m=>`<tr data-m="${esc(m.class+'|'+m.id)}"${DOCK.key===m.class+'|'+m.id?' class="on"':''}>${cols.map(k=>cell(k,m,scale)).join('')}<td class="mx"></td></tr>`;
   let body;
   if(WIDE&&st.sort)body=sorted(list).map(row).join('');
@@ -754,7 +754,7 @@ async function dock(list){
     sec.setAttribute('aria-label',G.models?'3D preview':G.sprites?'Hitbox preview':'Hitbox clip');
     if(DOCK.game!==G.id){if(DOCK.view)DOCK.view.then(x=>x.dispose());DOCK.view=Promise.resolve(v.createViewer($('#dockView'),byClass()||G.clips));DOCK.game=G.id;DOCK.key=null
       // the viewer's key line also names the moveset's Up/Down keys (shown while the Moveset Inspector is)
-      DOCK.view.then(()=>$('#dockView .v3d-keys')?.insertAdjacentHTML('afterbegin','<span class="mkey"><kbd>↑</kbd> <kbd>↓</kbd> Previous / next move</span><span class="mkey"><kbd>Ctrl</kbd> + <kbd>↑</kbd> <kbd>↓</kbd> Back / forward 10 moves</span><span class="mkey"><kbd>Shift</kbd> + <kbd>↑</kbd> <kbd>↓</kbd> First / last move</span>'))}
+      DOCK.view.then(()=>$('#dockView .v3d-keys')?.insertAdjacentHTML('afterbegin','<span class="mkey"><kbd>↑</kbd> <kbd>↓</kbd> Previous / next move</span><span class="mkey"><kbd>Ctrl</kbd> + <kbd>↑</kbd> <kbd>↓</kbd> Back / forward 10 moves</span><span class="mkey"><kbd>Shift</kbd> + <kbd>↑</kbd> <kbd>↓</kbd> First / last move</span><span class="mkey"><kbd>Tab</kbd> Expand / collapse moveset</span>'))}
     // keep the move on show while it is still in the list (re-shown when the picked weapon changes); otherwise show
     // the list's first move
     const cur=ok.find(m=>m.class+'|'+m.id===DOCK.key),linked=LINKED&&ok.find(m=>m.class+'|'+m.id===LINKED);
@@ -904,7 +904,14 @@ function stepMove(e){
   const i=ms.findIndex(m=>m.class+'|'+m.id===DOCK.key),dir=e.key==='ArrowUp'?-1:1;
   const n=e.shiftKey?(dir<0?0:ms.length-1):i<0?0:e.ctrlKey?Math.min(ms.length-1,Math.max(0,i+dir*10)):i+dir;
   e.preventDefault();if(n!==i&&n>=0&&n<ms.length)preview(ms[n]);return true}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#sheet').hidden)closeSheet();if(stepMove(e))return;
+// Tab expands or collapses the Moveset Inspector while it is shown, like its Expand / Collapse button; Shift+Tab and
+// Tab in a text field still move focus
+function toggleWide(e){
+  if(e.key!=='Tab'||e.ctrlKey||e.shiftKey||e.altKey||e.metaKey||e.defaultPrevented)return false;
+  const d=$('#dock');if(d.hidden||!d.classList.contains('set')||d.classList.contains('min')||!$('#sheet').hidden
+    ||e.target.closest?.('input,select,textarea,[contenteditable]'))return false;
+  e.preventDefault();setWide(!WIDE);return true}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#sheet').hidden)closeSheet();if(stepMove(e)||toggleWide(e))return;
   if(e.key==='Backspace'&&!e.ctrlKey&&!e.shiftKey&&!e.altKey&&!e.metaKey&&!e.defaultPrevented&&$('#sheet').hidden
     &&!e.target.closest?.('input,select,textarea,[contenteditable]')&&goUp())e.preventDefault();if(e.key==='/'&&document.activeElement!==$('#q')){e.preventDefault();$('#q').focus()};const k=stepKey(e);if(k){
   if(k.dataset.cls!==undefined){st.cls=k.dataset.cls||null;if(st.cls){st.fam=CL[st.cls].family;st.sort=null}}else{st.fam=k.dataset.fam||null;st.cls=null}
