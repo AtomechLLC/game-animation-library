@@ -1,0 +1,57 @@
+{
+ "fps": 60,
+ "smooth": true,
+ "kinds": {
+  "p": "Hurtbox",
+  "a": "Attack"
+ },
+ "source": {
+  "name": "Hollow Knight game files",
+  "url": "https://github.com/AtomechLLC/game-animation-library/blob/main/tools/frame_data/import_hk_game.py",
+  "author": "Team Cherry"
+ },
+ "classes": {
+  "knight": {
+   "file": "moves/knight.json"
+  },
+  "hornet": {
+   "file": "moves/hornet.json"
+  },
+  "hornet2": {
+   "file": "moves/hornet2.json"
+  },
+  "mantisLord": {
+   "file": "moves/mantisLord.json"
+  },
+  "soulMaster": {
+   "file": "moves/soulMaster.json"
+  },
+  "pureVessel": {
+   "file": "moves/pureVessel.json"
+  },
+  "nkg": {
+   "file": "moves/nkg.json"
+  },
+  "hornetSilksong": {
+   "file": "moves/hornetSilksong.json"
+  },
+  "lace": {
+   "file": "moves/lace.json"
+  },
+  "bellBeast": {
+   "file": "moves/bellBeast.json"
+  },
+  "lastJudge": {
+   "file": "moves/lastJudge.json"
+  },
+  "phantom": {
+   "file": "moves/phantom.json"
+  },
+  "widow": {
+   "file": "moves/widow.json"
+  },
+  "mossMother": {
+   "file": "moves/mossMother.json"
+  }
+ }
+}

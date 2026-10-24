@@ -2917,6 +2917,636 @@
    "game": "Street Fighter III: 3rd Strike",
    "what": "Ken quick roll on wake-up: sprite frames with hurtboxes and attack boxes",
    "confidence": "low"
+  },
+  {
+   "animation": "defense.sidestep-quickstep",
+   "clip": "defense.sidestep-quickstep-nr0",
+   "game": "No Rest for the Wicked",
+   "what": "Short quickstep dodge to the left, right, back and forward in turn",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.crouch",
+   "clip": "locomotion.crouch-nr0",
+   "game": "No Rest for the Wicked",
+   "what": "Crouched sneaking stance, idle loop",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.crouch-walk",
+   "clip": "locomotion.crouch-walk-nr0",
+   "game": "No Rest for the Wicked",
+   "what": "Crouched sneak walk loop, two cycles",
+   "confidence": "high"
+  },
+  {
+   "animation": "exploration.sneak-tiptoe",
+   "clip": "locomotion.crouch-walk-nr0",
+   "game": "No Rest for the Wicked",
+   "what": "Crouched sneak walk loop, two cycles",
+   "confidence": "high"
+  },
+  {
+   "animation": "exploration.swim-surface",
+   "clip": "exploration.swim-surface-nr0",
+   "game": "No Rest for the Wicked",
+   "what": "Surface swimming: the slow stroke loop, then the fast crawl",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.mantle-ledge-climb",
+   "clip": "locomotion.mantle-ledge-climb-nr0",
+   "game": "No Rest for the Wicked",
+   "what": "Mantling up a 1 m ledge, then a 2 m ledge (the ledge is not drawn)",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.vault",
+   "clip": "locomotion.vault-nr0",
+   "game": "No Rest for the Wicked",
+   "what": "Quick vault up onto a waist-high ledge (the ledge is not drawn)",
+   "confidence": "low"
+  },
+  {
+   "animation": "locomotion.ledge-grab-hang",
+   "clip": "locomotion.ledge-grab-hang-nr0",
+   "game": "No Rest for the Wicked",
+   "what": "Sidling along a narrow ledge with the back to the wall (the wall is not drawn)",
+   "confidence": "low"
+  },
+  {
+   "animation": "exploration.free-climb",
+   "clip": "exploration.free-climb-nr0",
+   "game": "No Rest for the Wicked",
+   "what": "Free climbing up a wall, then sideways (the wall is not drawn)",
+   "confidence": "high"
+  },
+  {
+   "animation": "exploration.ladder-climb",
+   "clip": "exploration.ladder-climb-nr0",
+   "game": "No Rest for the Wicked",
+   "what": "Ladder climb-up cycle (the ladder is not drawn)",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.light-attack",
+   "clip": "melee.light-attack-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight nail slash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.light-attack-combo-string",
+   "clip": "melee.light-attack-combo-string-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight alternate nail slash (the second of the alternating swings): game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.horizontal-sweep",
+   "clip": "melee.horizontal-sweep-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight nail slash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "low"
+  },
+  {
+   "animation": "vfx.weapon-trail-slash-arc",
+   "clip": "vfx.weapon-trail-slash-arc-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight nail slash and its slash arc: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.aerial-attack",
+   "clip": "melee.aerial-attack-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight up slash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.aerial-attack",
+   "clip": "melee.aerial-attack-hk-1",
+   "game": "Hollow Knight",
+   "what": "Knight wall slash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.plunging-downward-attack",
+   "clip": "melee.plunging-downward-attack-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight down slash (pogo): game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.charged-attack",
+   "clip": "melee.charged-attack-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight Great Slash, released after the charge: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.weapon-art-skill-attack",
+   "clip": "melee.weapon-art-skill-attack-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight Great Slash nail art: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.dash-attack-lunge",
+   "clip": "melee.dash-attack-lunge-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight Dash Slash nail art: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.spin-attack",
+   "clip": "melee.spin-attack-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight Cyclone Slash nail art: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "magic.projectile-cast-fireball",
+   "clip": "magic.projectile-cast-fireball-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight Vengeful Spirit: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "magic.projectile-cast-fireball",
+   "clip": "magic.projectile-cast-fireball-hk-1",
+   "game": "Hollow Knight",
+   "what": "Knight Shade Soul: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "magic.spell-cast-instant",
+   "clip": "magic.spell-cast-instant-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight Vengeful Spirit: game sprites with hurtbox and attack hitboxes",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.ground-pound",
+   "clip": "melee.ground-pound-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight Desolate Dive, cast from the ground: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "magic.area-of-effect-slam",
+   "clip": "magic.area-of-effect-slam-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight Descending Dark, cast from the ground: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "vfx.shockwave-ground-crack",
+   "clip": "vfx.shockwave-ground-crack-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight Desolate Dive shockwave: game sprites with hurtbox and attack hitboxes",
+   "confidence": "low"
+  },
+  {
+   "animation": "magic.shout-roar-ability",
+   "clip": "magic.shout-roar-ability-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight Howling Wraiths: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "magic.shout-roar-ability",
+   "clip": "magic.shout-roar-ability-hk-1",
+   "game": "Hollow Knight",
+   "what": "Knight Abyss Shriek: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "defense.dash",
+   "clip": "defense.dash-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight dash (Mothwing Cloak): game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "defense.dash",
+   "clip": "defense.dash-hk-1",
+   "game": "Hollow Knight",
+   "what": "Knight Shadow Dash, invulnerable: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "defense.air-dash",
+   "clip": "defense.air-dash-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight dash, usable in the air: game sprites with hurtbox and attack hitboxes",
+   "confidence": "low"
+  },
+  {
+   "animation": "locomotion.jump",
+   "clip": "locomotion.jump-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight full-height jump: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.double-jump",
+   "clip": "locomotion.double-jump-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight Monarch Wings double jump: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.landing-soft-hard",
+   "clip": "locomotion.landing-soft-hard-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight hard landing: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "magic.heal",
+   "clip": "magic.heal-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight Focus, healing one mask: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "magic.spell-channel",
+   "clip": "magic.spell-channel-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight Focus (channelled heal): game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "reactions.light-flinch-hit-react",
+   "clip": "reactions.light-flinch-hit-react-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight taking a hit, then invulnerable: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "reactions.knockback",
+   "clip": "reactions.knockback-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight knocked back by a hit: game sprites with hurtbox and attack hitboxes",
+   "confidence": "low"
+  },
+  {
+   "animation": "death.death-collapse",
+   "clip": "death.death-collapse-hk-0",
+   "game": "Hollow Knight",
+   "what": "Knight death: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.dash-attack-lunge",
+   "clip": "melee.dash-attack-lunge-hk-1",
+   "game": "Hollow Knight",
+   "what": "Hornet lunge: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "enemies.attack-telegraph-windup",
+   "clip": "enemies.attack-telegraph-windup-hk-0",
+   "game": "Hollow Knight",
+   "what": "Hornet lunge, from its wind-up: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "enemies.attack-telegraph-windup",
+   "clip": "enemies.attack-telegraph-windup-hk-1",
+   "game": "Hollow Knight",
+   "what": "Pure Vessel dash stab, from its wind-up: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.spin-attack",
+   "clip": "melee.spin-attack-hk-1",
+   "game": "Hollow Knight",
+   "what": "Hornet whirl: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.weapon-throw-recall",
+   "clip": "melee.weapon-throw-recall-hk-0",
+   "game": "Hollow Knight",
+   "what": "Hornet needle throw and recall: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "ranged.boomerang-returning-throw",
+   "clip": "ranged.boomerang-returning-throw-hk-0",
+   "game": "Hollow Knight",
+   "what": "Mantis Lord boomerang throw (boomerang not shown): game sprites with hurtbox and attack hitboxes",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.light-attack-combo-string",
+   "clip": "melee.light-attack-combo-string-hk-1",
+   "game": "Hollow Knight",
+   "what": "Pure Vessel triple slash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.thrust-stab",
+   "clip": "melee.thrust-stab-hk-0",
+   "game": "Hollow Knight",
+   "what": "Pure Vessel dash stab: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "defense.counter-attack",
+   "clip": "defense.counter-attack-hk-0",
+   "game": "Hollow Knight",
+   "what": "Pure Vessel counter slash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.horizontal-sweep",
+   "clip": "melee.horizontal-sweep-hk-1",
+   "game": "Hollow Knight",
+   "what": "Nightmare King Grimm slash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "low"
+  },
+  {
+   "animation": "enemies.charging-rush",
+   "clip": "enemies.charging-rush-hk-0",
+   "game": "Hollow Knight",
+   "what": "Nightmare King Grimm ground dash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "enemies.charging-rush",
+   "clip": "enemies.charging-rush-hk-1",
+   "game": "Hollow Knight",
+   "what": "Mantis Lord dash slash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "defense.backstep-backflip",
+   "clip": "defense.backstep-backflip-hk-0",
+   "game": "Hollow Knight",
+   "what": "Hornet evade: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.light-attack",
+   "clip": "melee.light-attack-hk-1",
+   "game": "Hollow Knight: Silksong",
+   "what": "Silksong Hornet needle slash (Hunter crest): game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.aerial-attack",
+   "clip": "melee.aerial-attack-hk-2",
+   "game": "Hollow Knight: Silksong",
+   "what": "Silksong Hornet up slash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.plunging-downward-attack",
+   "clip": "melee.plunging-downward-attack-hk-1",
+   "game": "Hollow Knight: Silksong",
+   "what": "Silksong Hornet down spike (Hunter crest): game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.dash-attack-lunge",
+   "clip": "melee.dash-attack-lunge-hk-2",
+   "game": "Hollow Knight: Silksong",
+   "what": "Silksong Hornet dash stab: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.sprint-attack",
+   "clip": "melee.sprint-attack-hk-0",
+   "game": "Hollow Knight: Silksong",
+   "what": "Silksong Hornet sprint attack (dash stab): game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "defense.dash",
+   "clip": "defense.dash-hk-2",
+   "game": "Hollow Knight: Silksong",
+   "what": "Silksong Hornet dash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.jump",
+   "clip": "locomotion.jump-hk-1",
+   "game": "Hollow Knight: Silksong",
+   "what": "Silksong Hornet full-height jump: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.double-jump",
+   "clip": "locomotion.double-jump-hk-1",
+   "game": "Hollow Knight: Silksong",
+   "what": "Silksong Hornet double jump: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "reactions.light-flinch-hit-react",
+   "clip": "reactions.light-flinch-hit-react-hk-1",
+   "game": "Hollow Knight: Silksong",
+   "what": "Silksong Hornet taking a hit: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "death.death-collapse",
+   "clip": "death.death-collapse-hk-1",
+   "game": "Hollow Knight: Silksong",
+   "what": "Silksong Hornet death: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "magic.heal",
+   "clip": "magic.heal-hk-1",
+   "game": "Hollow Knight: Silksong",
+   "what": "Silksong Hornet Bind (heal): game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.dash-attack-lunge",
+   "clip": "melee.dash-attack-lunge-hk-3",
+   "game": "Hollow Knight: Silksong",
+   "what": "Lace lunge: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.plunging-downward-attack",
+   "clip": "melee.plunging-downward-attack-hk-2",
+   "game": "Hollow Knight: Silksong",
+   "what": "Lace down stab: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.combo-finisher",
+   "clip": "melee.combo-finisher-hk-0",
+   "game": "Hollow Knight: Silksong",
+   "what": "Lace combo slash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.spin-attack",
+   "clip": "melee.spin-attack-hk-2",
+   "game": "Hollow Knight: Silksong",
+   "what": "Lace circle slash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.spin-attack",
+   "clip": "melee.spin-attack-hk-3",
+   "game": "Hollow Knight: Silksong",
+   "what": "Last Judge censer spin: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.dual-wield-flurry",
+   "clip": "melee.dual-wield-flurry-hk-0",
+   "game": "Hollow Knight: Silksong",
+   "what": "Lace rapid air slash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.thrust-stab",
+   "clip": "melee.thrust-stab-hk-1",
+   "game": "Hollow Knight: Silksong",
+   "what": "Phantom stab flurry: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.weapon-throw-recall",
+   "clip": "melee.weapon-throw-recall-hk-1",
+   "game": "Hollow Knight: Silksong",
+   "what": "Phantom pin throw: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.ground-pound",
+   "clip": "melee.ground-pound-hk-1",
+   "game": "Hollow Knight: Silksong",
+   "what": "Phantom dragoon drop: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "enemies.charging-rush",
+   "clip": "enemies.charging-rush-hk-2",
+   "game": "Hollow Knight: Silksong",
+   "what": "Bell Beast charge: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "enemies.charging-rush",
+   "clip": "enemies.charging-rush-hk-3",
+   "game": "Hollow Knight: Silksong",
+   "what": "Widow charge: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.whip-chain-lash",
+   "clip": "melee.whip-chain-lash-hk-0",
+   "game": "Hollow Knight: Silksong",
+   "what": "Last Judge censer swing: game sprites with hurtbox and attack hitboxes",
+   "confidence": "low"
+  },
+  {
+   "animation": "creature.insect-spider-crawl",
+   "clip": "creature.insect-spider-crawl-hk-0",
+   "game": "Hollow Knight: Silksong",
+   "what": "Widow skittering charge: game sprites with hurtbox and attack hitboxes",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.light-attack-combo-string",
+   "clip": "melee.light-attack-combo-string-ngb-0",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Crimson Slash, the Dragon Sword's third X: figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.light-attack-combo-string",
+   "clip": "melee.light-attack-combo-string-ngb-1",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Blade of the Dragon's Tail (XXYYY finisher): figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.combo-finisher",
+   "clip": "melee.combo-finisher-ngb-0",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Dragon Tear (XXXY finisher): figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.uppercut-launcher",
+   "clip": "melee.uppercut-launcher-ngb-0",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Blade of the Undefeatable, the launcher of the XY air strings: figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.aerial-attack",
+   "clip": "melee.aerial-attack-ngb-0",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's first air slash after the launcher: figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.aerial-attack",
+   "clip": "melee.aerial-attack-ngb-1",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Blade of the Empty Air (jump X): figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.plunging-downward-attack",
+   "clip": "melee.plunging-downward-attack-ngb-0",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Blade of Nirrti, a diving air finisher: figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.spin-attack",
+   "clip": "melee.spin-attack-ngb-0",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Windmill Slash: figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.kick",
+   "clip": "melee.kick-ngb-0",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Fiend's Bane Kick: figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.kick",
+   "clip": "melee.kick-ngb-1",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Early Winter Rain, three kicks: figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.sprint-attack",
+   "clip": "melee.sprint-attack-ngb-0",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Violent Wind, X while running: figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.charged-attack",
+   "clip": "melee.charged-attack-ngb-0",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Haze Straight Slash, released after holding Y: figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "magic.ultimate-super-ability",
+   "clip": "magic.ultimate-super-ability-ngb-0",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Hundred Wing Blade (Ultimate Technique) timing: figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
   }
  ]
 }

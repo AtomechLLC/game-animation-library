@@ -1,0 +1,48 @@
+{
+ "lead": "Icons are the game's own sprites",
+ "note": "Sprites (c) Team Cherry.",
+ "icons": {
+  "The Knight": {
+   "file": "knight.webp"
+  },
+  "Hornet (Greenpath)": {
+   "file": "hornet.webp"
+  },
+  "Hornet (Kingdom's Edge)": {
+   "file": "hornet2.webp"
+  },
+  "Mantis Lord": {
+   "file": "mantisLord.webp"
+  },
+  "Soul Master": {
+   "file": "soulMaster.webp"
+  },
+  "Pure Vessel": {
+   "file": "pureVessel.webp"
+  },
+  "Nightmare King Grimm": {
+   "file": "nkg.webp"
+  },
+  "Hornet (Silksong)": {
+   "file": "hornetSilksong.webp"
+  },
+  "Lace": {
+   "file": "lace.webp"
+  },
+  "Bell Beast": {
+   "file": "bellBeast.webp"
+  },
+  "Last Judge": {
+   "file": "lastJudge.webp"
+  },
+  "Phantom": {
+   "file": "phantom.webp"
+  },
+  "Widow": {
+   "file": "widow.webp"
+  },
+  "Moss Mother": {
+   "file": "mossMother.webp"
+  }
+ }
+}

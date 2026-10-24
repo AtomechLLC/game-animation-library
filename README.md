@@ -1,5 +1,7 @@
 # Game Animation Library
 
+*learn from the legends of combat design*
+
 A catalogue of 330 video game animations across 20 categories (combat and non-combat), each with a description, tags, example games, web references and GIF examples. `template.html` renders it as a browsable page (the "atlas").
 
 ## Rebuilding
@@ -35,7 +37,7 @@ It is a static page that loads `frame-data/games.json` and one JSON file per gam
 To add animations: append lines to taxonomy.txt, rebuild index.json, rerun merge.py, republish the page.
 
 - `gifs/` — downloaded copies (Tenor's 200px animated WebP, Giphy's 200w WebP), one per GIF that could be fetched. `local` is the path, `source_url` the file it came from. Tenor links whose page id is 18-20 digits map straight to a media URL; older 7-8 digit ids could not be resolved, so those links stay page-only.
-- `add_ufd.py` — adds Super Smash Bros. Ultimate hitbox GIFs from [Ultimate Frame Data](https://ultimateframedata.com) to 29 melee, fighting, defense and reaction entries, saved as 400px WebP at `gifs/<id>-ufd-<n>.webp` (host `Ultimate Frame Data`). The move-to-entry mapping is in the script; rerunning skips GIFs already present.
+- `add_ufd.py` — adds Super Smash Bros. Ultimate hitbox GIFs from [Ultimate Frame Data](https://ultimateframedata.com) to 68 entries (133 GIFs: melee, magic, ranged, defense, fighting, enemies, exploration, interaction, sports and more), saved as 400px WebP at `gifs/<id>-ufd-<n>.webp` (host `Ultimate Frame Data`). The mapping is in the script: `MAP` by GIF name, `MOVES` by frame data move id and clip (run `tools/frame_data/import_ufd_ssbu.py` first); rerunning skips GIFs already present.
 
 ## Street Fighter III: 3rd Strike (Baston)
 
@@ -45,13 +47,29 @@ sprite capture of every frame, extracted from the CPS3 emulator FBA-RR. Two scri
 - `python tools/frame_data/import_baston_sf3.py` writes `frame-data/street-fighter-3-third-strike.json` (all 20
   characters, 1,303 moves) and the animated stance icons in `frame-data/icons/street-fighter-3-third-strike/`, for the
   Frame Data tab. Downloads are cached in `.cache/baston/`.
+- `python tools/frame_data/export_baston_sprites.py` (after the importer) packs every move's frame captures and boxes into
+  `frame-data/sprites/street-fighter-3-third-strike/` (~50 MB) for the hitbox preview docked above the 3rd Strike move
+  table (`frame-data/sprites2d.js`, in place of the 3D preview).
 - `python add_baston.py` (after the importer) renders mapped moves from those frame captures, with Baston's hurtboxes
   and attack boxes drawn on, to `gifs/<id>-baston-<n>.webp` (60 fps, host `Baston`) and adds them to `library.json`
   and to `added` in `gif-screening.json`. The move-to-entry mapping is `MAP` in the script.
 
 Sprites are Capcom's; every clip and move links back to its Baston hitbox viewer.
 
-## Elden Ring renders
+## Super Smash Bros. Ultimate (Ultimate Frame Data)
+
+[Ultimate Frame Data](https://ultimateframedata.com/smash) by MetalMusicMan (with Zeckemyro and the contributors
+credited on the site) has every character's moves with frame data and hitbox GIFs captured from the game.
+
+- `python tools/frame_data/import_ufd_ssbu.py --clips` writes `frame-data/super-smash-bros-ultimate.json` (all 89
+  characters, 3,589 moves), the character icons in `frame-data/icons/super-smash-bros-ultimate/` and each move's hitbox
+  GIFs as small animated WebPs in `frame-data/clips/super-smash-bros-ultimate/`, which the Frame Data tab's docked
+  previewer steps through frame by frame. One request a second, cached in `.cache/ufd/`.
+- `add_ufd.py` (above) puts some of the same GIFs into library entries.
+
+The footage is Nintendo's and the hitbox GIFs are Ultimate Frame Data's; every move and clip links back to the site.
+
+## Elden Ring and No Rest for the Wicked renders
 
 `tools/er_gifs/` renders Elden Ring animations with the Frame Data tab's 3D preview to animated WebP for library
 entries. `jobs.json` maps an entry to a class and move id (or several ids played in a row); `node tools/er_gifs/render.js`
@@ -65,6 +83,11 @@ gestures come from the `Common` class: `python tools/frame_data/export_er_common
 `tools/er_gifs/common_anims.json` (each with a label and what it was wanted for) into the same `anim/` folder.
 `render.js --sheet DIR [id or want ...]` draws 8-frame contact sheets of those ids, which is how the ids in `jobs.json`
 were picked. Clips the game shows against props (ladder, door, item) are rendered without the prop.
+
+No Rest for the Wicked works the same way (`"game": "no-rest-for-the-wicked"` on a job, 60 fps clips rendered at 15 fps):
+`tools/frame_data/export_nrftw_common.py` bakes the player's own non-attack clips (quicksteps, rolls, crouch, swim,
+mantles, ladder and wall climbing, wall shimmy) listed in `tools/er_gifs/nrftw_common_anims.json` into its `Common`
+class, and `GAME=no-rest-for-the-wicked render.js --sheet` draws their contact sheets.
 ## Removed GIFs (blocklist)
 
 `gif-blocklist.json` lists GIFs removed for good on the review page: their `page_url`, `media_url`, `source_url` and the

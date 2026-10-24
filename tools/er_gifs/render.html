@@ -22,7 +22,7 @@ THREE.Object3D.prototype.add = function (...objs) {
   for (const o of objs) {
     if (o.type === 'GridHelper') grids.push(o);
     if (o.isLight && this.isScene) { o.intensity *= +(q.get('light') || 1.5); this.background = new THREE.Color(0x1d1f24) }
-    if (this.isBone && !o.isBone) held.push([this, o]);
+    if ((this.isBone || /weapon/i.test(this.name)) && !o.isBone) held.push([this, o]);   // a weapon put in a hand
     o.traverse(x => { if (x.isBone) skel.push(x) });
   }
   return add.apply(this, objs);
@@ -32,7 +32,7 @@ const gc = HTMLCanvasElement.prototype.getContext;
 HTMLCanvasElement.prototype.getContext = function (t, o) { return gc.call(this, t, /webgl/.test(t) ? {...o, preserveDrawingBuffer: true} : o) };
 const upm = THREE.PerspectiveCamera.prototype.updateProjectionMatrix;
 THREE.PerspectiveCamera.prototype.updateProjectionMatrix = function () { if (!cams.includes(this)) cams.push(this); return upm.call(this) };
-const el = document.getElementById('v'), base = '../../frame-data/models/elden-ring/';
+const el = document.getElementById('v'), base = `../../frame-data/models/${q.get('game') || 'elden-ring'}/`;
 el.style.setProperty('--w', (q.get('w') || 360) + 'px'); el.style.setProperty('--h', (q.get('h') || 360) + 'px');
 const view = await createViewer(el, base);
 const $ = s => el.querySelector(s);

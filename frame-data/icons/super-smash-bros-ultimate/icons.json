@@ -1,0 +1,368 @@
+{
+ "sources": [
+  {
+   "name": "Ultimate Frame Data",
+   "url": "https://ultimateframedata.com/smash"
+  }
+ ],
+ "lead": "Character icons are the official renders",
+ "note": "Art (c) Nintendo and the characters' owners.",
+ "icons": {
+  "Banjo & Kazooie": {
+   "file": "banjo-and-kazooie.webp",
+   "source": "https://ultimateframedata.com/characterart/banjo_and_kazooie.webp"
+  },
+  "Bayonetta": {
+   "file": "bayonetta.webp",
+   "source": "https://ultimateframedata.com/characterart/bayonetta.webp"
+  },
+  "Bowser": {
+   "file": "bowser.webp",
+   "source": "https://ultimateframedata.com/characterart/bowser.webp"
+  },
+  "Bowser Jr.": {
+   "file": "bowser-jr.webp",
+   "source": "https://ultimateframedata.com/characterart/bowser_jr.webp"
+  },
+  "Byleth": {
+   "file": "byleth.webp",
+   "source": "https://ultimateframedata.com/characterart/byleth.webp"
+  },
+  "Captain Falcon": {
+   "file": "captain-falcon.webp",
+   "source": "https://ultimateframedata.com/characterart/captain_falcon.webp"
+  },
+  "Chrom": {
+   "file": "chrom.webp",
+   "source": "https://ultimateframedata.com/characterart/chrom.webp"
+  },
+  "Cloud": {
+   "file": "cloud.webp",
+   "source": "https://ultimateframedata.com/characterart/cloud.webp"
+  },
+  "Corrin": {
+   "file": "corrin.webp",
+   "source": "https://ultimateframedata.com/characterart/corrin.webp"
+  },
+  "Daisy": {
+   "file": "daisy.webp",
+   "source": "https://ultimateframedata.com/characterart/daisy.webp"
+  },
+  "Dark Pit": {
+   "file": "dark-pit.webp",
+   "source": "https://ultimateframedata.com/characterart/dark_pit.webp"
+  },
+  "Dark Samus": {
+   "file": "dark-samus.webp",
+   "source": "https://ultimateframedata.com/characterart/dark_samus.webp"
+  },
+  "Diddy Kong": {
+   "file": "diddy-kong.webp",
+   "source": "https://ultimateframedata.com/characterart/diddy_kong.webp"
+  },
+  "Donkey Kong": {
+   "file": "donkey-kong.webp",
+   "source": "https://ultimateframedata.com/characterart/donkey_kong.webp"
+  },
+  "Dr. Mario": {
+   "file": "dr-mario.webp",
+   "source": "https://ultimateframedata.com/characterart/dr_mario.webp"
+  },
+  "Duck Hunt": {
+   "file": "duck-hunt.webp",
+   "source": "https://ultimateframedata.com/characterart/duck_hunt.webp"
+  },
+  "Falco": {
+   "file": "falco.webp",
+   "source": "https://ultimateframedata.com/characterart/falco.webp"
+  },
+  "Fox": {
+   "file": "fox.webp",
+   "source": "https://ultimateframedata.com/characterart/fox.webp"
+  },
+  "Ganondorf": {
+   "file": "ganondorf.webp",
+   "source": "https://ultimateframedata.com/characterart/ganondorf.webp"
+  },
+  "Greninja": {
+   "file": "greninja.webp",
+   "source": "https://ultimateframedata.com/characterart/greninja.webp"
+  },
+  "Hero": {
+   "file": "hero.webp",
+   "source": "https://ultimateframedata.com/characterart/hero.webp"
+  },
+  "Ice Climbers": {
+   "file": "ice-climbers.webp",
+   "source": "https://ultimateframedata.com/characterart/ice_climbers.webp"
+  },
+  "Ike": {
+   "file": "ike.webp",
+   "source": "https://ultimateframedata.com/characterart/ike.webp"
+  },
+  "Incineroar": {
+   "file": "incineroar.webp",
+   "source": "https://ultimateframedata.com/characterart/incineroar.webp"
+  },
+  "Inkling": {
+   "file": "inkling.webp",
+   "source": "https://ultimateframedata.com/characterart/inkling.webp"
+  },
+  "Isabelle": {
+   "file": "isabelle.webp",
+   "source": "https://ultimateframedata.com/characterart/isabelle.webp"
+  },
+  "Jigglypuff": {
+   "file": "jigglypuff.webp",
+   "source": "https://ultimateframedata.com/characterart/jigglypuff.webp"
+  },
+  "Joker": {
+   "file": "joker.webp",
+   "source": "https://ultimateframedata.com/characterart/joker.webp"
+  },
+  "Kazuya": {
+   "file": "kazuya.webp",
+   "source": "https://ultimateframedata.com/characterart/kazuya.webp"
+  },
+  "Ken": {
+   "file": "ken.webp",
+   "source": "https://ultimateframedata.com/characterart/ken.webp"
+  },
+  "King Dedede": {
+   "file": "king-dedede.webp",
+   "source": "https://ultimateframedata.com/characterart/king_dedede.webp"
+  },
+  "King K. Rool": {
+   "file": "king-k-rool.webp",
+   "source": "https://ultimateframedata.com/characterart/king_k_rool.webp"
+  },
+  "Kirby": {
+   "file": "kirby.webp",
+   "source": "https://ultimateframedata.com/characterart/kirby.webp"
+  },
+  "Link": {
+   "file": "link.webp",
+   "source": "https://ultimateframedata.com/characterart/link.webp"
+  },
+  "Little Mac": {
+   "file": "little-mac.webp",
+   "source": "https://ultimateframedata.com/characterart/little_mac.webp"
+  },
+  "Lucario": {
+   "file": "lucario.webp",
+   "source": "https://ultimateframedata.com/characterart/lucario.webp"
+  },
+  "Lucas": {
+   "file": "lucas.webp",
+   "source": "https://ultimateframedata.com/characterart/lucas.webp"
+  },
+  "Lucina": {
+   "file": "lucina.webp",
+   "source": "https://ultimateframedata.com/characterart/lucina.webp"
+  },
+  "Luigi": {
+   "file": "luigi.webp",
+   "source": "https://ultimateframedata.com/characterart/luigi.webp"
+  },
+  "Mario": {
+   "file": "mario.webp",
+   "source": "https://ultimateframedata.com/characterart/mario.webp"
+  },
+  "Marth": {
+   "file": "marth.webp",
+   "source": "https://ultimateframedata.com/characterart/marth.webp"
+  },
+  "Mega Man": {
+   "file": "mega-man.webp",
+   "source": "https://ultimateframedata.com/characterart/mega_man.webp"
+  },
+  "Meta Knight": {
+   "file": "meta-knight.webp",
+   "source": "https://ultimateframedata.com/characterart/meta_knight.webp"
+  },
+  "Mewtwo": {
+   "file": "mewtwo.webp",
+   "source": "https://ultimateframedata.com/characterart/mewtwo.webp"
+  },
+  "Mii Brawler": {
+   "file": "mii-brawler.webp",
+   "source": "https://ultimateframedata.com/characterart/mii_brawler.webp"
+  },
+  "Mii Gunner": {
+   "file": "mii-gunner.webp",
+   "source": "https://ultimateframedata.com/characterart/mii_gunner.webp"
+  },
+  "Mii Swordfighter": {
+   "file": "mii-swordfighter.webp",
+   "source": "https://ultimateframedata.com/characterart/mii_swordfighter.webp"
+  },
+  "Min Min": {
+   "file": "minmin.webp",
+   "source": "https://ultimateframedata.com/characterart/minmin.webp"
+  },
+  "Mr. Game & Watch": {
+   "file": "mr-game-and-watch.webp",
+   "source": "https://ultimateframedata.com/characterart/mr_game_and_watch.webp"
+  },
+  "Mythra": {
+   "file": "mythra.webp",
+   "source": "https://ultimateframedata.com/characterart/mythra.webp"
+  },
+  "Ness": {
+   "file": "ness.webp",
+   "source": "https://ultimateframedata.com/characterart/ness.webp"
+  },
+  "Olimar": {
+   "file": "olimar.webp",
+   "source": "https://ultimateframedata.com/characterart/olimar.webp"
+  },
+  "Pac Man": {
+   "file": "pac-man.webp",
+   "source": "https://ultimateframedata.com/characterart/pac_man.webp"
+  },
+  "Palutena": {
+   "file": "palutena.webp",
+   "source": "https://ultimateframedata.com/characterart/palutena.webp"
+  },
+  "Peach": {
+   "file": "peach.webp",
+   "source": "https://ultimateframedata.com/characterart/peach.webp"
+  },
+  "Pichu": {
+   "file": "pichu.webp",
+   "source": "https://ultimateframedata.com/characterart/pichu.webp"
+  },
+  "Pikachu": {
+   "file": "pikachu.webp",
+   "source": "https://ultimateframedata.com/characterart/pikachu.webp"
+  },
+  "Piranha Plant": {
+   "file": "piranha-plant.webp",
+   "source": "https://ultimateframedata.com/characterart/piranha_plant.webp"
+  },
+  "Pit": {
+   "file": "pit.webp",
+   "source": "https://ultimateframedata.com/characterart/pit.webp"
+  },
+  "Squirtle": {
+   "file": "pt-squirtle.webp",
+   "source": "https://ultimateframedata.com/characterart/pt_squirtle.webp"
+  },
+  "Ivysaur": {
+   "file": "pt-ivysaur.webp",
+   "source": "https://ultimateframedata.com/characterart/pt_ivysaur.webp"
+  },
+  "Charizard": {
+   "file": "pt-charizard.webp",
+   "source": "https://ultimateframedata.com/characterart/pt_charizard.webp"
+  },
+  "Pyra": {
+   "file": "pyra.webp",
+   "source": "https://ultimateframedata.com/characterart/pyra.webp"
+  },
+  "Richter": {
+   "file": "richter.webp",
+   "source": "https://ultimateframedata.com/characterart/richter.webp"
+  },
+  "Ridley": {
+   "file": "ridley.webp",
+   "source": "https://ultimateframedata.com/characterart/ridley.webp"
+  },
+  "R.O.B.": {
+   "file": "rob.webp",
+   "source": "https://ultimateframedata.com/characterart/rob.webp"
+  },
+  "Robin": {
+   "file": "robin.webp",
+   "source": "https://ultimateframedata.com/characterart/robin.webp"
+  },
+  "Rosalina and Luma": {
+   "file": "rosalina-and-luma.webp",
+   "source": "https://ultimateframedata.com/characterart/rosalina_and_luma.webp"
+  },
+  "Roy": {
+   "file": "roy.webp",
+   "source": "https://ultimateframedata.com/characterart/roy.webp"
+  },
+  "Ryu": {
+   "file": "ryu.webp",
+   "source": "https://ultimateframedata.com/characterart/ryu.webp"
+  },
+  "Samus": {
+   "file": "samus.webp",
+   "source": "https://ultimateframedata.com/characterart/samus.webp"
+  },
+  "Sephiroth": {
+   "file": "sephiroth.webp",
+   "source": "https://ultimateframedata.com/characterart/sephiroth.webp"
+  },
+  "Sheik": {
+   "file": "sheik.webp",
+   "source": "https://ultimateframedata.com/characterart/sheik.webp"
+  },
+  "Shulk": {
+   "file": "shulk.webp",
+   "source": "https://ultimateframedata.com/characterart/shulk.webp"
+  },
+  "Simon": {
+   "file": "simon.webp",
+   "source": "https://ultimateframedata.com/characterart/simon.webp"
+  },
+  "Snake": {
+   "file": "snake.webp",
+   "source": "https://ultimateframedata.com/characterart/snake.webp"
+  },
+  "Sonic": {
+   "file": "sonic.webp",
+   "source": "https://ultimateframedata.com/characterart/sonic.webp"
+  },
+  "Sora": {
+   "file": "sora.webp",
+   "source": "https://ultimateframedata.com/characterart/sora.webp"
+  },
+  "Steve": {
+   "file": "steve.webp",
+   "source": "https://ultimateframedata.com/characterart/steve.webp"
+  },
+  "Terry": {
+   "file": "terry.webp",
+   "source": "https://ultimateframedata.com/characterart/terry.webp"
+  },
+  "Toon Link": {
+   "file": "toon-link.webp",
+   "source": "https://ultimateframedata.com/characterart/toon_link.webp"
+  },
+  "Villager": {
+   "file": "villager.webp",
+   "source": "https://ultimateframedata.com/characterart/villager.webp"
+  },
+  "Wario": {
+   "file": "wario.webp",
+   "source": "https://ultimateframedata.com/characterart/wario.webp"
+  },
+  "Wii Fit Trainer": {
+   "file": "wii-fit-trainer.webp",
+   "source": "https://ultimateframedata.com/characterart/wii_fit_trainer.webp"
+  },
+  "Wolf": {
+   "file": "wolf.webp",
+   "source": "https://ultimateframedata.com/characterart/wolf.webp"
+  },
+  "Yoshi": {
+   "file": "yoshi.webp",
+   "source": "https://ultimateframedata.com/characterart/yoshi.webp"
+  },
+  "Young Link": {
+   "file": "young-link.webp",
+   "source": "https://ultimateframedata.com/characterart/young_link.webp"
+  },
+  "Zelda": {
+   "file": "zelda.webp",
+   "source": "https://ultimateframedata.com/characterart/zelda.webp"
+  },
+  "Zero Suit Samus": {
+   "file": "zero-suit-samus.webp",
+   "source": "https://ultimateframedata.com/characterart/zero_suit_samus.webp"
+  }
+ }
+}

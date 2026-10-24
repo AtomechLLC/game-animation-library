@@ -1110,6 +1110,34 @@
       "confidence": "high",
       "what": "Running jump: takeoff, airborne, landing"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=movement&m=knight.movement.jump",
+     "media_url": "",
+     "title": "Knight full-height jump, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/locomotion.jump-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight full-height jump: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornetSilksong&t=movement&m=silksong.movement.jump",
+     "media_url": "",
+     "title": "Silksong Hornet full-height jump, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/locomotion.jump-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Silksong Hornet full-height jump: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -1191,6 +1219,34 @@
      "host": "Tenor",
      "local": "gifs/locomotion.double-jump-3.webp",
      "source_url": "https://media.tenor.com/HlpuPepPggUAAAA1/double-jump-video-game-castlevania-order-of-ecclesia.webp"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=movement&m=knight.movement.doubleJump",
+     "media_url": "",
+     "title": "Knight Monarch Wings double jump, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/locomotion.double-jump-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Monarch Wings double jump: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornetSilksong&t=movement&m=silksong.movement.doubleJump",
+     "media_url": "",
+     "title": "Silksong Hornet double jump, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/locomotion.double-jump-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Silksong Hornet double jump: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -1352,6 +1408,20 @@
       "confidence": "high",
       "what": "Light landing, then a heavy landing from height"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=movement&m=knight.movement.hardLanding",
+     "media_url": "",
+     "title": "Knight hard landing, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/locomotion.landing-soft-hard-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight hard landing: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -1419,6 +1489,20 @@
      "host": "Tenor",
      "local": "gifs/locomotion.crouch-r1.webp",
      "source_url": "https://media.tenor.com/xznp3Kq1W8oAAAA1/ticklefiend-tickle-fiend.webp"
+    },
+    {
+     "page_url": "gifs/locomotion.crouch-nr0.webp",
+     "media_url": "",
+     "title": "Crouch idle, rendered with the Frame Data 3D preview",
+     "game": "No Rest for the Wicked",
+     "host": "No Rest for the Wicked render",
+     "local": "gifs/locomotion.crouch-nr0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Crouched sneaking stance, idle loop"
+     }
     }
    ],
    "rejected_gifs": [
@@ -1517,6 +1601,20 @@
      "host": "Tenor",
      "local": "gifs/locomotion.crouch-walk-1.webp",
      "source_url": "https://media.tenor.com/FTRxt4ssmYYAAAA1/ghost-babel-metal-gear-ghost-babel-solid-snake-sneaking-stealth-game.webp"
+    },
+    {
+     "page_url": "gifs/locomotion.crouch-walk-nr0.webp",
+     "media_url": "",
+     "title": "Crouch walk, rendered with the Frame Data 3D preview",
+     "game": "No Rest for the Wicked",
+     "host": "No Rest for the Wicked render",
+     "local": "gifs/locomotion.crouch-walk-nr0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Crouched sneak walk loop, two cycles"
+     }
     }
    ]
   },
@@ -1868,6 +1966,20 @@
      "host": "Giphy",
      "local": "gifs/locomotion.vault-2.webp",
      "source_url": "https://media.giphy.com/media/rmCu1PvcFDn8s9tdDz/200w.webp"
+    },
+    {
+     "page_url": "gifs/locomotion.vault-nr0.webp",
+     "media_url": "",
+     "title": "Vault up a 0.5 m ledge, rendered with the Frame Data 3D preview",
+     "game": "No Rest for the Wicked",
+     "host": "No Rest for the Wicked render",
+     "local": "gifs/locomotion.vault-nr0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Quick vault up onto a waist-high ledge (the ledge is not drawn)"
+     }
     }
    ]
   },
@@ -1925,6 +2037,20 @@
     }
    ],
    "gifs": [
+    {
+     "page_url": "gifs/locomotion.mantle-ledge-climb-nr0.webp",
+     "media_url": "",
+     "title": "Climb up a 1 m, then a 2 m ledge, rendered with the Frame Data 3D preview",
+     "game": "No Rest for the Wicked",
+     "host": "No Rest for the Wicked render",
+     "local": "gifs/locomotion.mantle-ledge-climb-nr0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Mantling up a 1 m ledge, then a 2 m ledge (the ledge is not drawn)"
+     }
+    },
     {
      "page_url": "https://tenor.com/view/ezio-climbing-revelations-assasins-creed-gif-10868698",
      "media_url": "",
@@ -2050,6 +2176,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Banjo & Kazooie's ledge-hang animation"
+     }
+    },
+    {
+     "page_url": "gifs/locomotion.ledge-grab-hang-nr0.webp",
+     "media_url": "",
+     "title": "Wall shimmy, rendered with the Frame Data 3D preview",
+     "game": "No Rest for the Wicked",
+     "host": "No Rest for the Wicked render",
+     "local": "gifs/locomotion.ledge-grab-hang-nr0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Sidling along a narrow ledge with the back to the wall (the wall is not drawn)"
      }
     }
    ]
@@ -2304,6 +2444,34 @@
      "host": "Tenor",
      "local": "gifs/melee.light-attack-r1.webp",
      "source_url": "https://media.tenor.com/dzl9uR7KFSAAAAA1/devil-may-cry-dmc.webp"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=nail&m=knight.nail.slash",
+     "media_url": "",
+     "title": "Knight nail slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.light-attack-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight nail slash: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornetSilksong&t=nail&m=silksong.hunter.slash",
+     "media_url": "",
+     "title": "Silksong Hornet needle slash (Hunter crest), with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.light-attack-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Silksong Hornet needle slash (Hunter crest): game sprites with hurtbox and attack hitboxes"
+     }
     }
    ],
    "rejected_gifs": [
@@ -2420,6 +2588,62 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.light-attack-combo-string-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/marth/MarthDancingBlade4.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=nail&m=knight.nail.altSlash",
+     "media_url": "",
+     "title": "Knight alternate nail slash (the second of the alternating swings), with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.light-attack-combo-string-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight alternate nail slash (the second of the alternating swings): game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=pureVessel&t=attack&m=pureVessel.attack.slashes",
+     "media_url": "",
+     "title": "Pure Vessel triple slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.light-attack-combo-string-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Pure Vessel triple slash: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=combo&m=x3",
+     "media_url": "",
+     "title": "Ryu's Crimson Slash, the Dragon Sword's third X, with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.light-attack-combo-string-ngb-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Crimson Slash, the Dragon Sword's third X: figure posed from the game animation with the sword hitbox"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=combo&m=xxyyy",
+     "media_url": "",
+     "title": "Ryu's Blade of the Dragon's Tail (XXYYY finisher), with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.light-attack-combo-string-ngb-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Blade of the Dragon's Tail (XXYYY finisher): figure posed from the game animation with the sword hitbox"
+     }
     }
    ]
   },
@@ -2617,6 +2841,43 @@
       "confidence": "high",
       "what": "Makoto Hayate, fully charged: sprite frames with hurtboxes and attack boxes"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/king_dedede",
+     "media_url": "https://ultimateframedata.com/hitboxes/king_dedede/KingDededeJet HammerGMax.gif",
+     "title": "King Dedede Down B, Full Charge (Jet Hammer, Full Charge) (GMax), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.charged-attack-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/king_dedede/KingDededeJet HammerGMax.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=nailArt&m=knight.nailArt.greatSlash",
+     "media_url": "",
+     "title": "Knight Great Slash, released after the charge, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.charged-attack-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Great Slash, released after the charge: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=ut&m=y.hold",
+     "media_url": "",
+     "title": "Ryu's Haze Straight Slash, released after holding Y, with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.charged-attack-ngb-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Haze Straight Slash, released after holding Y: figure posed from the game animation with the sword hitbox"
+     }
     }
    ]
   },
@@ -2704,6 +2965,15 @@
       "confidence": "high",
       "what": "Elena Mallet Smash (Fierce): sprite frames with hurtboxes and attack boxes"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/kirby",
+     "media_url": "https://ultimateframedata.com/hitboxes/kirby/KirbyHammerFlipGMax.gif",
+     "title": "Kirby Hammer, Full Charge, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.overhead-slam-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/kirby/KirbyHammerFlipGMax.gif"
     }
    ],
    "rejected_gifs": [
@@ -2787,6 +3057,34 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.horizontal-sweep-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/marth/MarthDSmash.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=nail&m=knight.nail.slash",
+     "media_url": "",
+     "title": "Knight nail slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.horizontal-sweep-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Knight nail slash: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=nkg&t=attack&m=nkg.attack.slash",
+     "media_url": "",
+     "title": "Nightmare King Grimm slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.horizontal-sweep-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Nightmare King Grimm slash: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ],
    "rejected_gifs": [
@@ -2894,6 +3192,34 @@
      "host": "Tenor",
      "local": "gifs/melee.thrust-stab-r1.webp",
      "source_url": "https://media.tenor.com/rSRLHcTc0bcAAAA1/the-first-berserker-khazan.webp"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=pureVessel&t=attack&m=pureVessel.attack.dash",
+     "media_url": "",
+     "title": "Pure Vessel dash stab, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.thrust-stab-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Pure Vessel dash stab: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=phantom&t=attack&m=phantom.attack.stabs",
+     "media_url": "",
+     "title": "Phantom stab flurry, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.thrust-stab-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Phantom stab flurry: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ],
    "rejected_gifs": [
@@ -3015,6 +3341,76 @@
       "confidence": "high",
       "what": "Chun-Li Spinning Bird Kick (Roundhouse): sprite frames with hurtboxes and attack boxes"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=nailArt&m=knight.nailArt.cycloneSlash",
+     "media_url": "",
+     "title": "Knight Cyclone Slash nail art, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.spin-attack-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Cyclone Slash nail art: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornet&t=attack&m=hornet.attack.spin",
+     "media_url": "",
+     "title": "Hornet whirl, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.spin-attack-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Hornet whirl: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=lace&t=attack&m=lace.attack.circleSlash",
+     "media_url": "",
+     "title": "Lace circle slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.spin-attack-hk-2.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Lace circle slash: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=lastJudge&t=attack&m=lastJudge.attack.spin",
+     "media_url": "",
+     "title": "Last Judge censer spin, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.spin-attack-hk-3.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Last Judge censer spin: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=combo&m=6x",
+     "media_url": "",
+     "title": "Ryu's Windmill Slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.spin-attack-ngb-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Windmill Slash: figure posed from the game animation with the sword hitbox"
+     }
     }
    ]
   },
@@ -3104,6 +3500,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.uppercut-launcher-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/terry/TerryUTilt.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=combo&m=y",
+     "media_url": "",
+     "title": "Ryu's Blade of the Undefeatable, the launcher of the XY air strings, with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.uppercut-launcher-ngb-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Blade of the Undefeatable, the launcher of the XY air strings: figure posed from the game animation with the sword hitbox"
+     }
     }
    ],
    "rejected_gifs": [
@@ -3201,6 +3611,76 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.aerial-attack-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/cloud/CloudFAir.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=nail&m=knight.nail.upSlash",
+     "media_url": "",
+     "title": "Knight up slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.aerial-attack-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight up slash: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=nail&m=knight.nail.wallSlash",
+     "media_url": "",
+     "title": "Knight wall slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.aerial-attack-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight wall slash: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornetSilksong&t=nail&m=silksong.hunter.upSlash",
+     "media_url": "",
+     "title": "Silksong Hornet up slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.aerial-attack-hk-2.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Silksong Hornet up slash: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=air&m=xyx",
+     "media_url": "",
+     "title": "Ryu's first air slash after the launcher, with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.aerial-attack-ngb-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's first air slash after the launcher: figure posed from the game animation with the sword hitbox"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=air&m=air.x",
+     "media_url": "",
+     "title": "Ryu's Blade of the Empty Air (jump X), with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.aerial-attack-ngb-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Blade of the Empty Air (jump X): figure posed from the game animation with the sword hitbox"
+     }
     }
    ],
    "rejected_gifs": [
@@ -3311,6 +3791,62 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.plunging-downward-attack-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/sheik/SheikDAir.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=nail&m=knight.nail.downSlash",
+     "media_url": "",
+     "title": "Knight down slash (pogo), with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.plunging-downward-attack-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight down slash (pogo): game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornetSilksong&t=nail&m=silksong.hunter.downSpike",
+     "media_url": "",
+     "title": "Silksong Hornet down spike (Hunter crest), with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.plunging-downward-attack-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Silksong Hornet down spike (Hunter crest): game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=lace&t=attack&m=lace.attack.downstab",
+     "media_url": "",
+     "title": "Lace down stab, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.plunging-downward-attack-hk-2.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Lace down stab: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=air&m=xyxxxx",
+     "media_url": "",
+     "title": "Ryu's Blade of Nirrti, a diving air finisher, with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.plunging-downward-attack-ngb-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Blade of Nirrti, a diving air finisher: figure posed from the game animation with the sword hitbox"
+     }
     }
    ],
    "rejected_gifs": [
@@ -3509,6 +4045,62 @@
       "confidence": "high",
       "what": "Makoto Hayate (Fierce): sprite frames with hurtboxes and attack boxes"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=nailArt&m=knight.nailArt.dashSlash",
+     "media_url": "",
+     "title": "Knight Dash Slash nail art, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.dash-attack-lunge-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Dash Slash nail art: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornet&t=attack&m=hornet.attack.lunge",
+     "media_url": "",
+     "title": "Hornet lunge, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.dash-attack-lunge-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Hornet lunge: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornetSilksong&t=nail&m=silksong.hunter.dashStab",
+     "media_url": "",
+     "title": "Silksong Hornet dash stab, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.dash-attack-lunge-hk-2.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Silksong Hornet dash stab: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=lace&t=attack&m=lace.attack.charge",
+     "media_url": "",
+     "title": "Lace lunge, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.dash-attack-lunge-hk-3.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Lace lunge: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -3607,6 +4199,52 @@
       "confidence": "high",
       "what": "Bowser's dash attack, a belly-first slide along the stage"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/captain_falcon",
+     "media_url": "https://ultimateframedata.com/hitboxes/captain_falcon/CaptainFalconDashAttack.gif",
+     "title": "Captain Falcon dash attack, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.sprint-attack-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/captain_falcon/CaptainFalconDashAttack.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/fox",
+     "media_url": "https://ultimateframedata.com/hitboxes/fox/FoxDashAttack.gif",
+     "title": "Fox dash attack, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.sprint-attack-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/fox/FoxDashAttack.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornetSilksong&t=nail&m=silksong.hunter.dashStab",
+     "media_url": "",
+     "title": "Silksong Hornet sprint attack (dash stab), with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.sprint-attack-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Silksong Hornet sprint attack (dash stab): game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=run&m=run.x",
+     "media_url": "",
+     "title": "Ryu's Violent Wind, X while running, with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.sprint-attack-ngb-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Violent Wind, X while running: figure posed from the game animation with the sword hitbox"
+     }
     }
    ]
   },
@@ -3686,6 +4324,15 @@
       "confidence": "low",
       "what": "Sonic's spinning ball attack rams an enemy (sprite)"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/sonic",
+     "media_url": "https://ultimateframedata.com/hitboxes/sonic/SonicSpinDashAerial.gif",
+     "title": "Sonic Spin Dash, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.rolling-attack-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/sonic/SonicSpinDashAerial.gif"
     }
    ],
    "rejected_gifs": [
@@ -3785,6 +4432,34 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.combo-finisher-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/cloud/CloudJab3.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=lace&t=attack&m=lace.attack.comboSlash",
+     "media_url": "",
+     "title": "Lace combo slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.combo-finisher-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Lace combo slash: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=combo&m=xxxy",
+     "media_url": "",
+     "title": "Ryu's Dragon Tear (XXXY finisher), with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.combo-finisher-ngb-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Dragon Tear (XXXY finisher): figure posed from the game animation with the sword hitbox"
+     }
     }
    ]
   },
@@ -3882,6 +4557,34 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Chun-Li standing Roundhouse: sprite frames with hurtboxes and attack boxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=combo&m=xx6xx",
+     "media_url": "",
+     "title": "Ryu's Fiend's Bane Kick, with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.kick-ngb-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Fiend's Bane Kick: figure posed from the game animation with the sword hitbox"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=combo&m=xx6xy",
+     "media_url": "",
+     "title": "Ryu's Early Winter Rain, three kicks, with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.kick-ngb-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Early Winter Rain, three kicks: figure posed from the game animation with the sword hitbox"
      }
     }
    ]
@@ -4084,6 +4787,15 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.grab-throw-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/ganondorf/GanondorfBThrow.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/snake",
+     "media_url": "https://ultimateframedata.com/hitboxes/snake/SnakeFThrow.gif",
+     "title": "Snake Forward Throw, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.grab-throw-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/snake/SnakeFThrow.gif"
     }
    ]
   },
@@ -4250,6 +4962,15 @@
      "host": "Tenor",
      "local": "gifs/melee.backstab-2.webp",
      "source_url": "https://media.tenor.com/wn9fSEui1F8AAAA1/demons-souls-backstab-back-stab-skeleton-context-sensitivity.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/meta_knight",
+     "media_url": "https://ultimateframedata.com/hitboxes/meta_knight/MetaKnightDimensionalCapeGB.gif",
+     "title": "Meta Knight Dimensional Cape, Attack (Ground, Back), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.backstab-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/meta_knight/MetaKnightDimensionalCapeGB.gif"
     }
    ]
   },
@@ -4318,6 +5039,24 @@
      "host": "Tenor",
      "local": "gifs/melee.riposte-1.webp",
      "source_url": "https://media.tenor.com/anEX8Jy7880AAAA1/dark-souls-enb-epicnamebro-backstab-parry.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ike",
+     "media_url": "https://ultimateframedata.com/hitboxes/ike/IkeCounterHit.gif",
+     "title": "Ike Counter, counterattack, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.riposte-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ike/IkeCounterHit.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/lucina",
+     "media_url": "https://ultimateframedata.com/hitboxes/lucina/LucinaCounterHit.gif",
+     "title": "Lucina Counter, counterattack, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.riposte-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/lucina/LucinaCounterHit.gif"
     }
    ]
   },
@@ -4407,6 +5146,24 @@
      "host": "Tenor",
      "local": "gifs/melee.finisher-execution-4.webp",
      "source_url": "https://media.tenor.com/XIyf_MPosjUAAAA1/genichiro-sekiro-parry-deathblow.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/kazuya",
+     "media_url": "https://ultimateframedata.com/hitboxes/kazuya/Shoto4RageDriveInput.gif",
+     "title": "Kazuya Rage Drive (Input) F, D, DF, Hold A/B (623 Hold-A/B) (Grab (Input)), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.finisher-execution-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/kazuya/Shoto4RageDriveInput.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/incineroar",
+     "media_url": "https://ultimateframedata.com/hitboxes/incineroar/IncineroarAlolanWhipLariat.gif",
+     "title": "Incineroar Alolan Whip, Lariat Attack, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.finisher-execution-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/incineroar/IncineroarAlolanWhipLariat.gif"
     }
    ]
   },
@@ -4580,6 +5337,34 @@
       "confidence": "high",
       "what": "Mario ground-pounds, bouncing off the floor in a ring of stars"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=spell&m=knight.spell.desolateDive",
+     "media_url": "",
+     "title": "Knight Desolate Dive, cast from the ground, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.ground-pound-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Desolate Dive, cast from the ground: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=phantom&t=attack&m=phantom.attack.dragoon",
+     "media_url": "",
+     "title": "Phantom dragoon drop, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.ground-pound-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Phantom dragoon drop: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ],
    "rejected_gifs": [
@@ -4679,6 +5464,38 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.weapon-art-skill-attack-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/cloud/CloudFinishingTouchG.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/hero",
+     "media_url": "https://ultimateframedata.com/hitboxes/hero/HeroFlameSlash.gif",
+     "title": "Hero Flame Slash, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.weapon-art-skill-attack-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/hero/HeroFlameSlash.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/cloud",
+     "media_url": "https://ultimateframedata.com/hitboxes/cloud/CloudCrossSlashLimitRight.gif",
+     "title": "Cloud Limit Cross Slash (Right), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.weapon-art-skill-attack-ufd-3.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/cloud/CloudCrossSlashLimitRight.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=nailArt&m=knight.nailArt.greatSlash",
+     "media_url": "",
+     "title": "Knight Great Slash nail art, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.weapon-art-skill-attack-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Great Slash nail art: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -4845,6 +5662,29 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.whip-chain-lash-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/simon/SimonFTilt.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/zero_suit_samus",
+     "media_url": "https://ultimateframedata.com/hitboxes/zero_suit_samus/ZeroSuitSamusPlasmaWhip.gif",
+     "title": "Zero Suit Samus Side B (Plasma Whip) (Normal), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.whip-chain-lash-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/zero_suit_samus/ZeroSuitSamusPlasmaWhip.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=lastJudge&t=attack&m=lastJudge.attack.spin",
+     "media_url": "",
+     "title": "Last Judge censer swing, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.whip-chain-lash-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Last Judge censer swing: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -4917,6 +5757,29 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Rellana spins and slashes with her twin frost and fire moon blades"
+     }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/pit",
+     "media_url": "https://ultimateframedata.com/hitboxes/pit/PitJabRapid.gif",
+     "title": "Pit rapid jab with twin blades, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.dual-wield-flurry-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/pit/PitJabRapid.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=lace&t=attack&m=lace.attack.rapidSlash",
+     "media_url": "",
+     "title": "Lace rapid air slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.dual-wield-flurry-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Lace rapid air slash: game sprites with hurtbox and attack hitboxes"
      }
     }
    ],
@@ -5016,6 +5879,34 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Kratos hurls the axe across the ice and recalls it mid-fight"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornet&t=attack&m=hornet.attack.throw",
+     "media_url": "",
+     "title": "Hornet needle throw and recall, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.weapon-throw-recall-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Hornet needle throw and recall: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=phantom&t=attack&m=phantom.attack.throw",
+     "media_url": "",
+     "title": "Phantom pin throw, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.weapon-throw-recall-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Phantom pin throw: game sprites with hurtbox and attack hitboxes"
      }
     }
    ],
@@ -6106,6 +6997,15 @@
      "host": "Tenor",
      "local": "gifs/ranged.charge-shot-2.webp",
      "source_url": "https://media.tenor.com/ZrR_vMvZRFEAAAA1/x-buster-megaman-maverick-hunter-x-high-definition-charge-shot.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/samus",
+     "media_url": "https://ultimateframedata.com/hitboxes/samus/SamusChargeShotMax.gif",
+     "title": "Samus Charge Shot, fully charged, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/ranged.charge-shot-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/samus/SamusChargeShotMax.gif"
     }
    ]
   },
@@ -6193,6 +7093,15 @@
       "confidence": "high",
       "what": "First-person throw of a plasma grenade onto a Wraith"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/king_dedede",
+     "media_url": "https://ultimateframedata.com/hitboxes/king_dedede/KingDededeGordoThrow.gif",
+     "title": "King Dedede Side B (Gordo Throw) (Toss), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/ranged.grenade-throw-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/king_dedede/KingDededeGordoThrow.gif"
     }
    ]
   },
@@ -6925,6 +7834,20 @@
       "confidence": "high",
       "what": "Link throws the boomerang, which arcs out and returns"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=mantisLord&t=attack&m=mantisLord.attack.throw",
+     "media_url": "",
+     "title": "Mantis Lord boomerang throw (boomerang not shown), with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/ranged.boomerang-returning-throw-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Mantis Lord boomerang throw (boomerang not shown): game sprites with hurtbox and attack hitboxes"
+     }
     }
    ],
    "rejected_gifs": [
@@ -7012,6 +7935,38 @@
       "confidence": "high",
       "what": "First-person hands cast a conjuration spell, opening a purple portal on the ground"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/hero",
+     "media_url": "https://ultimateframedata.com/hitboxes/hero/Sizzle.gif",
+     "title": "Hero Sizzle, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.spell-cast-instant-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/hero/Sizzle.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/hero",
+     "media_url": "https://ultimateframedata.com/hitboxes/hero/HeroKazap.gif",
+     "title": "Hero Side B, (Zap/Zapple/Kazap) (Kazap), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.spell-cast-instant-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/hero/HeroKazap.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=spell&m=knight.spell.vengefulSpirit",
+     "media_url": "",
+     "title": "Knight Vengeful Spirit, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/magic.spell-cast-instant-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Knight Vengeful Spirit: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -7091,6 +8046,20 @@
       "verdict": "added",
       "confidence": "low",
       "what": "Character-select idle: a mage holds a staff and channels a glowing green spell"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=movement&m=knight.movement.focus",
+     "media_url": "",
+     "title": "Knight Focus (channelled heal), with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/magic.spell-channel-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Focus (channelled heal): game sprites with hurtbox and attack hitboxes"
      }
     }
    ]
@@ -7172,6 +8141,43 @@
       "confidence": "high",
       "what": "Pyromancer throws fireballs at enemies in the Painted World"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ness",
+     "media_url": "https://ultimateframedata.com/hitboxes/ness/NessPKFireG.gif",
+     "title": "Ness PK Fire, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.projectile-cast-fireball-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ness/NessPKFireG.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=spell&m=knight.spell.vengefulSpirit",
+     "media_url": "",
+     "title": "Knight Vengeful Spirit, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/magic.projectile-cast-fireball-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Vengeful Spirit: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=spell&m=knight.spell.shadeSoul",
+     "media_url": "",
+     "title": "Knight Shade Soul, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/magic.projectile-cast-fireball-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Shade Soul: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -7229,6 +8235,15 @@
       "confidence": "high",
       "what": "Cell fires a full-screen Kamehameha"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/kazuya",
+     "media_url": "https://ultimateframedata.com/hitboxes/kazuya/Shoto4DevilBlasterG.gif",
+     "title": "Kazuya Devil Blaster, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.beam-attack-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/kazuya/Shoto4DevilBlasterG.gif"
     }
    ]
   },
@@ -7296,6 +8311,29 @@
      "host": "Tenor",
      "local": "gifs/magic.area-of-effect-slam-1.webp",
      "source_url": "https://media.tenor.com/p5mlueM9_lgAAAA1/malphite-league-of-legends-tomasz-rock-solid-ultimate.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/donkey_kong",
+     "media_url": "https://ultimateframedata.com/hitboxes/donkey_kong/DonkeyKongHandSlapG.gif",
+     "title": "Donkey Kong Down B (Hand Slap), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.area-of-effect-slam-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/donkey_kong/DonkeyKongHandSlapG.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=spell&m=knight.spell.descendingDark",
+     "media_url": "",
+     "title": "Knight Descending Dark, cast from the ground, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/magic.area-of-effect-slam-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Descending Dark, cast from the ground: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -7488,6 +8526,34 @@
      "host": "Tenor",
      "local": "gifs/magic.heal-4.webp",
      "source_url": "https://media.tenor.com/hTf3wzqNNPoAAAA1/ffxiv-heal-healing-ffxiv-heal-lb-ffixv-healer.webp"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=movement&m=knight.movement.focus",
+     "media_url": "",
+     "title": "Knight Focus, healing one mask, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/magic.heal-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Focus, healing one mask: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornetSilksong&t=movement&m=silksong.movement.bind",
+     "media_url": "",
+     "title": "Silksong Hornet Bind (heal), with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/magic.heal-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Silksong Hornet Bind (heal): game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -7567,6 +8633,42 @@
      "host": "Tenor",
      "local": "gifs/magic.shield-barrier-2.webp",
      "source_url": "https://media.tenor.com/lK1wVo3ecR0AAAA1/overwatch-2-ow2-ramattra-shield-vortex.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/fox",
+     "media_url": "https://ultimateframedata.com/hitboxes/fox/FoxReflector.gif",
+     "title": "Fox Reflector, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.shield-barrier-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/fox/FoxReflector.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/mega_man",
+     "media_url": "https://ultimateframedata.com/hitboxes/mega_man/MegaManLeafShield.gif",
+     "title": "Mega Man Leaf Shield, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.shield-barrier-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/mega_man/MegaManLeafShield.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/wolf",
+     "media_url": "https://ultimateframedata.com/hitboxes/wolf/WolfReflector.gif",
+     "title": "Wolf Down B (Reflector) (Hold), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.shield-barrier-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/wolf/WolfReflector.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/joker",
+     "media_url": "https://ultimateframedata.com/hitboxes/joker/JokerMakarakarn.gif",
+     "title": "Joker Arsene, Makarakarn Reflect, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.shield-barrier-ufd-3.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/joker/JokerMakarakarn.gif"
     }
    ]
   },
@@ -7618,6 +8720,33 @@
       "confidence": "high",
       "what": "Tracer blinks across the courtyard in short teleport hops"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/zelda",
+     "media_url": "https://ultimateframedata.com/hitboxes/zelda/ZeldaFaroresWindG.gif",
+     "title": "Zelda Farore's Wind, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.teleport-blink-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/zelda/ZeldaFaroresWindG.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/sheik",
+     "media_url": "https://ultimateframedata.com/hitboxes/sheik/SheikVanishG.gif",
+     "title": "Sheik Vanish, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.teleport-blink-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/sheik/SheikVanishG.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/meta_knight",
+     "media_url": "https://ultimateframedata.com/hitboxes/meta_knight/MetaKnightDimensionalCapeG.gif",
+     "title": "Meta Knight Dimensional Cape, Attack (Ground, Stationary), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.teleport-blink-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/meta_knight/MetaKnightDimensionalCapeG.gif"
     }
    ]
   },
@@ -7730,6 +8859,20 @@
      "host": "Tenor",
      "local": "gifs/magic.ultimate-super-ability-4.webp",
      "source_url": "https://media.tenor.com/LD5qn8gHfWQAAAA1/vendetta-overwatch-vendetta-overwatch-vendetta-ultimate-vendetta-overwatch-ultimate.webp"
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=ut&m=y.ut",
+     "media_url": "",
+     "title": "Ryu's Hundred Wing Blade (Ultimate Technique) timing, with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/magic.ultimate-super-ability-ngb-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Hundred Wing Blade (Ultimate Technique) timing: figure posed from the game animation with the sword hitbox"
+     }
     }
    ]
   },
@@ -7810,6 +8953,15 @@
       "confidence": "high",
       "what": "Lucario charges Aura Sphere, the blue ball swelling between its paws"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ridley",
+     "media_url": "https://ultimateframedata.com/hitboxes/ridley/RidleyPlasmaBreathCharge.gif",
+     "title": "Ridley Neutral B (Plasma Breath) (Charge), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.charge-up-ki-charge-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ridley/RidleyPlasmaBreathCharge.gif"
     }
    ],
    "rejected_gifs": [
@@ -7884,6 +9036,15 @@
      "host": "Tenor",
      "local": "gifs/magic.lightning-strike-4.webp",
      "source_url": "https://media.tenor.com/B0vHD28mhNcAAAA1/elden-ring-dragonlord-nuke-ancient-dragon-lightning-spear-elden-ring-mods-elden-ring-incantation.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/pikachu",
+     "media_url": "https://ultimateframedata.com/hitboxes/pikachu/PikachuThunder.gif",
+     "title": "Pikachu Thunder, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.lightning-strike-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/pikachu/PikachuThunder.gif"
     }
    ]
   },
@@ -7950,6 +9111,15 @@
       "confidence": "low",
       "what": "Anivia's Frostbite and ice-shard spells cast on an enemy in lane (small, weaker pick)"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ice_climbers",
+     "media_url": "https://ultimateframedata.com/hitboxes/ice_climbers/PopoBlizzard.gif",
+     "title": "Ice Climbers Down B (Blizzard) (Popo Blizzard), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.ice-frost-spell-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ice_climbers/PopoBlizzard.gif"
     }
    ]
   },
@@ -8025,6 +9195,24 @@
      "host": "Tenor",
      "local": "gifs/magic.fire-breath-flame-spray-3.webp",
      "source_url": "https://media.tenor.com/So6Gtz3b2dsAAAA1/dark-souls-sacred-flame-piromancy.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ridley",
+     "media_url": "https://ultimateframedata.com/hitboxes/ridley/RidleyPlasmaBreath.gif",
+     "title": "Ridley Neutral B (Plasma Breath) (Default), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.fire-breath-flame-spray-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ridley/RidleyPlasmaBreath.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/piranha_plant",
+     "media_url": "https://ultimateframedata.com/hitboxes/piranha_plant/PiranhaPlantPoisonBreathMax.gif",
+     "title": "Piranha Plant Side B, Full Charge (Poison Breath, Full Charge), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.fire-breath-flame-spray-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/piranha_plant/PiranhaPlantPoisonBreathMax.gif"
     }
    ]
   },
@@ -8055,6 +9243,42 @@
      "host": "Tenor",
      "local": "gifs/magic.telekinesis-force-push-0.webp",
      "source_url": "https://media.tenor.com/UdOHFEoYaWwAAAA1/star-wars-yeet-darth-vader-fallen-order-jedi.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/mewtwo",
+     "media_url": "https://ultimateframedata.com/hitboxes/mewtwo/MewtwoConfusion.gif",
+     "title": "Mewtwo Side B (Confusion), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.telekinesis-force-push-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/mewtwo/MewtwoConfusion.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/lucario",
+     "media_url": "https://ultimateframedata.com/hitboxes/lucario/LucarioForcePalm.gif",
+     "title": "Lucario Side B (Force Palm) (Ground), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.telekinesis-force-push-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/lucario/LucarioForcePalm.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ness",
+     "media_url": "https://ultimateframedata.com/hitboxes/ness/NessPSIMagnet.gif",
+     "title": "Ness Down B (PSI Magnet) (Pulse), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.telekinesis-force-push-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ness/NessPSIMagnet.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/rosalina_and_luma",
+     "media_url": "https://ultimateframedata.com/hitboxes/rosalina_and_luma/RosalinaGravitationalPull.gif",
+     "title": "Rosalina and Luma Down B (Gravitational Pull), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.telekinesis-force-push-ufd-3.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/rosalina_and_luma/RosalinaGravitationalPull.gif"
     }
    ]
   },
@@ -8183,6 +9407,34 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Dragonborn shouts on a mountainside and launches an enemy"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=spell&m=knight.spell.howlingWraiths",
+     "media_url": "",
+     "title": "Knight Howling Wraiths, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/magic.shout-roar-ability-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Howling Wraiths: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=spell&m=knight.spell.abyssShriek",
+     "media_url": "",
+     "title": "Knight Abyss Shriek, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/magic.shout-roar-ability-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Abyss Shriek: game sprites with hurtbox and attack hitboxes"
      }
     }
    ]
@@ -8454,6 +9706,24 @@
       "confidence": "high",
       "what": "Parry against Pontiff Sulyvahn's flaming sword"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/roy",
+     "media_url": "https://ultimateframedata.com/hitboxes/roy/RoyCounter.gif",
+     "title": "Roy Down B (Counter), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.parry-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/roy/RoyCounter.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/little_mac",
+     "media_url": "https://ultimateframedata.com/hitboxes/little_mac/LittleMacSlipCounter.gif",
+     "title": "Little Mac Down B (Slip Counter), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.parry-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/little_mac/LittleMacSlipCounter.gif"
     }
    ],
    "rejected_gifs": [
@@ -8530,6 +9800,42 @@
      "host": "Tenor",
      "local": "gifs/defense.perfect-block-deflect-1.webp",
      "source_url": "https://media.tenor.com/tfIBJM6g7eIAAAA1/sekiro-shadows-die-twice-sekiro-true-corrupted-monk-katana-parry.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/mario",
+     "media_url": "https://ultimateframedata.com/hitboxes/mario/MarioCape.gif",
+     "title": "Mario Side B (Cape), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.perfect-block-deflect-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/mario/MarioCape.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/palutena",
+     "media_url": "https://ultimateframedata.com/hitboxes/palutena/PalutenaCounterHit.gif",
+     "title": "Palutena Counter, Attack/Reflect, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.perfect-block-deflect-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/palutena/PalutenaCounterHit.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/falco",
+     "media_url": "https://ultimateframedata.com/hitboxes/falco/FalcoReflector.gif",
+     "title": "Falco Down B (Reflector), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.perfect-block-deflect-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/falco/FalcoReflector.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/dr_mario",
+     "media_url": "https://ultimateframedata.com/hitboxes/dr_mario/DrMarioSuperSheet.gif",
+     "title": "Dr. Mario Side B (Super Sheet), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.perfect-block-deflect-ufd-3.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/dr_mario/DrMarioSuperSheet.gif"
     }
    ],
    "rejected_gifs": [
@@ -8727,6 +10033,20 @@
       "confidence": "high",
       "what": "Heihachi sidesteps an attack and answers with a Wind God Fist"
      }
+    },
+    {
+     "page_url": "gifs/defense.sidestep-quickstep-nr0.webp",
+     "media_url": "",
+     "title": "Quickstep left, right, back, forward, rendered with the Frame Data 3D preview",
+     "game": "No Rest for the Wicked",
+     "host": "No Rest for the Wicked render",
+     "local": "gifs/defense.sidestep-quickstep-nr0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Short quickstep dodge to the left, right, back and forward in turn"
+     }
     }
    ]
   },
@@ -8790,6 +10110,29 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Quick hop backward out of range"
+     }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/sheik",
+     "media_url": "https://ultimateframedata.com/hitboxes/sheik/SheikBouncingFish.gif",
+     "title": "Sheik Down B (Bouncing Fish), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.backstep-backflip-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/sheik/SheikBouncingFish.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornet&t=attack&m=hornet.attack.evade",
+     "media_url": "",
+     "title": "Hornet evade, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/defense.backstep-backflip-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Hornet evade: game sprites with hurtbox and attack hitboxes"
      }
     }
    ]
@@ -8857,6 +10200,48 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Dudley forward dash: sprite frames with hurtboxes and attack boxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=movement&m=knight.movement.dash",
+     "media_url": "",
+     "title": "Knight dash (Mothwing Cloak), with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/defense.dash-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight dash (Mothwing Cloak): game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=movement&m=knight.movement.shadowDash",
+     "media_url": "",
+     "title": "Knight Shadow Dash, invulnerable, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/defense.dash-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Shadow Dash, invulnerable: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornetSilksong&t=movement&m=silksong.movement.dash",
+     "media_url": "",
+     "title": "Silksong Hornet dash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/defense.dash-hk-2.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Silksong Hornet dash: game sprites with hurtbox and attack hitboxes"
      }
     }
    ]
@@ -8934,6 +10319,29 @@
      "host": "Tenor",
      "local": "gifs/defense.air-dash-2.webp",
      "source_url": "https://media.tenor.com/2UEWBgnjMQAAAAA1/hornet-silksong-dash-hornet-run-hornet-dash.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/pikachu",
+     "media_url": "https://ultimateframedata.com/hitboxes/pikachu/PikachuQuickAttack.gif",
+     "title": "Pikachu Up B (Quick Attack), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.air-dash-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/pikachu/PikachuQuickAttack.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=movement&m=knight.movement.dash",
+     "media_url": "",
+     "title": "Knight dash, usable in the air, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/defense.air-dash-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Knight dash, usable in the air: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -9007,6 +10415,24 @@
       "confidence": "high",
       "what": "Dodge triggers Witch Time; the world slows and tints while Bayonetta combos angels"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/bayonetta",
+     "media_url": "https://ultimateframedata.com/hitboxes/bayonetta/BayonettaWitchTime.gif",
+     "title": "Bayonetta Witch Time, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.perfect-dodge-witch-time-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/bayonetta/BayonettaWitchTime.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/lucario",
+     "media_url": "https://ultimateframedata.com/hitboxes/lucario/LucarioDoubleTeam.gif",
+     "title": "Lucario Down B (Double Team), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.perfect-dodge-witch-time-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/lucario/LucarioDoubleTeam.gif"
     }
    ]
   },
@@ -9069,6 +10495,47 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/defense.counter-attack-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/little_mac/LittleMacSlipCounterHitG.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/sora",
+     "media_url": "https://ultimateframedata.com/hitboxes/sora/SoraCounterAttackHit.gif",
+     "title": "Sora Down B (Counterattack, Success), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.counter-attack-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/sora/SoraCounterAttackHit.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/corrin",
+     "media_url": "https://ultimateframedata.com/hitboxes/corrin/CorrinCounterSurgeHit.gif",
+     "title": "Corrin Counter Surge, Attack, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.counter-attack-ufd-3.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/corrin/CorrinCounterSurgeHit.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/king_k_rool",
+     "media_url": "https://ultimateframedata.com/hitboxes/king_k_rool/KingKRoolGutCheckHit.gif",
+     "title": "King K. Rool Gut Check, Counterattack (Normal), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.counter-attack-ufd-4.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/king_k_rool/KingKRoolGutCheckHit.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=pureVessel&t=attack&m=pureVessel.attack.counterSlash",
+     "media_url": "",
+     "title": "Pure Vessel counter slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/defense.counter-attack-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Pure Vessel counter slash: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ],
    "rejected_gifs": [
@@ -9151,6 +10618,24 @@
      "host": "Tenor",
      "local": "gifs/defense.guard-break-shield-break-2.webp",
      "source_url": "https://media.tenor.com/2hLxg4AsSNIAAAA1/sekiro-shadows-die-twice-sekiro-katana-deflect.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/marth",
+     "media_url": "https://ultimateframedata.com/hitboxes/marth/MarthShieldbreakerMax.gif",
+     "title": "Marth Neutral B (Shield Breaker) (Max), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.guard-break-shield-break-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/marth/MarthShieldbreakerMax.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/lucina",
+     "media_url": "https://ultimateframedata.com/hitboxes/lucina/LucinaShieldbreakerMax.gif",
+     "title": "Lucina Neutral B (Shieldbreaker) (Max), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.guard-break-shield-break-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/lucina/LucinaShieldbreakerMax.gif"
     }
    ]
   },
@@ -9560,6 +11045,34 @@
       "confidence": "high",
       "what": "Small flinch from a hit in front"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=movement&m=knight.movement.hit",
+     "media_url": "",
+     "title": "Knight taking a hit, then invulnerable, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/reactions.light-flinch-hit-react-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight taking a hit, then invulnerable: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornetSilksong&t=movement&m=silksong.movement.hit",
+     "media_url": "",
+     "title": "Silksong Hornet taking a hit, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/reactions.light-flinch-hit-react-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Silksong Hornet taking a hit: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -9828,6 +11341,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Bayonetta is hit and sent flying off the stage"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=movement&m=knight.movement.hit",
+     "media_url": "",
+     "title": "Knight knocked back by a hit, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/reactions.knockback-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Knight knocked back by a hit: game sprites with hurtbox and attack hitboxes"
      }
     }
    ]
@@ -11055,6 +12582,34 @@
       "confidence": "high",
       "what": "Stagger and collapse to the ground"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=movement&m=knight.movement.death",
+     "media_url": "",
+     "title": "Knight death, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/death.death-collapse-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight death: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornetSilksong&t=movement&m=silksong.movement.death",
+     "media_url": "",
+     "title": "Silksong Hornet death, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/death.death-collapse-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Silksong Hornet death: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ],
    "rejected_gifs": [
@@ -11801,6 +13356,33 @@
       "confidence": "low",
       "what": "Dudley taunt (rose toss): sprite frames with hurtboxes and attack boxes"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/luigi",
+     "media_url": "https://ultimateframedata.com/hitboxes/luigi/LuigiDTaunt.gif",
+     "title": "Luigi Down Taunt, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.taunt-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/luigi/LuigiDTaunt.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/greninja",
+     "media_url": "https://ultimateframedata.com/hitboxes/greninja/GreninjaDTaunt.gif",
+     "title": "Greninja Down Taunt, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.taunt-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/greninja/GreninjaDTaunt.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/kazuya",
+     "media_url": "https://ultimateframedata.com/hitboxes/kazuya/Shoto4SideTaunt.gif",
+     "title": "Kazuya Demon's Wrath (Side Taunt), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.taunt-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/kazuya/Shoto4SideTaunt.gif"
     }
    ]
   },
@@ -12273,6 +13855,33 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/fighting.command-grab-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/incineroar/IncineroarAlolanWhipG.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ridley",
+     "media_url": "https://ultimateframedata.com/hitboxes/ridley/RidleySpacePirateRushDragStart.gif",
+     "title": "Ridley Side B (Space Pirate Rush, Success) (Drag Start), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.command-grab-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ridley/RidleySpacePirateRushDragStart.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/bowser",
+     "media_url": "https://ultimateframedata.com/hitboxes/bowser/BowserFlyingSlamGrabG.gif",
+     "title": "Bowser Side B (Flying Slam) (Ground), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.command-grab-ufd-3.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/bowser/BowserFlyingSlamGrabG.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/mii_brawler",
+     "media_url": "https://ultimateframedata.com/hitboxes/mii_brawler/MiiBrawlerCounterThrowGrabG.gif",
+     "title": "Mii Brawler Counter Throw, Activated (Grab, Ground), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.command-grab-ufd-4.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/mii_brawler/MiiBrawlerCounterThrowGrabG.gif"
     }
    ]
   },
@@ -12400,6 +14009,15 @@
       "confidence": "high",
       "what": "Chun-Li Houyoku Sen, Super Art II: sprite frames with hurtboxes and attack boxes"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/kazuya",
+     "media_url": "https://ultimateframedata.com/hitboxes/kazuya/Shoto4RageDriveInputLand.gif",
+     "title": "Kazuya Rage Drive (Input) F, D, DF, Hold A/B (623 Hold-A/B) (Landing (Input)), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.super-critical-art-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/kazuya/Shoto4RageDriveInputLand.gif"
     }
    ]
   },
@@ -12786,6 +14404,34 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Pontiff Sulyvahn winds up his flaming greatsword before the swing"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornet&t=attack&m=hornet.attack.lunge",
+     "media_url": "",
+     "title": "Hornet lunge, from its wind-up, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/enemies.attack-telegraph-windup-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Hornet lunge, from its wind-up: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=pureVessel&t=attack&m=pureVessel.attack.dash",
+     "media_url": "",
+     "title": "Pure Vessel dash stab, from its wind-up, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/enemies.attack-telegraph-windup-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Pure Vessel dash stab, from its wind-up: game sprites with hurtbox and attack hitboxes"
      }
     }
    ]
@@ -13432,6 +15078,24 @@
       "confidence": "low",
       "what": "Werewolf leaps through the snow and pounces at the camera (the lunge before a pin)"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ridley",
+     "media_url": "https://ultimateframedata.com/hitboxes/ridley/RidleySpacePirateRushDrag.gif",
+     "title": "Ridley Side B (Space Pirate Rush, Success) (Dragging), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/enemies.monster-grab-pin-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ridley/RidleySpacePirateRushDrag.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/incineroar",
+     "media_url": "https://ultimateframedata.com/hitboxes/incineroar/IncineroarAlolanWhipG.gif",
+     "title": "Incineroar Side B (Alolan Whip, Grab) (Ground), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/enemies.monster-grab-pin-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/incineroar/IncineroarAlolanWhipG.gif"
     }
    ],
    "rejected_gifs": [
@@ -13503,6 +15167,89 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Diablos charges head-down at a Great Sword hunter, who tackles through it"
+     }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/pt_charizard",
+     "media_url": "https://ultimateframedata.com/hitboxes/pt_charizard/charitardFlareBlitz.gif",
+     "title": "Charizard Side B (Flare Blitz), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/enemies.charging-rush-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/pt_charizard/charitardFlareBlitz.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ridley",
+     "media_url": "https://ultimateframedata.com/hitboxes/ridley/RidleySpacePirateRushG.gif",
+     "title": "Ridley Side B (Space Pirate Rush), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/enemies.charging-rush-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ridley/RidleySpacePirateRushG.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/bowser_jr",
+     "media_url": "https://ultimateframedata.com/hitboxes/bowser_jr/BowserJrClownKartDashG.gif",
+     "title": "Bowser Jr. Side B (Clown Kart Dash) (Ground), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/enemies.charging-rush-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/bowser_jr/BowserJrClownKartDashG.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=nkg&t=attack&m=nkg.attack.groundDash",
+     "media_url": "",
+     "title": "Nightmare King Grimm ground dash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/enemies.charging-rush-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Nightmare King Grimm ground dash: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=mantisLord&t=attack&m=mantisLord.attack.dash",
+     "media_url": "",
+     "title": "Mantis Lord dash slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/enemies.charging-rush-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Mantis Lord dash slash: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=bellBeast&t=attack&m=bellBeast.attack.charge",
+     "media_url": "",
+     "title": "Bell Beast charge, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/enemies.charging-rush-hk-2.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Bell Beast charge: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=widow&t=attack&m=widow.attack.dashCharge",
+     "media_url": "",
+     "title": "Widow charge, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/enemies.charging-rush-hk-3.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Widow charge: game sprites with hurtbox and attack hitboxes"
      }
     }
    ],
@@ -13817,6 +15564,15 @@
      "host": "Tenor",
      "local": "gifs/stealth.chokehold-sleeper-hold-2.webp",
      "source_url": "https://media.tenor.com/OGcJatRjcTQAAAA1/choke-choking-putting-him-to-sleep-down-throw-kemoryona.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/snake",
+     "media_url": "https://ultimateframedata.com/hitboxes/snake/SnakePummel.gif",
+     "title": "Snake Pummel, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/stealth.chokehold-sleeper-hold-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/snake/SnakePummel.gif"
     }
    ]
   },
@@ -14081,6 +15837,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Link's sword beam slash leaves a bright arc as he strikes at a dragon"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=nail&m=knight.nail.slash",
+     "media_url": "",
+     "title": "Knight nail slash and its slash arc, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/vfx.weapon-trail-slash-arc-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight nail slash and its slash arc: game sprites with hurtbox and attack hitboxes"
      }
     }
    ]
@@ -14656,6 +16426,20 @@
      "host": "Tenor",
      "local": "gifs/vfx.shockwave-ground-crack-2.webp",
      "source_url": "https://media.tenor.com/8wvX_sqMHeMAAAA1/monster-hunter-mhw-monster-hunter-world-hammer-hammer-time.webp"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=spell&m=knight.spell.desolateDive",
+     "media_url": "",
+     "title": "Knight Desolate Dive shockwave, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/vfx.shockwave-ground-crack-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Knight Desolate Dive shockwave: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -16412,6 +18196,20 @@
      "host": "Tenor",
      "local": "gifs/exploration.sneak-tiptoe-3.webp",
      "source_url": "https://media.tenor.com/b_XdV17BtTgAAAA1/luigi-luigi's-mansion-luigis-mansion-funny-walk-gameboy-horror.webp"
+    },
+    {
+     "page_url": "gifs/locomotion.crouch-walk-nr0.webp",
+     "media_url": "",
+     "title": "Crouch walk, rendered with the Frame Data 3D preview",
+     "game": "No Rest for the Wicked",
+     "host": "No Rest for the Wicked render",
+     "local": "gifs/locomotion.crouch-walk-nr0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Crouched sneak walk loop, two cycles"
+     }
     }
    ],
    "rejected_gifs": [
@@ -16463,6 +18261,20 @@
      "title": "Zora Link swimming",
      "game": "Zelda: Majora's Mask",
      "host": "Tenor"
+    },
+    {
+     "page_url": "gifs/exploration.swim-surface-nr0.webp",
+     "media_url": "",
+     "title": "Swim stroke, then crawl, rendered with the Frame Data 3D preview",
+     "game": "No Rest for the Wicked",
+     "host": "No Rest for the Wicked render",
+     "local": "gifs/exploration.swim-surface-nr0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Surface swimming: the slow stroke loop, then the fast crawl"
+     }
     }
    ]
   },
@@ -16592,6 +18404,20 @@
       "confidence": "high",
       "what": "Link climbing a tree trunk, a tower and a cliff face"
      }
+    },
+    {
+     "page_url": "gifs/exploration.free-climb-nr0.webp",
+     "media_url": "",
+     "title": "Wall climb up, then sideways, rendered with the Frame Data 3D preview",
+     "game": "No Rest for the Wicked",
+     "host": "No Rest for the Wicked render",
+     "local": "gifs/exploration.free-climb-nr0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Free climbing up a wall, then sideways (the wall is not drawn)"
+     }
     }
    ]
   },
@@ -16662,6 +18488,20 @@
       "verdict": "added",
       "confidence": "low",
       "what": "Ladder climb-up cycle (the ladder itself is not drawn)"
+     }
+    },
+    {
+     "page_url": "gifs/exploration.ladder-climb-nr0.webp",
+     "media_url": "",
+     "title": "Ladder climb up, rendered with the Frame Data 3D preview",
+     "game": "No Rest for the Wicked",
+     "host": "No Rest for the Wicked render",
+     "local": "gifs/exploration.ladder-climb-nr0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Ladder climb-up cycle (the ladder is not drawn)"
      }
     }
    ]
@@ -16740,6 +18580,15 @@
       "confidence": "high",
       "what": "Player skydives, then deploys the glider and floats down to the map"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/steve",
+     "media_url": "https://ultimateframedata.com/hitboxes/steve/SteveElytra.gif",
+     "title": "Steve Up B (Elytra), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/exploration.glide-paraglider-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/steve/SteveElytra.gif"
     }
    ]
   },
@@ -16935,6 +18784,15 @@
       "confidence": "high",
       "what": "Driving a white muscle car through Los Santos, drifting around corners"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/wario",
+     "media_url": "https://ultimateframedata.com/hitboxes/wario/WarioBikeDrive.gif",
+     "title": "Wario Side B (Wario Bike), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/exploration.drive-steer-vehicle-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/wario/WarioBikeDrive.gif"
     }
    ]
   },
@@ -17844,6 +19702,15 @@
      "host": "Tenor",
      "local": "gifs/interaction.eat-drink-1.webp",
      "source_url": "https://media.tenor.com/ckx6wQUygRoAAAA1/monster-hunter-mh-potion-potion-flex-mh-potion.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/king_dedede",
+     "media_url": "https://ultimateframedata.com/hitboxes/king_dedede/KingDededeInhale.gif",
+     "title": "King Dedede Neutral B (Inhale) (Default), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/interaction.eat-drink-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/king_dedede/KingDededeInhale.gif"
     }
    ],
    "rejected_gifs": [
@@ -18111,6 +19978,15 @@
       "confidence": "high",
       "what": "Pickaxe breaking a diamond ore block"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/villager",
+     "media_url": "https://ultimateframedata.com/hitboxes/villager/VillagerTimberAxe.gif",
+     "title": "Villager Timber Axe, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/interaction.mine-chop-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/villager/VillagerTimberAxe.gif"
     }
    ]
   },
@@ -18156,6 +20032,15 @@
      "game": "Stardew Valley",
      "media_url": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/isabelle",
+     "media_url": "https://ultimateframedata.com/hitboxes/isabelle/IsabelleGrab.gif",
+     "title": "Isabelle Grab, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/interaction.fishing-cast-reel-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/isabelle/IsabelleGrab.gif"
     }
    ]
   },
@@ -18242,6 +20127,15 @@
       "confidence": "high",
       "what": "Chefs chop, fry and plate orders around a busy kitchen"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/mr_game_and_watch",
+     "media_url": "https://ultimateframedata.com/hitboxes/mr_game_and_watch/MrGame_WatchChef.gif",
+     "title": "Mr. Game & Watch Neutral B (Chef), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/interaction.cook-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/mr_game_and_watch/MrGame_WatchChef.gif"
     }
    ]
   },
@@ -18280,6 +20174,15 @@
      "host": "Tenor",
      "local": "gifs/interaction.plant-water-crops-1.webp",
      "source_url": "https://media.tenor.com/3brTw4lUeWAAAAA1/stardew-watering-water-crops-watering-crops-crops.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/villager",
+     "media_url": "https://ultimateframedata.com/hitboxes/villager/VillagerTimberGrowth.gif",
+     "title": "Villager Timber Tree Grow/Fall (Grow), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/interaction.plant-water-crops-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/villager/VillagerTimberGrowth.gif"
     }
    ]
   },
@@ -20554,6 +22457,15 @@
      "title": "Millia hair animation on held frames",
      "game": "Guilty Gear Strive",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/mr_game_and_watch",
+     "media_url": "https://ultimateframedata.com/hitboxes/mr_game_and_watch/MrGame_WatchJudge9.gif",
+     "title": "Mr. Game & Watch Side B (Judge) (9), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/cartoon.limited-animation-on-twos-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/mr_game_and_watch/MrGame_WatchJudge9.gif"
     }
    ]
   },
@@ -21010,6 +22922,20 @@
      "title": "Warcraft III spitting spider unit animation",
      "game": "Warcraft III",
      "host": "Tenor"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=widow&t=attack&m=widow.attack.dashCharge",
+     "media_url": "",
+     "title": "Widow skittering charge, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/creature.insect-spider-crawl-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Widow skittering charge: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -21075,6 +23001,15 @@
       "confidence": "high",
       "what": "Lichdragon Fortissax flies overhead and unleashes red death lightning"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ridley",
+     "media_url": "https://ultimateframedata.com/hitboxes/ridley/RidleyWingBlitzForward.gif",
+     "title": "Ridley Up B (Wing Blitz) (Forward), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/creature.dragon-flight-breath-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ridley/RidleyWingBlitzForward.gif"
     }
    ],
    "rejected_gifs": [
@@ -22547,6 +24482,33 @@
       "confidence": "high",
       "what": "Mario tosses the ball up and serves"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ness",
+     "media_url": "https://ultimateframedata.com/hitboxes/ness/NessFSmash.gif",
+     "title": "Ness Forward Smash, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/sports.swing-golf-tennis-bat-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ness/NessFSmash.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/peach",
+     "media_url": "https://ultimateframedata.com/hitboxes/Peach/PeachFSmashGolfClub.gif",
+     "title": "Peach Forward Smash (Golf Club), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/sports.swing-golf-tennis-bat-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/Peach/PeachFSmashGolfClub.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/daisy",
+     "media_url": "https://ultimateframedata.com/hitboxes/daisy/DaisyFSmashTennisRacket.gif",
+     "title": "Daisy Forward Smash (Tennis Racket), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/sports.swing-golf-tennis-bat-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/daisy/DaisyFSmashTennisRacket.gif"
     }
    ],
    "rejected_gifs": [

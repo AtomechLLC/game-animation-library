@@ -1,0 +1,4059 @@
+{
+ "schema": "frame-data/1",
+ "game": {
+  "id": "devil-may-cry-3",
+  "name": "Devil May Cry 3: Special Edition",
+  "fps": 60,
+  "version": "PS2, Europe (SLES-54186)",
+  "frameNote": "Devil May Cry 3 runs its motions at 60 fps. Total is the move's motions from the frame the game starts them to their last frame; cancels are the first frame the move's script lets the next attack, jump or roll, block, style move or movement act. When the hit comes out is decided by the game's code, not its data files, so startup and active frames aren't known yet."
+ },
+ "source": {
+  "name": "Devil May Cry 3 game files",
+  "url": "https://github.com/AtomechLLC/game-animation-library/blob/main/tools/frame_data/import_dmc3_game.py",
+  "author": "Capcom",
+  "retrieved": "2026-10-24",
+  "method": "import_dmc3_game.py",
+  "note": "Read from the PS2 game's GData.afs and executable (SLES_541.86): the executable's action code names which of Dante's motion scripts each move plays, and the scripts give each move's motion, length and cancel frames."
+ },
+ "families": [
+  {
+   "id": "melee",
+   "name": "Devil Arms"
+  },
+  {
+   "id": "guns",
+   "name": "Guns"
+  },
+  {
+   "id": "styles",
+   "name": "Styles"
+  }
+ ],
+ "classes": [
+  {
+   "id": "rebellion",
+   "name": "Rebellion",
+   "family": "melee",
+   "icon": null,
+   "weapons": [],
+   "moves": 31
+  },
+  {
+   "id": "cerberus",
+   "name": "Cerberus",
+   "family": "melee",
+   "icon": null,
+   "weapons": [],
+   "moves": 16
+  },
+  {
+   "id": "agni-rudra",
+   "name": "Agni & Rudra",
+   "family": "melee",
+   "icon": null,
+   "weapons": [],
+   "moves": 22
+  },
+  {
+   "id": "nevan",
+   "name": "Nevan",
+   "family": "melee",
+   "icon": null,
+   "weapons": [],
+   "moves": 16
+  },
+  {
+   "id": "beowulf",
+   "name": "Beowulf",
+   "family": "melee",
+   "icon": null,
+   "weapons": [],
+   "moves": 17
+  },
+  {
+   "id": "ebony-ivory",
+   "name": "Ebony & Ivory",
+   "family": "guns",
+   "icon": null,
+   "weapons": [],
+   "moves": 2
+  },
+  {
+   "id": "shotgun",
+   "name": "Shotgun",
+   "family": "guns",
+   "icon": null,
+   "weapons": [],
+   "moves": 4
+  },
+  {
+   "id": "artemis",
+   "name": "Artemis",
+   "family": "guns",
+   "icon": null,
+   "weapons": [],
+   "moves": 4
+  },
+  {
+   "id": "spiral",
+   "name": "Spiral",
+   "family": "guns",
+   "icon": null,
+   "weapons": [],
+   "moves": 2
+  },
+  {
+   "id": "kalina-ann",
+   "name": "Kalina Ann",
+   "family": "guns",
+   "icon": null,
+   "weapons": [],
+   "moves": 2
+  },
+  {
+   "id": "royalguard",
+   "name": "Royalguard",
+   "family": "styles",
+   "icon": null,
+   "weapons": [],
+   "moves": 2
+  }
+ ],
+ "moveTypes": [
+  {
+   "id": "combo",
+   "name": "Combos",
+   "description": "Ground combo strings, part by part"
+  },
+  {
+   "id": "move",
+   "name": "Moves",
+   "description": "Attacks any style can use"
+  },
+  {
+   "id": "swordmaster",
+   "name": "Swordmaster",
+   "description": "Swordmaster style attacks"
+  },
+  {
+   "id": "shot",
+   "name": "Shots",
+   "description": "Gun attacks any style can use"
+  },
+  {
+   "id": "gunslinger",
+   "name": "Gunslinger",
+   "description": "Gunslinger style attacks"
+  },
+  {
+   "id": "style",
+   "name": "Style moves",
+   "description": "Royalguard releases"
+  }
+ ],
+ "grips": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "short": "Ground"
+  },
+  {
+   "id": "air",
+   "name": "Air",
+   "short": "Air"
+  }
+ ],
+ "moves": [
+  {
+   "id": "rebellion.combo-i-1",
+   "class": "rebellion",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo I · 1",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 94,
+   "cancels": {
+    "attack": 22,
+    "dodge": 23,
+    "block": 22,
+    "skill": 22,
+    "move": 51
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-combo-i-1"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_3.pac #3, frames 0–94",
+    "Script": "3-3"
+   },
+   "desc": "First slash; also opens Combo II"
+  },
+  {
+   "id": "rebellion.combo-i-2",
+   "class": "rebellion",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo I · 2",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 104,
+   "cancels": {
+    "attack": 16,
+    "dodge": 17,
+    "block": 16,
+    "skill": 16,
+    "move": 42
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-combo-i-2"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_3.pac #4, frames 23–127",
+    "Script": "3-4"
+   }
+  },
+  {
+   "id": "rebellion.combo-i-3",
+   "class": "rebellion",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo I · 3",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 113,
+   "cancels": {
+    "attack": 35,
+    "dodge": 35,
+    "block": 35,
+    "skill": 34,
+    "move": 61
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-combo-i-3"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_3.pac #5, frames 40–153",
+    "Script": "3-5"
+   }
+  },
+  {
+   "id": "rebellion.combo-ii-2",
+   "class": "rebellion",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo II · 2",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 121,
+   "cancels": {
+    "attack": 51,
+    "dodge": 24,
+    "block": 24,
+    "skill": 51,
+    "move": 78
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-combo-ii-2"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_3.pac #6, frames 23–144",
+    "Script": "3-6"
+   },
+   "desc": "After a pause in Combo I"
+  },
+  {
+   "id": "rebellion.combo-ii-3",
+   "class": "rebellion",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo II · 3",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 113,
+   "cancels": {
+    "attack": 37,
+    "dodge": 37,
+    "block": 36,
+    "skill": 36,
+    "move": 61
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-combo-ii-3"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_3.pac #7, frames 75–188",
+    "Script": "3-7"
+   }
+  },
+  {
+   "id": "rebellion.million-stab",
+   "class": "rebellion",
+   "type": "move",
+   "grip": "ground",
+   "name": "Million Stab",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 176,
+   "cancels": {
+    "attack": 118,
+    "dodge": 89,
+    "block": 89,
+    "skill": 89,
+    "move": 149
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-million-stab"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_3.pac #8, frames 80–149, pl000_00_3.pac #9, frames 151–258",
+    "Script": "3-8, 3-9"
+   },
+   "desc": "Mashed stabs, then the finishing thrust"
+  },
+  {
+   "id": "rebellion.stinger",
+   "class": "rebellion",
+   "type": "move",
+   "grip": "ground",
+   "name": "Stinger",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 97,
+   "cancels": {
+    "attack": 40,
+    "dodge": 40,
+    "block": 39,
+    "skill": 39,
+    "move": 66
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-stinger"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_3.pac #14, frames 0–10, pl000_00_3.pac #15, frames 11–19, pl000_00_3.pac #16, frames 20–99",
+    "Script": "3-14, 3-15, 3-16"
+   },
+   "desc": "Lunge, travel, thrust; level 2 travels farther on the same motions"
+  },
+  {
+   "id": "rebellion.high-time",
+   "class": "rebellion",
+   "type": "move",
+   "grip": "ground",
+   "name": "High Time",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 54,
+   "cancels": {
+    "attack": 38,
+    "dodge": 38,
+    "block": 37,
+    "skill": 37,
+    "move": 46
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-high-time"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_3.pac #11, frames 0–54",
+    "Script": "3-11"
+   },
+   "desc": "Launcher"
+  },
+  {
+   "id": "rebellion.high-time-jump",
+   "class": "rebellion",
+   "type": "move",
+   "grip": "ground",
+   "name": "High Time (jump)",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 24,
+   "cancels": {
+    "attack": 15,
+    "dodge": 15,
+    "block": 14,
+    "skill": 14,
+    "move": 19
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-high-time-jump"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_3.pac #13, frames 21–45",
+    "Script": "3-13"
+   },
+   "desc": "Holding melee: Dante follows into the air"
+  },
+  {
+   "id": "rebellion.helm-breaker",
+   "class": "rebellion",
+   "type": "move",
+   "grip": "air",
+   "name": "Helm Breaker",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 82,
+   "cancels": {
+    "attack": 33,
+    "dodge": 33,
+    "block": 32,
+    "skill": 32,
+    "move": 68
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-helm-breaker"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_3.pac #10, frames 0–82",
+    "Script": "3-10"
+   }
+  },
+  {
+   "id": "rebellion.kick-1",
+   "class": "rebellion",
+   "type": "move",
+   "grip": "ground",
+   "name": "Kick 1",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 83,
+   "cancels": {
+    "attack": 25,
+    "dodge": 26,
+    "block": 25,
+    "skill": 25,
+    "move": 45
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-kick-1"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_3.pac #29, frames 0–83",
+    "Script": "3-29"
+   }
+  },
+  {
+   "id": "rebellion.drive",
+   "class": "rebellion",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Drive",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 298,
+   "cancels": {
+    "attack": 204,
+    "dodge": 204,
+    "block": 203,
+    "skill": 203,
+    "move": 249
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-drive"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_3.pac #17, frames 0–84, pl000_00_3.pac #18, frames 0–85, pl000_00_3.pac #19, frames 86–215",
+    "Script": "3-17, 3-18, 3-19"
+   },
+   "desc": "Charge, hold, release"
+  },
+  {
+   "id": "rebellion.prop",
+   "class": "rebellion",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Prop",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 70,
+   "cancels": {
+    "attack": 44,
+    "dodge": 44,
+    "skill": 43,
+    "move": 55
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-prop"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_13.pac #19, frames 0–70",
+    "Script": "13-19",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "rebellion.shredder",
+   "class": "rebellion",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Shredder",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 67,
+   "cancels": {
+    "attack": 38,
+    "dodge": 38,
+    "skill": 38,
+    "move": 46
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-shredder"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_13.pac #12, frames 0–37, pl000_00_13.pac #13, frames 39–69",
+    "Script": "13-12, 13-13",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "rebellion.kick-2",
+   "class": "rebellion",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Kick 2",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 63,
+   "cancels": {
+    "attack": 48,
+    "dodge": 48,
+    "skill": 47,
+    "move": 61
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-kick-2"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_13.pac #11, frames 0–63",
+    "Script": "13-11",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "rebellion.sword-pierce",
+   "class": "rebellion",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Sword Pierce",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 110,
+   "cancels": {
+    "attack": 41,
+    "dodge": 41,
+    "skill": 41,
+    "move": 56
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-sword-pierce"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_13.pac #0, frames 0–110",
+    "Script": "13-0",
+    "Style": "Swordmaster"
+   },
+   "desc": "Throws Rebellion"
+  },
+  {
+   "id": "rebellion.sword-pierce-return",
+   "class": "rebellion",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Sword Pierce (return)",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 65,
+   "cancels": {
+    "move": 1
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-sword-pierce-return"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_13.pac #15, frames 0–65",
+    "Script": "13-15",
+    "Style": "Swordmaster"
+   },
+   "desc": "Catching Rebellion"
+  },
+  {
+   "id": "rebellion.aerial-rave-1",
+   "class": "rebellion",
+   "type": "swordmaster",
+   "grip": "air",
+   "name": "Aerial Rave · 1",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 45,
+   "cancels": {
+    "attack": 17,
+    "dodge": 17,
+    "skill": 16,
+    "move": 36
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-aerial-rave-1"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_13.pac #7, frames 0–45",
+    "Script": "13-7",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "rebellion.aerial-rave-2",
+   "class": "rebellion",
+   "type": "swordmaster",
+   "grip": "air",
+   "name": "Aerial Rave · 2",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 44,
+   "cancels": {
+    "attack": 16,
+    "dodge": 16,
+    "skill": 15,
+    "move": 34
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-aerial-rave-2"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_13.pac #8, frames 21–65",
+    "Script": "13-8",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "rebellion.aerial-rave-3",
+   "class": "rebellion",
+   "type": "swordmaster",
+   "grip": "air",
+   "name": "Aerial Rave · 3",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 44,
+   "cancels": {
+    "attack": 19,
+    "dodge": 19,
+    "skill": 18,
+    "move": 35
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-aerial-rave-3"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_13.pac #9, frames 41–85",
+    "Script": "13-9",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "rebellion.aerial-rave-4",
+   "class": "rebellion",
+   "type": "swordmaster",
+   "grip": "air",
+   "name": "Aerial Rave · 4",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 44,
+   "cancels": {
+    "attack": 23,
+    "dodge": 23,
+    "skill": 22,
+    "move": 34
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-aerial-rave-4"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_13.pac #10, frames 61–105",
+    "Script": "13-10",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "rebellion.divekick",
+   "class": "rebellion",
+   "type": "swordmaster",
+   "grip": "air",
+   "name": "Divekick",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 68,
+   "cancels": {
+    "attack": 47,
+    "dodge": 47,
+    "block": 46,
+    "skill": 46,
+    "move": 54
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-divekick"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_13.pac #4, frames 0–25, pl000_00_13.pac #5, frames 26–69",
+    "Script": "13-4, 13-5",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "rebellion.dance-macabre-1",
+   "class": "rebellion",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Dance Macabre · 1",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 58,
+   "cancels": {
+    "attack": 38,
+    "dodge": 28,
+    "skill": 28,
+    "move": 50
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-dance-macabre-1"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_13.pac #17, frames 0–58",
+    "Script": "13-17",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "rebellion.dance-macabre-2",
+   "class": "rebellion",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Dance Macabre · 2",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 89,
+   "cancels": {
+    "attack": 46,
+    "dodge": 18,
+    "skill": 17,
+    "move": 46
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-dance-macabre-2"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_3.pac #3, frames 5–94",
+    "Script": "3-46"
+   }
+  },
+  {
+   "id": "rebellion.dance-macabre-3",
+   "class": "rebellion",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Dance Macabre · 3",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 99,
+   "cancels": {
+    "attack": 37,
+    "dodge": 12,
+    "skill": 11,
+    "move": 37
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-dance-macabre-3"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_3.pac #4, frames 28–127",
+    "Script": "3-47"
+   }
+  },
+  {
+   "id": "rebellion.dance-macabre-4",
+   "class": "rebellion",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Dance Macabre · 4",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 89,
+   "cancels": {
+    "attack": 46,
+    "dodge": 18,
+    "skill": 17,
+    "move": 46
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-dance-macabre-4"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_3.pac #3, frames 5–94",
+    "Script": "3-48"
+   }
+  },
+  {
+   "id": "rebellion.dance-macabre-5",
+   "class": "rebellion",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Dance Macabre · 5",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 112,
+   "cancels": {
+    "attack": 69,
+    "dodge": 15,
+    "block": 15,
+    "skill": 42,
+    "move": 69
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-dance-macabre-5"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_3.pac #6, frames 32–144",
+    "Script": "3-49"
+   }
+  },
+  {
+   "id": "rebellion.dance-macabre-6",
+   "class": "rebellion",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Dance Macabre · 6",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 107,
+   "cancels": {
+    "attack": 55,
+    "dodge": 31,
+    "skill": 30,
+    "move": 55
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-dance-macabre-6"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_3.pac #7, frames 81–188",
+    "Script": "3-50"
+   }
+  },
+  {
+   "id": "rebellion.dance-macabre-7",
+   "class": "rebellion",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Dance Macabre · 7",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 103,
+   "cancels": {
+    "attack": 51,
+    "dodge": 25,
+    "skill": 24,
+    "move": 51
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-dance-macabre-7"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_3.pac #5, frames 50–153",
+    "Script": "3-51"
+   }
+  },
+  {
+   "id": "rebellion.dance-macabre-8",
+   "class": "rebellion",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Dance Macabre · 8",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 176,
+   "cancels": {
+    "attack": 118,
+    "dodge": 89,
+    "skill": 89,
+    "move": 149
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-dance-macabre-8"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_3.pac #8, frames 80–149, pl000_00_3.pac #9, frames 151–258",
+    "Script": "3-52, 3-53"
+   }
+  },
+  {
+   "id": "rebellion.crazy-dance",
+   "class": "rebellion",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Crazy Dance",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 143,
+   "cancels": {
+    "attack": 89,
+    "dodge": 89,
+    "skill": 88,
+    "move": 117
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "rebellion-crazy-dance"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_13.pac #18, frames 0–47, pl000_00_13.pac #20, frames 48–144",
+    "Script": "13-18, 13-20",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "cerberus.combo-i-1",
+   "class": "cerberus",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo I · 1",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 100,
+   "cancels": {
+    "attack": 31,
+    "dodge": 12,
+    "block": 12,
+    "skill": 31,
+    "move": 48
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "cerberus-combo-i-1"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_4.pac #3, frames 0–100",
+    "Script": "4-3"
+   }
+  },
+  {
+   "id": "cerberus.combo-i-2",
+   "class": "cerberus",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo I · 2",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 99,
+   "cancels": {
+    "attack": 26,
+    "dodge": 11,
+    "block": 11,
+    "skill": 26,
+    "move": 48
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "cerberus-combo-i-2"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_4.pac #4, frames 32–131",
+    "Script": "4-4"
+   }
+  },
+  {
+   "id": "cerberus.combo-i-3",
+   "class": "cerberus",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo I · 3",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 111,
+   "cancels": {
+    "attack": 43,
+    "dodge": 15,
+    "block": 15,
+    "skill": 43,
+    "move": 59
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "cerberus-combo-i-3"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_4.pac #5, frames 59–170",
+    "Script": "4-5"
+   }
+  },
+  {
+   "id": "cerberus.combo-i-4",
+   "class": "cerberus",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo I · 4",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 124,
+   "cancels": {
+    "attack": 38,
+    "dodge": 11,
+    "block": 11,
+    "skill": 38,
+    "move": 71
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "cerberus-combo-i-4"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_4.pac #6, frames 103–227",
+    "Script": "4-6"
+   }
+  },
+  {
+   "id": "cerberus.combo-i-5",
+   "class": "cerberus",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo I · 5",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 133,
+   "cancels": {
+    "attack": 63,
+    "dodge": 18,
+    "block": 18,
+    "skill": 53,
+    "move": 81
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "cerberus-combo-i-5"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_4.pac #7, frames 142–275",
+    "Script": "4-7"
+   }
+  },
+  {
+   "id": "cerberus.combo-ii-3",
+   "class": "cerberus",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo II · 3",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 133,
+   "cancels": {
+    "dodge": 18,
+    "block": 18,
+    "skill": 42,
+    "move": 82
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "cerberus-combo-ii-3"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_4.pac #8, frames 59–192",
+    "Script": "4-8"
+   }
+  },
+  {
+   "id": "cerberus.combo-ii-4",
+   "class": "cerberus",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo II · 4",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 148,
+   "cancels": {
+    "attack": 73,
+    "dodge": 45,
+    "block": 45,
+    "skill": 45,
+    "move": 95
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "cerberus-combo-ii-4"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_4.pac #10, frames 102–146, pl000_00_4.pac #26, frames 147–251",
+    "Script": "4-10, 4-26"
+   }
+  },
+  {
+   "id": "cerberus.windmill",
+   "class": "cerberus",
+   "type": "move",
+   "grip": "ground",
+   "name": "Windmill",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 142,
+   "cancels": {
+    "attack": 67,
+    "dodge": 39,
+    "block": 39,
+    "skill": 39,
+    "move": 89
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "cerberus-windmill"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_4.pac #27, frames 0–11, pl000_00_4.pac #10, frames 119–146, pl000_00_4.pac #26, frames 147–251",
+    "Script": "4-27, 4-29, 4-26"
+   }
+  },
+  {
+   "id": "cerberus.revolver",
+   "class": "cerberus",
+   "type": "move",
+   "grip": "ground",
+   "name": "Revolver",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 91,
+   "cancels": {
+    "attack": 61,
+    "dodge": 61,
+    "block": 60,
+    "skill": 60,
+    "move": 89
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "cerberus-revolver"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_4.pac #19, frames 0–24, pl000_00_4.pac #25, frames 25–36, pl000_00_4.pac #24, frames 61–117",
+    "Script": "4-19, 4-25, 4-24"
+   },
+   "desc": "Levels 1 and 2 share the motions"
+  },
+  {
+   "id": "cerberus.swing",
+   "class": "cerberus",
+   "type": "move",
+   "grip": "air",
+   "name": "Swing",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 70,
+   "cancels": {
+    "attack": 29,
+    "dodge": 29,
+    "block": 28,
+    "skill": 28,
+    "move": 56
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "cerberus-swing"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_4.pac #11, frames 0–70",
+    "Script": "4-11"
+   }
+  },
+  {
+   "id": "cerberus.satellite",
+   "class": "cerberus",
+   "type": "move",
+   "grip": "ground",
+   "name": "Satellite",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 154,
+   "cancels": {
+    "attack": 93,
+    "dodge": 62,
+    "block": 62,
+    "skill": 83,
+    "move": 111
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "cerberus-satellite"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_4.pac #22, frames 147–208, pl000_00_4.pac #23, frames 209–302",
+    "Script": "4-22, 4-23"
+   }
+  },
+  {
+   "id": "cerberus.flicker",
+   "class": "cerberus",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Flicker",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 95,
+   "cancels": {
+    "attack": 45,
+    "dodge": 45,
+    "skill": 45,
+    "move": 55
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "cerberus-flicker"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_14.pac #0, frames 0–44, pl000_00_14.pac #1, frames 45–96",
+    "Script": "14-0, 14-1",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "cerberus.air-flicker",
+   "class": "cerberus",
+   "type": "swordmaster",
+   "grip": "air",
+   "name": "Air Flicker",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 64,
+   "cancels": {
+    "attack": 45,
+    "dodge": 45,
+    "skill": 45
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "cerberus-air-flicker"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_14.pac #7, frames 0–44, pl000_00_14.pac #8, frames 45–65",
+    "Script": "14-7, 14-8",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "cerberus.crystal",
+   "class": "cerberus",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Crystal",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 110,
+   "cancels": {
+    "attack": 72,
+    "dodge": 72,
+    "skill": 71,
+    "move": 101
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "cerberus-crystal"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_14.pac #2, frames 0–110",
+    "Script": "14-2",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "cerberus.million-carats",
+   "class": "cerberus",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Million Carats",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 145,
+   "cancels": {
+    "attack": 101,
+    "dodge": 101,
+    "skill": 100,
+    "move": 116
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "cerberus-million-carats"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_14.pac #3, frames 49–65, pl000_00_14.pac #4, frames 66–195",
+    "Script": "14-3, 14-4",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "cerberus.ice-age",
+   "class": "cerberus",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Ice Age",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 209,
+   "cancels": {
+    "attack": 179,
+    "dodge": 170,
+    "block": 169,
+    "skill": 169,
+    "move": 194
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "cerberus-ice-age"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_14.pac #5, frames 0–130, pl000_00_14.pac #6, frames 131–210",
+    "Script": "14-5, 14-6",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "agni-rudra.combo-i-1",
+   "class": "agni-rudra",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo I · 1",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 75,
+   "cancels": {
+    "attack": 24,
+    "dodge": 13,
+    "block": 13,
+    "skill": 24,
+    "move": 57
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "agni-rudra-combo-i-1"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_5.pac #3, frames 0–75",
+    "Script": "5-3"
+   }
+  },
+  {
+   "id": "agni-rudra.combo-i-2",
+   "class": "agni-rudra",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo I · 2",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 104,
+   "cancels": {
+    "attack": 34,
+    "dodge": 35,
+    "block": 34,
+    "skill": 34,
+    "move": 74
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "agni-rudra-combo-i-2"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_5.pac #4, frames 31–135",
+    "Script": "5-4"
+   }
+  },
+  {
+   "id": "agni-rudra.combo-i-3",
+   "class": "agni-rudra",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo I · 3",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 99,
+   "cancels": {
+    "attack": 19,
+    "dodge": 20,
+    "block": 19,
+    "skill": 19,
+    "move": 59
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "agni-rudra-combo-i-3"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_5.pac #5, frames 66–165",
+    "Script": "5-5"
+   }
+  },
+  {
+   "id": "agni-rudra.combo-i-4",
+   "class": "agni-rudra",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo I · 4",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 90,
+   "cancels": {
+    "attack": 33,
+    "dodge": 34,
+    "block": 33,
+    "skill": 33,
+    "move": 73
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "agni-rudra-combo-i-4"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_5.pac #6, frames 86–176",
+    "Script": "5-6"
+   }
+  },
+  {
+   "id": "agni-rudra.combo-i-5",
+   "class": "agni-rudra",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo I · 5",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 148,
+   "cancels": {
+    "attack": 62,
+    "dodge": 53,
+    "block": 52,
+    "skill": 52,
+    "move": 84
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "agni-rudra-combo-i-5"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_5.pac #7, frames 132–280",
+    "Script": "5-7"
+   }
+  },
+  {
+   "id": "agni-rudra.combo-ii-2",
+   "class": "agni-rudra",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo II · 2",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 110,
+   "cancels": {
+    "attack": 32,
+    "dodge": 33,
+    "block": 32,
+    "skill": 32,
+    "move": 66
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "agni-rudra-combo-ii-2"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_5.pac #8, frames 46–156",
+    "Script": "5-8"
+   }
+  },
+  {
+   "id": "agni-rudra.combo-ii-3",
+   "class": "agni-rudra",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo II · 3",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 105,
+   "cancels": {
+    "attack": 50,
+    "dodge": 41,
+    "block": 40,
+    "skill": 40,
+    "move": 68
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "agni-rudra-combo-ii-3"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_5.pac #9, frames 87–192",
+    "Script": "5-9"
+   }
+  },
+  {
+   "id": "agni-rudra.combo-iii-3",
+   "class": "agni-rudra",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo III · 3",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 144,
+   "cancels": {
+    "attack": 93,
+    "dodge": 84,
+    "block": 83,
+    "skill": 83,
+    "move": 108
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "agni-rudra-combo-iii-3"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_5.pac #10, frames 117–156, pl000_00_5.pac #25, frames 181–286",
+    "Script": "5-10, 5-25"
+   }
+  },
+  {
+   "id": "agni-rudra.jet-stream-level-1",
+   "class": "agni-rudra",
+   "type": "move",
+   "grip": "ground",
+   "name": "Jet-Stream (level 1)",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 168,
+   "cancels": {
+    "attack": 80,
+    "dodge": 80,
+    "block": 79,
+    "skill": 79,
+    "move": 114
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "agni-rudra-jet-stream-level-1"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_5.pac #20, frames 0–41, pl000_00_5.pac #21, frames 42–169",
+    "Script": "5-20, 5-21"
+   }
+  },
+  {
+   "id": "agni-rudra.jet-stream-level-2",
+   "class": "agni-rudra",
+   "type": "move",
+   "grip": "ground",
+   "name": "Jet-Stream (level 2)",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 168,
+   "cancels": {
+    "attack": 79,
+    "dodge": 79,
+    "block": 78,
+    "skill": 78,
+    "move": 113
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "agni-rudra-jet-stream-level-2"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_5.pac #20, frames 0–41, pl000_00_5.pac #22, frames 65–192",
+    "Script": "5-20, 5-22"
+   }
+  },
+  {
+   "id": "agni-rudra.jet-stream-level-3",
+   "class": "agni-rudra",
+   "type": "move",
+   "grip": "ground",
+   "name": "Jet-Stream (level 3)",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 171,
+   "cancels": {
+    "attack": 84,
+    "dodge": 84,
+    "block": 83,
+    "skill": 83,
+    "move": 132
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "agni-rudra-jet-stream-level-3"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_5.pac #20, frames 0–41, pl000_00_5.pac #23, frames 87–217",
+    "Script": "5-20, 5-23"
+   }
+  },
+  {
+   "id": "agni-rudra.whirlwind",
+   "class": "agni-rudra",
+   "type": "move",
+   "grip": "ground",
+   "name": "Whirlwind",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 133,
+   "cancels": {
+    "attack": 42,
+    "dodge": 42,
+    "block": 41,
+    "skill": 41,
+    "move": 83
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "agni-rudra-whirlwind"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_5.pac #18, frames 0–133",
+    "Script": "5-18"
+   },
+   "desc": "Launcher"
+  },
+  {
+   "id": "agni-rudra.whirlwind-jump",
+   "class": "agni-rudra",
+   "type": "move",
+   "grip": "ground",
+   "name": "Whirlwind (jump)",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 57,
+   "cancels": {
+    "attack": 31,
+    "dodge": 31,
+    "block": 30,
+    "skill": 30,
+    "move": 38
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "agni-rudra-whirlwind-jump"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_5.pac #19, frames 22–79",
+    "Script": "5-19"
+   },
+   "desc": "Holding melee: Dante follows into the air"
+  },
+  {
+   "id": "agni-rudra.million-slash",
+   "class": "agni-rudra",
+   "type": "move",
+   "grip": "ground",
+   "name": "Million Slash",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 169,
+   "cancels": {
+    "attack": 104,
+    "dodge": 35,
+    "block": 35,
+    "skill": 53,
+    "move": 120
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "agni-rudra-million-slash"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_5.pac #11, frames 181–215, pl000_00_5.pac #26, frames 272–407",
+    "Script": "5-11, 5-26"
+   }
+  },
+  {
+   "id": "agni-rudra.aerial-cross",
+   "class": "agni-rudra",
+   "type": "move",
+   "grip": "air",
+   "name": "Aerial Cross",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 56,
+   "cancels": {
+    "attack": 21,
+    "dodge": 21,
+    "block": 20,
+    "skill": 20,
+    "move": 41
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "agni-rudra-aerial-cross"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_5.pac #17, frames 0–56",
+    "Script": "5-17"
+   }
+  },
+  {
+   "id": "agni-rudra.crossed-swords",
+   "class": "agni-rudra",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Crossed Swords",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 82,
+   "cancels": {
+    "attack": 36,
+    "dodge": 36,
+    "block": 35,
+    "skill": 35,
+    "move": 61
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "agni-rudra-crossed-swords"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_15.pac #0, frames 0–82",
+    "Script": "15-0",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "agni-rudra.crawler",
+   "class": "agni-rudra",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Crawler",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 140,
+   "cancels": {
+    "attack": 60,
+    "dodge": 60,
+    "block": 59,
+    "skill": 59,
+    "move": 95
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "agni-rudra-crawler"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_15.pac #1, frames 0–140",
+    "Script": "15-1",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "agni-rudra.twister",
+   "class": "agni-rudra",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Twister",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 102,
+   "cancels": {
+    "attack": 59,
+    "dodge": 50,
+    "skill": 49,
+    "move": 72
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "agni-rudra-twister"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_15.pac #2, frames 0–37, pl000_00_15.pac #3, frames 38–103",
+    "Script": "15-2, 15-3",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "agni-rudra.tempest",
+   "class": "agni-rudra",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Tempest",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 85,
+   "cancels": {
+    "attack": 70,
+    "dodge": 70,
+    "skill": 70,
+    "move": 82
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "agni-rudra-tempest"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_15.pac #8, frames 38–83, pl000_00_15.pac #9, frames 84–124",
+    "Script": "15-8, 15-9",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "agni-rudra.sky-dance-1",
+   "class": "agni-rudra",
+   "type": "swordmaster",
+   "grip": "air",
+   "name": "Sky Dance · 1",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 52,
+   "cancels": {
+    "attack": 32,
+    "dodge": 32,
+    "skill": 31,
+    "move": 41
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "agni-rudra-sky-dance-1"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_15.pac #4, frames 0–52",
+    "Script": "15-4",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "agni-rudra.sky-dance-2",
+   "class": "agni-rudra",
+   "type": "swordmaster",
+   "grip": "air",
+   "name": "Sky Dance · 2",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 46,
+   "cancels": {
+    "attack": 26,
+    "dodge": 26,
+    "skill": 25,
+    "move": 39
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "agni-rudra-sky-dance-2"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_15.pac #5, frames 32–78",
+    "Script": "15-5",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "agni-rudra.sky-dance-3",
+   "class": "agni-rudra",
+   "type": "swordmaster",
+   "grip": "air",
+   "name": "Sky Dance · 3",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 98,
+   "cancels": {
+    "attack": 52,
+    "dodge": 52,
+    "block": 51,
+    "skill": 51,
+    "move": 84
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "agni-rudra-sky-dance-3"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_15.pac #6, frames 58–85, pl000_00_15.pac #7, frames 86–157",
+    "Script": "15-6, 15-7",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "nevan.tune-up",
+   "class": "nevan",
+   "type": "move",
+   "grip": "ground",
+   "name": "Tune Up",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 50,
+   "cancels": {
+    "attack": 25,
+    "dodge": 26,
+    "block": 25,
+    "skill": 25
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "nevan-tune-up"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_6.pac #3, frames 0–50",
+    "Script": "6-3"
+   }
+  },
+  {
+   "id": "nevan.combo-1",
+   "class": "nevan",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo 1",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 75,
+   "cancels": {
+    "attack": 35,
+    "dodge": 26,
+    "block": 25,
+    "skill": 25,
+    "move": 50
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "nevan-combo-1"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_6.pac #9, frames 0–75",
+    "Script": "6-9"
+   }
+  },
+  {
+   "id": "nevan.combo-2",
+   "class": "nevan",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo 2",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 100,
+   "cancels": {
+    "attack": 99,
+    "dodge": 57,
+    "block": 56,
+    "skill": 56,
+    "move": 99
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "nevan-combo-2"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_6.pac #14, frames 0–100",
+    "Script": "6-14"
+   }
+  },
+  {
+   "id": "nevan.jam-session",
+   "class": "nevan",
+   "type": "move",
+   "grip": "ground",
+   "name": "Jam Session",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 270,
+   "cancels": {
+    "attack": 256,
+    "dodge": 247,
+    "block": 246,
+    "skill": 246,
+    "move": 269
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "nevan-jam-session"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_6.pac #11, frames 0–140, pl000_00_6.pac #12, frames 141–271",
+    "Script": "6-11, 6-12"
+   }
+  },
+  {
+   "id": "nevan.bat-rift",
+   "class": "nevan",
+   "type": "move",
+   "grip": "ground",
+   "name": "Bat Rift",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 64,
+   "cancels": {
+    "attack": 51,
+    "dodge": 51,
+    "block": 50,
+    "skill": 50
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "nevan-bat-rift"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_6.pac #16, frames 0–64",
+    "Script": "6-16"
+   }
+  },
+  {
+   "id": "nevan.bat-rift-level-2",
+   "class": "nevan",
+   "type": "move",
+   "grip": "ground",
+   "name": "Bat Rift (level 2)",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 99,
+   "cancels": {
+    "attack": 69,
+    "dodge": 53,
+    "block": 53,
+    "skill": 69
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "nevan-bat-rift-level-2"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_6.pac #17, frames 21–73, pl000_00_6.pac #36, frames 68–115",
+    "Script": "6-17, 6-36"
+   }
+  },
+  {
+   "id": "nevan.reverb-shock",
+   "class": "nevan",
+   "type": "move",
+   "grip": "ground",
+   "name": "Reverb Shock",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 102,
+   "cancels": {
+    "attack": 54,
+    "dodge": 54,
+    "block": 53,
+    "skill": 53
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "nevan-reverb-shock"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_6.pac #21, frames 0–15, pl000_00_6.pac #19, frames 11–19, pl000_00_6.pac #20, frames 20–99",
+    "Script": "6-21, 6-19, 6-20"
+   },
+   "desc": "Levels 1 and 2 share the motions"
+  },
+  {
+   "id": "nevan.air-play",
+   "class": "nevan",
+   "type": "move",
+   "grip": "air",
+   "name": "Air Play",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 98,
+   "cancels": {
+    "attack": 49,
+    "dodge": 49,
+    "block": 48,
+    "skill": 48,
+    "move": 61
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "nevan-air-play"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_6.pac #15, frames 0–18, pl000_00_6.pac #34, frames 0–80",
+    "Script": "6-15, 6-34"
+   }
+  },
+  {
+   "id": "nevan.thunder-bolt",
+   "class": "nevan",
+   "type": "move",
+   "grip": "air",
+   "name": "Thunder Bolt",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 60,
+   "cancels": {
+    "attack": 31,
+    "dodge": 31,
+    "block": 30,
+    "skill": 30,
+    "move": 50
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "nevan-thunder-bolt"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_6.pac #23, frames 0–60",
+    "Script": "6-23"
+   }
+  },
+  {
+   "id": "nevan.vortex",
+   "class": "nevan",
+   "type": "move",
+   "grip": "air",
+   "name": "Vortex",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 48,
+   "cancels": {
+    "attack": 43,
+    "dodge": 43,
+    "block": 43,
+    "skill": 43
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "nevan-vortex"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_6.pac #25, frames 0–28, pl000_00_6.pac #26, frames 29–43, pl000_00_6.pac #27, frames 44–50",
+    "Script": "6-25, 6-26, 6-27"
+   }
+  },
+  {
+   "id": "nevan.slash",
+   "class": "nevan",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Slash",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 101,
+   "cancels": {
+    "attack": 56,
+    "dodge": 25,
+    "skill": 55
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "nevan-slash"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_16.pac #0, frames 0–101",
+    "Script": "16-0",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "nevan.feedback",
+   "class": "nevan",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Feedback",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 135,
+   "cancels": {
+    "attack": 119,
+    "dodge": 41,
+    "skill": 118
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "nevan-feedback"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_16.pac #3, frames 0–40, pl000_00_16.pac #4, frames 51–146",
+    "Script": "16-3, 16-4",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "nevan.crazy-roll",
+   "class": "nevan",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Crazy Roll",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 150,
+   "cancels": {
+    "attack": 93,
+    "dodge": 1,
+    "skill": 92
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "nevan-crazy-roll"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_16.pac #5, frames 51–201",
+    "Script": "16-5",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "nevan.distortion",
+   "class": "nevan",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Distortion",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 160,
+   "cancels": {
+    "attack": 109,
+    "dodge": 81,
+    "skill": 108
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "nevan-distortion"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_16.pac #9, frames 0–80, pl000_00_16.pac #10, frames 81–161",
+    "Script": "16-9, 16-10",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "nevan.air-slash-1",
+   "class": "nevan",
+   "type": "swordmaster",
+   "grip": "air",
+   "name": "Air Slash · 1",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 80,
+   "cancels": {
+    "attack": 26,
+    "dodge": 26,
+    "skill": 26,
+    "move": 33
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "nevan-air-slash-1"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_16.pac #7, frames 0–80",
+    "Script": "16-7",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "nevan.air-slash-2",
+   "class": "nevan",
+   "type": "swordmaster",
+   "grip": "air",
+   "name": "Air Slash · 2",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 74,
+   "cancels": {
+    "attack": 29,
+    "dodge": 29,
+    "skill": 29,
+    "move": 39
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "nevan-air-slash-2"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_16.pac #8, frames 26–100",
+    "Script": "16-8",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "beowulf.combo-i-1",
+   "class": "beowulf",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo I · 1",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 98,
+   "cancels": {
+    "attack": 23,
+    "dodge": 24,
+    "block": 23,
+    "skill": 23,
+    "move": 46
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "beowulf-combo-i-1"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_7.pac #3, frames 0–98",
+    "Script": "7-3"
+   }
+  },
+  {
+   "id": "beowulf.combo-i-2",
+   "class": "beowulf",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo I · 2",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 82,
+   "cancels": {
+    "attack": 29,
+    "dodge": 30,
+    "block": 29,
+    "skill": 29,
+    "move": 56
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "beowulf-combo-i-2"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_7.pac #4, frames 24–106",
+    "Script": "7-4"
+   }
+  },
+  {
+   "id": "beowulf.combo-i-3",
+   "class": "beowulf",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo I · 3",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 77,
+   "cancels": {
+    "attack": 28,
+    "dodge": 28,
+    "block": 27,
+    "skill": 27,
+    "move": 55
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "beowulf-combo-i-3"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_7.pac #5, frames 53–130",
+    "Script": "7-5"
+   }
+  },
+  {
+   "id": "beowulf.combo-ii-3",
+   "class": "beowulf",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo II · 3",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 117,
+   "cancels": {
+    "attack": 72,
+    "dodge": 72,
+    "block": 72,
+    "skill": 72,
+    "move": 99
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "beowulf-combo-ii-3"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_7.pac #7, frames 53–124, pl000_00_7.pac #8, frames 125–171",
+    "Script": "7-7, 7-8"
+   }
+  },
+  {
+   "id": "beowulf.combo-ii-4",
+   "class": "beowulf",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Combo II · 4",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 98,
+   "cancels": {
+    "attack": 64,
+    "dodge": 55,
+    "block": 54,
+    "skill": 54,
+    "move": 83
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "beowulf-combo-ii-4"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_7.pac #9, frames 126–224",
+    "Script": "7-9"
+   }
+  },
+  {
+   "id": "beowulf.hyper-fist",
+   "class": "beowulf",
+   "type": "move",
+   "grip": "ground",
+   "name": "Hyper Fist",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 227,
+   "cancels": {
+    "attack": 167,
+    "dodge": 114,
+    "block": 114,
+    "skill": 122,
+    "move": 181
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "beowulf-hyper-fist"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_7.pac #10, frames 148–261, pl000_00_7.pac #11, frames 262–376",
+    "Script": "7-10, 7-11"
+   }
+  },
+  {
+   "id": "beowulf.beast-uppercut",
+   "class": "beowulf",
+   "type": "move",
+   "grip": "ground",
+   "name": "Beast Uppercut",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 99,
+   "cancels": {
+    "attack": 51,
+    "dodge": 51,
+    "block": 50,
+    "skill": 50,
+    "move": 70
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "beowulf-beast-uppercut"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_7.pac #14, frames 0–99",
+    "Script": "7-14"
+   }
+  },
+  {
+   "id": "beowulf.rising-dragon",
+   "class": "beowulf",
+   "type": "move",
+   "grip": "ground",
+   "name": "Rising Dragon",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 36,
+   "cancels": {
+    "attack": 20,
+    "dodge": 20,
+    "block": 19,
+    "skill": 19
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "beowulf-rising-dragon"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_7.pac #15, frames 31–67",
+    "Script": "7-15"
+   },
+   "desc": "Charged Beast Uppercut"
+  },
+  {
+   "id": "beowulf.straight",
+   "class": "beowulf",
+   "type": "move",
+   "grip": "ground",
+   "name": "Straight",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 102,
+   "cancels": {
+    "attack": 54,
+    "dodge": 45,
+    "block": 44,
+    "skill": 44,
+    "move": 61
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "beowulf-straight"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_7.pac #30, frames 0–15, pl000_00_7.pac #31, frames 11–19, pl000_00_7.pac #32, frames 20–99",
+    "Script": "7-30, 7-31, 7-32"
+   },
+   "desc": "Levels 1 and 2 share the motions"
+  },
+  {
+   "id": "beowulf.killer-bee",
+   "class": "beowulf",
+   "type": "move",
+   "grip": "air",
+   "name": "Killer Bee",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 68,
+   "cancels": {
+    "attack": 47,
+    "dodge": 47,
+    "block": 46,
+    "skill": 46,
+    "move": 54
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "beowulf-killer-bee"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_7.pac #12, frames 0–25, pl000_00_7.pac #13, frames 26–69",
+    "Script": "7-12, 7-13"
+   }
+  },
+  {
+   "id": "beowulf.rising-dragon-whirlwind",
+   "class": "beowulf",
+   "type": "move",
+   "grip": "air",
+   "name": "Rising Dragon (whirlwind)",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 35,
+   "cancels": {
+    "attack": 23,
+    "dodge": 23,
+    "block": 22,
+    "skill": 22
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "beowulf-rising-dragon-whirlwind"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_7.pac #16, frames 37–50, pl000_00_7.pac #17, frames 51–73",
+    "Script": "7-16, 7-17"
+   }
+  },
+  {
+   "id": "beowulf.zodiac",
+   "class": "beowulf",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Zodiac",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 95,
+   "cancels": {
+    "attack": 56,
+    "dodge": 56,
+    "block": 55,
+    "skill": 55,
+    "move": 80
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "beowulf-zodiac"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_17.pac #0, frames 0–95",
+    "Script": "17-0",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "beowulf.volcano",
+   "class": "beowulf",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Volcano",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 142,
+   "cancels": {
+    "attack": 91,
+    "dodge": 91,
+    "skill": 90,
+    "move": 110
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "beowulf-volcano"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_17.pac #1, frames 0–142",
+    "Script": "17-1",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "beowulf.tornado",
+   "class": "beowulf",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Tornado",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 34,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "beowulf-tornado"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_17.pac #4, frames 0–10, pl000_00_17.pac #5, frames 11–35",
+    "Script": "17-4, 17-5",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "beowulf.the-hammer",
+   "class": "beowulf",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "The Hammer",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 41,
+   "cancels": {
+    "attack": 25,
+    "dodge": 25,
+    "block": 24,
+    "skill": 24,
+    "move": 34
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "beowulf-the-hammer"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_17.pac #6, frames 0–41",
+    "Script": "17-6",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "beowulf.real-impact",
+   "class": "beowulf",
+   "type": "swordmaster",
+   "grip": "ground",
+   "name": "Real Impact",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 205,
+   "cancels": {
+    "attack": 125,
+    "dodge": 125,
+    "skill": 124,
+    "move": 176
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "beowulf-real-impact"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_17.pac #3, frames 0–205",
+    "Script": "17-3",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "beowulf.air-volcano",
+   "class": "beowulf",
+   "type": "swordmaster",
+   "grip": "air",
+   "name": "Air Volcano",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 162,
+   "cancels": {
+    "attack": 111,
+    "dodge": 111,
+    "skill": 110,
+    "move": 130
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "beowulf-air-volcano"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_17.pac #2, frames 0–20, pl000_00_17.pac #1, frames 0–142",
+    "Script": "17-2, 17-1",
+    "Style": "Swordmaster"
+   }
+  },
+  {
+   "id": "ebony-ivory.wild-stomp",
+   "class": "ebony-ivory",
+   "type": "gunslinger",
+   "grip": "ground",
+   "name": "Wild Stomp",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 95,
+   "cancels": {
+    "attack": 72,
+    "dodge": 72,
+    "block": 71,
+    "skill": 71,
+    "move": 91
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "ebony-ivory-wild-stomp"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_8.pac #33, frames 0–20, pl000_00_8.pac #34, frames 21–36, pl000_00_8.pac #39, frames 45–105",
+    "Script": "8-33, 8-34, 8-39"
+   }
+  },
+  {
+   "id": "ebony-ivory.rain-storm",
+   "class": "ebony-ivory",
+   "type": "gunslinger",
+   "grip": "air",
+   "name": "Rain Storm",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 58,
+   "cancels": {
+    "attack": 48,
+    "dodge": 48,
+    "skill": 48
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "ebony-ivory-rain-storm"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_18.pac #15, frames 0–30, pl000_00_18.pac #16, frames 31–35, pl000_00_18.pac #17, frames 36–60",
+    "Script": "18-15, 18-16, 18-17",
+    "Style": "Gunslinger"
+   }
+  },
+  {
+   "id": "shotgun.fireworks",
+   "class": "shotgun",
+   "type": "gunslinger",
+   "grip": "ground",
+   "name": "Fireworks",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 41,
+   "cancels": {
+    "attack": 30,
+    "dodge": 30,
+    "skill": 30
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "shotgun-fireworks"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_19.pac #0, frames 0–41",
+    "Script": "19-0",
+    "Style": "Gunslinger"
+   }
+  },
+  {
+   "id": "shotgun.gun-stinger",
+   "class": "shotgun",
+   "type": "gunslinger",
+   "grip": "ground",
+   "name": "Gun Stinger",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 97,
+   "cancels": {
+    "attack": 45,
+    "dodge": 45,
+    "skill": 44,
+    "move": 83
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "shotgun-gun-stinger"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_19.pac #2, frames 0–10, pl000_00_19.pac #3, frames 11–19, pl000_00_19.pac #4, frames 20–99",
+    "Script": "19-2, 19-3, 19-4",
+    "Style": "Gunslinger"
+   }
+  },
+  {
+   "id": "shotgun.point-blank",
+   "class": "shotgun",
+   "type": "gunslinger",
+   "grip": "ground",
+   "name": "Point Blank",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 27,
+   "cancels": {
+    "dodge": 10
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "shotgun-point-blank"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_19.pac #5, frames 0–27",
+    "Script": "19-5",
+    "Style": "Gunslinger"
+   }
+  },
+  {
+   "id": "shotgun.air-fireworks",
+   "class": "shotgun",
+   "type": "gunslinger",
+   "grip": "air",
+   "name": "Air Fireworks",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 41,
+   "cancels": {
+    "attack": 30,
+    "dodge": 30,
+    "skill": 30
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "shotgun-air-fireworks"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_19.pac #1, frames 0–41",
+    "Script": "19-1",
+    "Style": "Gunslinger"
+   }
+  },
+  {
+   "id": "artemis.normal-shot",
+   "class": "artemis",
+   "type": "shot",
+   "grip": "ground",
+   "name": "Normal Shot",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 60,
+   "cancels": {
+    "attack": 21,
+    "dodge": 21,
+    "block": 20,
+    "skill": 20,
+    "move": 50
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "artemis-normal-shot"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_10.pac #4, frames 0–60",
+    "Script": "10-4"
+   },
+   "desc": "Multi-lock shot plays the same motion"
+  },
+  {
+   "id": "artemis.air-normal-shot",
+   "class": "artemis",
+   "type": "shot",
+   "grip": "air",
+   "name": "Air Normal Shot",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 60,
+   "cancels": {
+    "attack": 26,
+    "dodge": 26,
+    "block": 25,
+    "skill": 25
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "artemis-air-normal-shot"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_10.pac #13, frames 0–60",
+    "Script": "10-13"
+   },
+   "desc": "Air multi-lock shot plays the same motion"
+  },
+  {
+   "id": "artemis.sphere",
+   "class": "artemis",
+   "type": "gunslinger",
+   "grip": "ground",
+   "name": "Sphere",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 59,
+   "cancels": {
+    "attack": 52,
+    "dodge": 40,
+    "skill": 51
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "artemis-sphere"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_20.pac #2, frames 0–59",
+    "Script": "20-2",
+    "Style": "Gunslinger"
+   }
+  },
+  {
+   "id": "artemis.acid-rain",
+   "class": "artemis",
+   "type": "gunslinger",
+   "grip": "ground",
+   "name": "Acid Rain",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 114,
+   "cancels": {
+    "attack": 104,
+    "dodge": 77,
+    "block": 77,
+    "skill": 104
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "artemis-acid-rain"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_20.pac #3, frames 0–76, pl000_00_20.pac #4, frames 77–115",
+    "Script": "20-3, 20-4",
+    "Style": "Gunslinger"
+   }
+  },
+  {
+   "id": "spiral.sniper",
+   "class": "spiral",
+   "type": "gunslinger",
+   "grip": "ground",
+   "name": "Sniper",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 152,
+   "cancels": {
+    "attack": 101,
+    "dodge": 101,
+    "block": 100,
+    "skill": 100,
+    "move": 130
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "spiral-sniper"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_21.pac #0, frames 0–152",
+    "Script": "21-0",
+    "Style": "Gunslinger"
+   }
+  },
+  {
+   "id": "spiral.trick-shot",
+   "class": "spiral",
+   "type": "gunslinger",
+   "grip": "ground",
+   "name": "Trick Shot",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 100,
+   "cancels": {
+    "attack": 51,
+    "dodge": 51,
+    "block": 60,
+    "skill": 60,
+    "move": 80
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "spiral-trick-shot"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_21.pac #1, frames 0–100",
+    "Script": "21-1",
+    "Style": "Gunslinger"
+   }
+  },
+  {
+   "id": "kalina-ann.hysteric",
+   "class": "kalina-ann",
+   "type": "gunslinger",
+   "grip": "ground",
+   "name": "Hysteric",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 142,
+   "cancels": {
+    "attack": 132,
+    "dodge": 97,
+    "block": 131,
+    "skill": 131,
+    "move": 137
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "kalina-ann-hysteric"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_22.pac #2, frames 0–96, pl000_00_22.pac #3, frames 0–46",
+    "Script": "22-2, 22-3",
+    "Style": "Gunslinger"
+   }
+  },
+  {
+   "id": "kalina-ann.grapple",
+   "class": "kalina-ann",
+   "type": "gunslinger",
+   "grip": "ground",
+   "name": "Grapple",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 67,
+   "cancels": {
+    "attack": 11,
+    "dodge": 11,
+    "block": 10,
+    "skill": 10,
+    "move": 35
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "kalina-ann-grapple"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_22.pac #1, frames 0–67",
+    "Script": "22-1",
+    "Style": "Gunslinger"
+   }
+  },
+  {
+   "id": "royalguard.release",
+   "class": "royalguard",
+   "type": "style",
+   "grip": "ground",
+   "name": "Release",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 57,
+   "cancels": {
+    "attack": 35,
+    "dodge": 35,
+    "block": 34,
+    "skill": 34,
+    "move": 54
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "royalguard-release"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_24.pac #15, frames 0–9, pl000_00_24.pac #16, frames 10–58",
+    "Script": "24-15, 24-16",
+    "Style": "Royalguard"
+   },
+   "desc": "Levels 1 to 4 share the motions"
+  },
+  {
+   "id": "royalguard.air-release",
+   "class": "royalguard",
+   "type": "style",
+   "grip": "air",
+   "name": "Air Release",
+   "startup": null,
+   "active": [],
+   "activeFrames": null,
+   "hits": null,
+   "recovery": null,
+   "total": 57,
+   "cancels": {
+    "attack": 35,
+    "dodge": 35,
+    "block": 34,
+    "skill": 34,
+    "move": 44
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "anim": [
+    "royalguard-air-release"
+   ],
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Motion": "pl000_00_24.pac #18, frames 0–9, pl000_00_24.pac #19, frames 10–58",
+    "Script": "24-18, 24-19",
+    "Style": "Royalguard"
+   },
+   "desc": "Levels 1 to 4 share the motions"
+  }
+ ]
+}
