@@ -6407,6 +6407,15 @@
       "confidence": "high",
       "what": "First-person throw of a plasma grenade onto a Wraith"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/king_dedede",
+     "media_url": "https://ultimateframedata.com/hitboxes/king_dedede/KingDededeGordoThrow.gif",
+     "title": "King Dedede Side B (Gordo Throw) (Toss), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/ranged.grenade-throw-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/king_dedede/KingDededeGordoThrow.gif"
     }
    ]
   },
@@ -8132,6 +8141,15 @@
       "confidence": "high",
       "what": "Lucario charges Aura Sphere, the blue ball swelling between its paws"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ridley",
+     "media_url": "https://ultimateframedata.com/hitboxes/ridley/RidleyPlasmaBreathCharge.gif",
+     "title": "Ridley Neutral B (Plasma Breath) (Charge), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.charge-up-ki-charge-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ridley/RidleyPlasmaBreathCharge.gif"
     }
    ],
    "rejected_gifs": [
@@ -8440,6 +8458,15 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/magic.telekinesis-force-push-ufd-2.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/ness/NessPSIMagnet.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/rosalina_and_luma",
+     "media_url": "https://ultimateframedata.com/hitboxes/rosalina_and_luma/RosalinaGravitationalPull.gif",
+     "title": "Rosalina and Luma Down B (Gravitational Pull), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.telekinesis-force-push-ufd-3.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/rosalina_and_luma/RosalinaGravitationalPull.gif"
     }
    ]
   },
@@ -8960,6 +8987,15 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/defense.perfect-block-deflect-ufd-2.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/falco/FalcoReflector.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/dr_mario",
+     "media_url": "https://ultimateframedata.com/hitboxes/dr_mario/DrMarioSuperSheet.gif",
+     "title": "Dr. Mario Side B (Super Sheet), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.perfect-block-deflect-ufd-3.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/dr_mario/DrMarioSuperSheet.gif"
     }
    ],
    "rejected_gifs": [
@@ -9478,6 +9514,15 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/defense.perfect-dodge-witch-time-ufd-0.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/bayonetta/BayonettaWitchTime.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/lucario",
+     "media_url": "https://ultimateframedata.com/hitboxes/lucario/LucarioDoubleTeam.gif",
+     "title": "Lucario Down B (Double Team), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.perfect-dodge-witch-time-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/lucario/LucarioDoubleTeam.gif"
     }
    ]
   },
@@ -21306,6 +21351,15 @@
      "title": "Millia hair animation on held frames",
      "game": "Guilty Gear Strive",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/mr_game_and_watch",
+     "media_url": "https://ultimateframedata.com/hitboxes/mr_game_and_watch/MrGame_WatchJudge9.gif",
+     "title": "Mr. Game & Watch Side B (Judge) (9), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/cartoon.limited-animation-on-twos-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/mr_game_and_watch/MrGame_WatchJudge9.gif"
     }
    ]
   },

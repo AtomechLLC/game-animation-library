@@ -64,6 +64,10 @@ MAP = {
 # frame-data/super-smash-bros-ultimate.json (run tools/frame_data/import_ufd_ssbu.py first), keeping clips where
 # the character reads clearly at 400px (wide projectile shots and hitbox-only clips were left out)
 MOVES = {
+ 'magic.charge-up-ki-charge': [('ridley.special.neutral-b-plasma-breath', 1)],
+ 'cartoon.limited-animation-on-twos': [('mr-game-and-watch.special.side-b-judge', 8)],
+ 'defense.perfect-dodge-witch-time': [('lucario.special.down-b-double-team', 0)],
+ 'ranged.grenade-throw': [('king-dedede.special.side-b-gordo-throw', 0)],
  'melee.backstab': [('meta-knight.special.dimensional-cape-attack', 4)],
  'melee.finisher-execution': [('kazuya.special.rage-drive-input-f-d-df-hold-a-b-623-hold-a-b', 0), ('incineroar.special.alolan-whip-lariat-attack', 0)],
  'melee.weapon-art-skill-attack': [('hero.special.flame-slash', 0), ('cloud.special.limit-cross-slash', 1)],
@@ -76,10 +80,10 @@ MOVES = {
  'magic.teleport-blink': [('meta-knight.special.dimensional-cape-attack', 3)],
  'magic.ice-frost-spell': [('ice-climbers.special.down-b-blizzard', 0)],
  'magic.fire-breath-flame-spray': [('ridley.special.neutral-b-plasma-breath', 0), ('piranha-plant.special.side-b-full-charge-poison-breath-full-charge', 0)],
- 'magic.telekinesis-force-push': [('mewtwo.special.side-b-confusion', 0), ('lucario.special.side-b-force-palm', 0), ('ness.special.down-b-psi-magnet', 0)],
+ 'magic.telekinesis-force-push': [('rosalina-and-luma.special.down-b-gravitational-pull', 0), ('mewtwo.special.side-b-confusion', 0), ('lucario.special.side-b-force-palm', 0), ('ness.special.down-b-psi-magnet', 0)],
  'magic.shield-barrier': [('wolf.special.down-b-reflector', 1), ('joker.special.arsene-makarakarn-reflect', 0)],
  'defense.parry': [('roy.special.down-b-counter', 0), ('little-mac.special.down-b-slip-counter', 0)],
- 'defense.perfect-block-deflect': [('mario.special.side-b-cape', 0), ('palutena.special.counter-attack-reflect', 0), ('falco.special.down-b-reflector', 0)],
+ 'defense.perfect-block-deflect': [('dr-mario.special.side-b-super-sheet', 0), ('mario.special.side-b-cape', 0), ('palutena.special.counter-attack-reflect', 0), ('falco.special.down-b-reflector', 0)],
  'defense.counter-attack': [('sora.special.down-b-counterattack-success', 0), ('corrin.special.counter-surge-attack', 0), ('king-k-rool.special.gut-check-counterattack', 0)],
  'defense.guard-break-shield-break': [('marth.special.neutral-b-shield-breaker', 3), ('lucina.special.neutral-b-shieldbreaker', 3)],
  'defense.air-dash': [('pikachu.special.up-b-quick-attack', 0)],
