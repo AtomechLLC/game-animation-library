@@ -2,7 +2,8 @@
 
     python tools/frame_data/import_dmc3_game.py "<game folder with GData.afs>"      # or a folder of unpacked files
 
-Writes frame-data/devil-may-cry-3.json. The 3D preview files come from export_dmc3_models.py.
+Writes frame-data/devil-may-cry-3.json and icons/devil-may-cry-3/ (the HUD's weapon and style icons). The 3D preview
+files come from export_dmc3_models.py.
 
 Where the numbers come from (see frame-data/README.md, "Devil May Cry 3"):
   The game's code starts each move by playing one or more of Dante's motion scripts (slot 5 of pl000.pac); which
@@ -12,7 +13,9 @@ Where the numbers come from (see frame-data/README.md, "Devil May Cry 3"):
   Royalguard block, style move or plain movement act is the cancel frame. When the hit comes out isn't in the
   scripts or any data file (the executable decides it), so startup, active frames and recovery are left unknown.
 """
-import json, os, sys, datetime
+import io, json, os, sys, datetime
+import numpy as np
+from PIL import Image
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import dmc3_files as D
 import dmc3_moves as M
@@ -20,10 +23,39 @@ import dmc3_moves as M
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 GAME_ID = 'devil-may-cry-3'
 OUT = os.path.join(ROOT, 'frame-data', GAME_ID + '.json')
+ICONS = os.path.join(ROOT, 'frame-data', 'icons', GAME_ID)
+
+# HUD icons: id100.pac slot per class (texture slot; the model slot after it places it on screen). Same slots as the
+# Crimson mod's HUD.cpp: weapons 42-50 and 30-38, styles 18-28 (Royalguard 24)
+HUD_SLOTS = {'rebellion': 42, 'cerberus': 44, 'agni-rudra': 46, 'nevan': 48, 'beowulf': 50, 'ebony-ivory': 30,
+             'shotgun': 32, 'artemis': 34, 'spiral': 36, 'kalina-ann': 38, 'royalguard': 24}
+
+
+def icons(game):
+    """96 px WebP per class from the HUD's icons, cropped to the picture and centred; returns {class name: file}."""
+    os.makedirs(ICONS, exist_ok=True)
+    hud = D.subfiles(game.read('id100.pac'))
+    out = {}
+    for cid, slot in HUD_SLOTS.items():
+        a = D.textures(hud[slot])[0]
+        ys, xs = np.nonzero(a[..., 3] > 16)
+        if cid == 'royalguard': ys, xs = ys[ys >= 40], xs[ys >= 40]      # drop the rank arc above the emblem
+        im = Image.fromarray(a[ys.min():ys.max() + 1, xs.min():xs.max() + 1], 'RGBA')
+        k = 92 / max(im.size)
+        im = im.resize((max(1, round(im.width * k)), max(1, round(im.height * k))), Image.LANCZOS)
+        sq = Image.new('RGBA', (96, 96))
+        sq.alpha_composite(im, ((96 - im.width) // 2, (96 - im.height) // 2))
+        sq.save(os.path.join(ICONS, cid + '.webp'), 'WEBP', quality=90)
+        out[M.CLASSES[cid][0]] = {'file': cid + '.webp'}
+    with open(os.path.join(ICONS, 'icons.json'), 'w', encoding='utf-8') as f:
+        json.dump({'lead': "Icons are the game's own HUD art", 'note': 'Art (c) Capcom.', 'icons': out}, f, indent=1,
+                  ensure_ascii=False)
+    return out
 
 
 def main(game_dir):
     game = D.Game(game_dir)
+    icon_names = icons(game)
     scripts = D.Scripts(D.subfiles(game.read('pl000.pac'))[5])
     moves = []
     for mv in M.moves():
@@ -41,7 +73,7 @@ def main(game_dir):
                       'extra': extra, **({'desc': mv['desc']} if mv.get('desc') else {})})
     counts = {}
     for m in moves: counts[m['class']] = counts.get(m['class'], 0) + 1
-    classes = [{'id': cid, 'name': name, 'family': fam, 'icon': None, 'weapons': [],
+    classes = [{'id': cid, 'name': name, 'family': fam, 'icon': name if name in icon_names else None, 'weapons': [],
                 'moves': counts[cid]} for cid, (name, fam, pac, hand) in M.CLASSES.items() if cid in counts]
     out = {
         'schema': 'frame-data/1',

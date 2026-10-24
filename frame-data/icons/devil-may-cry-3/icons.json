@@ -1,0 +1,39 @@
+{
+ "lead": "Icons are the game's own HUD art",
+ "note": "Art (c) Capcom.",
+ "icons": {
+  "Rebellion": {
+   "file": "rebellion.webp"
+  },
+  "Cerberus": {
+   "file": "cerberus.webp"
+  },
+  "Agni & Rudra": {
+   "file": "agni-rudra.webp"
+  },
+  "Nevan": {
+   "file": "nevan.webp"
+  },
+  "Beowulf": {
+   "file": "beowulf.webp"
+  },
+  "Ebony & Ivory": {
+   "file": "ebony-ivory.webp"
+  },
+  "Shotgun": {
+   "file": "shotgun.webp"
+  },
+  "Artemis": {
+   "file": "artemis.webp"
+  },
+  "Spiral": {
+   "file": "spiral.webp"
+  },
+  "Kalina Ann": {
+   "file": "kalina-ann.webp"
+  },
+  "Royalguard": {
+   "file": "royalguard.webp"
+  }
+ }
+}

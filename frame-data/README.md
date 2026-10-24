@@ -26,8 +26,9 @@ The page knows nothing about where the numbers came from, so every source only h
   from an installed copy (see [Hollow Knight](#hollow-knight)), which also writes `sprites/hollow-knight/` for the
   2D preview and `icons/hollow-knight/`.
 - `devil-may-cry-3.json` — Devil May Cry 3: Special Edition (PS2, Europe), 60 fps, Dante's 118 weapon and style moves.
-  Built by `tools/frame_data/import_dmc3_game.py` from the disc's files (see [Devil May Cry 3](#devil-may-cry-3));
-  `tools/frame_data/export_dmc3_models.py` writes `models/devil-may-cry-3/` for the 3D preview.
+  Built by `tools/frame_data/import_dmc3_game.py` from the disc's files (see [Devil May Cry 3](#devil-may-cry-3)),
+  which also writes `icons/devil-may-cry-3/`; `tools/frame_data/export_dmc3_models.py` writes `models/devil-may-cry-3/`
+  for the 3D preview.
 - `ninja-gaiden-black.json` — Ninja Gaiden Black (Xbox), 60 fps, Ryu's Dragon Sword. Built by
   `tools/frame_data/import_ngb_game.py` from the game disc (see [Ninja Gaiden Black](#ninja-gaiden-black)), which also
   writes `sprites/ninja-gaiden-black/` for the 2D preview and `icons/ninja-gaiden-black/`.
@@ -229,6 +230,9 @@ python tools/frame_data/export_dmc3_models.py "D:/Games/Devil May Cry 3 SE"     
 - **Cancels.** A script also sets per-input next-action policies as the motion plays (buffer, act, off). The first frame
   it lets an input act is the cancel: `attack` (melee), `dodge` (jump or roll), `block` (Royalguard), `skill` (style
   move) and `move` (plain movement, the end of recovery). They come from the move's last script.
+- **Icons.** Each weapon's icon is its HUD icon, and Royalguard's is its style emblem, from `id100.pac` (the HUD
+  archive; texture slots 42-50 and 30-38 for the weapons, 24 for Royalguard, as the Crimson mod's `HUD.cpp` reads
+  them), cropped and centred at 96 px.
 - **Not known yet.** When the hit comes out isn't in the scripts or any data file; the executable decides it, so startup,
   active frames, recovery and the 3D preview's hitboxes are left out for now. Also not listed yet: the guns' normal
   aimed shots and Twosome Time (their motions come from aim tables), Trickster, Quicksilver and Doppelganger moves
