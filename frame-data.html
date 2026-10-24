@@ -111,8 +111,9 @@ aside h2{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transf
 .range input{width:100%;accent-color:var(--key)}
 .range b{font-family:var(--mono);color:var(--fg);font-weight:600}
 .status{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
-.status h2{font-family:var(--display);font-size:28px;font-weight:700;letter-spacing:-.02em;margin:0;text-wrap:balance;display:flex;align-items:center;gap:10px}
-.status h2 img{width:40px;height:40px}
+.status h2{font-family:var(--display);font-size:28px;font-weight:700;letter-spacing:-.02em;margin:0;text-wrap:balance;display:flex;align-items:baseline;gap:10px}
+/* the count lines up with the title's text, not the icon's bottom, so the row is as tall with or without the icon */
+.status h2 img{width:40px;height:40px;align-self:center}
 .status p{margin:0;color:var(--muted)}
 /* title, description and store links share one row; the description gives way first (truncated, full text on hover) */
 .head1{flex:1;min-width:0;display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px}
@@ -271,8 +272,9 @@ footer p{max-width:85ch;margin:0 0 8px}
 .clip-stage canvas,.clip-stage img{display:block;width:100%;height:100%;object-fit:contain}
 .clip-stage .v3d-hud{color:#fff;text-shadow:0 1px 2px #000}.clip-stage .v3d-hud span{color:#ddd}
 .clip-alts{display:flex;flex-wrap:wrap;gap:4px}
-/* the study panel: the viewer with the inspector beside it, full width under the weapon buttons; once a class is
-   picked it floats under the header while the table scrolls. Hide folds it */
+/* the study panel: the viewer with the inspector beside it, full width with the weapon buttons under it, so it keeps
+   its place when a class is picked; once a class is picked it floats under the header while the table scrolls. Hide
+   folds it */
 .pick-l{min-width:0}
 .dock{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;padding-top:4px;min-width:0;margin-bottom:12px}
 .study{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,32%);gap:14px;align-items:stretch}
@@ -316,7 +318,7 @@ footer p{max-width:85ch;margin:0 0 8px}
 .linkbtn.done .i-ok{display:block}
 .linkbtn.done{background:var(--calm);border-color:var(--calm)}
 .dock .v3d-stage{aspect-ratio:auto;height:clamp(240px,38vh,440px)}
-.pick.min .wtiles,.pick.min #sub,.pick.min #active,.dock.min .study{display:none}
+.pick.min~#weapons .wtiles,.pick.min #sub,.pick.min #active,.dock.min .study{display:none}
 @media (min-width:821px) and (min-height:800px){.dock.stick{position:sticky;top:var(--hdr,0px);z-index:4;background:var(--bg);border-bottom:1px solid var(--line);padding-bottom:8px}}
 @media (max-width:820px){.study{grid-template-columns:minmax(0,1fr)}.insp{min-height:320px}}
 /* phones: the header scrolls away compacted (one-line game chips, no tagline) and the preview alone sticks to the top,
@@ -382,10 +384,10 @@ tbody tr.on td{background:var(--chip);box-shadow:inset 0 1px var(--key),inset 0 
         <div class="status"><div class="head1"><h2 id="ttl">Move Explorer</h2><p id="sub"></p><p class="buy" id="buy"></p></div><span class="count" id="count"></span></div>
         <div class="active" id="active"></div>
         <div id="index"></div>
-        <div id="weapons"></div>
       </div>
     </div>
     <section class="dock" id="dock" hidden aria-label="3D preview"><div class="dock-head"><div><small id="dockSrc"></small><h3 id="dockName">3D preview</h3></div><span class="dock-btns"><button class="linkbtn" id="dockLink" aria-label="Copy link to this frame" title="Copy a link that opens this move paused on this frame, with the same speed and overlays"><svg class="i-link" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3.2-3.2a4.5 4.5 0 0 0-6.4-6.4l-1.1 1.1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3.2 3.2a4.5 4.5 0 0 0 6.4 6.4l1.1-1.1"/></svg><svg class="i-ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Copy link</span></button><button class="chip" id="dockMore">Frame details</button><button class="chip" id="pickMin" aria-expanded="true" title="Hide the weapon buttons and preview">Hide</button></span></div><div class="study"><div class="v3d" id="dockView"></div><div class="insp" id="insp" role="region" aria-label="Move inspector"></div></div></section>
+    <div id="weapons"></div>
     <div class="legend" id="legend"></div>
     <div id="table"></div>
     <footer id="foot"></footer>
@@ -668,7 +670,7 @@ function inspFrame(m,f){
 const moveOf=key=>{const [cls,id]=key.split('|');return D.moves.find(x=>x.class===cls&&x.id===id)};
 function dockOn(on){$('#dock').hidden=!on;$('#pick').classList.toggle('dockon',on)}
 // before a class is picked the panel sits above the long class index, so the example is on the first screen; after,
-// it sits between the weapon buttons and the table and sticks under the header
+// it sits above the weapon buttons and the table, at the same height, and sticks under the header
 function placeDock(browse){const d=$('#dock');d.classList.toggle('stick',!browse);
   if(browse){if(d.nextElementSibling!==$('#index'))$('#index').before(d)}else if(d.previousElementSibling!==$('#pick'))$('#pick').after(d)}
 function pickMin(min){$('#pick').classList.toggle('min',min);$('#dock').classList.toggle('min',min);$('#pickMin').textContent=min?'Show':'Hide';$('#pickMin').setAttribute('aria-expanded',!min);try{localStorage.setItem('fd-pick-min',min?'1':'')}catch(e){}}
