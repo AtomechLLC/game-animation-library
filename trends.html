@@ -108,6 +108,15 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var
 .grow .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 main{padding-block:20px 0;display:grid;gap:28px}
 .intro{display:grid;gap:6px;max-width:80ch}
+.introrow{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:16px 32px}
+.introrow .intro{flex:1 1 480px}
+.learn{flex:0 1 280px;margin-top:6px;padding:12px 14px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:13px}
+.learn p{margin:0 0 8px;color:var(--muted)}
+.learn ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.learn a{color:var(--fg);text-decoration:none;font-weight:500}
+.learn a:hover{text-decoration:underline}
+.learn small{display:block;color:var(--muted);font-size:12px}
+@media (max-width:820px){.learn{flex-basis:100%;margin-top:0}}
 .intro h2{font-family:var(--display);font-size:28px;font-weight:700;letter-spacing:-.02em;margin:0;text-wrap:balance}
 .intro p{margin:0;color:var(--muted)}
 .intro p b{color:var(--fg);font-weight:600}
@@ -196,11 +205,20 @@ footer p{max-width:85ch;margin:0 0 8px}
 </header>
 
 <main class="wrap" id="main">
+  <div class="introrow">
   <section class="intro">
     <h2>How the games time a fight</h2>
     <p>Every game in the Frame Data tab, side by side: how long attacks take to come out, how long they stay out, how long they leave you open, and how early each game lets you cancel or evade. Pick which games to compare in the bar above.</p>
     <p><b>Units.</b> All timings are in frames at 60 fps (1 f ≈ 16.7 ms). Elden Ring times its animations at 30 fps, so its frames are doubled here; hover any mark for the game's own frames. Middle values are medians, so a few extreme moves don't drag them.</p>
   </section>
+  <aside class="learn" aria-label="Further reading">
+    <p>Interested in game feel and combat design? Check these out:</p>
+    <ul>
+      <li><a href="https://gamedesignskills.com/courses/polishing-game-feel-bootcamp/" target="_blank" rel="noopener">Polishing Game Feel Bootcamp</a><small>Course by Game Design Skills</small></li>
+      <li><a href="https://gamedesignskills.com/game-design/combat-design/" target="_blank" rel="noopener">Combat Design guide</a><small>Article by Game Design Skills</small></li>
+    </ul>
+  </aside>
+  </div>
   <div class="loading" id="loading">Loading frame data for every game…</div>
   <div id="sections" hidden></div>
   <footer id="foot"></footer>
