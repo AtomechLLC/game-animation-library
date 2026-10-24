@@ -4,6 +4,24 @@
  "icons": {
   "The Knight": {
    "file": "knight.webp"
+  },
+  "Hornet (Greenpath)": {
+   "file": "hornet.webp"
+  },
+  "Hornet (Kingdom's Edge)": {
+   "file": "hornet2.webp"
+  },
+  "Mantis Lord": {
+   "file": "mantisLord.webp"
+  },
+  "Soul Master": {
+   "file": "soulMaster.webp"
+  },
+  "Pure Vessel": {
+   "file": "pureVessel.webp"
+  },
+  "Nightmare King Grimm": {
+   "file": "nkg.webp"
   }
  }
 }

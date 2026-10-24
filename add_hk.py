@@ -1,4 +1,4 @@
-"""Add Hollow Knight clips of the Knight, rendered from the Frame Data 2D preview's sheets, to library.json.
+"""Add Hollow Knight clips of the Knight and bosses, rendered from the Frame Data 2D preview's sheets, to library.json.
 
 Each mapped move's frames come from frame-data/sprites/hollow-knight/ (written by tools/frame_data/import_hk_game.py
 from the installed game): the game's sprites with the move's hurtbox (blue) and attack polygons (red) drawn on, on
@@ -42,7 +42,20 @@ MAP = {
  'reactions.light-flinch-hit-react': [('knight.movement.hit', 'Knight taking a hit, then invulnerable')],
  'reactions.knockback': [('knight.movement.hit', 'Knight knocked back by a hit')],
  'death.death-collapse': [('knight.movement.death', 'Knight death')],
+ # bosses
+ 'melee.dash-attack-lunge#2': [('hornet.attack.lunge', 'Hornet lunge')],
+ 'enemies.attack-telegraph-windup': [('hornet.attack.lunge', 'Hornet lunge, from its wind-up'), ('pureVessel.attack.dash', 'Pure Vessel dash stab, from its wind-up')],
+ 'melee.spin-attack#2': [('hornet.attack.spin', 'Hornet whirl')],
+ 'melee.weapon-throw-recall': [('hornet.attack.throw', 'Hornet needle throw and recall')],
+ 'ranged.boomerang-returning-throw': [('mantisLord.attack.throw', 'Mantis Lord boomerang throw (boomerang not shown)')],
+ 'melee.light-attack-combo-string#2': [('pureVessel.attack.slashes', 'Pure Vessel triple slash')],
+ 'melee.thrust-stab': [('pureVessel.attack.dash', 'Pure Vessel dash stab')],
+ 'defense.counter-attack': [('pureVessel.attack.counterSlash', 'Pure Vessel counter slash')],
+ 'melee.horizontal-sweep#2': [('nkg.attack.slash', 'Nightmare King Grimm slash')],
+ 'enemies.charging-rush': [('nkg.attack.groundDash', 'Nightmare King Grimm ground dash'), ('mantisLord.attack.dash', 'Mantis Lord dash slash')],
+ 'defense.backstep-backflip': [('hornet.attack.evade', 'Hornet evade')],
 }
+LOWB = {'ranged.boomerang-returning-throw'}
 LOW = {'melee.horizontal-sweep', 'magic.spell-cast-instant', 'vfx.shockwave-ground-crack', 'defense.air-dash', 'reactions.knockback'}
 
 
@@ -76,7 +89,8 @@ if __name__ == '__main__':
     bl = load()
     scr = json.load(open('gif-screening.json', encoding='utf-8'))
     rendered, added = {}, []
-    for aid, moves in MAP.items():
+    for key, moves in MAP.items():
+        aid = key.split('#')[0]
         a = byid[aid]
         a.setdefault('gifs', [])
         n = sum(1 for g in a['gifs'] if g.get('host') == GAME + ' render')
@@ -87,7 +101,7 @@ if __name__ == '__main__':
                 if REDRAW: render(fd[mid]['class'], mid, next(g['local'] for g in a['gifs'] if g.get('page_url') == page))
                 continue
             count = render(fd[mid]['class'], mid, local)
-            conf = 'low' if aid in LOW else 'high'
+            conf = 'low' if aid in LOW or aid in LOWB else 'high'
             g = {'page_url': page, 'media_url': '', 'title': f'{label}, with hitboxes, rendered from the Frame Data preview',
                  'game': GAME, 'host': GAME + ' render', 'local': local, 'source_url': '',
                  'screened': {'verdict': 'added', 'confidence': conf, 'what': f'{label}: game sprites with hurtbox and attack hitboxes'}}

@@ -202,11 +202,14 @@ _LISTS = {'String': 'stringParams', 'FsmString': 'fsmStringParams', 'FsmGameObje
           'FsmAnimationCurve': 'animationCurveParams', 'LayoutOption': 'layoutOptionParams',
           'FsmTemplateControl': 'fsmTemplateControlParams', 'FsmMaterial': 'fsmObjectParams', 'FsmTexture': 'fsmObjectParams'}
 
+_LISTS0 = {'FsmFloat': 'fsmFloatParams', 'FsmInt': 'fsmIntParams', 'FsmBool': 'fsmBoolParams', 'FsmEvent': 'stringParams'}
+
 def _fsmvar(raw, fmt):
     """byteData of FsmFloat/FsmInt/FsmBool: value, useVariable, variable name."""
     n = struct.calcsize(fmt)
     if len(raw) < n: return None
-    v = struct.unpack_from('<' + fmt, raw, 0)[0]
+    v = struct.unpack_from('<' + fmt, raw, 0)
+    v = v[0] if len(v) == 1 else v
     if len(raw) > n and raw[n]: return {'var': raw[n + 1:].decode('utf-8', 'replace'), 'value': v}
     return v
 
@@ -214,12 +217,22 @@ def _param(ad, kind, pos, size):
     bd = ad['byteData']
     if isinstance(bd, str): bd = ad['byteData'] = bytes.fromhex(bd)
     b = bd[pos:pos + size]
+    # older actions (FSM dataVersion 2) keep Fsm* values in typed lists instead of byteData
+    if size == 0 and kind in _LISTS0:
+        lst = ad.get(_LISTS0[kind], [])
+        if pos >= len(lst): return None
+        v = lst[pos]
+        if kind == 'FsmEvent': return v or None
+        if isinstance(v, dict) and v.get('useVariable'): return {'var': v.get('name'), 'value': v.get('value')}
+        return v.get('value') if isinstance(v, dict) else v
     if kind in ('Integer', 'Enum', 'LayerMask'): return struct.unpack_from('<i', b)[0] if size >= 4 else None
     if kind == 'Boolean': return bool(b[0]) if b else None
     if kind == 'Float': return struct.unpack_from('<f', b)[0] if size >= 4 else None
     if kind == 'FsmFloat': return _fsmvar(b, 'f')
     if kind == 'FsmInt': return _fsmvar(b, 'i')
     if kind == 'FsmBool': return _fsmvar(b, '?')
+    if kind == 'FsmVector2' and size: return _fsmvar(b, '2f')
+    if kind == 'FsmVector3' and size: return _fsmvar(b, '3f')
     if kind == 'FsmEvent': return b.decode('utf-8', 'replace') or None
     if kind == 'Vector2': return struct.unpack_from('<2f', b) if size >= 8 else None
     if kind == 'Vector3': return struct.unpack_from('<3f', b) if size >= 12 else None

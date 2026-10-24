@@ -14,7 +14,7 @@ Where the numbers come from (see frame-data/README.md, "Hollow Knight"):
   NailSlash.FixedUpdate switches a slash's collider on at physics step 1 and off at step 5, so nail hitboxes are
   out on steps 1-4 (50 Hz). FSM timings come from hk_fsm.simulate.
 """
-import argparse, json, math, os, sys
+import argparse, json, math, os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import hk_unity, hk_tk2d, hk_fsm
 from hk_render import Timeline, Xf, frames_of, frame_of, windows, render, sheet, FPS
@@ -27,38 +27,37 @@ KNIGHT_GO = 'Knight'             # the hero prefab: the GameObject holding HeroC
 def quat_z(q):
     return 2 * math.atan2(q.z, q.w)
 
-class Knight:
-    """The hero prefab and what hangs off it."""
-    def __init__(self, g):
-        self.g = g
-        self.sp = hk_tk2d.Sprites(g)
-        f = g.files['resources.assets']
-        hc = next(o for o in f.objects.values() if o.type.name == 'MonoBehaviour' and g.script(o) == 'HeroController')
-        self.go = f.objects[hk_unity.mono_header(hc.get_raw_data())[0]]
-        self.hc = g.mono(hc)
-        anim = g.mono(g.comp(self.go, 'tk2dSpriteAnimator'))
-        self.lib = self.sp.library(anim['library'], self.go)
+class Actor:
+    """A character prefab (the Knight, a boss) and what hangs off it. Its art faces left at scale +1."""
+    def __init__(self, g, go, sp=None):
+        self.g, self.go = g, go
+        self.sp = sp or hk_tk2d.Sprites(g)
+        anim = g.mono(g.comp(go, 'tk2dSpriteAnimator'))
+        self.lib = self.sp.library(anim['library'], go)
         self.clips = self.lib['byName']
-        spr = g.mono(g.comp(self.go, 'tk2dSprite'))
-        self.sprite_scale = (spr['_scale']['x'], spr['_scale']['y'])
+        tr = g.comp(go, 'Transform').read()
+        self.root = Xf(0, 0, abs(tr.m_LocalScale.x), abs(tr.m_LocalScale.y), 0)
+        spr = g.comp(go, 'tk2dSprite')
+        sc = g.mono(spr)['_scale'] if spr is not None else {'x': 1, 'y': 1}
+        self.sprite_scale = (sc['x'] * self.root.sx, sc['y'] * self.root.sy)
         self.fsms = {}
-        for t, o in g.components(self.go):
+        for t, o in g.components(go):
             if t == 'PlayMakerFSM':
                 d = g.mono(o)['fsm']; self.fsms[d['name']] = d
 
     def xf(self, path):
-        """Transform of a child (path under the Knight) in the Knight's space, its tk2dSprite scale included."""
+        """Transform of a child (path under the root) in the actor's space."""
         go, chain = self.go, []
-        for name in path.split('/'):
+        for name in (path.split('/') if path else []):
             go = self.g.child(go, name); chain.append(go)
         out = Xf()
         for c in reversed(chain):
             tr = self.g.comp(c, 'Transform').read()
             p, s = tr.m_LocalPosition, tr.m_LocalScale
             out = out.then(Xf(p.x, p.y, s.x, s.y, quat_z(tr.m_LocalRotation)))
-        return out
+        return out.then(self.root)
 
-    def obj(self, path): return self.g.child(self.go, path)
+    def obj(self, path): return self.g.child(self.go, path) if path else self.go
 
     def obj_fsms(self, path):
         out = {}
@@ -99,7 +98,16 @@ class Knight:
         return out
 
     def coll_of(self, owner):
-        return lambda fr: self.sp.collection(fr['spriteCollection'], owner)
+        return lambda fr: self.sp.collection(fr['spriteCollection'], fr.get('_src', owner))
+
+
+class Knight(Actor):
+    """The hero prefab: the GameObject holding HeroController in resources.assets."""
+    def __init__(self, g):
+        f = g.files['resources.assets']
+        hc = next(o for o in f.objects.values() if o.type.name == 'MonoBehaviour' and g.script(o) == 'HeroController')
+        super().__init__(g, f.objects[hk_unity.mono_header(hc.get_raw_data())[0]])
+        self.hc = g.mono(hc)
 
 # --- moves ---------------------------------------------------------------------------------------------------------
 
@@ -107,8 +115,8 @@ def nail_damage_range():
     return '5–21'     # PlayerData.nailDamage: 5 for the Old Nail, +4 per upgrade, 21 for the Pure Nail
 
 class Builder:
-    def __init__(self, k):
-        self.k, self.hc = k, k.hc
+    def __init__(self, k, cls='knight'):
+        self.k, self.hc, self.cls = k, getattr(k, 'hc', None), cls
         self.moves, self.timelines = [], {}
 
     def add(self, mid, type_, grip, name, tl, total_s, hits, extra=None, cancels=None, iframes=(), damage=None,
@@ -119,7 +127,7 @@ class Builder:
         startup = active[0][0] if active else None
         dodge = (cancels or {}).get('dodge')
         last = active[-1][1] if active else None
-        m = {'id': mid, 'class': 'knight', 'type': type_, 'grip': grip, 'name': name,
+        m = {'id': mid, 'class': self.cls, 'type': type_, 'grip': grip, 'name': name,
              'startup': startup, 'active': active, 'activeFrames': len(act), 'hits': hit_count or len(active),
              'recovery': max(dodge - last - 1, 0) if (dodge and last) else ((total - last) if last else None),
              'total': total, 'cancels': {k: v for k, v in (cancels or {}).items() if v},
@@ -444,19 +452,167 @@ class Builder:
             self.hurt(tl, total)
             self.add(f'knight.movement.{mid}', 'movement', 'ground' if mid == 'hardLanding' else 'any', name, tl, total, [], desc=desc)
 
+# --- bosses ----------------------------------------------------------------------------------------------------------
+# Each boss is read from its Godhome arena scene (level<n> in the build's scene list). An attack is a walk of the
+# boss's main FSM from its antic state until the FSM goes back to choosing (a state named like Idle, Escalation or
+# a choice, or the next antic). `choose` times the events the walk can't (a dash ending when it reaches a wall, a
+# boomerang coming back). Attack hitboxes are the boss's DamageHero children while they are switched on (by
+# ActivateGameObject or SetPolygonCollider); hurtboxes are the body collider and the per-pose collider children
+# (those with ExtraDamageableProxy).
+BOSSES = [
+    {'id': 'hornet', 'name': 'Hornet (Greenpath)', 'level': 448, 'go': 'Hornet Boss 1', 'fsm': 'Control', 'moves': [
+        ('GDash Antic', 'lunge', 'Lunge', {}), ('ADash Antic', 'airDash', 'Air dash', {'A Dash': ('LAND', 0.3)}),
+        ('Sphere Antic G', 'spin', 'Whirl (ground)', {}), ('Sphere Antic A', 'spinAir', 'Whirl (air)', {}),
+        ('Throw Antic', 'throw', 'Needle throw', {'Thrown': ('NEEDLE RETURN', 0.9)}), ('Evade Antic', 'evade', 'Evade', {})]},
+    {'id': 'hornet2', 'name': "Hornet (Kingdom's Edge)", 'level': 449, 'go': 'Hornet Boss 2', 'fsm': 'Control', 'moves': [
+        ('GDash Antic', 'lunge', 'Lunge', {}), ('ADash Antic', 'airDash', 'Air dash', {'A Dash': ('LAND', 0.3)}),
+        ('Sphere Antic G', 'spin', 'Whirl (ground)', {}), ('Sphere Antic A', 'spinAir', 'Whirl (air)', {}),
+        ('Throw Antic', 'throw', 'Needle throw', {'Thrown': ('NEEDLE RETURN', 0.9)}), ('Counter Antic', 'counter', 'Counter', {}),
+        ('Evade Antic', 'evade', 'Evade', {})]},
+    {'id': 'mantisLord', 'name': 'Mantis Lord', 'level': 452, 'go': 'Mantis Lord', 'fsm': 'Mantis Lord', 'moves': [
+        ('Dash Antic', 'dash', 'Dash slash', {'Dash Attack': ('END R', 0.35)}),
+        ('Throw Antic', 'throw', 'Boomerang throw', {'Keep Throwing?': None})]},
+    {'id': 'soulMaster', 'name': 'Soul Master', 'level': 461, 'go': 'Mage Lord', 'fsm': 'Mage Lord', 'moves': [
+        ('Shot Antic', 'shot', 'Soul orb', {}), ('Quake Antic', 'quake', 'Dive', {}), ('Charge Antic', 'charge', 'Charge', {})]},
+    {'id': 'pureVessel', 'name': 'Pure Vessel', 'level': 447, 'go': 'HK Prime', 'fsm': 'Control', 'moves': [
+        ('Slash1 Antic', 'slashes', 'Triple slash', {}), ('Dash Antic', 'dash', 'Dash stab', {}), ('CS Antic', 'counterSlash', 'Counter slash', {}),
+        ('Counter Antic', 'counter', 'Counter stance', {}), ('Dstab Antic', 'downStab', 'Down stab', {'Dstab Air': ('LAND', 0.3)}),
+        ('Tendril Antic', 'tendrils', 'Focus burst', {}), ('SmallShot Antic', 'shot', 'Small shot', {}), ('Evade Antic', 'evade', 'Evade', {})]},
+    {'id': 'nkg', 'name': 'Nightmare King Grimm', 'level': 444, 'go': 'Nightmare Grimm Boss', 'fsm': 'Control', 'moves': [
+        ('Slash Antic', 'slash', 'Triple slash', {}), ('AD Antic', 'airDash', 'Air dash', {'AD Fire': ('LAND', 0.3)}),
+        ('GD Antic', 'groundDash', 'Ground dash', {}), ('Uppercut Antic', 'uppercut', 'Uppercut', {}),
+        ('Spike Antic', 'spikes', 'Spikes', {}), ('Pillar Antic', 'pillars', 'Flame pillars', {}),
+        ('FB Antic', 'firebats', 'Firebats', {}), ('Evade Antic', 'evade', 'Evade', {})]},
+]
+HUB = re.compile(r'Idle|Escalat|Choice|^Ready|Distance|^Pause|Init|Inert|Balloon\?|Phase\?|After Tele|Next\?|Leave')
+
+def find_actor(g, level, name):
+    f = g.load_file(f'level{level}')
+    for o in f.objects.values():
+        if o.type.name == 'MonoBehaviour' and g.script(o) == 'HealthManager':
+            go = f.objects[hk_unity.mono_header(o.get_raw_data())[0]]
+            if go.read().m_Name == name: return go, g.mono(o)
+    raise KeyError(name)
+
+class BossBuilder(Builder):
+    def __init__(self, a, cfg, hm):
+        super().__init__(a, cls=cfg['id'])
+        self.cfg, self.hm = cfg, hm
+        g = a.g
+        # every descendant: path id -> path, name -> path
+        self.paths, self.byname = {}, {}
+        def rec(go, path):
+            for c in g.children(go):
+                n = c.read().m_Name; p = path + '/' + n if path else n
+                self.paths[c.path_id] = p; self.byname.setdefault(n, p); rec(c, p)
+        rec(a.go, '')
+        self._kinds = {}
+
+    def resolve(self, fsm, tgt):
+        """Child path an action's game object target names ('' for the boss itself)."""
+        if tgt in (None, ''): return ''
+        if tgt.startswith('#'): return self.paths.get(int(tgt[1:]))
+        for v in fsm['variables'].get('gameObjectVariables', []):
+            if v['name'] == tgt and (v.get('value') or {}).get('m_PathID') in self.paths: return self.paths[v['value']['m_PathID']]
+        if tgt in self.byname: return self.byname[tgt]
+        # variables filled at run time by FindChild usually name the child, give or take spaces and case
+        key = tgt.replace(' ', '').lower()
+        for n, p in self.byname.items():
+            if n.replace(' ', '').lower() == key: return p
+        return None
+
+    def kinds(self, path):
+        if path not in self._kinds: self._kinds[path] = [t for t, _ in self.k.g.components(self.k.obj(path))]
+        return self._kinds[path]
+
+    def enabled(self, o):
+        return [bool(c.read_typetree()['m_Enabled']) for t, c in self.k.g.components(o)
+                if t in ('PolygonCollider2D', 'BoxCollider2D', 'CircleCollider2D')]
+
+    def build(self):
+        a, cfg = self.k, self.cfg
+        fsm = a.fsms[cfg['fsm']]
+        names = {s['name'] for s in fsm['states']}
+        stop = lambda n, st: 'Antic' in n or bool(HUB.search(n))
+        dmg_children = [p for p in self.paths.values() if 'DamageHero' in self.kinds(p)]
+        # children the FSM switches anywhere start each attack switched off (the FSM's own resting state)
+        toggled = set()
+        for st in fsm['states']:
+            for an, pr in hk_unity.actions(st):
+                if an in ('ActivateGameObject', 'SetPolygonCollider', 'SetBoxCollider', 'SetCollider', 'SetCircleCollider'):
+                    toggled.add(self.resolve(fsm, hk_fsm.owner_target(pr)))
+        for start, mid, name, choose in cfg['moves']:
+            if start not in names: continue
+            run = hk_fsm.simulate(fsm, start, a.clips, choose, stop=stop)
+            end = max(run.end, 1 / FPS)
+            tl = Timeline(end)
+            self.knight_layer(tl, [(t, c) for t, c in run.all('clip')] or [(0, next(iter(a.clips)))])
+            sw = {}                                     # child path -> [(t, on)]
+            for t, v in run.all('on'): sw.setdefault(self.resolve(fsm, v), []).append((t, True))
+            for t, v in run.all('off'): sw.setdefault(self.resolve(fsm, v), []).append((t, False))
+            for t, (tg, on) in run.all('collider'): sw.setdefault(self.resolve(fsm, tg), []).append((t, on))
+            # switching an object switches its damaging descendants with it
+            for q in list(sw):
+                for p in dmg_children:
+                    if q and p.startswith(q + '/'): sw.setdefault(p, []).extend(sw[q])
+            hits = []
+            for p in dict.fromkeys(dmg_children + [x for x in sw if x]):
+                o = a.obj(p); go = o.read()
+                ev = sorted(sw.get(p, []))
+                on0 = bool(go.m_IsActive) and all(self.enabled(o)) and p not in toggled
+                spans, cur = [], (0.0 if on0 else None)
+                for t, on in ev:
+                    if on and cur is None: cur = t
+                    elif not on and cur is not None:
+                        if t > cur: spans.append((cur, t))
+                        cur = None
+                if cur is not None: spans.append((cur, end))
+                kinds = self.kinds(p)
+                body = 'ExtraDamageableProxy' in kinds
+                if 'tk2dSpriteAnimator' in kinds and spans and not body:
+                    an = a.animator(p)
+                    if an:
+                        lib, defclip = an
+                        clips = [(t, lib['byName'][c]) for t, (tg, c) in run.all('childclip')
+                                 if self.resolve(fsm, tg) == p and c in lib['byName']]
+                        clips = clips or ([(spans[0][0], defclip)] if defclip else [])
+                        if clips: tl.sprite(a.coll_of(o), clips, spans[0][0], spans[-1][1], a.sprite_xf(p), z=1)
+                if 'DamageHero' not in kinds: continue
+                for s0, s1 in spans:
+                    for shp in a.polys(p): tl.box('p' if body else 'a', ('span', s0, s1), shp)
+                    if not body and ev: hits.append(('span', s0, s1))
+            bb = run.all('bodybox')
+            if bb:      # SetBoxCollider2DSizeVector resizes the body box per state
+                x = a.xf('')
+                for i, (t0, ((w, h), (ox, oy))) in enumerate(bb):
+                    t1 = bb[i + 1][0] if i + 1 < len(bb) else end + 1
+                    p0, p1 = x.apply(ox - w / 2, oy - h / 2), x.apply(ox + w / 2, oy + h / 2)
+                    tl.box('p', ('span', 0 if i == 0 else t0, t1), ('rect', min(p0[0], p1[0]), min(p0[1], p1[1]), max(p0[0], p1[0]), max(p0[1], p1[1])))
+            else:
+                for shp in a.polys(''):
+                    tl.box('p', ('span', 0, end + 1), shp)
+            states = [v for t, k, v in run.events if k == 'state']
+            self.add(f'{cfg["id"]}.attack.{mid}', 'attack', 'any', name, tl, end, hits,
+                     damage={'amount': 2 if cfg['id'] in ('nkg', 'pureVessel') else 1},
+                     extra={'FSM states': ' → '.join(states[:12]) + (' …' if len(states) > 12 else ''), 'Health': str(self.hm.get('hp'))},
+                     desc=f'{cfg["fsm"]} FSM from {start}' + ('' if hits else '; its damage comes from spawned projectiles or objects, not drawn yet'))
+
+
 # --- output ----------------------------------------------------------------------------------------------------------
 
-def icon(k, out_dir):
+def icon(a, out_dir, name):
+    """96 px icon from the first frame of the actor's idle clip (or its first clip)."""
     from PIL import Image
-    fr = k.clips['Idle']['frames'][0]
-    img, _, _ = k.sp.sprite(k.sp.collection(fr['spriteCollection'], k.go), fr['spriteId'])
+    clip = a.clips.get('Idle') or next(c for c in a.lib['clips'] if c['frames'])
+    fr = clip['frames'][0]
+    img, _, _ = a.sp.sprite(a.coll_of(a.go)(fr), fr['spriteId'])
     img = img.transpose(Image.FLIP_LEFT_RIGHT)
     bb = img.getbbox(); img = img.crop(bb)
     s = 96 / max(img.size)
     img = img.resize((max(1, round(img.size[0] * s)), max(1, round(img.size[1] * s))), Image.LANCZOS)
     can = Image.new('RGBA', (96, 96), (0, 0, 0, 0)); can.alpha_composite(img, ((96 - img.size[0]) // 2, (96 - img.size[1]) // 2))
     os.makedirs(out_dir, exist_ok=True)
-    can.save(os.path.join(out_dir, 'knight.webp'), lossless=True)
+    can.save(os.path.join(out_dir, name + '.webp'), lossless=True)
 
 def main():
     ap = argparse.ArgumentParser()
@@ -468,6 +624,11 @@ def main():
     k = Knight(g)
     b = Builder(k)
     b.nail(); b.nail_arts(); b.spells(); b.movement()
+    builders = [b]
+    for cfg in BOSSES:
+        go, hm = find_actor(g, cfg['level'], cfg['go'])
+        bb = BossBuilder(Actor(g, go, k.sp), cfg, hm); bb.build(); builders.append(bb)
+        print(cfg['id'], len(bb.moves), 'moves')
     data = {
         'schema': 'frame-data/1',
         'game': {'id': GAME_ID, 'name': 'Hollow Knight', 'fps': FPS, 'version': f'Steam build (Unity {hk_unity.unity_version(g.dir)})',
@@ -482,46 +643,51 @@ def main():
                    'recovery': 'Frames from the last active frame until you can dash'},
         'columns': ['name', 'class', 'grip', 'strip', 'startup', 'active', 'recovery', 'dodge', 'attack', 'total', 'dmg'],
         'columnNames': {'dodge': ['→ Dash', 'First frame you can dash, jump or cast'], 'attack': ['→ Attack', 'First frame you can attack again']},
-        'families': [{'id': 'hero', 'name': 'The Knight'}],
-        'classes': [{'id': 'knight', 'name': 'The Knight', 'family': 'hero', 'icon': 'The Knight', 'weapons': [], 'moves': len(b.moves)}],
+        'families': [{'id': 'hero', 'name': 'The Knight'}, {'id': 'bosses', 'name': 'Bosses'}],
+        'classes': [{'id': 'knight', 'name': 'The Knight', 'family': 'hero', 'icon': 'The Knight', 'weapons': [], 'moves': len(b.moves)}] +
+                   [{'id': x.cls, 'name': x.cfg['name'], 'family': 'bosses', 'icon': x.cfg['name'], 'weapons': [], 'moves': len(x.moves)} for x in builders[1:]],
         'moveTypes': [{'id': 'nail', 'name': 'Nail', 'description': 'Nail slashes'},
                       {'id': 'nailArt', 'name': 'Nail Arts', 'description': 'Charged nail attacks, timed from the release'},
                       {'id': 'spell', 'name': 'Spells', 'description': 'Spells, level 1 and 2'},
-                      {'id': 'movement', 'name': 'Movement', 'description': 'Dashes, jumps, focus, hit reactions: length only'}],
+                      {'id': 'movement', 'name': 'Movement', 'description': 'Dashes, jumps, focus, hit reactions: length only'},
+                      {'id': 'attack', 'name': 'Attacks', 'description': "A boss's attacks, from the antic until it chooses again"}],
         'grips': [{'id': 'any', 'name': 'Ground or air', 'short': 'Any'}, {'id': 'ground', 'name': 'Ground', 'short': 'Ground'},
                   {'id': 'air', 'name': 'Air', 'short': 'Air'}, {'id': 'wall', 'name': 'Wall', 'short': 'Wall'}],
-        'moves': b.moves,
+        'moves': [m for x in builders for m in x.moves],
     }
     fd = os.path.join(ROOT, 'frame-data')
     with open(os.path.join(fd, f'{GAME_ID}.json'), 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=1)
     icons_dir = os.path.join(fd, 'icons', GAME_ID)
-    icon(k, icons_dir)
+    icons = {}
+    for x in builders:
+        nm = 'The Knight' if x is b else x.cfg['name']
+        icon(x.k, icons_dir, x.cls); icons[nm] = {'file': x.cls + '.webp'}
     with open(os.path.join(icons_dir, 'icons.json'), 'w', encoding='utf-8') as f:
-        json.dump({'lead': 'Icons are the game\'s own sprites', 'note': 'Sprites (c) Team Cherry.',
-                   'icons': {'The Knight': {'file': 'knight.webp'}}}, f, indent=1)
-    print(len(b.moves), 'moves')
+        json.dump({'lead': "Icons are the game's own sprites", 'note': 'Sprites (c) Team Cherry.', 'icons': icons}, f, indent=1, ensure_ascii=False)
+    print(sum(len(x.moves) for x in builders), 'moves')
     if a.no_sprites: return
     sdir = os.path.join(fd, 'sprites', GAME_ID)
     os.makedirs(os.path.join(sdir, 'sheets'), exist_ok=True); os.makedirs(os.path.join(sdir, 'moves'), exist_ok=True)
-    mfile = os.path.join(sdir, 'moves', 'knight.json')
-    out = json.load(open(mfile)) if (a.only and os.path.exists(mfile)) else {'moves': {}}
-    for m in b.moves:
-        if a.only and m['id'] not in a.only: continue
-        tl = b.timelines[m['id']]
-        tl.total = m['total'] / FPS
-        frames, boxes, W, H, s = render(tl, k.sp, clip_box=(-14, -6, 4, 12))
-        img, cols = sheet(frames, W, H)
-        fn = f'sheets/{m["id"]}.webp'
-        img.save(os.path.join(sdir, fn), quality=88, method=6)
-        out['moves'][m['id']] = {'sheet': fn, 'w': W, 'h': H, 'cols': cols, 'frames': boxes}
-        print(m['id'], len(frames), 'frames', W, 'x', H)
-    with open(mfile, 'w') as f: json.dump(out, f, separators=(',', ':'))
+    for x in builders:
+        mfile = os.path.join(sdir, 'moves', x.cls + '.json')
+        out = json.load(open(mfile)) if (a.only and os.path.exists(mfile)) else {'moves': {}}
+        for m in x.moves:
+            if a.only and not any(m['id'].startswith(o) for o in a.only): continue
+            tl = x.timelines[m['id']]
+            tl.total = m['total'] / FPS
+            frames, boxes, W, H, sc = render(tl, k.sp, clip_box=(-14, -6, 4, 12) if x is b else (-20, -12, 20, 20))
+            img, cols = sheet(frames, W, H)
+            fn = f'sheets/{m["id"]}.webp'
+            img.save(os.path.join(sdir, fn), quality=88, method=6)
+            out['moves'][m['id']] = {'sheet': fn, 'w': W, 'h': H, 'cols': cols, 'frames': boxes}
+            print(m['id'], len(frames), 'frames', W, 'x', H)
+        with open(mfile, 'w') as f: json.dump(out, f, separators=(',', ':'))
     with open(os.path.join(sdir, 'sprites.json'), 'w') as f:
         json.dump({'fps': FPS, 'smooth': True,
                    'kinds': {'p': 'Hurtbox', 'a': 'Attack'},
                    'source': {'name': 'Hollow Knight game files', 'url': 'https://github.com/AtomechLLC/game-animation-library/blob/main/tools/frame_data/import_hk_game.py', 'author': 'Team Cherry'},
-                   'classes': {'knight': {'file': 'moves/knight.json'}}}, f, indent=1)
+                   'classes': {x.cls: {'file': f'moves/{x.cls}.json'} for x in builders}}, f, indent=1)
 
 if __name__ == '__main__':
     main()

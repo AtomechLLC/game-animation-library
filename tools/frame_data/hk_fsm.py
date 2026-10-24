@@ -51,9 +51,9 @@ class Run:
     @property
     def end(self): return self.events[-1][0] if self.events else 0.0
 
-def simulate(fsm, start, clips, choose=None, max_states=60, owner_clip=None):
+def simulate(fsm, start, clips, choose=None, max_states=60, owner_clip=None, stop=None, max_time=8.0):
     """Walk fsm from state `start`. clips: name -> tk2d clip of the owner's animator. choose: state name -> event
-    name, or -> (event, seconds after entering) for events the walk can't time itself, or -> None to stop there."""
+    name, or -> (event, seconds after entering) for events the walk can't time itself, or -> None to stop there. stop(name, state) ends the walk before entering a state."""
     choose = choose or {}
     states = {s['name']: s for s in fsm['states']}
     run = Run()
@@ -62,7 +62,8 @@ def simulate(fsm, start, clips, choose=None, max_states=60, owner_clip=None):
     name = start
     for _ in range(max_states):
         s = states.get(name)
-        if s is None: break
+        if s is None or t > max_time: break
+        if stop and name != start and stop(name, s): break
         run.add(t, 'state', name)
         trans = dict(transitions(s))
         timed = []                         # (time, event)
@@ -70,12 +71,14 @@ def simulate(fsm, start, clips, choose=None, max_states=60, owner_clip=None):
             tgt = owner_target(p)
             if a == 'Wait':
                 timed.append((t + float(var(fsm, p.get('time')) or 0), p.get('finishEvent') or 'FINISHED'))
-            elif a in ('Tk2dPlayAnimation', 'Tk2dPlayAnimationWithEvents', 'Tk2dPlayAnimationWithEventsV2') and tgt == '':
+            elif a in ('Tk2dPlayAnimation', 'Tk2dPlayAnimationWithEvents', 'Tk2dPlayAnimationWithEventsV2') and tgt is not None:
                 nm = var(fsm, p.get('clipName'))
-                if nm in clips:
+                if tgt:
+                    run.add(t, 'childclip', (tgt, nm))
+                elif nm in clips:
                     clip, clip_t0 = clips[nm], t
                     run.add(t, 'clip', nm)
-                if a != 'Tk2dPlayAnimation':
+                if a != 'Tk2dPlayAnimation' and not tgt:
                     if p.get('animationCompleteEvent') and clip: timed.append((clip_t0 + clip_time(clip), p['animationCompleteEvent']))
                     tr = trigger_time(clip)
                     if p.get('animationTriggerEvent') and tr is not None: timed.append((clip_t0 + tr, p['animationTriggerEvent']))
@@ -87,8 +90,11 @@ def simulate(fsm, start, clips, choose=None, max_states=60, owner_clip=None):
                 run.add(t, 'on' if p.get('activate') else 'off', tgt if tgt is not None else '')
             elif a == 'ActivateAllChildren':
                 run.add(t, 'children', bool(p.get('activate')))
+            elif a == 'SetBoxCollider2DSizeVector' and owner_target({'gameObject': p.get('gameObject1')}) == '':
+                sz, off = var(fsm, p.get('size')), var(fsm, p.get('offset'))
+                if isinstance(sz, (tuple, list)) and isinstance(off, (tuple, list)): run.add(t, 'bodybox', (tuple(sz), tuple(off)))
             elif a in ('SetPolygonCollider', 'SetBoxCollider', 'SetCollider'):
-                run.add(t, 'collider', bool(p.get('active')))
+                run.add(t, 'collider', (tgt or '', bool(p.get('active'))))
             elif a in ('SendMessage', 'SendMessageV2', 'CallMethodProper', 'CallMethod'):
                 fn = (p.get('functionCall') or {}).get('FunctionName') or p.get('methodName')
                 if fn: run.add(t, 'call', fn)
