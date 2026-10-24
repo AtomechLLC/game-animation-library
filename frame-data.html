@@ -16,6 +16,7 @@
   --key:#e08a00; --key-ink:#8a5200; --combat:#c2412d; --calm:#2f7a6b; --chip:#efece5; --playhead:#d92d20;
   --f-start:#cfcbc0; --f-active:#c2412d; --f-gap:#e6b8ae; --f-rec:#e08a00; --f-free:#2f7a6b40; --f-armor:#4b5bd6; --f-iframe:#0e9bb8;
   --cx-attack:#c2185b; --cx-dodge:#2f7a6b; --cx-block:#5b6b7f; --cx-skill:#7c3aed; --cx-item:#8a6d00; --cx-move:#2563eb;
+  --v3d-bounds:#3fae3a;
   --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
   --body:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -24,12 +25,12 @@
   --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
   --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; color-scheme:dark;
   --f-start:#4a4b52; --f-active:#ff7a63; --f-gap:#6b3a33; --f-rec:#ffb020; --f-free:#62c9b14d; --f-armor:#8f9bff; --f-iframe:#4cc9e8;
-  --cx-attack:#f06292; --cx-dodge:#62c9b1; --cx-block:#a3b1c2; --cx-skill:#b794f6; --cx-item:#e0c040; --cx-move:#6ea8ff}}
+  --cx-attack:#f06292; --cx-dodge:#62c9b1; --cx-block:#a3b1c2; --cx-skill:#b794f6; --cx-item:#e0c040; --cx-move:#6ea8ff; --v3d-bounds:#91f48b}}
 :root[data-theme="dark"]{
   --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
   --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; color-scheme:dark;
   --f-start:#4a4b52; --f-active:#ff7a63; --f-gap:#6b3a33; --f-rec:#ffb020; --f-free:#62c9b14d; --f-armor:#8f9bff; --f-iframe:#4cc9e8;
-  --cx-attack:#f06292; --cx-dodge:#62c9b1; --cx-block:#a3b1c2; --cx-skill:#b794f6; --cx-item:#e0c040; --cx-move:#6ea8ff}
+  --cx-attack:#f06292; --cx-dodge:#62c9b1; --cx-block:#a3b1c2; --cx-skill:#b794f6; --cx-item:#e0c040; --cx-move:#6ea8ff; --v3d-bounds:#91f48b}
 *{box-sizing:border-box}
 html,body{max-width:100%;overflow-x:clip}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:14px;line-height:1.5}
@@ -619,7 +620,7 @@ function openMove(key){
 // covers swaps the move in place, other rows open the detail sheet. The 3D viewer holds the picked weapon, else each
 // move's class preview weapon.
 // Bump ?v= whenever viewer3d.js (and the ?v= on its navigation3d.js import), sprites2d.js or clipviewer.js changes: browsers and Pages cache them, and a stale copy next to a new page breaks the dock
-const VIEWER='./frame-data/viewer3d.js?v=15',VIEWER2D='./frame-data/sprites2d.js?v=6',CLIPVIEWER='./frame-data/clipviewer.js?v=5';
+const VIEWER='./frame-data/viewer3d.js?v=16',VIEWER2D='./frame-data/sprites2d.js?v=6',CLIPVIEWER='./frame-data/clipviewer.js?v=5';
 // the models and sprites viewers load per class (classData); the clip viewer reads each move's clips
 const byClass=()=>G.models||G.sprites;
 const DOCK={key:null,view:null,game:null,cls:null,w:null,cm:null,seq:0};

@@ -349,6 +349,8 @@ viewer in wia-seasonal-ui-asset-generator. Click the 3D view first (it gets an o
 - `F`, `Home` or `Numpad .` frames the whole move from the current angle; `D` or `Numpad 0` returns to the opening
   three-quarter view. Both are also buttons over the view, next to `?` (or `/`), which opens the shortcut list.
 - `Z` or the **Grid** button shows or hides the floor grid.
+- `B` or the **Bounds** button shows or hides a box around the pose on the current frame: every posed vertex of the
+  body, the weapons and the hitboxes out on that frame. It is off on load and measured only while it shows.
 
 It holds the weapon picked above the table; with no weapon picked, each move plays with its class's preview weapon
 (`EXPORT` in the exporter: the class's first weapon, Katana → Moonveil) or, when that weapon doesn't use the move, the

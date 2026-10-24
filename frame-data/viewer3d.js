@@ -5,7 +5,7 @@
 import {speedHtml, bindSpeed} from './speed.js?v=1';
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
-import {createBlenderNavigation} from './navigation3d.js?v=6';
+import {createBlenderNavigation} from './navigation3d.js?v=7';
 
 const loader = new GLTFLoader();
 const cache = new Map();
@@ -59,7 +59,7 @@ const helpHTML = mode => `<p class="v3d-help-title" id="v3d-help-title">Help</p>
     ? row('Two-finger drag', 'Orbit') + row('Shift + two-finger drag', 'Pan') + row('Pinch / Ctrl + scroll', 'Zoom') + row('Click and drag', 'Orbit')
     : row('Left or middle drag', 'Orbit') + row('Right drag / Shift + drag', 'Pan') + row('Scroll wheel', 'Zoom') + row('Ctrl + scroll', 'Zoom, faster')}</ul>
   <p class="v3d-help-title">Viewport</p>
-  <ul>${row(kbd('Tab', 'Shift + Tab'), 'Input mode') + row(kbd('F', 'Home', 'Numpad .'), 'Frame') + row(kbd('D', 'Numpad 0'), 'Default camera') + row(kbd('Z'), 'Floor grid')
+  <ul>${row(kbd('Tab', 'Shift + Tab'), 'Input mode') + row(kbd('F', 'Home', 'Numpad .'), 'Frame') + row(kbd('D', 'Numpad 0'), 'Default camera') + row(kbd('Z'), 'Floor grid') + row(kbd('B'), 'Bounds box')
     + row(kbd('Space'), 'Play / pause') + row(kbd(',', '.', '←', '→'), 'Previous / next frame') + row(kbd('Ctrl + ←', 'Ctrl + →'), 'Back / forward 1 second')
     + row(kbd('Shift + ←', 'Shift + →'), 'First / last frame') + row(kbd('/', '?'), 'Help')}</ul>
   <p class="v3d-help-title">Numpad</p>
@@ -72,10 +72,11 @@ const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).
 // label next to the frame number.
 export async function createViewer(el, base) {
   const man = await manifest(base);
-  el.innerHTML = `<div class="v3d-stage" tabindex="0" aria-label="3D view. Drag with the left or middle button to orbit, add Shift or use the right button to pan, wheel to zoom or orbit. Numpad 1, 3 and 7 for front, right and top. F frames the move, D restores the default camera, Z shows or hides the floor grid, Tab switches between mouse and trackpad, left and right arrows step a frame, slash opens Help."><canvas></canvas><div class="v3d-msg">Loading models…</div>
+  el.innerHTML = `<div class="v3d-stage" tabindex="0" aria-label="3D view. Drag with the left or middle button to orbit, add Shift or use the right button to pan, wheel to zoom or orbit. Numpad 1, 3 and 7 for front, right and top. F frames the move, D restores the default camera, Z shows or hides the floor grid, B shows or hides the bounds box, Tab switches between mouse and trackpad, left and right arrows step a frame, slash opens Help."><canvas></canvas><div class="v3d-msg">Loading models…</div>
     <div class="v3d-corner"><fieldset class="v3d-mode" aria-label="Viewport input device"><button type="button" data-mode="mouse">Mouse</button><button type="button" data-mode="trackpad">Trackpad</button></fieldset></div>
     <div class="v3d-side"><div class="v3d-tools">
       <button type="button" class="v3d-grid" aria-pressed="true">Grid <span>${kbd('Z')}</span></button>
+      <button type="button" class="v3d-bounds" aria-pressed="false">Bounds <span>${kbd('B')}</span></button>
       <button type="button" class="v3d-default">Default camera <span>${kbd('D', 'Numpad 0')}</span></button>
       <button type="button" class="v3d-frame">Frame <span>${kbd('F', 'Home', 'Numpad .')}</span></button>
       <button type="button" class="v3d-help-toggle" aria-pressed="false" aria-label="Toggle Help panel (shortcut / or ?)">? ${kbd('/')}</button></div>
@@ -120,7 +121,21 @@ export async function createViewer(el, base) {
   // Z (as in the centerpiece viewer) or the Grid button hides the floor, e.g. for a clean view in class
   const toggleGrid = () => { grid.visible = !grid.visible; $('.v3d-grid').setAttribute('aria-pressed', grid.visible) };
   $('.v3d-grid').onclick = toggleGrid;
-  stage.addEventListener('keydown', e => { if (e.key.toLowerCase() === 'z' && !e.shiftKey && !e.ctrlKey && !e.metaKey && !e.altKey) { e.preventDefault(); toggleGrid() } });
+  // B (as in the centerpiece viewer) or the Bounds button shows a box around the pose on show: the body, the weapons and
+  // the hitboxes out on this frame. Off by default; measured only while it shows
+  // drawn in the collider green of engine gizmos (Unity's collider outline), apart from the red hitboxes; the page's
+  // --v3d-bounds gives a deeper green on the light theme, read on each measure so a theme switch follows
+  const bbox = new THREE.Box3(), bounds = new THREE.Box3Helper(bbox, new THREE.Color(0x91f48b));
+  Object.assign(bounds.material, {transparent: true, opacity: .9, depthWrite: false, toneMapped: false});
+  bounds.visible = false; scene.add(bounds);
+  const toggleBounds = () => { bounds.visible = !bounds.visible; $('.v3d-bounds').setAttribute('aria-pressed', bounds.visible); go(f) };
+  $('.v3d-bounds').onclick = toggleBounds;
+  stage.addEventListener('keydown', e => {
+    if (e.shiftKey || e.ctrlKey || e.metaKey || e.altKey) return;
+    const k = e.key.toLowerCase();
+    if (k === 'z') { e.preventDefault(); toggleGrid() }
+    else if (k === 'b') { e.preventDefault(); toggleBounds() }
+  });
 
   let disposed = false, raf = 0;
   const resize = () => { const w = stage.clientWidth, h = stage.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix() };
@@ -153,6 +168,7 @@ export async function createViewer(el, base) {
 
   // The move on show
   let info = null, anim = null, defHand = 'R', tracks = [], shapes = [], boxes = [], opts = {}, N = 1;
+  let fitting = false;  // fit() poses every frame; the bounds box waits for the frame it lands on
   let f = 1, playing = !matchMedia('(prefers-reduced-motion: reduce)').matches, speed = 0.5, acc = 0, last = performance.now(), token = 0;
 
   function point(id, hand, out) {
@@ -213,10 +229,19 @@ export async function createViewer(el, base) {
     }
     // skill-buffed hits fire projectiles whose shapes the export doesn't read yet
     const missing = info.hits.some(h => frame >= h.start && frame <= h.end && !shapes.some(x => x.h === h) && !boxes.some(x => x.h === h));
+    if (bounds.visible && !fitting) measure();
     $('.v3d-f').textContent = frame;
     $('.v3d-state').textContent = (opts.state ? opts.state(frame) : '') + (missing ? ' · hitbox shape not in data' : '');
     $('.v3d-scrub input').value = frame;
     el.style.setProperty('--v3d-at', ((frame - 1) / Math.max(N - 1, 1) * 100) + '%');
+  }
+  // every posed vertex (skinned, in world space) of the visible meshes: the character, its weapons and the hitboxes
+  function measure() {
+    bbox.makeEmpty();
+    bounds.material.color.set(getComputedStyle(document.documentElement).getPropertyValue('--v3d-bounds').trim() || 0x91f48b);
+    const add = o => { if (!o.isMesh) return; const p = o.geometry.attributes.position; for (let i = 0; i < p.count; i++) bbox.expandByPoint(o.getVertexPosition(i, v1).applyMatrix4(o.matrixWorld)) };
+    motion.traverseVisible(add);
+    for (const x of shapes) if (x.g.visible) x.g.traverseVisible(add);
   }
   const setPlaying = p => { playing = p; $('.v3d-play').textContent = p ? '❚❚' : '▶'; $('.v3d-play').setAttribute('aria-label', p ? 'Pause' : 'Play') };
   const go = frame => { if (!anim) return; f = ((frame - 1 + N) % N) + 1; pose(f) };
@@ -250,6 +275,7 @@ export async function createViewer(el, base) {
   // follows), keeping the angle the viewer has orbited to unless `dir` (target to camera) is given
   function fit(dir = camera.position.clone().sub(nav.target).normalize()) {
     if (!anim) return;
+    fitting = true;
     const box = new THREE.Box3(), o = new THREE.Vector3(), held = Object.values(hands).filter(h => h.obj);
     for (let k = 1; k <= N; k++) {
       pose(k);
@@ -272,6 +298,7 @@ export async function createViewer(el, base) {
     const size = Math.max(box.getSize(v1).length(), 0.5);
     nav.frameTo(c, dir, dist, size);
     camera.far = Math.max(dist * 10, size * 25); camera.updateProjectionMatrix();
+    fitting = false;
   }
 
   const loadWeapon = name => { const f = base + man.weapons[name].file; return once(f, () => glb(f)) };
@@ -370,7 +397,7 @@ export async function createViewer(el, base) {
     },
     dispose() {
       disposed = true; cancelAnimationFrame(raf); ro.disconnect(); document.removeEventListener('keydown', onKey);
-      nav.dispose(); renderer.dispose(); sphereG.dispose(); cylG.dispose(); boxG.dispose(); mat.dispose(); ghostMat.dispose();
+      nav.dispose(); renderer.dispose(); sphereG.dispose(); cylG.dispose(); boxG.dispose(); mat.dispose(); ghostMat.dispose(); bounds.geometry.dispose(); bounds.material.dispose();
     },
   };
 }
