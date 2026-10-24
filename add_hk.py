@@ -66,8 +66,21 @@ MAP = {
  'reactions.light-flinch-hit-react#2': [('silksong.movement.hit', 'Silksong Hornet taking a hit')],
  'death.death-collapse#2': [('silksong.movement.death', 'Silksong Hornet death')],
  'magic.heal#2': [('silksong.movement.bind', 'Silksong Hornet Bind (heal)')],
+ # Silksong bosses
+ 'melee.dash-attack-lunge#4': [('lace.attack.charge', 'Lace lunge')],
+ 'melee.plunging-downward-attack#3': [('lace.attack.downstab', 'Lace down stab')],
+ 'melee.combo-finisher': [('lace.attack.comboSlash', 'Lace combo slash')],
+ 'melee.spin-attack#3': [('lace.attack.circleSlash', 'Lace circle slash'), ('lastJudge.attack.spin', 'Last Judge censer spin')],
+ 'melee.dual-wield-flurry': [('lace.attack.rapidSlash', 'Lace rapid air slash')],
+ 'melee.thrust-stab#2': [('phantom.attack.stabs', 'Phantom stab flurry')],
+ 'melee.weapon-throw-recall#2': [('phantom.attack.throw', 'Phantom pin throw')],
+ 'melee.ground-pound#2': [('phantom.attack.dragoon', 'Phantom dragoon drop')],
+ 'enemies.charging-rush#2': [('bellBeast.attack.charge', 'Bell Beast charge'), ('widow.attack.dashCharge', 'Widow charge')],
+ 'melee.whip-chain-lash': [('lastJudge.attack.spin', 'Last Judge censer swing')],
+ 'creature.insect-spider-crawl': [('widow.attack.dashCharge', 'Widow skittering charge')],
 }
-LOWB = {'ranged.boomerang-returning-throw'}
+SILK = {'silksong', 'lace', 'bellBeast', 'lastJudge', 'phantom', 'widow', 'mossMother'}
+LOWB = {'ranged.boomerang-returning-throw', 'creature.insect-spider-crawl', 'melee.whip-chain-lash'}
 LOW = {'melee.horizontal-sweep', 'magic.spell-cast-instant', 'vfx.shockwave-ground-crack', 'defense.air-dash', 'reactions.knockback'}
 
 
@@ -114,7 +127,7 @@ if __name__ == '__main__':
                 continue
             count = render(fd[mid]['class'], mid, local)
             conf = 'low' if aid in LOW or aid in LOWB else 'high'
-            game = 'Hollow Knight: Silksong' if mid.startswith('silksong.') else GAME
+            game = 'Hollow Knight: Silksong' if mid.split('.')[0] in SILK else GAME
             g = {'page_url': page, 'media_url': '', 'title': f'{label}, with hitboxes, rendered from the Frame Data preview',
                  'game': game, 'host': game + ' render', 'local': local, 'source_url': '',
                  'screened': {'verdict': 'added', 'confidence': conf, 'what': f'{label}: game sprites with hurtbox and attack hitboxes'}}

@@ -191,6 +191,13 @@ off at the second, so Hunter crest slash windows come from the clips. The crest 
 down spike and dash stab times) are referenced from a bundle that is not shipped, so Silksong moves have no cancel
 frames and only the Hunter crest is read.
 
+Silksong bosses (`SILKSONG_BOSSES`: Lace, Bell Beast, Last Judge, Phantom, Widow, Moss Mother) are walked the same
+way as Hollow Knight's from their scene bundles (`scenes_scenes_scenes/<scene>.bundle`). Children that are always on
+(contact and arena hazards) and arena-wide trigger zones are left out of the attack hitboxes; damage is the first
+switched-on hitbox's DamageHero damage in masks.
+
+Sheets are cropped only for projectiles flying far ahead, so big spell and boss effects stay whole.
+
 `add_hk.py` renders library clips from the same sheets (hitboxes drawn on, dark background) for the moves it maps.
 
 ## Super Smash Bros. Ultimate

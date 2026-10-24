@@ -484,13 +484,41 @@ BOSSES = [
         ('Spike Antic', 'spikes', 'Spikes', {}), ('Pillar Antic', 'pillars', 'Flame pillars', {}),
         ('FB Antic', 'firebats', 'Firebats', {}), ('Evade Antic', 'evade', 'Evade', {})]},
 ]
+# Silksong bosses: `level` is the scene bundle under the Addressables folder
+SS = 'scenes_scenes_scenes/'
+SILKSONG_BOSSES = [
+    {'id': 'lace', 'name': 'Lace', 'level': SS + 'song_tower_01.bundle', 'go': 'Lace Boss2 New', 'fsm': 'Control', 'moves': [
+        ('Charge Antic', 'charge', 'Lunge', {}), ('MultiCharge Antic', 'multiCharge', 'Multi lunge', {}),
+        ('Downstab Antic', 'downstab', 'Down stab', {'Downstab': ('LAND', 0.3)}), ('CrossSlash Antic', 'crossSlash', 'Cross slash', {}),
+        ('B Slash HopAntic', 'bombSlash', 'Hop slashes', {}), ('Hop Antic 2', 'comboSlash', 'Combo slash', {}),
+        ('J Slash M Antic', 'circleSlash', 'Circle slash', {}), ('RapidSlashAir Antic', 'rapidSlash', 'Rapid air slash', {}),
+        ('Counter Antic', 'counter', 'Counter', {})]},
+    {'id': 'bellBeast', 'name': 'Bell Beast', 'level': SS + 'bone_05_boss.bundle', 'go': 'Bone Beast', 'fsm': 'Control', 'moves': [
+        ('Charge Antic', 'charge', 'Charge', {}), ('Emerge Antic L', 'leap', 'Leap', {})]},
+    {'id': 'lastJudge', 'name': 'Last Judge', 'level': SS + 'coral_judge_arena.bundle', 'go': 'Last Judge', 'fsm': 'Control', 'moves': [
+        ('Spin Antic', 'spin', 'Censer spin', {}), ('Jump Antic', 'jump', 'Jump slam', {}), ('Dash Antic', 'dash', 'Dash', {})]},
+    {'id': 'phantom', 'name': 'Phantom', 'level': SS + 'organ_01.bundle', 'go': 'Phantom', 'fsm': 'Control', 'moves': [
+        ('Stab Antic', 'stabs', 'Stab flurry', {}), ('G Throw Antic', 'throw', 'Pin throw', {}), ('G Pull Antic', 'pull', 'Pull and stab', {}),
+        ('Drop Antic', 'dragoon', 'Dragoon drop', {}), ('Parry Antic', 'parry', 'Parry stance', {})]},
+    {'id': 'widow', 'name': 'Widow', 'level': SS + 'belltown_shrine.bundle', 'go': 'Spinner Boss', 'fsm': 'Control', 'moves': [
+        ('DashSlash Antic', 'dashSlash', 'Dash slash', {}), ('DashCharge Antic', 'dashCharge', 'Charge', {})]},
+    {'id': 'mossMother', 'name': 'Moss Mother', 'level': SS + 'tut_02.bundle', 'go': 'Mossbone Mother Ambient', 'fsm': 'Control', 'moves': [
+        ('Swoop Antic', 'swoop', 'Swoop', {})]},
+]
 HUB = re.compile(r'Idle|Escalat|Choice|^Ready|Distance|^Pause|Init|Inert|Balloon\?|Phase\?|After Tele|Next\?|Leave')
 
 def find_actor(g, level, name):
-    f = g.load_file(f'level{level}')
-    for o in f.objects.values():
+    """The GameObject (and HealthManager) named `name` in a scene: level<n> (Hollow Knight) or a scene bundle path
+    under the Addressables folder (Silksong)."""
+    if isinstance(level, int):
+        objs = g.load_file(f'level{level}').objects.values()
+    else:
+        before = set(g.files)
+        g.env.load_file(os.path.join(g.aa, level)); g._flatten()
+        objs = [o for n in set(g.files) - before for o in g.files[n].objects.values()]
+    for o in objs:
         if o.type.name == 'MonoBehaviour' and g.script(o) == 'HealthManager':
-            go = f.objects[hk_unity.mono_header(o.get_raw_data())[0]]
+            go = o.assets_file.objects[hk_unity.mono_header(o.get_raw_data())[0]]
             if go.read().m_Name == name: return go, g.mono(o)
     raise KeyError(name)
 
@@ -577,9 +605,15 @@ class BossBuilder(Builder):
                                  if self.resolve(fsm, tg) == p and c in lib['byName']]
                         clips = clips or ([(spans[0][0], defclip)] if defclip else [])
                         if clips: tl.sprite(a.coll_of(o), clips, spans[0][0], spans[-1][1], a.sprite_xf(p), z=1)
-                if 'DamageHero' not in kinds: continue
+                # children that are simply always on are contact or arena hazards, not this attack: leave them out
+                if 'DamageHero' not in kinds or not ev: continue
+                def size(shp):
+                    pts = shp[1] if shp[0] == 'poly' else [shp[1:3], shp[3:5]]
+                    return max(max(q[0] for q in pts) - min(q[0] for q in pts), max(q[1] for q in pts) - min(q[1] for q in pts))
+                shapes = [shp for shp in a.polys(p) if size(shp) < 12]   # arena-wide zones are triggers, not hitboxes
+                if not shapes: continue
                 for s0, s1 in spans:
-                    for shp in a.polys(p): tl.box('p' if body else 'a', ('span', s0, s1), shp)
+                    for shp in shapes: tl.box('p' if body else 'a', ('span', s0, s1), shp)
                     if not body and ev: hits.append(('span', s0, s1))
             bb = run.all('bodybox')
             if bb:      # SetBoxCollider2DSizeVector resizes the body box per state
@@ -592,8 +626,13 @@ class BossBuilder(Builder):
                 for shp in a.polys(''):
                     tl.box('p', ('span', 0, end + 1), shp)
             states = [v for t, k, v in run.events if k == 'state']
+            dmg = None
+            for p in [x for x in sw if x in dmg_children] + dmg_children:
+                d = self.k.g.comp(a.obj(p), 'DamageHero')
+                if d is not None and any(sw.get(p, [])):
+                    dmg = self.k.g.mono(d).get('damageDealt') or None; break
             self.add(f'{cfg["id"]}.attack.{mid}', 'attack', 'any', name, tl, end, hits,
-                     damage={'amount': 2 if cfg['id'] in ('nkg', 'pureVessel') else 1},
+                     damage={'amount': dmg},
                      extra={'FSM states': ' → '.join(states[:12]) + (' …' if len(states) > 12 else ''), 'Health': str(self.hm.get('hp'))},
                      desc=f'{cfg["fsm"]} FSM from {start}' + ('' if hits else '; its damage comes from spawned projectiles or objects, not drawn yet'))
 
@@ -638,6 +677,10 @@ def main():
         sb.cfg = {'name': 'Hornet (Silksong)'}
         hk_silksong.build(sb, sb.k, hc2); builders.append(sb)
         print('hornetSilksong', len(sb.moves), 'moves')
+        for cfg in SILKSONG_BOSSES:
+            go, hm = find_actor(g2, cfg['level'], cfg['go'])
+            bb = BossBuilder(Actor(g2, go, sb.k.sp), cfg, hm); bb.build(); bb.silksong = True; builders.append(bb)
+            print(cfg['id'], len(bb.moves), 'moves')
     data = {
         'schema': 'frame-data/1',
         'game': {'id': GAME_ID, 'name': 'Hollow Knight', 'fps': FPS, 'version': f'Steam build (Unity {hk_unity.unity_version(g.dir)})',
@@ -653,9 +696,9 @@ def main():
         'columns': ['name', 'class', 'grip', 'strip', 'startup', 'active', 'recovery', 'dodge', 'attack', 'total', 'dmg'],
         'columnNames': {'dodge': ['→ Dash', 'First frame you can dash, jump or cast'], 'attack': ['→ Attack', 'First frame you can attack again']},
         'families': [{'id': 'hero', 'name': 'The Knight'}, {'id': 'bosses', 'name': 'Bosses'}] +
-                    ([{'id': 'silksong', 'name': 'Silksong'}] if a.silksong else []),
+                    ([{'id': 'silksong', 'name': 'Silksong'}, {'id': 'silksongBosses', 'name': 'Silksong bosses'}] if a.silksong else []),
         'classes': [{'id': 'knight', 'name': 'The Knight', 'family': 'hero', 'icon': 'The Knight', 'weapons': [], 'moves': len(b.moves)}] +
-                   [{'id': x.cls, 'name': x.cfg['name'], 'family': 'silksong' if x.cls == 'hornetSilksong' else 'bosses', 'icon': x.cfg['name'], 'weapons': [], 'moves': len(x.moves)} for x in builders[1:]],
+                   [{'id': x.cls, 'name': x.cfg['name'], 'family': ('silksong' if x.cls == 'hornetSilksong' else 'silksongBosses') if getattr(x, 'silksong', x.cls == 'hornetSilksong') else 'bosses', 'icon': x.cfg['name'], 'weapons': [], 'moves': len(x.moves)} for x in builders[1:]],
         'moveTypes': [{'id': 'nail', 'name': 'Nail', 'description': 'Nail slashes'},
                       {'id': 'nailArt', 'name': 'Nail Arts', 'description': 'Charged nail attacks, timed from the release'},
                       {'id': 'spell', 'name': 'Spells', 'description': 'Spells, level 1 and 2'},
@@ -686,7 +729,7 @@ def main():
             if a.only and not any(m['id'].startswith(o) for o in a.only): continue
             tl = x.timelines[m['id']]
             tl.total = m['total'] / FPS
-            frames, boxes, W, H, sc = render(tl, x.k.sp, clip_box=(-14, -6, 4, 12) if x is b else (-20, -12, 20, 20))
+            frames, boxes, W, H, sc = render(tl, x.k.sp, clip_box=(-14, -30, 30, 40) if x is b else (-20, -30, 30, 40))  # only projectiles flying ahead get cut
             img, cols = sheet(frames, W, H)
             fn = f'sheets/{m["id"]}.webp'
             img.save(os.path.join(sdir, fn), quality=88, method=6)

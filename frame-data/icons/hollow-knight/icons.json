@@ -25,6 +25,24 @@
   },
   "Hornet (Silksong)": {
    "file": "hornetSilksong.webp"
+  },
+  "Lace": {
+   "file": "lace.webp"
+  },
+  "Bell Beast": {
+   "file": "bellBeast.webp"
+  },
+  "Last Judge": {
+   "file": "lastJudge.webp"
+  },
+  "Phantom": {
+   "file": "phantom.webp"
+  },
+  "Widow": {
+   "file": "widow.webp"
+  },
+  "Moss Mother": {
+   "file": "mossMother.webp"
   }
  }
 }

@@ -34,6 +34,24 @@
   },
   "hornetSilksong": {
    "file": "moves/hornetSilksong.json"
+  },
+  "lace": {
+   "file": "moves/lace.json"
+  },
+  "bellBeast": {
+   "file": "moves/bellBeast.json"
+  },
+  "lastJudge": {
+   "file": "moves/lastJudge.json"
+  },
+  "phantom": {
+   "file": "moves/phantom.json"
+  },
+  "widow": {
+   "file": "moves/widow.json"
+  },
+  "mossMother": {
+   "file": "moves/mossMother.json"
   }
  }
 }
