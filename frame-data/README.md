@@ -240,11 +240,21 @@ python tools/frame_data/export_dmc3_models.py "D:/Games/Devil May Cry 3 SE"     
   slot 7. Active frames are the frames a damaging collider is on, counted like cancels (frame 1 is the first frame the
   move plays); startup is the first, recovery is total minus the last, hits counts the `06` / `08`s that come before a
   damaging collider. A collider left on for good ends with its motion (dive kicks end on landing in the game).
-- **Not known yet.** Cerberus's swings, the guns' shots and the thrown sword (Sword Pierce) don't use the
-  scripts' colliders, so their startup and active frames are blank; nor do they in the 3D preview. A few style moves
-  use boxes instead of spheres, which the preview doesn't draw. Also not listed yet: the guns' normal aimed shots and
-  Twosome Time (their motions come from aim tables), Trickster, Quicksilver and Doppelganger moves (started outside
-  the action dispatch), and damage (each `06` picks an entry in the weapon's damage table, which isn't read yet).
+- **Cerberus.** The nunchaku runs scripts of its own alongside Dante's (`plwp_nunchaku.pac` slot 5, same bytecode, one
+  list of scripts): its script k plays with Dante's Cerberus script k, and Swordmaster Cerberus j with 30 + j (their
+  motions match frame for frame). Its colliders (ids 81-98) sit on the chain's simulated bones, so the 3D preview marks
+  those frames without drawing a shape.
+- **Shots.** Guns, Sword Pierce, Crystal, Thunder Bolt, Zodiac and Distortion hit with what they fire or throw. The
+  action's code in the executable fires either when the script signals it (block 0's last byte) or on a timer from
+  Dante's tuning table (`pl000.pac` slot 11, Gunslinger level 1's rates); `dmc3_moves.SHOTS` lists each move's rule
+  with its function's address. Active marks the frame each shot leaves and hits counts shots.
+- **Beowulf.** Its model is made on Dante's rest pose with one bone per limb bone (forearms, hands, calves, feet,
+  toes); the export splits it into a piece per bone (node extras `bone`) and the preview puts each piece on that bone.
+- **Not known yet.** Tempest hits only while held (its looping script), Dance Macabre's first part and Sword Pierce's
+  catch have no hit, and a few style moves use boxes instead of spheres, which the preview doesn't draw. Also not
+  listed yet: the guns' normal aimed shots and Twosome Time (their motions come from aim tables), Trickster,
+  Quicksilver and Doppelganger moves (started outside the action dispatch), and damage (each `06` picks an entry in
+  the weapon's damage table, which isn't read yet).
 
 ## Ninja Gaiden Black
 
@@ -417,8 +427,9 @@ writes `models/devil-may-cry-3/` in the same layout (about 2.4 MB):
 - `anim/<move>.bin`: the move's motions played in a row from each script's start frame, sampled at 60 fps (`FDA2`);
   root motion carries on from one motion to the next.
 - `moves/<class>.json`: per move its `anim`, `frames`, preview `weapon` and `hits` (each damaging collider's frames, its
-  id as `judge`); `attacks["0"]` holds each collider's sphere radius, and `models.json` `body` places its centre on its
-  bone. Every weapon is variation 0, since the colliders belong to Dante, not the weapon.
+  id as `judge`, null for shots and Cerberus's chain); `attacks["0"]` holds each collider's sphere radius, and `models.json` `body` places its centre on its
+  bone. Every weapon is variation 0, since the colliders belong to Dante, not the weapon. A weapon whose nodes carry
+  extras `bone` (Beowulf) is worn: `viewer3d.js` puts each node on that body bone instead of in the hand.
 
 These are Capcom's assets, under the same terms as the Elden Ring files above.
 

@@ -62,7 +62,7 @@ def main(game_dir):
     for mv in M.moves():
         segs = M.segments(game, scripts, mv)
         total, cancels = M.timing(segs)
-        hs = M.hits(segs, cols)
+        hs = M.move_hits(mv, segs, cols, pac[11])
         win = M.windows(hs)
         style = M.STYLE_GROUPS.get(mv['scripts'][0][0])
         extra = {'Motion': ', '.join('pl000_00_%d.pac #%d, frames %d–%d' % (g['pack'], g['slot'], g['start'], g['end'])
@@ -90,8 +90,10 @@ def main(game_dir):
                               "script lets the next attack, jump or roll, block, style move or movement act. Active "
                               "frames are when the script has a damaging hitbox switched on, for the frames it gives; "
                               "startup is the first of them and recovery the frames after the last. Hits counts the "
-                              "times the script lets the move strike the same enemy again. Cerberus's swings, gunshots "
-                              "and thrown weapons hit some other way and are left blank."},
+                              "times the script lets the move strike the same enemy again; Cerberus's swings come from "
+                              "the weapon's own script. For moves that fire or throw something (guns, Sword Pierce, "
+                              "Crystal, Thunder Bolt, Zodiac, Distortion) active marks the frame each shot leaves, and "
+                              "hits counts shots; how soon it lands depends on the distance. Gun rates are level 1's."},
         'source': {'name': 'Devil May Cry 3 game files',
                    'url': 'https://github.com/AtomechLLC/game-animation-library/blob/main/tools/frame_data/import_dmc3_game.py',
                    'author': 'Capcom', 'retrieved': datetime.date.today().isoformat(), 'method': 'import_dmc3_game.py',
