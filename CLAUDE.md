@@ -45,6 +45,7 @@ Combine deliberate content improvement with contributions from knowledgeable use
 - Evaluate design options against learning, observation, comparison, teaching, and contribution needs. Choose a coherent solution appropriate to the requested scope.
 - Use current code and behavior to understand constraints while designing toward the product purpose.
 - Verify the affected user flow and report the evidence available. Distinguish working functionality from demonstrated improvements in usability or learning.
+- The Move Explorer 3D viewport is a previewer, not a modelling tool: simplicity and elegance come first.
 - Apply this direction within the active task. Product goals guide decisions; they do not independently authorize additional features or a wider redesign.
 
 ## Basis and interpretation
