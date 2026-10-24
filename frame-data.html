@@ -15,6 +15,7 @@
   --bg:#f3f2ee; --panel:#ffffff; --sunk:#e9e7e1; --fg:#1c1b19; --muted:#6b6860; --line:#d8d5cc;
   --key:#e08a00; --key-ink:#8a5200; --combat:#c2412d; --calm:#2f7a6b; --chip:#efece5; --playhead:#d92d20;
   --f-start:#cfcbc0; --f-active:#c2412d; --f-gap:#e6b8ae; --f-rec:#e08a00; --f-free:#2f7a6b40; --f-armor:#4b5bd6; --f-iframe:#0e9bb8;
+  --cx-attack:#c2185b; --cx-dodge:#2f7a6b; --cx-block:#5b6b7f; --cx-skill:#7c3aed; --cx-item:#8a6d00; --cx-move:#2563eb;
   --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
   --body:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -22,11 +23,13 @@
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
   --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; color-scheme:dark;
-  --f-start:#4a4b52; --f-active:#ff7a63; --f-gap:#6b3a33; --f-rec:#ffb020; --f-free:#62c9b14d; --f-armor:#8f9bff; --f-iframe:#4cc9e8}}
+  --f-start:#4a4b52; --f-active:#ff7a63; --f-gap:#6b3a33; --f-rec:#ffb020; --f-free:#62c9b14d; --f-armor:#8f9bff; --f-iframe:#4cc9e8;
+  --cx-attack:#f06292; --cx-dodge:#62c9b1; --cx-block:#a3b1c2; --cx-skill:#b794f6; --cx-item:#e0c040; --cx-move:#6ea8ff}}
 :root[data-theme="dark"]{
   --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
   --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; color-scheme:dark;
-  --f-start:#4a4b52; --f-active:#ff7a63; --f-gap:#6b3a33; --f-rec:#ffb020; --f-free:#62c9b14d; --f-armor:#8f9bff; --f-iframe:#4cc9e8}
+  --f-start:#4a4b52; --f-active:#ff7a63; --f-gap:#6b3a33; --f-rec:#ffb020; --f-free:#62c9b14d; --f-armor:#8f9bff; --f-iframe:#4cc9e8;
+  --cx-attack:#f06292; --cx-dodge:#62c9b1; --cx-block:#a3b1c2; --cx-skill:#b794f6; --cx-item:#e0c040; --cx-move:#6ea8ff}
 *{box-sizing:border-box}
 html,body{max-width:100%;overflow-x:clip}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:14px;line-height:1.5}
@@ -253,6 +256,14 @@ footer p{max-width:85ch;margin:0 0 8px}
 .v3d-speedl{display:inline-flex;align-items:center;gap:5px;flex:none;font-size:12px;font-weight:600;color:var(--fg);cursor:pointer}
 .v3d-speedl select{font-weight:600}
 .v3d-scrub .strip{width:100%;height:26px}
+/* cancel windows: one thin line per cancel type under the phase strip, from the frame it opens to the end of the move */
+.cxl{position:relative;margin-top:3px}
+/* with cancel lines the scrubber grows downward, so the play buttons stay level with the phase strip */
+.v3d-bar:has(.cxl){align-items:flex-start}
+.cxl div{position:relative;height:12px}
+.cxl i{position:absolute;bottom:1px;height:3px;border-radius:2px;background:var(--c)}
+.cxl i::before{content:"";position:absolute;left:0;bottom:-2px;width:2px;height:7px;background:var(--c)}
+.cxl b{position:absolute;bottom:4px;font:600 9px/1 var(--mono);color:var(--c);white-space:nowrap;text-transform:uppercase;letter-spacing:.03em}
 .v3d-scrub::after{content:"";position:absolute;top:-3px;bottom:-3px;left:var(--v3d-at,0%);width:2px;margin-left:-1px;background:var(--fg);pointer-events:none}
 .v3d-scrub input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
 .v3d-keys{display:flex;flex-wrap:wrap;gap:4px 14px;margin:0;font-size:11px;color:var(--muted)}
@@ -522,7 +533,7 @@ function renderIndex(){
   $('#index').innerHTML=fams.map(f=>`<div class="sect">${esc(f.name)}</div><div class="tiles">${D.classes.filter(c=>c.family===f.id).map(c=>`<button class="tile" data-cls="${esc(c.id)}">${icoHtml(c.icon)}<b>${esc(c.name)}</b><small>${c.weapons.length?`${c.weapons.length} weapon${c.weapons.length===1?'':'s'}`:`${c.moves} moves`}</small></button>`).join('')}</div>`).join('');
 }
 // One bar per move: startup, active (gaps between hits lighter), recovery until dodge, then free frames to the end.
-function stripHtml(m,scale){
+function stripHtml(m,scale,lanes){
   const end=Math.max(m.total||0,m.cancels.dodge||0,lastActive(m));
   const pc=f=>(f/scale*100).toFixed(2)+'%',seg=(a,b,c,cls='')=>b>a?`<span class="${cls}" style="left:${pc(a)};width:${pc(b-a)};background:var(${c})"></span>`:'';
   let h=m.active.length?seg(0,m.startup-1,'--f-start'):'';
@@ -531,7 +542,17 @@ function stripHtml(m,scale){
   if(!m.active.length)h+=seg(0,end,'--f-start');else if(dodge!=null){h+=seg(last,dodge,'--f-rec');h+=seg(dodge,end,'--f-free')}else h+=seg(last,end,'--f-rec');
   m.armor.forEach(([s,e])=>h+=`<span class="ar" style="left:${pc(s-1)};width:${pc(Math.min(e,end)-s+1)}"></span>`);
   m.iframes.forEach(([s,e])=>h+=`<span class="ifr" style="left:${pc(s-1)};width:${pc(Math.min(e,end)-s+1)}"></span>`);
-  return `<div class="strip" title="Startup ${m.startup??'—'} · active ${m.active.map(a=>a.join('–')).join(', ')} · dodge ${m.cancels.dodge??'—'} · total ${m.total??'—'}">${h}</div>`}
+  return `<div class="strip" title="Startup ${m.startup??'—'} · active ${m.active.map(a=>a.join('–')).join(', ')} · dodge ${m.cancels.dodge??'—'} · total ${m.total??'—'}">${h}</div>`+(lanes?cancelLanes(m,scale,end):'')}
+// The timelines in the viewer and the detail sheet carry a line per cancel type, labelled with the type and its frame,
+// so a learner can see where each cancel opens against startup, active and recovery while scrubbing.
+const CX=[['attack','Attack'],['dodge','Dodge'],['block','Block'],['skill','Skill'],['item','Item'],['move','Move']];
+function cancelLanes(m,scale,end){
+  const to=Math.min(end,scale),ls=CX.filter(([k])=>m.cancels[k]&&m.cancels[k]<=to);
+  if(!ls.length)return '';
+  return `<div class="cxl">${ls.map(([k,l])=>{const f=m.cancels[k],x=(f-1)/scale*100,w=Math.max((to-f+1)/scale*100,.6);
+    // the label sits over the line from where it opens, or ends there when the window opens late in the move
+    const lab=x>62?`right:${(100-x).toFixed(2)}%;margin-right:3px`:`left:${x.toFixed(2)}%;margin-left:4px`;
+    return `<div title="${l} cancel opens on frame ${f}" style="--c:var(--cx-${k})"><i style="left:${x.toFixed(2)}%;width:${w.toFixed(2)}%"></i><b style="${lab}">${l} ${f}</b></div>`}).join('')}</div>`}
 function legendHtml(){const has=k=>D.moves.some(m=>k==='free'?m.cancels.dodge:m[k].length);
   return [['--f-start','Startup'],['--f-active','Active'],['--f-gap','Between hits'],['--f-rec','Recovery'],['--f-free','Can dodge','free'],['--f-armor','Hyper armor','armor'],['--f-iframe','I-frames','iframes']].filter(x=>!x[2]||has(x[2])).map(([c,l])=>`<span><i style="background:var(${c})"></i>${l}</span>`).join('')}
 function cell(k,m,scale){
@@ -585,7 +606,7 @@ function openMove(key){
   const cto=m.cancelTo?`<dt>Cancels into</dt><dd>${esc(m.cancelTo.join(', ')||'Nothing')}</dd>`:'';
   $('#sheet').innerHTML=`<div class="top"><div><div class="src">${esc(D.game.name)} · ${esc(c.name)} › ${esc(T[m.type].name)} · ${GR[m.grip]}</div><h2 id="dName">${esc(m.name)}</h2>${m.input?`<div class="src">${esc(m.input)}</div>`:''}</div><button class="close" id="close">Close</button></div>
   <div class="stats"><div class="stat"><small>Startup</small><b>${m.startup??'—'}</b></div><div class="stat"><small>Active</small><b>${m.activeFrames??'—'}</b></div><div class="stat"><small>Recovery</small><b>${m.recovery??'—'}</b></div><div class="stat"><small>Total</small><b>${m.total??'—'}</b></div></div>
-  <section class="big"><h3>Timeline (${D.game.fps} fps)</h3>${stripHtml(m,end||1)}<div class="ruler2"><span>1</span><span>${Math.round(end/2)}</span><span>${end}</span></div><div class="legend" style="margin-top:8px">${legendHtml()}</div></section>
+  <section class="big"><h3>Timeline (${D.game.fps} fps)</h3>${stripHtml(m,end||1,true)}<div class="ruler2"><span>1</span><span>${Math.round(end/2)}</span><span>${end}</span></div><div class="legend" style="margin-top:8px">${legendHtml()}</div></section>
   <section><h3>Windows</h3><dl class="meta"><dt>Active</dt><dd>${win(m.active)} (${m.hits} hit${m.hits===1?'':'s'})</dd><dt>Hyper armor</dt><dd>${win(m.armor)}</dd><dt>I-frames</dt><dd>${win(m.iframes)}</dd>${m.charge?`<dt>Charge</dt><dd title="Frames the button is held before this charged version comes out">${m.charge} frames held</dd>`:''}<dt>Parryable</dt><dd>${m.parryable?'Yes':'No'}</dd></dl></section>
   <section><h3>Cancels</h3><dl class="meta">${can||cto||'<dt>—</dt><dd>No cancel windows recorded</dd>'}${can?cto:''}</dl></section>
   ${adv}${dm.length?`<section><h3>${c.weapons.length?'First hit':'Damage'}</h3><dl class="meta">${dm.map(([k,l])=>`<dt${k==='level'?' title="How hard the hit staggers"':''}>${l}</dt><dd>${esc(m.damage[k]??'—')}</dd>`).join('')}</dl></section>`:''}${ext}
@@ -686,8 +707,8 @@ async function preview(m){
   const view=await DOCK.view;
   if(DOCK.key!==key)return;
   let shown;
-  if(byClass()){if(!DOCK.cm)return;shown=await view.show(m,{weapon:pickName(),strip:stripHtml(m,DOCK.cm.moves[m.id].frames),state:f=>{inspFrame(m,f);return frameState(m,f)}})}
-  else shown=await view.show(m,{strip:n=>stripHtml(m,n),state:f=>{inspFrame(m,f);return frameState(m,f)}});
+  if(byClass()){if(!DOCK.cm)return;shown=await view.show(m,{weapon:pickName(),strip:stripHtml(m,DOCK.cm.moves[m.id].frames,true),state:f=>{inspFrame(m,f);return frameState(m,f)}})}
+  else shown=await view.show(m,{strip:n=>stripHtml(m,n,true),state:f=>{inspFrame(m,f);return frameState(m,f)}});
   // a link's frame, speed and overlays apply once, to the move it names
   if(LINKVIEW?.key===key&&DOCK.key===key&&shown!==false){const v=LINKVIEW;LINKVIEW=null;await view.setView?.(v)}
 }
