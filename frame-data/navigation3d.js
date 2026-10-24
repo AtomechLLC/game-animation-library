@@ -24,7 +24,7 @@ export function poleOrbitAngles(cumEl, azBase) {
 }
 
 // The camera's azimuth and elevation around `target` for a target-to-camera direction
-export const anglesOf = dir => ({azimuth: Math.atan2(dir.x, dir.z), elevation: Math.atan2(dir.y, Math.hypot(dir.x, dir.z))});
+const anglesOf = dir => ({azimuth: Math.atan2(dir.x, dir.z), elevation: Math.atan2(dir.y, Math.hypot(dir.x, dir.z))});
 
 // views: {front, right} azimuths of the character's front and right side. onFrame / onDefault / onHelp: F, D and /.
 export function createBlenderNavigation({camera, dom, views, onFrame, onDefault, onHelp, onMode}) {
@@ -153,8 +153,6 @@ export function createBlenderNavigation({camera, dom, views, onFrame, onDefault,
       limits = {min: size / 10, max: size * 20};
       place();
     },
-    // snap to an angle at the current distance (orientation gizmo)
-    setAngles(az, el) { azimuth = az; elevation = clampEl(el); pole = {cumEl: elevation, azBase: azimuth}; place() },
     shift,
     dispose() {
       dom.removeEventListener('wheel', onWheel); dom.removeEventListener('pointerdown', onPointerDown);
