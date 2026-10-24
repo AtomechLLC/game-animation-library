@@ -297,6 +297,7 @@ footer p{max-width:85ch;margin:0 0 8px}
 .mlist .strip{width:56px;height:10px}
 .mlist tr.grp td small{display:none}
 .dock.set:not([hidden]):not(.min)~#table{display:none}
+.dock:not(.set) .mkey{display:none}
 @media (min-width:821px) and (max-width:1180px){.dock.set .study{grid-template-columns:minmax(0,1fr) minmax(310px,42%)}.dock.set .insp{grid-column:1/-1;min-height:220px}}
 /* the inspector scrolls inside the viewer's height, so the panel never grows past it */
 .insp{position:relative;min-height:240px;border:1px solid var(--line);background:var(--panel);border-radius:6px}
@@ -732,7 +733,9 @@ async function dock(list){
     if(!ok.length){dockOn(false);openLinked();return}
     dockOn(true);DOCK.cm=cm;
     sec.setAttribute('aria-label',G.models?'3D preview':G.sprites?'Hitbox preview':'Hitbox clip');
-    if(DOCK.game!==G.id){if(DOCK.view)DOCK.view.then(x=>x.dispose());DOCK.view=Promise.resolve(v.createViewer($('#dockView'),byClass()||G.clips));DOCK.game=G.id;DOCK.key=null}
+    if(DOCK.game!==G.id){if(DOCK.view)DOCK.view.then(x=>x.dispose());DOCK.view=Promise.resolve(v.createViewer($('#dockView'),byClass()||G.clips));DOCK.game=G.id;DOCK.key=null
+      // the viewer's key line also names the moveset's Up/Down keys (shown while the Moveset Inspector is)
+      DOCK.view.then(()=>$('#dockView .v3d-keys')?.insertAdjacentHTML('afterbegin','<span class="mkey"><kbd>↑</kbd> <kbd>↓</kbd> Previous / next move</span><span class="mkey"><kbd>Ctrl</kbd> + <kbd>↑</kbd> <kbd>↓</kbd> Back / forward 10 moves</span><span class="mkey"><kbd>Shift</kbd> + <kbd>↑</kbd> <kbd>↓</kbd> First / last move</span>'))}
     // keep the move on show while it is still in the list (re-shown when the picked weapon changes); otherwise show
     // the list's first move
     const cur=ok.find(m=>m.class+'|'+m.id===DOCK.key),linked=LINKED&&ok.find(m=>m.class+'|'+m.id===LINKED);
@@ -870,7 +873,18 @@ function stepKey(e){
   const i=ks.findIndex(k=>k.getAttribute('aria-pressed')==='true'),d=e.key==='ArrowLeft'?-1:1;
   const n=i<0?(d>0?0:ks.length-1):Math.min(ks.length-1,Math.max(0,i+d));
   e.preventDefault();return n===i?null:ks[n]}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#sheet').hidden)closeSheet();
+// Up/Down step through the Moveset Inspector's moves, stopping at the first and last, like Left/Right through frames:
+// Ctrl jumps ten moves (clamped at the ends), Shift goes to the first or last move. Moves the viewer can't show are
+// skipped
+function stepMove(e){
+  if((e.key!=='ArrowUp'&&e.key!=='ArrowDown')||(e.ctrlKey&&e.shiftKey)||e.altKey||e.metaKey||e.defaultPrevented)return false;
+  const d=$('#dock');if(d.hidden||!d.classList.contains('set')||d.classList.contains('min')||!$('#sheet').hidden
+    ||e.target.closest?.('input,select,textarea,[contenteditable]'))return false;
+  const ms=[...document.querySelectorAll('#mlist tr[data-m]')].map(r=>moveOf(r.dataset.m)).filter(m=>m&&canDock(m));
+  const i=ms.findIndex(m=>m.class+'|'+m.id===DOCK.key),dir=e.key==='ArrowUp'?-1:1;
+  const n=e.shiftKey?(dir<0?0:ms.length-1):i<0?0:e.ctrlKey?Math.min(ms.length-1,Math.max(0,i+dir*10)):i+dir;
+  e.preventDefault();if(n!==i&&n>=0&&n<ms.length)preview(ms[n]);return true}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#sheet').hidden)closeSheet();if(stepMove(e))return;
   if(e.key==='Backspace'&&!e.ctrlKey&&!e.shiftKey&&!e.altKey&&!e.metaKey&&!e.defaultPrevented&&$('#sheet').hidden
     &&!e.target.closest?.('input,select,textarea,[contenteditable]')&&goUp())e.preventDefault();if(e.key==='/'&&document.activeElement!==$('#q')){e.preventDefault();$('#q').focus()};const k=stepKey(e);if(k){
   if(k.dataset.cls!==undefined){st.cls=k.dataset.cls||null;if(st.cls){st.fam=CL[st.cls].family;st.sort=null}}else{st.fam=k.dataset.fam||null;st.cls=null}
