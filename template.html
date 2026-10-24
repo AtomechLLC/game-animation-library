@@ -13,17 +13,17 @@
 /* Layout: animation-software shell. Sticky timeline header, filter rail on the left, card grid of "shots", slide-over detail sheet. */
 :root{
   --bg:#f3f2ee; --panel:#ffffff; --sunk:#e9e7e1; --fg:#1c1b19; --muted:#6b6860; --line:#d8d5cc;
-  --key:#e08a00; --key-ink:#8a5200; --combat:#c2412d; --calm:#2f7a6b; --chip:#efece5;
+  --key:#e08a00; --key-ink:#8a5200; --combat:#c2412d; --calm:#2f7a6b; --chip:#efece5; --playhead:#d92d20;
   --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
   --body:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
-  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; color-scheme:dark}}
+  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
-  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; color-scheme:dark}
+  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; color-scheme:dark}
 *{box-sizing:border-box}
 html,body{max-width:100%;overflow-x:clip}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:14px;line-height:1.5}
@@ -69,14 +69,20 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var
 /* timeline ruler: frame numbers across the header, keyframe diamonds = categories */
 .ruler{position:relative;height:30px;border-top:1px solid var(--line);overflow:hidden;font-family:var(--mono);font-size:10px;color:var(--muted)}
 .ruler .ticks{position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 12px);opacity:.9;height:8px}
-.ruler .keys{position:absolute;inset:8px 0 0 0;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding-inline:max(16px,env(safe-area-inset-left,0px))}
+.ruler .keys{position:absolute;inset:0;display:flex;overflow-x:auto;scrollbar-width:none;padding-top:8px;padding-inline:max(16px,env(safe-area-inset-left,0px))}
+.ruler .kfs{display:flex;gap:2px;flex:none}
 .ruler .keys::-webkit-scrollbar{display:none}
 .ruler .keys{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 48px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 48px),transparent)}
 .kf{display:flex;align-items:center;gap:5px;white-space:nowrap;border:0;background:transparent;cursor:pointer;padding:2px 8px 2px 4px;border-radius:3px;font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
 .kf i{width:8px;height:8px;transform:rotate(45deg);background:var(--line);display:inline-block}
 .kf:hover{color:var(--fg)}
 .kf[aria-pressed="true"]{color:var(--key-ink)}
-.kf[aria-pressed="true"] i{background:var(--key)}
+.kf[aria-pressed="true"] i{background:var(--playhead)}
+/* the red playhead points at the selected key and slides to the next one, overshooting it slightly */
+.playhead{position:absolute;left:0;top:0;width:2px;height:12px;background:var(--playhead);pointer-events:none;transition:transform .34s cubic-bezier(.25,1.1,.5,1)}
+.playhead::before{content:"";position:absolute;left:-4px;top:0;border:5px solid transparent;border-top:6px solid var(--playhead);border-bottom:0}
+.playhead.still{transition:none}
+@media (prefers-reduced-motion:reduce){.playhead{transition:none}}
 .shell{display:grid;grid-template-columns:240px minmax(0,1fr);gap:24px;padding-block:20px}
 aside{position:sticky;top:120px;align-self:start;max-height:calc(100vh - 140px);overflow:auto;display:grid;gap:20px;padding-right:4px}
 aside h2{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px;font-weight:600}
@@ -197,7 +203,7 @@ footer{color:var(--muted);font-size:12px;padding-block:24px;border-top:1px solid
     <span class="meta"><span class="ver" id="ver"></span><span class="modebar" id="mode"></span></span>
     <button class="rail-toggle" id="railBtn" aria-expanded="false">Filters</button>
   </div>
-  <div class="ruler"><div class="ticks"></div><div class="keys" id="keys"></div></div>
+  <div class="ruler"><div class="ticks"></div><div class="keys"><div class="kfs" id="keys"></div><span class="playhead" id="playhead" hidden></span></div></div>
 </header>
 
 <div class="wrap shell">
@@ -328,7 +334,7 @@ function render(){
   const list=base();
   // keyframe ruler
   const cc=counts(base('cat'),a=>[a.category]);
-  $('#keys').innerHTML=D.categories.filter(c=>st.dom==='all'||c.domain===st.dom).map(c=>`<button class="kf" data-cat="${c.id}" aria-pressed="${st.cat===c.id}"><i></i>${esc(c.name)}</button>`).join('');
+  $('#keys').innerHTML=D.categories.filter(c=>st.dom==='all'||c.domain===st.dom).map(c=>`<button class="kf" data-cat="${c.id}" aria-pressed="${st.cat===c.id}"><i></i>${esc(c.name)}</button>`).join('');placePlayhead();
   $('#cats').innerHTML=`<button class="fitem" data-cat="" aria-pressed="${!st.cat}"><span>All categories</span><span>${base('cat').length}</span></button>`+D.categories.filter(c=>st.dom==='all'||c.domain===st.dom).map(c=>`<button class="fitem" data-cat="${c.id}" aria-pressed="${st.cat===c.id}"><span>${esc(c.name)}</span><span>${cc.get(c.id)||0}</span></button>`).join('');
   const tc=[...counts(base('tag'),a=>a.tags)].sort((x,y)=>y[1]-x[1]||x[0].localeCompare(y[0])).slice(0,48);
   st.tags.forEach(t=>{if(!tc.find(x=>x[0]===t))tc.unshift([t,0])});
@@ -394,7 +400,26 @@ document.addEventListener('click',e=>{
 });
 $('#scrim').onclick=closeSheet;
 $('#q').addEventListener('input',e=>{st.q=e.target.value.trim().toLowerCase();render()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#sheet').hidden)closeSheet();if(e.key==='/'&&document.activeElement!==$('#q')){e.preventDefault();$('#q').focus()}});
+// the playhead appears in place (no slide) on load, after a resize and after being hidden; the key row scrolls to keep it in view
+let phStill=true;
+function placePlayhead(){
+  const ph=$('#playhead'),k=$('#keys .kf[aria-pressed="true"]');
+  if(!k){ph.hidden=true;phStill=true;return}
+  const i=k.querySelector('i'),x=i.offsetLeft+i.offsetWidth/2,row=ph.parentNode;
+  ph.classList.toggle('still',phStill);ph.hidden=false;phStill=false;
+  ph.style.transform=`translateX(${x-1}px)`;
+  if(x<row.scrollLeft+40||x>row.scrollLeft+row.clientWidth-60)row.scrollTo({left:x-row.clientWidth/2,behavior:'smooth'})}
+addEventListener('resize',()=>{phStill=true;placePlayhead()});
+document.fonts?.ready.then(()=>{phStill=true;placePlayhead()});
+// Left/Right step through the ruler's keys like keyframes, stopping at the first and last; returns the key to select
+function stepKey(e){
+  if((e.key!=='ArrowLeft'&&e.key!=='ArrowRight')||e.ctrlKey||e.shiftKey||e.altKey||e.metaKey||e.defaultPrevented)return null;
+  if(e.target.closest?.('input,select,textarea,[contenteditable]')||!$('#sheet').hidden)return null;
+  const ks=[...document.querySelectorAll('#keys .kf')];if(!ks.length)return null;
+  const i=ks.findIndex(k=>k.getAttribute('aria-pressed')==='true'),d=e.key==='ArrowLeft'?-1:1;
+  const n=i<0?(d>0?0:ks.length-1):Math.min(ks.length-1,Math.max(0,i+d));
+  e.preventDefault();return n===i?null:ks[n]}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#sheet').hidden)closeSheet();if(e.key==='/'&&document.activeElement!==$('#q')){e.preventDefault();$('#q').focus()};const k=stepKey(e);if(k){st.cat=k.dataset.cat;render()}});
 $('#ver').textContent=`${A.length} entries · ${D.categories.length} categories`;
 async function vote(b){
   const t=b.dataset.t,want=+b.dataset.vote,cur=CS.mine[t]||0,value=cur===want?0:want;
