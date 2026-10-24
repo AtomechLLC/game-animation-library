@@ -1110,6 +1110,20 @@
       "confidence": "high",
       "what": "Running jump: takeoff, airborne, landing"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=movement&m=knight.movement.jump",
+     "media_url": "",
+     "title": "Knight full-height jump, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/locomotion.jump-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight full-height jump: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -1191,6 +1205,20 @@
      "host": "Tenor",
      "local": "gifs/locomotion.double-jump-3.webp",
      "source_url": "https://media.tenor.com/HlpuPepPggUAAAA1/double-jump-video-game-castlevania-order-of-ecclesia.webp"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=movement&m=knight.movement.doubleJump",
+     "media_url": "",
+     "title": "Knight Monarch Wings double jump, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/locomotion.double-jump-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Monarch Wings double jump: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -1351,6 +1379,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Light landing, then a heavy landing from height"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=movement&m=knight.movement.hardLanding",
+     "media_url": "",
+     "title": "Knight hard landing, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/locomotion.landing-soft-hard-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight hard landing: game sprites with hurtbox and attack hitboxes"
      }
     }
    ]
@@ -2374,6 +2416,20 @@
      "host": "Tenor",
      "local": "gifs/melee.light-attack-r1.webp",
      "source_url": "https://media.tenor.com/dzl9uR7KFSAAAAA1/devil-may-cry-dmc.webp"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=nail&m=knight.nail.slash",
+     "media_url": "",
+     "title": "Knight nail slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.light-attack-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight nail slash: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ],
    "rejected_gifs": [
@@ -2490,6 +2546,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.light-attack-combo-string-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/marth/MarthDancingBlade4.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=nail&m=knight.nail.altSlash",
+     "media_url": "",
+     "title": "Knight alternate nail slash (the second of the alternating swings), with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.light-attack-combo-string-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight alternate nail slash (the second of the alternating swings): game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -2696,6 +2766,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.charged-attack-ufd-2.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/king_dedede/KingDededeJet HammerGMax.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=nailArt&m=knight.nailArt.greatSlash",
+     "media_url": "",
+     "title": "Knight Great Slash, released after the charge, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.charged-attack-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Great Slash, released after the charge: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -2875,6 +2959,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.horizontal-sweep-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/marth/MarthDSmash.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=nail&m=knight.nail.slash",
+     "media_url": "",
+     "title": "Knight nail slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.horizontal-sweep-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Knight nail slash: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ],
    "rejected_gifs": [
@@ -3103,6 +3201,20 @@
       "confidence": "high",
       "what": "Chun-Li Spinning Bird Kick (Roundhouse): sprite frames with hurtboxes and attack boxes"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=nailArt&m=knight.nailArt.cycloneSlash",
+     "media_url": "",
+     "title": "Knight Cyclone Slash nail art, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.spin-attack-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Cyclone Slash nail art: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -3289,6 +3401,34 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.aerial-attack-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/cloud/CloudFAir.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=nail&m=knight.nail.upSlash",
+     "media_url": "",
+     "title": "Knight up slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.aerial-attack-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight up slash: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=nail&m=knight.nail.wallSlash",
+     "media_url": "",
+     "title": "Knight wall slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.aerial-attack-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight wall slash: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ],
    "rejected_gifs": [
@@ -3399,6 +3539,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.plunging-downward-attack-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/sheik/SheikDAir.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=nail&m=knight.nail.downSlash",
+     "media_url": "",
+     "title": "Knight down slash (pogo), with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.plunging-downward-attack-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight down slash (pogo): game sprites with hurtbox and attack hitboxes"
+     }
     }
    ],
    "rejected_gifs": [
@@ -3596,6 +3750,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Makoto Hayate (Fierce): sprite frames with hurtboxes and attack boxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=nailArt&m=knight.nailArt.dashSlash",
+     "media_url": "",
+     "title": "Knight Dash Slash nail art, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.dash-attack-lunge-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Dash Slash nail art: game sprites with hurtbox and attack hitboxes"
      }
     }
    ]
@@ -4749,6 +4917,20 @@
       "confidence": "high",
       "what": "Mario ground-pounds, bouncing off the floor in a ring of stars"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=spell&m=knight.spell.desolateDive",
+     "media_url": "",
+     "title": "Knight Desolate Dive, cast from the ground, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.ground-pound-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Desolate Dive, cast from the ground: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ],
    "rejected_gifs": [
@@ -4866,6 +5048,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.weapon-art-skill-attack-ufd-3.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/cloud/CloudCrossSlashLimitRight.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=nailArt&m=knight.nailArt.greatSlash",
+     "media_url": "",
+     "title": "Knight Great Slash nail art, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.weapon-art-skill-attack-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Great Slash nail art: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -7253,6 +7449,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/magic.spell-cast-instant-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/hero/HeroKazap.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=spell&m=knight.spell.vengefulSpirit",
+     "media_url": "",
+     "title": "Knight Vengeful Spirit, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/magic.spell-cast-instant-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Knight Vengeful Spirit: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -7332,6 +7542,20 @@
       "verdict": "added",
       "confidence": "low",
       "what": "Character-select idle: a mage holds a staff and channels a glowing green spell"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=movement&m=knight.movement.focus",
+     "media_url": "",
+     "title": "Knight Focus (channelled heal), with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/magic.spell-channel-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Focus (channelled heal): game sprites with hurtbox and attack hitboxes"
      }
     }
    ]
@@ -7422,6 +7646,34 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/magic.projectile-cast-fireball-ufd-0.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/ness/NessPKFireG.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=spell&m=knight.spell.vengefulSpirit",
+     "media_url": "",
+     "title": "Knight Vengeful Spirit, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/magic.projectile-cast-fireball-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Vengeful Spirit: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=spell&m=knight.spell.shadeSoul",
+     "media_url": "",
+     "title": "Knight Shade Soul, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/magic.projectile-cast-fireball-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Shade Soul: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -7564,6 +7816,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/magic.area-of-effect-slam-ufd-0.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/donkey_kong/DonkeyKongHandSlapG.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=spell&m=knight.spell.descendingDark",
+     "media_url": "",
+     "title": "Knight Descending Dark, cast from the ground, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/magic.area-of-effect-slam-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Descending Dark, cast from the ground: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -7756,6 +8022,20 @@
      "host": "Tenor",
      "local": "gifs/magic.heal-4.webp",
      "source_url": "https://media.tenor.com/hTf3wzqNNPoAAAA1/ffxiv-heal-healing-ffxiv-heal-lb-ffixv-healer.webp"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=movement&m=knight.movement.focus",
+     "media_url": "",
+     "title": "Knight Focus, healing one mask, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/magic.heal-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Focus, healing one mask: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -8596,6 +8876,34 @@
       "confidence": "high",
       "what": "Dragonborn shouts on a mountainside and launches an enemy"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=spell&m=knight.spell.howlingWraiths",
+     "media_url": "",
+     "title": "Knight Howling Wraiths, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/magic.shout-roar-ability-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Howling Wraiths: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=spell&m=knight.spell.abyssShriek",
+     "media_url": "",
+     "title": "Knight Abyss Shriek, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/magic.shout-roar-ability-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Abyss Shriek: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -9347,6 +9655,34 @@
       "confidence": "high",
       "what": "Dudley forward dash: sprite frames with hurtboxes and attack boxes"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=movement&m=knight.movement.dash",
+     "media_url": "",
+     "title": "Knight dash (Mothwing Cloak), with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/defense.dash-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight dash (Mothwing Cloak): game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=movement&m=knight.movement.shadowDash",
+     "media_url": "",
+     "title": "Knight Shadow Dash, invulnerable, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/defense.dash-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight Shadow Dash, invulnerable: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -9432,6 +9768,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/defense.air-dash-ufd-0.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/pikachu/PikachuQuickAttack.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=movement&m=knight.movement.dash",
+     "media_url": "",
+     "title": "Knight dash, usable in the air, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/defense.air-dash-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Knight dash, usable in the air: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -10121,6 +10471,20 @@
       "confidence": "high",
       "what": "Small flinch from a hit in front"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=movement&m=knight.movement.hit",
+     "media_url": "",
+     "title": "Knight taking a hit, then invulnerable, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/reactions.light-flinch-hit-react-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight taking a hit, then invulnerable: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -10389,6 +10753,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Bayonetta is hit and sent flying off the stage"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=movement&m=knight.movement.hit",
+     "media_url": "",
+     "title": "Knight knocked back by a hit, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/reactions.knockback-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Knight knocked back by a hit: game sprites with hurtbox and attack hitboxes"
      }
     }
    ]
@@ -11615,6 +11993,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Stagger and collapse to the ground"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=movement&m=knight.movement.death",
+     "media_url": "",
+     "title": "Knight death, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/death.death-collapse-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight death: game sprites with hurtbox and attack hitboxes"
      }
     }
    ],
@@ -14760,6 +15152,20 @@
       "confidence": "high",
       "what": "Link's sword beam slash leaves a bright arc as he strikes at a dragon"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=nail&m=knight.nail.slash",
+     "media_url": "",
+     "title": "Knight nail slash and its slash arc, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/vfx.weapon-trail-slash-arc-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Knight nail slash and its slash arc: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -15334,6 +15740,20 @@
      "host": "Tenor",
      "local": "gifs/vfx.shockwave-ground-crack-2.webp",
      "source_url": "https://media.tenor.com/8wvX_sqMHeMAAAA1/monster-hunter-mhw-monster-hunter-world-hammer-hammer-time.webp"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=knight&t=spell&m=knight.spell.desolateDive",
+     "media_url": "",
+     "title": "Knight Desolate Dive shockwave, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/vfx.shockwave-ground-crack-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Knight Desolate Dive shockwave: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
