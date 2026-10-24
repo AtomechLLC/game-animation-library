@@ -69,7 +69,8 @@ export function createViewer(el, base) {
   $('.v3d-speed').onchange = e => { speed = +e.target.value };
   const onKey = e => {
     if (e.target.closest('input,select,textarea') && e.target.type !== 'range') return;
-    if (e.key === ',') { setPlaying(false); go(f - 1) }
+    if (e.code === 'Space' && !e.repeat && !e.target.closest('button')) { e.preventDefault(); setPlaying(!playing) }
+    else if (e.key === ',') { setPlaying(false); go(f - 1) }
     else if (e.key === '.') { setPlaying(false); go(f + 1) }
   };
   document.addEventListener('keydown', onKey);
