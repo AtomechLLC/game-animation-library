@@ -18,7 +18,9 @@ export const classData = async (base, cls) => {
   })) : null;
 };
 
-// Box colours, Baston's convention: blue to be hit, red to hit, yellow to throw
+// Box colours, Baston's convention: blue to be hit, red to hit, yellow to throw. A box is [kind, x1, y1, x2, y2]
+// (inclusive cell pixels) or [kind, [x, y, ...]] for a polygon collider (Hollow Knight); sprites.json "smooth"
+// draws painted art with smoothing instead of whole-pixel pixel-art scaling.
 const COLORS = {p: '#2f6bff', v: '#22a7f0', a: '#e5242b', t: '#e0b400', ta: '#8a63d2', pu: '#7d8790'};
 const ON = {p: true, v: true, a: true, t: true, ta: false, pu: false};
 
@@ -50,15 +52,22 @@ export async function createViewer(el, base) {
     if (!mv || !img) return;
     // fill the stage; a whole-pixel scale once it is big enough that the lost space doesn't matter (pixel art)
     const pad = 12 * (devicePixelRatio || 1), sw = (canvas.width - 2 * pad) / mv.w, sh = (canvas.height - 2 * pad - 30 * (devicePixelRatio || 1)) / mv.h;
-    const fit = Math.min(sw, sh), s = fit >= 4 ? Math.floor(fit) : fit;
+    const fit = Math.min(sw, sh), s = fit >= 4 && !man.smooth ? Math.floor(fit) : fit;
     const ox = Math.round((canvas.width - mv.w * s) / 2), oy = Math.round(canvas.height - pad - mv.h * s);
     const i = f - 1, cx = (i % mv.cols) * mv.w, cy = Math.floor(i / mv.cols) * mv.h;
-    ctx.imageSmoothingEnabled = false;
+    ctx.imageSmoothingEnabled = !!man.smooth;
     ctx.drawImage(img, cx, cy, mv.w, mv.h, ox, oy, mv.w * s, mv.h * s);
     const show = on();
     ctx.lineWidth = Math.max(1, Math.round(s / 2));
     for (const [k, x1, y1, x2, y2] of mv.boxes[i] || []) {
       if (!show[k]) continue;
+      if (Array.isArray(x1)) {   // polygon: [kind, [x, y, x, y, ...]] in cell pixels
+        ctx.fillStyle = COLORS[k] + '40'; ctx.strokeStyle = COLORS[k];
+        ctx.beginPath();
+        for (let j = 0; j < x1.length; j += 2) ctx[j ? 'lineTo' : 'moveTo'](ox + x1[j] * s, oy + x1[j + 1] * s);
+        ctx.closePath(); ctx.fill(); ctx.stroke();
+        continue;
+      }
       const x = Math.round(ox + x1 * s), y = Math.round(oy + y1 * s), w = Math.round((x2 - x1 + 1) * s), h = Math.round((y2 - y1 + 1) * s);
       ctx.fillStyle = COLORS[k] + '40'; ctx.strokeStyle = COLORS[k];
       ctx.fillRect(x, y, w, h); ctx.strokeRect(x + .5, y + .5, w - 1, h - 1);
