@@ -223,10 +223,36 @@ footer p{max-width:85ch;margin:0 0 8px}
 .clip-stage canvas,.clip-stage img{display:block;width:100%;height:100%;object-fit:contain}
 .clip-stage .v3d-hud{color:#fff;text-shadow:0 1px 2px #000}.clip-stage .v3d-hud span{color:#ddd}
 .clip-alts{display:flex;flex-wrap:wrap;gap:4px}
-/* weapon buttons and the preview share a row that floats under the header while the table scrolls; Hide folds it */
-.pick.dockon{display:grid;grid-template-columns:minmax(0,1fr) minmax(340px,46%);gap:0 20px;align-items:start;margin-bottom:12px}
+/* the study panel: the viewer with the inspector beside it, full width under the weapon buttons; once a class is
+   picked it floats under the header while the table scrolls. Hide folds it */
 .pick-l{min-width:0}
-.dock{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;padding-top:4px;min-width:0}
+.dock{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;padding-top:4px;min-width:0;margin-bottom:12px}
+.study{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,32%);gap:14px;align-items:stretch}
+/* the inspector scrolls inside the viewer's height, so the panel never grows past it */
+.insp{position:relative;min-height:240px;border:1px solid var(--line);background:var(--panel);border-radius:6px}
+.insp>div{position:absolute;inset:0;overflow:auto;padding:10px 12px;font-size:13px}
+.insp h4{font-family:var(--mono);font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:12px 0 4px}
+.insp .who{margin:6px 0 0;color:var(--muted);font-size:12px}
+.insp .who code{font-family:var(--mono);font-size:11px;color:var(--fg)}
+.insp .now{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.insp .now b{font-family:var(--display);font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1}
+.insp .now small{font-family:var(--mono);font-size:10.5px;color:var(--muted);text-transform:uppercase}
+.insp .ph{border-radius:999px;padding:2px 9px;font-size:12px;font-weight:600;color:#1c1b19;background:var(--ph,var(--chip))}
+.insp .ph:empty,.insp .tag:empty{display:none}
+.insp .tag{border-radius:999px;padding:2px 9px;font-size:12px;border:1px solid var(--line)}
+.insp .r{display:flex;justify-content:space-between;gap:10px;padding:2px 6px;border-radius:4px;border-left:3px solid transparent}
+.insp .r span{color:var(--muted)}
+.insp .r b{font-family:var(--mono);font-weight:500;text-align:right}
+.insp .r.on{background:var(--chip);border-left-color:var(--fg)}
+.insp .r.on span{color:var(--fg)}
+.insp .r.open b{color:var(--calm);font-weight:700}
+.insp .r.open b::after{content:" \2713  open";font-weight:500}
+/* ten weapons to a row, sized to the inspector's width */
+.insp .iw{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:4px}
+.insp .iw button{aspect-ratio:1;min-width:0;padding:2px;border:1px solid var(--line);background:var(--sunk);border-radius:4px;cursor:pointer}
+.insp .iw button[aria-pressed="true"]{border-color:var(--key);background:var(--chip)}
+.insp .iw img{width:100%;height:100%;object-fit:contain}
+.insp .src{margin:12px 0 0;font-size:12px}
 .dock-head{display:flex;align-items:end;justify-content:space-between;gap:10px}
 .dock-head small{font-family:var(--mono);font-size:10.5px;color:var(--key-ink);text-transform:uppercase;letter-spacing:.05em}
 .dock-head h3{font-family:var(--display);font-size:16px;font-weight:800;margin:0;line-height:1.2}
@@ -241,10 +267,10 @@ footer p{max-width:85ch;margin:0 0 8px}
 .linkbtn .i-ok,.linkbtn.done .i-link{display:none}
 .linkbtn.done .i-ok{display:block}
 .linkbtn.done{background:var(--calm);border-color:var(--calm)}
-.dock .v3d-stage{aspect-ratio:auto;height:clamp(200px,30vh,330px)}
-.pick.min .wtiles,.pick.min .v3d,.pick.min #sub,.pick.min #active{display:none}
-@media (min-width:821px) and (min-height:640px){.pick.dockon:not(.browse){position:sticky;top:var(--hdr,0px);z-index:4;background:var(--bg);border-bottom:1px solid var(--line);padding-bottom:8px}}
-@media (max-width:820px){.pick.dockon{grid-template-columns:minmax(0,1fr)}.pick.browse .dock{order:-1}}
+.dock .v3d-stage{aspect-ratio:auto;height:clamp(240px,38vh,440px)}
+.pick.min .wtiles,.pick.min #sub,.pick.min #active,.dock.min .study{display:none}
+@media (min-width:821px) and (min-height:800px){.dock.stick{position:sticky;top:var(--hdr,0px);z-index:4;background:var(--bg);border-bottom:1px solid var(--line);padding-bottom:8px}}
+@media (max-width:820px){.study{grid-template-columns:minmax(0,1fr)}.insp{min-height:320px}}
 .more-c{width:1%;text-align:right;padding-left:4px!important}
 .rowmore{border:1px solid var(--line);background:var(--sunk);border-radius:4px;padding:0 9px;height:24px;cursor:pointer;font-weight:700;line-height:1}
 .rowmore:hover{border-color:var(--key)}
@@ -289,8 +315,8 @@ tbody tr.on td{background:var(--chip);box-shadow:inset 0 1px var(--key),inset 0 
         <div id="index"></div>
         <div id="weapons"></div>
       </div>
-      <section class="dock" id="dock" hidden aria-label="3D preview"><div class="dock-head"><div><small id="dockSrc"></small><h3 id="dockName">3D preview</h3></div><span class="dock-btns"><button class="linkbtn" id="dockLink" aria-label="Copy link to this frame" title="Copy a link that opens this move paused on this frame, with the same speed and overlays"><svg class="i-link" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3.2-3.2a4.5 4.5 0 0 0-6.4-6.4l-1.1 1.1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3.2 3.2a4.5 4.5 0 0 0 6.4 6.4l1.1-1.1"/></svg><svg class="i-ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Copy link</span></button><button class="chip" id="dockMore">Frame details</button><button class="chip" id="pickMin" aria-expanded="true" title="Hide the weapon buttons and preview">Hide</button></span></div><div class="v3d" id="dockView"></div></section>
     </div>
+    <section class="dock" id="dock" hidden aria-label="3D preview"><div class="dock-head"><div><small id="dockSrc"></small><h3 id="dockName">3D preview</h3></div><span class="dock-btns"><button class="linkbtn" id="dockLink" aria-label="Copy link to this frame" title="Copy a link that opens this move paused on this frame, with the same speed and overlays"><svg class="i-link" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3.2-3.2a4.5 4.5 0 0 0-6.4-6.4l-1.1 1.1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3.2 3.2a4.5 4.5 0 0 0 6.4 6.4l1.1-1.1"/></svg><svg class="i-ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Copy link</span></button><button class="chip" id="dockMore">Frame details</button><button class="chip" id="pickMin" aria-expanded="true" title="Hide the weapon buttons and preview">Hide</button></span></div><div class="study"><div class="v3d" id="dockView"></div><div class="insp" id="insp" role="region" aria-label="Move inspector"></div></div></section>
     <div class="legend" id="legend"></div>
     <div id="table"></div>
     <footer id="foot"></footer>
@@ -515,15 +541,57 @@ function frameState(m,f){
   const inW=w=>w.some(([s,e])=>f>=s&&f<=e),last=lastActive(m);
   const s=!m.active.length?'':f<m.startup?'Startup':inW(m.active)?'Active':f<last?'Between hits':m.cancels.dodge&&f>=m.cancels.dodge?'Can dodge':'Recovery';
   return [s,inW(m.armor)&&'hyper armor',inW(m.iframes)&&'i-frames'].filter(Boolean).join(' · ')}
+// Inspector beside the viewer: the move's numbers in one place, with the frame on show marked as it plays or steps.
+// Fields a game leaves empty (Elden Ring's poise and i-frames) are left out rather than shown as dashes.
+const CANCELS=[['attack','Attack'],['dodge','Dodge / roll'],['block','Block'],['skill','Skill'],['item','Item'],['move','Walk / run']];
+const PHASE={startup:['Startup','--f-start'],active:['Active','--f-active'],gap:['Between hits','--f-gap'],recovery:['Recovery','--f-rec'],free:['Can dodge','--f-free']};
+function phaseAt(m,f){
+  if(!m.active.length)return ['',0];
+  const hit=m.active.findIndex(([s,e])=>f>=s&&f<=e);
+  return [f<m.startup?'startup':hit>=0?'active':f<lastActive(m)?'gap':m.cancels.dodge&&f>=m.cancels.dodge?'free':'recovery',hit+1]}
+function renderInsp(m){
+  const c=CL[m.class],dm=m.damage||{},win=a=>a.map(([s,e])=>s===e?s:`${s}–${e}`).join(', ');
+  const row=(l,v,attr='')=>`<div class="r"${attr}><span>${esc(l)}</span><b>${esc(v)}</b></div>`;
+  const sgn=v=>typeof v==='number'&&v>0?'+'+v:v;
+  const can=CANCELS.filter(([k])=>m.cancels[k]);
+  const adv=[['blockAdv','On block'],['hitAdv','On hit']].filter(([k])=>m[k]!=null);
+  const dmg=[['type','Damage type'],['amount','Damage'],['stun','Stun'],['guard','Guard'],['mv','Motion value'],['poise','Poise damage'],['level','Damage level'],['stamina','Stamina']].filter(([k])=>dm[k]!=null&&dm[k]!=='');
+  const ws=c.weapons.length?m.weapons:[],url=m.url||D.source.moveUrl?.replace('{id}',m.id);
+  $('#insp').innerHTML=`<div>
+    <div class="now"><small>Frame</small><b id="iF">1</b><span class="ph" id="iPh"></span><span class="tag" id="iArm"></span></div>
+    <p class="who">${esc(c.name)} › ${esc(T[m.type].name)} · ${GR[m.grip]}${pickName()?` · ${esc(pickName())}`:''} · <code>${esc(m.id)}</code></p>
+    ${m.active.length?`<h4>Timing · ${D.game.fps} fps</h4>${row('Startup',m.startup??'—',' data-ph="startup"')}${row('Active',win(m.active)+(m.hits>1?` · ${m.hits} hits`:''),' data-ph="active"')}${m.recovery!=null?row('Recovery',m.recovery+' frames',' data-ph="recovery"'):''}${m.armor.length?row('Hyper armor',win(m.armor),' data-arm'):''}${m.iframes.length?row('I-frames',win(m.iframes)):''}`:''}
+    ${can.length?`<h4>Can cancel into</h4>${can.map(([k,l])=>row(l,'from '+m.cancels[k],` data-can="${m.cancels[k]}"`)).join('')}`:''}
+    ${m.cancelTo?.length?`<h4>Cancels into</h4><p class="who">${esc(m.cancelTo.join(', '))}</p>`:''}
+    ${adv.length?`<h4>Advantage</h4>${adv.map(([k,l])=>row(l,sgn(m[k]))).join('')}`:''}
+    ${dmg.length?`<h4>${c.weapons.length?'First hit only':'Damage'}</h4>${dmg.map(([k,l])=>row(l,dm[k])).join('')}`:''}
+    ${ws.length?`<h4>Used by ${ws.length} weapon${ws.length===1?'':'s'}</h4><div class="iw">${ws.map(i=>`<button data-pickw="${i}" data-pickc="${esc(c.id)}" aria-pressed="${st.cls===c.id&&st.w===i}" title="${esc(c.weapons[i])}">${icoHtml(c.weapons[i],'')}</button>`).join('')}</div>`:''}
+    ${url?`<p class="src"><a href="${esc(url)}" target="_blank" rel="noopener">Open in ${esc(D.source.moveName||D.source.name)} ↗</a></p>`:''}
+  </div>`}
+function inspFrame(m,f){
+  if(DOCK.key!==m.class+'|'+m.id||!$('#iF'))return;
+  const [ph,hit]=phaseAt(m,f),p=PHASE[ph],inW=w=>w.some(([s,e])=>f>=s&&f<=e);
+  $('#iF').textContent=f;
+  $('#iPh').textContent=p?p[0]+(ph==='active'&&m.hits>1?` · hit ${hit} of ${m.hits}`:''):'';
+  $('#iPh').style.setProperty('--ph',p?`var(${p[1]})`:'');
+  $('#iArm').textContent=inW(m.armor)?'Hyper armor':'';
+  const on=ph==='gap'?'active':ph==='free'?'recovery':ph;
+  document.querySelectorAll('#insp [data-ph]').forEach(r=>r.classList.toggle('on',r.dataset.ph===on));
+  document.querySelector('#insp [data-arm]')?.classList.toggle('on',inW(m.armor));
+  document.querySelectorAll('#insp [data-can]').forEach(r=>r.classList.toggle('open',f>=+r.dataset.can))}
 const moveOf=key=>{const [cls,id]=key.split('|');return D.moves.find(x=>x.class===cls&&x.id===id)};
 function dockOn(on){$('#dock').hidden=!on;$('#pick').classList.toggle('dockon',on)}
-function pickMin(min){$('#pick').classList.toggle('min',min);$('#pickMin').textContent=min?'Show':'Hide';$('#pickMin').setAttribute('aria-expanded',!min);try{localStorage.setItem('fd-pick-min',min?'1':'')}catch(e){}}
+// before a class is picked the panel sits above the long class index, so the example is on the first screen; after,
+// it sits between the weapon buttons and the table and sticks under the header
+function placeDock(browse){const d=$('#dock');d.classList.toggle('stick',!browse);
+  if(browse){if(d.nextElementSibling!==$('#index'))$('#index').before(d)}else if(d.previousElementSibling!==$('#pick'))$('#pick').after(d)}
+function pickMin(min){$('#pick').classList.toggle('min',min);$('#dock').classList.toggle('min',min);$('#pickMin').textContent=min?'Show':'Hide';$('#pickMin').setAttribute('aria-expanded',!min);try{localStorage.setItem('fd-pick-min',min?'1':'')}catch(e){}}
 async function dock(list){
   const sec=$('#dock'),seq=++DOCK.seq;
   // with no class picked, model and sprite games still show an example: the first class's first default move, so the
   // viewer is on screen from the start (it then neither follows the filters nor sticks under the header)
   const cls=st.cls||(byClass()?D.classes[0]?.id:null);
-  $('#pick').classList.toggle('browse',!st.cls);
+  $('#pick').classList.toggle('browse',!st.cls);placeDock(!st.cls);
   if(!(byClass()||G.clips)||!cls){dockOn(false);openLinked();return}
   try{
     const v=await import(G.models?VIEWER:G.sprites?VIEWER2D:CLIPVIEWER),cm=byClass()?await v.classData(byClass(),cls):null;
@@ -546,12 +614,12 @@ async function preview(m){
   if(st.cls)document.querySelector(`tbody tr[data-m="${CSS.escape(key)}"]`)?.classList.add('on');
   writeHash();
   $('#dockSrc').textContent=`${st.cls?'':'Example · '}${CL[m.class].name} › ${T[m.type].name} · ${GR[m.grip]}`;
-  $('#dockName').title=$('#dockName').textContent=`${m.name} · `+(m.active.length?`startup ${m.startup}, active ${m.active.map(([s,e])=>s===e?s:s+'–'+e).join(', ')}`:`${m.total??'—'} frames`);
+  $('#dockName').title=$('#dockName').textContent=m.name;renderInsp(m);
   const view=await DOCK.view;
   if(DOCK.key!==key)return;
   let shown;
-  if(byClass()){if(!DOCK.cm)return;shown=await view.show(m,{weapon:pickName(),strip:stripHtml(m,DOCK.cm.moves[m.id].frames),state:f=>frameState(m,f)})}
-  else shown=await view.show(m,{strip:n=>stripHtml(m,n),state:f=>frameState(m,f)});
+  if(byClass()){if(!DOCK.cm)return;shown=await view.show(m,{weapon:pickName(),strip:stripHtml(m,DOCK.cm.moves[m.id].frames),state:f=>{inspFrame(m,f);return frameState(m,f)}})}
+  else shown=await view.show(m,{strip:n=>stripHtml(m,n),state:f=>{inspFrame(m,f);return frameState(m,f)}});
   // a link's frame, speed and overlays apply once, to the move it names
   if(LINKVIEW?.key===key&&DOCK.key===key&&shown!==false){const v=LINKVIEW;LINKVIEW=null;await view.setView?.(v)}
 }
