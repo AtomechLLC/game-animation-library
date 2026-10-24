@@ -6,6 +6,7 @@ The page knows nothing about where the numbers came from, so every source only h
 ## Files
 
 - `games.json` — the games the tab offers: `id`, `name`, `data` (the game's JSON), `icons` (folder with `icons.json`) optionally `models` (folder with `models.json`, for the 3D preview) or `clips` (folder of per-move hitbox clips).
+- `stores.json` — where each game is sold, plus your Steam Curator and affiliate ids. See [Store links](#store-links).
 - `elden-ring.json` — Elden Ring, patch 1.17.3. Built by `tools/frame_data/import_er_game.py` straight from an installed
   copy of the game (see below). `tools/frame_data/import_er_nyasu.py` builds the same file from the
   [Elden Ring Frame Data Explorer](https://er-frame-data.nyasu.business) by Emilia (sovietspaceship) instead.
@@ -252,6 +253,30 @@ Reibach's Claws have no mesh yet), 1.2 MB of armor and the move files. Not cover
 `<context>-<name>`.
 
 These are Moon Studios' assets, under the same terms as the Elden Ring files above.
+
+## Store links
+
+The game header shows where to buy the game, from `frame-data/stores.json`. Edit that file to add ids; the page needs
+no code changes, and an empty value just hides that link.
+
+- `games.<id>.steam`: the Steam app id. Street Fighter III: 3rd Strike is only on Steam inside the Street Fighter 30th
+  Anniversary Collection, so it links that (`via` names what the button buys). `games.<id>.eshop` is a Nintendo eShop
+  URL, used for Smash Ultimate, which is Switch only.
+- `steam.curatorId`: your Steam Curator group id (the number in `store.steampowered.com/curator/<id>-Name/`). Steam
+  links then carry `?curator_clanid=<id>`, which credits your curator page in Steam's referral stats. **Steam pays
+  nothing for this**: it has no public affiliate program. Create a curator page at
+  https://store.steampowered.com/curators/ (a Steam account is enough).
+- `affiliates.<store>.link`: your affiliate link template for a store that sells Steam keys and pays commission
+  (Humble Store, Fanatical, Green Man Gaming). The store's button appears on every Steam game once this is set.
+  `{url}` is replaced with the store's page for the game, `{enc}` with the same URL percent-encoded, for networks that
+  take the destination as a parameter. Copy the deep-link format from the program's dashboard, for example:
+  - a store's own partner id: `{url}?partner=YOUR_ID` (`?` becomes `&` when the page already has a query string)
+  - an affiliate network deep link: `https://network.example/c/123/456/789?u={enc}`
+
+  Sign up at https://promo.humblebundle.com/affiliates, https://www.fanatical.com/en/affiliates and
+  https://www.greenmangaming.com/affiliates/ (GMG runs its program on Impact). The store page defaults to the store's
+  search for the game; set `games.<id>.pages.<store>` to a product URL to link the exact page instead. Affiliate
+  buttons get `rel="sponsored"` and the footer adds a disclosure line.
 
 ## Format `frame-data/1`
 
