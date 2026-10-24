@@ -177,6 +177,20 @@ per-pose collider children that carry ExtraDamageableProxy. Damage is in masks.
 Not read yet: wall jump, Crystal Heart, charm variants (only noted in More), boss projectiles and spawned hazards
 (boomerangs, orbs, firebats, spikes: those attacks show their length only), other enemies.
 
+Silksong's Hornet is a character of the same game (family Silksong), added with `--silksong <Silksong install>`:
+
+```bash
+python tools/frame_data/import_hk_game.py "Z:/SteamLibrary/steamapps/common/Hollow Knight" --silksong "Z:/SteamLibrary/steamapps/common/Hollow Knight Silksong"
+```
+
+Silksong ships its assets as Addressables bundles; `hk_unity.Game` reads them, takes MonoScripts from the
+monoscripts bundle and finds the bundle behind a `CAB-…` reference through an index cached in
+`.cache/hollow-knight-silksong/`. The hero prefab (Hero_Hornet) is in `heroloading_assets_all.bundle`
+(`hk_silksong.py`). Silksong's NailSlash switches a slash's collider on at its effect clip's first trigger frame and
+off at the second, so Hunter crest slash windows come from the clips. The crest configs (attack duration, cooldown,
+down spike and dash stab times) are referenced from a bundle that is not shipped, so Silksong moves have no cancel
+frames and only the Hunter crest is read.
+
 `add_hk.py` renders library clips from the same sheets (hitboxes drawn on, dark background) for the moves it maps.
 
 ## Super Smash Bros. Ultimate

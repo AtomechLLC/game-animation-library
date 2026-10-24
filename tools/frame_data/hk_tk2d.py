@@ -38,13 +38,7 @@ class Sprites:
 
     def _resolve(self, p, assets):
         if hasattr(p, 'get_raw_data'): return p
-        f = assets.assets_file if hasattr(assets, 'assets_file') else assets
-        fid, pid = (p['m_FileID'], p['m_PathID']) if isinstance(p, dict) else (p.m_FileID, p.m_PathID)
-        if fid:
-            ext = f.externals[fid - 1]
-            import os
-            f = self.g.load_file(os.path.basename(ext.path))
-        return f.objects[pid]
+        return self.g.resolve(p, assets)
 
     def atlas(self, coll, material_id):
         mat_ptr = coll['materials'][material_id]
@@ -55,7 +49,7 @@ class Sprites:
             tex = None
             for k, v in mat.m_SavedProperties.m_TexEnvs:
                 if k == '_MainTex': tex = v.m_Texture
-            img = tex.read().image.convert('RGBA')
+            img = self._resolve(tex, obj).read().image.convert('RGBA')
             self._atlas[key] = img.transpose(Image.FLIP_TOP_BOTTOM)   # uv y runs up
         return self._atlas[key]
 

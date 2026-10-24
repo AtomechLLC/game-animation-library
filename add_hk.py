@@ -54,6 +54,18 @@ MAP = {
  'melee.horizontal-sweep#2': [('nkg.attack.slash', 'Nightmare King Grimm slash')],
  'enemies.charging-rush': [('nkg.attack.groundDash', 'Nightmare King Grimm ground dash'), ('mantisLord.attack.dash', 'Mantis Lord dash slash')],
  'defense.backstep-backflip': [('hornet.attack.evade', 'Hornet evade')],
+ # Silksong's Hornet (a character of the Hollow Knight frame data)
+ 'melee.light-attack#3': [('silksong.hunter.slash', 'Silksong Hornet needle slash (Hunter crest)')],
+ 'melee.aerial-attack#3': [('silksong.hunter.upSlash', 'Silksong Hornet up slash')],
+ 'melee.plunging-downward-attack#2': [('silksong.hunter.downSpike', 'Silksong Hornet down spike (Hunter crest)')],
+ 'melee.dash-attack-lunge#3': [('silksong.hunter.dashStab', 'Silksong Hornet dash stab')],
+ 'melee.sprint-attack': [('silksong.hunter.dashStab', 'Silksong Hornet sprint attack (dash stab)')],
+ 'defense.dash#2': [('silksong.movement.dash', 'Silksong Hornet dash')],
+ 'locomotion.jump#2': [('silksong.movement.jump', 'Silksong Hornet full-height jump')],
+ 'locomotion.double-jump#2': [('silksong.movement.doubleJump', 'Silksong Hornet double jump')],
+ 'reactions.light-flinch-hit-react#2': [('silksong.movement.hit', 'Silksong Hornet taking a hit')],
+ 'death.death-collapse#2': [('silksong.movement.death', 'Silksong Hornet death')],
+ 'magic.heal#2': [('silksong.movement.bind', 'Silksong Hornet Bind (heal)')],
 }
 LOWB = {'ranged.boomerang-returning-throw'}
 LOW = {'melee.horizontal-sweep', 'magic.spell-cast-instant', 'vfx.shockwave-ground-crack', 'defense.air-dash', 'reactions.knockback'}
@@ -93,7 +105,7 @@ if __name__ == '__main__':
         aid = key.split('#')[0]
         a = byid[aid]
         a.setdefault('gifs', [])
-        n = sum(1 for g in a['gifs'] if g.get('host') == GAME + ' render')
+        n = sum(1 for g in a['gifs'] if g.get('local', '').startswith(f'gifs/{aid}-hk-'))
         for mid, label in moves:
             page = 'frame-data.html#g=%s&c=%s&t=%s&m=%s' % (GAME_ID, fd[mid]['class'], fd[mid]['type'], mid)
             local = f'gifs/{aid}-hk-{n}.webp'
@@ -102,14 +114,15 @@ if __name__ == '__main__':
                 continue
             count = render(fd[mid]['class'], mid, local)
             conf = 'low' if aid in LOW or aid in LOWB else 'high'
+            game = 'Hollow Knight: Silksong' if mid.startswith('silksong.') else GAME
             g = {'page_url': page, 'media_url': '', 'title': f'{label}, with hitboxes, rendered from the Frame Data preview',
-                 'game': GAME, 'host': GAME + ' render', 'local': local, 'source_url': '',
+                 'game': game, 'host': game + ' render', 'local': local, 'source_url': '',
                  'screened': {'verdict': 'added', 'confidence': conf, 'what': f'{label}: game sprites with hurtbox and attack hitboxes'}}
             if blocked(bl, g, open(local, 'rb').read()):
                 os.remove(local)
                 continue
             a['gifs'].append(g)
-            scr['added'].append({'animation': aid, 'clip': local[5:-5], 'game': GAME, 'what': g['screened']['what'], 'confidence': conf})
+            scr['added'].append({'animation': aid, 'clip': local[5:-5], 'game': game, 'what': g['screened']['what'], 'confidence': conf})
             added.append((aid, local, count))
             n += 1
     json.dump(d, open('library.json', 'w', encoding='utf-8'), indent=1, ensure_ascii=False)

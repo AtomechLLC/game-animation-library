@@ -4,7 +4,7 @@ The Steam build is Unity 6 with Mono scripts and no type trees in the asset file
 from the game's own Managed DLLs with TypeTreeGeneratorAPI. Its trees miss the 4-byte align after m_Enabled, which
 every MonoBehaviour has; MonoTrees adds it back.
 """
-import os, struct
+import json, os, struct
 
 class MonoTrees:
     """UnityPy typetree_generator built from <game>/<x>_Data/Managed, with the m_Enabled align fixed."""
@@ -33,11 +33,11 @@ def data_dir(game_dir):
     return os.path.join(game_dir, next(f for f in os.listdir(game_dir) if f.endswith('_Data')))
 
 def unity_version(ddir):
+    """Unity version from the globalgamemanagers header (custom-branch suffixes dropped)."""
+    import re
     with open(os.path.join(ddir, 'globalgamemanagers'), 'rb') as f:
-        head = f.read(64)
-    # version string follows the header
-    i = head.find(b'6000.') if b'6000.' in head else head.find(b'20')
-    return head[i:head.index(b'\0', i)].decode()
+        head = f.read(256)
+    return re.search(rb'(\d{4,}\.\d+\.\d+[abfp]\d+)', head).group(1).decode()
 
 def load(game_dir, files):
     """One UnityPy environment over the named asset files (relative to the _Data folder), MonoBehaviours readable."""
@@ -109,13 +109,26 @@ class Reader:
         self.align()
         return v
 
+AA = 'StreamingAssets/aa/StandaloneWindows64'
+
 class Game:
-    """The asset files of one install, with MonoBehaviours readable by script class name."""
+    """The asset files of one install, with MonoBehaviours readable by script class name.
+
+    files are paths under the _Data folder: plain asset files (Hollow Knight) or Addressables bundles (Silksong).
+    MonoScripts come from globalgamemanagers.assets, or from the monoscripts bundle when there is one. A reference
+    into a file that isn't loaded yet loads it: by name for plain files, through an index of which bundle holds
+    which CAB for bundles (cached in .cache/<game>/cabs.json).
+    """
     def __init__(self, game_dir, files=('resources.assets',)):
-        import UnityPy
+        import UnityPy, glob, warnings
         self.dir = data_dir(game_dir)
-        self.trees = MonoTrees(self.dir, unity_version(self.dir))
-        g = UnityPy.load(os.path.join(self.dir, 'globalgamemanagers.assets'))
+        ver = unity_version(self.dir)
+        UnityPy.config.FALLBACK_UNITY_VERSION = ver
+        warnings.filterwarnings('ignore', module='UnityPy')
+        self.trees = MonoTrees(self.dir, ver)
+        self.aa = os.path.join(self.dir, AA)
+        ms = glob.glob(os.path.join(self.aa, '*_monoscripts.bundle'))
+        g = UnityPy.load(ms[0] if ms else os.path.join(self.dir, 'globalgamemanagers.assets'))
         self.scripts = {}
         for o in g.objects:
             if o.type.name == 'MonoScript':
@@ -123,15 +136,59 @@ class Game:
                 full = (s.m_Namespace + '.' if s.m_Namespace else '') + s.m_ClassName
                 self.scripts[o.path_id] = (s.m_AssemblyName, full, s.m_ClassName)
         self.env = UnityPy.load(*[os.path.join(self.dir, f) for f in files])
-        self.files = {os.path.basename(n): f for n, f in self.env.files.items() if hasattr(f, 'objects')}
-        self._trees = {}
+        self._flatten()
+        self._trees, self._cabs = {}, None
+
+    def _flatten(self):
+        out = {}
+        def add(name, f):
+            if hasattr(f, 'objects'): out[os.path.basename(name).lower()] = f
+            else:
+                for n, sub in getattr(f, 'files', {}).items(): add(n, sub)
+        for n, f in self.env.files.items(): add(n, f)
+        self.files = out
+
+    def cab_index(self):
+        """CAB name -> bundle file, for Addressables builds."""
+        if self._cabs is None:
+            import UnityPy
+            cache = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), '.cache',
+                                 os.path.basename(self.dir).replace('_Data', '').replace(' ', '-').lower(), 'cabs.json')
+            if os.path.exists(cache):
+                self._cabs = json.load(open(cache))
+            else:
+                self._cabs = {}
+                for fn in sorted(os.listdir(self.aa)):
+                    if not fn.endswith('.bundle'): continue
+                    try: e = UnityPy.load(os.path.join(self.aa, fn))
+                    except Exception: continue
+                    for f in e.files.values():
+                        if not hasattr(f, 'objects'):
+                            for n in getattr(f, 'files', {}): self._cabs[os.path.basename(n).lower()] = fn
+                os.makedirs(os.path.dirname(cache), exist_ok=True)
+                json.dump(self._cabs, open(cache, 'w'))
+        return self._cabs
 
     def load_file(self, name):
         """An asset file of the install (loaded on first use), for references into other files."""
-        if name not in self.files:
-            self.env.load_file(os.path.join(self.dir, name))
-            self.files = {os.path.basename(n): f for n, f in self.env.files.items() if hasattr(f, 'objects')}
-        return self.files[name]
+        key = os.path.basename(name).lower()
+        if key not in self.files:
+            if key.startswith('cab-') and os.path.isdir(self.aa):
+                self.env.load_file(os.path.join(self.aa, self.cab_index()[key]))
+            else:
+                self.env.load_file(os.path.join(self.dir, name))
+            self._flatten()
+        return self.files[key]
+
+    def resolve(self, pptr, base):
+        """The ObjectReader a PPtr (dict or UnityPy PPtr) points to, relative to the file of `base` (an ObjectReader
+        or a SerializedFile); None for a null pointer."""
+        f = base.assets_file if hasattr(base, 'assets_file') else base
+        fid, pid = (pptr['m_FileID'], pptr['m_PathID']) if isinstance(pptr, dict) else (pptr.m_FileID, pptr.m_PathID)
+        if not pid: return None
+        if fid:
+            f = self.load_file(os.path.basename(f.externals[fid - 1].path))
+        return f.objects.get(pid)
 
     def script(self, obj):
         """Class name of a MonoBehaviour (None for other objects)."""

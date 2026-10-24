@@ -65,6 +65,10 @@
   {
    "id": "bosses",
    "name": "Bosses"
+  },
+  {
+   "id": "silksong",
+   "name": "Silksong"
   }
  ],
  "classes": [
@@ -123,6 +127,14 @@
    "icon": "Nightmare King Grimm",
    "weapons": [],
    "moves": 8
+  },
+  {
+   "id": "hornetSilksong",
+   "name": "Hornet (Silksong)",
+   "family": "silksong",
+   "icon": "Hornet (Silksong)",
+   "weapons": [],
+   "moves": 12
   }
  ],
  "moveTypes": [
@@ -1874,6 +1886,332 @@
     "Health": "1250"
    },
    "desc": "Control FSM from Evade Antic; its damage comes from spawned projectiles or objects, not drawn yet"
+  },
+  {
+   "id": "silksong.hunter.slash",
+   "class": "hornetSilksong",
+   "type": "nail",
+   "grip": "any",
+   "name": "Slash",
+   "startup": 1,
+   "active": [
+    [
+     1,
+     6
+    ]
+   ],
+   "activeFrames": 6,
+   "hits": 1,
+   "recovery": 9,
+   "total": 15,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Hornet animation": "Slash (5 frames at 20 fps)",
+    "Hitbox": "SlashEffect trigger frames"
+   },
+   "desc": "Side slash, Hunter crest"
+  },
+  {
+   "id": "silksong.hunter.altSlash",
+   "class": "hornetSilksong",
+   "type": "nail",
+   "grip": "any",
+   "name": "Alt Slash",
+   "startup": 1,
+   "active": [
+    [
+     1,
+     6
+    ]
+   ],
+   "activeFrames": 6,
+   "hits": 1,
+   "recovery": 9,
+   "total": 15,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Hornet animation": "SlashAlt (5 frames at 20 fps)",
+    "Hitbox": "SlashEffectAlt trigger frames"
+   },
+   "desc": "The second of the alternating side slashes"
+  },
+  {
+   "id": "silksong.hunter.upSlash",
+   "class": "hornetSilksong",
+   "type": "nail",
+   "grip": "any",
+   "name": "Up Slash",
+   "startup": 3,
+   "active": [
+    [
+     3,
+     8
+    ]
+   ],
+   "activeFrames": 6,
+   "hits": 1,
+   "recovery": 10,
+   "total": 18,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Hornet animation": "UpSlash (7 frames at 24 fps)",
+    "Hitbox": "UpSlashEffect trigger frames"
+   },
+   "desc": "Slash upward"
+  },
+  {
+   "id": "silksong.hunter.wallSlash",
+   "class": "hornetSilksong",
+   "type": "nail",
+   "grip": "wall",
+   "name": "Wall Slash",
+   "startup": 1,
+   "active": [
+    [
+     1,
+     6
+    ]
+   ],
+   "activeFrames": 6,
+   "hits": 1,
+   "recovery": 12,
+   "total": 18,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Hornet animation": "Wall Slash (7 frames at 24 fps)",
+    "Hitbox": "SlashEffect trigger frames"
+   },
+   "desc": "Slash away from the wall while clinging"
+  },
+  {
+   "id": "silksong.hunter.downSpike",
+   "class": "hornetSilksong",
+   "type": "nail",
+   "grip": "air",
+   "name": "Down Spike",
+   "startup": 5,
+   "active": [
+    [
+     5,
+     14
+    ]
+   ],
+   "activeFrames": 10,
+   "hits": 1,
+   "recovery": 0,
+   "total": 14,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Hornet animation": "DownSpike Antic (3 frames at 42.8571 fps) → DownSpike (4 frames at 25 fps)",
+    "Hitbox": "DownSlashEffect, whole clip"
+   },
+   "desc": "Diagonal downward thrust in the air; a hit bounces Hornet up"
+  },
+  {
+   "id": "silksong.hunter.dashStab",
+   "class": "hornetSilksong",
+   "type": "nail",
+   "grip": "ground",
+   "name": "Dash Stab",
+   "startup": 11,
+   "active": [
+    [
+     11,
+     23
+    ]
+   ],
+   "activeFrames": 13,
+   "hits": 1,
+   "recovery": 3,
+   "total": 26,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Hornet animation": "Dash Attack Antic (4 frames at 24 fps) → Dash Attack (3 frames at 18 fps) → Dash Attack Recover (2 frames at 20 fps)",
+    "Hitbox": "DashStabEffect, whole clip"
+   },
+   "desc": "Attack while sprinting: a lunging stab"
+  },
+  {
+   "id": "silksong.movement.dash",
+   "class": "hornetSilksong",
+   "type": "movement",
+   "grip": "any",
+   "name": "Dash",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 34,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Dash time": "0.10 s at 28 units/s",
+    "Cooldown": "0.425 s"
+   },
+   "desc": "Dash; held, it carries on into a sprint"
+  },
+  {
+   "id": "silksong.movement.jump",
+   "class": "hornetSilksong",
+   "type": "movement",
+   "grip": "ground",
+   "name": "Jump",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 89,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Height": "5.68 units",
+    "Air time": "0.90 s",
+    "Rise": "8 physics steps at 18.6 units/s, then gravity 60 units/s²"
+   },
+   "desc": "Full-height jump from the ground"
+  },
+  {
+   "id": "silksong.movement.doubleJump",
+   "class": "hornetSilksong",
+   "type": "movement",
+   "grip": "air",
+   "name": "Double Jump",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 47,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "Faydown Cloak double jump (animation)"
+  },
+  {
+   "id": "silksong.movement.hit",
+   "class": "hornetSilksong",
+   "type": "movement",
+   "grip": "any",
+   "name": "Take hit",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 60,
+   "cancels": {
+    "dodge": 13
+   },
+   "armor": [],
+   "iframes": [
+    [
+     1,
+     60
+    ]
+   ],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "I-frames": "1.00 s",
+    "Recoil": "0.20 s at 15 units/s"
+   },
+   "desc": "Hit reaction: knocked back, then invulnerable"
+  },
+  {
+   "id": "silksong.movement.death",
+   "class": "hornetSilksong",
+   "type": "movement",
+   "grip": "any",
+   "name": "Death",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 80,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "Death animation"
+  },
+  {
+   "id": "silksong.movement.bind",
+   "class": "hornetSilksong",
+   "type": "movement",
+   "grip": "ground",
+   "name": "Bind (heal)",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 36,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "Bind: spend silk to heal, on the ground"
   }
  ]
 }

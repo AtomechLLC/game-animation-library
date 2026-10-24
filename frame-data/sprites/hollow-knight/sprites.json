@@ -31,6 +31,9 @@
   },
   "nkg": {
    "file": "moves/nkg.json"
+  },
+  "hornetSilksong": {
+   "file": "moves/hornetSilksong.json"
   }
  }
 }

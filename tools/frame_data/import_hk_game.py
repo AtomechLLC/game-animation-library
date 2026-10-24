@@ -618,6 +618,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('game_dir')
     ap.add_argument('--no-sprites', action='store_true')
+    ap.add_argument('--silksong', help='Hollow Knight Silksong install folder: adds its Hornet as a character')
     ap.add_argument('only', nargs='*', help='move ids to render (default all)')
     a = ap.parse_args()
     g = hk_unity.Game(a.game_dir)
@@ -629,6 +630,14 @@ def main():
         go, hm = find_actor(g, cfg['level'], cfg['go'])
         bb = BossBuilder(Actor(g, go, k.sp), cfg, hm); bb.build(); builders.append(bb)
         print(cfg['id'], len(bb.moves), 'moves')
+    if a.silksong:
+        import hk_silksong
+        g2 = hk_unity.Game(a.silksong, files=(hk_silksong.BUNDLE,))
+        hero, hc2 = hk_silksong.find_hero(g2)
+        sb = Builder(Actor(g2, hero), cls='hornetSilksong')
+        sb.cfg = {'name': 'Hornet (Silksong)'}
+        hk_silksong.build(sb, sb.k, hc2); builders.append(sb)
+        print('hornetSilksong', len(sb.moves), 'moves')
     data = {
         'schema': 'frame-data/1',
         'game': {'id': GAME_ID, 'name': 'Hollow Knight', 'fps': FPS, 'version': f'Steam build (Unity {hk_unity.unity_version(g.dir)})',
@@ -643,9 +652,10 @@ def main():
                    'recovery': 'Frames from the last active frame until you can dash'},
         'columns': ['name', 'class', 'grip', 'strip', 'startup', 'active', 'recovery', 'dodge', 'attack', 'total', 'dmg'],
         'columnNames': {'dodge': ['→ Dash', 'First frame you can dash, jump or cast'], 'attack': ['→ Attack', 'First frame you can attack again']},
-        'families': [{'id': 'hero', 'name': 'The Knight'}, {'id': 'bosses', 'name': 'Bosses'}],
+        'families': [{'id': 'hero', 'name': 'The Knight'}, {'id': 'bosses', 'name': 'Bosses'}] +
+                    ([{'id': 'silksong', 'name': 'Silksong'}] if a.silksong else []),
         'classes': [{'id': 'knight', 'name': 'The Knight', 'family': 'hero', 'icon': 'The Knight', 'weapons': [], 'moves': len(b.moves)}] +
-                   [{'id': x.cls, 'name': x.cfg['name'], 'family': 'bosses', 'icon': x.cfg['name'], 'weapons': [], 'moves': len(x.moves)} for x in builders[1:]],
+                   [{'id': x.cls, 'name': x.cfg['name'], 'family': 'silksong' if x.cls == 'hornetSilksong' else 'bosses', 'icon': x.cfg['name'], 'weapons': [], 'moves': len(x.moves)} for x in builders[1:]],
         'moveTypes': [{'id': 'nail', 'name': 'Nail', 'description': 'Nail slashes'},
                       {'id': 'nailArt', 'name': 'Nail Arts', 'description': 'Charged nail attacks, timed from the release'},
                       {'id': 'spell', 'name': 'Spells', 'description': 'Spells, level 1 and 2'},
@@ -676,7 +686,7 @@ def main():
             if a.only and not any(m['id'].startswith(o) for o in a.only): continue
             tl = x.timelines[m['id']]
             tl.total = m['total'] / FPS
-            frames, boxes, W, H, sc = render(tl, k.sp, clip_box=(-14, -6, 4, 12) if x is b else (-20, -12, 20, 20))
+            frames, boxes, W, H, sc = render(tl, x.k.sp, clip_box=(-14, -6, 4, 12) if x is b else (-20, -12, 20, 20))
             img, cols = sheet(frames, W, H)
             fn = f'sheets/{m["id"]}.webp'
             img.save(os.path.join(sdir, fn), quality=88, method=6)
