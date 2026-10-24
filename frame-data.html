@@ -233,7 +233,14 @@ footer p{max-width:85ch;margin:0 0 8px}
 /* one line each, so the stage sits at the same height whichever game or move is shown */
 .dock-head>div{min-width:0}
 .dock-head small,.dock-head h3{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dock-btns{display:flex;gap:6px;flex:none}
+.dock-btns{display:flex;gap:6px;flex:none;align-items:center}
+/* the share action stands out from the plain chips: Move Explorer's colour, a link icon, a tick once copied */
+.linkbtn{display:inline-flex;align-items:center;gap:5px;border:1px solid #8a3fc9;background:#8a3fc9;color:#fff;border-radius:999px;padding:3px 11px 3px 8px;font-size:12px;font-weight:600;cursor:pointer}
+.linkbtn:hover{background:#7533b0;border-color:#7533b0}
+.linkbtn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.linkbtn .i-ok,.linkbtn.done .i-link{display:none}
+.linkbtn.done .i-ok{display:block}
+.linkbtn.done{background:var(--calm);border-color:var(--calm)}
 .dock .v3d-stage{aspect-ratio:auto;height:clamp(200px,30vh,330px)}
 .pick.min .wtiles,.pick.min .v3d,.pick.min #sub,.pick.min #active{display:none}
 @media (min-width:821px) and (min-height:640px){.pick.dockon:not(.browse){position:sticky;top:var(--hdr,0px);z-index:4;background:var(--bg);border-bottom:1px solid var(--line);padding-bottom:8px}}
@@ -282,7 +289,7 @@ tbody tr.on td{background:var(--chip);box-shadow:inset 0 1px var(--key),inset 0 
         <div id="index"></div>
         <div id="weapons"></div>
       </div>
-      <section class="dock" id="dock" hidden aria-label="3D preview"><div class="dock-head"><div><small id="dockSrc"></small><h3 id="dockName">3D preview</h3></div><span class="dock-btns"><button class="chip" id="dockMore">Frame details</button><button class="chip" id="pickMin" aria-expanded="true" title="Hide the weapon buttons and preview">Hide</button></span></div><div class="v3d" id="dockView"></div></section>
+      <section class="dock" id="dock" hidden aria-label="3D preview"><div class="dock-head"><div><small id="dockSrc"></small><h3 id="dockName">3D preview</h3></div><span class="dock-btns"><button class="linkbtn" id="dockLink" aria-label="Copy link to this frame" title="Copy a link that opens this move paused on this frame, with the same speed and overlays"><svg class="i-link" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3.2-3.2a4.5 4.5 0 0 0-6.4-6.4l-1.1 1.1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3.2 3.2a4.5 4.5 0 0 0 6.4 6.4l1.1-1.1"/></svg><svg class="i-ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Copy link</span></button><button class="chip" id="dockMore">Frame details</button><button class="chip" id="pickMin" aria-expanded="true" title="Hide the weapon buttons and preview">Hide</button></span></div><div class="v3d" id="dockView"></div></section>
     </div>
     <div class="legend" id="legend"></div>
     <div id="table"></div>
@@ -497,7 +504,7 @@ function openMove(key){
 // covers swaps the move in place, other rows open the detail sheet. The 3D viewer holds the picked weapon, else each
 // move's class preview weapon.
 // Bump ?v= whenever viewer3d.js, sprites2d.js or clipviewer.js changes: browsers and Pages cache them, and a stale copy next to a new page breaks the dock
-const VIEWER='./frame-data/viewer3d.js?v=6',VIEWER2D='./frame-data/sprites2d.js?v=2',CLIPVIEWER='./frame-data/clipviewer.js?v=1';
+const VIEWER='./frame-data/viewer3d.js?v=7',VIEWER2D='./frame-data/sprites2d.js?v=3',CLIPVIEWER='./frame-data/clipviewer.js?v=2';
 // the models and sprites viewers load per class (classData); the clip viewer reads each move's clips
 const byClass=()=>G.models||G.sprites;
 const DOCK={key:null,view:null,game:null,cls:null,w:null,cm:null,seq:0};
@@ -534,7 +541,7 @@ async function dock(list){
     DOCK.cls=cls;DOCK.w=st.w;
   }catch(e){if(seq===DOCK.seq){dockOn(true);$('#dockView').innerHTML=`<div class="empty">Could not load the preview (${esc(e.message)}).</div>`}}}
 async function preview(m){
-  const key=m.class+'|'+m.id;DOCK.key=key;
+  const key=m.class+'|'+m.id;DOCK.key=key;if(LINKVIEW&&LINKVIEW.key!==key)LINKVIEW=null;
   document.querySelectorAll('tbody tr.on').forEach(r=>r.classList.remove('on'));
   if(st.cls)document.querySelector(`tbody tr[data-m="${CSS.escape(key)}"]`)?.classList.add('on');
   writeHash();
@@ -542,24 +549,43 @@ async function preview(m){
   $('#dockName').title=$('#dockName').textContent=`${m.name} · `+(m.active.length?`startup ${m.startup}, active ${m.active.map(([s,e])=>s===e?s:s+'–'+e).join(', ')}`:`${m.total??'—'} frames`);
   const view=await DOCK.view;
   if(DOCK.key!==key)return;
-  if(byClass()){if(!DOCK.cm)return;view.show(m,{weapon:pickName(),strip:stripHtml(m,DOCK.cm.moves[m.id].frames),state:f=>frameState(m,f)})}
-  else view.show(m,{strip:n=>stripHtml(m,n),state:f=>frameState(m,f)});
+  let shown;
+  if(byClass()){if(!DOCK.cm)return;shown=await view.show(m,{weapon:pickName(),strip:stripHtml(m,DOCK.cm.moves[m.id].frames),state:f=>frameState(m,f)})}
+  else shown=await view.show(m,{strip:n=>stripHtml(m,n),state:f=>frameState(m,f)});
+  // a link's frame, speed and overlays apply once, to the move it names
+  if(LINKVIEW?.key===key&&DOCK.key===key&&shown!==false){const v=LINKVIEW;LINKVIEW=null;await view.setView?.(v)}
 }
 function closeSheet(){$('#sheet').hidden=true;$('#scrim').hidden=true}
 // Shareable state in the hash: #g=elden-ring&c=Katana&w=Moonveil&t=light,heavy&m=a020_030000 (m: the move in the viewer)
 // A move named by a link (class|id), shown in the viewer if it can be, else in the detail sheet, once
-let LINKED=null;
-function openLinked(){if(LINKED){const k=LINKED;LINKED=null;if(moveOf(k))openMove(k)}}
+// with the view it asks for (fr frame, sp speed, show/hide overlay toggles, cl clip), which the viewer applies paused
+let LINKED=null,LINKVIEW=null;
+function openLinked(){if(LINKED){const k=LINKED;LINKED=LINKVIEW=null;if(moveOf(k))openMove(k)}}
 function writeHash(){
+  const h=hashParams().toString();
+  try{history.replaceState(null,'',h?'#'+h:location.pathname+location.search)}catch(e){}}
+function hashParams(){
   const p=new URLSearchParams();if(st.game&&st.game!==GAMES[0].id)p.set('g',st.game);if(st.fam&&!st.cls)p.set('f',st.fam);if(st.cls)p.set('c',st.cls);
   if(st.cls&&st.w!=null)p.set('w',CL[st.cls].weapons[st.w]);if(st.types.size)p.set('t',[...st.types].join(','));if(st.grips.size)p.set('grip',[...st.grips].join(','));
-  if(st.sort)p.set('s',(st.dir<0?'-':'')+st.sort);if(st.cls&&DOCK.key?.startsWith(st.cls+'|'))p.set('m',DOCK.key.split('|')[1]);const h=p.toString();
-  try{history.replaceState(null,'',h?'#'+h:location.pathname+location.search)}catch(e){}}
+  if(st.sort)p.set('s',(st.dir<0?'-':'')+st.sort);if(st.cls&&DOCK.key?.startsWith(st.cls+'|'))p.set('m',DOCK.key.split('|')[1]);
+  return p}
+// "Copy link to this frame": the page's state (only the game when no class is picked, since filters could hide the
+// move) plus the move and the viewer's frame, speed and overlays
+async function copyLink(btn){
+  if(!DOCK.key||!DOCK.view)return;
+  const [cls,id]=DOCK.key.split('|'),v=(await DOCK.view).view?.()||{};
+  const p=st.cls?hashParams():new URLSearchParams(st.game!==GAMES[0].id?{g:st.game}:{});
+  p.set('c',cls);p.set('m',id);if(v.clip)p.set('cl',v.clip);p.set('fr',v.frame||1);if(v.speed)p.set('sp',v.speed);
+  if(v.show?.length)p.set('show',v.show.join(','));if(v.hide?.length)p.set('hide',v.hide.join(','));
+  let ok=false;try{await navigator.clipboard.writeText(location.origin+location.pathname+'#'+p);ok=true}catch(e){}
+  const l=btn.querySelector('span');btn.classList.toggle('done',ok);l.textContent=ok?'Link copied':'Could not copy';
+  clearTimeout(btn.t);btn.t=setTimeout(()=>{btn.classList.remove('done');l.textContent='Copy link'},1600)}
 function fromHash(){
   const p=new URLSearchParams(location.hash.slice(1));
   st.fam=FAM[p.get('f')]?p.get('f'):null;st.cls=CL[p.get('c')]?p.get('c'):null;
   const mid=p.get('m'),lm=mid&&D.moves.find(m=>m.id===mid&&(!st.cls||m.class===st.cls));
-  LINKED=lm?lm.class+'|'+lm.id:null;if(lm&&!st.cls){st.cls=lm.class;st.fam=CL[lm.class].family}
+  LINKED=lm?lm.class+'|'+lm.id:null;const list=k=>(p.get(k)||'').split(',').filter(Boolean);
+  LINKVIEW=lm&&['fr','sp','show','hide','cl'].some(k=>p.has(k))?{key:LINKED,frame:+p.get('fr')||1,speed:p.get('sp'),show:list('show'),hide:list('hide'),clip:p.has('cl')?+p.get('cl'):null}:null;if(lm&&!st.cls){st.cls=lm.class;st.fam=CL[lm.class].family}
   const wi=st.cls?CL[st.cls].weapons.indexOf(p.get('w')):-1;st.w=wi>=0?wi:null;
   st.types=new Set((p.get('t')||'').split(',').filter(t=>T[t]));st.grips=new Set((p.get('grip')||'').split(',').filter(g=>GR[g]));
   const s=p.get('s');if(s&&COLS.find(c=>c[0]===s.replace('-',''))){st.sort=s.replace('-','');st.dir=s[0]==='-'?-1:1}}
@@ -569,6 +595,7 @@ document.addEventListener('click',e=>{
   if(d.open){openMove(d.open);return}
   if(d.m){const m=moveOf(d.m);if(!$('#dock').hidden&&DOCK.view&&m&&canDock(m))preview(m);else openMove(d.m);return}
   if(t.id==='dockMore'){if(DOCK.key)openMove(DOCK.key);return}
+  if(t.id==='dockLink'){copyLink(t);return}
   if(t.id==='pickMin'){pickMin(!$('#pick').classList.contains('min'));return}
   if(d.game!==undefined){if(d.game!==st.game)loadGame(d.game);return}
   if(d.fam!==undefined){st.fam=d.fam&&st.fam!==d.fam?d.fam:null;st.cls=null;st.w=null;st.shown=PAGE;renderAll();return}

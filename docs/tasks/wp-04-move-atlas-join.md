@@ -35,7 +35,10 @@ handle the same action.
 3. On atlas clips with a move id, add "Inspect frame by frame" linking to that move.
 4. In the inspector, show "Illustrates: <atlas entry>" (WP-03).
 5. Fix the Elden Ring game filter: derive the game from clips and references as well as `example_games`, or
-   backfill the field.
+   backfill the field. **Parked (2026-10-24):** Sungkuk set this aside because improving Action Atlas is not
+   the current goal. A view-only version was built and discarded: the filter also read clip games (Elden Ring and
+   its expansions only), so Elden Ring matched 63 entries instead of 34 and Shadow of the Erdtree was listed
+   under it. Revisit if Atlas work is adopted.
 6. Clean up the stale curation records listed in inventory §6.7.
 
 ## Out of scope
@@ -49,7 +52,7 @@ handle the same action.
 ## Done when
 
 - Every Elden Ring render clip with a source move opens that move in Frame Data in one click.
-- Filtering the atlas by Elden Ring shows all entries with an Elden Ring render.
+- Filtering the atlas by Elden Ring shows all entries with an Elden Ring render (parked, see scope item 5).
 - `python merge.py` and `build_page.py` keep the new fields after a rebuild.
 
 ## Evidence to capture

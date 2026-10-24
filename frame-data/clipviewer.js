@@ -97,6 +97,19 @@ export function createViewer(el, base) {
     } catch (e) { if (t === token) msg.textContent = `Could not load the clip (${e.message}).` }
   }
 
+  // The view a link can carry (frame, speed, overlay toggles), as changes from this viewer's defaults so links stay short
+  const sel = $('.v3d-speed'), defSpeed = ([...sel.options].find(o => o.defaultSelected) || sel.options[0]).value;
+  const toggles = () => [...el.querySelectorAll('.v3d-opts input[type=checkbox]')], tkey = i => i.dataset.k || i.className.replace('v3d-', '');
+  const view = () => ({clip: m && m.clips.indexOf(clip) > 0 ? m.clips.indexOf(clip) : null, frame: f, speed: sel.value === defSpeed ? null : sel.value,
+    show: toggles().filter(i => i.checked && !i.defaultChecked).map(tkey), hide: toggles().filter(i => !i.checked && i.defaultChecked).map(tkey)});
+  async function setView(v) {
+    if (v.clip != null && m?.clips[v.clip] && clip !== m.clips[v.clip]) await pick(v.clip);
+    setPlaying(false);
+    if (v.speed && [...sel.options].some(o => o.value === v.speed)) { sel.value = v.speed; speed = +v.speed }
+    for (const i of toggles()) { const k = tkey(i); if (v.show?.includes(k)) i.checked = true; if (v.hide?.includes(k)) i.checked = false }
+    go(Math.min(Math.max(1, v.frame || 1), N));
+  }
+
   const tick = now => {
     if (disposed) return;
     raf = requestAnimationFrame(tick);
@@ -114,6 +127,7 @@ export function createViewer(el, base) {
       alts.querySelectorAll('button').forEach(b => b.onclick = e => { e.stopPropagation(); pick(+b.dataset.clip) });
       return pick(0);
     },
+    view, setView,
     // warm the HTTP cache only: decoding every hovered row would push the clips on show out of the frame cache
     prefetch(move) { const c = move.clips?.[0]; if (c && !warm.has(c.file)) { warm.add(c.file); fetch(base + c.file).catch(() => {}) } },
     dispose() {
