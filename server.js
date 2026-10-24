@@ -60,7 +60,8 @@ const server = http.createServer(async (req, res) => {
     if (p.startsWith('/gifs/')) return serveGif(res, p);
     // Frame data tab: a static page that loads frame-data/games.json and one JSON file per game
     if (p === '/frame-data' || p === '/frame-data.html') return serveFile(res, '/frame-data.html', '', { '.html': 'text/html; charset=utf-8' }, 0);
-    if (p.startsWith('/frame-data/')) return serveFile(res, p, 'frame-data', FRAME_TYPES, 3600);
+    // the game list and per-game JSON change with every import, so browsers recheck them; models, icons and clips keep an hour
+    if (p.startsWith('/frame-data/')) return serveFile(res, p, 'frame-data', FRAME_TYPES, p.endsWith('.json') ? 0 : 3600);
     if (p === '/healthz') return send(res, 200, 'ok');
     send(res, 404, 'Not found');
   } catch (e) {
