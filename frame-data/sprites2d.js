@@ -2,6 +2,7 @@
 // frame, like Baston's hitbox viewer. Everything it loads is written by tools/frame_data/export_baston_sprites.py
 // (format in frame-data/README.md, "2D preview"). It has the same interface as viewer3d.js, so the page docks either.
 // Frames here are the tab's frames: 1-based, at the game's frame rate (sprites.json fps).
+import {speedHtml, bindSpeed} from './speed.js?v=1';
 const cache = new Map();
 const once = (key, fn) => { if (!cache.has(key)) cache.set(key, fn().catch(e => { cache.delete(key); throw e })); return cache.get(key) };
 const json = url => fetch(url).then(r => { if (!r.ok) throw new Error(`${url}: ${r.status}`); return r.json() });
@@ -33,7 +34,7 @@ export async function createViewer(el, base) {
       <button class="v3d-prev" aria-label="Back one frame" title="Back one frame (,)">−1 f</button>
       <button class="v3d-next" aria-label="Forward one frame" title="Forward one frame (.)">+1 f</button>
       <div class="v3d-scrub"><div class="v3d-strip"></div><input type="range" min="1" max="1" step="1" value="1" aria-label="Frame"></div>
-      <select class="v3d-speed" aria-label="Playback speed"><option value="1">1×</option><option value="0.5">½×</option><option value="0.25">¼×</option><option value="0.1">0.1×</option></select>
+      ${speedHtml(0.5)}
     </div>
     <p class="v3d-keys"><span><kbd>Space</kbd> Play / pause</span><span><kbd>,</kbd> <kbd>.</kbd> or <kbd>←</kbd> <kbd>→</kbd> Previous / next frame</span><span><kbd>Ctrl</kbd> + <kbd>←</kbd> <kbd>→</kbd> Back / forward 1 second</span><span><kbd>Shift</kbd> + <kbd>←</kbd> <kbd>→</kbd> First / last frame</span></p>
     <div class="v3d-opts">${Object.entries(man.kinds).map(([k, l]) => `<label title="${l}"><input type="checkbox" data-k="${k}"${ON[k] ? ' checked' : ''}><i style="display:inline-block;width:10px;height:10px;border:1px solid ${COLORS[k]};background:${COLORS[k]}55"></i>${l}</label>`).join('')}
@@ -42,7 +43,7 @@ export async function createViewer(el, base) {
   const canvas = $('canvas'), stage = $('.v3d-stage'), ctx = canvas.getContext('2d');
   const FPS = man.fps || 60;
   let disposed = false, raf = 0, mv = null, img = null, opts = {}, N = 1, f = 1, token = 0;
-  let playing = !matchMedia('(prefers-reduced-motion: reduce)').matches, speed = 1, acc = 0, last = performance.now();
+  let playing = !matchMedia('(prefers-reduced-motion: reduce)').matches, speed = 0.5, acc = 0, last = performance.now();
   const on = () => Object.fromEntries([...el.querySelectorAll('.v3d-opts input')].map(i => [i.dataset.k, i.checked]));
 
   const resize = () => { const r = devicePixelRatio || 1; canvas.width = Math.round(stage.clientWidth * r); canvas.height = Math.round(stage.clientHeight * r); draw() };
@@ -88,7 +89,7 @@ export async function createViewer(el, base) {
   $('.v3d-prev').onclick = () => { setPlaying(false); go(f - 1) };
   $('.v3d-next').onclick = () => { setPlaying(false); go(f + 1) };
   $('.v3d-scrub input').oninput = e => { setPlaying(false); go(+e.target.value) };
-  $('.v3d-speed').onchange = e => { speed = +e.target.value };
+  speed = bindSpeed($('.v3d-speed'), speed, v => { speed = v });
   el.querySelectorAll('.v3d-opts input').forEach(i => i.onchange = draw);
   const onKey = e => {
     if (e.target.closest('input,select,textarea') && e.target.type !== 'range') return;

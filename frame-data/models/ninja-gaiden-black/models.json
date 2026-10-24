@@ -1,0 +1,70 @@
+{
+ "schema": "frame-data-models/2",
+ "game": "ninja-gaiden-black",
+ "version": "Xbox, USA (5443000D)",
+ "fps": 60,
+ "weaponTurn": false,
+ "mirror": false,
+ "skeleton": {
+  "weaponBone": "R_Hand",
+  "leftWeaponBone": "L_Hand",
+  "rootBone": "Hips",
+  "follow": "Hips",
+  "fit": [
+   "Head",
+   "L_Foot",
+   "R_Foot",
+   "L_Hand",
+   "R_Hand"
+  ],
+  "bones": [
+   "Hips",
+   "Spine",
+   "Head",
+   "L_UpperArm",
+   "L_Forearm",
+   "L_Hand",
+   "R_UpperArm",
+   "R_Forearm",
+   "R_Hand",
+   "L_Thigh",
+   "L_Calf",
+   "L_Foot",
+   "R_Thigh",
+   "R_Calf",
+   "R_Foot"
+  ]
+ },
+ "armor": {
+  "name": "Ryu Hayabusa",
+  "file": "ryu.glb"
+ },
+ "weapons": {
+  "Dragon Sword": {
+   "model": "katana.kmd",
+   "file": "weapon-dragon-sword.glb",
+   "variation": "dragonSword"
+  }
+ },
+ "body": {
+  "100": [
+   "L_Foot",
+   0.0,
+   -0.06,
+   0.08
+  ],
+  "101": [
+   "R_Foot",
+   0.0,
+   -0.06,
+   0.08
+  ]
+ },
+ "classes": {
+  "dragonSword": {
+   "file": "moves/dragonSword.json",
+   "weapon": "Dragon Sword",
+   "hand": "R"
+  }
+ }
+}

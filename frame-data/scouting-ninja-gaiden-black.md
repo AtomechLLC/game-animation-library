@@ -72,7 +72,9 @@ right leg and left leg: an IK end-effector position, its rotation and two angles
 
 The importer (`tools/frame_data/import_ngb_game.py`, README "Ninja Gaiden Black") now reads the input rules in
 `ryu.chr` (a bytecode interpreted at xbe 0x16300) to tie inputs to states, and the technique list in `default.xbe`
-for names. It covers 27 Dragon Sword moves; the preview is a figure posed from the motions, not the model.
+for names. It covers 27 Dragon Sword moves. A second pass (`export_ngb_models.py`) decoded the KMD meshes and
+textures (an XPR0 block of Xbox D3D resources), the limbs' hinge axes and the sword's mount and capsule in
+`katana.itm`, so the preview plays the game's own Ryu and Dragon Sword in 3D.
 
 ## What is left, and effort
 

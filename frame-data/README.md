@@ -26,11 +26,13 @@ The page knows nothing about where the numbers came from, so every source only h
   from an installed copy (see [Hollow Knight](#hollow-knight)), which also writes `sprites/hollow-knight/` for the
   2D preview and `icons/hollow-knight/`.
 - `devil-may-cry-3.json` — Devil May Cry 3: Special Edition (PS2, Europe), 60 fps, Dante's 118 weapon and style moves.
-  Built by `tools/frame_data/import_dmc3_game.py` from the disc's files (see [Devil May Cry 3](#devil-may-cry-3));
-  `tools/frame_data/export_dmc3_models.py` writes `models/devil-may-cry-3/` for the 3D preview.
+  Built by `tools/frame_data/import_dmc3_game.py` from the disc's files (see [Devil May Cry 3](#devil-may-cry-3)),
+  which also writes `icons/devil-may-cry-3/`; `tools/frame_data/export_dmc3_models.py` writes `models/devil-may-cry-3/`
+  for the 3D preview.
 - `ninja-gaiden-black.json` — Ninja Gaiden Black (Xbox), 60 fps, Ryu's Dragon Sword. Built by
   `tools/frame_data/import_ngb_game.py` from the game disc (see [Ninja Gaiden Black](#ninja-gaiden-black)), which also
-  writes `sprites/ninja-gaiden-black/` for the 2D preview and `icons/ninja-gaiden-black/`.
+  writes `sprites/ninja-gaiden-black/` (2D sheets, used for the library clips) and `icons/ninja-gaiden-black/`;
+  `tools/frame_data/export_ngb_models.py` writes `models/ninja-gaiden-black/` for the 3D preview.
 - `clipviewer.js` — the hitbox clip preview docked above the move table for games with `clips` (see [Hitbox clips](#hitbox-clips)).
 - `models/elden-ring/` and `viewer3d.js` — the 3D preview docked above the move table (see [3D preview](#3d-preview)).
 - `icons/elden-ring/` — 96px WebP inventory icons per weapon and `icons.json` (weapon name → file, source page). Built by
@@ -229,10 +231,35 @@ python tools/frame_data/export_dmc3_models.py "D:/Games/Devil May Cry 3 SE"     
 - **Cancels.** A script also sets per-input next-action policies as the motion plays (buffer, act, off). The first frame
   it lets an input act is the cancel: `attack` (melee), `dodge` (jump or roll), `block` (Royalguard), `skill` (style
   move) and `move` (plain movement, the end of recovery). They come from the move's last script.
-- **Not known yet.** When the hit comes out isn't in the scripts or any data file; the executable decides it, so startup,
-  active frames, recovery and the 3D preview's hitboxes are left out for now. Also not listed yet: the guns' normal
-  aimed shots and Twosome Time (their motions come from aim tables), Trickster, Quicksilver and Doppelganger moves
-  (started outside the action dispatch), and damage.
+- **Icons.** Each weapon's icon is its HUD icon, and Royalguard's is its style emblem, from `id100.pac` (the HUD
+  archive; texture slots 42-50 and 30-38 for the weapons, 24 for Royalguard, as the Crimson mod's `HUD.cpp` reads
+  them), cropped and centred at 96 px.
+- **Startup, active, hits.** The scripts also switch Dante's hitboxes on and off: `10+k` switches on k+1 colliders for
+  a number of frames (or until a `20` / `24` switches them off), and `06` / `08` before it lets the move strike the
+  same enemy again. Colliders are `pl000.pac` slot 6 (type, bone, shape; type bit 0 deals damage) with their spheres in
+  slot 7. Active frames are the frames a damaging collider is on, counted like cancels (frame 1 is the first frame the
+  move plays); startup is the first, recovery is total minus the last, hits counts the `06` / `08`s that come before a
+  damaging collider. A collider left on for good ends with its motion (dive kicks end on landing in the game).
+- **Cerberus.** The nunchaku runs scripts of its own alongside Dante's (`plwp_nunchaku.pac` slot 5, same bytecode, one
+  list of scripts): its script k plays with Dante's Cerberus script k, and Swordmaster Cerberus j with 30 + j (their
+  motions match frame for frame). Its colliders (ids 81-98) sit on the chain's simulated bones, so the 3D preview marks
+  those frames without drawing a shape.
+- **Shots.** Guns, Sword Pierce, Crystal, Thunder Bolt, Zodiac and Distortion hit with what they fire or throw. The
+  action's code in the executable fires either when the script signals it (block 0's last byte) or on a timer from
+  Dante's tuning table (`pl000.pac` slot 11, Gunslinger level 1's rates); `dmc3_moves.SHOTS` lists each move's rule
+  with its function's address. Active marks the frame each shot leaves and hits counts shots.
+- **Beowulf.** Its model is made on Dante's rest pose with one bone per limb bone (forearms, hands, calves, feet,
+  toes); the export splits it into a piece per bone (node extras `bone`) and the preview puts each piece on that bone.
+- **No hit.** Dance Macabre's first part (the dash into part 2) and Sword Pierce's catch switch on no hitbox and fire
+  nothing: Dante's colliders are only ever switched on by scripts, and theirs switch on none. The thrown Rebellion
+  hits from the weapon itself while it flies out and back, for as long as its flight lasts.
+- **Tempest** hits only while held: the code replays its spin from frame 68 (`(15, 10, 68)` in the move's scripts, a
+  third value being the frame the action plays a script from), and that script carries the hit. Its row is held for
+  one extra spin.
+- **Not known yet.** A few style moves use boxes instead of spheres, which the preview doesn't draw. Also not
+  listed yet: the guns' normal aimed shots and Twosome Time (their motions come from aim tables), Trickster,
+  Quicksilver and Doppelganger moves (started outside the action dispatch), and damage (each `06` picks an entry in
+  the weapon's damage table, which isn't read yet).
 
 ## Ninja Gaiden Black
 
@@ -258,13 +285,12 @@ Formats are in `tools/frame_data/ngb_files.py`, worked out from the bytes and th
 - The Ultimate Technique family (Haze Straight Slash, its Essence and Ultimate versions) shares one animation and
   timing; only the effects differ.
 
-The 2D preview is not the game's model: `sprites/ninja-gaiden-black/` draws a figure posed from the game's animation
-(root, spine and head rotations, limbs as two-bone IK chains to the motion's end-effectors) seen from the side, the
-sword along the right hand's rotation, and the sword (or foot) attack capsule in red on the active frames. Sword
-length and placement are approximate. `add_ngb.py` renders library clips from the same sheets.
+The tab shows the 3D preview (see [3D preview](#ninja-gaiden-black-1)): Ryu's own model and the Dragon Sword with
+its attack capsule. `sprites/ninja-gaiden-black/` holds the older 2D sheets, a figure posed from the same animation
+seen from the side with the sword placed approximately; `add_ngb.py` renders library clips from them.
 
 Not read yet: other weapons (the scripts and rules are there: nunchaku, Warhammer, ...), damage, Izuna Drop's throw
-after the grab, flying-swallow and wall moves, the model's meshes.
+after the grab, flying-swallow and wall moves.
 
 ## Super Smash Bros. Ultimate
 
@@ -295,7 +321,7 @@ clip to its GIF.
 
 For a game whose `games.json` entry has `clips` (a folder) and a character picked, `clipviewer.js` docks the move's
 hitbox clip above the table instead of the 3D preview, with the same controls: play/pause, one-frame steps,
-scrubbing on the frame strip and speed (¼× by default, about the site's own speed). Moves with several clips (angled
+scrubbing on the frame strip and speed (0.25× by default, about the site's own speed; a picked speed is remembered, see speed.js). Moves with several clips (angled
 tilts and smashes, early/late) get a button per clip. Frames are decoded once with `ImageDecoder` (kept for the last
 six clips); browsers without it get the WebP playing by itself.
 
@@ -422,9 +448,38 @@ writes `models/devil-may-cry-3/` in the same layout (about 2.4 MB):
   on the left hand for Ebony & Ivory and Agni & Rudra).
 - `anim/<move>.bin`: the move's motions played in a row from each script's start frame, sampled at 60 fps (`FDA2`);
   root motion carries on from one motion to the next.
-- `moves/<class>.json`: per move its `anim`, `frames` and preview `weapon`; `hits` is empty until hit windows are found.
+- `moves/<class>.json`: per move its `anim`, `frames`, preview `weapon` and `hits` (each damaging collider's frames, its
+  id as `judge`, null for shots and Cerberus's chain); `attacks["0"]` holds each collider's sphere radius, and `models.json` `body` places its centre on its
+  bone. Every weapon is variation 0, since the colliders belong to Dante, not the weapon. A weapon whose nodes carry
+  extras `bone` (Beowulf) is worn: `viewer3d.js` puts each node on that body bone instead of in the hand.
 
 These are Capcom's assets, under the same terms as the Elden Ring files above.
+
+### Ninja Gaiden Black
+
+```bash
+python tools/frame_data/export_ngb_models.py "C:/Games/Ninja Gaiden Black.iso"   # or the unpacked folder; ~1 minute
+```
+
+writes `models/ninja-gaiden-black/` in the same layout (about 1.1 MB). The formats are in `ngb_files.py` (`KMD`):
+
+- `ryu.glb`: `chr_ryu.afs/ryu.kmd`. A KMD holds an XPR0 block of Xbox D3D resources: per object a mesh header
+  (FVF, vertex and index counts) and its subsets (index range, textures), then the resource headers (DXT textures,
+  vertex, index and push buffers). Ryu is 15 body parts, each rigid on its own bone (OBJINFO kind 1), plus joint
+  fillers (kind 4) whose one blend weight goes to the bone's parent. Overlay passes on the same vertices (the red
+  eyes, the Dark Dragon veins) and the cloth-simulated scarf are left out. The files are right-handed (Ryu holds the
+  sword in his right hand at -x), so `models.json` sets `"mirror": false`.
+- `weapon-dragon-sword.glb`: `cmn.afs/katana.kmd` object 0, placed by `katana.itm`'s grip 2 (right hand, bone 11,
+  turned -13° about y). The root node's `extras.dummies` are the ends of the blade capsule in the same file
+  (radius 0.1 m), drawn on the move's active frames; kicks draw a sphere on the kicking foot (slot 0x0c right,
+  0x0d left: no foot shape was found in the files).
+- `anim/<move>.bin`: the motion sampled once per tab frame (`FDA2`). Root, spine and head take the motion's
+  rotations; each arm and leg is solved from its end-effector, the KMD bone lengths and a hinge axis the motion
+  carries as two angles (direction (cos a sin b, -sin a, cos a cos b), built at xbe 0x190217; the elbow or knee sits
+  on opposite sides of it on the left and right limbs); hands and feet take the effector rotation. Air moves start
+  with the hips 1.8 m up, since the game's jump physics, not the motion, lifts Ryu, and no frame goes below the floor.
+
+These are Tecmo's assets, under the same terms as the Elden Ring files above.
 
 ## Store links
 

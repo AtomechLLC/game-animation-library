@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Trends · Game Animation Library</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22%231f8a6e%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20transform%3D%22translate%284%204%29%22%3E%3Crect%20x%3D%223%22%20y%3D%2213%22%20width%3D%224%22%20height%3D%228%22%20rx%3D%221%22%20opacity%3D%22.55%22%2F%3E%3Crect%20x%3D%2210%22%20y%3D%229%22%20width%3D%224%22%20height%3D%2212%22%20rx%3D%221%22%20opacity%3D%22.75%22%2F%3E%3Crect%20x%3D%2217%22%20y%3D%225%22%20width%3D%224%22%20height%3D%2216%22%20rx%3D%221%22%2F%3E%3Cpath%20d%3D%22M5%2010l7-4%207-4%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+<meta name="description" content="Game Animation Library: how the games in the Frame Data tab time their attacks, cancels and defense, side by side.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Same shell as frame-data.html (sticky header, game bar on its own row, ruler), with cross-game charts below. */
+/* Same shell as template.html (sticky timeline header, filter rail, slide-over sheet), with a weapon icon index and frame tables. */
+:root{
+  --bg:#f3f2ee; --panel:#ffffff; --sunk:#e9e7e1; --fg:#1c1b19; --muted:#6b6860; --line:#d8d5cc;
+  --key:#e08a00; --key-ink:#8a5200; --combat:#c2412d; --calm:#2f7a6b; --chip:#efece5;
+  --f-start:#cfcbc0; --f-active:#c2412d; --f-gap:#e6b8ae; --f-rec:#e08a00; --f-free:#2f7a6b40; --f-armor:#4b5bd6; --f-iframe:#0e9bb8;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
+  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; color-scheme:dark;
+  --f-start:#4a4b52; --f-active:#ff7a63; --f-gap:#6b3a33; --f-rec:#ffb020; --f-free:#62c9b14d; --f-armor:#8f9bff; --f-iframe:#4cc9e8}}
+:root[data-theme="dark"]{
+  --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
+  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; color-scheme:dark;
+  --f-start:#4a4b52; --f-active:#ff7a63; --f-gap:#6b3a33; --f-rec:#ffb020; --f-free:#62c9b14d; --f-armor:#8f9bff; --f-iframe:#4cc9e8}
+*{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:14px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--panel)}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--key);outline-offset:2px}
+[hidden]{display:none!important}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--panel);border-bottom:1px solid var(--line)}
+.hrow{display:flex;align-items:center;gap:16px;padding-block:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:baseline;gap:4px 10px;min-width:0;flex-wrap:wrap}
+.club{display:inline-flex;align-items:center;gap:7px;color:var(--fg);text-decoration:none;font-family:var(--display);font-weight:700;font-size:14px;white-space:nowrap;padding:4px 10px 4px 8px;border:1px solid var(--line);border-radius:6px}
+.club:hover{border-color:#5865f2}
+.club svg{width:20px;height:20px;fill:#5865f2;flex:none}
+.brand h1{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.brand .tagline{font-size:13px;color:var(--muted);font-style:italic}
+.brand .ver{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.tabs{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.tabs a{padding:7px 12px;font-size:13px;font-weight:500;text-decoration:none}
+.tabs a[aria-current="page"]{background:var(--fg);color:var(--bg)}
+.tabs a:not([aria-current]):hover{background:var(--chip)}
+.search{flex:1 1 240px;display:flex;align-items:center;gap:8px;background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:0 10px;min-width:0}
+.search input{flex:1;min-width:0;border:0;background:transparent;color:var(--fg);font:inherit;padding:9px 0;outline:none}
+.search kbd{font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:0 5px}
+/* the game bar gets its own row, ahead of the per-game counts, so switching games never moves or resizes it */
+.grow{display:flex;align-items:center;gap:6px 16px;flex-wrap:wrap;padding-bottom:10px;margin-top:-4px}
+.grow .ver{flex:1 1 220px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.domain{display:flex;flex:none;max-width:100%;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+/* seven games: the bar scrolls sideways on a phone rather than wrapping */
+.domain{overflow-x:auto;scrollbar-width:none}
+.domain button{white-space:nowrap;border:0;background:transparent;padding:7px 12px;cursor:pointer;font-size:13px;font-weight:500}
+.domain button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.ruler{position:relative;height:30px;border-top:1px solid var(--line);overflow:hidden;font-family:var(--mono);font-size:10px;color:var(--muted)}
+.ruler .ticks{position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 12px);opacity:.9;height:8px}
+.ruler .keys{position:absolute;inset:8px 0 0 0;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding-inline:max(16px,env(safe-area-inset-left,0px))}
+.ruler .keys::-webkit-scrollbar{display:none}
+.kf{display:flex;align-items:center;gap:5px;white-space:nowrap;border:0;background:transparent;cursor:pointer;padding:2px 8px 2px 4px;border-radius:3px;font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.kf i{width:8px;height:8px;transform:rotate(45deg);background:var(--line);display:inline-block}
+.kf:hover{color:var(--fg)}
+.kf[aria-pressed="true"]{color:var(--key-ink)}
+.kf[aria-pressed="true"] i{background:var(--key)}
+.playhead{position:absolute;top:0;bottom:0;width:2px;background:var(--combat);left:0;animation:scrub 14s linear infinite;pointer-events:none}
+@keyframes scrub{to{left:100%}}
+@media (prefers-reduced-motion: reduce){.playhead{animation:none;left:24%}}
+/* chart colors: slots 1 and 2 of the dataviz reference palette (blue, orange), validated as a pair in both modes */
+:root{--s1:#2a78d6;--s2:#eb6834;--s1-wash:#2a78d633;--grid:#e6e3db}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--s1:#3987e5;--s2:#d95926;--s1-wash:#3987e540;--grid:#2c2d32}}
+:root[data-theme="dark"]{--s1:#3987e5;--s2:#d95926;--s1-wash:#3987e540;--grid:#2c2d32}
+.grow .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+main{padding-block:20px 0;display:grid;gap:28px}
+.intro{display:grid;gap:6px;max-width:80ch}
+.intro h2{font-family:var(--display);font-size:28px;font-weight:700;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.intro p{margin:0;color:var(--muted)}
+.intro p b{color:var(--fg);font-weight:600}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:18px 18px 14px;display:grid;gap:10px;min-width:0;scroll-margin-top:150px}
+.card>header{all:unset;display:flex;justify-content:space-between;align-items:start;gap:8px 16px;flex-wrap:wrap}
+.card h2{font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:-.01em;margin:0;text-wrap:balance}
+.card .find{margin:2px 0 0;color:var(--muted);max-width:80ch}
+.card .find b{color:var(--fg);font-weight:600}
+.seg{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;flex:none}
+.seg button{border:0;background:transparent;padding:5px 10px;cursor:pointer;font-size:12px;font-weight:500}
+.seg button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.chart{position:relative;min-width:0}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart text{font-family:var(--body);font-size:12px;fill:var(--fg)}
+.chart text.m{fill:var(--muted);font-size:11px}
+.chart text.mono{font-family:var(--mono);font-size:10.5px;fill:var(--muted)}
+.chart text.val{font-family:var(--mono);font-size:11px;font-weight:600}
+.chart .gl{stroke:var(--grid);stroke-width:1}
+.chart .zero{stroke:var(--muted);stroke-width:1}
+.chart [data-tip]{cursor:default}
+.chart .hit{fill:transparent}
+.chart .hit:hover+*,.chart g.row:hover .hl{fill:var(--chip)}
+.chart .hl{fill:transparent}
+.panels{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px 24px}
+.panel h3{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 2px;font-weight:600}
+.panel p{margin:0 0 4px;font-size:12px;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:14px;height:8px;border-radius:2px;display:inline-block}
+.legend i.dot{width:9px;height:9px;border-radius:50%}
+.legend i.dia{width:8px;height:8px;border-radius:1px;transform:rotate(45deg)}
+.legend i.hatch{background:repeating-linear-gradient(135deg,var(--f-start) 0 3px,transparent 3px 6px);border:1px solid var(--f-start)}
+.gaps{margin:0;padding:0;list-style:none;display:grid;gap:3px;font-size:12px;color:var(--muted)}
+.gaps li::before{content:"◇ ";color:var(--key)}
+details.nums summary{cursor:pointer;font-size:12px;color:var(--muted);width:max-content}
+details.nums summary:hover{color:var(--fg)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--panel);margin-top:8px}
+table{border-collapse:collapse;width:100%;font-size:12.5px;font-variant-numeric:tabular-nums}
+th,td{padding:5px 8px;text-align:left;white-space:nowrap;border-bottom:1px solid var(--line)}
+th{background:var(--sunk);font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600}
+td.n,th.n{text-align:right}
+tbody tr:last-child td{border-bottom:0}
+/* coverage matrix: one cell per game and field, the share of attacks that carry it */
+.cov td.c{text-align:center;font-family:var(--mono);font-size:11px;min-width:64px}
+.cov td.c span{display:inline-block;min-width:44px;padding:1px 6px;border-radius:3px}
+.cov td.c .full{background:var(--s1);color:#fff}
+.cov td.c .part{background:var(--s1-wash);color:var(--fg)}
+.cov td.c .none{color:var(--muted)}
+/* takeaways */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.tk{border:1px solid var(--line);border-radius:6px;padding:14px;display:grid;gap:8px;align-content:start;background:var(--bg)}
+.tk h3{font-family:var(--display);font-size:17px;font-weight:800;margin:0;line-height:1.15;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.tk h3 a{font-family:var(--mono);font-size:10.5px;font-weight:600;color:var(--key-ink);text-decoration:none;white-space:nowrap;text-transform:uppercase;letter-spacing:.05em}
+.tk h3 a:hover{text-decoration:underline}
+.tk .favors{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--key-ink)}
+.tk p{margin:0;font-size:13px}
+.tk .gap{font-size:12px;color:var(--muted)}
+.tstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.tstat{border:1px solid var(--line);border-radius:5px;padding:5px 8px;background:var(--panel);min-width:0}
+.tstat small{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tstat b{font-family:var(--display);font-size:20px;font-weight:700;font-variant-numeric:tabular-nums}
+.tstat b small{display:inline;font-size:11px;font-family:var(--mono);letter-spacing:0;text-transform:none}
+.loading{padding:40px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:6px}
+#tip{position:fixed;z-index:30;pointer-events:none;background:var(--fg);color:var(--bg);border-radius:5px;padding:7px 10px;font-size:12px;line-height:1.45;max-width:300px;box-shadow:0 4px 14px rgb(0 0 0 / .18)}
+#tip b{font-weight:600}
+#tip .k{opacity:.7;font-family:var(--mono);font-size:10.5px}
+footer{color:var(--muted);font-size:12px;padding-block:24px;border-top:1px solid var(--line);margin-top:4px}
+footer p{max-width:85ch;margin:0 0 8px}
+@media (max-width:820px){
+  .intro h2{font-size:22px}
+  .card{padding:14px 12px 12px}
+  .panels{grid-template-columns:minmax(0,1fr)}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap hrow">
+    <a class="club" href="https://funsmith.club" aria-label="Funsmith club"><svg viewBox="0 0 127.14 96.36" aria-hidden="true"><path d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0a105.89 105.89 0 0 0-26.25 8.09C2.79 32.65-1.71 56.6.54 80.21a105.73 105.73 0 0 0 32.17 16.15 77.7 77.7 0 0 0 6.89-11.11 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.66 2a68.68 68.68 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1 105.25 105.25 0 0 0 32.19-16.14c2.64-27.38-4.51-51.11-18.9-72.15ZM42.45 65.69C36.18 65.69 31 60 31 53s5-12.74 11.43-12.74S54 46 53.89 53s-5.05 12.69-11.44 12.69Zm42.24 0C78.41 65.69 73.25 60 73.25 53s5-12.74 11.44-12.74S96.23 46 96.12 53s-5.04 12.69-11.43 12.69Z"/></svg><span>Funsmith club</span></a>
+    <div class="brand"><h1>Game Animation Library</h1><span class="tagline">learn from the legends of combat design</span></div>
+    <nav class="tabs" aria-label="Sections"><a href="./">Animations</a><a href="frame-data.html">Frame Data</a><a href="trends.html" aria-current="page">Trends</a></nav>
+  </div>
+  <div class="wrap grow"><div class="domain" role="group" aria-label="Games compared" id="games"></div><span class="ver" id="ver"></span></div>
+  <div class="ruler"><div class="ticks"></div><div class="keys" id="keys"></div><div class="playhead"></div></div>
+</header>
+
+<main class="wrap" id="main">
+  <section class="intro">
+    <h2>How the games time a fight</h2>
+    <p>Every game in the Frame Data tab, side by side: how long attacks take to come out, how long they stay out, how long they leave you open, and how early each game lets you cancel or evade. Pick which games to compare in the bar above.</p>
+    <p><b>Units.</b> All timings are in frames at 60 fps (1 f ≈ 16.7 ms). Elden Ring times its animations at 30 fps, so its frames are doubled here; hover any mark for the game's own frames. Middle values are medians, so a few extreme moves don't drag them.</p>
+  </section>
+  <div class="loading" id="loading">Loading frame data for every game…</div>
+  <div id="sections" hidden></div>
+  <footer id="foot"></footer>
+</main>
+<div id="tip" hidden role="tooltip"></div>
+
+<script>
+// Trends tab. Reads frame-data/games.json and every game's frame-data/1 file (see frame-data/README.md), then compares
+// them. Which moves count as attacks, basic (light) attacks and heavy attacks differs per game, so PROFILES says it per
+// game id; a game without a profile still shows up, with every move that has a hitbox counted as an attack.
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const SVGNS='http://www.w3.org/2000/svg';
+const NON_ATTACK=/^(movement|dodge|getup|quickstep|parry|critical|feint|mounted|style)$/;
+const PROFILES={
+  'elden-ring':{short:'Elden Ring',
+    attack:m=>!/^(critical|parry|feint|mounted)$/.test(m.type),
+    light:m=>m.type==='light',heavy:m=>m.type==='heavy',
+    lightName:'R1 chains',tag:'R1 chains',heavyName:'R2 (charged and released)',
+    favors:'Commitment and spacing',
+    take:'The slowest attacks here and, frame for frame, the most committal: a typical R1 needs about half a second (some 30 frames at 60 fps) to land, and after the hit you wait another 25 frames or so before a roll comes out. Damage per swing is high and almost a third of attacks carry hyper armor, so the design favors reading the enemy, picking one good opening and trading through hits rather than stringing long combos.',
+    gaps:'No i-frames in the data yet (only the jump table\'s dodge flag is read), so rolls are missing from the evasion chart.'},
+  'no-rest-for-the-wicked':{short:'No Rest',
+    attack:m=>/^(light|charged|running|rolling|plunge|rune)$/.test(m.type),
+    light:m=>m.type==='light',heavy:m=>m.type==='charged',
+    lightName:'combos',tag:'combos',heavyName:'charged attacks',
+    favors:'Fast hits, heavy follow-through',
+    take:'Hits come out a little faster than Elden Ring and the dodge opens sooner after the hit, but the full animations are still long: what keeps it Souls-like is the follow-through. The cancels open a bit past the middle of each animation, so the real price of a swing is stamina and positioning rather than being stuck. Charged attacks are timed from the release, which is why they look quick here; holding the charge is the commitment.',
+    gaps:'Rolls and quicksteps carry few i-frame windows in the data, so evasion reads as sparse; armor is rare (13 moves).'},
+  'street-fighter-3-third-strike':{short:'3rd Strike',
+    attack:m=>m.type!=='movement'&&m.startup!=null,
+    light:m=>m.type==='normal'&&/\b(Jab|Short)\b/.test(m.name)&&!/Jumping/.test(m.name),
+    heavy:m=>m.type==='normal'&&/\b(Fierce|Roundhouse)\b/.test(m.name)&&!/Jumping/.test(m.name),
+    lightName:'standing and crouching Jab / Short',tag:'Jab / Short',heavyName:'standing and crouching Fierce / Roundhouse',
+    favors:'Footsies and frame traps',
+    take:'The tightest timings in the set: lights come out on frame 5, stay out for about 3 and are over in some 14 frames, and normals are close to even on block. Heavies cost two to three times as much on startup and total, and that gap is the whole game: fast pokes to probe, slow buttons to punish, with cancels into specials and supers (tagged, not timed) as the reward for landing a normal.',
+    gaps:'Cancels are tags (SA, SP, SC...) rather than frames, so the cancel chart leaves 3rd Strike out. Parry is a system mechanic, not a move, so there are no i-frames to compare.'},
+  'super-smash-bros-ultimate':{short:'Smash Ultimate',
+    attack:m=>/^(ground|aerial|special)$/.test(m.type),
+    light:m=>m.type==='ground'&&/^(Jab( 1)?|Forward Tilt( 1)?|Up Tilt|Down Tilt)$/.test(m.name),
+    heavy:m=>m.type==='ground'&&/Smash$/.test(m.name),
+    lightName:'jab 1 and tilts',tag:'jab, tilts',heavyName:'smash attacks',
+    favors:'Movement and shield pressure',
+    take:'Startup is fighting-game fast, but ground attacks are deeply minus on shield (around −19) and last about twice as long as 3rd Strike\'s: hitting a shield is usually a punishable mistake unless spaced. That pushes play toward movement, whiff punishing and aerials (landing lag) instead of blockstrings. The evasive options are the most generous here, with spot dodges and rolls invulnerable for most of their length.',
+    gaps:'Ultimate Frame Data gives startup, active and endlag but no cancel frames, so the cancel chart leaves it out; recovery is the site\'s endlag.'},
+  'hollow-knight':{short:'Hollow Knight',
+    attack:m=>(m.class==='knight'||m.class==='hornetSilksong')&&/^(nail|nailArt|spell)$/.test(m.type),
+    light:m=>m.type==='nail',heavy:m=>m.type==='nailArt',
+    lightName:'nail slashes (Knight and Silksong Hornet)',tag:'nail slashes',heavyName:'nail arts, timed from the release',
+    favors:'Instant attacks, dangerous bosses',
+    take:'The player is the fastest thing on this page: a nail slash is out on frame 1 or 2 and the Knight can dash out of it a handful of frames later. The danger lives in the bosses instead: their attacks wind up for 20 to 90 frames, so the design is about reading telegraphs and punishing, with the player\'s own moves kept nearly free of commitment.',
+    gaps:'Only player moves are counted as attacks; boss attacks (Hollow Knight and Silksong) are compared on their own in the boss row of the distribution chart. Silksong moves have no cancel frames (their crest configs are not shipped).'},
+  'devil-may-cry-3':{short:'DMC3',
+    attack:m=>m.type!=='style',
+    light:m=>m.type==='combo',heavy:null,
+    lightName:'devil arm combo parts',tag:'combo parts',heavyName:'',
+    favors:'Cancels and style',
+    take:'With no hit timing in the data yet, DMC3 shows up through its cancels: a combo part hands over to the next attack about a third of the way into its animation, and a jump or roll is open before the halfway point. The long tails are there to look good when you let them play; the game wants you to cut them short with the next attack, a jump or a style move, which is the core of its combo freedom.',
+    gaps:'Startup, active and recovery are unknown (the hit timing lives in the game\'s code, not its data files), so DMC3 appears only in the total, cancel and coverage charts. No i-frames or damage yet.'},
+  'ninja-gaiden-black':{short:'Ninja Gaiden',
+    attack:m=>true,
+    light:m=>m.type==='combo'&&/^X+$/.test(m.input||''),heavy:m=>/Y$/.test(m.input||'')&&m.type==='combo',
+    lightName:'X strings (Dragon Sword)',tag:'X strings',heavyName:'strings ending in Y',
+    favors:'Committed strings',
+    take:'Slower than the fighting games but snappier than the Souls games, with long animations and a combo window that opens soon after the hit: you are meant to keep pressing and chain the next part of the string. Y finishers are noticeably slower than X hits, trading speed for launches and knockdowns.',
+    gaps:'Only the Dragon Sword is decoded (27 moves). No dodge-cancel marker, i-frames, armor or damage yet, so recovery is total minus the last active frame.'},
+};
+const GENERIC={attack:m=>!NON_ATTACK.test(m.type)&&m.startup!=null,light:null,heavy:null,lightName:'',heavyName:''};
+const prof=g=>({...GENERIC,short:g.name,...(PROFILES[g.id]||{})});
+const HK_BOSS=m=>m.type==='attack';
+
+// ---- numbers
+const quant=(a,q)=>{if(!a.length)return null;const s=a.slice().sort((x,y)=>x-y),i=(s.length-1)*q,lo=Math.floor(i);return s[lo]+(s[Math.min(lo+1,s.length-1)]-s[lo])*(i-lo)};
+const med=a=>quant(a,.5);
+const nums=(list,f)=>list.map(f).filter(v=>typeof v==='number'&&Number.isFinite(v));
+const lastActive=m=>m.active&&m.active.length?m.active[m.active.length-1][1]:null;
+const fmt=(v,d=0)=>v==null?'—':(Math.round(v*10**d)/10**d).toLocaleString();
+const pct=v=>v==null?'—':Math.round(v*100)+'%';
+
+let GAMES=[],DATA={},SEL=new Set(),SET='all',RESIZE=0;
+// per game: its moves split into the sets the charts use, with timings converted to 60 fps frames
+function prep(g,d){
+  const p=prof(g),k=60/(d.game.fps||60),moves=d.moves;
+  const conv=m=>({m,
+    startup:m.startup!=null?m.startup*k:null,
+    windup:m.startup!=null?(m.startup-1)*k:null,
+    activeFrames:m.startup!=null&&m.activeFrames!=null?m.activeFrames*k:null,
+    span:m.startup!=null&&lastActive(m)!=null?(lastActive(m)-m.startup+1)*k:null,
+    recovery:m.startup!=null&&m.recovery!=null?m.recovery*k:null,
+    total:m.total?m.total*k:null,
+    attackC:m.cancels&&m.cancels.attack!=null?m.cancels.attack*k:null,
+    dodgeC:m.cancels&&m.cancels.dodge!=null?m.cancels.dodge*k:null,
+    blockAdv:typeof m.blockAdv==='number'?m.blockAdv*k:null});
+  const attacks=moves.filter(p.attack).map(conv);
+  return {g,d,p,k,fps:d.game.fps||60,all:moves.map(conv),attacks,
+    light:p.light?moves.filter(m=>p.attack(m)&&p.light(m)).map(conv):[],
+    heavy:p.heavy?moves.filter(m=>p.attack(m)&&p.heavy(m)).map(conv):[],
+    boss:g.id==='hollow-knight'?moves.filter(HK_BOSS).map(conv):[]};
+}
+const sel=()=>GAMES.filter(g=>SEL.has(g.id)).map(g=>DATA[g.id]).filter(Boolean);
+const native=(x,v)=>x.k===1?`${fmt(v,1)} f`:`${fmt(v,1)} f at 60 fps · ${fmt(v/x.k,1)} f at ${x.fps} fps`;
+
+// ---- svg helpers
+function svg(w,h,body){return `<svg viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img">${body}</svg>`}
+const tipAttr=html=>` data-tip="${esc(html)}"`;
+function ticks(max,n=5){const raw=max/n,mag=10**Math.floor(Math.log10(raw||1)),step=[1,2,2.5,5,10].map(s=>s*mag).find(s=>s>=raw)||mag*10;const t=[];for(let v=0;v<=max+1e-9;v+=step)t.push(Math.round(v*100)/100);return t}
+function ticksSym(lo,hi,n=6){const raw=(hi-lo)/n,mag=10**Math.floor(Math.log10(raw||1)),step=[1,2,2.5,5,10].map(s=>s*mag).find(s=>s>=raw)||mag*10;const t=[];for(let v=Math.ceil(lo/step)*step;v<=hi+1e-9;v+=step)t.push(Math.round(v*100)/100);return t}
+// A horizontal chart with one labelled row per item: rows [{label, sub, draw(x)->svg, tip}], x scale from lo to hi.
+function rowsChart(el,{rows,lo=0,hi,labelW,rowH=30,unit='f',tickFmt=v=>v,zero=false,after=null,afterW=0}){
+  const W=Math.max(300,el.clientWidth||600),narrow=W<520;
+  labelW=labelW??(narrow?96:150);afterW=after?(narrow?40:afterW||54):0;
+  const x0=labelW+8,x1=W-afterW-12,top=4,H=top+rows.length*rowH+24;
+  const sx=v=>x0+(Math.max(lo,Math.min(hi,v))-lo)/(hi-lo||1)*(x1-x0);
+  const tk=lo<0?ticksSym(lo,hi):ticks(hi);
+  let b=tk.map(t=>`<line class="gl" x1="${sx(t)}" x2="${sx(t)}" y1="${top}" y2="${top+rows.length*rowH}"/><text class="mono" x="${sx(t)}" y="${top+rows.length*rowH+14}" text-anchor="middle">${tickFmt(t)}</text>`).join('');
+  if(zero)b+=`<line class="zero" x1="${sx(0)}" x2="${sx(0)}" y1="${top}" y2="${top+rows.length*rowH}"/>`;
+  b+=`<text class="mono" x="${x1}" y="${top+rows.length*rowH+14}" text-anchor="end" dy="0" style="display:none">${unit}</text>`;
+  rows.forEach((r,i)=>{const y=top+i*rowH,cy=y+rowH/2;
+    b+=`<g class="row"${r.tip?tipAttr(r.tip):''}><rect class="hl" x="0" y="${y+1}" width="${W}" height="${rowH-2}" rx="3"/>`+
+      `<text x="${labelW}" y="${cy}" dy="${r.sub?-1:4}" text-anchor="end">${esc(narrow&&r.short?r.short:r.label)}</text>`+
+      (r.sub?`<text class="m" x="${labelW}" y="${cy}" dy="11" text-anchor="end">${esc(r.sub)}</text>`:'')+
+      (r.draw?r.draw(sx,cy,rowH):'')+(after&&r.after!=null?`<text class="val" x="${W-4}" y="${cy}" dy="4" text-anchor="end">${esc(r.after)}</text>`:'')+`</g>`});
+  el.innerHTML=svg(W,H,b);
+}
+// box: p10–p90 whisker, p25–p75 box, median dot
+function boxDraw(q){return (sx,cy)=>q?`<line x1="${sx(q.p10)}" x2="${sx(q.p90)}" y1="${cy}" y2="${cy}" stroke="var(--s1)" stroke-width="2" stroke-linecap="round"/>`+
+  `<rect x="${sx(q.p25)}" y="${cy-7}" width="${Math.max(2,sx(q.p75)-sx(q.p25))}" height="14" rx="3" fill="var(--s1-wash)" stroke="var(--s1)" stroke-width="1"/>`+
+  `<circle cx="${sx(q.p50)}" cy="${cy}" r="5" fill="var(--s1)" stroke="var(--panel)" stroke-width="2"/>`:''}
+function qs(a){return a.length?{n:a.length,p10:quant(a,.1),p25:quant(a,.25),p50:quant(a,.5),p75:quant(a,.75),p90:quant(a,.9)}:null}
+const qTip=(title,q,x,unit='f')=>q?`<b>${esc(title)}</b><br>median ${fmt(q.p50,1)} ${unit}${x&&x.k!==1?` <span class="k">(${fmt(q.p50/x.k,1)} f at ${x.fps} fps)</span>`:''}<br>middle half ${fmt(q.p25,1)}–${fmt(q.p75,1)} · 10th–90th ${fmt(q.p10,1)}–${fmt(q.p90,1)}<br><span class="k">${q.n.toLocaleString()} moves</span>`:`<b>${esc(title)}</b><br>not in the data`;
+function table(head,rows){return `<details class="nums"><summary>Show the numbers</summary><div class="tablewrap"><table><thead><tr>${head.map((h,i)=>`<th${i?' class="n"':''}>${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((c,i)=>`<td${i?' class="n"':''}>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div></details>`}
+
+// ---- sections
+const SECTIONS=[
+  {id:'anatomy',key:'Anatomy',render:secAnatomy},
+  {id:'spread',key:'Distributions',render:secSpread},
+  {id:'weight',key:'Light vs heavy',render:secWeight},
+  {id:'cancel',key:'Cancels',render:secCancel},
+  {id:'evade',key:'I-frames',render:secEvade},
+  {id:'armor',key:'Armor & multi-hit',render:secArmor},
+  {id:'block',key:'On block',render:secBlock},
+  {id:'takeaways',key:'Takeaways',render:secTakeaways},
+  {id:'coverage',key:'Data coverage',render:secCoverage},
+];
+function card(id,title,find,body,extra=''){return `<section class="card" id="${id}"><header><div><h2>${esc(title)}</h2>${find?`<p class="find">${find}</p>`:''}</div>${extra}</header>${body}</section>`}
+const gapsList=items=>items.length?`<ul class="gaps">${items.map(t=>`<li>${t}</li>`).join('')}</ul>`:'';
+const setPick=()=>`<div class="seg" role="group" aria-label="Which attacks">${[['all','All attacks'],['light','Basic'],['heavy','Heavy']].map(([k,l])=>`<button data-set="${k}" aria-pressed="${SET===k}">${l}</button>`).join('')}</div>`;
+const pickSet=x=>SET==='light'?x.light:SET==='heavy'?x.heavy:x.attacks;
+
+// 1. typical basic attack, phase by phase
+function secAnatomy(){
+  const xs=sel(),rows=[],tab=[];let hi=0;
+  xs.forEach(x=>{const L=x.light.length?x.light:x.attacks;
+    const w=med(nums(L,a=>a.windup)),s=med(nums(L,a=>a.span)),r=med(nums(L,a=>a.recovery)),t=med(nums(L,a=>a.total)),ac=med(nums(L,a=>a.attackC)),dc=med(nums(L,a=>a.dodgeC));
+    hi=Math.max(hi,t||0,(w||0)+(s||0)+(r||0),ac||0,dc||0);
+    rows.push({x,L,w,s,r,t,ac,dc});tab.push([x.p.short,fmt(w==null?null:w+1,1),fmt(s,1),fmt(r,1),fmt(t,1),fmt(ac,1),fmt(dc,1)])});
+  const out=`<div class="legend"><span><i style="background:var(--f-start)"></i>Windup</span><span><i style="background:var(--f-active)"></i>Active</span><span><i style="background:var(--f-rec)"></i>Recovery</span><span><i style="background:var(--f-free)"></i>Rest of the animation</span><span><i class="hatch"></i>Hit timing not known</span><span><i class="dot" style="background:var(--s2)"></i>→ Attack cancel</span><span><i class="dia" style="background:var(--s1)"></i>→ Dodge cancel</span></div><div class="chart" id="cAnat"></div>`+
+    table(['Game','Startup','Active span','Recovery','Total','→ Attack','→ Dodge'],tab);
+  return {html:card('anatomy','A typical basic attack, phase by phase',
+    'The median basic attack of each game drawn to one scale: windup until the hit, how long it stays out, the recovery after it, and the rest of the animation. Dots mark when the game lets you attack or dodge again. <b>3rd Strike, Smash Ultimate and Hollow Knight finish a whole basic attack before Elden Ring\'s has even hit.</b>',out),
+    draw(){rowsChart($('#cAnat'),{hi:Math.ceil(hi/10)*10,rowH:34,after:true,rows:rows.map(({x,L,w,s,r,t,ac,dc})=>({label:x.p.short,short:x.p.short,sub:x.light.length?(x.p.tag||x.p.lightName):'all attacks',after:t!=null?fmt(t)+' f':'',
+      tip:`<b>${esc(x.g.name)}</b> · ${esc(x.light.length?x.p.lightName:'all attacks')} (${L.length})<br>startup ${fmt(w==null?null:w+1,1)} · active ${fmt(s,1)} · recovery ${fmt(r,1)}<br>total ${fmt(t,1)} · → attack ${fmt(ac,1)} · → dodge ${fmt(dc,1)}<br><span class="k">frames at 60 fps${x.k!==1?`; ×${1/x.k} for ${x.fps} fps`:''}</span>`,
+      draw:(sx,cy)=>{let b='',at=0;const seg=(len,fill,extra='')=>{if(len==null||len<=0)return;b+=`<rect x="${sx(at)+1}" y="${cy-8}" width="${Math.max(1,sx(at+len)-sx(at)-2)}" height="16" rx="2" fill="${fill}"${extra}/>`;at+=len};
+        if(w==null){b+=`<defs><pattern id="h${x.g.id}" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="3" height="6" fill="var(--f-start)"/></pattern></defs>`;seg(t,`url(#h${x.g.id})`,' stroke="var(--f-start)"')}
+        else{seg(w,'var(--f-start)');seg(s,'var(--f-active)');seg(r,'var(--f-rec)');if(t!=null&&t>at)seg(t-at,'var(--f-free)')}
+        if(dc!=null)b+=`<rect x="${sx(dc)-4.5}" y="${cy-17.5}" width="9" height="9" transform="rotate(45 ${sx(dc)} ${cy-13})" fill="var(--s1)" stroke="var(--panel)" stroke-width="2"/>`;
+        if(ac!=null)b+=`<circle cx="${sx(ac)}" cy="${cy+13}" r="4.5" fill="var(--s2)" stroke="var(--panel)" stroke-width="2"/>`;
+        return b}}))})}};
+}
+
+// 2. distributions of each timing
+const METRICS=[['startup','Startup','First frame the hit is out'],['activeFrames','Active frames','Frames with a hitbox out, every hit counted'],['recovery','Recovery','After the last active frame until you are free (a dodge where the game has one)'],['total','Total','Length of the whole animation']];
+function secSpread(){
+  const xs=sel(),gaps=[];
+  if(SET!=='all')xs.filter(x=>!pickSet(x).length).forEach(x=>gaps.push(`${esc(x.g.name)} has no ${SET==='light'?'basic':'heavy'} attack set.`));
+  xs.filter(x=>x.g.id==='devil-may-cry-3').forEach(()=>gaps.push('Devil May Cry 3 has total frames only: when its hits come out is not in its data files.'));
+  const tab=[];
+  const body=`<div class="legend"><span><i class="dot" style="background:var(--s1)"></i>Median</span><span><i style="background:var(--s1-wash);border:1px solid var(--s1)"></i>Middle half of the moves</span><span><i style="height:2px;background:var(--s1)"></i>10th to 90th percentile</span></div>
+    <div class="panels">${METRICS.map(([k,n,d])=>`<div class="panel"><h3>${n}</h3><p>${d}</p><div class="chart" id="cs-${k}"></div></div>`).join('')}</div>${gapsList(gaps)}<div id="spreadTab"></div>`;
+  return {html:card('spread','Spread of every timing',
+    'Each row is one game\'s moves; the box holds the middle half. <b>Startup separates the genres cleanly</b>: Hollow Knight and the fighting games sit in single digits, Ninja Gaiden in the low teens, the Souls games around 30. Totals overlap far more, so the games differ in <em>when</em> the hit comes, not just in how long a move lasts.',body,setPick()),
+    draw(){const hk=SET==='all'&&SEL.has('hollow-knight')&&DATA['hollow-knight'];tab.length=0;
+      METRICS.forEach(([k,n])=>{const rows=sel().map(x=>{const q=qs(nums(pickSet(x),a=>a[k]));return {x,q,label:x.p.short,sub:null}});
+        if(hk)rows.push({x:hk,q:qs(nums(hk.boss,a=>a[k])),label:'HK bosses',sub:null,boss:true});
+        const hi=Math.max(10,...rows.map(r=>r.q?r.q.p90:0));
+        rows.forEach(r=>{let t=tab.find(t=>t[0]===r.label);if(!t)tab.push(t=[r.label]);t.push(r.q?`${fmt(r.q.p50,1)} (${fmt(r.q.p25,1)}–${fmt(r.q.p75,1)})`:'—')});
+        rowsChart($('#cs-'+k),{hi:Math.ceil(hi*1.05/5)*5,labelW:110,rowH:26,after:true,afterW:44,rows:rows.map(r=>({label:r.label,after:r.q?fmt(r.q.p50):'—',
+          tip:qTip(`${r.boss?'Hollow Knight & Silksong bosses':r.x.g.name} · ${n}`,r.q,r.x),draw:boxDraw(r.q)}))})});
+      $('#spreadTab').innerHTML=table(['Game','Startup median (middle half)','Active','Recovery','Total'],tab)}};
+}
+
+// 3. light vs heavy
+function secWeight(){
+  const xs=sel().filter(x=>x.light.length&&x.heavy.length),miss=sel().filter(x=>!(x.light.length&&x.heavy.length));
+  const tab=xs.map(x=>{const a=med(nums(x.light,m=>m.startup)),b=med(nums(x.heavy,m=>m.startup)),c=med(nums(x.light,m=>m.total)),d=med(nums(x.heavy,m=>m.total));return [x.p.short,fmt(a,1),fmt(b,1),a?'×'+fmt(b/a,1):'—',fmt(c,1),fmt(d,1),c?'×'+fmt(d/c,1):'—']});
+  const body=`<div class="legend"><span><i class="dot" style="background:var(--s1)"></i>Basic (light)</span><span><i class="dot" style="background:var(--s2)"></i>Heavy</span><span>Right: how many times slower the heavy is</span></div>
+    <div class="panels"><div class="panel"><h3>Startup</h3><div class="chart" id="cw-startup"></div></div><div class="panel"><h3>Total</h3><div class="chart" id="cw-total"></div></div></div>
+    ${gapsList(miss.map(x=>`${esc(x.g.name)}: ${x.g.id==='devil-may-cry-3'?'no startup data and no light / heavy split (weapons and styles instead).':'no light / heavy split.'}`))}`+
+    table(['Game','Light startup','Heavy startup','Ratio','Light total','Heavy total','Ratio'],tab);
+  return {html:card('weight','Light vs heavy',
+    'Median basic attack against median heavy attack. <b>Fighting games charge the most for a heavy button</b>: in 3rd Strike and Ultimate a heavy takes about twice the startup and total of a light. Elden Ring and Ninja Gaiden keep the gap smaller (1.3 to 1.5 times). No Rest\'s charged attacks and Hollow Knight\'s nail arts are timed from the release, so their price is the hold before it, not the frames shown.',body),
+    draw(){['startup','total'].forEach(k=>{const rows=xs.map(x=>{const a=med(nums(x.light,m=>m[k])),b=med(nums(x.heavy,m=>m[k]));return {x,a,b}});
+      const hi=Math.max(10,...rows.map(r=>Math.max(r.a||0,r.b||0)));
+      rowsChart($('#cw-'+k),{hi:Math.ceil(hi*1.08/5)*5,labelW:110,rowH:30,after:true,afterW:44,rows:rows.map(({x,a,b})=>({label:x.p.short,after:a&&b?'×'+fmt(b/a,1):'',
+        tip:`<b>${esc(x.g.name)}</b> · ${k}<br>light ${fmt(a,1)} f · ${esc(x.p.lightName)} (${x.light.length})<br>heavy ${fmt(b,1)} f · ${esc(x.p.heavyName)} (${x.heavy.length})`,
+        draw:(sx,cy)=>a==null||b==null?'':`<line x1="${sx(a)}" x2="${sx(b)}" y1="${cy}" y2="${cy}" stroke="var(--line)" stroke-width="2"/><circle cx="${sx(a)}" cy="${cy}" r="5.5" fill="var(--s1)" stroke="var(--panel)" stroke-width="2"/><circle cx="${sx(b)}" cy="${cy}" r="5.5" fill="var(--s2)" stroke="var(--panel)" stroke-width="2"/>`}))})})}};
+}
+
+// 4. cancels: how much of the animation plays before you can act
+function secCancel(){
+  const xs=sel(),rows=[],miss=[];
+  xs.forEach(x=>{const A=x.attacks.filter(a=>a.total);
+    const ar=nums(A,a=>a.attackC!=null?a.attackC/a.total:null),dr=nums(A,a=>a.dodgeC!=null?a.dodgeC/a.total:null);
+    if(!ar.length&&!dr.length){miss.push(x);return}
+    rows.push({x,qa:qs(ar),qd:qs(dr),after:med(nums(A,a=>a.dodgeC!=null&&a.span!=null&&a.startup!=null?a.dodgeC-(a.startup+a.span-1):null))})});
+  const notes=miss.map(x=>x.g.id==='street-fighter-3-third-strike'?(()=>{const n=x.d.moves.filter(m=>m.type==='normal'),c=n.filter(m=>(m.cancelTo||[]).some(t=>t==='SP'||t==='SA'));return `3rd Strike lists cancels as tags, not frames: ${pct(c.length/n.length)} of its normals cancel into a special or Super Art.`})()
+    :x.g.id==='super-smash-bros-ultimate'?'Smash Ultimate: the source has no cancel frames (only notes such as "transitions to Jab 2 as early as frame 8").':`${esc(x.g.name)}: no cancel frames in the data.`);
+  const body=`<div class="legend"><span><i class="dot" style="background:var(--s2)"></i>→ Attack (chain or cancel into the next attack)</span><span><i class="dia" style="background:var(--s1)"></i>→ Dodge</span><span>Thin line: middle half of the moves</span><span>Right: dodge cancel, frames after the last hit</span></div><div class="chart" id="cCancel"></div>${gapsList(notes)}`+
+    table(['Game','→ Attack (median % of animation)','→ Dodge','Dodge after last hit (f)'],rows.map(r=>[r.x.p.short,pct(r.qa&&r.qa.p50),pct(r.qd&&r.qd.p50),fmt(r.after,1)]));
+  return {html:card('cancel','How early you can act again',
+    'Share of each attack\'s animation that plays before the game lets you attack again or dodge. <b>Lower means more freedom</b>: the rest of the animation is follow-through you can cut off. Hollow Knight lets you dash out early and Ninja Gaiden opens its combo window early; Elden Ring, No Rest and DMC3 hand control back around the middle of the animation, but in Elden Ring that is still some 25 frames after the hit.',body),
+    draw(){rowsChart($('#cCancel'),{hi:1,rowH:34,tickFmt:v=>Math.round(v*100)+'%',after:true,afterW:54,rows:rows.map(({x,qa,qd,after})=>({label:x.p.short,after:after!=null?'+'+fmt(after)+' f':'',
+      tip:`<b>${esc(x.g.name)}</b><br>→ attack at ${pct(qa&&qa.p50)} of the animation${qa?` (middle half ${pct(qa.p25)}–${pct(qa.p75)}, ${qa.n} moves)`:''}<br>→ dodge at ${pct(qd&&qd.p50)}${qd?` (middle half ${pct(qd.p25)}–${pct(qd.p75)}, ${qd.n} moves)`:''}${after!=null?`<br>dodge ${fmt(after,1)} f after the last active frame`:''}`,
+      draw:(sx,cy)=>(qa?`<line x1="${sx(qa.p25)}" x2="${sx(qa.p75)}" y1="${cy+6}" y2="${cy+6}" stroke="var(--s2)" stroke-width="2" stroke-linecap="round"/><circle cx="${sx(qa.p50)}" cy="${cy+6}" r="5" fill="var(--s2)" stroke="var(--panel)" stroke-width="2"/>`:'')+
+        (qd?`<line x1="${sx(qd.p25)}" x2="${sx(qd.p75)}" y1="${cy-6}" y2="${cy-6}" stroke="var(--s1)" stroke-width="2" stroke-linecap="round"/><rect x="${sx(qd.p50)-4.5}" y="${cy-10.5}" width="9" height="9" transform="rotate(45 ${sx(qd.p50)} ${cy-6})" fill="var(--s1)" stroke="var(--panel)" stroke-width="2"/>`:'')}))})}};
+}
+
+// 5. i-frames: the moves that carry them, grouped by name, medians across characters / weapons
+function secEvade(){
+  const xs=sel(),rows=[],miss=[];
+  xs.forEach(x=>{const w=x.all.filter(a=>a.m.iframes&&a.m.iframes.length&&a.total);
+    if(!w.length){miss.push(x);return}
+    const by=new Map();w.forEach(a=>{const n=x.g.id==='no-rest-for-the-wicked'?(x.d.moveTypes.find(t=>t.id===a.m.type)||{name:a.m.type}).name+' moves':a.m.name;(by.get(n)||by.set(n,[]).get(n)).push(a)});
+    [...by].sort((a,b)=>b[1].length-a[1].length).slice(0,4).forEach(([n,l])=>rows.push({x,n,c:l.length,
+      s:med(l.map(a=>(a.m.iframes[0][0]-1)*x.k)),e:med(l.map(a=>a.m.iframes[a.m.iframes.length-1][1]*x.k)),t:med(l.map(a=>a.total))}))});
+  const hi=Math.max(30,...rows.map(r=>Math.max(r.t,r.e)));
+  const body=`<div class="legend"><span><i style="background:var(--f-start)"></i>Whole move</span><span><i style="background:var(--f-iframe)"></i>Invulnerable</span><span>Right: share of the move that is invulnerable</span></div><div class="chart" id="cEvade"></div>`+
+    gapsList(miss.map(x=>`${esc(x.g.name)}: ${x.g.id==='elden-ring'?'no i-frames read yet (rolls and backsteps are not in the data).':x.g.id==='street-fighter-3-third-strike'?'no invulnerability in the data (Baston lists boxes, and 3rd Strike defends with parries rather than dodges).':'no i-frames in the data yet.'}`))+
+    table(['Game','Move','Moves','Invulnerable from','to','Total','Share'],rows.map(r=>[r.x.p.short,r.n,r.c,fmt(r.s+1,1),fmt(r.e,1),fmt(r.t,1),pct((r.e-r.s)/r.t)]));
+  return {html:card('evade','Invulnerability',
+    'The moves that carry i-frames, the four most common per game, with medians across characters. <b>Smash Ultimate\'s dodges are invulnerable for most of their length</b> and start within 3 to 5 frames; Hollow Knight\'s Shadow Dash is invulnerable throughout. Games where the data has none are listed below rather than shown as zero.',body),
+    draw(){rowsChart($('#cEvade'),{hi:Math.ceil(hi/10)*10,labelW:200,rowH:30,after:true,rows:rows.map(r=>({label:r.n,short:r.n,sub:r.x.p.short+(r.c>1?` · ${r.c} moves`:''),after:pct((r.e-r.s)/r.t),
+      tip:`<b>${esc(r.x.g.name)} · ${esc(r.n)}</b><br>invulnerable ${fmt(r.s+1,1)}–${fmt(r.e,1)} of ${fmt(r.t,1)} f${r.c>1?`<br><span class="k">median of ${r.c} moves</span>`:''}`,
+      draw:(sx,cy)=>`<rect x="${sx(0)}" y="${cy-6}" width="${sx(r.t)-sx(0)}" height="12" rx="2" fill="var(--f-start)"/><rect x="${sx(r.s)}" y="${cy-6}" width="${Math.max(2,sx(r.e)-sx(r.s))}" height="12" rx="2" fill="var(--f-iframe)"/>`}))})}};
+}
+
+// 6. armor and multi-hit, as a share of attacks
+function secArmor(){
+  const xs=sel(),has=(x,f)=>x.d.moves.some(f);
+  const R=xs.map(x=>({x,armor:has(x,m=>m.armor&&m.armor.length)?x.attacks.filter(a=>a.m.armor&&a.m.armor.length).length/x.attacks.length:null,
+    multi:x.attacks.some(a=>a.m.hits!=null)?x.attacks.filter(a=>a.m.hits>1).length/x.attacks.filter(a=>a.m.hits!=null).length:null}));
+  const body=`<div class="panels"><div class="panel"><h3>Hyper armor</h3><p>Attacks that can't be interrupted for part of their animation</p><div class="chart" id="ca-armor"></div></div><div class="panel"><h3>Multi-hit</h3><p>Attacks with more than one hit</p><div class="chart" id="ca-multi"></div></div></div>`+
+    table(['Game','Hyper armor','Multi-hit'],R.map(r=>[r.x.p.short,r.armor==null?'not in data':pct(r.armor),r.multi==null?'not in data':pct(r.multi)]));
+  return {html:card('armor','Hyper armor and multi-hits',
+    '<b>Elden Ring is the only game that builds armor into a large share of its attacks</b>, mostly heavies and big weapons, so trading hits is a real strategy there. Elsewhere armor is a rare property of a few specials. "Not in data" means the source doesn\'t record it, not that the game has none.',body),
+    draw(){['armor','multi'].forEach(k=>rowsChart($('#ca-'+k),{hi:Math.max(.1,Math.ceil(Math.max(...R.map(r=>r[k]||0))*10)/10),labelW:110,rowH:26,tickFmt:v=>Math.round(v*100)+'%',after:true,afterW:64,
+      rows:R.map(r=>({label:r.x.p.short,after:r[k]==null?'n/a':pct(r[k]),tip:`<b>${esc(r.x.g.name)}</b><br>${r[k]==null?'not recorded by the source':pct(r[k])+' of '+r.x.attacks.length.toLocaleString()+' attacks'}`,
+        draw:(sx,cy)=>r[k]==null?`<text class="m" x="${sx(0)+2}" y="${cy}" dy="4">not in data</text>`:`<path d="M${sx(0)} ${cy-7}h${Math.max(0,sx(r[k])-sx(0)-4)}a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4h-${Math.max(0,sx(r[k])-sx(0)-4)}z" fill="var(--s1)"/>`}))}))}};
+}
+
+// 7. fighting games: advantage on block
+function secBlock(){
+  const xs=sel().filter(x=>x.attacks.some(a=>a.blockAdv!=null));
+  if(!xs.length)return {html:'',draw(){}};
+  const rows=[];xs.forEach(x=>x.d.moveTypes.forEach(t=>{const l=nums(x.attacks.filter(a=>a.m.type===t.id),a=>a.blockAdv);if(l.length>=20)rows.push({x,t:t.name,q:qs(l)})}));
+  const lo=Math.floor(Math.min(...rows.map(r=>r.q.p10))/5)*5,hi=Math.max(5,Math.ceil(Math.max(...rows.map(r=>r.q.p90))/5)*5);
+  const body=`<div class="legend"><span><i class="dot" style="background:var(--s1)"></i>Median</span><span><i style="background:var(--s1-wash);border:1px solid var(--s1)"></i>Middle half</span><span>Left of 0: the defender acts first</span></div><div class="chart" id="cBlock"></div>`+
+    table(['Game · type','Median','Middle half','10th–90th','Moves'],rows.map(r=>[`${r.x.p.short} · ${r.t}`,fmt(r.q.p50,1),`${fmt(r.q.p25,1)} to ${fmt(r.q.p75,1)}`,`${fmt(r.q.p10,1)} to ${fmt(r.q.p90,1)}`,r.q.n]));
+  return {html:card('block','Advantage on block',
+    'Fighting games only: frames the attacker is ahead (+) or behind (−) when the move is blocked or shielded. <b>3rd Strike normals cluster around even</b>, so pressure on block is safe and the fight is about frame traps; <b>Ultimate\'s moves are punishable on shield almost across the board</b>, which pushes players to space and to move instead of blocking.',body),
+    draw(){rowsChart($('#cBlock'),{lo,hi,zero:true,labelW:200,rowH:28,after:true,afterW:44,rows:rows.map(r=>({label:r.t,sub:r.x.p.short,after:(r.q.p50>0?'+':'')+fmt(r.q.p50),tip:qTip(`${r.x.g.name} · ${r.t} on block`,r.q,null),draw:boxDraw(r.q)}))})}};
+}
+
+// 8. takeaways per game
+function secTakeaways(){
+  const xs=sel();
+  const html=`<div class="cards">${xs.map(x=>{const L=x.light.length?x.light:x.attacks,st=med(nums(L,a=>a.startup)),t=med(nums(L,a=>a.total)),A=x.attacks.filter(a=>a.total),
+    dr=med(nums(A,a=>a.dodgeC!=null?a.dodgeC/a.total:a.attackC!=null?a.attackC/a.total:null));
+    return `<article class="tk"><h3>${esc(x.g.name)}<a href="frame-data.html${x.g.id===GAMES[0].id?'':'#g='+encodeURIComponent(x.g.id)}">Frame data →</a></h3>
+      ${x.p.favors?`<span class="favors">Favors · ${esc(x.p.favors)}</span>`:''}
+      <div class="tstats"><div class="tstat" title="Median startup of ${esc(x.light.length?x.p.lightName:'all attacks')}"><small>Basic startup</small><b>${fmt(st)}<small> f</small></b></div>
+      <div class="tstat" title="Median length of ${esc(x.light.length?x.p.lightName:'all attacks')}"><small>Basic total</small><b>${fmt(t)}<small> f</small></b></div>
+      <div class="tstat" title="Median share of an attack's animation before you can dodge (or attack, where no dodge cancel is known)"><small>Free after</small><b>${pct(dr)}</b></div></div>
+      ${x.p.take?`<p>${esc(x.p.take)}</p>`:`<p class="gap">No write-up for this game yet; its numbers are in the charts above.</p>`}
+      ${x.p.gaps?`<p class="gap">Gaps: ${esc(x.p.gaps)}</p>`:''}</article>`}).join('')}</div>`;
+  return {html:card('takeaways','What each game\'s design favors','Short reads of the numbers above, one per game. Stats are in 60 fps frames; "free after" is how much of an attack plays before you can dodge out.',html),draw(){}};
+}
+
+// 9. which fields each game has
+const FIELDS=[['Startup',a=>a.m.startup!=null],['Active',a=>a.m.active&&a.m.active.length>0],['Recovery',a=>a.m.recovery!=null],['Total',a=>!!a.m.total],
+  ['→ Attack',a=>a.m.cancels&&a.m.cancels.attack!=null],['→ Dodge',a=>a.m.cancels&&a.m.cancels.dodge!=null],['I-frames',a=>a.m.iframes&&a.m.iframes.length>0,true],['Hyper armor',a=>a.m.armor&&a.m.armor.length>0,true],
+  ['On block',a=>a.blockAdv!=null],['Damage',a=>a.m.damage&&(a.m.damage.mv!=null||a.m.damage.amount!=null)]];
+function secCoverage(){
+  const xs=sel();
+  const html=`<div class="tablewrap"><table class="cov"><thead><tr><th>Game</th><th class="n">Attacks</th>${FIELDS.map(f=>`<th class="n">${esc(f[0])}</th>`).join('')}</tr></thead><tbody>${xs.map(x=>`<tr><td>${esc(x.g.name)}</td><td class="n">${x.attacks.length.toLocaleString()}</td>${FIELDS.map(([n,f,sparse])=>{
+    const c=x.attacks.filter(f).length,r=x.attacks.length?c/x.attacks.length:0;
+    return `<td class="c" title="${esc(`${x.g.name}: ${c.toLocaleString()} of ${x.attacks.length.toLocaleString()} attacks have ${n}`)}">${c?`<span class="${r>=.9||sparse?'full':'part'}">${sparse?c.toLocaleString():pct(r)}</span>`:'<span class="none">—</span>'}</td>`}).join('')}</tr>`).join('')}</tbody></table></div>`;
+  return {html:card('coverage','What the data covers','Share of each game\'s attacks with a value for each field (i-frames and armor: number of attacks that have any). A dash means the source or the import doesn\'t provide it yet, so the charts above leave that game out rather than show zero.',html),draw(){}};
+}
+
+// ---- page
+let DRAWS=[];
+function render(){
+  const xs=sel();
+  $('#games').innerHTML=GAMES.map(g=>`<button data-game="${esc(g.id)}" aria-pressed="${SEL.has(g.id)}" title="${esc(g.name)}">${esc(prof(g).short)}</button>`).join('');
+  const n=xs.reduce((s,x)=>s+x.attacks.length,0);
+  $('#ver').title=$('#ver').textContent=`${xs.length} of ${GAMES.length} games · ${n.toLocaleString()} attacks compared`;
+  const out=SECTIONS.map(s=>({s,r:s.render()})).filter(o=>o.r.html);
+  $('#keys').innerHTML=out.map(({s})=>`<button class="kf" data-jump="${s.id}" aria-pressed="false"><i></i>${esc(s.key)}</button>`).join('');
+  $('#sections').innerHTML=out.map(o=>o.r.html).join('');
+  DRAWS=out.map(o=>o.r.draw);redraw();writeHash();
+}
+function redraw(){DRAWS.forEach(d=>d())}
+function writeHash(){const p=new URLSearchParams();if(SEL.size!==GAMES.length)p.set('g',[...SEL].join(','));if(SET!=='all')p.set('set',SET);
+  const h=p.toString();try{history.replaceState(null,'',h?'#'+h:location.pathname+location.search)}catch(e){}}
+function fromHash(){const p=new URLSearchParams(location.hash.slice(1)),g=(p.get('g')||'').split(',').filter(id=>DATA[id]);
+  SEL=new Set(g.length?g:GAMES.map(g=>g.id).filter(id=>DATA[id]));SET=['light','heavy'].includes(p.get('set'))?p.get('set'):'all'}
+
+document.addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.game){const id=b.dataset.game;if(SEL.has(id)){if(SEL.size>1)SEL.delete(id)}else SEL.add(id);render()}
+  else if(b.dataset.set){SET=b.dataset.set;const y=scrollY;render();scrollTo(0,y)}
+  else if(b.dataset.jump){const t=document.getElementById(b.dataset.jump);if(t)t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}
+});
+// ruler keys follow the section in view
+const spy=()=>{const hdr=document.querySelector('body>header').offsetHeight+40;let cur=null;document.querySelectorAll('.card').forEach(c=>{if(c.getBoundingClientRect().top<=hdr)cur=c.id});
+  document.querySelectorAll('.kf').forEach(k=>k.setAttribute('aria-pressed',k.dataset.jump===cur))};
+addEventListener('scroll',()=>requestAnimationFrame(spy),{passive:true});
+addEventListener('resize',()=>{clearTimeout(RESIZE);RESIZE=setTimeout(redraw,120)});
+addEventListener('hashchange',()=>{if(GAMES.length){fromHash();render()}});
+// tooltip: any mark or row with data-tip
+const tip=$('#tip');
+document.addEventListener('pointermove',e=>{const t=e.target.closest&&e.target.closest('[data-tip]');if(!t){tip.hidden=true;return}
+  tip.innerHTML=t.dataset.tip;tip.hidden=false;const r=tip.getBoundingClientRect(),x=Math.min(e.clientX+14,innerWidth-r.width-8),y=e.clientY+16+r.height>innerHeight?e.clientY-r.height-12:e.clientY+16;
+  tip.style.left=Math.max(8,x)+'px';tip.style.top=y+'px'});
+document.addEventListener('pointerleave',()=>tip.hidden=true);
+
+fetch('frame-data/games.json').then(r=>r.json()).then(async j=>{
+  GAMES=j.games;
+  const res=await Promise.all(GAMES.map(g=>fetch(g.data).then(r=>r.ok?r.json():null).catch(()=>null)));
+  GAMES=GAMES.filter((g,i)=>{if(res[i]&&res[i].moves){DATA[g.id]=prep(g,res[i]);return true}return false});
+  fromHash();$('#loading').hidden=true;$('#sections').hidden=false;render();
+  $('#foot').innerHTML=`<p><b>Sources.</b> Every number comes from the Frame Data tab's files; each game's source and method are in its footer there and in <a href="https://github.com/AtomechLLC/game-animation-library/blob/main/frame-data/README.md">frame-data/README.md</a>. Which moves count as basic and heavy attacks is set per game at the top of this page's script.</p>
+    <p>Fields mean slightly different things per source: recovery is "until you can dodge" in Elden Ring and No Rest, the source's endlag in Ultimate, and total minus the last active frame in 3rd Strike and Ninja Gaiden Black. Medians are of moves as listed, so a game with many variants of one swing (Elden Ring's weapon classes) weighs that swing more.</p>`;
+}).catch(e=>{$('#loading').textContent='Could not load the frame data: '+e.message});
+</script>
+</body>
+</html>

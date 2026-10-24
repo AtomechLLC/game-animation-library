@@ -25,6 +25,15 @@ with Elden Ring: browse by weapon class and weapon (icon index), then by move ty
 It is a static page that loads `frame-data/games.json` and one JSON file per game, so it works on GitHub Pages, `server.js`
 (`/frame-data`) and `serve_local.py` alike. Data format, sources and rebuild steps: [frame-data/README.md](frame-data/README.md).
 
+## Trends tab
+
+`trends.html` compares the games in the Frame Data tab: a typical basic attack phase by phase, the spread of startup,
+active, recovery and total frames, light vs heavy attacks, cancel windows, i-frames, hyper armor and multi-hits, advantage
+on block (fighting games) and a short write-up per game, plus a table of which fields each game's data covers. It reads
+the same `frame-data/games.json` and per-game files, so a newly added game shows up on its own; which of its moves count
+as basic and heavy attacks (and its write-up) go in `PROFILES` at the top of the page's script. Timings are converted to
+60 fps frames (Elden Ring's 30 fps frames are doubled).
+
 ## Source data
 
 - `taxonomy.txt` — the hand-written index. One `# CAT id | Name | description` line per category, then one line per animation: `Name | Subcategory | tags,comma,separated | Game;Game;Game | Description`.

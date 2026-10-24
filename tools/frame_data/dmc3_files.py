@@ -37,12 +37,20 @@ motion pack pl000_00_<n>, file id % 100 its slot; both halves name the same file
   00 _ u16 frame u8 _       wait until the motion reaches frame (0x7fff: for good)
   01 a b c group index u16  play the motion of (group, index) from u16 (0x7fff: the motion's own start frame)
   02 _ s16                  jump back
-  03 / 04 b0..b4            set the 5-byte state block 0 / 1 (03 at 0x5d, 04 at 0x62 of the motion controller)
+  03 / 04 b0..b4            set the 5-byte state block 0 / 1 (03 at 0x5d, 04 at 0x62 of the motion controller); block
+                            0's b4 is a signal to the action's code for that frame (a gun fires on it, for one)
   05 _                      clear both blocks
-  06 n / 07 n / 08 _        select / start effect set n
-  10+k _ u16 x (k+1)        effect on bones;   20 _ _ _ / 21 _ / 22 _ u32 / 23 _ / 24 _ s16: effect controls
+  06 n                      pick damage entry n of the action's attack table and start a new hit (targets already
+                            struck can be struck again); 07 n picks only, 08 _ starts a new hit only
+  10+k h u16 d u16 x (k+1)  switch on k+1 colliders (pl000.pac slot 6 ids) for d frames (0xffff: until switched off);
+                            h is the body half whose controller runs it (both halves run the script)
+  20 h m _                  switch off the colliders whose type has a bit of m;   24 h s16 id: switch off collider id
+  21 _ / 22 _ u32 / 23 _    collision manager settings
 Block 1's bytes set the next-action policy of an input slot: high nibble 3 = buffer, 1 = execute, 2 = ignore; low
 nibble the slot (0 melee, 4 style action, 5 jump / roll, 6 Royalguard, 8 Trickster, 10 gun, 15 the action ends).
+Colliders (pl000.pac slot 6): u32 per id, u8 type (bit 0: it deals damage; ids 0-1 are the body Dante is hit on),
+u8 bone, u16 shape (slot 7). Slot 7: 0x50 bytes per shape, u32 kind (2 = sphere: f32 x4 centre in the bone's space at
++0x10, centimetres, then f32 radius at +0x20; 3 and 4 are boxes and planes, used by a few style moves).
 Script frames are the motion's own frames (from 0, not from its start frame). One script runs on into the next
 index's script when the action chains, so a script ends at its next 01.
 """
@@ -255,12 +263,27 @@ def textures(s):
 
 # --- motion scripts ------------------------------------------------------------------------------------------------
 
+def colliders(pac):
+    """Dante's colliders from pl000.pac's subfiles: [dict(type, bone, sphere=(x, y, z, r) in cm or None)] by id."""
+    s6, s7 = pac[6], pac[7]
+    out = []
+    for i in range(len(s6) // 4):
+        t, bone, shape = struct.unpack_from('<BBH', s6, 4 * i)
+        o = shape * 0x50
+        sphere = None
+        if o + 0x50 <= len(s7) and struct.unpack_from('<I', s7, o)[0] == 2:
+            x, y, z, _, r = struct.unpack_from('<5f', s7, o + 0x10)
+            sphere = (x, y, z, r)
+        out.append({'type': t, 'bone': bone, 'sphere': sphere})
+    return out
+
+
 SLOT_NAMES = {0: 'melee', 4: 'style', 5: 'jump', 6: 'royalguard', 8: 'trickster', 10: 'gun', 15: 'end'}
 _OPLEN = {0: 6, 1: 8, 2: 4, 3: 6, 4: 6, 5: 2, 6: 2, 7: 2, 8: 2, 0x20: 4, 0x21: 2, 0x22: 6, 0x23: 2, 0x24: 4}
 
 
 class Scripts:
-    """Dante's motion scripts (pl000.pac slot 5): which motion a (group, index) plays and when its cancels open."""
+    """Dante's motion scripts (pl000.pac slot 5): which motion a (group, index) plays and when its cancels and hits come."""
     def __init__(self, s):
         self.s = s
         u16 = lambda o: struct.unpack_from('<H', s, o)[0]
@@ -279,10 +302,12 @@ class Scripts:
         return fid // 100, fid % 100
 
     def run(self, group, index):
-        """One script: dict(motion=(pack, slot), start=frame or None, slots={slot: [(frame, 'buffer'|'go'|'off')]}),
-        up to where it hands over to the next motion."""
+        """One script: dict(motion=(pack, slot), start=frame or None, slots={slot: [(frame, 'buffer'|'go'|'off')]},
+        hits=[(frame, 'wave', entry) | (frame, 'on', frames or None, [ids]) | (frame, 'off', ('mask'|'id', n))],
+        signals=[(frame, n)] the frames block 0's last byte is set, which the action's code acts on), up to where it hands
+        over to the next motion."""
         s, o = self.s, self._entry(0, group, index)
-        out = {'motion': None, 'start': None, 'slots': {}}
+        out = {'motion': None, 'start': None, 'slots': {}, 'hits': [], 'signals': []}
         frame = 0
         for _ in range(1000):
             op = s[o]
@@ -297,9 +322,36 @@ class Scripts:
                 if frame == 0x7fff: break
             elif op == 2:
                 break
+            elif op == 3 and s[o + 5]:
+                out['signals'].append((frame, s[o + 5]))
             elif op == 4:
                 for b in s[o + 1:o + 6]:
                     st = {0x30: 'buffer', 0x10: 'go', 0x20: 'off'}.get(b & 0xf0)
                     if st: out['slots'].setdefault(b & 0xf, []).append((frame, st))
+            elif op in (6, 8):
+                out['hits'].append((frame, 'wave', s[o + 1] if op == 6 else None))
+            elif 0x10 <= op <= 0x1f:
+                d = self.u16(o + 2)
+                ids = [self.u16(o + 4 + 2 * k) for k in range(op - 0xf)]
+                out['hits'].append((frame, 'on', None if d == 0xffff else d, sorted(set(ids))))
+            elif op == 0x20:
+                out['hits'].append((frame, 'off', ('mask', s[o + 2])))
+            elif op == 0x24:
+                out['hits'].append((frame, 'off', ('id', struct.unpack_from('<h', s, o + 2)[0])))
             o += n
         return out
+
+
+class WeaponScripts(Scripts):
+    """A weapon's own motion scripts, which Cerberus has (plwp_nunchaku.pac slot 5): the same bytecode, one list of u16
+    offsets from 0x0a with a script per index; its 01 plays the weapon's own motion (group, index), here returned as is.
+    Its colliders are ids of Dante's list (81-98 sit on the chain's bones)."""
+    def __init__(self, s):
+        self.s = s
+        self.u16 = lambda o: struct.unpack_from('<H', s, o)[0]
+
+    def _entry(self, table, group, index):
+        return 10 + self.u16(10 + 2 * index)
+
+    def file(self, group, index):
+        return group, index

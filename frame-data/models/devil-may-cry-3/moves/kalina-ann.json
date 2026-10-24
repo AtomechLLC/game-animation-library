@@ -1,1 +1,1 @@
-{"class":"kalina-ann","moves":{"kalina-ann.hysteric":{"frames":142,"weapon":"Kalina Ann","anim":"kalina-ann-hysteric","hits":[]},"kalina-ann.grapple":{"frames":67,"weapon":"Kalina Ann","anim":"kalina-ann-grapple","hits":[]}}}
+{"class":"kalina-ann","moves":{"kalina-ann.hysteric":{"frames":142,"weapon":"Kalina Ann","anim":"kalina-ann-hysteric","hits":[{"start":31,"end":33,"judge":20}]},"kalina-ann.grapple":{"frames":157,"weapon":"Kalina Ann","anim":"kalina-ann-grapple","hits":[{"start":28,"end":28,"judge":null}]}},"attacks":{"0":{"20":[{"a":20,"r":0.4}]}}}

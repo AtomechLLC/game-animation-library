@@ -1,7 +1,8 @@
 // 3D preview for the Frame Data tab: plays a move on the game's own character, armor and weapon models and draws its
 // hitboxes on the frames they are out. Everything it loads is written by tools/frame_data/export_er_models.py or
-// export_nrftw_models.py (format in frame-data/README.md, "3D preview"). Frames here are the tab's frames: 1-based, at
+// the other export_*_models.py (format in frame-data/README.md, "3D preview"). Frames here are the tab's frames: 1-based, at
 // the game's frame rate (models.json fps, 30 for Elden Ring).
+import {speedHtml, bindSpeed} from './speed.js?v=1';
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {createBlenderNavigation, anglesOf} from './navigation3d.js?v=5';
@@ -87,7 +88,7 @@ export async function createViewer(el, base) {
       <button class="v3d-prev" aria-label="Back one frame" title="Back one frame (,)">−1 f</button>
       <button class="v3d-next" aria-label="Forward one frame" title="Forward one frame (.)">+1 f</button>
       <div class="v3d-scrub"><div class="v3d-strip"></div><input type="range" min="1" max="1" step="1" value="1" aria-label="Frame"></div>
-      <select class="v3d-speed" aria-label="Playback speed"><option value="1">1×</option><option value="0.5">½×</option><option value="0.25">¼×</option><option value="0.1">0.1×</option></select>
+      ${speedHtml(0.5)}
     </div>
     <p class="v3d-keys"><span><kbd>Space</kbd> Play / pause</span><span><kbd>,</kbd> <kbd>.</kbd> or <kbd>←</kbd> <kbd>→</kbd> Previous / next frame</span><span><kbd>Ctrl</kbd> + <kbd>←</kbd> <kbd>→</kbd> Back / forward 1 second</span><span><kbd>Shift</kbd> + <kbd>←</kbd> <kbd>→</kbd> First / last frame</span></p>
     <div class="v3d-opts"><label><input type="checkbox" class="v3d-hb" checked> Hitboxes</label>
@@ -134,8 +135,9 @@ export async function createViewer(el, base) {
   const FPS = man.fps || 30, sk = man.skeleton;
   const armorG = await glb(base + man.armor.file);
   $('.v3d-msg').hidden = true;
-  // Game files are left-handed: mirror X once at the top so everything below stays in game space
-  const mirror = new THREE.Group(); mirror.scale.x = -1; scene.add(mirror);
+  // Game files are left-handed: mirror X once at the top so everything below stays in game space (models.json
+  // "mirror": false for games whose files are already right-handed, Ninja Gaiden Black)
+  const mirror = new THREE.Group(); mirror.scale.x = man.mirror === false ? 1 : -1; scene.add(mirror);
   const motion = new THREE.Group(); mirror.add(motion);
   const body = armorG.scene; motion.add(body);
   body.traverse(o => { if (o.isMesh) o.frustumCulled = false });
@@ -157,7 +159,7 @@ export async function createViewer(el, base) {
 
   // The move on show
   let info = null, anim = null, defHand = 'R', tracks = [], shapes = [], boxes = [], opts = {}, N = 1;
-  let f = 1, playing = !matchMedia('(prefers-reduced-motion: reduce)').matches, speed = 1, acc = 0, last = performance.now(), token = 0;
+  let f = 1, playing = !matchMedia('(prefers-reduced-motion: reduce)').matches, speed = 0.5, acc = 0, last = performance.now(), token = 0;
 
   function point(id, hand, out) {
     let src = 'any', k = id;
@@ -228,7 +230,7 @@ export async function createViewer(el, base) {
   $('.v3d-prev').onclick = () => { setPlaying(false); go(f - 1) };
   $('.v3d-next').onclick = () => { setPlaying(false); go(f + 1) };
   $('.v3d-scrub input').oninput = e => { setPlaying(false); go(+e.target.value) };
-  $('.v3d-speed').onchange = e => { speed = +e.target.value };
+  speed = bindSpeed($('.v3d-speed'), speed, v => { speed = v });
   el.querySelectorAll('.v3d-opts input').forEach(i => i.onchange = () => go(f));
   const onKey = e => {
     if (e.target.closest('input,select,textarea') && e.target.type !== 'range') return;
@@ -292,8 +294,16 @@ export async function createViewer(el, base) {
     const h = hands[hand];
     if (h.name === name) return;
     if (h.obj) h.bone.remove(h.obj);
-    h.name = name; h.obj = null; h.root = null; h.dummies = null;
+    for (const w of h.worn || []) w.parent?.remove(w);
+    h.name = name; h.obj = null; h.root = null; h.dummies = null; h.worn = [];
     if (!name) return;
+    // Worn weapons (Devil May Cry 3's Beowulf): pieces whose extras name the body bone they sit on
+    const pieces = []; g.scene.traverse(x => { if (x.userData.bone && bone(x.userData.bone)) pieces.push(x) });
+    if (pieces.length) {
+      if (hand !== defHand) return;
+      for (const x of pieces) { const c = x.clone(); c.position.set(0, 0, 0); bone(x.userData.bone).add(c); h.worn.push(c) }
+      return;
+    }
     // Weapon models point down -Y. R_Weapon's +Y points out of the fist (the models' own Ctrl_Sword node carries the
     // same half turn about Z); L_Weapon mirrors R_Weapon, so the left hand takes the model as it is
     // Dual weapons (No Rest for the Wicked) carry one root per hand, named R and L
@@ -362,7 +372,7 @@ export async function createViewer(el, base) {
     // warm the cache for the row under the pointer, so the swap on click is instant
     async prefetch(m, pick) {
       const c = await classData(base, m.class).catch(() => null), mv = c && c.moves[m.id];
-      if (mv) { loadAnim(m.id).catch(() => {}); loadWeapon(weaponFor(mv, pick)).catch(() => {}) }
+      if (mv) { loadAnim(mv.anim || m.id).catch(() => {}); loadWeapon(weaponFor(mv, pick)).catch(() => {}) }
     },
     dispose() {
       disposed = true; cancelAnimationFrame(raf); ro.disconnect(); document.removeEventListener('keydown', onKey);

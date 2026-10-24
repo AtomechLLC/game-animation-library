@@ -34,7 +34,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         if path == '/marks.json':
             body = open(MARKS, 'rb').read() if os.path.exists(MARKS) else b'{"marks": []}'
             return self.send_body(200, body, 'application/json')
-        if not (path.startswith('/gifs/') or path.startswith('/frame-data/') or path in ('/library.json', '/frame-data.html')):
+        if not (path.startswith('/gifs/') or path.startswith('/frame-data/') or path in ('/library.json', '/frame-data.html', '/trends.html')):
             return self.send_error(404)
         return super().do_GET()
 

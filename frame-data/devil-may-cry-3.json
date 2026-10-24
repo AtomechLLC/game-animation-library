@@ -5,7 +5,7 @@
   "name": "Devil May Cry 3: Special Edition",
   "fps": 60,
   "version": "PS2, Europe (SLES-54186)",
-  "frameNote": "Devil May Cry 3 runs its motions at 60 fps. Total is the move's motions from the frame the game starts them to their last frame; cancels are the first frame the move's script lets the next attack, jump or roll, block, style move or movement act. When the hit comes out is decided by the game's code, not its data files, so startup and active frames aren't known yet."
+  "frameNote": "Devil May Cry 3 runs its motions at 60 fps. Total is the move's motions from the frame the game starts them to their last frame; cancels are the first frame the move's script lets the next attack, jump or roll, block, style move or movement act. Active frames are when the script has a damaging hitbox switched on, for the frames it gives; startup is the first of them and recovery the frames after the last. Hits counts the times the script lets the move strike the same enemy again; Cerberus's swings come from the weapon's own script. For moves that fire or throw something (guns, Sword Pierce, Crystal, Thunder Bolt, Zodiac, Distortion) active marks the frame each shot leaves, and hits counts shots; how soon it lands depends on the distance. Gun rates are level 1's."
  },
  "source": {
   "name": "Devil May Cry 3 game files",
@@ -13,7 +13,7 @@
   "author": "Capcom",
   "retrieved": "2026-10-24",
   "method": "import_dmc3_game.py",
-  "note": "Read from the PS2 game's GData.afs and executable (SLES_541.86): the executable's action code names which of Dante's motion scripts each move plays, and the scripts give each move's motion, length and cancel frames."
+  "note": "Read from the PS2 game's GData.afs and executable (SLES_541.86): the executable's action code names which of Dante's motion scripts each move plays, and the scripts give each move's motion, length, cancel frames and when its hitboxes switch on and off."
  },
  "families": [
   {
@@ -34,7 +34,7 @@
    "id": "rebellion",
    "name": "Rebellion",
    "family": "melee",
-   "icon": null,
+   "icon": "Rebellion",
    "weapons": [],
    "moves": 31
   },
@@ -42,7 +42,7 @@
    "id": "cerberus",
    "name": "Cerberus",
    "family": "melee",
-   "icon": null,
+   "icon": "Cerberus",
    "weapons": [],
    "moves": 16
   },
@@ -50,7 +50,7 @@
    "id": "agni-rudra",
    "name": "Agni & Rudra",
    "family": "melee",
-   "icon": null,
+   "icon": "Agni & Rudra",
    "weapons": [],
    "moves": 22
   },
@@ -58,7 +58,7 @@
    "id": "nevan",
    "name": "Nevan",
    "family": "melee",
-   "icon": null,
+   "icon": "Nevan",
    "weapons": [],
    "moves": 16
   },
@@ -66,7 +66,7 @@
    "id": "beowulf",
    "name": "Beowulf",
    "family": "melee",
-   "icon": null,
+   "icon": "Beowulf",
    "weapons": [],
    "moves": 17
   },
@@ -74,7 +74,7 @@
    "id": "ebony-ivory",
    "name": "Ebony & Ivory",
    "family": "guns",
-   "icon": null,
+   "icon": "Ebony & Ivory",
    "weapons": [],
    "moves": 2
   },
@@ -82,7 +82,7 @@
    "id": "shotgun",
    "name": "Shotgun",
    "family": "guns",
-   "icon": null,
+   "icon": "Shotgun",
    "weapons": [],
    "moves": 4
   },
@@ -90,7 +90,7 @@
    "id": "artemis",
    "name": "Artemis",
    "family": "guns",
-   "icon": null,
+   "icon": "Artemis",
    "weapons": [],
    "moves": 4
   },
@@ -98,7 +98,7 @@
    "id": "spiral",
    "name": "Spiral",
    "family": "guns",
-   "icon": null,
+   "icon": "Spiral",
    "weapons": [],
    "moves": 2
   },
@@ -106,7 +106,7 @@
    "id": "kalina-ann",
    "name": "Kalina Ann",
    "family": "guns",
-   "icon": null,
+   "icon": "Kalina Ann",
    "weapons": [],
    "moves": 2
   },
@@ -114,7 +114,7 @@
    "id": "royalguard",
    "name": "Royalguard",
    "family": "styles",
-   "icon": null,
+   "icon": "Royalguard",
    "weapons": [],
    "moves": 2
   }
@@ -170,11 +170,16 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo I · 1",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 14,
+   "active": [
+    [
+     14,
+     17
+    ]
+   ],
+   "activeFrames": 4,
+   "hits": 1,
+   "recovery": 77,
    "total": 94,
    "cancels": {
     "attack": 22,
@@ -204,11 +209,16 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo I · 2",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 12,
+   "active": [
+    [
+     12,
+     16
+    ]
+   ],
+   "activeFrames": 5,
+   "hits": 1,
+   "recovery": 88,
    "total": 104,
    "cancels": {
     "attack": 16,
@@ -237,11 +247,16 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo I · 3",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 20,
+   "active": [
+    [
+     20,
+     24
+    ]
+   ],
+   "activeFrames": 5,
+   "hits": 1,
+   "recovery": 89,
    "total": 113,
    "cancels": {
     "attack": 35,
@@ -270,11 +285,24 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo II · 2",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 15,
+   "active": [
+    [
+     15,
+     21
+    ],
+    [
+     27,
+     32
+    ],
+    [
+     47,
+     51
+    ]
+   ],
+   "activeFrames": 18,
+   "hits": 3,
+   "recovery": 70,
    "total": 121,
    "cancels": {
     "attack": 51,
@@ -304,11 +332,16 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo II · 3",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 22,
+   "active": [
+    [
+     22,
+     24
+    ]
+   ],
+   "activeFrames": 3,
+   "hits": 1,
+   "recovery": 89,
    "total": 113,
    "cancels": {
     "attack": 37,
@@ -337,11 +370,44 @@
    "type": "move",
    "grip": "ground",
    "name": "Million Stab",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 15,
+   "active": [
+    [
+     15,
+     17
+    ],
+    [
+     28,
+     30
+    ],
+    [
+     36,
+     38
+    ],
+    [
+     44,
+     46
+    ],
+    [
+     52,
+     54
+    ],
+    [
+     60,
+     62
+    ],
+    [
+     68,
+     70
+    ],
+    [
+     95,
+     105
+    ]
+   ],
+   "activeFrames": 32,
+   "hits": 8,
+   "recovery": 71,
    "total": 176,
    "cancels": {
     "attack": 118,
@@ -371,11 +437,16 @@
    "type": "move",
    "grip": "ground",
    "name": "Stinger",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 19,
+   "active": [
+    [
+     19,
+     28
+    ]
+   ],
+   "activeFrames": 10,
+   "hits": 2,
+   "recovery": 69,
    "total": 97,
    "cancels": {
     "attack": 40,
@@ -405,11 +476,16 @@
    "type": "move",
    "grip": "ground",
    "name": "High Time",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 22,
+   "active": [
+    [
+     22,
+     26
+    ]
+   ],
+   "activeFrames": 5,
+   "hits": 1,
+   "recovery": 28,
    "total": 54,
    "cancels": {
     "attack": 38,
@@ -439,11 +515,16 @@
    "type": "move",
    "grip": "ground",
    "name": "High Time (jump)",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 1,
+   "active": [
+    [
+     1,
+     5
+    ]
+   ],
+   "activeFrames": 5,
+   "hits": 1,
+   "recovery": 19,
    "total": 24,
    "cancels": {
     "attack": 15,
@@ -473,11 +554,20 @@
    "type": "move",
    "grip": "air",
    "name": "Helm Breaker",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 14,
+   "active": [
+    [
+     14,
+     18
+    ],
+    [
+     21,
+     23
+    ]
+   ],
+   "activeFrames": 8,
+   "hits": 2,
+   "recovery": 59,
    "total": 82,
    "cancels": {
     "attack": 33,
@@ -506,11 +596,16 @@
    "type": "move",
    "grip": "ground",
    "name": "Kick 1",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 16,
+   "active": [
+    [
+     16,
+     22
+    ]
+   ],
+   "activeFrames": 7,
+   "hits": 1,
+   "recovery": 61,
    "total": 83,
    "cancels": {
     "attack": 25,
@@ -539,11 +634,16 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Drive",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 186,
+   "active": [
+    [
+     186,
+     191
+    ]
+   ],
+   "activeFrames": 6,
+   "hits": 1,
+   "recovery": 107,
    "total": 298,
    "cancels": {
     "attack": 204,
@@ -573,11 +673,24 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Prop",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 23,
+   "active": [
+    [
+     23,
+     25
+    ],
+    [
+     28,
+     30
+    ],
+    [
+     33,
+     35
+    ]
+   ],
+   "activeFrames": 9,
+   "hits": 3,
+   "recovery": 35,
    "total": 70,
    "cancels": {
     "attack": 44,
@@ -606,11 +719,24 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Shredder",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 23,
+   "active": [
+    [
+     23,
+     25
+    ],
+    [
+     28,
+     30
+    ],
+    [
+     33,
+     35
+    ]
+   ],
+   "activeFrames": 9,
+   "hits": 3,
+   "recovery": 32,
    "total": 67,
    "cancels": {
     "attack": 38,
@@ -639,11 +765,16 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Kick 2",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 20,
+   "active": [
+    [
+     20,
+     24
+    ]
+   ],
+   "activeFrames": 5,
+   "hits": 1,
+   "recovery": 39,
    "total": 63,
    "cancels": {
     "attack": 48,
@@ -672,11 +803,16 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Sword Pierce",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 22,
+   "active": [
+    [
+     22,
+     22
+    ]
+   ],
+   "activeFrames": 1,
+   "hits": 1,
+   "recovery": 88,
    "total": 110,
    "cancels": {
     "attack": 41,
@@ -729,7 +865,7 @@
     "Script": "13-15",
     "Style": "Swordmaster"
    },
-   "desc": "Catching Rebellion"
+   "desc": "Catching Rebellion; the sword hits on its way back as part of Sword Pierce, not here"
   },
   {
    "id": "rebellion.aerial-rave-1",
@@ -737,11 +873,16 @@
    "type": "swordmaster",
    "grip": "air",
    "name": "Aerial Rave · 1",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 9,
+   "active": [
+    [
+     9,
+     13
+    ]
+   ],
+   "activeFrames": 5,
+   "hits": 1,
+   "recovery": 32,
    "total": 45,
    "cancels": {
     "attack": 17,
@@ -770,11 +911,16 @@
    "type": "swordmaster",
    "grip": "air",
    "name": "Aerial Rave · 2",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 7,
+   "active": [
+    [
+     7,
+     10
+    ]
+   ],
+   "activeFrames": 4,
+   "hits": 1,
+   "recovery": 34,
    "total": 44,
    "cancels": {
     "attack": 16,
@@ -803,11 +949,16 @@
    "type": "swordmaster",
    "grip": "air",
    "name": "Aerial Rave · 3",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 11,
+   "active": [
+    [
+     11,
+     13
+    ]
+   ],
+   "activeFrames": 3,
+   "hits": 1,
+   "recovery": 31,
    "total": 44,
    "cancels": {
     "attack": 19,
@@ -836,11 +987,16 @@
    "type": "swordmaster",
    "grip": "air",
    "name": "Aerial Rave · 4",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 10,
+   "active": [
+    [
+     10,
+     12
+    ]
+   ],
+   "activeFrames": 3,
+   "hits": 1,
+   "recovery": 32,
    "total": 44,
    "cancels": {
     "attack": 23,
@@ -869,11 +1025,16 @@
    "type": "swordmaster",
    "grip": "air",
    "name": "Divekick",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 20,
+   "active": [
+    [
+     20,
+     25
+    ]
+   ],
+   "activeFrames": 6,
+   "hits": 1,
+   "recovery": 43,
    "total": 68,
    "cancels": {
     "attack": 47,
@@ -928,7 +1089,8 @@
     "Motion": "pl000_00_13.pac #17, frames 0–58",
     "Script": "13-17",
     "Style": "Swordmaster"
-   }
+   },
+   "desc": "The dash into part 2; it switches on no hitbox"
   },
   {
    "id": "rebellion.dance-macabre-2",
@@ -936,11 +1098,16 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Dance Macabre · 2",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 9,
+   "active": [
+    [
+     9,
+     12
+    ]
+   ],
+   "activeFrames": 4,
+   "hits": 1,
+   "recovery": 77,
    "total": 89,
    "cancels": {
     "attack": 46,
@@ -968,11 +1135,16 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Dance Macabre · 3",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 7,
+   "active": [
+    [
+     7,
+     10
+    ]
+   ],
+   "activeFrames": 4,
+   "hits": 1,
+   "recovery": 89,
    "total": 99,
    "cancels": {
     "attack": 37,
@@ -1000,11 +1172,16 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Dance Macabre · 4",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 9,
+   "active": [
+    [
+     9,
+     12
+    ]
+   ],
+   "activeFrames": 4,
+   "hits": 1,
+   "recovery": 77,
    "total": 89,
    "cancels": {
     "attack": 46,
@@ -1032,11 +1209,24 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Dance Macabre · 5",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 5,
+   "active": [
+    [
+     5,
+     12
+    ],
+    [
+     18,
+     23
+    ],
+    [
+     38,
+     42
+    ]
+   ],
+   "activeFrames": 19,
+   "hits": 3,
+   "recovery": 70,
    "total": 112,
    "cancels": {
     "attack": 69,
@@ -1065,11 +1255,16 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Dance Macabre · 6",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 15,
+   "active": [
+    [
+     15,
+     18
+    ]
+   ],
+   "activeFrames": 4,
+   "hits": 1,
+   "recovery": 89,
    "total": 107,
    "cancels": {
     "attack": 55,
@@ -1097,11 +1292,16 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Dance Macabre · 7",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 10,
+   "active": [
+    [
+     10,
+     13
+    ]
+   ],
+   "activeFrames": 4,
+   "hits": 1,
+   "recovery": 90,
    "total": 103,
    "cancels": {
     "attack": 51,
@@ -1129,11 +1329,44 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Dance Macabre · 8",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 15,
+   "active": [
+    [
+     15,
+     17
+    ],
+    [
+     28,
+     30
+    ],
+    [
+     36,
+     38
+    ],
+    [
+     43,
+     45
+    ],
+    [
+     52,
+     54
+    ],
+    [
+     60,
+     62
+    ],
+    [
+     68,
+     70
+    ],
+    [
+     95,
+     105
+    ]
+   ],
+   "activeFrames": 32,
+   "hits": 8,
+   "recovery": 71,
    "total": 176,
    "cancels": {
     "attack": 118,
@@ -1161,11 +1394,20 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Crazy Dance",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 18,
+   "active": [
+    [
+     18,
+     47
+    ],
+    [
+     58,
+     63
+    ]
+   ],
+   "activeFrames": 36,
+   "hits": 4,
+   "recovery": 80,
    "total": 143,
    "cancels": {
     "attack": 89,
@@ -1194,11 +1436,20 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo I · 1",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 7,
+   "active": [
+    [
+     7,
+     9
+    ],
+    [
+     22,
+     25
+    ]
+   ],
+   "activeFrames": 7,
+   "hits": 2,
+   "recovery": 75,
    "total": 100,
    "cancels": {
     "attack": 31,
@@ -1227,11 +1478,20 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo I · 2",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 6,
+   "active": [
+    [
+     6,
+     9
+    ],
+    [
+     19,
+     22
+    ]
+   ],
+   "activeFrames": 8,
+   "hits": 2,
+   "recovery": 77,
    "total": 99,
    "cancels": {
     "attack": 26,
@@ -1260,11 +1520,20 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo I · 3",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 10,
+   "active": [
+    [
+     10,
+     13
+    ],
+    [
+     26,
+     30
+    ]
+   ],
+   "activeFrames": 9,
+   "hits": 2,
+   "recovery": 81,
    "total": 111,
    "cancels": {
     "attack": 43,
@@ -1293,11 +1562,20 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo I · 4",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 6,
+   "active": [
+    [
+     6,
+     10
+    ],
+    [
+     24,
+     28
+    ]
+   ],
+   "activeFrames": 10,
+   "hits": 2,
+   "recovery": 96,
    "total": 124,
    "cancels": {
     "attack": 38,
@@ -1326,11 +1604,20 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo I · 5",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 13,
+   "active": [
+    [
+     13,
+     17
+    ],
+    [
+     38,
+     41
+    ]
+   ],
+   "activeFrames": 9,
+   "hits": 2,
+   "recovery": 92,
    "total": 133,
    "cancels": {
     "attack": 63,
@@ -1359,11 +1646,20 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo II · 3",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 13,
+   "active": [
+    [
+     13,
+     17
+    ],
+    [
+     38,
+     42
+    ]
+   ],
+   "activeFrames": 10,
+   "hits": 2,
+   "recovery": 91,
    "total": 133,
    "cancels": {
     "dodge": 18,
@@ -1391,11 +1687,28 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo II · 4",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 25,
+   "active": [
+    [
+     25,
+     27
+    ],
+    [
+     31,
+     33
+    ],
+    [
+     37,
+     39
+    ],
+    [
+     43,
+     45
+    ]
+   ],
+   "activeFrames": 12,
+   "hits": 4,
+   "recovery": 103,
    "total": 148,
    "cancels": {
     "attack": 73,
@@ -1424,11 +1737,28 @@
    "type": "move",
    "grip": "ground",
    "name": "Windmill",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 19,
+   "active": [
+    [
+     19,
+     21
+    ],
+    [
+     25,
+     27
+    ],
+    [
+     31,
+     33
+    ],
+    [
+     37,
+     39
+    ]
+   ],
+   "activeFrames": 12,
+   "hits": 4,
+   "recovery": 103,
    "total": 142,
    "cancels": {
     "attack": 67,
@@ -1457,11 +1787,20 @@
    "type": "move",
    "grip": "ground",
    "name": "Revolver",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 10,
+   "active": [
+    [
+     10,
+     35
+    ],
+    [
+     38,
+     47
+    ]
+   ],
+   "activeFrames": 36,
+   "hits": 3,
+   "recovery": 44,
    "total": 91,
    "cancels": {
     "attack": 61,
@@ -1491,11 +1830,16 @@
    "type": "move",
    "grip": "air",
    "name": "Swing",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 17,
+   "active": [
+    [
+     17,
+     26
+    ]
+   ],
+   "activeFrames": 10,
+   "hits": 1,
+   "recovery": 44,
    "total": 70,
    "cancels": {
     "attack": 29,
@@ -1524,11 +1868,24 @@
    "type": "move",
    "grip": "ground",
    "name": "Satellite",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 25,
+   "active": [
+    [
+     25,
+     35
+    ],
+    [
+     38,
+     56
+    ],
+    [
+     62,
+     71
+    ]
+   ],
+   "activeFrames": 40,
+   "hits": 3,
+   "recovery": 83,
    "total": 154,
    "cancels": {
     "attack": 93,
@@ -1557,11 +1914,24 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Flicker",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 9,
+   "active": [
+    [
+     9,
+     16
+    ],
+    [
+     23,
+     30
+    ],
+    [
+     36,
+     43
+    ]
+   ],
+   "activeFrames": 24,
+   "hits": 6,
+   "recovery": 52,
    "total": 95,
    "cancels": {
     "attack": 45,
@@ -1590,11 +1960,24 @@
    "type": "swordmaster",
    "grip": "air",
    "name": "Air Flicker",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 9,
+   "active": [
+    [
+     9,
+     16
+    ],
+    [
+     23,
+     30
+    ],
+    [
+     36,
+     43
+    ]
+   ],
+   "activeFrames": 24,
+   "hits": 6,
+   "recovery": 21,
    "total": 64,
    "cancels": {
     "attack": 45,
@@ -1622,11 +2005,16 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Crystal",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 41,
+   "active": [
+    [
+     41,
+     41
+    ]
+   ],
+   "activeFrames": 1,
+   "hits": 1,
+   "recovery": 69,
    "total": 110,
    "cancels": {
     "attack": 72,
@@ -1655,11 +2043,16 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Million Carats",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 59,
+   "active": [
+    [
+     59,
+     68
+    ]
+   ],
+   "activeFrames": 10,
+   "hits": 1,
+   "recovery": 77,
    "total": 145,
    "cancels": {
     "attack": 101,
@@ -1688,11 +2081,16 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Ice Age",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 29,
+   "active": [
+    [
+     29,
+     138
+    ]
+   ],
+   "activeFrames": 110,
+   "hits": 11,
+   "recovery": 71,
    "total": 209,
    "cancels": {
     "attack": 179,
@@ -1722,11 +2120,20 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo I · 1",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 6,
+   "active": [
+    [
+     6,
+     12
+    ],
+    [
+     15,
+     23
+    ]
+   ],
+   "activeFrames": 16,
+   "hits": 2,
+   "recovery": 52,
    "total": 75,
    "cancels": {
     "attack": 24,
@@ -1755,11 +2162,16 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo I · 2",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 22,
+   "active": [
+    [
+     22,
+     35
+    ]
+   ],
+   "activeFrames": 14,
+   "hits": 1,
+   "recovery": 69,
    "total": 104,
    "cancels": {
     "attack": 34,
@@ -1788,11 +2200,16 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo I · 3",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 5,
+   "active": [
+    [
+     5,
+     18
+    ]
+   ],
+   "activeFrames": 14,
+   "hits": 1,
+   "recovery": 81,
    "total": 99,
    "cancels": {
     "attack": 19,
@@ -1821,11 +2238,16 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo I · 4",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 23,
+   "active": [
+    [
+     23,
+     33
+    ]
+   ],
+   "activeFrames": 11,
+   "hits": 1,
+   "recovery": 57,
    "total": 90,
    "cancels": {
     "attack": 33,
@@ -1854,11 +2276,20 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo I · 5",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 7,
+   "active": [
+    [
+     7,
+     19
+    ],
+    [
+     36,
+     44
+    ]
+   ],
+   "activeFrames": 22,
+   "hits": 2,
+   "recovery": 104,
    "total": 148,
    "cancels": {
     "attack": 62,
@@ -1887,11 +2318,16 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo II · 2",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 18,
+   "active": [
+    [
+     18,
+     28
+    ]
+   ],
+   "activeFrames": 11,
+   "hits": 2,
+   "recovery": 82,
    "total": 110,
    "cancels": {
     "attack": 32,
@@ -1920,11 +2356,20 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo II · 3",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 16,
+   "active": [
+    [
+     16,
+     19
+    ],
+    [
+     26,
+     30
+    ]
+   ],
+   "activeFrames": 9,
+   "hits": 2,
+   "recovery": 75,
    "total": 105,
    "cancels": {
     "attack": 50,
@@ -1953,11 +2398,32 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo III · 3",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 5,
+   "active": [
+    [
+     5,
+     9
+    ],
+    [
+     15,
+     19
+    ],
+    [
+     24,
+     28
+    ],
+    [
+     36,
+     39
+    ],
+    [
+     59,
+     62
+    ]
+   ],
+   "activeFrames": 23,
+   "hits": 6,
+   "recovery": 82,
    "total": 144,
    "cancels": {
     "attack": 93,
@@ -1986,11 +2452,20 @@
    "type": "move",
    "grip": "ground",
    "name": "Jet-Stream (level 1)",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 45,
+   "active": [
+    [
+     45,
+     48
+    ],
+    [
+     56,
+     60
+    ]
+   ],
+   "activeFrames": 9,
+   "hits": 2,
+   "recovery": 108,
    "total": 168,
    "cancels": {
     "attack": 80,
@@ -2019,11 +2494,20 @@
    "type": "move",
    "grip": "ground",
    "name": "Jet-Stream (level 2)",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 44,
+   "active": [
+    [
+     44,
+     47
+    ],
+    [
+     55,
+     59
+    ]
+   ],
+   "activeFrames": 9,
+   "hits": 2,
+   "recovery": 109,
    "total": 168,
    "cancels": {
     "attack": 79,
@@ -2052,11 +2536,16 @@
    "type": "move",
    "grip": "ground",
    "name": "Jet-Stream (level 3)",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 59,
+   "active": [
+    [
+     59,
+     62
+    ]
+   ],
+   "activeFrames": 4,
+   "hits": 1,
+   "recovery": 109,
    "total": 171,
    "cancels": {
     "attack": 84,
@@ -2085,11 +2574,20 @@
    "type": "move",
    "grip": "ground",
    "name": "Whirlwind",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 14,
+   "active": [
+    [
+     14,
+     23
+    ],
+    [
+     27,
+     30
+    ]
+   ],
+   "activeFrames": 14,
+   "hits": 3,
+   "recovery": 103,
    "total": 133,
    "cancels": {
     "attack": 42,
@@ -2119,11 +2617,20 @@
    "type": "move",
    "grip": "ground",
    "name": "Whirlwind (jump)",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 2,
+   "active": [
+    [
+     2,
+     5
+    ],
+    [
+     22,
+     25
+    ]
+   ],
+   "activeFrames": 8,
+   "hits": 2,
+   "recovery": 32,
    "total": 57,
    "cancels": {
     "attack": 31,
@@ -2153,11 +2660,32 @@
    "type": "move",
    "grip": "ground",
    "name": "Million Slash",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 3,
+   "active": [
+    [
+     3,
+     11
+    ],
+    [
+     15,
+     19
+    ],
+    [
+     23,
+     27
+    ],
+    [
+     31,
+     34
+    ],
+    [
+     69,
+     73
+    ]
+   ],
+   "activeFrames": 28,
+   "hits": 10,
+   "recovery": 96,
    "total": 169,
    "cancels": {
     "attack": 104,
@@ -2186,11 +2714,16 @@
    "type": "move",
    "grip": "air",
    "name": "Aerial Cross",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 11,
+   "active": [
+    [
+     11,
+     14
+    ]
+   ],
+   "activeFrames": 4,
+   "hits": 1,
+   "recovery": 42,
    "total": 56,
    "cancels": {
     "attack": 21,
@@ -2219,11 +2752,16 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Crossed Swords",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 20,
+   "active": [
+    [
+     20,
+     22
+    ]
+   ],
+   "activeFrames": 3,
+   "hits": 1,
+   "recovery": 60,
    "total": 82,
    "cancels": {
     "attack": 36,
@@ -2253,11 +2791,16 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Crawler",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 41,
+   "active": [
+    [
+     41,
+     60
+    ]
+   ],
+   "activeFrames": 20,
+   "hits": 1,
+   "recovery": 80,
    "total": 140,
    "cancels": {
     "attack": 60,
@@ -2287,11 +2830,24 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Twister",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 20,
+   "active": [
+    [
+     20,
+     23
+    ],
+    [
+     25,
+     28
+    ],
+    [
+     30,
+     33
+    ]
+   ],
+   "activeFrames": 12,
+   "hits": 3,
+   "recovery": 69,
    "total": 102,
    "cancels": {
     "attack": 59,
@@ -2320,17 +2876,22 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Tempest",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
-   "total": 85,
+   "startup": 46,
+   "active": [
+    [
+     46,
+     49
+    ]
+   ],
+   "activeFrames": 4,
+   "hits": 1,
+   "recovery": 51,
+   "total": 100,
    "cancels": {
-    "attack": 70,
-    "dodge": 70,
-    "skill": 70,
-    "move": 82
+    "attack": 85,
+    "dodge": 85,
+    "skill": 85,
+    "move": 97
    },
    "armor": [],
    "iframes": [],
@@ -2342,10 +2903,11 @@
    "weapons": [],
    "default": true,
    "extra": {
-    "Motion": "pl000_00_15.pac #8, frames 38–83, pl000_00_15.pac #9, frames 84–124",
-    "Script": "15-8, 15-9",
+    "Motion": "pl000_00_15.pac #8, frames 38–83, pl000_00_15.pac #8, frames 68–83, pl000_00_15.pac #9, frames 84–124",
+    "Script": "15-8, 15-10 from 68, 15-9",
     "Style": "Swordmaster"
-   }
+   },
+   "desc": "Held for one extra spin, which is the one that hits"
   },
   {
    "id": "agni-rudra.sky-dance-1",
@@ -2353,11 +2915,20 @@
    "type": "swordmaster",
    "grip": "air",
    "name": "Sky Dance · 1",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 10,
+   "active": [
+    [
+     10,
+     13
+    ],
+    [
+     23,
+     26
+    ]
+   ],
+   "activeFrames": 8,
+   "hits": 2,
+   "recovery": 26,
    "total": 52,
    "cancels": {
     "attack": 32,
@@ -2386,11 +2957,20 @@
    "type": "swordmaster",
    "grip": "air",
    "name": "Sky Dance · 2",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 4,
+   "active": [
+    [
+     4,
+     7
+    ],
+    [
+     17,
+     20
+    ]
+   ],
+   "activeFrames": 8,
+   "hits": 2,
+   "recovery": 26,
    "total": 46,
    "cancels": {
     "attack": 26,
@@ -2419,11 +2999,16 @@
    "type": "swordmaster",
    "grip": "air",
    "name": "Sky Dance · 3",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 18,
+   "active": [
+    [
+     18,
+     30
+    ]
+   ],
+   "activeFrames": 13,
+   "hits": 2,
+   "recovery": 68,
    "total": 98,
    "cancels": {
     "attack": 52,
@@ -2453,11 +3038,16 @@
    "type": "move",
    "grip": "ground",
    "name": "Tune Up",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 11,
+   "active": [
+    [
+     11,
+     18
+    ]
+   ],
+   "activeFrames": 8,
+   "hits": 1,
+   "recovery": 32,
    "total": 50,
    "cancels": {
     "attack": 25,
@@ -2485,11 +3075,16 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo 1",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 6,
+   "active": [
+    [
+     6,
+     15
+    ]
+   ],
+   "activeFrames": 10,
+   "hits": 1,
+   "recovery": 60,
    "total": 75,
    "cancels": {
     "attack": 35,
@@ -2518,11 +3113,16 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo 2",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 32,
+   "active": [
+    [
+     32,
+     61
+    ]
+   ],
+   "activeFrames": 30,
+   "hits": 1,
+   "recovery": 39,
    "total": 100,
    "cancels": {
     "attack": 99,
@@ -2551,11 +3151,68 @@
    "type": "move",
    "grip": "ground",
    "name": "Jam Session",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 10,
+   "active": [
+    [
+     10,
+     14
+    ],
+    [
+     20,
+     24
+    ],
+    [
+     30,
+     34
+    ],
+    [
+     40,
+     44
+    ],
+    [
+     50,
+     54
+    ],
+    [
+     60,
+     64
+    ],
+    [
+     70,
+     74
+    ],
+    [
+     80,
+     84
+    ],
+    [
+     90,
+     94
+    ],
+    [
+     100,
+     104
+    ],
+    [
+     110,
+     114
+    ],
+    [
+     120,
+     124
+    ],
+    [
+     130,
+     134
+    ],
+    [
+     149,
+     213
+    ]
+   ],
+   "activeFrames": 130,
+   "hits": 14,
+   "recovery": 57,
    "total": 270,
    "cancels": {
     "attack": 256,
@@ -2584,11 +3241,20 @@
    "type": "move",
    "grip": "ground",
    "name": "Bat Rift",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 22,
+   "active": [
+    [
+     22,
+     26
+    ],
+    [
+     41,
+     46
+    ]
+   ],
+   "activeFrames": 11,
+   "hits": 2,
+   "recovery": 18,
    "total": 64,
    "cancels": {
     "attack": 51,
@@ -2616,11 +3282,16 @@
    "type": "move",
    "grip": "ground",
    "name": "Bat Rift (level 2)",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 1,
+   "active": [
+    [
+     1,
+     5
+    ]
+   ],
+   "activeFrames": 5,
+   "hits": 1,
+   "recovery": 94,
    "total": 99,
    "cancels": {
     "attack": 69,
@@ -2648,11 +3319,16 @@
    "type": "move",
    "grip": "ground",
    "name": "Reverb Shock",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 34,
+   "active": [
+    [
+     34,
+     43
+    ]
+   ],
+   "activeFrames": 10,
+   "hits": 1,
+   "recovery": 59,
    "total": 102,
    "cancels": {
     "attack": 54,
@@ -2681,11 +3357,16 @@
    "type": "move",
    "grip": "air",
    "name": "Air Play",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 32,
+   "active": [
+    [
+     32,
+     41
+    ]
+   ],
+   "activeFrames": 10,
+   "hits": 1,
+   "recovery": 57,
    "total": 98,
    "cancels": {
     "attack": 49,
@@ -2714,11 +3395,16 @@
    "type": "move",
    "grip": "air",
    "name": "Thunder Bolt",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 26,
+   "active": [
+    [
+     26,
+     26
+    ]
+   ],
+   "activeFrames": 1,
+   "hits": 1,
+   "recovery": 34,
    "total": 60,
    "cancels": {
     "attack": 31,
@@ -2747,11 +3433,16 @@
    "type": "move",
    "grip": "air",
    "name": "Vortex",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 29,
+   "active": [
+    [
+     29,
+     45
+    ]
+   ],
+   "activeFrames": 17,
+   "hits": 2,
+   "recovery": 3,
    "total": 48,
    "cancels": {
     "attack": 43,
@@ -2779,11 +3470,20 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Slash",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 13,
+   "active": [
+    [
+     13,
+     18
+    ],
+    [
+     41,
+     45
+    ]
+   ],
+   "activeFrames": 11,
+   "hits": 2,
+   "recovery": 56,
    "total": 101,
    "cancels": {
     "attack": 56,
@@ -2811,11 +3511,44 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Feedback",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 18,
+   "active": [
+    [
+     18,
+     22
+    ],
+    [
+     28,
+     32
+    ],
+    [
+     38,
+     42
+    ],
+    [
+     47,
+     51
+    ],
+    [
+     56,
+     60
+    ],
+    [
+     64,
+     68
+    ],
+    [
+     71,
+     75
+    ],
+    [
+     95,
+     104
+    ]
+   ],
+   "activeFrames": 45,
+   "hits": 8,
+   "recovery": 31,
    "total": 135,
    "cancels": {
     "attack": 119,
@@ -2843,11 +3576,44 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Crazy Roll",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 7,
+   "active": [
+    [
+     7,
+     11
+    ],
+    [
+     17,
+     21
+    ],
+    [
+     23,
+     27
+    ],
+    [
+     29,
+     33
+    ],
+    [
+     36,
+     40
+    ],
+    [
+     43,
+     47
+    ],
+    [
+     50,
+     54
+    ],
+    [
+     66,
+     73
+    ]
+   ],
+   "activeFrames": 43,
+   "hits": 8,
+   "recovery": 77,
    "total": 150,
    "cancels": {
     "attack": 93,
@@ -2875,11 +3641,16 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Distortion",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 83,
+   "active": [
+    [
+     83,
+     83
+    ]
+   ],
+   "activeFrames": 1,
+   "hits": 1,
+   "recovery": 77,
    "total": 160,
    "cancels": {
     "attack": 109,
@@ -2907,11 +3678,16 @@
    "type": "swordmaster",
    "grip": "air",
    "name": "Air Slash · 1",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 14,
+   "active": [
+    [
+     14,
+     20
+    ]
+   ],
+   "activeFrames": 7,
+   "hits": 1,
+   "recovery": 60,
    "total": 80,
    "cancels": {
     "attack": 26,
@@ -2940,11 +3716,16 @@
    "type": "swordmaster",
    "grip": "air",
    "name": "Air Slash · 2",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 17,
+   "active": [
+    [
+     17,
+     23
+    ]
+   ],
+   "activeFrames": 7,
+   "hits": 1,
+   "recovery": 51,
    "total": 74,
    "cancels": {
     "attack": 29,
@@ -2973,11 +3754,16 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo I · 1",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 14,
+   "active": [
+    [
+     14,
+     16
+    ]
+   ],
+   "activeFrames": 3,
+   "hits": 1,
+   "recovery": 82,
    "total": 98,
    "cancels": {
     "attack": 23,
@@ -3006,11 +3792,16 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo I · 2",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 17,
+   "active": [
+    [
+     17,
+     19
+    ]
+   ],
+   "activeFrames": 3,
+   "hits": 1,
+   "recovery": 63,
    "total": 82,
    "cancels": {
     "attack": 29,
@@ -3039,11 +3830,16 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo I · 3",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 13,
+   "active": [
+    [
+     13,
+     15
+    ]
+   ],
+   "activeFrames": 3,
+   "hits": 1,
+   "recovery": 62,
    "total": 77,
    "cancels": {
     "attack": 28,
@@ -3072,11 +3868,36 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo II · 3",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 32,
+   "active": [
+    [
+     32,
+     34
+    ],
+    [
+     39,
+     41
+    ],
+    [
+     46,
+     48
+    ],
+    [
+     53,
+     55
+    ],
+    [
+     60,
+     62
+    ],
+    [
+     67,
+     69
+    ]
+   ],
+   "activeFrames": 18,
+   "hits": 6,
+   "recovery": 48,
    "total": 117,
    "cancels": {
     "attack": 72,
@@ -3105,11 +3926,16 @@
    "type": "combo",
    "grip": "ground",
    "name": "Combo II · 4",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 34,
+   "active": [
+    [
+     34,
+     38
+    ]
+   ],
+   "activeFrames": 5,
+   "hits": 1,
+   "recovery": 60,
    "total": 98,
    "cancels": {
     "attack": 64,
@@ -3138,11 +3964,72 @@
    "type": "move",
    "grip": "ground",
    "name": "Hyper Fist",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 12,
+   "active": [
+    [
+     12,
+     14
+    ],
+    [
+     21,
+     23
+    ],
+    [
+     31,
+     33
+    ],
+    [
+     38,
+     40
+    ],
+    [
+     45,
+     47
+    ],
+    [
+     52,
+     54
+    ],
+    [
+     59,
+     61
+    ],
+    [
+     66,
+     68
+    ],
+    [
+     73,
+     75
+    ],
+    [
+     80,
+     82
+    ],
+    [
+     87,
+     89
+    ],
+    [
+     94,
+     96
+    ],
+    [
+     101,
+     103
+    ],
+    [
+     108,
+     110
+    ],
+    [
+     135,
+     137
+    ]
+   ],
+   "activeFrames": 45,
+   "hits": 15,
+   "recovery": 90,
    "total": 227,
    "cancels": {
     "attack": 167,
@@ -3171,11 +4058,16 @@
    "type": "move",
    "grip": "ground",
    "name": "Beast Uppercut",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 33,
+   "active": [
+    [
+     33,
+     35
+    ]
+   ],
+   "activeFrames": 3,
+   "hits": 1,
+   "recovery": 64,
    "total": 99,
    "cancels": {
     "attack": 51,
@@ -3204,11 +4096,16 @@
    "type": "move",
    "grip": "ground",
    "name": "Rising Dragon",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 6,
+   "active": [
+    [
+     6,
+     13
+    ]
+   ],
+   "activeFrames": 8,
+   "hits": 1,
+   "recovery": 23,
    "total": 36,
    "cancels": {
     "attack": 20,
@@ -3237,11 +4134,16 @@
    "type": "move",
    "grip": "ground",
    "name": "Straight",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 27,
+   "active": [
+    [
+     27,
+     30
+    ]
+   ],
+   "activeFrames": 4,
+   "hits": 1,
+   "recovery": 72,
    "total": 102,
    "cancels": {
     "attack": 54,
@@ -3271,11 +4173,16 @@
    "type": "move",
    "grip": "air",
    "name": "Killer Bee",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 20,
+   "active": [
+    [
+     20,
+     25
+    ]
+   ],
+   "activeFrames": 6,
+   "hits": 1,
+   "recovery": 43,
    "total": 68,
    "cancels": {
     "attack": 47,
@@ -3304,11 +4211,24 @@
    "type": "move",
    "grip": "air",
    "name": "Rising Dragon (whirlwind)",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 1,
+   "active": [
+    [
+     1,
+     4
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     11,
+     17
+    ]
+   ],
+   "activeFrames": 15,
+   "hits": 4,
+   "recovery": 18,
    "total": 35,
    "cancels": {
     "attack": 23,
@@ -3336,11 +4256,16 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Zodiac",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 34,
+   "active": [
+    [
+     34,
+     34
+    ]
+   ],
+   "activeFrames": 1,
+   "hits": 1,
+   "recovery": 61,
    "total": 95,
    "cancels": {
     "attack": 56,
@@ -3370,11 +4295,16 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Volcano",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 40,
+   "active": [
+    [
+     40,
+     49
+    ]
+   ],
+   "activeFrames": 10,
+   "hits": 1,
+   "recovery": 93,
    "total": 142,
    "cancels": {
     "attack": 91,
@@ -3403,11 +4333,16 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Tornado",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 1,
+   "active": [
+    [
+     1,
+     21
+    ]
+   ],
+   "activeFrames": 21,
+   "hits": 2,
+   "recovery": 13,
    "total": 34,
    "cancels": {},
    "armor": [],
@@ -3431,11 +4366,16 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "The Hammer",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 11,
+   "active": [
+    [
+     11,
+     13
+    ]
+   ],
+   "activeFrames": 3,
+   "hits": 1,
+   "recovery": 28,
    "total": 41,
    "cancels": {
     "attack": 25,
@@ -3465,11 +4405,16 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Real Impact",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 96,
+   "active": [
+    [
+     96,
+     98
+    ]
+   ],
+   "activeFrames": 3,
+   "hits": 1,
+   "recovery": 107,
    "total": 205,
    "cancels": {
     "attack": 125,
@@ -3498,11 +4443,16 @@
    "type": "swordmaster",
    "grip": "air",
    "name": "Air Volcano",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 60,
+   "active": [
+    [
+     60,
+     69
+    ]
+   ],
+   "activeFrames": 10,
+   "hits": 1,
+   "recovery": 93,
    "total": 162,
    "cancels": {
     "attack": 111,
@@ -3531,11 +4481,16 @@
    "type": "gunslinger",
    "grip": "ground",
    "name": "Wild Stomp",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 52,
+   "active": [
+    [
+     52,
+     57
+    ]
+   ],
+   "activeFrames": 6,
+   "hits": 1,
+   "recovery": 38,
    "total": 95,
    "cancels": {
     "attack": 72,
@@ -3564,11 +4519,40 @@
    "type": "gunslinger",
    "grip": "air",
    "name": "Rain Storm",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 10,
+   "active": [
+    [
+     10,
+     10
+    ],
+    [
+     13,
+     14
+    ],
+    [
+     16,
+     16
+    ],
+    [
+     19,
+     20
+    ],
+    [
+     22,
+     22
+    ],
+    [
+     25,
+     26
+    ],
+    [
+     28,
+     28
+    ]
+   ],
+   "activeFrames": 10,
+   "hits": 10,
+   "recovery": 30,
    "total": 58,
    "cancels": {
     "attack": 48,
@@ -3596,11 +4580,24 @@
    "type": "gunslinger",
    "grip": "ground",
    "name": "Fireworks",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 2,
+   "active": [
+    [
+     2,
+     2
+    ],
+    [
+     17,
+     17
+    ],
+    [
+     32,
+     32
+    ]
+   ],
+   "activeFrames": 3,
+   "hits": 3,
+   "recovery": 9,
    "total": 41,
    "cancels": {
     "attack": 30,
@@ -3628,11 +4625,16 @@
    "type": "gunslinger",
    "grip": "ground",
    "name": "Gun Stinger",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 11,
+   "active": [
+    [
+     11,
+     18
+    ]
+   ],
+   "activeFrames": 8,
+   "hits": 1,
+   "recovery": 79,
    "total": 97,
    "cancels": {
     "attack": 45,
@@ -3661,11 +4663,16 @@
    "type": "gunslinger",
    "grip": "ground",
    "name": "Point Blank",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 1,
+   "active": [
+    [
+     1,
+     1
+    ]
+   ],
+   "activeFrames": 1,
+   "hits": 1,
+   "recovery": 26,
    "total": 27,
    "cancels": {
     "dodge": 10
@@ -3691,11 +4698,24 @@
    "type": "gunslinger",
    "grip": "air",
    "name": "Air Fireworks",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 2,
+   "active": [
+    [
+     2,
+     2
+    ],
+    [
+     17,
+     17
+    ],
+    [
+     32,
+     32
+    ]
+   ],
+   "activeFrames": 3,
+   "hits": 3,
+   "recovery": 9,
    "total": 41,
    "cancels": {
     "attack": 30,
@@ -3723,11 +4743,16 @@
    "type": "shot",
    "grip": "ground",
    "name": "Normal Shot",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 3,
+   "active": [
+    [
+     3,
+     3
+    ]
+   ],
+   "activeFrames": 1,
+   "hits": 1,
+   "recovery": 57,
    "total": 60,
    "cancels": {
     "attack": 21,
@@ -3757,11 +4782,16 @@
    "type": "shot",
    "grip": "air",
    "name": "Air Normal Shot",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 2,
+   "active": [
+    [
+     2,
+     2
+    ]
+   ],
+   "activeFrames": 1,
+   "hits": 1,
+   "recovery": 58,
    "total": 60,
    "cancels": {
     "attack": 26,
@@ -3790,11 +4820,32 @@
    "type": "gunslinger",
    "grip": "ground",
    "name": "Sphere",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 11,
+   "active": [
+    [
+     11,
+     15
+    ],
+    [
+     19,
+     23
+    ],
+    [
+     27,
+     31
+    ],
+    [
+     35,
+     39
+    ],
+    [
+     43,
+     47
+    ]
+   ],
+   "activeFrames": 25,
+   "hits": 5,
+   "recovery": 12,
    "total": 59,
    "cancels": {
     "attack": 52,
@@ -3822,11 +4873,24 @@
    "type": "gunslinger",
    "grip": "ground",
    "name": "Acid Rain",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 36,
+   "active": [
+    [
+     36,
+     36
+    ],
+    [
+     56,
+     56
+    ],
+    [
+     76,
+     76
+    ]
+   ],
+   "activeFrames": 3,
+   "hits": 3,
+   "recovery": 38,
    "total": 114,
    "cancels": {
     "attack": 104,
@@ -3855,11 +4919,16 @@
    "type": "gunslinger",
    "grip": "ground",
    "name": "Sniper",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 60,
+   "active": [
+    [
+     60,
+     60
+    ]
+   ],
+   "activeFrames": 1,
+   "hits": 1,
+   "recovery": 92,
    "total": 152,
    "cancels": {
     "attack": 101,
@@ -3889,11 +4958,16 @@
    "type": "gunslinger",
    "grip": "ground",
    "name": "Trick Shot",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 15,
+   "active": [
+    [
+     15,
+     15
+    ]
+   ],
+   "activeFrames": 1,
+   "hits": 1,
+   "recovery": 85,
    "total": 100,
    "cancels": {
     "attack": 51,
@@ -3923,11 +4997,16 @@
    "type": "gunslinger",
    "grip": "ground",
    "name": "Hysteric",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 31,
+   "active": [
+    [
+     31,
+     33
+    ]
+   ],
+   "activeFrames": 3,
+   "hits": 1,
+   "recovery": 109,
    "total": 142,
    "cancels": {
     "attack": 132,
@@ -3957,18 +5036,23 @@
    "type": "gunslinger",
    "grip": "ground",
    "name": "Grapple",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
-   "total": 67,
+   "startup": 28,
+   "active": [
+    [
+     28,
+     28
+    ]
+   ],
+   "activeFrames": 1,
+   "hits": 1,
+   "recovery": 129,
+   "total": 157,
    "cancels": {
-    "attack": 11,
-    "dodge": 11,
-    "block": 10,
-    "skill": 10,
-    "move": 35
+    "attack": 101,
+    "dodge": 101,
+    "block": 100,
+    "skill": 100,
+    "move": 125
    },
    "armor": [],
    "iframes": [],
@@ -3980,8 +5064,8 @@
    "weapons": [],
    "default": true,
    "extra": {
-    "Motion": "pl000_00_22.pac #1, frames 0–67",
-    "Script": "22-1",
+    "Motion": "pl000_00_22.pac #0, frames 0–90, pl000_00_22.pac #1, frames 0–67",
+    "Script": "22-0, 22-1",
     "Style": "Gunslinger"
    }
   },
@@ -3991,11 +5075,16 @@
    "type": "style",
    "grip": "ground",
    "name": "Release",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 10,
+   "active": [
+    [
+     10,
+     18
+    ]
+   ],
+   "activeFrames": 9,
+   "hits": 1,
+   "recovery": 39,
    "total": 57,
    "cancels": {
     "attack": 35,
@@ -4026,11 +5115,16 @@
    "type": "style",
    "grip": "air",
    "name": "Air Release",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
+   "startup": 10,
+   "active": [
+    [
+     10,
+     18
+    ]
+   ],
+   "activeFrames": 9,
+   "hits": 1,
+   "recovery": 39,
    "total": 57,
    "cancels": {
     "attack": 35,
