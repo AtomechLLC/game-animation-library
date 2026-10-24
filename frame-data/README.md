@@ -346,7 +346,7 @@ viewer in wia-seasonal-ui-asset-generator. Click the 3D view first (it gets an o
   source viewer orbit with the middle button only.
 - Numpad: `1` / `3` / `7` front, right and top of the character (it faces −Z), `Ctrl + 7` bottom, `2` `4` `6` `8`
   orbit 15°, `9` the opposite side, `+` / `−` zoom.
-- `F`, `Home` or `Numpad .` frames the whole move from the current angle; `D` or `Numpad 0` returns to the opening
+- `F`, `Home` or `Numpad .` fits the whole move to the view (**Fit to view**) from the current angle; `D` or `Numpad 0` returns to the opening
   three-quarter view.
 - `Z` shows or hides the floor grid.
 - `B` shows or hides a box around the pose on the current frame: every posed vertex of the

@@ -5,7 +5,7 @@
 import {speedHtml, bindSpeed} from './speed.js?v=1';
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
-import {createBlenderNavigation} from './navigation3d.js?v=7';
+import {createBlenderNavigation} from './navigation3d.js?v=8';
 
 const loader = new GLTFLoader();
 const cache = new Map();
@@ -59,7 +59,7 @@ const helpHTML = mode => `<p class="v3d-help-title" id="v3d-help-title">Help</p>
     ? row('Two-finger drag', 'Orbit') + row('Shift + two-finger drag', 'Pan') + row('Pinch / Ctrl + scroll', 'Zoom') + row('Click and drag', 'Orbit') + row('Right drag / Shift + click and drag', 'Pan')
     : row('Left or middle drag', 'Orbit') + row('Right drag / Shift + drag', 'Pan') + row('Scroll wheel', 'Zoom') + row('Ctrl + scroll', 'Zoom, faster')}</ul>
   <p class="v3d-help-title">View</p>
-  <ul>${row(kbd('F', 'Home', 'Numpad .'), 'Frame the move') + row(kbd('D', 'Numpad 0'), 'Default camera') + row(kbd('Z'), 'Floor grid')
+  <ul>${row(kbd('F', 'Home', 'Numpad .'), 'Fit to view') + row(kbd('D', 'Numpad 0'), 'Default camera') + row(kbd('Z'), 'Floor grid')
     + row(kbd('B'), 'Bounds box (current pose)') + row(kbd('Tab', 'Shift + Tab'), 'Mouse / Trackpad') + row(kbd('/', '?'), 'Help')}</ul>
   <p class="v3d-help-title">Playback</p>
   <ul>${row(kbd('Space'), 'Play / pause') + row(kbd(',', '.', '←', '→'), 'Previous / next frame') + row(kbd('Ctrl + ←', 'Ctrl + →'), 'Back / forward 1 second')
@@ -74,7 +74,7 @@ const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).
 // label next to the frame number.
 export async function createViewer(el, base) {
   const man = await manifest(base);
-  el.innerHTML = `<div class="v3d-stage" tabindex="0" aria-label="3D view. Drag with the left or middle button to orbit, add Shift or use the right button to pan, wheel to zoom or orbit. Numpad 1, 3 and 7 for front, right and top. F frames the move, D restores the default camera, Z shows or hides the floor grid, B shows or hides the bounds box, Tab switches between mouse and trackpad, left and right arrows step a frame, slash opens Help."><canvas></canvas><div class="v3d-msg">Loading models…</div>
+  el.innerHTML = `<div class="v3d-stage" tabindex="0" aria-label="3D view. Drag with the left or middle button to orbit, add Shift or use the right button to pan, wheel to zoom or orbit. Numpad 1, 3 and 7 for front, right and top. F fits the move to the view, D restores the default camera, Z shows or hides the floor grid, B shows or hides the bounds box, Tab switches between mouse and trackpad, left and right arrows step a frame, slash opens Help."><canvas></canvas><div class="v3d-msg">Loading models…</div>
     <div class="v3d-corner"><fieldset class="v3d-mode" aria-label="Viewport input device"><button type="button" data-mode="mouse" aria-label="Mouse" title="Mouse (Tab switches)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="3" width="11" height="18" rx="5.5"/><path d="M12 7v3"/></svg></button><button type="button" data-mode="trackpad" aria-label="Trackpad" title="Trackpad (Tab switches)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3 15h18M12 15v4"/></svg></button></fieldset></div>
     <div class="v3d-side"><div class="v3d-tools">
       <button type="button" class="v3d-help-toggle" aria-pressed="false" aria-label="Toggle Help panel (shortcut / or ?)">? ${kbd('/')}</button></div>
@@ -101,18 +101,18 @@ export async function createViewer(el, base) {
   const camera = new THREE.PerspectiveCamera(35, 1, 0.05, 100);
   // the opening angle, a three-quarter view from the character's front right (it faces -Z, its right is +X)
   const DEFAULT_DIR = new THREE.Vector3(2.9, 0.5, -2.3).normalize();
-  const frameMove = () => { fit(); go(f) }, defaultCamera = () => { fit(DEFAULT_DIR); go(f) };
+  const fitMove = () => { fit(); go(f) }, defaultCamera = () => { fit(DEFAULT_DIR); go(f) };
   const help = $('.v3d-help'), helpToggle = $('.v3d-help-toggle');
   const toggleHelp = () => { help.hidden = !help.hidden; helpToggle.setAttribute('aria-pressed', !help.hidden) };
   const syncMode = m => { for (const b of el.querySelectorAll('.v3d-mode button')) b.setAttribute('aria-pressed', b.dataset.mode === m); help.innerHTML = helpHTML(m) };
-  const nav = createBlenderNavigation({camera, dom: stage, views: VIEWS, onFrame: frameMove, onDefault: defaultCamera, onHelp: toggleHelp, onMode: syncMode});
+  const nav = createBlenderNavigation({camera, dom: stage, views: VIEWS, onFit: fitMove, onDefault: defaultCamera, onHelp: toggleHelp, onMode: syncMode});
   syncMode(nav.mode);
   // the overlay buttons hand the keyboard to the stage; presses and wheel turns on the overlays don't navigate
   for (const b of el.querySelectorAll('.v3d-stage button')) b.addEventListener('mousedown', e => { e.preventDefault(); stage.focus({preventScroll: true}) });
   helpToggle.onclick = toggleHelp;
   for (const b of el.querySelectorAll('.v3d-mode button')) b.onclick = () => nav.setMode(b.dataset.mode);
   for (const t of ['pointerdown', 'wheel']) for (const o of [$('.v3d-mode'), help]) o.addEventListener(t, e => e.stopPropagation());
-  nav.frameTo(new THREE.Vector3(0, 1, 0), DEFAULT_DIR, 3.7, 2);
+  nav.fitTo(new THREE.Vector3(0, 1, 0), DEFAULT_DIR, 3.7, 2);
   scene.add(new THREE.HemisphereLight(0xffffff, 0x5a5a62, 2.4));
   const sun = new THREE.DirectionalLight(0xffffff, 2.6); sun.position.set(3, 5, -3); scene.add(sun);
   const grid = new THREE.GridHelper(8, 16, 0x888888, 0x555555); grid.material.transparent = true; grid.material.opacity = .35; scene.add(grid);
@@ -199,7 +199,7 @@ export async function createViewer(el, base) {
     if (anim.root && $('.v3d-rm').checked) motion.position.fromArray(anim.root, i * 3);
     else motion.position.set(0, 0, 0);
     scene.updateMatrixWorld(true);
-    // keep the character framed: the camera rides along with root motion, the grid shows the distance covered
+    // keep the character in view: the camera rides along with root motion, the grid shows the distance covered
     pelvis.getWorldPosition(v1); v1.y = 0;
     nav.shift(v2.subVectors(v1, follow)); follow.copy(v1);
     const showAll = $('.v3d-ghost').checked, on = $('.v3d-hb').checked;
@@ -250,7 +250,7 @@ export async function createViewer(el, base) {
   el.querySelectorAll('.v3d-opts input').forEach(i => i.onchange = () => go(f));
   const onKey = e => {
     if (e.target.closest('input,select,textarea') && e.target.type !== 'range') return;
-    if (e.code === 'NumpadDecimal') return;  // Numpad . frames the move (navigation3d.js), as in Blender
+    if (e.code === 'NumpadDecimal') return;  // Numpad . fits the move to the view (navigation3d.js), as in Blender
     if (e.code === 'Space' && !e.repeat && !e.target.closest('button')) { e.preventDefault(); setPlaying(!playing) }
     else if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && e.ctrlKey !== e.shiftKey && !e.altKey && !e.metaKey) {
       // Ctrl jumps one second of the animation (clamped at the ends), Shift goes to the first or last frame
@@ -268,7 +268,7 @@ export async function createViewer(el, base) {
   document.addEventListener('keydown', onKey);
   setPlaying(playing);
 
-  // Frame the whole move (every weapon point and the body over all frames, relative to the pelvis the camera
+  // Fit the whole move to the view (every weapon point and the body over all frames, relative to the pelvis the camera
   // follows), keeping the angle the viewer has orbited to unless `dir` (target to camera) is given
   function fit(dir = camera.position.clone().sub(nav.target).normalize()) {
     if (!anim) return;
@@ -293,7 +293,7 @@ export async function createViewer(el, base) {
     dist *= 1.05;
     follow.set(0, 0, 0);
     const size = Math.max(box.getSize(v1).length(), 0.5);
-    nav.frameTo(c, dir, dist, size);
+    nav.fitTo(c, dir, dist, size);
     camera.far = Math.max(dist * 10, size * 25); camera.updateProjectionMatrix();
     fitting = false;
   }
