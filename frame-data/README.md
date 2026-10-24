@@ -321,7 +321,7 @@ clip to its GIF.
 
 For a game whose `games.json` entry has `clips` (a folder) and a character picked, `clipviewer.js` docks the move's
 hitbox clip above the table instead of the 3D preview, with the same controls: play/pause, one-frame steps,
-scrubbing on the frame strip and speed (¼× by default, about the site's own speed). Moves with several clips (angled
+scrubbing on the frame strip and speed (0.25× by default, about the site's own speed; a picked speed is remembered, see speed.js). Moves with several clips (angled
 tilts and smashes, early/late) get a button per clip. Frames are decoded once with `ImageDecoder` (kept for the last
 six clips); browsers without it get the WebP playing by itself.
 

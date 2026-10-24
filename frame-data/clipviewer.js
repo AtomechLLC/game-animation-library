@@ -2,6 +2,7 @@
 // per game frame, with the same controls as viewer3d.js. Moves list their clips as {file, frames, label, source};
 // files are animated WebPs under the game's clips folder. Frames are decoded once with ImageDecoder so the clip can
 // be stepped and scrubbed; browsers without it get the WebP playing on its own.
+import {speedHtml, bindSpeed} from './speed.js?v=1';
 
 const FPS = 60;
 
@@ -13,7 +14,7 @@ export function createViewer(el, base) {
       <button class="v3d-prev" aria-label="Back one frame" title="Back one frame (,)">−1 f</button>
       <button class="v3d-next" aria-label="Forward one frame" title="Forward one frame (.)">+1 f</button>
       <div class="v3d-scrub"><div class="v3d-strip"></div><input type="range" min="1" max="1" step="1" value="1" aria-label="Frame"></div>
-      <select class="v3d-speed" aria-label="Playback speed"><option value="1">1×</option><option value="0.5">½×</option><option value="0.25" selected>¼×</option><option value="0.125">⅛×</option></select>
+      ${speedHtml(0.25)}
     </div>
     <div class="v3d-opts"><span class="clip-alts" role="group" aria-label="Clip"></span><a class="v3d-who" target="_blank" rel="noopener"></a></div>`;
   const $ = s => el.querySelector(s);
@@ -66,7 +67,7 @@ export function createViewer(el, base) {
   $('.v3d-prev').onclick = () => { setPlaying(false); go(f - 1) };
   $('.v3d-next').onclick = () => { setPlaying(false); go(f + 1) };
   $('.v3d-scrub input').oninput = e => { setPlaying(false); go(+e.target.value) };
-  $('.v3d-speed').onchange = e => { speed = +e.target.value };
+  speed = bindSpeed($('.v3d-speed'), speed, v => { speed = v });
   const onKey = e => {
     if (e.target.closest('input,select,textarea') && e.target.type !== 'range') return;
     if (e.key === ',') { setPlaying(false); go(f - 1) }
