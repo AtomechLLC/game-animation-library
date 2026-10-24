@@ -29,6 +29,8 @@ SECTIONS = {'groundattacks': 'ground', 'jabattacks': 'ground', 'tiltattacks': 'g
             'crouchingattacks': 'ground', 'smashattacks': 'ground', 'dashattacks': 'ground',
             'aerialattacks': 'aerial', 'specialattacks': 'special', 'grabs': 'grab', 'dodges': 'dodge'}
 # Olimar's values are per Pikmin colour
+# links on the site that point at a missing file, and the file that exists
+FIXED = {'hitboxes/dark_pit/PitGuardianOrbitarsAerial.gif': 'hitboxes/dark_pit/DarkPitGuardianOrbitarsAerial.gif'}
 PIKMIN = {'rp': 'Red', 'yp': 'Yellow', 'bp': 'Blue', 'wp': 'White', 'pp': 'Purple'}
 
 
@@ -178,6 +180,7 @@ def parse(cslug, page):
             if hb:
                 for pre, src in re.findall(r'([^<>]*)<a class="hitboximg" data-featherlight="([^"]+)"', hb.group(1)):
                     if not src.lower().endswith('.gif'): continue
+                    src = FIXED.get(src, src)
                     t = re.sub(r'\s+', ' ', html.unescape(pre)).strip()
                     gifs.append(src); texts.append('' if '*' in t else t)
             f['gifs'], f['texts'] = gifs, texts
