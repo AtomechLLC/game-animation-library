@@ -10,8 +10,10 @@ explaining what you did and why as a resource." The article explains each change
 ## Basis
 
 **Done so far**
-- The "before" set is in `docs/screenshots/before/` (home and Frame Data, first screen and full page, 3840 px wide,
-  commit `e98edb6`). The capture settings are in `docs/screenshots/README.md`.
+- The "before" state is commit `e98edb6`: home and Frame Data, first screen and full page. Screenshots are not
+  stored in the repository. Shoot "after" with the same settings so the pairs line up: viewport 1920×1080 at
+  deviceScaleFactor 2 (3840 px wide), Chrome via Playwright, `index.html` built with `python build_page.py` and
+  `frame-data.html` on the default Elden Ring view, network idle plus 5 s before capture.
 
 **Observed gap**
 - **No before shots of states.** The before set covers only landing views. The packages change states (search
