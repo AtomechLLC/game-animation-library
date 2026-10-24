@@ -118,6 +118,12 @@ aside h2{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transf
 /* title, description and store links share one row; the description gives way first (truncated, full text on hover) */
 .head1{flex:1;min-width:0;display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px}
 .head1 h2{flex:0 1 auto;min-width:0}
+/* the way back from a class to its family, in the weapon row's heading, in the page's accent colour */
+.back{flex:none;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--key);background:var(--panel);color:var(--key-ink);border-radius:999px;padding:3px 12px 3px 9px;font:600 13px var(--body);letter-spacing:0;text-transform:none;cursor:pointer}
+.back:hover{background:var(--key);color:#1c1b19}
+.back kbd,.wtiles .def kbd{border:1px solid currentColor;border-radius:3px;padding:0 4px;font:500 10px var(--mono);opacity:.8}
+/* Class default keeps the key's line while it is off, so the weapon row does not change height */
+.wtiles .def kbd{color:var(--muted)}.wtiles .def kbd.off{visibility:hidden}
 .head1 #sub{flex:1 1 16ch;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .head1 #sub:empty{display:none}
 .buy{display:flex;flex-wrap:wrap;align-items:center;gap:6px;flex:0 0 auto;font-size:12px;color:var(--muted)}
@@ -519,17 +525,28 @@ function renderHead(){
   if(st.max<+$('#maxStart').max)act.push(['max',`Startup ≤ ${st.max}`]);
   $('#active').innerHTML=act.map(([k,l])=>`<button data-clear="${esc(k)}">${esc(l)} ✕</button>`).join('')+(act.length>1?`<button data-clear="all">Clear all</button>`:'');
 }
+const backBtn=(attr,up,key)=>`<button class="back" ${attr} title="Back to ${esc(up)}"${key?' aria-keyshortcuts="Backspace"':''}>‹ ${esc(up)}${key?' <kbd>Backspace</kbd>':''}</button>`;
+// Backspace goes up one level: a picked weapon to its class default, a class to its family, a family to every weapon
+function goUp(){
+  if(st.cls&&st.w!=null)st.w=null;
+  else if(st.cls){st.cls=null;st.w=null;st.shown=PAGE;scrollTo({top:0,behavior:'smooth'})}
+  else if(st.fam&&D.families.length>1){st.fam=null;st.shown=PAGE}
+  else return false;
+  renderAll();return true}
 function renderIndex(){
   if(st.cls){
     const c=CL[st.cls];$('#index').innerHTML='';
-    if(!c.weapons.length){$('#weapons').innerHTML=`<div class="sect">${c.moves} moves · ${esc(c.name)} <button class="chip" data-cls="" style="margin-left:4px">${esc(L.allClasses)}</button></div>`;return}
-    $('#weapons').innerHTML=`<div class="sect">${c.weapons.length} weapon${c.weapons.length===1?'':'s'} · ${esc(c.name)} <button class="chip" data-cls="" style="margin-left:4px">All classes</button></div>
-    <div class="wtiles" role="group" aria-label="Weapon">${[`<button class="tile def" data-w="" aria-pressed="${st.w==null}"><span class="ico ph">ALL</span><b>Class default</b></button>`]
+    // the way back names where it goes: the family the class was picked from, else every class. Backspace goes up one
+    // level, so its key shows on this button, or on Class default while a weapon is picked
+    const up=st.fam?FAM[st.fam].name:L.allClasses,back=backBtn('data-cls=""',up,st.w==null);
+    if(!c.weapons.length){$('#weapons').innerHTML=`<div class="sect">${c.moves} moves · ${esc(c.name)} ${back}</div>`;return}
+    $('#weapons').innerHTML=`<div class="sect">${c.weapons.length} weapon${c.weapons.length===1?'':'s'} · ${esc(c.name)} ${back}</div>
+    <div class="wtiles" role="group" aria-label="Weapon">${[`<button class="tile def" data-w="" aria-pressed="${st.w==null}"${st.w!=null?' aria-keyshortcuts="Backspace"':''}><span class="ico ph">ALL</span><b>Class default</b><kbd${st.w==null?' class="off"':''}>Backspace</kbd></button>`]
       .concat(c.weapons.map((w,i)=>`<button class="tile" data-w="${i}" aria-pressed="${st.w===i}" title="${esc(w)}">${icoHtml(w)}<b>${esc(w)}</b></button>`)).join('')}</div>`;
     return}
   $('#weapons').innerHTML='';
-  const fams=D.families.filter(f=>!st.fam||f.id===st.fam);
-  $('#index').innerHTML=fams.map(f=>`<div class="sect">${esc(f.name)}</div><div class="tiles">${D.classes.filter(c=>c.family===f.id).map(c=>`<button class="tile" data-cls="${esc(c.id)}">${icoHtml(c.icon)}<b>${esc(c.name)}</b><small>${c.weapons.length?`${c.weapons.length} weapon${c.weapons.length===1?'':'s'}`:`${c.moves} moves`}</small></button>`).join('')}</div>`).join('');
+  const fams=D.families.filter(f=>!st.fam||f.id===st.fam),allBack=st.fam&&D.families.length>1?' '+backBtn('data-fam=""',L.allFamilies,true):'';
+  $('#index').innerHTML=fams.map(f=>`<div class="sect">${esc(f.name)}${allBack}</div><div class="tiles">${D.classes.filter(c=>c.family===f.id).map(c=>`<button class="tile" data-cls="${esc(c.id)}">${icoHtml(c.icon)}<b>${esc(c.name)}</b><small>${c.weapons.length?`${c.weapons.length} weapon${c.weapons.length===1?'':'s'}`:`${c.moves} moves`}</small></button>`).join('')}</div>`).join('');
 }
 // One bar per move: startup, active (gaps between hits lighter), recovery until dodge, then free frames to the end.
 function stripHtml(m,scale,lanes){
@@ -823,7 +840,9 @@ function stepKey(e){
   const i=ks.findIndex(k=>k.getAttribute('aria-pressed')==='true'),d=e.key==='ArrowLeft'?-1:1;
   const n=i<0?(d>0?0:ks.length-1):Math.min(ks.length-1,Math.max(0,i+d));
   e.preventDefault();return n===i?null:ks[n]}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#sheet').hidden)closeSheet();if(e.key==='/'&&document.activeElement!==$('#q')){e.preventDefault();$('#q').focus()};const k=stepKey(e);if(k){
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#sheet').hidden)closeSheet();
+  if(e.key==='Backspace'&&!e.ctrlKey&&!e.shiftKey&&!e.altKey&&!e.metaKey&&!e.defaultPrevented&&$('#sheet').hidden
+    &&!e.target.closest?.('input,select,textarea,[contenteditable]')&&goUp())e.preventDefault();if(e.key==='/'&&document.activeElement!==$('#q')){e.preventDefault();$('#q').focus()};const k=stepKey(e);if(k){
   if(k.dataset.cls!==undefined){st.cls=k.dataset.cls||null;if(st.cls){st.fam=CL[st.cls].family;st.sort=null}}else{st.fam=k.dataset.fam||null;st.cls=null}
   st.w=null;st.shown=PAGE;renderAll()}});
 addEventListener('hashchange',()=>{if(!D)return;const g=new URLSearchParams(location.hash.slice(1)).get('g')||GAMES[0].id;if(g!==st.game)loadGame(g);else{fromHash();renderAll()}});
