@@ -2,6 +2,7 @@
 // hitboxes on the frames they are out. Everything it loads is written by tools/frame_data/export_er_models.py or
 // the other export_*_models.py (format in frame-data/README.md, "3D preview"). Frames here are the tab's frames: 1-based, at
 // the game's frame rate (models.json fps, 30 for Elden Ring).
+import {speedHtml, bindSpeed} from './speed.js?v=1';
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
@@ -59,7 +60,7 @@ export async function createViewer(el, base) {
       <button class="v3d-prev" aria-label="Back one frame" title="Back one frame (,)">−1 f</button>
       <button class="v3d-next" aria-label="Forward one frame" title="Forward one frame (.)">+1 f</button>
       <div class="v3d-scrub"><div class="v3d-strip"></div><input type="range" min="1" max="1" step="1" value="1" aria-label="Frame"></div>
-      <select class="v3d-speed" aria-label="Playback speed"><option value="1">1×</option><option value="0.5">½×</option><option value="0.25">¼×</option><option value="0.1">0.1×</option></select>
+      ${speedHtml(0.5)}
     </div>
     <div class="v3d-opts"><label><input type="checkbox" class="v3d-hb" checked> Hitboxes</label>
       <label><input type="checkbox" class="v3d-ghost"> Show hitboxes on every frame</label>
@@ -110,7 +111,7 @@ export async function createViewer(el, base) {
 
   // The move on show
   let info = null, anim = null, defHand = 'R', tracks = [], shapes = [], boxes = [], opts = {}, N = 1;
-  let f = 1, playing = !matchMedia('(prefers-reduced-motion: reduce)').matches, speed = 1, acc = 0, last = performance.now(), token = 0;
+  let f = 1, playing = !matchMedia('(prefers-reduced-motion: reduce)').matches, speed = 0.5, acc = 0, last = performance.now(), token = 0;
 
   function point(id, hand, out) {
     let src = 'any', k = id;
@@ -181,7 +182,7 @@ export async function createViewer(el, base) {
   $('.v3d-prev').onclick = () => { setPlaying(false); go(f - 1) };
   $('.v3d-next').onclick = () => { setPlaying(false); go(f + 1) };
   $('.v3d-scrub input').oninput = e => { setPlaying(false); go(+e.target.value) };
-  $('.v3d-speed').onchange = e => { speed = +e.target.value };
+  speed = bindSpeed($('.v3d-speed'), speed, v => { speed = v });
   el.querySelectorAll('.v3d-opts input').forEach(i => i.onchange = () => go(f));
   const onKey = e => {
     if (e.target.closest('input,select,textarea') && e.target.type !== 'range') return;

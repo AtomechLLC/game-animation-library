@@ -198,8 +198,10 @@ footer p{max-width:85ch;margin:0 0 8px}
 .v3d-hud b{font-family:var(--display);font-size:28px;font-weight:800;font-variant-numeric:tabular-nums}
 .v3d-hud span{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 .v3d-bar{display:flex;align-items:center;gap:6px}
-.v3d-bar button,.v3d-bar select{border:1px solid var(--line);background:var(--sunk);border-radius:4px;height:30px;min-width:34px;cursor:pointer;font-size:12px}
+.v3d-bar button,.v3d-bar select{color:var(--fg);border:1px solid var(--line);background:var(--sunk);border-radius:4px;height:30px;min-width:34px;cursor:pointer;font-size:12px}
 .v3d-scrub{position:relative;flex:1;min-width:0}
+.v3d-speedl{display:inline-flex;align-items:center;gap:5px;flex:none;font-size:12px;font-weight:600;color:var(--fg);cursor:pointer}
+.v3d-speedl select{font-weight:600}
 .v3d-scrub .strip{width:100%;height:26px}
 .v3d-scrub::after{content:"";position:absolute;top:-3px;bottom:-3px;left:var(--v3d-at,0%);width:2px;margin-left:-1px;background:var(--fg);pointer-events:none}
 .v3d-scrub input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
@@ -507,7 +509,7 @@ function openMove(key){
 // covers swaps the move in place, other rows open the detail sheet. The 3D viewer holds the picked weapon, else each
 // move's class preview weapon.
 // Bump ?v= whenever viewer3d.js, sprites2d.js or clipviewer.js changes: browsers and Pages cache them, and a stale copy next to a new page breaks the dock
-const VIEWER='./frame-data/viewer3d.js?v=6',VIEWER2D='./frame-data/sprites2d.js?v=2',CLIPVIEWER='./frame-data/clipviewer.js?v=1';
+const VIEWER='./frame-data/viewer3d.js?v=7',VIEWER2D='./frame-data/sprites2d.js?v=3',CLIPVIEWER='./frame-data/clipviewer.js?v=2';
 // the models and sprites viewers load per class (classData); the clip viewer reads each move's clips
 const byClass=()=>G.models||G.sprites;
 const DOCK={key:null,view:null,game:null,cls:null,w:null,cm:null,seq:0};
