@@ -10,3 +10,7 @@ Captured for the article on the UX changes. Shoot "after" with the same settings
 | Set | Date | Commit |
 |---|---|---|
 | `before/` | 2026-10-24 | e98edb6 |
+
+## `pr-62/`
+
+Per-feature pairs for PR #62. `before-*` is `main` at ca70ca1 (its page files over the same data), `after-*` is the branch at 7fd05da. Viewport 1600×900 at deviceScaleFactor 1, Chrome via Playwright, served by `serve_local.py`. GIFs are cropped screen recordings at 12 fps.
