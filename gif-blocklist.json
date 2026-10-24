@@ -1,4 +1,68 @@
 {
  "about": "GIFs removed from the library for good. Do not add a GIF whose page_url, media_url or source_url matches, or whose file has this sha256.",
- "blocked": []
+ "blocked": [
+  {
+   "page_url": "https://giphy.com/gifs/callofduty-warzone-mwii-2-geeLCBfylpeOCIblXt",
+   "source_url": "https://media.giphy.com/media/geeLCBfylpeOCIblXt/200w.webp",
+   "sha256": "2bc3c998da0bb7329b77217c895908eeb20a88a8e4e210dc415ec2e207ad961f",
+   "animation": "locomotion.sprint",
+   "reason": "Weak clip replaced by a game render"
+  },
+  {
+   "page_url": "https://tenor.com/view/tomb-raider-lara-croft-the-last-revelation-pole-climbing-gif-13637885673743408596",
+   "source_url": "https://media.tenor.com/vUOAw37dXdQAAAA1/tomb-raider-lara-croft-the-last-revelation-pole-climbing.webp",
+   "sha256": "1b58933176490147d2d6fdf78906b34e8d2c255183f5a049f4aabc6f7182f342",
+   "animation": "locomotion.ledge-grab-hang",
+   "reason": "Weak clip replaced by a game render"
+  },
+  {
+   "page_url": "https://tenor.com/view/combat-roll-roll-dark-souls-roll-dodge-gif-7252432769786811030",
+   "source_url": "https://media.tenor.com/ZKXRLdiLkpYAAAA1/combat-roll-roll-dark-souls-roll-dodge.webp",
+   "sha256": "ce6e0b67215ca2d696e0e376a19257ff05e8ecd6983b7103439576c2302422cd",
+   "animation": "defense.backstep-backflip",
+   "reason": "Weak clip replaced by a game render"
+  },
+  {
+   "page_url": "https://giphy.com/gifs/fCTp1ebazF23hH6dEk",
+   "source_url": "https://media.giphy.com/media/fCTp1ebazF23hH6dEk/200w.webp",
+   "sha256": "4fc626d7679fcb629d96d3eddc33ca1d4c4d5e78707cb58a6797b49b2633cebb",
+   "animation": "reactions.directional-hit-reaction",
+   "reason": "Weak clip replaced by a game render"
+  },
+  {
+   "page_url": "https://giphy.com/gifs/HitBoxArcade-controller-hitbox-hit-box-KfOQZmq41Z3OBj6nIf",
+   "source_url": "https://media.giphy.com/media/KfOQZmq41Z3OBj6nIf/200w.webp",
+   "sha256": "5d2533caeaa63f46346b0b3dfb8e60470b9fe7816b7e23342824798a1fc8e8de",
+   "animation": "fighting.rising-uppercut-shoryuken",
+   "reason": "Weak clip replaced by a game render"
+  },
+  {
+   "page_url": "https://giphy.com/gifs/aYUOtg0Cw3oKY1my9Z",
+   "source_url": "https://media.giphy.com/media/aYUOtg0Cw3oKY1my9Z/200w.webp",
+   "sha256": "bf72a4da1f7700cccf8d6987b1500b34d7764171130d436ce91d8b2b4be35c61",
+   "animation": "fighting.rising-uppercut-shoryuken",
+   "reason": "Weak clip replaced by a game render"
+  },
+  {
+   "page_url": "https://tenor.com/view/mario-walk-cycle-twitter-gif-4178332629046760965",
+   "source_url": "https://media.tenor.com/OfxrY2vBlgUAAAA1/mario-walk-cycle-twitter.webp",
+   "sha256": "d7d6e976475b0f7cf6895678f2b268dfec96c88d0b2de79a98a18e3c1eeda038",
+   "animation": "exploration.walk-cycle",
+   "reason": "Weak clip replaced by a game render"
+  },
+  {
+   "page_url": "https://tenor.com/view/iansan-genshin-impact-genshin-iansan-run-gif-508147390055142663",
+   "source_url": "https://media.tenor.com/Bw1NW-XHVQcAAAA1/iansan-genshin-impact-genshin-iansan-run.webp",
+   "sha256": "d3b9a8ddf06855a5933fdd166738669c77c0f077e9ff6174d69d541e7ba0789a",
+   "animation": "exploration.jog-run-explore",
+   "reason": "Weak clip replaced by a game render"
+  },
+  {
+   "page_url": "https://tenor.com/view/doom-here's-johnny-doom-slayer-doom-marine-doom-the-dark-ages-gif-17410219135160097011",
+   "source_url": "https://media.tenor.com/8Z2GD2TtGPMAAAA1/doom-here's-johnny-doom-slayer-doom-marine-doom-the-dark-ages.webp",
+   "sha256": "832e99fc96b68bcba3f0d451fe4a0adb2a94d6f82b80861841a8ee3e153d65c0",
+   "animation": "interaction.open-kick-door",
+   "reason": "Weak clip replaced by a game render"
+  }
+ ]
 }

@@ -984,25 +984,81 @@
    "verdict": "mismatch",
    "confidence": "high",
    "what": "Dark third-person cinematic of a soldier on a rock; no first-person sight alignment (marked bad by owner)"
-  }
- ],
- "review": [
+  },
   {
    "animation": "locomotion.sprint",
    "name": "Sprint",
    "file": "locomotion.sprint-2.webp",
-   "verdict": "mismatch",
-   "confidence": "low",
-   "what": "Close-ups from a CoD MW2/Warzone trailer with a 'RUN' caption on every frame; soldiers in close-up, no clear sprint"
+   "verdict": "replaced",
+   "confidence": "high",
+   "what": "Close-ups from a CoD MW2/Warzone trailer with a 'RUN' caption on every frame; soldiers in close-up, no clear sprint. Replaced by the Elden Ring sprint render"
   },
   {
    "animation": "locomotion.ledge-grab-hang",
    "name": "Ledge Grab / Hang",
    "file": "locomotion.ledge-grab-hang-0.webp",
-   "verdict": "unclear",
-   "confidence": "medium",
-   "what": "Very dark shot of a figure hanging on a rope or chain over a pit, almost static"
+   "verdict": "replaced",
+   "confidence": "high",
+   "what": "Very dark shot of a figure hanging on a rope or chain over a pit, almost static. Replaced by the No Rest for the Wicked wall shimmy render"
   },
+  {
+   "animation": "defense.backstep-backflip",
+   "name": "Backstep / Backflip",
+   "file": "defense.backstep-backflip-2.webp",
+   "verdict": "replaced",
+   "confidence": "high",
+   "what": "Tiny isolated figure tumbling/rolling on a white background; source and move hard to identify. Replaced by the Elden Ring backstep and Hollow Knight Hornet evade renders"
+  },
+  {
+   "animation": "reactions.directional-hit-reaction",
+   "name": "Directional Hit Reaction",
+   "file": "reactions.directional-hit-reaction-3.webp",
+   "verdict": "replaced",
+   "confidence": "high",
+   "what": "MK11 cinematic trailer shots, no clear directional hit reaction. Replaced by the Elden Ring four-direction hit reaction render"
+  },
+  {
+   "animation": "fighting.rising-uppercut-shoryuken",
+   "name": "Rising Uppercut (Shoryuken)",
+   "file": "fighting.rising-uppercut-shoryuken-3.webp",
+   "verdict": "replaced",
+   "confidence": "high",
+   "what": "Split screen: SF6 gameplay above, real-life hands on a Hitbox controller below (input tutorial). Replaced by the Ken and Ryu Shoryuken from 3rd Strike (Baston)"
+  },
+  {
+   "animation": "fighting.rising-uppercut-shoryuken",
+   "name": "Rising Uppercut (Shoryuken)",
+   "file": "fighting.rising-uppercut-shoryuken-4.webp",
+   "verdict": "replaced",
+   "confidence": "high",
+   "what": "Split screen: SF6 gameplay and super art above, real-life hands on a Hitbox controller below (input tutorial). Replaced by the Ken and Ryu Shoryuken from 3rd Strike (Baston)"
+  },
+  {
+   "animation": "exploration.walk-cycle",
+   "name": "Walk Cycle",
+   "file": "exploration.walk-cycle-2.webp",
+   "verdict": "replaced",
+   "confidence": "high",
+   "what": "Fan-made 'Super Mario walk cycle comparison' edit putting together sprites from several Mario games (the sprites themselves are real). Replaced by the Elden Ring walk render"
+  },
+  {
+   "animation": "exploration.jog-run-explore",
+   "name": "Jog / Run (Explore)",
+   "file": "exploration.jog-run-explore-2.webp",
+   "verdict": "replaced",
+   "confidence": "high",
+   "what": "Hand-drawn 2D fan-art run cycle of an anime girl on a cream background; not game footage. Replaced by the Elden Ring run render"
+  },
+  {
+   "animation": "interaction.open-kick-door",
+   "name": "Open / Kick Door",
+   "file": "interaction.open-kick-door-0.webp",
+   "verdict": "replaced",
+   "confidence": "high",
+   "what": "Very dark clip: a dark silhouette in front of fire, no visible door or kick. Replaced by the Elden Ring door render"
+  }
+ ],
+ "review": [
   {
    "animation": "locomotion.mount-dismount",
    "name": "Mount / Dismount",
@@ -1068,44 +1124,12 @@
    "what": "Skyrim trailer footage with a 'FUS RO DAH' caption on every frame"
   },
   {
-   "animation": "defense.backstep-backflip",
-   "name": "Backstep / Backflip",
-   "file": "defense.backstep-backflip-2.webp",
-   "verdict": "unclear",
-   "confidence": "low",
-   "what": "Tiny isolated figure tumbling/rolling on a white background; source and move hard to identify"
-  },
-  {
-   "animation": "reactions.directional-hit-reaction",
-   "name": "Directional Hit Reaction",
-   "file": "reactions.directional-hit-reaction-3.webp",
-   "verdict": "mismatch",
-   "confidence": "low",
-   "what": "MK11 cinematic trailer shots, no clear directional hit reaction"
-  },
-  {
    "animation": "reactions.ground-bounce",
    "name": "Ground Bounce",
    "file": "reactions.ground-bounce-0.webp",
    "verdict": "meme",
    "confidence": "low",
    "what": "Looping 2D fan animation (watermark 'Princess') of a teddy-bear brawler juggling a character in an arena; not clearly from a game"
-  },
-  {
-   "animation": "fighting.rising-uppercut-shoryuken",
-   "name": "Rising Uppercut (Shoryuken)",
-   "file": "fighting.rising-uppercut-shoryuken-3.webp",
-   "verdict": "meme",
-   "confidence": "low",
-   "what": "Split screen: SF6 gameplay above, real-life hands on a Hitbox controller below (input tutorial)"
-  },
-  {
-   "animation": "fighting.rising-uppercut-shoryuken",
-   "name": "Rising Uppercut (Shoryuken)",
-   "file": "fighting.rising-uppercut-shoryuken-4.webp",
-   "verdict": "meme",
-   "confidence": "low",
-   "what": "Split screen: SF6 gameplay and super art above, real-life hands on a Hitbox controller below (input tutorial)"
   },
   {
    "animation": "enemies.flee-retreat",
@@ -1180,36 +1204,12 @@
    "what": "Chibi character under a jittering 'SSS' style-rank graphic over color-shifting backgrounds; looks like a fan edit"
   },
   {
-   "animation": "exploration.walk-cycle",
-   "name": "Walk Cycle",
-   "file": "exploration.walk-cycle-2.webp",
-   "verdict": "meme",
-   "confidence": "low",
-   "what": "Fan-made 'Super Mario walk cycle comparison' edit putting together sprites from several Mario games (the sprites themselves are real)"
-  },
-  {
-   "animation": "exploration.jog-run-explore",
-   "name": "Jog / Run (Explore)",
-   "file": "exploration.jog-run-explore-2.webp",
-   "verdict": "meme",
-   "confidence": "low",
-   "what": "Hand-drawn 2D fan-art run cycle of an anime girl on a cream background; not game footage"
-  },
-  {
    "animation": "exploration.spin-dash-roll-ball",
    "name": "Spin Dash / Roll Ball",
    "file": "exploration.spin-dash-roll-ball-1.webp",
    "verdict": "unclear",
    "confidence": "low",
    "what": "Pixel Sonic spin-dash then a flash and a large logo burst; looks like a fan sprite animation rather than gameplay"
-  },
-  {
-   "animation": "interaction.open-kick-door",
-   "name": "Open / Kick Door",
-   "file": "interaction.open-kick-door-0.webp",
-   "verdict": "unclear",
-   "confidence": "medium",
-   "what": "Very dark clip: a dark silhouette in front of fire, no visible door or kick"
   },
   {
    "animation": "expression.eye-blink-look-at",
@@ -3547,6 +3547,111 @@
    "game": "Ninja Gaiden Black",
    "what": "Ryu's Hundred Wing Blade (Ultimate Technique) timing: figure posed from the game animation with the sword hitbox",
    "confidence": "low"
+  },
+  {
+   "animation": "fighting.rising-uppercut-shoryuken",
+   "clip": "fighting.rising-uppercut-shoryuken-baston-1",
+   "game": "Street Fighter III: 3rd Strike",
+   "what": "Ryu Shoryuken (Fierce): sprite frames with hurtboxes and attack boxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "fighting.command-grab",
+   "clip": "fighting.command-grab-baston-0",
+   "game": "Street Fighter III: 3rd Strike",
+   "what": "Hugo Gigas Breaker, Super Art I: sprite frames with hurtboxes and attack boxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "interaction.open-chest",
+   "clip": "interaction.open-chest-er0",
+   "game": "Elden Ring",
+   "what": "Player kneels and lifts a treasure chest's lid (chest not shown)",
+   "confidence": "low"
+  },
+  {
+   "animation": "magic.healing-item-use-flask",
+   "clip": "magic.healing-item-use-flask-er0",
+   "game": "Elden Ring",
+   "what": "Player raises the flask to their mouth and drinks (the flask itself is not shown)",
+   "confidence": "low"
+  },
+  {
+   "animation": "expression.wave-greet",
+   "clip": "expression.wave-greet-er0",
+   "game": "Elden Ring",
+   "what": "Player waves an arm overhead",
+   "confidence": "high"
+  },
+  {
+   "animation": "expression.bow-salute",
+   "clip": "expression.bow-salute-er0",
+   "game": "Elden Ring",
+   "what": "Player bows, then gives a deep reverential bow",
+   "confidence": "high"
+  },
+  {
+   "animation": "expression.celebrate-cheer",
+   "clip": "expression.celebrate-cheer-er0",
+   "game": "Elden Ring",
+   "what": "Player jumps for joy, then claps (Bravo!)",
+   "confidence": "high"
+  },
+  {
+   "animation": "exploration.slide-down-slope",
+   "clip": "exploration.slide-down-slope-er0",
+   "game": "Elden Ring",
+   "what": "Player sliding down a steep slope on their feet, loop",
+   "confidence": "high"
+  },
+  {
+   "animation": "defense.guard-break-shield-break",
+   "clip": "defense.guard-break-shield-break-er0",
+   "game": "Elden Ring",
+   "what": "Player's guard is knocked open and they reel back, open to a riposte",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.mount-dismount",
+   "clip": "locomotion.mount-dismount-er0",
+   "game": "Elden Ring",
+   "what": "Rider swinging down off Torrent (horse not shown)",
+   "confidence": "low"
+  },
+  {
+   "animation": "ranged.dual-pistol-gunplay",
+   "clip": "ranged.dual-pistol-gunplay-dmc0",
+   "game": "Devil May Cry 3",
+   "what": "Dante flips upside down in the air and fires Ebony & Ivory straight down while spinning",
+   "confidence": "high"
+  },
+  {
+   "animation": "ranged.gun-kata-stylish-shooting",
+   "clip": "ranged.gun-kata-stylish-shooting-dmc0",
+   "game": "Devil May Cry 3",
+   "what": "Dante twirls the shotgun around his body, firing in every direction",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.uppercut-launcher",
+   "clip": "melee.uppercut-launcher-dmc0",
+   "game": "Devil May Cry 3",
+   "what": "Dante swings Rebellion upward to launch the enemy into the air",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.whip-chain-lash",
+   "clip": "melee.whip-chain-lash-dmc0",
+   "game": "Devil May Cry 3",
+   "what": "Dante spins the three-section ice nunchaku Cerberus around him as a lash",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.dual-wield-flurry",
+   "clip": "melee.dual-wield-flurry-dmc0",
+   "game": "Devil May Cry 3",
+   "what": "Dante whirls the twin swords Agni & Rudra in a rapid flurry of slashes",
+   "confidence": "high"
   }
  ]
 }

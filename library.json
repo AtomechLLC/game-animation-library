@@ -573,20 +573,6 @@
      "host": "Tenor"
     },
     {
-     "page_url": "https://giphy.com/gifs/callofduty-warzone-mwii-2-geeLCBfylpeOCIblXt",
-     "media_url": "",
-     "title": "Season 02 running / sprint (official Call of Duty)",
-     "game": "Call of Duty: Warzone",
-     "host": "Giphy",
-     "local": "gifs/locomotion.sprint-2.webp",
-     "source_url": "https://media.giphy.com/media/geeLCBfylpeOCIblXt/200w.webp",
-     "screened": {
-      "verdict": "mismatch",
-      "confidence": "low",
-      "what": "Close-ups from a CoD MW2/Warzone trailer with a 'RUN' caption on every frame; soldiers in close-up, no clear sprint"
-     }
-    },
-    {
      "page_url": "https://tenor.com/view/running-call-of-duty-modern-warfare-iii-i'm-coming-to-you-i-am-otw-call-of-duty-gif-13559334972762653500",
      "media_url": "",
      "title": "Running with rifle, MWIII",
@@ -607,6 +593,21 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Player sprint loop, two cycles"
+     }
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://giphy.com/gifs/callofduty-warzone-mwii-2-geeLCBfylpeOCIblXt",
+     "media_url": "",
+     "title": "Season 02 running / sprint (official Call of Duty)",
+     "game": "Call of Duty: Warzone",
+     "host": "Giphy",
+     "source_url": "https://media.giphy.com/media/geeLCBfylpeOCIblXt/200w.webp",
+     "screened": {
+      "verdict": "replaced",
+      "confidence": "high",
+      "what": "Close-ups from a CoD MW2/Warzone trailer with a 'RUN' caption on every frame; soldiers in close-up, no clear sprint. Replaced by the Elden Ring sprint render"
      }
     }
    ]
@@ -2144,20 +2145,6 @@
    ],
    "gifs": [
     {
-     "page_url": "https://tenor.com/view/tomb-raider-lara-croft-the-last-revelation-pole-climbing-gif-13637885673743408596",
-     "media_url": "",
-     "title": "Lara hanging/climbing pole, TR4",
-     "game": "Tomb Raider: The Last Revelation",
-     "host": "Tenor",
-     "local": "gifs/locomotion.ledge-grab-hang-0.webp",
-     "source_url": "https://media.tenor.com/vUOAw37dXdQAAAA1/tomb-raider-lara-croft-the-last-revelation-pole-climbing.webp",
-     "screened": {
-      "verdict": "unclear",
-      "confidence": "medium",
-      "what": "Very dark shot of a figure hanging on a rope or chain over a pit, almost static"
-     }
-    },
-    {
      "page_url": "https://tenor.com/view/ezio-climbing-revelations-assasins-creed-gif-10868698",
      "media_url": "",
      "title": "Ezio climbing rock wall",
@@ -2190,6 +2177,21 @@
       "verdict": "added",
       "confidence": "low",
       "what": "Sidling along a narrow ledge with the back to the wall (the wall is not drawn)"
+     }
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/tomb-raider-lara-croft-the-last-revelation-pole-climbing-gif-13637885673743408596",
+     "media_url": "",
+     "title": "Lara hanging/climbing pole, TR4",
+     "game": "Tomb Raider: The Last Revelation",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/vUOAw37dXdQAAAA1/tomb-raider-lara-croft-the-last-revelation-pole-climbing.webp",
+     "screened": {
+      "verdict": "replaced",
+      "confidence": "high",
+      "what": "Very dark shot of a figure hanging on a rope or chain over a pit, almost static. Replaced by the No Rest for the Wicked wall shimmy render"
      }
     }
    ]
@@ -2324,6 +2326,20 @@
     }
    ],
    "gifs": [
+    {
+     "page_url": "gifs/locomotion.mount-dismount-er0.webp",
+     "media_url": "",
+     "title": "Dismount Torrent, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/locomotion.mount-dismount-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Rider swinging down off Torrent (horse not shown)"
+     }
+    },
     {
      "page_url": "https://tenor.com/view/spectral-speed-whistle-elden-ring-torrent-horse-steed-gif-3661714963056414299",
      "media_url": "",
@@ -3513,6 +3529,20 @@
       "verdict": "added",
       "confidence": "low",
       "what": "Ryu's Blade of the Undefeatable, the launcher of the XY air strings: figure posed from the game animation with the sword hitbox"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=devil-may-cry-3&c=rebellion&t=move&m=rebellion.high-time",
+     "media_url": "",
+     "title": "Dante's High Time (Rebellion), rendered from the Frame Data 3D preview",
+     "game": "Devil May Cry 3",
+     "host": "Devil May Cry 3 render",
+     "local": "gifs/melee.uppercut-launcher-dmc0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Dante swings Rebellion upward to launch the enemy into the air"
      }
     }
    ],
@@ -5685,6 +5715,20 @@
       "confidence": "low",
       "what": "Last Judge censer swing: game sprites with hurtbox and attack hitboxes"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=devil-may-cry-3&c=cerberus&t=move&m=cerberus.revolver",
+     "media_url": "",
+     "title": "Dante's Revolver (Cerberus), rendered from the Frame Data 3D preview",
+     "game": "Devil May Cry 3",
+     "host": "Devil May Cry 3 render",
+     "local": "gifs/melee.whip-chain-lash-dmc0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Dante spins the three-section ice nunchaku Cerberus around him as a lash"
+     }
     }
    ]
   },
@@ -5780,6 +5824,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Lace rapid air slash: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=devil-may-cry-3&c=agni-rudra&t=move&m=agni-rudra.million-slash",
+     "media_url": "",
+     "title": "Dante's Million Slash (Agni & Rudra), rendered from the Frame Data 3D preview",
+     "game": "Devil May Cry 3",
+     "host": "Devil May Cry 3 render",
+     "local": "gifs/melee.dual-wield-flurry-dmc0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Dante whirls the twin swords Agni & Rudra in a rapid flurry of slashes"
      }
     }
    ],
@@ -7610,6 +7668,20 @@
      "title": "Dante with Ebony & Ivory",
      "game": "Devil May Cry",
      "host": "Tenor"
+    },
+    {
+     "page_url": "frame-data.html#g=devil-may-cry-3&c=ebony-ivory&t=gunslinger&m=ebony-ivory.rain-storm",
+     "media_url": "",
+     "title": "Dante's Rain Storm (Ebony & Ivory), rendered from the Frame Data 3D preview",
+     "game": "Devil May Cry 3",
+     "host": "Devil May Cry 3 render",
+     "local": "gifs/ranged.dual-pistol-gunplay-dmc0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Dante flips upside down in the air and fires Ebony & Ivory straight down while spinning"
+     }
     }
    ]
   },
@@ -7763,6 +7835,20 @@
       "verdict": "added",
       "confidence": "low",
       "what": "Max shootdodges across a yacht deck and lands on his back (weaker pick)"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=devil-may-cry-3&c=shotgun&t=gunslinger&m=shotgun.fireworks",
+     "media_url": "",
+     "title": "Dante's Fireworks (Shotgun), rendered from the Frame Data 3D preview",
+     "game": "Devil May Cry 3",
+     "host": "Devil May Cry 3 render",
+     "local": "gifs/ranged.gun-kata-stylish-shooting-dmc0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Dante twirls the shotgun around his body, firing in every direction"
      }
     }
    ],
@@ -9497,6 +9583,20 @@
      "host": "Tenor",
      "local": "gifs/magic.healing-item-use-flask-2.webp",
      "source_url": "https://media.tenor.com/ckx6wQUygRoAAAA1/monster-hunter-mh-potion-potion-flex-mh-potion.webp"
+    },
+    {
+     "page_url": "gifs/magic.healing-item-use-flask-er0.webp",
+     "media_url": "",
+     "title": "Drink a Flask of Crimson Tears, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/magic.healing-item-use-flask-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Player raises the flask to their mouth and drinks (the flask itself is not shown)"
+     }
     }
    ]
   },
@@ -10085,20 +10185,6 @@
      "source_url": "https://media.tenor.com/WtaeLE9ADcQAAAA1/dodgeroll-dodge-roll-dark-souls-matthewmatosis.webp"
     },
     {
-     "page_url": "https://tenor.com/view/combat-roll-roll-dark-souls-roll-dodge-gif-7252432769786811030",
-     "media_url": "",
-     "title": "Dark Souls combat roll (unconfirmed backstep)",
-     "game": "Dark Souls",
-     "host": "Tenor",
-     "local": "gifs/defense.backstep-backflip-2.webp",
-     "source_url": "https://media.tenor.com/ZKXRLdiLkpYAAAA1/combat-roll-roll-dark-souls-roll-dodge.webp",
-     "screened": {
-      "verdict": "unclear",
-      "confidence": "low",
-      "what": "Tiny isolated figure tumbling/rolling on a white background; source and move hard to identify"
-     }
-    },
-    {
      "page_url": "gifs/defense.backstep-backflip-er0.webp",
      "media_url": "",
      "title": "Backstep (medium load), rendered with the Frame Data 3D preview",
@@ -10133,6 +10219,21 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Hornet evade: game sprites with hurtbox and attack hitboxes"
+     }
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/combat-roll-roll-dark-souls-roll-dodge-gif-7252432769786811030",
+     "media_url": "",
+     "title": "Dark Souls combat roll (unconfirmed backstep)",
+     "game": "Dark Souls",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/ZKXRLdiLkpYAAAA1/combat-roll-roll-dark-souls-roll-dodge.webp",
+     "screened": {
+      "verdict": "replaced",
+      "confidence": "high",
+      "what": "Tiny isolated figure tumbling/rolling on a white background; source and move hard to identify. Replaced by the Elden Ring backstep and Hollow Knight Hornet evade renders"
      }
     }
    ]
@@ -10636,6 +10737,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/defense.guard-break-shield-break-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/lucina/LucinaShieldbreakerMax.gif"
+    },
+    {
+     "page_url": "gifs/defense.guard-break-shield-break-er0.webp",
+     "media_url": "",
+     "title": "Guard broken, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/defense.guard-break-shield-break-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Player's guard is knocked open and they reel back, open to a riposte"
+     }
     }
    ]
   },
@@ -11164,20 +11279,6 @@
       "confidence": "low",
       "what": "Kung Lao's combo knocks the opponent around from different directions"
      }
-    },
-    {
-     "page_url": "https://giphy.com/gifs/fCTp1ebazF23hH6dEk",
-     "media_url": "",
-     "title": "Mortal Kombat punch",
-     "game": "Mortal Kombat",
-     "host": "Giphy",
-     "local": "gifs/reactions.directional-hit-reaction-3.webp",
-     "source_url": "https://media.giphy.com/media/fCTp1ebazF23hH6dEk/200w.webp",
-     "screened": {
-      "verdict": "mismatch",
-      "confidence": "low",
-      "what": "MK11 cinematic trailer shots, no clear directional hit reaction"
-     }
     }
    ],
    "rejected_gifs": [
@@ -11192,6 +11293,19 @@
       "verdict": "mismatch",
       "confidence": "high",
       "what": "Mortal Kombat 9 title and main-menu screens (makeagif)"
+     }
+    },
+    {
+     "page_url": "https://giphy.com/gifs/fCTp1ebazF23hH6dEk",
+     "media_url": "",
+     "title": "Mortal Kombat punch",
+     "game": "Mortal Kombat",
+     "host": "Giphy",
+     "source_url": "https://media.giphy.com/media/fCTp1ebazF23hH6dEk/200w.webp",
+     "screened": {
+      "verdict": "replaced",
+      "confidence": "high",
+      "what": "MK11 cinematic trailer shots, no clear directional hit reaction. Replaced by the Elden Ring four-direction hit reaction render"
      }
     }
    ]
@@ -13646,34 +13760,6 @@
      "host": "Tenor"
     },
     {
-     "page_url": "https://giphy.com/gifs/HitBoxArcade-controller-hitbox-hit-box-KfOQZmq41Z3OBj6nIf",
-     "media_url": "",
-     "title": "Ken Shoryuken (DP 623)",
-     "game": "Street Fighter 6",
-     "host": "Giphy",
-     "local": "gifs/fighting.rising-uppercut-shoryuken-3.webp",
-     "source_url": "https://media.giphy.com/media/KfOQZmq41Z3OBj6nIf/200w.webp",
-     "screened": {
-      "verdict": "meme",
-      "confidence": "low",
-      "what": "Split screen: SF6 gameplay above, real-life hands on a Hitbox controller below (input tutorial)"
-     }
-    },
-    {
-     "page_url": "https://giphy.com/gifs/aYUOtg0Cw3oKY1my9Z",
-     "media_url": "",
-     "title": "Ryu Shin Shoryuken",
-     "game": "Street Fighter 6",
-     "host": "Giphy",
-     "local": "gifs/fighting.rising-uppercut-shoryuken-4.webp",
-     "source_url": "https://media.giphy.com/media/aYUOtg0Cw3oKY1my9Z/200w.webp",
-     "screened": {
-      "verdict": "meme",
-      "confidence": "low",
-      "what": "Split screen: SF6 gameplay and super art above, real-life hands on a Hitbox controller below (input tutorial)"
-     }
-    },
-    {
      "page_url": "https://ultimateframedata.com/ryu",
      "media_url": "https://ultimateframedata.com/hitboxes/ryu/RyuShoryukenHeavy.gif",
      "title": "Ryu Shoryuken, with hitboxes",
@@ -13703,6 +13789,48 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Ken Shoryuken (Fierce): sprite frames with hurtboxes and attack boxes"
+     }
+    },
+    {
+     "page_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=2&sMoveType=fd_specials&sAction=w&iMove=039",
+     "media_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=2&sMoveType=fd_specials&sAction=w&iMove=039",
+     "title": "Ryu Shoryuken (Fierce), with hitboxes",
+     "game": "Street Fighter III: 3rd Strike",
+     "host": "Baston",
+     "local": "gifs/fighting.rising-uppercut-shoryuken-baston-1.webp",
+     "source_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=2&sMoveType=fd_specials&sAction=w&iMove=039",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Ryu Shoryuken (Fierce): sprite frames with hurtboxes and attack boxes"
+     }
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://giphy.com/gifs/HitBoxArcade-controller-hitbox-hit-box-KfOQZmq41Z3OBj6nIf",
+     "media_url": "",
+     "title": "Ken Shoryuken (DP 623)",
+     "game": "Street Fighter 6",
+     "host": "Giphy",
+     "source_url": "https://media.giphy.com/media/KfOQZmq41Z3OBj6nIf/200w.webp",
+     "screened": {
+      "verdict": "replaced",
+      "confidence": "high",
+      "what": "Split screen: SF6 gameplay above, real-life hands on a Hitbox controller below (input tutorial). Replaced by the Ken and Ryu Shoryuken from 3rd Strike (Baston)"
+     }
+    },
+    {
+     "page_url": "https://giphy.com/gifs/aYUOtg0Cw3oKY1my9Z",
+     "media_url": "",
+     "title": "Ryu Shin Shoryuken",
+     "game": "Street Fighter 6",
+     "host": "Giphy",
+     "source_url": "https://media.giphy.com/media/aYUOtg0Cw3oKY1my9Z/200w.webp",
+     "screened": {
+      "verdict": "replaced",
+      "confidence": "high",
+      "what": "Split screen: SF6 gameplay and super art above, real-life hands on a Hitbox controller below (input tutorial). Replaced by the Ken and Ryu Shoryuken from 3rd Strike (Baston)"
      }
     }
    ]
@@ -13882,6 +14010,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/fighting.command-grab-ufd-4.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/mii_brawler/MiiBrawlerCounterThrowGrabG.gif"
+    },
+    {
+     "page_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=6&sMoveType=fd_supers&sAction=w&iMove=044",
+     "media_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=6&sMoveType=fd_supers&sAction=w&iMove=044",
+     "title": "Hugo Gigas Breaker, Super Art I, with hitboxes",
+     "game": "Street Fighter III: 3rd Strike",
+     "host": "Baston",
+     "local": "gifs/fighting.command-grab-baston-0.webp",
+     "source_url": "http://ensabahnur.free.fr/BastonNew/hitboxesDisplay.php?sMode=f&iChar=6&sMoveType=fd_supers&sAction=w&iMove=044",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Hugo Gigas Breaker, Super Art I: sprite frames with hurtboxes and attack boxes"
+     }
     }
    ]
   },
@@ -18006,20 +18148,6 @@
    ],
    "gifs": [
     {
-     "page_url": "https://tenor.com/view/mario-walk-cycle-twitter-gif-4178332629046760965",
-     "media_url": "",
-     "title": "Super Mario walk cycle comparison",
-     "game": "Super Mario",
-     "host": "Tenor",
-     "local": "gifs/exploration.walk-cycle-2.webp",
-     "source_url": "https://media.tenor.com/OfxrY2vBlgUAAAA1/mario-walk-cycle-twitter.webp",
-     "screened": {
-      "verdict": "meme",
-      "confidence": "low",
-      "what": "Fan-made 'Super Mario walk cycle comparison' edit putting together sprites from several Mario games (the sprites themselves are real)"
-     }
-    },
-    {
      "page_url": "https://tenor.com/view/cj-walking-cj-walking-gta-san-andreas-gta-gif-8212727282868241623",
      "media_url": "",
      "title": "Cj Walking",
@@ -18088,6 +18216,19 @@
       "confidence": "medium",
       "what": "Animation tutorial graphic labelled 'Inbetweens - walk cycle' with numbered poses; not from a game"
      }
+    },
+    {
+     "page_url": "https://tenor.com/view/mario-walk-cycle-twitter-gif-4178332629046760965",
+     "media_url": "",
+     "title": "Super Mario walk cycle comparison",
+     "game": "Super Mario",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/OfxrY2vBlgUAAAA1/mario-walk-cycle-twitter.webp",
+     "screened": {
+      "verdict": "replaced",
+      "confidence": "high",
+      "what": "Fan-made 'Super Mario walk cycle comparison' edit putting together sprites from several Mario games (the sprites themselves are real). Replaced by the Elden Ring walk render"
+     }
     }
    ]
   },
@@ -18126,20 +18267,6 @@
      "source_url": "https://media.tenor.com/PVE3_ohbiH8AAAA1/diluc-run-diluc-run-genshin-genshin-impact.webp"
     },
     {
-     "page_url": "https://tenor.com/view/iansan-genshin-impact-genshin-iansan-run-gif-508147390055142663",
-     "media_url": "",
-     "title": "Iansan running",
-     "game": "Genshin Impact",
-     "host": "Tenor",
-     "local": "gifs/exploration.jog-run-explore-2.webp",
-     "source_url": "https://media.tenor.com/Bw1NW-XHVQcAAAA1/iansan-genshin-impact-genshin-iansan-run.webp",
-     "screened": {
-      "verdict": "meme",
-      "confidence": "low",
-      "what": "Hand-drawn 2D fan-art run cycle of an anime girl on a cream background; not game footage"
-     }
-    },
-    {
      "page_url": "gifs/locomotion.run-cycle-er0.webp",
      "media_url": "",
      "title": "Run forward, rendered with the Frame Data 3D preview",
@@ -18151,6 +18278,21 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Player run loop, two cycles"
+     }
+    }
+   ],
+   "rejected_gifs": [
+    {
+     "page_url": "https://tenor.com/view/iansan-genshin-impact-genshin-iansan-run-gif-508147390055142663",
+     "media_url": "",
+     "title": "Iansan running",
+     "game": "Genshin Impact",
+     "host": "Tenor",
+     "source_url": "https://media.tenor.com/Bw1NW-XHVQcAAAA1/iansan-genshin-impact-genshin-iansan-run.webp",
+     "screened": {
+      "verdict": "replaced",
+      "confidence": "high",
+      "what": "Hand-drawn 2D fan-art run cycle of an anime girl on a cream background; not game footage. Replaced by the Elden Ring run render"
      }
     }
    ]
@@ -18838,6 +18980,20 @@
      "title": "Yoshi slide",
      "game": "Super Mario Galaxy 2",
      "host": "Tenor"
+    },
+    {
+     "page_url": "gifs/exploration.slide-down-slope-er0.webp",
+     "media_url": "",
+     "title": "Slide down a slope, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/exploration.slide-down-slope-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Player sliding down a steep slope on their feet, loop"
+     }
     }
    ]
   },
@@ -19457,6 +19613,20 @@
       "confidence": "high",
       "what": "Link kicks open a big chest and pulls out the Dungeon Map"
      }
+    },
+    {
+     "page_url": "gifs/interaction.open-chest-er0.webp",
+     "media_url": "",
+     "title": "Open chest, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/interaction.open-chest-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Player kneels and lifts a treasure chest's lid (chest not shown)"
+     }
     }
    ],
    "rejected_gifs": [
@@ -19506,19 +19676,20 @@
       "confidence": "low",
       "what": "Pushing a door open with both hands (the door is not drawn)"
      }
-    },
+    }
+   ],
+   "rejected_gifs": [
     {
      "page_url": "https://tenor.com/view/doom-here's-johnny-doom-slayer-doom-marine-doom-the-dark-ages-gif-17410219135160097011",
      "media_url": "",
      "title": "Doom Slayer 'Here's Johnny' door moment (unverified)",
      "game": "Doom: The Dark Ages",
      "host": "Tenor",
-     "local": "gifs/interaction.open-kick-door-0.webp",
      "source_url": "https://media.tenor.com/8Z2GD2TtGPMAAAA1/doom-here's-johnny-doom-slayer-doom-marine-doom-the-dark-ages.webp",
      "screened": {
-      "verdict": "unclear",
-      "confidence": "medium",
-      "what": "Very dark clip: a dark silhouette in front of fire, no visible door or kick"
+      "verdict": "replaced",
+      "confidence": "high",
+      "what": "Very dark clip: a dark silhouette in front of fire, no visible door or kick. Replaced by the Elden Ring door render"
      }
     }
    ]
@@ -20383,6 +20554,20 @@
      "host": "Tenor",
      "local": "gifs/expression.wave-greet-2.webp",
      "source_url": "https://media.tenor.com/ftTcBhhWlOgAAAA1/acnh-animal-crossing-new-horizons-wave-waving.webp"
+    },
+    {
+     "page_url": "gifs/expression.wave-greet-er0.webp",
+     "media_url": "",
+     "title": "Wave gesture, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/expression.wave-greet-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Player waves an arm overhead"
+     }
     }
    ]
   },
@@ -20543,6 +20728,20 @@
      "host": "Tenor",
      "local": "gifs/expression.bow-salute-1.webp",
      "source_url": "https://media.tenor.com/gKfsRNRUU0YAAAA1/elden-ring-gesture.webp"
+    },
+    {
+     "page_url": "gifs/expression.bow-salute-er0.webp",
+     "media_url": "",
+     "title": "Bow, then Reverential Bow gestures, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/expression.bow-salute-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Player bows, then gives a deep reverential bow"
+     }
     }
    ]
   },
@@ -21035,6 +21234,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Bowser dancing in a shower of confetti on the win screen"
+     }
+    },
+    {
+     "page_url": "gifs/expression.celebrate-cheer-er0.webp",
+     "media_url": "",
+     "title": "Jump for Joy, then Bravo! gestures, rendered with the Frame Data 3D preview",
+     "game": "Elden Ring",
+     "host": "Elden Ring render",
+     "local": "gifs/expression.celebrate-cheer-er0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Player jumps for joy, then claps (Bravo!)"
      }
     }
    ],
