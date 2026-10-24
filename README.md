@@ -19,8 +19,8 @@ On every push to `main`, `.github/workflows/static.yml` runs `python3 build_page
 
 ## Move Explorer (Frame Data tab)
 
-`frame-data.html` is the second tab, labelled **Move Explorer** in the header (the first, `index.html`, is
-**Action Atlas**). It has per-move frame data (startup, active, recovery, cancels, hyper armor, damage), starting
+The site has two apps, switched from the header: **Action Atlas** (`index.html`) and **Move Explorer**
+(`frame-data.html`). It has per-move frame data (startup, active, recovery, cancels, hyper armor, damage), starting
 with Elden Ring: browse by weapon class and weapon (icon index), then by move type, or sort and filter every class at once.
 It is a static page that loads `frame-data/games.json` and one JSON file per game, so it works on GitHub Pages, `server.js`
 (`/frame-data`) and `serve_local.py` alike. Data format, sources and rebuild steps: [frame-data/README.md](frame-data/README.md).
