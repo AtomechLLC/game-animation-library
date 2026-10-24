@@ -285,7 +285,7 @@ footer p{max-width:85ch;margin:0 0 8px}
 .pick-l{min-width:0}
 .dock{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;padding-top:4px;min-width:0;margin-bottom:12px}
 .study{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,32%);gap:14px;align-items:stretch}
-.dock.set .study{grid-template-columns:minmax(0,1fr) minmax(310px,27%) minmax(250px,23%)}
+.dock.set .study{grid-template-columns:minmax(0,1fr) minmax(390px,31%) minmax(250px,22%)}
 /* the Moveset Inspector: the move list, scrolling inside the viewer's height like the inspector */
 .mlist{display:none;position:relative;min-height:240px;border:1px solid var(--line);background:var(--panel);border-radius:6px}
 .dock.set .mlist{display:block}
@@ -296,9 +296,20 @@ footer p{max-width:85ch;margin:0 0 8px}
 .mlist td:first-child{white-space:normal}
 .mlist .strip{width:56px;height:10px}
 .mlist tr.grp td small{display:none}
+/* Expand / Collapse at the right end of the sticky header */
+.mlist .mx{width:1%;text-align:right;padding-left:2px}
+.mlist th.mx{text-transform:none;letter-spacing:0}
+/* filled a soft green, with arrows, so it reads as the way to the full table */
+.wbtn{display:inline-flex;align-items:center;gap:4px;border:1px solid #8fbd8f;background:#a3cca3;color:#1f3d1f;border-radius:999px;padding:2px 10px 2px 7px;font:700 12px var(--body);cursor:pointer;white-space:nowrap}
+.wbtn:hover{background:#93c293}
+.wbtn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .dock.set:not([hidden]):not(.min)~#table{display:none}
 .dock:not(.set) .mkey{display:none}
-@media (min-width:821px) and (max-width:1180px){.dock.set .study{grid-template-columns:minmax(0,1fr) minmax(310px,42%)}.dock.set .insp{grid-column:1/-1;min-height:220px}}
+@media (min-width:821px) and (max-width:1180px){.dock.set .study{grid-template-columns:minmax(0,1fr) minmax(390px,45%)}.dock.set .insp{grid-column:1/-1;min-height:220px}}
+/* expanded: the smallest viewer beside every column, the inspector set aside until Collapse */
+.dock.set.wide .study{grid-template-columns:minmax(280px,25%) minmax(0,1fr)}
+.dock.set.wide .insp{display:none}
+.dock.wide .mlist .strip{width:96px}
 /* the inspector scrolls inside the viewer's height, so the panel never grows past it */
 .insp{position:relative;min-height:240px;border:1px solid var(--line);background:var(--panel);border-radius:6px}
 .insp>div{position:absolute;inset:0;overflow:auto;padding:10px 12px;font-size:13px}
@@ -625,15 +636,23 @@ function renderTable(){
   dock(list);
   $('#table').innerHTML=`${!st.cls?`<div class="sect">${esc(L.everyClass)}</div>`:''}<div class="tablewrap"><table>${head}<tbody>${body}</tbody></table></div>${s.length>shown.length?`<button class="more" id="more">Show ${Math.min(PAGE,s.length-shown.length)} more of ${(s.length-shown.length).toLocaleString()}</button>`:''}`;
 }
-// The moveset beside the viewer: always by move type in play order, with only what tells moves apart at a glance
-// (the inspector and Frame details carry the rest)
+// The moveset beside the viewer. Compact, it is by move type in play order with only what tells moves apart at a
+// glance (the inspector and Frame details carry the rest); expanded (WIDE), it has every column of the move table and
+// sorts like it. Expand / Collapse sits at the right end of its header
+let WIDE=false;
 function moveList(list,scale){
-  const cols=['name','grip','startup','strip'].filter(k=>SHOW.includes(k));
-  const head=`<thead><tr>${cols.map(k=>{const c=COLS.find(x=>x[0]===k);return `<th class="${c[3]&&k!=='strip'?'n':''}" title="${esc(colTip(c))}">${esc(colName(c))}</th>`}).join('')}</tr></thead>`;
-  const by=new Map();list.forEach(m=>{if(!by.has(m.type))by.set(m.type,[]);by.get(m.type).push(m)});
-  const body=[...by].sort((a,b)=>T[a[0]].i-T[b[0]].i).map(([t,ms])=>`<tr class="grp" title="${esc(T[t].description)}"><td colspan="${cols.length}">${esc(T[t].name)} · ${ms.length}</td></tr>`
-    +ms.map(m=>`<tr data-m="${esc(m.class+'|'+m.id)}"${DOCK.key===m.class+'|'+m.id?' class="on"':''}>${cols.map(k=>cell(k,m,scale)).join('')}</tr>`).join('')).join('');
+  const cols=WIDE?SHOW.filter(k=>COLS.some(c=>c[0]===k)&&k!=='class'):['name','grip','startup','strip'].filter(k=>SHOW.includes(k));
+  const th=k=>{const c=COLS.find(x=>x[0]===k),n=c[3]&&k!=='strip'?'n':'';
+    return WIDE?`<th class="${n}" ${st.sort===k?`aria-sort="${st.dir>0?'ascending':'descending'}"`:''} title="${esc(colTip(c))}"><button data-sort="${k}">${esc(colName(c))}</button></th>`
+      :`<th class="${n}" title="${esc(colTip(c))}">${esc(colName(c))}</th>`};
+  const head=`<thead><tr>${cols.map(th).join('')}<th class="mx"><button class="wbtn" id="mlistWide" aria-expanded="${WIDE}" title="${WIDE?'Back to the short list beside the inspector':'Show every column of the moveset'}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${WIDE?'M10 5l-7 7 7 7M14 5l7 7-7 7':'M3 12h18M7 7l-5 5 5 5M17 7l5 5-5 5'}"/></svg>${WIDE?'Collapse':'Expand'}</button></th></tr></thead>`;
+  const row=m=>`<tr data-m="${esc(m.class+'|'+m.id)}"${DOCK.key===m.class+'|'+m.id?' class="on"':''}>${cols.map(k=>cell(k,m,scale)).join('')}<td class="mx"></td></tr>`;
+  let body;
+  if(WIDE&&st.sort)body=sorted(list).map(row).join('');
+  else{const by=new Map();list.forEach(m=>{if(!by.has(m.type))by.set(m.type,[]);by.get(m.type).push(m)});
+    body=[...by].sort((a,b)=>T[a[0]].i-T[b[0]].i).map(([t,ms])=>`<tr class="grp" title="${esc(T[t].description)}"><td colspan="${cols.length+1}">${esc(T[t].name)} · ${ms.length}</td></tr>`+ms.map(row).join('')).join('')}
   return `<table>${head}<tbody>${body}</tbody></table>`}
+function setWide(on){WIDE=on;$('#dock').classList.toggle('wide',on);try{localStorage.setItem('fd-moveset-wide',on?'1':'')}catch(e){}if(D)renderTable()}
 function openMove(key){
   const [cls,id]=key.split('|'),m=D.moves.find(x=>x.class===cls&&x.id===id);if(!m)return;
   const c=CL[m.class],end=Math.max(m.total||0,m.cancels.dodge||0);
@@ -804,6 +823,7 @@ document.addEventListener('click',e=>{
   if(t.id==='dockMore'){if(DOCK.key)openMove(DOCK.key);return}
   if(t.id==='dockLink'){copyLink(t);return}
   if(t.id==='pickMin'){pickMin(!$('#pick').classList.contains('min'));return}
+  if(t.id==='mlistWide'){setWide(!WIDE);$('#mlistWide').focus();return}
   if(d.game!==undefined){if(d.game!==st.game)loadGame(d.game);return}
   if(d.fam!==undefined){st.fam=d.fam&&st.fam!==d.fam?d.fam:null;st.cls=null;st.w=null;st.shown=PAGE;renderAll();return}
   if(d.cls!==undefined){st.cls=d.cls||null;st.w=null;st.shown=PAGE;if(st.cls){st.fam=CL[st.cls].family;st.sort=null}renderAll();scrollTo({top:0,behavior:'smooth'});return}
@@ -894,6 +914,7 @@ addEventListener('hashchange',()=>{if(!D)return;const g=new URLSearchParams(loca
 new ResizeObserver(()=>document.documentElement.style.setProperty('--hdr',$('header').offsetHeight+'px')).observe($('header'));
 document.addEventListener('pointerover',e=>{const r=e.target.closest('tr[data-m]');if(r&&DOCK.view&&!$('#dock').hidden){const m=moveOf(r.dataset.m);if(m)DOCK.view.then(v=>v.prefetch(m,pickName()))}});
 try{if(localStorage.getItem('fd-pick-min'))pickMin(true)}catch(e){}
+try{if(localStorage.getItem('fd-moveset-wide'))setWide(true)}catch(e){}
 // Store links per game, from frame-data/stores.json (see frame-data/README.md, "Store links"). Steam and the eShop link
 // directly; an affiliate store shows only once its "link" template is filled in, so ids drop in without code changes.
 let STORES={};
