@@ -166,7 +166,18 @@ The 2D preview's sheets are drawn from the same timelines: the Knight's tk2d cli
 objects with their own clips and transforms, attack polygons (red) and the `HeroBox` hurtbox (blue), mirrored to face
 right. Polygons are stored as `[kind, [x, y, ...]]` and sprites.json sets `smooth` for the painted art.
 
-Not read yet: wall jump, Crystal Heart, charm variants (only noted in More), enemies and bosses.
+Bosses (Hornet twice, Mantis Lord, Soul Master, Pure Vessel, Nightmare King Grimm) come from their Godhome arena
+scenes (`level<n>`, numbered as in the build's scene list). An attack walks the boss's main FSM from an antic state
+until it reaches a state where the boss chooses again (Idle, Escalation, a choice, the next antic); `BOSSES` in the
+importer lists the attacks and times the few events the walk can't (a dash ending at a wall, the needle coming
+back). Attack hitboxes are the boss's DamageHero children while the FSM has them switched on (ActivateGameObject or
+SetPolygonCollider); the hurtbox is the body collider, resized per state by SetBoxCollider2DSizeVector, and the
+per-pose collider children that carry ExtraDamageableProxy. Damage is in masks.
+
+Not read yet: wall jump, Crystal Heart, charm variants (only noted in More), boss projectiles and spawned hazards
+(boomerangs, orbs, firebats, spikes: those attacks show their length only), other enemies.
+
+`add_hk.py` renders library clips from the same sheets (hitboxes drawn on, dark background) for the moves it maps.
 
 ## Super Smash Bros. Ultimate
 

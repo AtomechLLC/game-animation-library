@@ -2560,6 +2560,20 @@
       "confidence": "high",
       "what": "Knight alternate nail slash (the second of the alternating swings): game sprites with hurtbox and attack hitboxes"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=pureVessel&t=attack&m=pureVessel.attack.slashes",
+     "media_url": "",
+     "title": "Pure Vessel triple slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.light-attack-combo-string-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Pure Vessel triple slash: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -2973,6 +2987,20 @@
       "confidence": "low",
       "what": "Knight nail slash: game sprites with hurtbox and attack hitboxes"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=nkg&t=attack&m=nkg.attack.slash",
+     "media_url": "",
+     "title": "Nightmare King Grimm slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.horizontal-sweep-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Nightmare King Grimm slash: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ],
    "rejected_gifs": [
@@ -3080,6 +3108,20 @@
      "host": "Tenor",
      "local": "gifs/melee.thrust-stab-r1.webp",
      "source_url": "https://media.tenor.com/rSRLHcTc0bcAAAA1/the-first-berserker-khazan.webp"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=pureVessel&t=attack&m=pureVessel.attack.dash",
+     "media_url": "",
+     "title": "Pure Vessel dash stab, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.thrust-stab-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Pure Vessel dash stab: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ],
    "rejected_gifs": [
@@ -3214,6 +3256,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Knight Cyclone Slash nail art: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornet&t=attack&m=hornet.attack.spin",
+     "media_url": "",
+     "title": "Hornet whirl, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.spin-attack-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Hornet whirl: game sprites with hurtbox and attack hitboxes"
      }
     }
    ]
@@ -3764,6 +3820,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Knight Dash Slash nail art: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornet&t=attack&m=hornet.attack.lunge",
+     "media_url": "",
+     "title": "Hornet lunge, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.dash-attack-lunge-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Hornet lunge: game sprites with hurtbox and attack hitboxes"
      }
     }
    ]
@@ -5417,6 +5487,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Kratos hurls the axe across the ice and recalls it mid-fight"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornet&t=attack&m=hornet.attack.throw",
+     "media_url": "",
+     "title": "Hornet needle throw and recall, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/melee.weapon-throw-recall-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Hornet needle throw and recall: game sprites with hurtbox and attack hitboxes"
      }
     }
    ],
@@ -7343,6 +7427,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Link throws the boomerang, which arcs out and returns"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=mantisLord&t=attack&m=mantisLord.attack.throw",
+     "media_url": "",
+     "title": "Mantis Lord boomerang throw (boomerang not shown), with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/ranged.boomerang-returning-throw-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Mantis Lord boomerang throw (boomerang not shown): game sprites with hurtbox and attack hitboxes"
      }
     }
    ],
@@ -9588,6 +9686,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/defense.backstep-backflip-ufd-0.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/sheik/SheikBouncingFish.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornet&t=attack&m=hornet.attack.evade",
+     "media_url": "",
+     "title": "Hornet evade, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/defense.backstep-backflip-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Hornet evade: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -9962,6 +10074,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/defense.counter-attack-ufd-4.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/king_k_rool/KingKRoolGutCheckHit.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=pureVessel&t=attack&m=pureVessel.attack.counterSlash",
+     "media_url": "",
+     "title": "Pure Vessel counter slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/defense.counter-attack-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Pure Vessel counter slash: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ],
    "rejected_gifs": [
@@ -13803,6 +13929,34 @@
       "confidence": "high",
       "what": "Pontiff Sulyvahn winds up his flaming greatsword before the swing"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornet&t=attack&m=hornet.attack.lunge",
+     "media_url": "",
+     "title": "Hornet lunge, from its wind-up, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/enemies.attack-telegraph-windup-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Hornet lunge, from its wind-up: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=pureVessel&t=attack&m=pureVessel.attack.dash",
+     "media_url": "",
+     "title": "Pure Vessel dash stab, from its wind-up, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/enemies.attack-telegraph-windup-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Pure Vessel dash stab, from its wind-up: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -14565,6 +14719,34 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/enemies.charging-rush-ufd-2.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/bowser_jr/BowserJrClownKartDashG.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=nkg&t=attack&m=nkg.attack.groundDash",
+     "media_url": "",
+     "title": "Nightmare King Grimm ground dash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/enemies.charging-rush-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Nightmare King Grimm ground dash: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=mantisLord&t=attack&m=mantisLord.attack.dash",
+     "media_url": "",
+     "title": "Mantis Lord dash slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight",
+     "host": "Hollow Knight render",
+     "local": "gifs/enemies.charging-rush-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Mantis Lord dash slash: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ],
    "rejected_gifs": [

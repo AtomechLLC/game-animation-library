@@ -13,6 +13,24 @@
  "classes": {
   "knight": {
    "file": "moves/knight.json"
+  },
+  "hornet": {
+   "file": "moves/hornet.json"
+  },
+  "hornet2": {
+   "file": "moves/hornet2.json"
+  },
+  "mantisLord": {
+   "file": "moves/mantisLord.json"
+  },
+  "soulMaster": {
+   "file": "moves/soulMaster.json"
+  },
+  "pureVessel": {
+   "file": "moves/pureVessel.json"
+  },
+  "nkg": {
+   "file": "moves/nkg.json"
   }
  }
 }

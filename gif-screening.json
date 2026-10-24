@@ -3197,6 +3197,97 @@
    "game": "Hollow Knight",
    "what": "Knight death: game sprites with hurtbox and attack hitboxes",
    "confidence": "high"
+  },
+  {
+   "animation": "melee.dash-attack-lunge",
+   "clip": "melee.dash-attack-lunge-hk-1",
+   "game": "Hollow Knight",
+   "what": "Hornet lunge: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "enemies.attack-telegraph-windup",
+   "clip": "enemies.attack-telegraph-windup-hk-0",
+   "game": "Hollow Knight",
+   "what": "Hornet lunge, from its wind-up: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "enemies.attack-telegraph-windup",
+   "clip": "enemies.attack-telegraph-windup-hk-1",
+   "game": "Hollow Knight",
+   "what": "Pure Vessel dash stab, from its wind-up: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.spin-attack",
+   "clip": "melee.spin-attack-hk-1",
+   "game": "Hollow Knight",
+   "what": "Hornet whirl: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.weapon-throw-recall",
+   "clip": "melee.weapon-throw-recall-hk-0",
+   "game": "Hollow Knight",
+   "what": "Hornet needle throw and recall: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "ranged.boomerang-returning-throw",
+   "clip": "ranged.boomerang-returning-throw-hk-0",
+   "game": "Hollow Knight",
+   "what": "Mantis Lord boomerang throw (boomerang not shown): game sprites with hurtbox and attack hitboxes",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.light-attack-combo-string",
+   "clip": "melee.light-attack-combo-string-hk-1",
+   "game": "Hollow Knight",
+   "what": "Pure Vessel triple slash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.thrust-stab",
+   "clip": "melee.thrust-stab-hk-0",
+   "game": "Hollow Knight",
+   "what": "Pure Vessel dash stab: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "defense.counter-attack",
+   "clip": "defense.counter-attack-hk-0",
+   "game": "Hollow Knight",
+   "what": "Pure Vessel counter slash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.horizontal-sweep",
+   "clip": "melee.horizontal-sweep-hk-1",
+   "game": "Hollow Knight",
+   "what": "Nightmare King Grimm slash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "low"
+  },
+  {
+   "animation": "enemies.charging-rush",
+   "clip": "enemies.charging-rush-hk-0",
+   "game": "Hollow Knight",
+   "what": "Nightmare King Grimm ground dash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "enemies.charging-rush",
+   "clip": "enemies.charging-rush-hk-1",
+   "game": "Hollow Knight",
+   "what": "Mantis Lord dash slash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "defense.backstep-backflip",
+   "clip": "defense.backstep-backflip-hk-0",
+   "game": "Hollow Knight",
+   "what": "Hornet evade: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
   }
  ]
 }

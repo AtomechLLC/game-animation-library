@@ -31,6 +31,8 @@ class Sprites:
             d = self.g.mono(obj)
             d['_obj'] = obj
             d['byName'] = {c['name']: c for c in d['clips'] if c['name']}
+            for c in d['clips']:          # a frame's collection reference is relative to the library's file
+                for fr in c['frames']: fr['_src'] = obj
             self._lib[key] = d
         return self._lib[key]
 
