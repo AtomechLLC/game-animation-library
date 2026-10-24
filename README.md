@@ -17,6 +17,8 @@ python merge.py
 
 On every push to `main`, `.github/workflows/static.yml` runs `python3 build_page.py index.html` (template.html + library.json) and publishes the repo root, so the site always matches the committed `library.json`. Run `python build_page.py` locally to preview `index.html`.
 
+The app switcher icons (Atlas, High kick and Histogram) are by Delapouite from [game-icons.net](https://game-icons.net/), under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/); each app's footer credits them.
+
 ## Move Explorer (Frame Data tab)
 
 The site has two apps, switched from the header: **Action Atlas** (`index.html`) and **Move Explorer**

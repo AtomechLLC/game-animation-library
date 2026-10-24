@@ -47,7 +47,7 @@ to 10 matter to the page's goal but should not widen the active task unless adop
 
 ## Evidence
 
-Screenshots go in [`docs/screenshots/`](../screenshots/README.md). The "before" set is taken at commit `e98edb6`.
+Screenshots are not stored in the repository. The "before" state is commit `e98edb6`; [package 11](wp-11-before-after-article.md) has the capture settings.
 Each package lists the "after" shots it needs so [package 11](wp-11-before-after-article.md) can pair them.
 
 ## Template

@@ -23,7 +23,7 @@ should reach a short list of matching moves in a few steps, without knowing Elde
   to pick a weapon first or scroll the long all-classes table.
 - **The action filters are in the side rail.** Move types (Light chain, Heavy, Running, Jumping…) exist, but they
   sit in the left rail as a long list. On first view they are visually secondary to the weapon tiles (see
-  `docs/screenshots/before/frame-data-viewport.png`).
+  the Frame Data first screen at commit `e98edb6`).
 - **The move id is nearly hidden.** It is the key that joins every dataset, but it appears only in the details
   sheet footer (inventory §6.6).
 

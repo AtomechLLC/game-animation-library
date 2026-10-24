@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22%238a3fc9%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20transform%3D%22translate%284%204%29%22%3E%3Crect%20x%3D%222%22%20y%3D%224%22%20width%3D%228%22%20height%3D%2212%22%20rx%3D%221.6%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%227%22%20y%3D%224%22%20width%3D%228%22%20height%3D%2212%22%20rx%3D%221.6%22%20opacity%3D%22.6%22%2F%3E%3Crect%20x%3D%2212%22%20y%3D%224%22%20width%3D%2210%22%20height%3D%2212%22%20rx%3D%221.8%22%2F%3E%3Ccircle%20cx%3D%2217%22%20cy%3D%2210%22%20r%3D%222.6%22%20fill%3D%22none%22%20stroke%3D%22%238a3fc9%22%20stroke-width%3D%221.6%22%2F%3E%3Crect%20x%3D%222%22%20y%3D%2218.6%22%20width%3D%2220%22%20height%3D%221.6%22%20rx%3D%22.8%22%2F%3E%3Crect%20x%3D%2216%22%20y%3D%2216.8%22%20width%3D%222.2%22%20height%3D%225.2%22%20rx%3D%221.1%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,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">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Move Explorer · Game Animation Library</title>
 <meta name="description" content="Game Animation Library: learn from the legends of combat design.">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,800&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
 /* Same shell as template.html (sticky timeline header, filter rail, slide-over sheet), with a weapon icon index and frame tables. */
 :root{
@@ -16,6 +16,7 @@
   --key:#e08a00; --key-ink:#8a5200; --combat:#c2412d; --calm:#2f7a6b; --chip:#efece5; --playhead:#d92d20;
   --f-start:#cfcbc0; --f-active:#c2412d; --f-gap:#e6b8ae; --f-rec:#e08a00; --f-free:#2f7a6b40; --f-armor:#4b5bd6; --f-iframe:#0e9bb8;
   --cx-attack:#c2185b; --cx-dodge:#2f7a6b; --cx-block:#5b6b7f; --cx-skill:#7c3aed; --cx-item:#8a6d00; --cx-move:#2563eb;
+  --v3d-bounds:#3fae3a;
   --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
   --body:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -24,12 +25,12 @@
   --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
   --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; color-scheme:dark;
   --f-start:#4a4b52; --f-active:#ff7a63; --f-gap:#6b3a33; --f-rec:#ffb020; --f-free:#62c9b14d; --f-armor:#8f9bff; --f-iframe:#4cc9e8;
-  --cx-attack:#f06292; --cx-dodge:#62c9b1; --cx-block:#a3b1c2; --cx-skill:#b794f6; --cx-item:#e0c040; --cx-move:#6ea8ff}}
+  --cx-attack:#f06292; --cx-dodge:#62c9b1; --cx-block:#a3b1c2; --cx-skill:#b794f6; --cx-item:#e0c040; --cx-move:#6ea8ff; --v3d-bounds:#91f48b}}
 :root[data-theme="dark"]{
   --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
   --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; color-scheme:dark;
   --f-start:#4a4b52; --f-active:#ff7a63; --f-gap:#6b3a33; --f-rec:#ffb020; --f-free:#62c9b14d; --f-armor:#8f9bff; --f-iframe:#4cc9e8;
-  --cx-attack:#f06292; --cx-dodge:#62c9b1; --cx-block:#a3b1c2; --cx-skill:#b794f6; --cx-item:#e0c040; --cx-move:#6ea8ff}
+  --cx-attack:#f06292; --cx-dodge:#62c9b1; --cx-block:#a3b1c2; --cx-skill:#b794f6; --cx-item:#e0c040; --cx-move:#6ea8ff; --v3d-bounds:#91f48b}
 *{box-sizing:border-box}
 html,body{max-width:100%;overflow-x:clip}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:14px;line-height:1.5}
@@ -48,13 +49,6 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var
 .brand h1{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;margin:0;text-wrap:balance}
 .brand h1 a{color:inherit;text-decoration:none}
 .brand h1 a:hover{text-decoration:underline;text-underline-offset:3px}
-/* logo: the Game Design Skills mark (a controller cut by a sword) with a play button for animation, and its bold italic wordmark */
-.logo{display:inline-flex;align-items:center;gap:9px}
-.brand h1 a.logo:hover{text-decoration:none}
-.logo svg{width:40px;height:40px;flex:none;border-radius:7px}
-.logo .wm{display:flex;flex-direction:column;gap:2px;font-family:"Open Sans",var(--display);font-style:italic;font-weight:800;text-transform:uppercase;line-height:1}
-.logo .wm b{font-weight:inherit;font-size:17px;letter-spacing:-.01em}
-.logo .wm i{font-size:11.5px;letter-spacing:.24em}
 .brand .tagline{font-size:13px;color:var(--muted);font-style:italic}
 .brand .ver{font-family:var(--mono);font-size:11px;color:var(--muted)}
 /* app switcher: its own row with the brand, styled as underlined tabs so it never reads as one of the filled filter toggles below */
@@ -62,17 +56,18 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var
 .approw .club,.approw .brand{align-self:center;margin-bottom:12px}
 .toolrow{padding-top:10px}
 .apps{display:flex;gap:0 28px;flex-wrap:wrap;margin-left:8px}
-.apps a{display:flex;gap:8px;align-items:flex-start;padding:4px 2px 9px;margin-bottom:-1px;border-bottom:3px solid transparent;color:var(--muted);text-decoration:none}
-/* each app has its own badge colour and glyph (also its favicon); the colour also marks the current app */
+.apps a{display:flex;gap:8px;align-items:center;padding:3px 2px 6px;margin-bottom:-1px;border-bottom:3px solid transparent;color:var(--muted);text-decoration:none}
+/* each app has its own badge colour and glyph (from game-icons.net); the colour also marks the current app */
 .apps .ico{display:grid;place-items:center;width:28px;height:28px;flex:none;border-radius:7px;background:var(--app)}
 .apps .ico svg{width:20px;height:20px;fill:#fff}
 .apps a[aria-current="page"]{color:var(--fg);border-bottom-color:var(--app)}
 .apps a:not([aria-current]) .ico{opacity:.8}
 .apps a:not([aria-current]):hover{color:var(--fg);border-bottom-color:var(--line)}
 .apps a:not([aria-current]):hover .ico{opacity:1}
-.apps b{display:block;font-family:var(--display);font-size:17px;font-weight:700;line-height:1.25}
-.apps small{display:block;font-size:12px}
-@media (max-width:820px){.apps{margin-left:0;gap:0 20px}.apps small{display:none}.apps b{font-size:15px}}
+.apps b{display:block;font-family:var(--display);font-size:16px;font-weight:700;line-height:1.1}
+.apps small{display:block;font-size:12px;line-height:1.2}
+/* phones: one compact row of name-only buttons; scrolls sideways rather than wrapping on the narrowest screens */
+@media (max-width:820px){.apps{margin-left:0;gap:0 12px;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;scrollbar-width:none}.apps a{gap:5px;padding:2px 1px 5px;margin-bottom:0;white-space:nowrap}.apps .ico{width:22px;height:22px;border-radius:6px}.apps .ico svg{width:15px;height:15px}.apps small{display:none}.apps b{font-size:14px}}
 .search{flex:1 1 240px;display:flex;align-items:center;gap:8px;background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:0 10px;min-width:0}
 .search input{flex:1;min-width:0;border:0;background:transparent;color:var(--fg);font:inherit;padding:9px 0;outline:none}
 .search kbd{font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:0 5px}
@@ -116,12 +111,19 @@ aside h2{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transf
 .range input{width:100%;accent-color:var(--key)}
 .range b{font-family:var(--mono);color:var(--fg);font-weight:600}
 .status{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
-.status h2{font-family:var(--display);font-size:28px;font-weight:700;letter-spacing:-.02em;margin:0;text-wrap:balance;display:flex;align-items:center;gap:10px}
-.status h2 img{width:40px;height:40px}
+.status h2{font-family:var(--display);font-size:28px;font-weight:700;letter-spacing:-.02em;margin:0;text-wrap:balance;display:flex;align-items:baseline;gap:10px}
+/* the count lines up with the title's text, not the icon's bottom, so the row is as tall with or without the icon */
+.status h2 img{width:40px;height:40px;align-self:center}
 .status p{margin:0;color:var(--muted)}
 /* title, description and store links share one row; the description gives way first (truncated, full text on hover) */
 .head1{flex:1;min-width:0;display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px}
 .head1 h2{flex:0 1 auto;min-width:0}
+/* the way back from a class to its family, in the weapon row's heading, in the page's accent colour */
+.back{flex:none;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--key);background:var(--panel);color:var(--key-ink);border-radius:999px;padding:3px 12px 3px 9px;font:600 13px var(--body);letter-spacing:0;text-transform:none;cursor:pointer}
+.back:hover{background:var(--key);color:#1c1b19}
+.back kbd,.wtiles .def kbd{border:1px solid currentColor;border-radius:3px;padding:0 4px;font:500 10px var(--mono);opacity:.8}
+/* Class default keeps the key's line while it is off, so the weapon row does not change height */
+.wtiles .def kbd{color:var(--muted)}.wtiles .def kbd.off{visibility:hidden}
 .head1 #sub{flex:1 1 16ch;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .head1 #sub:empty{display:none}
 .buy{display:flex;flex-wrap:wrap;align-items:center;gap:6px;flex:0 0 auto;font-size:12px;color:var(--muted)}
@@ -225,13 +227,12 @@ footer p{max-width:85ch;margin:0 0 8px}
 .v3d{display:grid;gap:8px}
 .v3d-stage{position:relative;aspect-ratio:4/3;background:radial-gradient(ellipse at 50% 35%,var(--panel),var(--sunk));border:1px solid var(--line);border-radius:6px;overflow:hidden}
 .v3d-stage canvas{display:block;width:100%;height:100%;touch-action:none}
-/* orientation gizmo (frame-data/orientation-gizmo.js), bottom left of the 3D stage */
+/* viewport overlays (frame-data/viewer3d.js): Mouse | Trackpad bottom left, camera buttons and Help top right */
 .v3d-corner{position:absolute;left:12px;bottom:12px;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
-.v3d-gizmo{border-radius:50%;transition:background-color .15s}.v3d-gizmo:hover{background:rgba(255,255,255,.2)}.v3d-gizmo canvas{display:block;cursor:pointer;width:100px;height:100px}
-/* viewport overlays (frame-data/viewer3d.js): Mouse | Trackpad under the gizmo, camera buttons and Help top right */
 .v3d-stage kbd,.v3d-keys kbd{border:1px solid var(--line);background:var(--sunk);border-radius:3px;padding:0 4px;font-family:var(--mono);font-size:10px;font-weight:500;color:var(--muted)}
 .v3d-mode{display:flex;margin:0;padding:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:color-mix(in srgb,var(--panel) 80%,transparent);backdrop-filter:blur(6px)}
-.v3d-mode button{border:0;background:none;padding:4px 10px;font-size:10px;font-weight:700;color:var(--muted);cursor:pointer}.v3d-mode button:hover{color:var(--fg)}
+.v3d-mode button{display:flex;align-items:center;border:0;background:none;padding:4px 8px;color:var(--muted);cursor:pointer}
+.v3d-mode svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}.v3d-mode button:hover{color:var(--fg)}
 .v3d-mode button[aria-pressed=true]{background:var(--key);color:#fff}
 .v3d-side{position:absolute;top:10px;right:10px;bottom:10px;display:flex;flex-direction:column;align-items:flex-end;gap:8px;pointer-events:none}
 .v3d-tools{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px}
@@ -277,8 +278,9 @@ footer p{max-width:85ch;margin:0 0 8px}
 .clip-stage canvas,.clip-stage img{display:block;width:100%;height:100%;object-fit:contain}
 .clip-stage .v3d-hud{color:#fff;text-shadow:0 1px 2px #000}.clip-stage .v3d-hud span{color:#ddd}
 .clip-alts{display:flex;flex-wrap:wrap;gap:4px}
-/* the study panel: the viewer with the inspector beside it, full width under the weapon buttons; once a class is
-   picked it floats under the header while the table scrolls. Hide folds it */
+/* the study panel: the viewer with the inspector beside it, full width with the weapon buttons under it, so it keeps
+   its place when a class is picked; once a class is picked it floats under the header while the table scrolls. Hide
+   folds it */
 .pick-l{min-width:0}
 .dock{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;padding-top:4px;min-width:0;margin-bottom:12px}
 .study{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,32%);gap:14px;align-items:stretch}
@@ -322,7 +324,7 @@ footer p{max-width:85ch;margin:0 0 8px}
 .linkbtn.done .i-ok{display:block}
 .linkbtn.done{background:var(--calm);border-color:var(--calm)}
 .dock .v3d-stage{aspect-ratio:auto;height:clamp(240px,38vh,440px)}
-.pick.min .wtiles,.pick.min #sub,.pick.min #active,.dock.min .study{display:none}
+.pick.min~#weapons .wtiles,.pick.min #sub,.pick.min #active,.dock.min .study{display:none}
 @media (min-width:821px) and (min-height:800px){.dock.stick{position:sticky;top:var(--hdr,0px);z-index:4;background:var(--bg);border-bottom:1px solid var(--line);padding-bottom:8px}}
 @media (max-width:820px){.study{grid-template-columns:minmax(0,1fr)}.insp{min-height:320px}}
 /* phones: the header scrolls away compacted (one-line game chips, no tagline) and the preview alone sticks to the top,
@@ -358,9 +360,9 @@ tbody tr.on td{background:var(--chip);box-shadow:inset 0 1px var(--key),inset 0 
 
 <header>
   <div class="wrap hrow approw">
-    <a class="club" href="https://funsmith.club" aria-label="Funsmith club"><svg viewBox="0 0 127.14 96.36" aria-hidden="true"><path d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0a105.89 105.89 0 0 0-26.25 8.09C2.79 32.65-1.71 56.6.54 80.21a105.73 105.73 0 0 0 32.17 16.15 77.7 77.7 0 0 0 6.89-11.11 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.66 2a68.68 68.68 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1 105.25 105.25 0 0 0 32.19-16.14c2.64-27.38-4.51-51.11-18.9-72.15ZM42.45 65.69C36.18 65.69 31 60 31 53s5-12.74 11.43-12.74S54 46 53.89 53s-5.05 12.69-11.44 12.69Zm42.24 0C78.41 65.69 73.25 60 73.25 53s5-12.74 11.44-12.74S96.23 46 96.12 53s-5.04 12.69-11.43 12.69Z"/></svg><span>Funsmith club</span></a>
-    <div class="brand"><h1><a class="logo" href="./" aria-label="Game Animation Library"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="18" fill="#282c6c"/><g fill="none" stroke="#fff" stroke-width="4.4" stroke-linecap="round"><rect x="14" y="36" width="72" height="32" rx="14"/><path d="M33 44.6v14.8M24.6 52H47"/></g><path d="M56.7 30L43.3 74" stroke="#282c6c" stroke-width="11"/><g fill="#fff"><path d="M55.54 26.92l3.82 1.16-17.05 56.1-3.37 4.19-.45-5.35z"/><path d="M50.9 25.7h14l-.6 3.6h-14z"/><path d="M55.98 27l2.92.97 5.9-17.92-2.92-.95z"/><ellipse cx="63.4" cy="9.6" rx="3.4" ry="3.1"/><path d="M64 45.2v13.6l11.4-6.8z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></g></svg><span class="wm"><b>Game Animation</b><i>Library</i></span></a></h1><span class="tagline">learn from the legends of combat design</span></div>
-    <nav class="apps" aria-label="Apps"><a href="./" style="--app:#2f62c9"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="9" height="13" rx="1.8" transform="rotate(-14 7 12.5)" opacity=".5"/><rect x="12.5" y="6" width="9" height="13" rx="1.8" transform="rotate(14 17 12.5)" opacity=".5"/><rect x="7" y="4" width="10" height="15" rx="2"/><path d="M12 8.2l3.3 3.3-3.3 3.3-3.3-3.3z" fill="#2f62c9"/></svg></span><span><b>Action Atlas</b><small>Compare one action across games</small></span></a><a href="frame-data.html" style="--app:#8a3fc9" aria-current="page"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="8" height="12" rx="1.6" opacity=".35"/><rect x="7" y="4" width="8" height="12" rx="1.6" opacity=".6"/><rect x="12" y="4" width="10" height="12" rx="1.8"/><circle cx="17" cy="10" r="2.6" fill="none" stroke="#8a3fc9" stroke-width="1.6"/><rect x="2" y="18.6" width="20" height="1.6" rx=".8"/><rect x="16" y="16.8" width="2.2" height="5.2" rx="1.1"/></svg></span><span><b>Move Explorer</b><small>Step through moves frame by frame · 7 games</small></span></a><a href="trends.html" style="--app:#1f8a6e"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="4" height="8" rx="1" opacity=".55"/><rect x="10" y="9" width="4" height="12" rx="1" opacity=".75"/><rect x="17" y="5" width="4" height="16" rx="1"/><path d="M5 10l7-4 7-4" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>Trends</b><small>Compare timing across games</small></span></a></nav>
+    <a class="club" href="https://funsmith.club" target="_blank" rel="noopener noreferrer" aria-label="Funsmith club"><svg viewBox="0 0 127.14 96.36" aria-hidden="true"><path d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0a105.89 105.89 0 0 0-26.25 8.09C2.79 32.65-1.71 56.6.54 80.21a105.73 105.73 0 0 0 32.17 16.15 77.7 77.7 0 0 0 6.89-11.11 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.66 2a68.68 68.68 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1 105.25 105.25 0 0 0 32.19-16.14c2.64-27.38-4.51-51.11-18.9-72.15ZM42.45 65.69C36.18 65.69 31 60 31 53s5-12.74 11.43-12.74S54 46 53.89 53s-5.05 12.69-11.44 12.69Zm42.24 0C78.41 65.69 73.25 60 73.25 53s5-12.74 11.44-12.74S96.23 46 96.12 53s-5.04 12.69-11.43 12.69Z"/></svg><span>Funsmith club</span></a>
+    <div class="brand"><h1><a href="./">Game Animation Library</a></h1><span class="tagline">learn from the legends of combat design</span></div>
+    <nav class="apps" aria-label="Apps"><a href="./" style="--app:#2f62c9"><span class="ico"><svg viewBox="0 0 512 512" aria-hidden="true"><path d="M256 22.115c-5.825 0-11.563.366-17.193 1.074l25.27 19.44 27.44-15.832A136.438 136.438 0 0 0 256 22.115zm-31.406 3.64C164.628 39.899 120.115 93.66 120.115 158c0 70.687 53.73 128.608 122.65 135.244.11-.089.213-.183.323-.271 8.263-6.629 19.152-10.972 31.252-12.305 6.22-.685 12.228-.512 17.822.457l.006-.025v-.002c1.954-7.778 6.776-13.879 12.527-17.332 4.314-2.59 8.978-3.837 13.528-4.137a34.41 34.41 0 0 1 4.496.002c5.895.383 11.445 2.11 16.095 5.584.123.092.244.195.366.29 31.612-24.477 52.098-62.602 52.681-105.62-6.228-5.54-16.99-15.23-18.4-17.346-1.987-2.98-21.852-22.348-21.852-22.348l-44.199-2.484 19.865 24.336-26.818 11.422-20.494-27.983 24.85 59.018-16.856 67.424-33.713-1.406-14.748-62.506-53.379-11.239 19.666-58.996h69.082l3.41-6.275-36.312-19.03-41.799 18.985-.701-41.437s21.068-18.964 21.068-24.582c0-3.13 2.132-12.118 4.063-19.682zm95.91 251.806c-2.437.009-4.81.597-6.543 1.638-1.982 1.19-3.436 2.711-4.334 6.287l-.006.018-13.79 53.928-8.073-1.25c-12.118-1.876-25.705-2.017-32.533-1.07-4.91 1.625-7.226 4.484-7.848 6.286-.635 1.842-.734 2.198 1.135 3.5.717.457 5.872 2.645 12.074 4.186 6.256 1.554 13.908 2.898 21.277 3.61 7.37.71 14.537.749 19.438.023 4.9-.726 5.96-2.624 5.191-.912 13.432-29.903 16.61-45.388 21.844-74.057-.08-.024-.02.092-.293-.111-1.067-.797-3.7-1.864-6.492-2.045-.35-.023-.699-.033-1.047-.031zm-40.055 20.785c-1.604.011-3.25.106-4.926.29-8.933.985-16.716 4.342-21.64 8.292-4.924 3.95-6.649 7.762-6.438 10.965a8.07 8.07 0 0 0 .633 2.617 37.532 37.532 0 0 1 2.498-.854l.582-.174.602-.093c8.147-1.276 19.2-1.204 30.615.006l5.25-20.53a44.952 44.952 0 0 0-7.176-.52zm-49.455 11.103c-32.373 12.647-66.581 48.933-73.314 87.27 8.55 13.94 15.925 25.451 42.213 28.804 20.25 2.584 36.195-3.383 53.138-11.421-4.61 27.314-9.023 54.627-22.347 81.941l61.582 1.49-1.987-11.422-37.248-4.47c10.766-27.243 34.074-58.795 28.309-88.399-18.755-3.482-37.817-6.687-69.527 1.49 2.954-8.21 13.434-21.073 25.947-33.408-7.491-5.58-10.196-15.685-7.399-23.795a24.701 24.701 0 0 1 2.993-5.914c-2.137-3.465-3.52-7.4-3.807-11.752-.238-3.613.312-7.107 1.447-10.414zm-65.64 120.928c5.496 14.215 12.952 27.97 20.136 41.58-17.916-10.752-58.268-14.487-64.808-14.402-3.1 17.06-10.632 26.4-25.02 35.74l14.899 2.978 19.804-23.074c26.19 15.067 75.1 30.943 84.442 19.444.305-9.276-.076-28.955-5.8-49.584-17.281.494-32.183-4.853-43.653-12.682z"/></svg></span><span><b>Action Atlas</b><small>Compare one action across games</small></span></a><a href="frame-data.html" style="--app:#8a3fc9" aria-current="page"><span class="ico"><svg viewBox="0 0 512 512" aria-hidden="true"><path d="M117.842 26.268a15.25 15.25 0 0 0-4.418.76c-5.625 1.858-10.165 7.048-12.6 15.701-2.435 8.653-2.255 20.27 1.668 32.045 3.923 11.775 10.754 21.198 17.9 26.686 7.147 5.488 13.9 6.946 19.526 5.088 5.625-1.858 10.163-7.046 12.597-15.7 2.435-8.653 2.256-20.271-1.668-32.046-3.923-11.776-10.753-21.196-17.9-26.684-5.36-4.116-10.498-5.966-15.105-5.85zm183.933 12.373c-3.461.157-6.505 1.749-8.25 5.344L279.89 68.73l-26.733 32.309s-53.832-9.528-72.039-6.863a518.655 518.655 0 0 0-11.318 1.767c-3.614 12.656-11.809 23.592-24.192 27.682-11.513 3.803-23.674.702-33.761-6.178-4.565 3.511-8.787 7.581-12.557 12.33-18.674 14.66-26.385 24.747-42.1 34.92 3.083-14.864 10.683-29.677 19.026-41.879 1.37-2.003 11.495-10.555 12.888-12.406 7.48-14.706-8.464-41.216-23.476-15.86-1.425 1.979-7.346 18.877-8.817 21.096-14.574 28.867-23.676 47.817-15.474 76.325 2.756 9.578 30.91-4.905 55.23-22.159 26.469 37.34 59.364 48.604 78.373 63.078-23.266 83.384 10.267 147.263 29.276 207.721l-29.149 36.086c-8.868 10.627 48.711 13.113 52.412.75l7.71-33.84c-28.831-90.508-3.142-157.686 17.62-207.722 55.208-59.043 115.23-82.304 168.9-128.791l45.302-9.635c10.848-19.916 10.236-29.748-13.854-30.697l-44.924 17.595c-56.586 31.807-146.01 53.348-186.496 97.99-.897-14.045-17.4-47.3-20.902-58.437 19.373 2.573 45.668 4.223 60.642-2.682 16.005-7.38 33.63-40.796 33.63-40.796l19.663-14.551c17.065-10.058-.63-27.798-12.994-27.24z"/></svg></span><span><b>Move Explorer</b><small>Step through moves frame by frame · 7 games</small></span></a><a href="trends.html" style="--app:#1f8a6e"><span class="ico"><svg viewBox="0 0 512 512" aria-hidden="true"><path d="M23 23v466h466v-18h-40.893V256h-48v215h-31.675V159.33h-48V471h-31.227V320.242h-48V471H207.2V80.418h-48V471H128V192H80v279H41V23H23z"/></svg></span><span><b>Trends</b><small>Compare timing across games</small></span></a></nav>
   </div>
   <div class="wrap hrow toolrow">
     <label class="search" for="q"><span aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Search moves, weapons…" autocomplete="off"><kbd>/</kbd></label>
@@ -388,10 +390,10 @@ tbody tr.on td{background:var(--chip);box-shadow:inset 0 1px var(--key),inset 0 
         <div class="status"><div class="head1"><h2 id="ttl">Move Explorer</h2><p id="sub"></p><p class="buy" id="buy"></p></div><span class="count" id="count"></span></div>
         <div class="active" id="active"></div>
         <div id="index"></div>
-        <div id="weapons"></div>
       </div>
     </div>
     <section class="dock" id="dock" hidden aria-label="3D preview"><div class="dock-head"><div><small id="dockSrc"></small><h3 id="dockName">3D preview</h3></div><span class="dock-btns"><button class="linkbtn" id="dockLink" aria-label="Copy link to this frame" title="Copy a link that opens this move paused on this frame, with the same speed and overlays"><svg class="i-link" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3.2-3.2a4.5 4.5 0 0 0-6.4-6.4l-1.1 1.1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3.2 3.2a4.5 4.5 0 0 0 6.4 6.4l1.1-1.1"/></svg><svg class="i-ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Copy link</span></button><button class="chip" id="dockMore">Frame details</button><button class="chip" id="pickMin" aria-expanded="true" title="Hide the weapon buttons and preview">Hide</button></span></div><div class="study"><div class="v3d" id="dockView"></div><div class="insp" id="insp" role="region" aria-label="Move inspector"></div></div></section>
+    <div id="weapons"></div>
     <div class="legend" id="legend"></div>
     <div id="table"></div>
     <footer id="foot"></footer>
@@ -509,7 +511,8 @@ function renderAll(){
     :`<p><b>Source.</b> ${esc(D.game.name)} data comes from the ${ext(D.source.url,D.source.name)} by ${esc(D.source.author)} (patch ${esc(D.game.version)}, retrieved ${esc(D.source.retrieved)}), reshaped here into weapon classes and move types. Every move links back to it. ${D.source.note?esc(D.source.note.replace(/https?:\S+/,'')):''}${ext('https://ko-fi.com/sovietspaceship','Ko-fi ↗')}</p>`)+`
   ${ICONSET.sources?`<p>${esc(ICONSET.lead||"Weapon icons are the game's inventory art")}, from ${ICONSET.sources.map(x=>ext(x.url,x.name)).join(' and ')}. ${esc((ICONSET.note||'').replace(/^Icons are the game's inventory art, /,''))}</p>`:''}
   <p>${esc(D.game.frameNote)} Values cover the first hit of a move; open a move for every window.</p>
-  ${buy.some(b=>b.paid)?'<p>Some store links are affiliate links: buying through them supports this library at no extra cost to you.</p>':''}`;
+  ${buy.some(b=>b.paid)?'<p>Some store links are affiliate links: buying through them supports this library at no extra cost to you.</p>':''}
+  <p>App icons by Delapouite from ${ext('https://game-icons.net/','game-icons.net')}, ${ext('https://creativecommons.org/licenses/by/3.0/','CC BY 3.0')}.</p>`;
   writeHash();
 }
 function renderHead(){
@@ -522,17 +525,28 @@ function renderHead(){
   if(st.max<+$('#maxStart').max)act.push(['max',`Startup ≤ ${st.max}`]);
   $('#active').innerHTML=act.map(([k,l])=>`<button data-clear="${esc(k)}">${esc(l)} ✕</button>`).join('')+(act.length>1?`<button data-clear="all">Clear all</button>`:'');
 }
+const backBtn=(attr,up,key)=>`<button class="back" ${attr} title="Back to ${esc(up)}"${key?' aria-keyshortcuts="Backspace"':''}>‹ ${esc(up)}${key?' <kbd>Backspace</kbd>':''}</button>`;
+// Backspace goes up one level: a picked weapon to its class default, a class to its family, a family to every weapon
+function goUp(){
+  if(st.cls&&st.w!=null)st.w=null;
+  else if(st.cls){st.cls=null;st.w=null;st.shown=PAGE;scrollTo({top:0,behavior:'smooth'})}
+  else if(st.fam&&D.families.length>1){st.fam=null;st.shown=PAGE}
+  else return false;
+  renderAll();return true}
 function renderIndex(){
   if(st.cls){
     const c=CL[st.cls];$('#index').innerHTML='';
-    if(!c.weapons.length){$('#weapons').innerHTML=`<div class="sect">${c.moves} moves · ${esc(c.name)} <button class="chip" data-cls="" style="margin-left:4px">${esc(L.allClasses)}</button></div>`;return}
-    $('#weapons').innerHTML=`<div class="sect">${c.weapons.length} weapon${c.weapons.length===1?'':'s'} · ${esc(c.name)} <button class="chip" data-cls="" style="margin-left:4px">All classes</button></div>
-    <div class="wtiles" role="group" aria-label="Weapon">${[`<button class="tile def" data-w="" aria-pressed="${st.w==null}"><span class="ico ph">ALL</span><b>Class default</b></button>`]
+    // the way back names where it goes: the family the class was picked from, else every class. Backspace goes up one
+    // level, so its key shows on this button, or on Class default while a weapon is picked
+    const up=st.fam?FAM[st.fam].name:L.allClasses,back=backBtn('data-cls=""',up,st.w==null);
+    if(!c.weapons.length){$('#weapons').innerHTML=`<div class="sect">${c.moves} moves · ${esc(c.name)} ${back}</div>`;return}
+    $('#weapons').innerHTML=`<div class="sect">${c.weapons.length} weapon${c.weapons.length===1?'':'s'} · ${esc(c.name)} ${back}</div>
+    <div class="wtiles" role="group" aria-label="Weapon">${[`<button class="tile def" data-w="" aria-pressed="${st.w==null}"${st.w!=null?' aria-keyshortcuts="Backspace"':''}><span class="ico ph">ALL</span><b>Class default</b><kbd${st.w==null?' class="off"':''}>Backspace</kbd></button>`]
       .concat(c.weapons.map((w,i)=>`<button class="tile" data-w="${i}" aria-pressed="${st.w===i}" title="${esc(w)}">${icoHtml(w)}<b>${esc(w)}</b></button>`)).join('')}</div>`;
     return}
   $('#weapons').innerHTML='';
-  const fams=D.families.filter(f=>!st.fam||f.id===st.fam);
-  $('#index').innerHTML=fams.map(f=>`<div class="sect">${esc(f.name)}</div><div class="tiles">${D.classes.filter(c=>c.family===f.id).map(c=>`<button class="tile" data-cls="${esc(c.id)}">${icoHtml(c.icon)}<b>${esc(c.name)}</b><small>${c.weapons.length?`${c.weapons.length} weapon${c.weapons.length===1?'':'s'}`:`${c.moves} moves`}</small></button>`).join('')}</div>`).join('');
+  const fams=D.families.filter(f=>!st.fam||f.id===st.fam),allBack=st.fam&&D.families.length>1?' '+backBtn('data-fam=""',L.allFamilies,true):'';
+  $('#index').innerHTML=fams.map(f=>`<div class="sect">${esc(f.name)}${allBack}</div><div class="tiles">${D.classes.filter(c=>c.family===f.id).map(c=>`<button class="tile" data-cls="${esc(c.id)}">${icoHtml(c.icon)}<b>${esc(c.name)}</b><small>${c.weapons.length?`${c.weapons.length} weapon${c.weapons.length===1?'':'s'}`:`${c.moves} moves`}</small></button>`).join('')}</div>`).join('');
 }
 // One bar per move: startup, active (gaps between hits lighter), recovery until dodge, then free frames to the end.
 function stripHtml(m,scale,lanes){
@@ -621,7 +635,7 @@ function openMove(key){
 // covers swaps the move in place, other rows open the detail sheet. The 3D viewer holds the picked weapon, else each
 // move's class preview weapon.
 // Bump ?v= whenever viewer3d.js (and the ?v= on its navigation3d.js import), sprites2d.js or clipviewer.js changes: browsers and Pages cache them, and a stale copy next to a new page breaks the dock
-const VIEWER='./frame-data/viewer3d.js?v=14',VIEWER2D='./frame-data/sprites2d.js?v=6',CLIPVIEWER='./frame-data/clipviewer.js?v=5';
+const VIEWER='./frame-data/viewer3d.js?v=17',VIEWER2D='./frame-data/sprites2d.js?v=6',CLIPVIEWER='./frame-data/clipviewer.js?v=5';
 // the models and sprites viewers load per class (classData); the clip viewer reads each move's clips
 const byClass=()=>G.models||G.sprites;
 const DOCK={key:null,view:null,game:null,cls:null,w:null,cm:null,seq:0};
@@ -673,7 +687,7 @@ function inspFrame(m,f){
 const moveOf=key=>{const [cls,id]=key.split('|');return D.moves.find(x=>x.class===cls&&x.id===id)};
 function dockOn(on){$('#dock').hidden=!on;$('#pick').classList.toggle('dockon',on)}
 // before a class is picked the panel sits above the long class index, so the example is on the first screen; after,
-// it sits between the weapon buttons and the table and sticks under the header
+// it sits above the weapon buttons and the table, at the same height, and sticks under the header
 function placeDock(browse){const d=$('#dock');d.classList.toggle('stick',!browse);
   if(browse){if(d.nextElementSibling!==$('#index'))$('#index').before(d)}else if(d.previousElementSibling!==$('#pick'))$('#pick').after(d)}
 function pickMin(min){$('#pick').classList.toggle('min',min);$('#dock').classList.toggle('min',min);$('#pickMin').textContent=min?'Show':'Hide';$('#pickMin').setAttribute('aria-expanded',!min);try{localStorage.setItem('fd-pick-min',min?'1':'')}catch(e){}}
@@ -826,7 +840,9 @@ function stepKey(e){
   const i=ks.findIndex(k=>k.getAttribute('aria-pressed')==='true'),d=e.key==='ArrowLeft'?-1:1;
   const n=i<0?(d>0?0:ks.length-1):Math.min(ks.length-1,Math.max(0,i+d));
   e.preventDefault();return n===i?null:ks[n]}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#sheet').hidden)closeSheet();if(e.key==='/'&&document.activeElement!==$('#q')){e.preventDefault();$('#q').focus()};const k=stepKey(e);if(k){
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#sheet').hidden)closeSheet();
+  if(e.key==='Backspace'&&!e.ctrlKey&&!e.shiftKey&&!e.altKey&&!e.metaKey&&!e.defaultPrevented&&$('#sheet').hidden
+    &&!e.target.closest?.('input,select,textarea,[contenteditable]')&&goUp())e.preventDefault();if(e.key==='/'&&document.activeElement!==$('#q')){e.preventDefault();$('#q').focus()};const k=stepKey(e);if(k){
   if(k.dataset.cls!==undefined){st.cls=k.dataset.cls||null;if(st.cls){st.fam=CL[st.cls].family;st.sort=null}}else{st.fam=k.dataset.fam||null;st.cls=null}
   st.w=null;st.shown=PAGE;renderAll()}});
 addEventListener('hashchange',()=>{if(!D)return;const g=new URLSearchParams(location.hash.slice(1)).get('g')||GAMES[0].id;if(g!==st.game)loadGame(g);else{fromHash();renderAll()}});

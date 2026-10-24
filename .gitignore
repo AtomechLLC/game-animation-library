@@ -26,6 +26,3 @@ node_modules/
 
 # Clip conversions in progress (tools/frame_data/import_ufd_ssbu.py)
 *.part.webp
-
-# Korean translations of docs/tasks (local only)
-docs/tasks/ko/

@@ -341,17 +341,17 @@ viewer in wia-seasonal-ui-asset-generator. Click the 3D view first (it gets an o
 
 - Mouse: left or middle drag orbits; right drag, or Shift with left or middle drag, pans. The wheel zooms in
   **Mouse** mode and orbits in **Trackpad** mode (Shift + two-finger drag pans, pinch or Ctrl + scroll zooms).
-  The mode toggle sits under the gizmo, `Tab` switches it, and the choice is kept in `localStorage`
-  (`moveExplorerViewportInputMode:v1`; Trackpad on a first visit). Left and right drag are additions; Blender and the
+  The mode toggle (a mouse and a trackpad icon) sits at the bottom left of the view, `Tab` switches it, and the choice is kept in `localStorage`
+  (`moveExplorerViewportInputMode:v1`; Mouse on a first visit). Left and right drag are additions; Blender and the
   source viewer orbit with the middle button only.
 - Numpad: `1` / `3` / `7` front, right and top of the character (it faces −Z), `Ctrl + 7` bottom, `2` `4` `6` `8`
   orbit 15°, `9` the opposite side, `+` / `−` zoom.
-- `F`, `Home` or `Numpad .` frames the whole move from the current angle; `D` or `Numpad 0` returns to the opening
-  three-quarter view. Both are also buttons over the view, next to `?` (or `/`), which opens the shortcut list.
-- `Z` or the **Grid** button shows or hides the floor grid.
-- The orientation gizmo at the bottom left (`frame-data/orientation-gizmo.js`, after joezappie's
-  three-orientation-gizmo, ISC) shows the three.js world axes; clicking one looks along it. X is mirrored from game
-  space (see the armor note below).
+- `F`, `Home` or `Numpad .` fits the whole move to the view (**Fit to view**) from the current angle; `D` or `Numpad 0` returns to the opening
+  three-quarter view.
+- `Z` shows or hides the floor grid.
+- `B` shows or hides a box around the pose on the current frame: every posed vertex of the
+  body, the weapons and the hitboxes out on that frame. It is off on load and measured only while it shows.
+- The view is a previewer, so these tools are keys only: the `?` button (or `/`) over the view lists them all.
 
 It holds the weapon picked above the table; with no weapon picked, each move plays with its class's preview weapon
 (`EXPORT` in the exporter: the class's first weapon, Katana → Moonveil) or, when that weapon doesn't use the move, the

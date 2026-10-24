@@ -6,7 +6,7 @@
 //   wheel, Mouse mode: zoom              wheel, Trackpad mode: orbit (crosses the poles); Shift + wheel: pan
 //   Ctrl + wheel or pinch: zoom
 //   Numpad 8/2/4/6: orbit 15°  Numpad 9: opposite side  Numpad 1/3/7: front/right/top  Ctrl + Numpad 7: bottom
-//   Numpad +/−: zoom  F, Home, Numpad .: frame the move  D, Numpad 0: default camera  Tab: Mouse/Trackpad
+//   Numpad +/−: zoom  F, Home, Numpad .: fit the move to the view  D, Numpad 0: default camera  Tab: Mouse/Trackpad
 //   / or ?: Help panel
 // The source world is −Y up; this one is +Y up, so elevation and azimuth signs are flipped to keep every gesture
 // moving the view the same way on screen. Keys work while the stage has focus; a click on it gives it focus.
@@ -24,13 +24,13 @@ export function poleOrbitAngles(cumEl, azBase) {
 }
 
 // The camera's azimuth and elevation around `target` for a target-to-camera direction
-export const anglesOf = dir => ({azimuth: Math.atan2(dir.x, dir.z), elevation: Math.atan2(dir.y, Math.hypot(dir.x, dir.z))});
+const anglesOf = dir => ({azimuth: Math.atan2(dir.x, dir.z), elevation: Math.atan2(dir.y, Math.hypot(dir.x, dir.z))});
 
-// views: {front, right} azimuths of the character's front and right side. onFrame / onDefault / onHelp: F, D and /.
-export function createBlenderNavigation({camera, dom, views, onFrame, onDefault, onHelp, onMode}) {
+// views: {front, right} azimuths of the character's front and right side. onFit / onDefault / onHelp: F, D and /.
+export function createBlenderNavigation({camera, dom, views, onFit, onDefault, onHelp, onMode}) {
   const target = new THREE.Vector3();
   let distance = 1, azimuth = 0, elevation = 0, pole = null, limits = {min: 0.01, max: 100}, drag = null;
-  let mode = 'trackpad';
+  let mode = 'mouse';
   try { const m = localStorage.getItem(MODE_KEY); if (m === 'mouse' || m === 'trackpad') mode = m } catch {}
 
   function place(pastPole = false) {
@@ -110,7 +110,7 @@ export function createBlenderNavigation({camera, dom, views, onFrame, onDefault,
     if (e.key === '/' || e.key === '?') { e.preventDefault(); e.stopPropagation(); onHelp?.(); return }
     if (e.key === 'Tab' && !e.ctrlKey && !e.metaKey && !e.altKey) { e.preventDefault(); setMode(mode === 'mouse' ? 'trackpad' : 'mouse'); return }
     if ((k === 'd' && !e.shiftKey && !e.ctrlKey && !e.metaKey) || c === 'Numpad0') { e.preventDefault(); onDefault?.(); return }
-    if ((e.key === 'Home' && !e.shiftKey) || (k === 'f' && !e.ctrlKey && !e.metaKey && !e.shiftKey) || c === 'NumpadDecimal') { e.preventDefault(); onFrame?.(); return }
+    if ((e.key === 'Home' && !e.shiftKey) || (k === 'f' && !e.ctrlKey && !e.metaKey && !e.shiftKey) || c === 'NumpadDecimal') { e.preventDefault(); onFit?.(); return }
     if (!/^Numpad[1-46-9]$|^NumpadAdd$|^NumpadSubtract$/.test(c)) return;
     e.preventDefault();
     if (/^Numpad[24689]$/.test(c)) {
@@ -148,13 +148,11 @@ export function createBlenderNavigation({camera, dom, views, onFrame, onDefault,
     get mode() { return mode }, setMode,
     get state() { return {target: target.clone(), distance, azimuth, elevation, pole: pole && {...pole}, limits: {...limits}} },
     // look at `center` from direction `dir` (target to camera) at `dist`; `size` sets the zoom limits
-    frameTo(center, dir, dist, size) {
+    fitTo(center, dir, dist, size) {
       target.copy(center); distance = dist; ({azimuth, elevation} = anglesOf(dir)); pole = null;
       limits = {min: size / 10, max: size * 20};
       place();
     },
-    // snap to an angle at the current distance (orientation gizmo)
-    setAngles(az, el) { azimuth = az; elevation = clampEl(el); pole = {cumEl: elevation, azBase: azimuth}; place() },
     shift,
     dispose() {
       dom.removeEventListener('wheel', onWheel); dom.removeEventListener('pointerdown', onPointerDown);
