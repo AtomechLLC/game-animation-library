@@ -67,7 +67,7 @@ def main(game_dir):
         style = M.STYLE_GROUPS.get(mv['scripts'][0][0])
         extra = {'Motion': ', '.join('pl000_00_%d.pac #%d, frames %d–%d' % (g['pack'], g['slot'], g['start'], g['end'])
                                      for g in segs),
-                 'Script': ', '.join('%d-%d' % s for s in mv['scripts'])}
+                 'Script': ', '.join('%d-%d' % s[:2] + (' from %d' % s[2] if len(s) > 2 else '') for s in mv['scripts'])}
         if style: extra['Style'] = style
         moves.append({'id': mv['id'], 'class': mv['class'], 'type': mv['type'], 'grip': mv['grip'], 'name': mv['name'],
                       'startup': win[0][0] if win else None, 'active': win,

@@ -53,13 +53,15 @@ MOVES = [
     (24, 'rebellion', 'swordmaster', 'ground', 'Shredder', [(13, 12), (13, 13)], ''),
     (18, 'rebellion', 'swordmaster', 'ground', 'Kick 2', [(13, 11)], ''),
     (15, 'rebellion', 'swordmaster', 'ground', 'Sword Pierce', [(13, 0)], 'Throws Rebellion'),
-    (23, 'rebellion', 'swordmaster', 'ground', 'Sword Pierce (return)', [(13, 15)], 'Catching Rebellion'),
+    (23, 'rebellion', 'swordmaster', 'ground', 'Sword Pierce (return)', [(13, 15)],
+     'Catching Rebellion; the sword hits on its way back as part of Sword Pierce, not here'),
     (19, 'rebellion', 'swordmaster', 'air', 'Aerial Rave · 1', [(13, 7)], ''),
     (20, 'rebellion', 'swordmaster', 'air', 'Aerial Rave · 2', [(13, 8)], ''),
     (21, 'rebellion', 'swordmaster', 'air', 'Aerial Rave · 3', [(13, 9)], ''),
     (22, 'rebellion', 'swordmaster', 'air', 'Aerial Rave · 4', [(13, 10)], ''),
     (17, 'rebellion', 'swordmaster', 'air', 'Divekick', [(13, 4), (13, 5)], ''),
-    (200, 'rebellion', 'swordmaster', 'ground', 'Dance Macabre · 1', [(13, 17)], ''),
+    (200, 'rebellion', 'swordmaster', 'ground', 'Dance Macabre · 1', [(13, 17)],
+     'The dash into part 2; it switches on no hitbox'),
     (201, 'rebellion', 'swordmaster', 'ground', 'Dance Macabre · 2', [(3, 46)], ''),
     (202, 'rebellion', 'swordmaster', 'ground', 'Dance Macabre · 3', [(3, 47)], ''),
     (203, 'rebellion', 'swordmaster', 'ground', 'Dance Macabre · 4', [(3, 48)], ''),
@@ -104,7 +106,8 @@ MOVES = [
     (65, 'agni-rudra', 'swordmaster', 'ground', 'Crossed Swords', [(15, 0)], ''),
     (66, 'agni-rudra', 'swordmaster', 'ground', 'Crawler', [(15, 1)], ''),
     (67, 'agni-rudra', 'swordmaster', 'ground', 'Twister', [(15, 2), (15, 3)], ''),
-    (71, 'agni-rudra', 'swordmaster', 'ground', 'Tempest', [(15, 8), (15, 9)], ''),
+    (71, 'agni-rudra', 'swordmaster', 'ground', 'Tempest', [(15, 8), (15, 10, 68), (15, 9)],
+     'Held for one extra spin, which is the one that hits'),
     (68, 'agni-rudra', 'swordmaster', 'air', 'Sky Dance · 1', [(15, 4)], ''),
     (69, 'agni-rudra', 'swordmaster', 'air', 'Sky Dance · 2', [(15, 5)], ''),
     (70, 'agni-rudra', 'swordmaster', 'air', 'Sky Dance · 3', [(15, 6), (15, 7)], ''),
@@ -193,15 +196,18 @@ WEAPON_SCRIPTS = {'cerberus': ('plwp_nunchaku.pac', {4: 0, 14: 30})}
 
 def segments(game, scripts, move, _packs={}, _weapons={}):
     """The motions a move plays, in order: [dict(pack, slot, mot, start, end, slots)]; start / end are the motion's
-    own frames the script plays (from its 01, else the motion's start frame, to its last frame)."""
+    own frames the script plays (from a third value of the move's script entry, else its 01, else the motion's start
+    frame, to its last frame)."""
     import dmc3_files as D
     out = []
-    for grp, idx in move['scripts']:
+    for entry in move['scripts']:
+        grp, idx = entry[:2]
         r = scripts.run(grp, idx)
         pack, slot = r['motion']
         if pack not in _packs: _packs[pack] = D.subfiles(game.read('pl000_00_%d.pac' % pack))
         mot = D.motion(_packs[pack][slot])
         start = int(round(mot['start'])) if r['start'] is None else r['start']
+        if len(entry) > 2: start = entry[2]     # the action code plays it from another frame
         whits = []
         if move['class'] in WEAPON_SCRIPTS:
             pac, first = WEAPON_SCRIPTS[move['class']]

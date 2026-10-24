@@ -250,8 +250,13 @@ python tools/frame_data/export_dmc3_models.py "D:/Games/Devil May Cry 3 SE"     
   with its function's address. Active marks the frame each shot leaves and hits counts shots.
 - **Beowulf.** Its model is made on Dante's rest pose with one bone per limb bone (forearms, hands, calves, feet,
   toes); the export splits it into a piece per bone (node extras `bone`) and the preview puts each piece on that bone.
-- **Not known yet.** Tempest hits only while held (its looping script), Dance Macabre's first part and Sword Pierce's
-  catch have no hit, and a few style moves use boxes instead of spheres, which the preview doesn't draw. Also not
+- **No hit.** Dance Macabre's first part (the dash into part 2) and Sword Pierce's catch switch on no hitbox and fire
+  nothing: Dante's colliders are only ever switched on by scripts, and theirs switch on none. The thrown Rebellion
+  hits from the weapon itself while it flies out and back, for as long as its flight lasts.
+- **Tempest** hits only while held: the code replays its spin from frame 68 (`(15, 10, 68)` in the move's scripts, a
+  third value being the frame the action plays a script from), and that script carries the hit. Its row is held for
+  one extra spin.
+- **Not known yet.** A few style moves use boxes instead of spheres, which the preview doesn't draw. Also not
   listed yet: the guns' normal aimed shots and Twosome Time (their motions come from aim tables), Trickster,
   Quicksilver and Doppelganger moves (started outside the action dispatch), and damage (each `06` picks an entry in
   the weapon's damage table, which isn't read yet).
