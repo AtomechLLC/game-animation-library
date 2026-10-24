@@ -1124,6 +1124,20 @@
       "confidence": "high",
       "what": "Knight full-height jump: game sprites with hurtbox and attack hitboxes"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornetSilksong&t=movement&m=silksong.movement.jump",
+     "media_url": "",
+     "title": "Silksong Hornet full-height jump, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/locomotion.jump-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Silksong Hornet full-height jump: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -1218,6 +1232,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Knight Monarch Wings double jump: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornetSilksong&t=movement&m=silksong.movement.doubleJump",
+     "media_url": "",
+     "title": "Silksong Hornet double jump, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/locomotion.double-jump-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Silksong Hornet double jump: game sprites with hurtbox and attack hitboxes"
      }
     }
    ]
@@ -2430,6 +2458,20 @@
       "confidence": "high",
       "what": "Knight nail slash: game sprites with hurtbox and attack hitboxes"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornetSilksong&t=nail&m=silksong.hunter.slash",
+     "media_url": "",
+     "title": "Silksong Hornet needle slash (Hunter crest), with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.light-attack-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Silksong Hornet needle slash (Hunter crest): game sprites with hurtbox and attack hitboxes"
+     }
     }
    ],
    "rejected_gifs": [
@@ -3485,6 +3527,20 @@
       "confidence": "high",
       "what": "Knight wall slash: game sprites with hurtbox and attack hitboxes"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornetSilksong&t=nail&m=silksong.hunter.upSlash",
+     "media_url": "",
+     "title": "Silksong Hornet up slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.aerial-attack-hk-2.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Silksong Hornet up slash: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ],
    "rejected_gifs": [
@@ -3608,6 +3664,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Knight down slash (pogo): game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornetSilksong&t=nail&m=silksong.hunter.downSpike",
+     "media_url": "",
+     "title": "Silksong Hornet down spike (Hunter crest), with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.plunging-downward-attack-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Silksong Hornet down spike (Hunter crest): game sprites with hurtbox and attack hitboxes"
      }
     }
    ],
@@ -3835,6 +3905,20 @@
       "confidence": "high",
       "what": "Hornet lunge: game sprites with hurtbox and attack hitboxes"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornetSilksong&t=nail&m=silksong.hunter.dashStab",
+     "media_url": "",
+     "title": "Silksong Hornet dash stab, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.dash-attack-lunge-hk-2.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Silksong Hornet dash stab: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -3951,6 +4035,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.sprint-attack-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/fox/FoxDashAttack.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornetSilksong&t=nail&m=silksong.hunter.dashStab",
+     "media_url": "",
+     "title": "Silksong Hornet sprint attack (dash stab), with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.sprint-attack-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Silksong Hornet sprint attack (dash stab): game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -8134,6 +8232,20 @@
       "confidence": "high",
       "what": "Knight Focus, healing one mask: game sprites with hurtbox and attack hitboxes"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornetSilksong&t=movement&m=silksong.movement.bind",
+     "media_url": "",
+     "title": "Silksong Hornet Bind (heal), with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/magic.heal-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Silksong Hornet Bind (heal): game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -9795,6 +9907,20 @@
       "confidence": "high",
       "what": "Knight Shadow Dash, invulnerable: game sprites with hurtbox and attack hitboxes"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornetSilksong&t=movement&m=silksong.movement.dash",
+     "media_url": "",
+     "title": "Silksong Hornet dash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/defense.dash-hk-2.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Silksong Hornet dash: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -10610,6 +10736,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Knight taking a hit, then invulnerable: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornetSilksong&t=movement&m=silksong.movement.hit",
+     "media_url": "",
+     "title": "Silksong Hornet taking a hit, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/reactions.light-flinch-hit-react-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Silksong Hornet taking a hit: game sprites with hurtbox and attack hitboxes"
      }
     }
    ]
@@ -12133,6 +12273,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Knight death: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=hornetSilksong&t=movement&m=silksong.movement.death",
+     "media_url": "",
+     "title": "Silksong Hornet death, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/death.death-collapse-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Silksong Hornet death: game sprites with hurtbox and attack hitboxes"
      }
     }
    ],

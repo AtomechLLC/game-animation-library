@@ -3288,6 +3288,83 @@
    "game": "Hollow Knight",
    "what": "Hornet evade: game sprites with hurtbox and attack hitboxes",
    "confidence": "high"
+  },
+  {
+   "animation": "melee.light-attack",
+   "clip": "melee.light-attack-hk-1",
+   "game": "Hollow Knight: Silksong",
+   "what": "Silksong Hornet needle slash (Hunter crest): game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.aerial-attack",
+   "clip": "melee.aerial-attack-hk-2",
+   "game": "Hollow Knight: Silksong",
+   "what": "Silksong Hornet up slash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.plunging-downward-attack",
+   "clip": "melee.plunging-downward-attack-hk-1",
+   "game": "Hollow Knight: Silksong",
+   "what": "Silksong Hornet down spike (Hunter crest): game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.dash-attack-lunge",
+   "clip": "melee.dash-attack-lunge-hk-2",
+   "game": "Hollow Knight: Silksong",
+   "what": "Silksong Hornet dash stab: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.sprint-attack",
+   "clip": "melee.sprint-attack-hk-0",
+   "game": "Hollow Knight: Silksong",
+   "what": "Silksong Hornet sprint attack (dash stab): game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "defense.dash",
+   "clip": "defense.dash-hk-2",
+   "game": "Hollow Knight: Silksong",
+   "what": "Silksong Hornet dash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.jump",
+   "clip": "locomotion.jump-hk-1",
+   "game": "Hollow Knight: Silksong",
+   "what": "Silksong Hornet full-height jump: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "locomotion.double-jump",
+   "clip": "locomotion.double-jump-hk-1",
+   "game": "Hollow Knight: Silksong",
+   "what": "Silksong Hornet double jump: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "reactions.light-flinch-hit-react",
+   "clip": "reactions.light-flinch-hit-react-hk-1",
+   "game": "Hollow Knight: Silksong",
+   "what": "Silksong Hornet taking a hit: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "death.death-collapse",
+   "clip": "death.death-collapse-hk-1",
+   "game": "Hollow Knight: Silksong",
+   "what": "Silksong Hornet death: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "magic.heal",
+   "clip": "magic.heal-hk-1",
+   "game": "Hollow Knight: Silksong",
+   "what": "Silksong Hornet Bind (heal): game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
   }
  ]
 }
