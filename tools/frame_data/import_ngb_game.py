@@ -216,9 +216,9 @@ def main():
         'source': {'name': 'Ninja Gaiden Black game files', 'url': IMPORTER, 'author': 'Team Ninja', 'retrieved': today,
                    'method': 'import_ngb_game.py',
                    'note': 'Read straight from the disc: Ryu\'s move scripts (ryu.mtn), Dragon Sword motions (rm_kt.mot) and '
-                           'input rules (ryu.chr), names from the technique list in default.xbe. The preview is a figure '
-                           'posed from the game\'s animation (IK limbs from the motion\'s end-effectors) with the sword '
-                           'placed along the right hand; the model itself is not drawn.',
+                           'input rules (ryu.chr), names from the technique list in default.xbe. The 3D preview plays the '
+                           'game\'s own Ryu and Dragon Sword models (ryu.kmd, katana.kmd), the limbs solved from the '
+                           'motion\'s end-effectors and hinge axes as the game does, and the sword capsule from katana.itm.',
                    'links': [{'name': 'Importer', 'url': IMPORTER},
                              {'name': 'Ninja Gaiden Black Recompiled (toolkit used to read the code)', 'url': 'https://github.com/gamboozino/ngbrecomp'}]},
         'labels': {'class': 'Weapon', 'classes': 'weapons', 'allClasses': 'All weapons', 'grip': 'Where',

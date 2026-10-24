@@ -31,7 +31,8 @@ The page knows nothing about where the numbers came from, so every source only h
   for the 3D preview.
 - `ninja-gaiden-black.json` — Ninja Gaiden Black (Xbox), 60 fps, Ryu's Dragon Sword. Built by
   `tools/frame_data/import_ngb_game.py` from the game disc (see [Ninja Gaiden Black](#ninja-gaiden-black)), which also
-  writes `sprites/ninja-gaiden-black/` for the 2D preview and `icons/ninja-gaiden-black/`.
+  writes `sprites/ninja-gaiden-black/` (2D sheets, used for the library clips) and `icons/ninja-gaiden-black/`;
+  `tools/frame_data/export_ngb_models.py` writes `models/ninja-gaiden-black/` for the 3D preview.
 - `clipviewer.js` — the hitbox clip preview docked above the move table for games with `clips` (see [Hitbox clips](#hitbox-clips)).
 - `models/elden-ring/` and `viewer3d.js` — the 3D preview docked above the move table (see [3D preview](#3d-preview)).
 - `icons/elden-ring/` — 96px WebP inventory icons per weapon and `icons.json` (weapon name → file, source page). Built by
@@ -262,13 +263,12 @@ Formats are in `tools/frame_data/ngb_files.py`, worked out from the bytes and th
 - The Ultimate Technique family (Haze Straight Slash, its Essence and Ultimate versions) shares one animation and
   timing; only the effects differ.
 
-The 2D preview is not the game's model: `sprites/ninja-gaiden-black/` draws a figure posed from the game's animation
-(root, spine and head rotations, limbs as two-bone IK chains to the motion's end-effectors) seen from the side, the
-sword along the right hand's rotation, and the sword (or foot) attack capsule in red on the active frames. Sword
-length and placement are approximate. `add_ngb.py` renders library clips from the same sheets.
+The tab shows the 3D preview (see [3D preview](#ninja-gaiden-black-1)): Ryu's own model and the Dragon Sword with
+its attack capsule. `sprites/ninja-gaiden-black/` holds the older 2D sheets, a figure posed from the same animation
+seen from the side with the sword placed approximately; `add_ngb.py` renders library clips from them.
 
 Not read yet: other weapons (the scripts and rules are there: nunchaku, Warhammer, ...), damage, Izuna Drop's throw
-after the grab, flying-swallow and wall moves, the model's meshes.
+after the grab, flying-swallow and wall moves.
 
 ## Super Smash Bros. Ultimate
 
@@ -412,6 +412,32 @@ writes `models/devil-may-cry-3/` in the same layout (about 2.4 MB):
 - `moves/<class>.json`: per move its `anim`, `frames` and preview `weapon`; `hits` is empty until hit windows are found.
 
 These are Capcom's assets, under the same terms as the Elden Ring files above.
+
+### Ninja Gaiden Black
+
+```bash
+python tools/frame_data/export_ngb_models.py "C:/Games/Ninja Gaiden Black.iso"   # or the unpacked folder; ~1 minute
+```
+
+writes `models/ninja-gaiden-black/` in the same layout (about 1.1 MB). The formats are in `ngb_files.py` (`KMD`):
+
+- `ryu.glb`: `chr_ryu.afs/ryu.kmd`. A KMD holds an XPR0 block of Xbox D3D resources: per object a mesh header
+  (FVF, vertex and index counts) and its subsets (index range, textures), then the resource headers (DXT textures,
+  vertex, index and push buffers). Ryu is 15 body parts, each rigid on its own bone (OBJINFO kind 1), plus joint
+  fillers (kind 4) whose one blend weight goes to the bone's parent. Overlay passes on the same vertices (the red
+  eyes, the Dark Dragon veins) and the cloth-simulated scarf are left out. The files are right-handed (Ryu holds the
+  sword in his right hand at -x), so `models.json` sets `"mirror": false`.
+- `weapon-dragon-sword.glb`: `cmn.afs/katana.kmd` object 0, placed by `katana.itm`'s grip 2 (right hand, bone 11,
+  turned -13° about y). The root node's `extras.dummies` are the ends of the blade capsule in the same file
+  (radius 0.1 m), drawn on the move's active frames; kicks draw a sphere on the kicking foot (slot 0x0c right,
+  0x0d left: no foot shape was found in the files).
+- `anim/<move>.bin`: the motion sampled once per tab frame (`FDA2`). Root, spine and head take the motion's
+  rotations; each arm and leg is solved from its end-effector, the KMD bone lengths and a hinge axis the motion
+  carries as two angles (direction (cos a sin b, -sin a, cos a cos b), built at xbe 0x190217; the elbow or knee sits
+  on opposite sides of it on the left and right limbs); hands and feet take the effector rotation. Air moves start
+  with the hips 1.8 m up, since the game's jump physics, not the motion, lifts Ryu, and no frame goes below the floor.
+
+These are Tecmo's assets, under the same terms as the Elden Ring files above.
 
 ## Store links
 

@@ -1,6 +1,6 @@
 // 3D preview for the Frame Data tab: plays a move on the game's own character, armor and weapon models and draws its
 // hitboxes on the frames they are out. Everything it loads is written by tools/frame_data/export_er_models.py or
-// export_nrftw_models.py (format in frame-data/README.md, "3D preview"). Frames here are the tab's frames: 1-based, at
+// the other export_*_models.py (format in frame-data/README.md, "3D preview"). Frames here are the tab's frames: 1-based, at
 // the game's frame rate (models.json fps, 30 for Elden Ring).
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
@@ -86,8 +86,9 @@ export async function createViewer(el, base) {
   const FPS = man.fps || 30, sk = man.skeleton;
   const armorG = await glb(base + man.armor.file);
   $('.v3d-msg').hidden = true;
-  // Game files are left-handed: mirror X once at the top so everything below stays in game space
-  const mirror = new THREE.Group(); mirror.scale.x = -1; scene.add(mirror);
+  // Game files are left-handed: mirror X once at the top so everything below stays in game space (models.json
+  // "mirror": false for games whose files are already right-handed, Ninja Gaiden Black)
+  const mirror = new THREE.Group(); mirror.scale.x = man.mirror === false ? 1 : -1; scene.add(mirror);
   const motion = new THREE.Group(); mirror.add(motion);
   const body = armorG.scene; motion.add(body);
   body.traverse(o => { if (o.isMesh) o.frustumCulled = false });
@@ -289,7 +290,7 @@ export async function createViewer(el, base) {
     // warm the cache for the row under the pointer, so the swap on click is instant
     async prefetch(m, pick) {
       const c = await classData(base, m.class).catch(() => null), mv = c && c.moves[m.id];
-      if (mv) { loadAnim(m.id).catch(() => {}); loadWeapon(weaponFor(mv, pick)).catch(() => {}) }
+      if (mv) { loadAnim(mv.anim || m.id).catch(() => {}); loadWeapon(weaponFor(mv, pick)).catch(() => {}) }
     },
     dispose() {
       disposed = true; cancelAnimationFrame(raf); ro.disconnect(); document.removeEventListener('keydown', onKey);
