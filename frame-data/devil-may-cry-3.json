@@ -34,7 +34,7 @@
    "id": "rebellion",
    "name": "Rebellion",
    "family": "melee",
-   "icon": null,
+   "icon": "Rebellion",
    "weapons": [],
    "moves": 31
   },
@@ -42,7 +42,7 @@
    "id": "cerberus",
    "name": "Cerberus",
    "family": "melee",
-   "icon": null,
+   "icon": "Cerberus",
    "weapons": [],
    "moves": 16
   },
@@ -50,7 +50,7 @@
    "id": "agni-rudra",
    "name": "Agni & Rudra",
    "family": "melee",
-   "icon": null,
+   "icon": "Agni & Rudra",
    "weapons": [],
    "moves": 22
   },
@@ -58,7 +58,7 @@
    "id": "nevan",
    "name": "Nevan",
    "family": "melee",
-   "icon": null,
+   "icon": "Nevan",
    "weapons": [],
    "moves": 16
   },
@@ -66,7 +66,7 @@
    "id": "beowulf",
    "name": "Beowulf",
    "family": "melee",
-   "icon": null,
+   "icon": "Beowulf",
    "weapons": [],
    "moves": 17
   },
@@ -74,7 +74,7 @@
    "id": "ebony-ivory",
    "name": "Ebony & Ivory",
    "family": "guns",
-   "icon": null,
+   "icon": "Ebony & Ivory",
    "weapons": [],
    "moves": 2
   },
@@ -82,7 +82,7 @@
    "id": "shotgun",
    "name": "Shotgun",
    "family": "guns",
-   "icon": null,
+   "icon": "Shotgun",
    "weapons": [],
    "moves": 4
   },
@@ -90,7 +90,7 @@
    "id": "artemis",
    "name": "Artemis",
    "family": "guns",
-   "icon": null,
+   "icon": "Artemis",
    "weapons": [],
    "moves": 4
   },
@@ -98,7 +98,7 @@
    "id": "spiral",
    "name": "Spiral",
    "family": "guns",
-   "icon": null,
+   "icon": "Spiral",
    "weapons": [],
    "moves": 2
   },
@@ -106,7 +106,7 @@
    "id": "kalina-ann",
    "name": "Kalina Ann",
    "family": "guns",
-   "icon": null,
+   "icon": "Kalina Ann",
    "weapons": [],
    "moves": 2
   },
@@ -114,7 +114,7 @@
    "id": "royalguard",
    "name": "Royalguard",
    "family": "styles",
-   "icon": null,
+   "icon": "Royalguard",
    "weapons": [],
    "moves": 2
   }
