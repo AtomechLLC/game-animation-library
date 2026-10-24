@@ -1,1 +1,58 @@
-{"marks": []}
+{
+ "marks": [
+  {
+   "animation": "locomotion.combat-walk",
+   "name": "Combat Walk",
+   "gif": "locomotion.combat-walk|gifs/locomotion.combat-walk-2.webp",
+   "page_url": "https://giphy.com/gifs/bandainamco-dark-souls-ds2-ii-JJHgmYP4XFxRrzswoD",
+   "local": "gifs/locomotion.combat-walk-2.webp",
+   "title": "Dark Souls II walk (official Bandai Namco)",
+   "marked_at": "2026-10-19T15:56:31.938Z"
+  },
+  {
+   "animation": "locomotion.crouch",
+   "name": "Crouch",
+   "gif": "",
+   "page_url": "",
+   "local": "",
+   "title": "",
+   "marked_at": "2026-10-19T15:56:58.263Z"
+  },
+  {
+   "animation": "melee.light-attack",
+   "name": "Light Attack",
+   "gif": "melee.light-attack|gifs/melee.light-attack-2.webp",
+   "page_url": "https://giphy.com/gifs/bandainamco-ds-dark-souls-3-tDfClZn3KzGpSL2PXk",
+   "local": "gifs/melee.light-attack-2.webp",
+   "title": "Dark Souls 3 sword attack (Bandai Namco)",
+   "marked_at": "2026-10-19T15:57:05.335Z"
+  },
+  {
+   "animation": "melee.thrust-stab",
+   "name": "Thrust / Stab",
+   "gif": "melee.thrust-stab|gifs/melee.thrust-stab-1.webp",
+   "page_url": "https://giphy.com/gifs/bandainamco-ds-dark-souls-3-kpDKiZGR6wB7pT7IVT",
+   "local": "gifs/melee.thrust-stab-1.webp",
+   "title": "Dark Souls 3 stab (Bandai Namco)",
+   "marked_at": "2026-10-19T15:57:11.987Z"
+  },
+  {
+   "animation": "ranged.aim-down-sights-ads",
+   "name": "Aim Down Sights (ADS)",
+   "gif": "",
+   "page_url": "",
+   "local": "",
+   "title": "",
+   "marked_at": "2026-10-19T15:59:52.727Z"
+  },
+  {
+   "animation": "ranged.aim-down-sights-ads",
+   "name": "Aim Down Sights (ADS)",
+   "gif": "ranged.aim-down-sights-ads|gifs/ranged.aim-down-sights-ads-1.webp",
+   "page_url": "https://tenor.com/view/aiming-call-of-duty-modern-warfare-iii-pointing-a-gun-target-sighted-call-of-duty-gif-3838665571826144660",
+   "local": "gifs/ranged.aim-down-sights-ads-1.webp",
+   "title": "MWIII raising gun to aim",
+   "marked_at": "2026-10-19T15:59:51.961Z"
+  }
+ ]
+}
