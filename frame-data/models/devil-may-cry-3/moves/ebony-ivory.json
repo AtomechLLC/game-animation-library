@@ -1,1 +1,1 @@
-{"class":"ebony-ivory","moves":{"ebony-ivory.wild-stomp":{"frames":95,"weapon":"Ebony & Ivory","anim":"ebony-ivory-wild-stomp","hits":[]},"ebony-ivory.rain-storm":{"frames":58,"weapon":"Ebony & Ivory","anim":"ebony-ivory-rain-storm","hits":[]}}}
+{"class":"ebony-ivory","moves":{"ebony-ivory.wild-stomp":{"frames":95,"weapon":"Ebony & Ivory","anim":"ebony-ivory-wild-stomp","hits":[{"start":52,"end":57,"judge":55}]},"ebony-ivory.rain-storm":{"frames":58,"weapon":"Ebony & Ivory","anim":"ebony-ivory-rain-storm","hits":[]}},"attacks":{"0":{"55":[{"a":55,"r":0.6}]}}}

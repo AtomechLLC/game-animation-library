@@ -197,7 +197,8 @@ def segments(game, scripts, move, _packs={}):
         if pack not in _packs: _packs[pack] = D.subfiles(game.read('pl000_00_%d.pac' % pack))
         mot = D.motion(_packs[pack][slot])
         start = int(round(mot['start'])) if r['start'] is None else r['start']
-        out.append(dict(pack=pack, slot=slot, mot=mot, start=start, end=int(round(mot['frames'])), slots=r['slots']))
+        out.append(dict(pack=pack, slot=slot, mot=mot, start=start, end=int(round(mot['frames'])), slots=r['slots'],
+                        hits=r['hits']))
     return out
 
 
@@ -217,3 +218,45 @@ def timing(segs):
         if f is not None:
             cancels[key] = off + max(f - last['start'], 0) + 1
     return total, cancels
+
+
+def hits(segs, colliders):
+    """The damaging colliders a move's scripts switch on: [dict(start, end, id, hit)], frames 1-based as in timing(),
+    hit = which of the move's hits (each 06 / 08 the script runs before switching colliders on starts a new one).
+    A collider stays on for its frame count or until switched off; one left on for good ends with its motion."""
+    out, total, off, n, fresh = [], timing(segs)[0], 0, 0, False
+    for s in segs:
+        length = max(s['end'] - s['start'], 1)
+        on = []
+        for ev in s['hits']:
+            f = off + max(ev[0] - s['start'], 0) + 1
+            if f > off + length: break
+            if ev[1] == 'wave':
+                fresh = True
+            elif ev[1] == 'on':
+                ids = [i for i in ev[3] if i < len(colliders) and colliders[i]['type'] & 1]
+                if not ids: continue
+                if fresh: n += 1; fresh = False
+                for i in ids:
+                    h = {'start': f, 'end': f + ev[2] - 1 if ev[2] else None, 'id': i, 'hit': max(n, 1)}
+                    out.append(h); on.append(h)
+            else:
+                kind, v = ev[2]
+                for h in on:
+                    if (h['id'] == v if kind == 'id' else colliders[h['id']]['type'] & v) and (h['end'] is None or h['end'] >= f):
+                        h['end'] = f - 1
+                on = [h for h in on if h['end'] is None or h['end'] >= f]
+        for h in on:
+            if h['end'] is None: h['end'] = off + length
+        off += length
+    for h in out: h['end'] = min(h['end'], total)
+    return [h for h in out if h['end'] >= h['start']]
+
+
+def windows(hs):
+    """Merged active windows [[start, end]] of hits()."""
+    out = []
+    for a, b in sorted((h['start'], h['end']) for h in hs):
+        if out and a <= out[-1][1] + 1: out[-1][1] = max(out[-1][1], b)
+        else: out.append([a, b])
+    return out

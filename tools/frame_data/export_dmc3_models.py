@@ -14,7 +14,9 @@ Reads only (dmc3_files.py); writes frame-data/models/devil-may-cry-3/:
                         as it is (Ebony & Ivory, Agni & Rudra: node R and node L)
     anim/<move>.bin     the move's motions (dmc3_moves.segments) played in a row, sampled at 60 fps ('FDA2', see
                         export_er_models.py); bone 0's translation is the root motion track
-    moves/<class>.json  per move id its frames, preview weapon, animation file and hits (none known yet)
+    moves/<class>.json  per move id its frames, preview weapon, animation file and hits (dmc3_moves.hits: each damaging
+                        collider's frames, its id as `judge`), and the hit spheres (`attacks`, one variation 0 that every
+                        weapon uses); models.json `body` places each collider id's sphere centre on its bone
 """
 import io, json, math, os, struct, sys
 import numpy as np
@@ -258,7 +260,8 @@ def bake(segs, offsets):
 
 def main(game_dir, out=OUT):
     game = D.Game(game_dir)
-    scripts = D.Scripts(D.subfiles(game.read('pl000.pac'))[5])
+    pac = D.subfiles(game.read('pl000.pac'))
+    scripts, cols = D.Scripts(pac[5]), D.colliders(pac)
     os.makedirs(os.path.join(out, 'anim'), exist_ok=True)
     os.makedirs(os.path.join(out, 'moves'), exist_ok=True)
     data, parents, offsets = body_glb(game)
@@ -268,8 +271,9 @@ def main(game_dir, out=OUT):
         if pacname and name not in weapons:
             fn = 'weapon-%s.glb' % cid
             open(os.path.join(out, fn), 'wb').write(weapon_glb(game, pacname))
-            weapons[name] = {'model': pacname, 'file': fn}
-    weapons['None'] = {'model': None, 'file': None}
+            weapons[name] = {'model': pacname, 'file': fn, 'variation': 0}
+    weapons['None'] = {'model': None, 'file': None, 'variation': 0}
+    used = set()
     per_class = {cid: {} for cid in M.CLASSES}
     for mv in M.moves():
         segs = M.segments(game, scripts, mv)
@@ -278,18 +282,25 @@ def main(game_dir, out=OUT):
             bake([(s['mot'], s['start'], max(s['end'] - s['start'], 1)) for s in segs], offsets))
         cid = mv['class']
         wname = M.CLASSES[cid][0] if M.CLASSES[cid][2] else 'None'
-        per_class[cid][mv['id']] = {'frames': M.timing(segs)[0], 'weapon': wname, 'anim': anim, 'hits': []}
+        hs = [{'start': h['start'], 'end': h['end'], 'judge': h['id']} for h in M.hits(segs, cols) if cols[h['id']]['sphere']]
+        per_class[cid][mv['id']] = {'frames': M.timing(segs)[0], 'weapon': wname, 'anim': anim, 'hits': hs}
     classes = {}
     for cid, moves in per_class.items():
         if not moves: continue
         fn = 'moves/%s.json' % cid
-        json.dump({'class': cid, 'moves': moves}, open(os.path.join(out, fn), 'w'), separators=(',', ':'))
+        ids = sorted({h['judge'] for m in moves.values() for h in m['hits']})
+        used.update(ids)
+        attacks = {'0': {str(i): [{'a': i, 'r': round(cols[i]['sphere'][3] * SCALE, 4)}] for i in ids}}
+        json.dump({'class': cid, 'moves': moves, 'attacks': attacks}, open(os.path.join(out, fn), 'w'),
+                  separators=(',', ':'))
         classes[cid] = {'file': fn, 'weapon': M.CLASSES[cid][0] if M.CLASSES[cid][2] else 'None', 'hand': M.CLASSES[cid][3]}
     man = {'schema': 'frame-data-models/2', 'game': 'devil-may-cry-3', 'version': 'PS2 Special Edition (SLES-54186)',
            'fps': FPS, 'weaponTurn': False,
            'skeleton': {'weaponBone': 'R_Hand', 'leftWeaponBone': 'L_Hand', 'rootBone': 'Root', 'follow': 'Hips',
                         'fit': ['Head', 'L_Toe', 'R_Toe', 'L_Hand', 'R_Hand'], 'bones': BONES},
-           'armor': {'name': 'Dante', 'file': 'dante.glb'}, 'weapons': weapons, 'body': {}, 'classes': classes}
+           'armor': {'name': 'Dante', 'file': 'dante.glb'}, 'weapons': weapons,
+           'body': {str(i): [BONES[cols[i]['bone']]] + [round(v * SCALE, 4) for v in cols[i]['sphere'][:3]] for i in sorted(used)},
+           'classes': classes}
     json.dump(man, open(os.path.join(out, 'models.json'), 'w'), indent=1)
 
 
