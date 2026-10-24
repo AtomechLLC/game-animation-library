@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22%238a3fc9%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20transform%3D%22translate%284%204%29%22%3E%3Crect%20x%3D%222%22%20y%3D%224%22%20width%3D%228%22%20height%3D%2212%22%20rx%3D%221.6%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%227%22%20y%3D%224%22%20width%3D%228%22%20height%3D%2212%22%20rx%3D%221.6%22%20opacity%3D%22.6%22%2F%3E%3Crect%20x%3D%2212%22%20y%3D%224%22%20width%3D%2210%22%20height%3D%2212%22%20rx%3D%221.8%22%2F%3E%3Ccircle%20cx%3D%2217%22%20cy%3D%2210%22%20r%3D%222.6%22%20fill%3D%22none%22%20stroke%3D%22%238a3fc9%22%20stroke-width%3D%221.6%22%2F%3E%3Crect%20x%3D%222%22%20y%3D%2218.6%22%20width%3D%2220%22%20height%3D%221.6%22%20rx%3D%22.8%22%2F%3E%3Crect%20x%3D%2216%22%20y%3D%2216.8%22%20width%3D%222.2%22%20height%3D%225.2%22%20rx%3D%221.1%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Frame Data · Game Animation Library</title>
+<title>Move Explorer · Game Animation Library</title>
 <meta name="description" content="Game Animation Library: learn from the legends of combat design.">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,10 +47,22 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var
 .brand h1 a:hover{text-decoration:underline;text-underline-offset:3px}
 .brand .tagline{font-size:13px;color:var(--muted);font-style:italic}
 .brand .ver{font-family:var(--mono);font-size:11px;color:var(--muted)}
-.tabs{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
-.tabs a{padding:7px 12px;font-size:13px;font-weight:500;text-decoration:none}
-.tabs a[aria-current="page"]{background:var(--fg);color:var(--bg)}
-.tabs a:not([aria-current]):hover{background:var(--chip)}
+/* app switcher: its own row with the brand, styled as underlined tabs so it never reads as one of the filled filter toggles below */
+.approw{padding-bottom:0;border-bottom:1px solid var(--line);align-items:flex-end}
+.approw .club,.approw .brand{align-self:center;margin-bottom:12px}
+.toolrow{padding-top:10px}
+.apps{display:flex;gap:0 28px;flex-wrap:wrap;margin-left:8px}
+.apps a{display:flex;gap:8px;align-items:flex-start;padding:4px 2px 9px;margin-bottom:-1px;border-bottom:3px solid transparent;color:var(--muted);text-decoration:none}
+/* each app has its own badge colour and glyph (also its favicon); the colour also marks the current app */
+.apps .ico{display:grid;place-items:center;width:28px;height:28px;flex:none;border-radius:7px;background:var(--app)}
+.apps .ico svg{width:20px;height:20px;fill:#fff}
+.apps a[aria-current="page"]{color:var(--fg);border-bottom-color:var(--app)}
+.apps a:not([aria-current]) .ico{opacity:.8}
+.apps a:not([aria-current]):hover{color:var(--fg);border-bottom-color:var(--line)}
+.apps a:not([aria-current]):hover .ico{opacity:1}
+.apps b{display:block;font-family:var(--display);font-size:17px;font-weight:700;line-height:1.25}
+.apps small{display:block;font-size:12px}
+@media (max-width:820px){.apps{margin-left:0;gap:0 20px}.apps small{display:none}.apps b{font-size:15px}}
 .search{flex:1 1 240px;display:flex;align-items:center;gap:8px;background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:0 10px;min-width:0}
 .search input{flex:1;min-width:0;border:0;background:transparent;color:var(--fg);font:inherit;padding:9px 0;outline:none}
 .search kbd{font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:0 5px}
@@ -236,10 +249,12 @@ tbody tr.on td{background:var(--chip);box-shadow:inset 0 1px var(--key),inset 0 
 <body>
 
 <header>
-  <div class="wrap hrow">
+  <div class="wrap hrow approw">
     <a class="club" href="https://funsmith.club" aria-label="Funsmith club"><svg viewBox="0 0 127.14 96.36" aria-hidden="true"><path d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0a105.89 105.89 0 0 0-26.25 8.09C2.79 32.65-1.71 56.6.54 80.21a105.73 105.73 0 0 0 32.17 16.15 77.7 77.7 0 0 0 6.89-11.11 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.66 2a68.68 68.68 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1 105.25 105.25 0 0 0 32.19-16.14c2.64-27.38-4.51-51.11-18.9-72.15ZM42.45 65.69C36.18 65.69 31 60 31 53s5-12.74 11.43-12.74S54 46 53.89 53s-5.05 12.69-11.44 12.69Zm42.24 0C78.41 65.69 73.25 60 73.25 53s5-12.74 11.44-12.74S96.23 46 96.12 53s-5.04 12.69-11.43 12.69Z"/></svg><span>Funsmith club</span></a>
     <div class="brand"><h1><a href="./">Game Animation Library</a></h1><span class="tagline">learn from the legends of combat design</span></div>
-    <nav class="tabs" aria-label="Sections"><a href="./">Animations</a><a href="frame-data.html" aria-current="page">Frame Data</a></nav>
+    <nav class="apps" aria-label="Sections"><a href="./" style="--app:#2f62c9"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="9" height="13" rx="1.8" transform="rotate(-14 7 12.5)" opacity=".5"/><rect x="12.5" y="6" width="9" height="13" rx="1.8" transform="rotate(14 17 12.5)" opacity=".5"/><rect x="7" y="4" width="10" height="15" rx="2"/><path d="M12 8.2l3.3 3.3-3.3 3.3-3.3-3.3z" fill="#2f62c9"/></svg></span><span><b>Action Atlas</b><small>Compare one action across games</small></span></a><a href="frame-data.html" style="--app:#8a3fc9" aria-current="page"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="8" height="12" rx="1.6" opacity=".35"/><rect x="7" y="4" width="8" height="12" rx="1.6" opacity=".6"/><rect x="12" y="4" width="10" height="12" rx="1.8"/><circle cx="17" cy="10" r="2.6" fill="none" stroke="#8a3fc9" stroke-width="1.6"/><rect x="2" y="18.6" width="20" height="1.6" rx=".8"/><rect x="16" y="16.8" width="2.2" height="5.2" rx="1.1"/></svg></span><span><b>Move Explorer</b><small>Step through moves frame by frame · 7 games</small></span></a></nav>
+  </div>
+  <div class="wrap hrow toolrow">
     <label class="search" for="q"><span aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Search moves, weapons…" autocomplete="off"><kbd>/</kbd></label>
     <button class="rail-toggle" id="railBtn" aria-expanded="false">Filters</button>
   </div>
@@ -262,7 +277,7 @@ tbody tr.on td{background:var(--chip);box-shadow:inset 0 1px var(--key),inset 0 
   <main>
     <div class="pick" id="pick">
       <div class="pick-l">
-        <div class="status"><div class="head1"><h2 id="ttl">Frame data</h2><p id="sub"></p><p class="buy" id="buy"></p></div><span class="count" id="count"></span></div>
+        <div class="status"><div class="head1"><h2 id="ttl">Move Explorer</h2><p id="sub"></p><p class="buy" id="buy"></p></div><span class="count" id="count"></span></div>
         <div class="active" id="active"></div>
         <div id="index"></div>
         <div id="weapons"></div>
@@ -386,7 +401,7 @@ function renderAll(){
 }
 function renderHead(){
   const c=st.cls&&CL[st.cls],w=c&&st.w!=null?c.weapons[st.w]:null,f=st.fam&&FAM[st.fam];
-  $('#ttl').innerHTML=c?`${icoHtml(w||c.icon,'')} ${esc(w||c.name)}`:esc(f?f.name:`${D.game.name} frame data`);
+  $('#ttl').innerHTML=c?`${icoHtml(w||c.icon,'')} ${esc(w||c.name)}`:esc(f?f.name:`${D.game.name} move explorer`);
   $('#sub').textContent=$('#sub').title=c?(w?`${c.name} · the animations this weapon uses, by move type.`:`${c.name} · ${L.classView}`)
     :L.pickClass;
   const act=[];if(st.q)act.push(['q',`“${st.q}”`]);st.types.forEach(t=>act.push(['type:'+t,T[t].name]));st.grips.forEach(g=>act.push(['grip:'+g,GR[g]]));
