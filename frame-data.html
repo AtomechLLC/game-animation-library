@@ -463,7 +463,10 @@ function renderAll(){
   // on phones the game bar is one scrolling row: bring the current game into view
   {const bar=$('#games'),on=bar.querySelector('[aria-pressed="true"]');if(on&&bar.scrollWidth>bar.clientWidth)bar.scrollLeft+=on.getBoundingClientRect().left-bar.getBoundingClientRect().left-(bar.clientWidth-on.offsetWidth)/2}
   $('#ver').title=$('#ver').textContent=`${D.moves.length.toLocaleString()} moves · ${D.classes.length} ${L.classes} · ${L.patch}${D.game.version}`;
-  $('#keys').innerHTML=`<button class="kf" data-fam="" aria-pressed="${!st.fam&&!st.cls}"><i></i>${esc(L.allFamilies)}</button>`+D.families.map(f=>`<button class="kf" data-fam="${f.id}" aria-pressed="${st.fam===f.id}"><i></i>${esc(f.name)}</button>`).join('');placePlayhead();
+  // a game with a single family (a fighting game's roster) keys its characters instead
+  $('#keys').innerHTML=D.families.length===1
+    ?`<button class="kf" data-cls="" aria-pressed="${!st.cls}"><i></i>${esc(L.allClasses)}</button>`+D.classes.map(c=>`<button class="kf" data-cls="${esc(c.id)}" aria-pressed="${st.cls===c.id}"><i></i>${esc(c.name)}</button>`).join('')
+    :`<button class="kf" data-fam="" aria-pressed="${!st.fam&&!st.cls}"><i></i>${esc(L.allFamilies)}</button>`+D.families.map(f=>`<button class="kf" data-fam="${f.id}" aria-pressed="${st.fam===f.id}"><i></i>${esc(f.name)}</button>`).join('');placePlayhead();
   const tc=count(pool('type'),m=>m.type);
   $('#types').innerHTML=D.moveTypes.filter(t=>tc.get(t.id)||st.types.has(t.id)).map(t=>`<button class="fitem" data-type="${t.id}" aria-pressed="${st.types.has(t.id)}" title="${esc(t.description)}"><span>${esc(t.name)}</span><span>${tc.get(t.id)||0}</span></button>`).join('');
   const gc=count(pool('grip'),m=>m.grip);
@@ -760,7 +763,9 @@ function stepKey(e){
   const i=ks.findIndex(k=>k.getAttribute('aria-pressed')==='true'),d=e.key==='ArrowLeft'?-1:1;
   const n=i<0?(d>0?0:ks.length-1):Math.min(ks.length-1,Math.max(0,i+d));
   e.preventDefault();return n===i?null:ks[n]}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#sheet').hidden)closeSheet();if(e.key==='/'&&document.activeElement!==$('#q')){e.preventDefault();$('#q').focus()};const k=stepKey(e);if(k){st.fam=k.dataset.fam||null;st.cls=null;st.w=null;st.shown=PAGE;renderAll()}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#sheet').hidden)closeSheet();if(e.key==='/'&&document.activeElement!==$('#q')){e.preventDefault();$('#q').focus()};const k=stepKey(e);if(k){
+  if(k.dataset.cls!==undefined){st.cls=k.dataset.cls||null;if(st.cls){st.fam=CL[st.cls].family;st.sort=null}}else{st.fam=k.dataset.fam||null;st.cls=null}
+  st.w=null;st.shown=PAGE;renderAll()}});
 addEventListener('hashchange',()=>{if(!D)return;const g=new URLSearchParams(location.hash.slice(1)).get('g')||GAMES[0].id;if(g!==st.game)loadGame(g);else{fromHash();renderAll()}});
 // the docked preview sticks under the header; prefetch a row's animation while the pointer is on it
 new ResizeObserver(()=>document.documentElement.style.setProperty('--hdr',$('header').offsetHeight+'px')).observe($('header'));
