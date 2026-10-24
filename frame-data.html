@@ -616,9 +616,10 @@ function placeDock(browse){const d=$('#dock');d.classList.toggle('stick',!browse
 function pickMin(min){$('#pick').classList.toggle('min',min);$('#dock').classList.toggle('min',min);$('#pickMin').textContent=min?'Show':'Hide';$('#pickMin').setAttribute('aria-expanded',!min);try{localStorage.setItem('fd-pick-min',min?'1':'')}catch(e){}}
 async function dock(list){
   const sec=$('#dock'),seq=++DOCK.seq;
-  // with no class picked, model and sprite games still show an example: the first class's first default move, so the
-  // viewer is on screen from the start (it then neither follows the filters nor sticks under the header)
-  const cls=st.cls||(byClass()?D.classes[0]?.id:null);
+  // with no class picked, model and sprite games still show an example: the first default move of the selected weapon
+  // type's first class (or the first class when none is selected), so the viewer is on screen from the start (it then
+  // neither follows the other filters nor sticks under the header)
+  const cls=st.cls||(byClass()?(D.classes.find(c=>c.family===st.fam)||D.classes[0])?.id:null);
   $('#pick').classList.toggle('browse',!st.cls);placeDock(!st.cls);
   if(!(byClass()||G.clips)||!cls){dockOn(false);openLinked();return}
   try{
