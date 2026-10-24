@@ -517,26 +517,27 @@ async function dock(list){
   // viewer is on screen from the start (it then neither follows the filters nor sticks under the header)
   const cls=st.cls||(byClass()?D.classes[0]?.id:null);
   $('#pick').classList.toggle('browse',!st.cls);
-  if(!(byClass()||G.clips)||!cls){dockOn(false);return}
+  if(!(byClass()||G.clips)||!cls){dockOn(false);openLinked();return}
   try{
     const v=await import(G.models?VIEWER:G.sprites?VIEWER2D:CLIPVIEWER),cm=byClass()?await v.classData(byClass(),cls):null;
     if(seq!==DOCK.seq)return;
     const src=st.cls?list:D.moves.filter(m=>m.class===cls&&m.default);
     const ok=byClass()?(cm?src.filter(m=>cm.moves[m.id]):[]):src.filter(m=>m.clips?.length);
-    if(!ok.length){dockOn(false);return}
+    if(!ok.length){dockOn(false);openLinked();return}
     dockOn(true);DOCK.cm=cm;
     sec.setAttribute('aria-label',G.models?'3D preview':G.sprites?'Hitbox preview':'Hitbox clip');
     if(DOCK.game!==G.id){if(DOCK.view)DOCK.view.then(x=>x.dispose());DOCK.view=Promise.resolve(v.createViewer($('#dockView'),byClass()||G.clips));DOCK.game=G.id;DOCK.key=null}
     // keep the move on show while it is still in the list (re-shown when the picked weapon changes); otherwise show
     // the list's first move
-    const cur=ok.find(m=>m.class+'|'+m.id===DOCK.key);
-    if(DOCK.cls!==cls||!cur)preview(ok[0]);else if(DOCK.w!==st.w)preview(cur);
+    const cur=ok.find(m=>m.class+'|'+m.id===DOCK.key),linked=LINKED&&ok.find(m=>m.class+'|'+m.id===LINKED);
+    if(linked){LINKED=null;preview(linked)}else{openLinked();if(DOCK.cls!==cls||!cur)preview(ok[0]);else if(DOCK.w!==st.w)preview(cur)}
     DOCK.cls=cls;DOCK.w=st.w;
   }catch(e){if(seq===DOCK.seq){dockOn(true);$('#dockView').innerHTML=`<div class="empty">Could not load the preview (${esc(e.message)}).</div>`}}}
 async function preview(m){
   const key=m.class+'|'+m.id;DOCK.key=key;
   document.querySelectorAll('tbody tr.on').forEach(r=>r.classList.remove('on'));
   if(st.cls)document.querySelector(`tbody tr[data-m="${CSS.escape(key)}"]`)?.classList.add('on');
+  writeHash();
   $('#dockSrc').textContent=`${st.cls?'':'Example · '}${CL[m.class].name} › ${T[m.type].name} · ${GR[m.grip]}`;
   $('#dockName').title=$('#dockName').textContent=`${m.name} · `+(m.active.length?`startup ${m.startup}, active ${m.active.map(([s,e])=>s===e?s:s+'–'+e).join(', ')}`:`${m.total??'—'} frames`);
   const view=await DOCK.view;
@@ -545,15 +546,20 @@ async function preview(m){
   else view.show(m,{strip:n=>stripHtml(m,n),state:f=>frameState(m,f)});
 }
 function closeSheet(){$('#sheet').hidden=true;$('#scrim').hidden=true}
-// Shareable state in the hash: #g=elden-ring&c=Katana&w=Moonveil&t=light,heavy
+// Shareable state in the hash: #g=elden-ring&c=Katana&w=Moonveil&t=light,heavy&m=a020_030000 (m: the move in the viewer)
+// A move named by a link (class|id), shown in the viewer if it can be, else in the detail sheet, once
+let LINKED=null;
+function openLinked(){if(LINKED){const k=LINKED;LINKED=null;if(moveOf(k))openMove(k)}}
 function writeHash(){
   const p=new URLSearchParams();if(st.game&&st.game!==GAMES[0].id)p.set('g',st.game);if(st.fam&&!st.cls)p.set('f',st.fam);if(st.cls)p.set('c',st.cls);
   if(st.cls&&st.w!=null)p.set('w',CL[st.cls].weapons[st.w]);if(st.types.size)p.set('t',[...st.types].join(','));if(st.grips.size)p.set('grip',[...st.grips].join(','));
-  if(st.sort)p.set('s',(st.dir<0?'-':'')+st.sort);const h=p.toString();
+  if(st.sort)p.set('s',(st.dir<0?'-':'')+st.sort);if(st.cls&&DOCK.key?.startsWith(st.cls+'|'))p.set('m',DOCK.key.split('|')[1]);const h=p.toString();
   try{history.replaceState(null,'',h?'#'+h:location.pathname+location.search)}catch(e){}}
 function fromHash(){
   const p=new URLSearchParams(location.hash.slice(1));
   st.fam=FAM[p.get('f')]?p.get('f'):null;st.cls=CL[p.get('c')]?p.get('c'):null;
+  const mid=p.get('m'),lm=mid&&D.moves.find(m=>m.id===mid&&(!st.cls||m.class===st.cls));
+  LINKED=lm?lm.class+'|'+lm.id:null;if(lm&&!st.cls){st.cls=lm.class;st.fam=CL[lm.class].family}
   const wi=st.cls?CL[st.cls].weapons.indexOf(p.get('w')):-1;st.w=wi>=0?wi:null;
   st.types=new Set((p.get('t')||'').split(',').filter(t=>T[t]));st.grips=new Set((p.get('grip')||'').split(',').filter(g=>GR[g]));
   const s=p.get('s');if(s&&COLS.find(c=>c[0]===s.replace('-',''))){st.sort=s.replace('-','');st.dir=s[0]==='-'?-1:1}}
@@ -587,7 +593,7 @@ $('#scrim').onclick=closeSheet;
 let qt;$('#q').addEventListener('input',e=>{clearTimeout(qt);qt=setTimeout(()=>{st.q=e.target.value.trim().toLowerCase();st.shown=PAGE;renderAll()},120)});
 $('#maxStart').addEventListener('input',e=>{st.max=+e.target.value;st.shown=PAGE;renderAll()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#sheet').hidden)closeSheet();if(e.key==='/'&&document.activeElement!==$('#q')){e.preventDefault();$('#q').focus()}});
-addEventListener('hashchange',()=>{if(D){fromHash();renderAll()}});
+addEventListener('hashchange',()=>{if(!D)return;const g=new URLSearchParams(location.hash.slice(1)).get('g')||GAMES[0].id;if(g!==st.game)loadGame(g);else{fromHash();renderAll()}});
 // the docked preview sticks under the header; prefetch a row's animation while the pointer is on it
 new ResizeObserver(()=>document.documentElement.style.setProperty('--hdr',$('header').offsetHeight+'px')).observe($('header'));
 document.addEventListener('pointerover',e=>{const r=e.target.closest('tr[data-m]');if(r&&DOCK.view&&!$('#dock').hidden){const m=moveOf(r.dataset.m);if(m)DOCK.view.then(v=>v.prefetch(m,pickName()))}});
