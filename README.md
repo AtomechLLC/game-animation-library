@@ -130,6 +130,10 @@ review page at `/admin`. Submitted GIFs (uploads and links) are
 stored on the site and stay hidden until approved; an approved replacement takes the original GIF's place on the page.
 GIFs that collect enough downvotes are flagged and queued for a Giphy/Tenor replacement search; candidates wait for
 review like community suggestions.
+Visitors can also **propose a new animation** the library is missing (name, category or a new one, description, games,
+an example link and an optional clip). Proposals stay private; on `/admin` you edit, approve or reject them, and
+**Export approved proposals** gives `taxonomy.txt` lines to paste in before running `build_index.py` and `merge.py`.
+On the static GitHub Pages copy the same form opens a prefilled GitHub issue.
 Setup: [DEPLOY-XCLOUD.md](DEPLOY-XCLOUD.md). Code: `server.js`, `lib/*.js`, `.env.example`.
 
 ## Local review: mark bad GIFs with ✕

@@ -171,6 +171,9 @@ aside h2{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transf
 .sug .hp{position:absolute;left:-9999px}
 .sug button[type=submit]{border:0;background:var(--key);color:#1c1b19;border-radius:4px;padding:6px 14px;cursor:pointer;font-weight:600}
 .sug .msg{font-size:12px}
+.sug .dupes{font-size:12px;border:1px solid var(--key);border-left-width:4px;border-radius:4px;padding:6px 10px;background:var(--panel);color:var(--fg)}
+.sug .dupes a{font-weight:600;color:var(--key-ink)}
+.empty a{color:var(--key-ink);font-weight:600}
 .modebar{font-family:var(--mono);font-size:11px;color:var(--key-ink)}
 footer .contrib{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--key);border-radius:6px;padding:14px 16px;margin-bottom:16px;color:var(--fg);font-size:14px}
 footer .contrib p{margin:0 0 8px;max-width:75ch}
@@ -225,14 +228,14 @@ footer{color:var(--muted);font-size:12px;padding-block:24px;border-top:1px solid
     <section><h2>Example games</h2><div class="flist" id="games"></div></section>
   </aside>
   <main>
-    <div class="status"><div><h2 id="ttl">All animations</h2><p id="sub"></p><p class="subcta">Community-built and growing. Know a better example? <a href="#submit">Submit a GIF</a>.</p><a class="xapp" href="frame-data.html#g=elden-ring" style="--app:#8a3fc9"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="8" height="12" rx="1.6" opacity=".35"/><rect x="7" y="4" width="8" height="12" rx="1.6" opacity=".6"/><rect x="12" y="4" width="10" height="12" rx="1.8"/><circle cx="17" cy="10" r="2.6" fill="none" stroke="#8a3fc9" stroke-width="1.6"/><rect x="2" y="18.6" width="20" height="1.6" rx=".8"/><rect x="16" y="16.8" width="2.2" height="5.2" rx="1.1"/></svg></span><span>Want to step through a move frame by frame, with its hitboxes? <b>Open Elden Ring in Move Explorer →</b></span></a></div><span class="count" id="count"></span></div>
+    <div class="status"><div><h2 id="ttl">All animations</h2><p id="sub"></p><p class="subcta">Community-built and growing. Know a better example? <a href="#submit">Submit a GIF</a>. Missing an animation? <a href="#propose">Propose a new one</a>.</p><a class="xapp" href="frame-data.html#g=elden-ring" style="--app:#8a3fc9"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="8" height="12" rx="1.6" opacity=".35"/><rect x="7" y="4" width="8" height="12" rx="1.6" opacity=".6"/><rect x="12" y="4" width="10" height="12" rx="1.8"/><circle cx="17" cy="10" r="2.6" fill="none" stroke="#8a3fc9" stroke-width="1.6"/><rect x="2" y="18.6" width="20" height="1.6" rx=".8"/><rect x="16" y="16.8" width="2.2" height="5.2" rx="1.1"/></svg></span><span>Want to step through a move frame by frame, with its hitboxes? <b>Open Elden Ring in Move Explorer →</b></span></a></div><span class="count" id="count"></span></div>
     <div class="active" id="active"></div>
     <div class="grid" id="grid"></div>
     <footer>
       <div class="contrib">
         <p class="lead">This collection was created for a private database; please help us replace these with better examples!</p>
         <p>We are turning the library into a free, public reference for everyone who makes or studies game animation, and it grows through its community. Spot a weak clip, a missing move or a better example from another game? Send it in: every suggestion is reviewed and credited, and every vote helps the best examples rise to the top.</p>
-        <p><a class="cta" href="#submit">Submit a GIF ➜</a> <span class="hint">Or open any entry and use “Submit a better GIF” to send one for that exact entry.</span></p>
+        <p><a class="cta" href="#submit">Submit a GIF ➜</a><a class="cta" href="#propose">Propose a new animation ➜</a> <span class="hint">Or open any entry and use “Submit a better GIF” to send one for that exact entry.</span></p>
       </div>
       <p>GIF examples and reference links were gathered by web search of Tenor, Giphy, wikis and articles. GIFs belong to their uploaders; a small copy plays on each card and links back to its source page, and each entry links out to live Google, YouTube and GIF searches.</p>
     </footer>
@@ -329,10 +332,45 @@ function openSubmit(aid,n){
   <p style="margin:0;max-width:65ch">This collection was created for a private database; please help us replace these with better examples! Pick the entry your clip shows, add a link${CS.on?' or upload a file':''}, and tell us why it is a better example.</p>${sugForm(null,'')}`;
   s.hidden=false;$('#scrim').hidden=false;$('#sugForm select').focus();
   try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}}
+// Propose a new animation: an action the library does not cover yet. With the API on it goes to /admin for review
+// (approved ones are exported as taxonomy.txt lines); on the static copy it opens a prefilled GitHub issue.
+function propForm(name){
+  const file=!CS.on?'':`<label>A clip that shows it (optional): a GIF or WebP${CS.video?`, or a short video (MP4, MOV or WebM, up to ${CS.video.max_seconds} s) that we turn into a GIF`:' or MP4'}<input name="file" type="file" accept="${CS.video?'.gif,.webp,.mp4,.m4v,.mov,.webm,.mkv,.avi,image/gif,image/webp,video/*':'.gif,.webp,.mp4,image/gif,image/webp,video/mp4'}"></label>`;
+  return `<form class="sug" id="propForm">
+  <label>Name of the animation<input name="name" required maxlength="80" placeholder="e.g. Weapon Catch, Ledge Teeter" value="${esc(name||'')}"></label>
+  <div class="dupes" id="propDupes" hidden></div>
+  <label>Category<select name="category" required><option value="">Choose a category…</option>${D.categories.map(c=>`<option value="${esc(c.id)}">${esc(c.name)}</option>`).join('')}<option value="new">Something new (name it below)</option></select></label>
+  <label id="propNewCat" hidden>New category name<input name="new_category" maxlength="60"></label>
+  <label>What happens, and what makes it worth studying?<textarea name="description" rows="3" maxlength="500" required minlength="10" placeholder="One or two sentences, like the cards on this page"></textarea></label>
+  <label>Games that show it well (optional, separate with commas)<input name="games" maxlength="200" placeholder="e.g. Sekiro, Hollow Knight"></label>
+  <label>A link to an example (optional): a video, GIF or article<input name="url" type="url" placeholder="https://"></label>
+  ${file}<label>Your name for the credit (optional)<input name="by" maxlength="60"></label>
+  <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
+  <div class="row"><button type="submit">${CS.on?'Send for review':'Continue on GitHub ↗'}</button><button type="button" class="tbtn" data-sugclose="1">Cancel</button><span class="msg" role="status"></span></div>
+  <small style="color:var(--muted)">${CS.on?'Proposals are reviewed before they are added, and credited to you.':'This opens a prefilled GitHub issue (free account needed).'}</small></form>`}
+function openPropose(name){
+  const s=$('#sheet');
+  s.innerHTML=`<div class="top"><div><div class="src">Community</div><h2 id="dName">Propose a new animation</h2></div><button class="close" id="close">Close</button></div>
+  <p style="margin:0;max-width:65ch">Know an action the library is missing? Describe it and, if you can, point us to a game that does it well. If the animation is already here and only needs a better clip, open its entry and use “Submit a better GIF” instead.</p>${propForm(name)}`;
+  s.hidden=false;$('#scrim').hidden=false;s.scrollTop=0;$('#propForm input[name=name]').focus();propDupes();
+  try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}}
+// Existing entries that look like the proposed name, so nobody proposes what is already in the library.
+function propDupes(){
+  const box=$('#propDupes'),words=($('#propForm input[name=name]')?.value||'').toLowerCase().split(/[^a-z0-9]+/).filter(w=>w.length>2);
+  if(!box)return;
+  const hits=words.length?A.map(a=>[a,words.filter(w=>a.name.toLowerCase().includes(w)).length*2+words.filter(w=>a.hay.includes(w)).length]).filter(x=>x[1]>=Math.max(2,words.length)).sort((x,y)=>y[1]-x[1]).slice(0,4):[];
+  box.hidden=!hits.length;
+  box.innerHTML=hits.length?`Already in the library? ${hits.map(([a])=>`<a href="#${esc(a.id)}">${esc(a.name)}</a>`).join(' · ')}`:''}
+function propIssueUrl(f){
+  const cat=f.category==='new'?(f.new_category||'(new category)'):(C[f.category]?.name||f.category);
+  const body=[`**Animation:** ${f.name}`,`**Category:** ${cat}`,`**What happens / why study it:** ${f.description}`,`**Games:** ${f.games||''}`,`**Example link:** ${f.url||''}`,`**Credit as:** ${f.by||'anonymous'}`,'','<!-- To attach a clip, drag a GIF, WebP or MP4 file into this box. -->'].join('\n');
+  return (CFG.issues||'https://github.com/atomechllc/game-animation-library/issues/new')+'?'+new URLSearchParams({title:`New animation: ${f.name}`,body})}
+document.addEventListener('input',e=>{if(e.target.form?.id==='propForm'&&e.target.name==='name')propDupes()});
+document.addEventListener('change',e=>{if(e.target.form?.id==='propForm'&&e.target.name==='category'){const n=$('#propNewCat');n.hidden=e.target.value!=='new';n.querySelector('input').required=!n.hidden;if(!n.hidden)n.querySelector('input').focus()}});
 function route(){
   const h=decodeURIComponent(location.hash.slice(1));if(!h)return;
-  const m=h.match(/^submit(?:\/([^/]+)(?:\/(\d+))?)?$/);
-  if(m)openSubmit(m[1],m[2]);else openSheet(h,false)}
+  const m=h.match(/^submit(?:\/([^/]+)(?:\/(\d+))?)?$/),p=h.match(/^propose(?:\/(.*))?$/);
+  if(m)openSubmit(m[1],m[2]);else if(p)openPropose(p[1]);else openSheet(h,false)}
 addEventListener('hashchange',route);
 
 const $=s=>document.querySelector(s);
@@ -362,7 +400,7 @@ function render(){
   $('#grid').innerHTML=list.length?list.map(a=>`<button class="card" data-id="${a.id}">
     <div class="slate"><span class="dom ${C[a.category].domain==='combat'?'combat':''}">${esc(C[a.category].name)}</span><b>${a.code}</b></div>
     ${CFG.local&&isMarked(a)?'<span class="xmark" title="Marked for a better-image search">✕</span>':''}${isNeedy(a)?'<span class="needs" title="Help wanted: suggest a better GIF">Needs replacement</span>':''}${thumbOf(a)?`<img class="thumb" loading="lazy" alt="" src="${esc(thumbOf(a))}">`:''}<div class="cbody"><h3>${esc(a.name)}</h3><p>${esc(a.description)}</p></div>
-    <div class="cfoot"><span class="games">${esc(a.example_games.join(' · '))}</span><span class="refs">${a.gifs.length?`▶ ${a.gifs.length} · `:''}◆ ${a.references.length}</span></div></button>`).join(''):`<div class="empty">No animations match these filters. Clear a filter or try a broader search.</div>`;
+    <div class="cfoot"><span class="games">${esc(a.example_games.join(' · '))}</span><span class="refs">${a.gifs.length?`▶ ${a.gifs.length} · `:''}◆ ${a.references.length}</span></div></button>`).join(''):`<div class="empty">No animations match these filters. Clear a filter or try a broader search.<br>Not in the library yet? <a href="#propose${st.q?'/'+esc(q(st.q)):''}">Propose ${st.q?'“'+esc(st.q)+'”':'it'} as a new animation</a>.</div>`;
 }
 function q(s){return encodeURIComponent(s)}
 function openSheet(id,push=true){
@@ -481,6 +519,22 @@ async function toggleNeed(b){
   try{await api('need',{method:'POST',headers:{'Content-Type':'application/json','X-Admin-Token':CS.admin},body:JSON.stringify({animation:aid,gif,on})});on?CS.needs.add(k):CS.needs.delete(k)}
   catch(err){alert('Not saved: '+err.message)}
   render();if(!$('#sheet').hidden)openSheet(aid,false)}
+document.addEventListener('submit',async e=>{
+  const f=e.target;if(f.id!=='propForm')return;e.preventDefault();
+  const msg=f.querySelector('.msg'),fd=new FormData(f),v=k=>String(fd.get(k)||'').trim(),file=fd.get('file');
+  if(!v('name')){msg.textContent='Give the animation a name.';return}
+  if(!v('category')||(v('category')==='new'&&!v('new_category'))){msg.textContent='Choose a category, or name a new one.';return}
+  if(v('description').length<10){msg.textContent='Describe the animation in a sentence or two.';return}
+  if(!CS.on){window.open(propIssueUrl(Object.fromEntries([...fd].map(([k,x])=>[k,String(x).trim()]))),'_blank','noopener');msg.textContent='Opened GitHub in a new tab. Thank you!';return}
+  if(v('category')==='new')fd.set('category','');else fd.delete('new_category');
+  if(!file||!file.size)fd.delete('file');
+  if(!v('url'))fd.delete('url');
+  const isVid=file&&file.size&&(/^video\//.test(file.type)||/\.(mp4|m4v|mov|webm|mkv|avi)$/i.test(file.name));
+  if(file&&file.size>(isVid&&CS.video?CS.video.max_upload:CS.max)){msg.textContent='That file is too large.';return}
+  f.querySelector('button[type=submit]').disabled=true;msg.textContent=file&&file.size?'Uploading…':'Sending…';
+  try{await api('propose',{method:'POST',body:fd});f.outerHTML=`<p class="flagged" style="color:var(--calm);border-color:var(--calm)">Thanks! Your proposal for “${esc(v('name'))}” is waiting for review.</p>`}
+  catch(err){msg.textContent='Not sent: '+err.message;f.querySelector('button[type=submit]').disabled=false}
+});
 document.addEventListener('submit',async e=>{
   const f=e.target;if(f.id!=='sugForm')return;e.preventDefault();
   const msg=f.querySelector('.msg'),fd=new FormData(f),file=fd.get('file'),url=(fd.get('url')||'').trim();

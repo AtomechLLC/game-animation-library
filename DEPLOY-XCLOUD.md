@@ -119,6 +119,11 @@ public page until you approve them there. You can:
   **Restore** until you take it out of the file,
 - edit a submitter's note (shown publicly with the GIF once approved) on any submission card with **Save note**,
 - **Export approved JSON** to fold approved GIFs into `library.json` later.
+- review **animation proposals** (new animations visitors suggest from **Propose a new animation** on the atlas, also
+  offered when a search finds nothing). Each tab lists its proposals above the GIF submissions. Tidy the name and fill in
+  subcategory, tags and example games (at least one game is needed to approve), then **Approve** or **Reject**.
+  Approving does not change the page by itself: **Export approved proposals** downloads them as `taxonomy.txt` lines
+  grouped by category (with a header for a new category), to paste into `taxonomy.txt` and rebuild (see README).
 
 A submitted video shows **Converting video to GIF…** until its GIF is made, then **Converted from MP4 video, 4.2 s**
 (or similar) under it, and can be approved like any GIF. If a conversion fails the card says why; **Delete** it.
