@@ -279,11 +279,25 @@ footer p{max-width:85ch;margin:0 0 8px}
 .clip-stage .v3d-hud{color:#fff;text-shadow:0 1px 2px #000}.clip-stage .v3d-hud span{color:#ddd}
 .clip-alts{display:flex;flex-wrap:wrap;gap:4px}
 /* the study panel: the viewer with the inspector beside it, full width with the weapon buttons under it, so it keeps
-   its place when a class is picked; once a class is picked it floats under the header while the table scrolls. Hide
-   folds it */
+   its place when a class is picked; once a class is picked (.set) the moveset's list sits between the viewer and the
+   inspector, in place of the table under the page, and the panel floats under the header. Hide folds it and brings
+   the table back */
 .pick-l{min-width:0}
 .dock{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;padding-top:4px;min-width:0;margin-bottom:12px}
 .study{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,32%);gap:14px;align-items:stretch}
+.dock.set .study{grid-template-columns:minmax(0,1fr) minmax(310px,27%) minmax(250px,23%)}
+/* the Moveset Inspector: the move list, scrolling inside the viewer's height like the inspector */
+.mlist{display:none;position:relative;min-height:240px;border:1px solid var(--line);background:var(--panel);border-radius:6px}
+.dock.set .mlist{display:block}
+.mlist>div{position:absolute;inset:0;overflow:auto;scrollbar-width:thin}
+.mlist table{font-size:12.5px}
+.mlist th,.mlist td{padding:4px 5px}
+.mlist th{letter-spacing:0}
+.mlist td:first-child{white-space:normal}
+.mlist .strip{width:56px;height:10px}
+.mlist tr.grp td small{display:none}
+.dock.set:not([hidden]):not(.min)~#table{display:none}
+@media (min-width:821px) and (max-width:1180px){.dock.set .study{grid-template-columns:minmax(0,1fr) minmax(310px,42%)}.dock.set .insp{grid-column:1/-1;min-height:220px}}
 /* the inspector scrolls inside the viewer's height, so the panel never grows past it */
 .insp{position:relative;min-height:240px;border:1px solid var(--line);background:var(--panel);border-radius:6px}
 .insp>div{position:absolute;inset:0;overflow:auto;padding:10px 12px;font-size:13px}
@@ -326,7 +340,7 @@ footer p{max-width:85ch;margin:0 0 8px}
 .dock .v3d-stage{aspect-ratio:auto;height:clamp(240px,38vh,440px)}
 .pick.min~#weapons .wtiles,.pick.min #sub,.pick.min #active,.dock.min .study{display:none}
 @media (min-width:821px) and (min-height:800px){.dock.stick{position:sticky;top:var(--hdr,0px);z-index:4;background:var(--bg);border-bottom:1px solid var(--line);padding-bottom:8px}}
-@media (max-width:820px){.study{grid-template-columns:minmax(0,1fr)}.insp{min-height:320px}}
+@media (max-width:820px){.study,.dock.set .study{grid-template-columns:minmax(0,1fr)}.insp{min-height:320px}.mlist{min-height:280px}}
 /* phones: the header scrolls away compacted (one-line game chips, no tagline) and the preview alone sticks to the top,
    so a move can be picked from the table while it plays; .pick steps aside so the dock sticks against the whole page */
 @media (max-width:820px){
@@ -392,7 +406,7 @@ tbody tr.on td{background:var(--chip);box-shadow:inset 0 1px var(--key),inset 0 
         <div id="index"></div>
       </div>
     </div>
-    <section class="dock" id="dock" hidden aria-label="3D preview"><div class="dock-head"><div><small id="dockSrc"></small><h3 id="dockName">3D preview</h3></div><span class="dock-btns"><button class="linkbtn" id="dockLink" aria-label="Copy link to this frame" title="Copy a link that opens this move paused on this frame, with the same speed and overlays"><svg class="i-link" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3.2-3.2a4.5 4.5 0 0 0-6.4-6.4l-1.1 1.1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3.2 3.2a4.5 4.5 0 0 0 6.4 6.4l1.1-1.1"/></svg><svg class="i-ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Copy link</span></button><button class="chip" id="dockMore">Frame details</button><button class="chip" id="pickMin" aria-expanded="true" title="Hide the weapon buttons and preview">Hide</button></span></div><div class="study"><div class="v3d" id="dockView"></div><div class="insp" id="insp" role="region" aria-label="Move inspector"></div></div></section>
+    <section class="dock" id="dock" hidden aria-label="3D preview"><div class="dock-head"><div><small id="dockSrc"></small><h3 id="dockName">3D preview</h3></div><span class="dock-btns"><button class="linkbtn" id="dockLink" aria-label="Copy link to this frame" title="Copy a link that opens this move paused on this frame, with the same speed and overlays"><svg class="i-link" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3.2-3.2a4.5 4.5 0 0 0-6.4-6.4l-1.1 1.1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3.2 3.2a4.5 4.5 0 0 0 6.4 6.4l1.1-1.1"/></svg><svg class="i-ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Copy link</span></button><button class="chip" id="dockMore">Frame details</button><button class="chip" id="pickMin" aria-expanded="true" title="Hide the weapon buttons and preview">Hide</button></span></div><div class="study"><div class="v3d" id="dockView"></div><div class="mlist" role="region" aria-label="Moveset Inspector"><div id="mlist"></div></div><div class="insp" id="insp" role="region" aria-label="Move inspector"></div></div></section>
     <div id="weapons"></div>
     <div class="legend" id="legend"></div>
     <div id="table"></div>
@@ -593,8 +607,10 @@ function renderTable(){
   const list=pool(),cols=SHOW.filter(k=>COLS.some(c=>c[0]===k)&&(k!=='class'||!st.cls));
   $('#count').textContent=`${list.length.toLocaleString()} moves`;
   $('#legend').innerHTML=list.length?legendHtml():'';
+  $('#mlist').innerHTML='';
   if(!list.length){dock(list);$('#table').innerHTML='<div class="empty">No moves match these filters. Clear a filter or widen the startup limit.</div>';return}
   const scale=Math.min(150,Math.max(...list.map(m=>Math.max(m.total||0,m.cancels.dodge||0))));
+  if(st.cls)$('#mlist').innerHTML=moveList(list,scale);
   const head=`<thead><tr>${cols.map(k=>{const c=COLS.find(x=>x[0]===k);return `<th class="${c[3]&&k!=='strip'?'n':''}" ${st.sort===k?`aria-sort="${st.dir>0?'ascending':'descending'}"`:''} title="${esc(colTip(c))}"><button data-sort="${k}">${esc(k==='class'?L.class:colName(c))}</button></th>`}).join('')}<th class="more-c"><span class="vh">Details</span></th></tr></thead>`;
   const row=m=>`<tr data-m="${esc(m.class+'|'+m.id)}"${st.cls&&DOCK.key===m.class+'|'+m.id?' class="on"':''}>${cols.map(k=>cell(k,m,scale)).join('')}<td class="more-c"><button class="rowmore" data-open="${esc(m.class+'|'+m.id)}" title="Frame details" aria-label="Frame details for ${esc(m.name)}">…</button></td></tr>`;
   let body;
@@ -608,6 +624,15 @@ function renderTable(){
   dock(list);
   $('#table').innerHTML=`${!st.cls?`<div class="sect">${esc(L.everyClass)}</div>`:''}<div class="tablewrap"><table>${head}<tbody>${body}</tbody></table></div>${s.length>shown.length?`<button class="more" id="more">Show ${Math.min(PAGE,s.length-shown.length)} more of ${(s.length-shown.length).toLocaleString()}</button>`:''}`;
 }
+// The moveset beside the viewer: always by move type in play order, with only what tells moves apart at a glance
+// (the inspector and Frame details carry the rest)
+function moveList(list,scale){
+  const cols=['name','grip','startup','strip'].filter(k=>SHOW.includes(k));
+  const head=`<thead><tr>${cols.map(k=>{const c=COLS.find(x=>x[0]===k);return `<th class="${c[3]&&k!=='strip'?'n':''}" title="${esc(colTip(c))}">${esc(colName(c))}</th>`}).join('')}</tr></thead>`;
+  const by=new Map();list.forEach(m=>{if(!by.has(m.type))by.set(m.type,[]);by.get(m.type).push(m)});
+  const body=[...by].sort((a,b)=>T[a[0]].i-T[b[0]].i).map(([t,ms])=>`<tr class="grp" title="${esc(T[t].description)}"><td colspan="${cols.length}">${esc(T[t].name)} · ${ms.length}</td></tr>`
+    +ms.map(m=>`<tr data-m="${esc(m.class+'|'+m.id)}"${DOCK.key===m.class+'|'+m.id?' class="on"':''}>${cols.map(k=>cell(k,m,scale)).join('')}</tr>`).join('')).join('');
+  return `<table>${head}<tbody>${body}</tbody></table>`}
 function openMove(key){
   const [cls,id]=key.split('|'),m=D.moves.find(x=>x.class===cls&&x.id===id);if(!m)return;
   const c=CL[m.class],end=Math.max(m.total||0,m.cancels.dodge||0);
@@ -687,8 +712,8 @@ function inspFrame(m,f){
 const moveOf=key=>{const [cls,id]=key.split('|');return D.moves.find(x=>x.class===cls&&x.id===id)};
 function dockOn(on){$('#dock').hidden=!on;$('#pick').classList.toggle('dockon',on)}
 // before a class is picked the panel sits above the long class index, so the example is on the first screen; after,
-// it sits above the weapon buttons and the table, at the same height, and sticks under the header
-function placeDock(browse){const d=$('#dock');d.classList.toggle('stick',!browse);
+// it sits above the weapon buttons at the same height, holds the moveset's list and sticks under the header
+function placeDock(browse){const d=$('#dock');d.classList.toggle('stick',!browse);d.classList.toggle('set',!browse);
   if(browse){if(d.nextElementSibling!==$('#index'))$('#index').before(d)}else if(d.previousElementSibling!==$('#pick'))$('#pick').after(d)}
 function pickMin(min){$('#pick').classList.toggle('min',min);$('#dock').classList.toggle('min',min);$('#pickMin').textContent=min?'Show':'Hide';$('#pickMin').setAttribute('aria-expanded',!min);try{localStorage.setItem('fd-pick-min',min?'1':'')}catch(e){}}
 async function dock(list){
@@ -717,7 +742,12 @@ async function dock(list){
 async function preview(m){
   const key=m.class+'|'+m.id;DOCK.key=key;if(LINKVIEW&&LINKVIEW.key!==key)LINKVIEW=null;
   document.querySelectorAll('tbody tr.on').forEach(r=>r.classList.remove('on'));
-  if(st.cls)document.querySelector(`tbody tr[data-m="${CSS.escape(key)}"]`)?.classList.add('on');
+  if(st.cls){document.querySelectorAll(`tbody tr[data-m="${CSS.escape(key)}"]`).forEach(r=>r.classList.add('on'));
+    // keep the move on show in view in the list, scrolling only the list's box (not the page)
+    const box=$('#mlist'),r=box.querySelector('tr.on');
+    // the first move of a group brings its group heading along
+    if(r){const g=r.previousElementSibling?.classList.contains('grp')?r.previousElementSibling:r,top=g.offsetTop-box.querySelector('thead').offsetHeight,bot=r.offsetTop+r.offsetHeight-box.clientHeight;
+      if(box.scrollTop>top)box.scrollTop=top;else if(box.scrollTop<bot)box.scrollTop=bot}}
   writeHash();
   $('#dockSrc').textContent=`${st.cls?'':'Example · '}${CL[m.class].name} › ${T[m.type].name} · ${GR[m.grip]}`;
   $('#dockName').title=$('#dockName').textContent=m.name;renderInsp(m);
