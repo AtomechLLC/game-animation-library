@@ -1,0 +1,15 @@
+{
+ "schema": "stores/1",
+ "steam": {"curatorId": ""},
+ "affiliates": {
+  "humble": {"name": "Humble Store", "link": "", "search": "https://www.humblebundle.com/store/search?search={q}"},
+  "fanatical": {"name": "Fanatical", "link": "", "search": "https://www.fanatical.com/en/search?search={q}"},
+  "gmg": {"name": "Green Man Gaming", "link": "", "search": "https://www.greenmangaming.com/search/?query={q}"}
+ },
+ "games": {
+  "elden-ring": {"steam": 1245620},
+  "no-rest-for-the-wicked": {"steam": 1371980},
+  "street-fighter-3-third-strike": {"steam": 586200, "via": "Street Fighter 30th Anniversary Collection"},
+  "super-smash-bros-ultimate": {"eshop": "https://www.nintendo.com/us/store/products/super-smash-bros-ultimate-switch/"}
+ }
+}

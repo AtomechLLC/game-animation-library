@@ -82,6 +82,10 @@ aside h2{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transf
 .status h2{font-family:var(--display);font-size:28px;font-weight:700;letter-spacing:-.02em;margin:0;text-wrap:balance;display:flex;align-items:center;gap:10px}
 .status h2 img{width:40px;height:40px}
 .status p{margin:2px 0 0;color:var(--muted);max-width:70ch}
+.buy{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:8px 0 0;font-size:12px;color:var(--muted)}
+.buy a{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:2px 10px;color:var(--fg);text-decoration:none;font-weight:500}
+.buy a.main{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.buy a:hover{border-color:var(--fg)}
 .count{font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
 .active{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
 .active button{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:2px 10px;font-size:12px;cursor:pointer}
@@ -245,7 +249,7 @@ tbody tr.on td{background:var(--chip);box-shadow:inset 0 1px var(--key),inset 0 
   <main>
     <div class="pick" id="pick">
       <div class="pick-l">
-        <div class="status"><div><h2 id="ttl">Frame data</h2><p id="sub"></p></div><span class="count" id="count"></span></div>
+        <div class="status"><div><h2 id="ttl">Frame data</h2><p id="sub"></p><p class="buy" id="buy"></p></div><span class="count" id="count"></span></div>
         <div class="active" id="active"></div>
         <div id="index"></div>
         <div id="weapons"></div>
@@ -357,11 +361,14 @@ function renderAll(){
   $('#maxStart').value=st.max;$('#maxOut').textContent=st.max+' frames';
   $('#classes').innerHTML=`<button class="fitem" data-cls="" aria-pressed="${!st.cls}"><span>${esc(L.allClasses)}</span><span>${D.classes.length}</span></button>`+D.classes.filter(c=>!st.fam||c.family===st.fam).map(c=>`<button class="fitem" data-cls="${esc(c.id)}" aria-pressed="${st.cls===c.id}"><span>${esc(c.name)}</span><span>${c.weapons.length||c.moves}</span></button>`).join('');
   renderHead();renderIndex();renderTable();
+  const buy=storeLinks(G.id),sg=STORES.games?.[G.id];
+  $('#buy').innerHTML=buy.length?`Get ${esc(sg?.via||G.name)}: `+buy.map(b=>`<a class="${b.main?'main':''}" href="${esc(b.url)}" target="_blank" rel="${b.paid?'sponsored ':''}noopener">${esc(b.name)} ↗</a>`).join(''):'';
   const ext=(u,t)=>`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a>`;
   $('#foot').innerHTML=(D.source.links?`<p><b>Source.</b> ${esc(D.source.note)} ${D.source.links.map(l=>ext(l.url,l.name+' ↗')).join(' ')}</p>`
     :`<p><b>Source.</b> ${esc(D.game.name)} data comes from the ${ext(D.source.url,D.source.name)} by ${esc(D.source.author)} (patch ${esc(D.game.version)}, retrieved ${esc(D.source.retrieved)}), reshaped here into weapon classes and move types. Every move links back to it. ${D.source.note?esc(D.source.note.replace(/https?:\S+/,'')):''}${ext('https://ko-fi.com/sovietspaceship','Ko-fi ↗')}</p>`)+`
   ${ICONSET.sources?`<p>${esc(ICONSET.lead||"Weapon icons are the game's inventory art")}, from ${ICONSET.sources.map(x=>ext(x.url,x.name)).join(' and ')}. ${esc((ICONSET.note||'').replace(/^Icons are the game's inventory art, /,''))}</p>`:''}
-  <p>${esc(D.game.frameNote)} Values cover the first hit of a move; open a move for every window.</p>`;
+  <p>${esc(D.game.frameNote)} Values cover the first hit of a move; open a move for every window.</p>
+  ${buy.some(b=>b.paid)?'<p>Some store links are affiliate links: buying through them supports this library at no extra cost to you.</p>':''}`;
   writeHash();
 }
 function renderHead(){
@@ -552,8 +559,23 @@ addEventListener('hashchange',()=>{if(D){fromHash();renderAll()}});
 new ResizeObserver(()=>document.documentElement.style.setProperty('--hdr',$('header').offsetHeight+'px')).observe($('header'));
 document.addEventListener('pointerover',e=>{const r=e.target.closest('tr[data-m]');if(r&&DOCK.view&&!$('#dock').hidden){const m=moveOf(r.dataset.m);if(m)DOCK.view.then(v=>v.prefetch(m,pickName()))}});
 try{if(localStorage.getItem('fd-pick-min'))pickMin(true)}catch(e){}
+// Store links per game, from frame-data/stores.json (see frame-data/README.md, "Store links"). Steam and the eShop link
+// directly; an affiliate store shows only once its "link" template is filled in, so ids drop in without code changes.
+let STORES={};
+function storeLinks(id){
+  const g=STORES.games?.[id];if(!g)return [];
+  const out=[],cur=STORES.steam?.curatorId;
+  if(g.steam)out.push({name:'Steam',main:1,url:`https://store.steampowered.com/app/${g.steam}/`+(cur?`?curator_clanid=${encodeURIComponent(cur)}`:'')});
+  if(g.eshop)out.push({name:'Nintendo eShop',main:1,url:g.eshop});
+  if(g.steam)Object.entries(STORES.affiliates||{}).forEach(([k,a])=>{
+    if(!a.link)return;
+    const u=g.pages?.[k]||a.search.replace('{q}',encodeURIComponent(g.via||GAMES.find(x=>x.id===id).name));
+    // "{url}?partner=id" also works on a URL that already has a query string
+    const l=u.includes('?')?a.link.replace('{url}?','{url}&'):a.link;
+    out.push({name:a.name,paid:1,url:l.replace('{enc}',encodeURIComponent(u)).replace('{url}',u)})});
+  return out}
 let GAMES=[];
-fetch('frame-data/games.json').then(r=>r.json()).then(j=>{GAMES=j.games;const g=new URLSearchParams(location.hash.slice(1)).get('g');return loadGame(g||GAMES[0].id)})
+Promise.all([fetch('frame-data/games.json').then(r=>r.json()),fetch('frame-data/stores.json').then(r=>r.ok?r.json():{}).catch(()=>({}))]).then(([j,s])=>{GAMES=j.games;STORES=s;const g=new URLSearchParams(location.hash.slice(1)).get('g');return loadGame(g||GAMES[0].id)})
   .catch(e=>{$('#table').innerHTML=`<div class="empty">Could not load frame data (${esc(e.message)}). Open this page through a web server, not as a file.</div>`});
 </script>
 </body>
