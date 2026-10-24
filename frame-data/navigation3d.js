@@ -30,7 +30,7 @@ const anglesOf = dir => ({azimuth: Math.atan2(dir.x, dir.z), elevation: Math.ata
 export function createBlenderNavigation({camera, dom, views, onFrame, onDefault, onHelp, onMode}) {
   const target = new THREE.Vector3();
   let distance = 1, azimuth = 0, elevation = 0, pole = null, limits = {min: 0.01, max: 100}, drag = null;
-  let mode = 'trackpad';
+  let mode = 'mouse';
   try { const m = localStorage.getItem(MODE_KEY); if (m === 'mouse' || m === 'trackpad') mode = m } catch {}
 
   function place(pastPole = false) {

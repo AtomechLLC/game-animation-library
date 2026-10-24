@@ -342,7 +342,7 @@ viewer in wia-seasonal-ui-asset-generator. Click the 3D view first (it gets an o
 - Mouse: left or middle drag orbits; right drag, or Shift with left or middle drag, pans. The wheel zooms in
   **Mouse** mode and orbits in **Trackpad** mode (Shift + two-finger drag pans, pinch or Ctrl + scroll zooms).
   The mode toggle sits at the bottom left of the view, `Tab` switches it, and the choice is kept in `localStorage`
-  (`moveExplorerViewportInputMode:v1`; Trackpad on a first visit). Left and right drag are additions; Blender and the
+  (`moveExplorerViewportInputMode:v1`; Mouse on a first visit). Left and right drag are additions; Blender and the
   source viewer orbit with the middle button only.
 - Numpad: `1` / `3` / `7` front, right and top of the character (it faces −Z), `Ctrl + 7` bottom, `2` `4` `6` `8`
   orbit 15°, `9` the opposite side, `+` / `−` zoom.
