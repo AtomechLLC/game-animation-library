@@ -1,5 +1,7 @@
 # Game Animation Library
 
+*learn from the legends of combat design*
+
 A catalogue of 330 video game animations across 20 categories (combat and non-combat), each with a description, tags, example games, web references and GIF examples. `template.html` renders it as a browsable page (the "atlas").
 
 ## Rebuilding
