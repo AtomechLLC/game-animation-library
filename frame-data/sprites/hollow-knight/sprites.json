@@ -1,0 +1,18 @@
+{
+ "fps": 60,
+ "smooth": true,
+ "kinds": {
+  "p": "Hurtbox",
+  "a": "Attack"
+ },
+ "source": {
+  "name": "Hollow Knight game files",
+  "url": "https://github.com/AtomechLLC/game-animation-library/blob/main/tools/frame_data/import_hk_game.py",
+  "author": "Team Cherry"
+ },
+ "classes": {
+  "knight": {
+   "file": "moves/knight.json"
+  }
+ }
+}

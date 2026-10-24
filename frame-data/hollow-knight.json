@@ -1,0 +1,811 @@
+{
+ "schema": "frame-data/1",
+ "game": {
+  "id": "hollow-knight",
+  "name": "Hollow Knight",
+  "fps": 60,
+  "version": "Steam build (Unity 6000.0.61f1)",
+  "frameNote": "Hollow Knight times its moves in seconds and its nail hitboxes in 50 Hz physics steps, so frames here are 1/60 s, 1-based: frame N covers (N-1)/60 to N/60 s, and a hitbox counts for every frame it is out in. Startup is the first such frame."
+ },
+ "source": {
+  "name": "Hollow Knight game files",
+  "url": "https://github.com/AtomechLLC/game-animation-library/blob/main/tools/frame_data/import_hk_game.py",
+  "author": "Team Cherry",
+  "retrieved": "2026-10-23",
+  "method": "import_hk_game.py",
+  "note": "Hollow Knight data is read straight from the game files: timings from the Knight's HeroController and PlayMaker FSMs (Spell Control, Nail Arts and each hit object's own FSM), hitboxes from the colliders on the Knight's attack and spell objects, sprites from its tk2d animations. Damage is per hit at base level; nail damage depends on the nail upgrade.",
+  "links": [
+   {
+    "name": "Importer",
+    "url": "https://github.com/AtomechLLC/game-animation-library/blob/main/tools/frame_data/import_hk_game.py"
+   }
+  ]
+ },
+ "labels": {
+  "class": "Character",
+  "classes": "characters",
+  "allClasses": "All characters",
+  "grip": "Where",
+  "allFamilies": "All characters",
+  "search": "Search moves…",
+  "everyClass": "Every character",
+  "patch": "",
+  "pickClass": "Pick a character to see its moves by type.",
+  "classView": "every move, by type.",
+  "recovery": "Frames from the last active frame until you can dash"
+ },
+ "columns": [
+  "name",
+  "class",
+  "grip",
+  "strip",
+  "startup",
+  "active",
+  "recovery",
+  "dodge",
+  "attack",
+  "total",
+  "dmg"
+ ],
+ "columnNames": {
+  "dodge": [
+   "→ Dash",
+   "First frame you can dash, jump or cast"
+  ],
+  "attack": [
+   "→ Attack",
+   "First frame you can attack again"
+  ]
+ },
+ "families": [
+  {
+   "id": "hero",
+   "name": "The Knight"
+  }
+ ],
+ "classes": [
+  {
+   "id": "knight",
+   "name": "The Knight",
+   "family": "hero",
+   "icon": "The Knight",
+   "weapons": [],
+   "moves": 22
+  }
+ ],
+ "moveTypes": [
+  {
+   "id": "nail",
+   "name": "Nail",
+   "description": "Nail slashes"
+  },
+  {
+   "id": "nailArt",
+   "name": "Nail Arts",
+   "description": "Charged nail attacks, timed from the release"
+  },
+  {
+   "id": "spell",
+   "name": "Spells",
+   "description": "Spells, level 1 and 2"
+  },
+  {
+   "id": "movement",
+   "name": "Movement",
+   "description": "Dashes, jumps, focus, hit reactions: length only"
+  }
+ ],
+ "grips": [
+  {
+   "id": "any",
+   "name": "Ground or air",
+   "short": "Any"
+  },
+  {
+   "id": "ground",
+   "name": "Ground",
+   "short": "Ground"
+  },
+  {
+   "id": "air",
+   "name": "Air",
+   "short": "Air"
+  },
+  {
+   "id": "wall",
+   "name": "Wall",
+   "short": "Wall"
+  }
+ ],
+ "moves": [
+  {
+   "id": "knight.nail.slash",
+   "class": "knight",
+   "type": "nail",
+   "grip": "any",
+   "name": "Slash",
+   "startup": 2,
+   "active": [
+    [
+     2,
+     5
+    ]
+   ],
+   "activeFrames": 4,
+   "hits": 1,
+   "recovery": 1,
+   "total": 25,
+   "cancels": {
+    "dodge": 7,
+    "attack": 25
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": "5–21"
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Attack state": "0.35 s (0.28 s with Quick Slash)",
+    "Cooldown": "0.41 s (0.25 s with Quick Slash)",
+    "Knight animation": "Slash (15 frames at 20 fps)"
+   },
+   "desc": "Side slash, the first of the two alternating swings"
+  },
+  {
+   "id": "knight.nail.altSlash",
+   "class": "knight",
+   "type": "nail",
+   "grip": "any",
+   "name": "Alt Slash",
+   "startup": 2,
+   "active": [
+    [
+     2,
+     5
+    ]
+   ],
+   "activeFrames": 4,
+   "hits": 1,
+   "recovery": 1,
+   "total": 25,
+   "cancels": {
+    "dodge": 7,
+    "attack": 25
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": "5–21"
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Attack state": "0.35 s (0.28 s with Quick Slash)",
+    "Cooldown": "0.41 s (0.25 s with Quick Slash)",
+    "Knight animation": "SlashAlt (15 frames at 20 fps)"
+   },
+   "desc": "The second side swing; a slash within 0.5 s of the last alternates"
+  },
+  {
+   "id": "knight.nail.upSlash",
+   "class": "knight",
+   "type": "nail",
+   "grip": "any",
+   "name": "Up Slash",
+   "startup": 2,
+   "active": [
+    [
+     2,
+     5
+    ]
+   ],
+   "activeFrames": 4,
+   "hits": 1,
+   "recovery": 1,
+   "total": 25,
+   "cancels": {
+    "dodge": 7,
+    "attack": 25
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": "5–21"
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Attack state": "0.35 s (0.28 s with Quick Slash)",
+    "Cooldown": "0.41 s (0.25 s with Quick Slash)",
+    "Knight animation": "UpSlash (15 frames at 20 fps)"
+   },
+   "desc": "Slash upward (up + attack)"
+  },
+  {
+   "id": "knight.nail.downSlash",
+   "class": "knight",
+   "type": "nail",
+   "grip": "air",
+   "name": "Down Slash",
+   "startup": 2,
+   "active": [
+    [
+     2,
+     5
+    ]
+   ],
+   "activeFrames": 4,
+   "hits": 1,
+   "recovery": 1,
+   "total": 25,
+   "cancels": {
+    "dodge": 7,
+    "attack": 25
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": "5–21"
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Attack state": "0.35 s (0.28 s with Quick Slash)",
+    "Cooldown": "0.41 s (0.25 s with Quick Slash)",
+    "Knight animation": "DownSlash (15 frames at 20 fps)"
+   },
+   "desc": "Slash downward in the air; hitting something bounces the Knight up (pogo)"
+  },
+  {
+   "id": "knight.nail.wallSlash",
+   "class": "knight",
+   "type": "nail",
+   "grip": "wall",
+   "name": "Wall Slash",
+   "startup": 2,
+   "active": [
+    [
+     2,
+     5
+    ]
+   ],
+   "activeFrames": 4,
+   "hits": 1,
+   "recovery": 1,
+   "total": 25,
+   "cancels": {
+    "dodge": 7,
+    "attack": 25
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": "5–21"
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Attack state": "0.35 s (0.28 s with Quick Slash)",
+    "Cooldown": "0.41 s (0.25 s with Quick Slash)",
+    "Knight animation": "Wall Slash (7 frames at 20 fps)"
+   },
+   "desc": "Slash away from the wall while wall sliding"
+  },
+  {
+   "id": "knight.nailArt.greatSlash",
+   "class": "knight",
+   "type": "nailArt",
+   "grip": "ground",
+   "name": "Great Slash",
+   "startup": 8,
+   "active": [
+    [
+     8,
+     20
+    ]
+   ],
+   "activeFrames": 13,
+   "hits": 1,
+   "recovery": 4,
+   "total": 24,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": "2.5× nail"
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Charge": "1.35 s (0.75 s with Nailmaster's Glory)",
+    "Hitbox": "physics steps 6–16 after the slash appears (Control Collider FSM)"
+   },
+   "desc": "Hold attack to charge, release standing still"
+  },
+  {
+   "id": "knight.nailArt.dashSlash",
+   "class": "knight",
+   "type": "nailArt",
+   "grip": "any",
+   "name": "Dash Slash",
+   "startup": 1,
+   "active": [
+    [
+     1,
+     9
+    ]
+   ],
+   "activeFrames": 9,
+   "hits": 1,
+   "recovery": 0,
+   "total": 21,
+   "cancels": {
+    "dodge": 7
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": "2.5× nail"
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Charge": "1.35 s (0.75 s with Nailmaster's Glory)",
+    "Hitbox": "physics steps 0–7 after the slash appears (Control Collider FSM)"
+   },
+   "desc": "Hold attack to charge, release while dashing; timed from the end of the dash"
+  },
+  {
+   "id": "knight.nailArt.cycloneSlash",
+   "class": "knight",
+   "type": "nailArt",
+   "grip": "any",
+   "name": "Cyclone Slash",
+   "startup": 7,
+   "active": [
+    [
+     7,
+     33
+    ]
+   ],
+   "activeFrames": 27,
+   "hits": 1,
+   "recovery": 6,
+   "total": 39,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": "1.25× nail per hit"
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Charge": "1.35 s",
+    "Spin": "0.45 s, extended by attack presses up to 1.2 s"
+   },
+   "desc": "Hold attack to charge, release holding up or down; spins in place, more attack presses extend it"
+  },
+  {
+   "id": "knight.spell.vengefulSpirit",
+   "class": "knight",
+   "type": "spell",
+   "grip": "any",
+   "name": "Vengeful Spirit",
+   "startup": 7,
+   "active": [
+    [
+     7,
+     24
+    ]
+   ],
+   "activeFrames": 18,
+   "hits": 1,
+   "recovery": 0,
+   "total": 24,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": 15
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Projectile speed": "40 units/s",
+    "Cast time": "0.40 s"
+   },
+   "desc": "Projectile spell (33 Soul); the startup is when the projectile spawns"
+  },
+  {
+   "id": "knight.spell.shadeSoul",
+   "class": "knight",
+   "type": "spell",
+   "grip": "any",
+   "name": "Shade Soul",
+   "startup": 7,
+   "active": [
+    [
+     7,
+     24
+    ]
+   ],
+   "activeFrames": 18,
+   "hits": 1,
+   "recovery": 0,
+   "total": 24,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": 30
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Projectile speed": "45 units/s",
+    "Cast time": "0.40 s"
+   },
+   "desc": "Projectile spell (33 Soul); the startup is when the projectile spawns"
+  },
+  {
+   "id": "knight.spell.desolateDive",
+   "class": "knight",
+   "type": "spell",
+   "grip": "any",
+   "name": "Desolate Dive",
+   "startup": 22,
+   "active": [
+    [
+     22,
+     27
+    ]
+   ],
+   "activeFrames": 6,
+   "hits": 1,
+   "recovery": 33,
+   "total": 60,
+   "cancels": {},
+   "armor": [],
+   "iframes": [
+    [
+     16,
+     39
+    ]
+   ],
+   "parryable": null,
+   "damage": {
+    "amount": "20"
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Dive body damage": "15",
+    "I-frames": "0.40 s from the landing"
+   },
+   "desc": "Dive spell (33 Soul), cast from the ground; in the air the dive falls first and its body hits on the way down"
+  },
+  {
+   "id": "knight.spell.descendingDark",
+   "class": "knight",
+   "type": "spell",
+   "grip": "any",
+   "name": "Descending Dark",
+   "startup": 22,
+   "active": [
+    [
+     22,
+     27
+    ],
+    [
+     43,
+     54
+    ]
+   ],
+   "activeFrames": 18,
+   "hits": 2,
+   "recovery": 3,
+   "total": 57,
+   "cancels": {},
+   "armor": [],
+   "iframes": [
+    [
+     16,
+     39
+    ]
+   ],
+   "parryable": null,
+   "damage": {
+    "amount": "35 + 15"
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Dive body damage": "15",
+    "I-frames": "0.40 s from the landing"
+   },
+   "desc": "Dive spell (33 Soul), cast from the ground; in the air the dive falls first and its body hits on the way down"
+  },
+  {
+   "id": "knight.spell.howlingWraiths",
+   "class": "knight",
+   "type": "spell",
+   "grip": "ground",
+   "name": "Howling Wraiths",
+   "startup": 10,
+   "active": [
+    [
+     10,
+     33
+    ]
+   ],
+   "activeFrames": 24,
+   "hits": 1,
+   "recovery": 3,
+   "total": 36,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": "13 × 3 hitboxes"
+   },
+   "weapons": [],
+   "default": true,
+   "desc": "Shriek spell (33 Soul); three overlapping hitboxes (left, right, up) can each hit"
+  },
+  {
+   "id": "knight.spell.abyssShriek",
+   "class": "knight",
+   "type": "spell",
+   "grip": "ground",
+   "name": "Abyss Shriek",
+   "startup": 7,
+   "active": [
+    [
+     7,
+     45
+    ]
+   ],
+   "activeFrames": 39,
+   "hits": 1,
+   "recovery": 0,
+   "total": 45,
+   "cancels": {
+    "dodge": 37
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": "20 × 3 hitboxes"
+   },
+   "weapons": [],
+   "default": true,
+   "desc": "Shriek spell (33 Soul); three overlapping hitboxes (left, right, up) can each hit"
+  },
+  {
+   "id": "knight.movement.dash",
+   "class": "knight",
+   "type": "movement",
+   "grip": "any",
+   "name": "Dash",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 15,
+   "cancels": {
+    "attack": 16
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Speed": "20 units/s",
+    "Cooldown": "0.60 s (0.40 s with Dashmaster)"
+   },
+   "desc": "Mothwing Cloak dash"
+  },
+  {
+   "id": "knight.movement.shadowDash",
+   "class": "knight",
+   "type": "movement",
+   "grip": "any",
+   "name": "Shadow Dash",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 15,
+   "cancels": {
+    "attack": 16
+   },
+   "armor": [],
+   "iframes": [
+    [
+     1,
+     15
+    ]
+   ],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Speed": "20 units/s",
+    "Cooldown": "0.60 s (0.40 s with Dashmaster)"
+   },
+   "desc": "Shade Cloak dash: passes through enemies and their attacks (not hazards)"
+  },
+  {
+   "id": "knight.movement.jump",
+   "class": "knight",
+   "type": "movement",
+   "grip": "ground",
+   "name": "Jump",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 78,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Height": "5.76 units",
+    "Air time": "1.04 s",
+    "Rise": "9 physics steps at 16.65 units/s, then gravity 47.4 units/s²"
+   },
+   "desc": "Full-height jump from the ground (holding jump)"
+  },
+  {
+   "id": "knight.movement.doubleJump",
+   "class": "knight",
+   "type": "movement",
+   "grip": "air",
+   "name": "Double Jump",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 78,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Height": "5.76 units",
+    "Air time": "1.04 s",
+    "Rise": "9 physics steps at 16.65 units/s, then gravity 47.4 units/s²"
+   },
+   "desc": "Monarch Wings jump in the air, shown from a standstill"
+  },
+  {
+   "id": "knight.movement.focus",
+   "class": "knight",
+   "type": "movement",
+   "grip": "ground",
+   "name": "Focus",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 98,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Heal at": "1.141 s (frame 69)",
+    "With Quick Focus": "0.844 s"
+   },
+   "desc": "Focus to heal one mask (33 Soul); the mask heals at the marked frame"
+  },
+  {
+   "id": "knight.movement.hit",
+   "class": "knight",
+   "type": "movement",
+   "grip": "any",
+   "name": "Take hit",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 78,
+   "cancels": {
+    "dodge": 13
+   },
+   "armor": [],
+   "iframes": [
+    [
+     1,
+     78
+    ]
+   ],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "Hit freeze": "0.25 s (not counted)",
+    "Recoil": "0.20 s at 15 units/s",
+    "I-frames": "1.30 s (1.75 s with Stalwart Shell)"
+   },
+   "desc": "Hit reaction: knocked back, then invulnerable"
+  },
+  {
+   "id": "knight.movement.hardLanding",
+   "class": "knight",
+   "type": "movement",
+   "grip": "ground",
+   "name": "Hard landing",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 48,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "After a long fall the Knight is stuck on landing"
+  },
+  {
+   "id": "knight.movement.death",
+   "class": "knight",
+   "type": "movement",
+   "grip": "any",
+   "name": "Death",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 108,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "Death animation"
+  }
+ ]
+}

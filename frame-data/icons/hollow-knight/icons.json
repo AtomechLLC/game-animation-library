@@ -1,0 +1,9 @@
+{
+ "lead": "Icons are the game's own sprites",
+ "note": "Sprites (c) Team Cherry.",
+ "icons": {
+  "The Knight": {
+   "file": "knight.webp"
+  }
+ }
+}

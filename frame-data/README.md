@@ -22,6 +22,9 @@ The page knows nothing about where the numbers came from, so every source only h
   `tools/frame_data/import_ufd_ssbu.py` from [Ultimate Frame Data](https://ultimateframedata.com/smash) (see
   [Super Smash Bros. Ultimate](#super-smash-bros-ultimate)), which also writes `icons/super-smash-bros-ultimate/` and
   the hitbox clips in `clips/super-smash-bros-ultimate/`.
+- `hollow-knight.json` — Hollow Knight (Steam build), frames of 1/60 s. Built by `tools/frame_data/import_hk_game.py`
+  from an installed copy (see [Hollow Knight](#hollow-knight)), which also writes `sprites/hollow-knight/` for the
+  2D preview and `icons/hollow-knight/`.
 - `clipviewer.js` — the hitbox clip preview docked above the move table for games with `clips` (see [Hitbox clips](#hitbox-clips)).
 - `models/elden-ring/` and `viewer3d.js` — the 3D preview docked above the move table (see [3D preview](#3d-preview)).
 - `icons/elden-ring/` — 96px WebP inventory icons per weapon and `icons.json` (weapon name → file, source page). Built by
@@ -129,6 +132,41 @@ and boxes:
 - `sprites.json`: `fps`, box kind names, `source`, and per character its moves file.
 
 The sprites are Capcom's, the captures and boxes Baston's; the dock credits Baston under the controls.
+
+## Hollow Knight
+
+```bash
+python tools/frame_data/import_hk_game.py "Z:/SteamLibrary/steamapps/common/Hollow Knight"   # ~3 minutes, sprites included
+python tools/frame_data/import_hk_game.py <install> --no-sprites                               # frame data only
+python tools/frame_data/import_hk_game.py <install> knight.nail.slash                          # re-render these moves
+```
+
+Reads only (UnityPy, TypeTreeGeneratorAPI, Pillow). The Steam build is Unity 6 with Mono scripts and no type trees,
+so `hk_unity.py` lays MonoBehaviours out from the game's own `Managed/*.dll` (TypeTreeGeneratorAPI misses the align
+after `m_Enabled`, and nested string lists need its own reader) and decodes PlayMaker FSM actions from their
+`ActionData` (`paramDataType`, `byteData` and the typed lists). `hk_tk2d.py` cuts 2D Toolkit sprites out of their
+atlases; `hk_fsm.py` walks FSMs to time them; `hk_render.py` draws a move's timeline into sheets.
+
+Everything comes from the Knight prefab in `resources.assets` (the GameObject with `HeroController`):
+
+- Nail slashes: `NailSlash.FixedUpdate` turns a slash's `PolygonCollider2D` on at physics step 1 and off at step 5,
+  so the hitbox is out from 20 to 80 ms (frames 2–5). Physics runs at 50 Hz (`TimeManager`). Dash, jump and cast are
+  allowed after `ATTACK_RECOVERY_TIME`, the next slash after `ATTACK_COOLDOWN_TIME`.
+- Nail arts (Nail Arts FSM) are timed from the release. Great Slash and Dash Slash count physics steps in their own
+  Control Collider FSM; Cyclone Slash's hits are out while it spins (0.45 s without extra presses).
+- Spells (Spell Control FSM): each spell's states give the Knight's clips and when the hit objects switch on; the hit
+  objects' Hit Box Control FSMs switch their colliders on and off at their clip's trigger frames. Vengeful Spirit's
+  projectile flies at the spawner FSM's speed. Dives are shown cast from the ground.
+- Movement: dash times, i-frames (shadow dash, quake landing, taking a hit), jump steps and gravity
+  (Physics2D gravity −60 × `DEFAULT_GRAVITY`), focus (Focus Start Time + 33 Soul × Time Per MP Drain).
+- Damage is base damage: nail 5 (Old Nail) to 21 (Pure Nail), nail arts as a multiple of it, spells from each hit
+  object's Set Damage FSM.
+
+The 2D preview's sheets are drawn from the same timelines: the Knight's tk2d clips, the slash and spell effect
+objects with their own clips and transforms, attack polygons (red) and the `HeroBox` hurtbox (blue), mirrored to face
+right. Polygons are stored as `[kind, [x, y, ...]]` and sprites.json sets `smooth` for the painted art.
+
+Not read yet: wall jump, Crystal Heart, charm variants (only noted in More), enemies and bosses.
 
 ## Super Smash Bros. Ultimate
 
