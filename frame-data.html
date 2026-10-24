@@ -256,14 +256,16 @@ footer p{max-width:85ch;margin:0 0 8px}
 .v3d-speedl{display:inline-flex;align-items:center;gap:5px;flex:none;font-size:12px;font-weight:600;color:var(--fg);cursor:pointer}
 .v3d-speedl select{font-weight:600}
 .v3d-scrub .strip{width:100%;height:26px}
-/* cancel windows: one thin line per cancel type under the phase strip, from the frame it opens to the end of the move */
-.cxl{position:relative;margin-top:3px}
-/* with cancel lines the scrubber grows downward, so the play buttons stay level with the phase strip */
-.v3d-bar:has(.cxl){align-items:flex-start}
-.cxl div{position:relative;height:12px}
-.cxl i{position:absolute;bottom:1px;height:3px;border-radius:2px;background:var(--c)}
-.cxl i::before{content:"";position:absolute;left:0;bottom:-2px;width:2px;height:7px;background:var(--c)}
-.cxl b{position:absolute;bottom:4px;font:600 9px/1 var(--mono);color:var(--c);white-space:nowrap;text-transform:uppercase;letter-spacing:.03em}
+/* cancel windows: thin lines stacked in the middle of the phase bar, clear of the armor and i-frame edges */
+.strip .cxl{position:absolute;inset:4px 0;display:flex;flex-direction:column;justify-content:center;gap:1px;pointer-events:none}
+.cxl i{position:relative;flex:none;height:2px;border-radius:1px;background:var(--c);box-shadow:0 0 0 1px #0005}
+/* the key under the bar names each colour and the frame its cancel opens */
+.cxk{display:flex;flex-wrap:wrap;gap:2px 10px;margin-top:4px;font:600 10px/1.3 var(--mono);color:var(--muted)}
+.cxk span{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.cxk span::before{content:"";width:12px;height:3px;border-radius:1px;background:var(--c)}
+.cxk b{color:var(--fg);font-weight:600}
+/* with the key the scrubber grows downward, so the play buttons stay level with the phase strip */
+.v3d-bar:has(.cxk){align-items:flex-start}
 .v3d-scrub::after{content:"";position:absolute;top:-3px;bottom:-3px;left:var(--v3d-at,0%);width:2px;margin-left:-1px;background:var(--fg);pointer-events:none}
 .v3d-scrub input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
 .v3d-keys{display:flex;flex-wrap:wrap;gap:4px 14px;margin:0;font-size:11px;color:var(--muted)}
@@ -542,17 +544,18 @@ function stripHtml(m,scale,lanes){
   if(!m.active.length)h+=seg(0,end,'--f-start');else if(dodge!=null){h+=seg(last,dodge,'--f-rec');h+=seg(dodge,end,'--f-free')}else h+=seg(last,end,'--f-rec');
   m.armor.forEach(([s,e])=>h+=`<span class="ar" style="left:${pc(s-1)};width:${pc(Math.min(e,end)-s+1)}"></span>`);
   m.iframes.forEach(([s,e])=>h+=`<span class="ifr" style="left:${pc(s-1)};width:${pc(Math.min(e,end)-s+1)}"></span>`);
-  return `<div class="strip" title="Startup ${m.startup??'—'} · active ${m.active.map(a=>a.join('–')).join(', ')} · dodge ${m.cancels.dodge??'—'} · total ${m.total??'—'}">${h}</div>`+(lanes?cancelLanes(m,scale,end):'')}
-// The timelines in the viewer and the detail sheet carry a line per cancel type, labelled with the type and its frame,
-// so a learner can see where each cancel opens against startup, active and recovery while scrubbing.
+  const cx=lanes?cancelLanes(m,scale,end):['',''];
+  return `<div class="strip" title="Startup ${m.startup??'—'} · active ${m.active.map(a=>a.join('–')).join(', ')} · dodge ${m.cancels.dodge??'—'} · total ${m.total??'—'}">${h}${cx[0]}</div>${cx[1]}`}
+// The timelines in the viewer and the detail sheet carry a thin line per cancel type over the phase bar, from the frame
+// it opens to the end of the move, told apart by colour with a key under the bar, so a learner can see where each
+// cancel opens against startup, active and recovery while scrubbing.
 const CX=[['attack','Attack'],['dodge','Dodge'],['block','Block'],['skill','Skill'],['item','Item'],['move','Move']];
 function cancelLanes(m,scale,end){
   const to=Math.min(end,scale),ls=CX.filter(([k])=>m.cancels[k]&&m.cancels[k]<=to);
-  if(!ls.length)return '';
-  return `<div class="cxl">${ls.map(([k,l])=>{const f=m.cancels[k],x=(f-1)/scale*100,w=Math.max((to-f+1)/scale*100,.6);
-    // the label sits over the line from where it opens, or ends there when the window opens late in the move
-    const lab=x>62?`right:${(100-x).toFixed(2)}%;margin-right:3px`:`left:${x.toFixed(2)}%;margin-left:4px`;
-    return `<div title="${l} cancel opens on frame ${f}" style="--c:var(--cx-${k})"><i style="left:${x.toFixed(2)}%;width:${w.toFixed(2)}%"></i><b style="${lab}">${l} ${f}</b></div>`}).join('')}</div>`}
+  if(!ls.length)return ['',''];
+  const lines=ls.map(([k])=>{const f=m.cancels[k],x=(f-1)/scale*100,w=Math.max((to-f+1)/scale*100,.6);
+    return `<i style="--c:var(--cx-${k});margin-left:${x.toFixed(2)}%;width:${w.toFixed(2)}%"></i>`}).join('');
+  return [`<div class="cxl">${lines}</div>`,`<div class="cxk">${ls.map(([k,l])=>`<span style="--c:var(--cx-${k})">${l} <b>${m.cancels[k]}</b></span>`).join('')}</div>`]}
 function legendHtml(){const has=k=>D.moves.some(m=>k==='free'?m.cancels.dodge:m[k].length);
   return [['--f-start','Startup'],['--f-active','Active'],['--f-gap','Between hits'],['--f-rec','Recovery'],['--f-free','Can dodge','free'],['--f-armor','Hyper armor','armor'],['--f-iframe','I-frames','iframes']].filter(x=>!x[2]||has(x[2])).map(([c,l])=>`<span><i style="background:var(${c})"></i>${l}</span>`).join('')}
 function cell(k,m,scale){
