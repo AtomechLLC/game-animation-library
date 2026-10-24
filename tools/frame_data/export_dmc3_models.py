@@ -11,12 +11,14 @@ Reads only (dmc3_files.py); writes frame-data/models/devil-may-cry-3/:
                         moves the coat by cloth simulation, which isn't reproduced: it's skinned to the hips and legs
                         instead (coat_skin). Textures from slot 0. PS2 space (left-handed, centimetres) scaled to metres.
     weapon-<name>.glb   the weapon's MOD (plwp_*.pac slot 1), origin at the grip, attached to the right hand bone
-                        as it is (Ebony & Ivory, Agni & Rudra: node R and node L)
+                        as it is (Ebony & Ivory, Agni & Rudra: node R and node L); Beowulf, worn, as a piece per body
+                        bone (node extras `bone`)
     anim/<move>.bin     the move's motions (dmc3_moves.segments) played in a row, sampled at 60 fps ('FDA2', see
                         export_er_models.py); bone 0's translation is the root motion track
-    moves/<class>.json  per move id its frames, preview weapon, animation file and hits (dmc3_moves.hits: each damaging
-                        collider's frames, its id as `judge`), and the hit spheres (`attacks`, one variation 0 that every
-                        weapon uses); models.json `body` places each collider id's sphere centre on its bone
+    moves/<class>.json  per move id its frames, preview weapon, animation file and hits (dmc3_moves.move_hits:
+                        each damaging collider's frames, its id as `judge`, null for shots and Cerberus's chain, which
+                        have no shape), and the hit spheres (`attacks`, one variation 0 that every weapon uses);
+                        models.json `body` places each collider id's sphere centre on its bone
 """
 import io, json, math, os, struct, sys
 import numpy as np
@@ -199,21 +201,43 @@ def body_glb(game):
     return g.glb(), parents, offsets
 
 
-def weapon_glb(game, pacname, slot=1):
+# weapons worn over Dante's limbs rather than held: their MOD is modelled on his rest pose, one bone per limb bone
+WORN = {'plwp_fight.pac'}
+
+
+def weapon_glb(game, pacname, body_worlds, slot=1):
     pac = D.subfiles(game.read(pacname))
     texs = D.textures(pac[0]) if pac[0] else []
     m = pac[slot]
     parents, offsets = D.skeleton(m)
     g = Gltf()
-    root = g.node(name='weapon')
-    g.j['scenes'][0]['nodes'].append(root)
     subs = D.meshes(m)
-    # rigid pose: every vertex follows its first bone, whose rest frame is translation only
     worlds = []
     for b, p in enumerate(parents):
         worlds.append((worlds[p] if p >= 0 else np.zeros(3)) + offsets[b])
-    mid = add_meshes(g, subs, texs, {}, os.path.splitext(pacname)[0], skinned=False)
-    g.j['nodes'][root]['mesh'] = mid
+    if pacname not in WORN:
+        root = g.node(name='weapon')
+        g.j['scenes'][0]['nodes'].append(root)
+        g.j['nodes'][root]['mesh'] = add_meshes(g, subs, texs, {}, os.path.splitext(pacname)[0], skinned=False)
+        return g.glb()
+    # Worn (Beowulf's gauntlets and greaves): one node per MOD bone, on the body bone at the same rest position, each
+    # triangle following its first vertex's heaviest bone (the pieces are rigid), positions relative to that bone
+    nodes = []
+    for b in range(1, len(parents)):
+        target = int(np.argmin([np.linalg.norm(w - worlds[b]) for w in body_worlds]))
+        parts = []
+        for sb in subs:
+            if not len(sb['tris']): continue
+            main = sb['joints'][np.arange(len(sb['pos'])), sb['weights'].argmax(1)]
+            tris = sb['tris'][main[sb['tris'][:, 0]] == b]
+            if not len(tris): continue
+            used, inv = np.unique(tris.reshape(-1), return_inverse=True)
+            parts.append({**sb, 'pos': sb['pos'][used] - worlds[b], 'nrm': sb['nrm'][used], 'uv': sb['uv'][used],
+                          'joints': sb['joints'][used], 'weights': sb['weights'][used], 'tris': inv.reshape(-1, 3)})
+        if not parts: continue
+        mid = add_meshes(g, parts, texs, {}, '%s-%d' % (os.path.splitext(pacname)[0], b), skinned=False)
+        nodes.append(g.node(name=BONES[target], mesh=mid, extras={'bone': BONES[target]}))
+    g.j['scenes'][0]['nodes'].append(g.node(name='weapon', children=nodes))
     return g.glb()
 
 
@@ -265,12 +289,15 @@ def main(game_dir, out=OUT):
     os.makedirs(os.path.join(out, 'anim'), exist_ok=True)
     os.makedirs(os.path.join(out, 'moves'), exist_ok=True)
     data, parents, offsets = body_glb(game)
+    body_worlds = []
+    for b, p in enumerate(parents):
+        body_worlds.append((body_worlds[p] if p >= 0 else np.zeros(3)) + offsets[b])
     open(os.path.join(out, 'dante.glb'), 'wb').write(data)
     weapons = {}
     for cid, (name, fam, pacname, hand) in M.CLASSES.items():
         if pacname and name not in weapons:
             fn = 'weapon-%s.glb' % cid
-            open(os.path.join(out, fn), 'wb').write(weapon_glb(game, pacname))
+            open(os.path.join(out, fn), 'wb').write(weapon_glb(game, pacname, body_worlds))
             weapons[name] = {'model': pacname, 'file': fn, 'variation': 0}
     weapons['None'] = {'model': None, 'file': None, 'variation': 0}
     used = set()
@@ -282,13 +309,18 @@ def main(game_dir, out=OUT):
             bake([(s['mot'], s['start'], max(s['end'] - s['start'], 1)) for s in segs], offsets))
         cid = mv['class']
         wname = M.CLASSES[cid][0] if M.CLASSES[cid][2] else 'None'
-        hs = [{'start': h['start'], 'end': h['end'], 'judge': h['id']} for h in M.hits(segs, cols) if cols[h['id']]['sphere']]
+        # shots and Cerberus's chain have no shape here: the preview marks their frames as having none
+        hs = []
+        for h in M.move_hits(mv, segs, cols, pac[11]):
+            drawn = h['id'] is not None and cols[h['id']]['sphere'] and not h['weapon']
+            e = {'start': h['start'], 'end': h['end'], 'judge': h['id'] if drawn else None}
+            if e not in hs: hs.append(e)
         per_class[cid][mv['id']] = {'frames': M.timing(segs)[0], 'weapon': wname, 'anim': anim, 'hits': hs}
     classes = {}
     for cid, moves in per_class.items():
         if not moves: continue
         fn = 'moves/%s.json' % cid
-        ids = sorted({h['judge'] for m in moves.values() for h in m['hits']})
+        ids = sorted({h['judge'] for m in moves.values() for h in m['hits'] if h['judge'] is not None})
         used.update(ids)
         attacks = {'0': {str(i): [{'a': i, 'r': round(cols[i]['sphere'][3] * SCALE, 4)}] for i in ids}}
         json.dump({'class': cid, 'moves': moves, 'attacks': attacks}, open(os.path.join(out, fn), 'w'),

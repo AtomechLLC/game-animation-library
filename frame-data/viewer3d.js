@@ -232,8 +232,16 @@ export async function createViewer(el, base) {
     const h = hands[hand];
     if (h.name === name) return;
     if (h.obj) h.bone.remove(h.obj);
-    h.name = name; h.obj = null; h.root = null; h.dummies = null;
+    for (const w of h.worn || []) w.parent?.remove(w);
+    h.name = name; h.obj = null; h.root = null; h.dummies = null; h.worn = [];
     if (!name) return;
+    // Worn weapons (Devil May Cry 3's Beowulf): pieces whose extras name the body bone they sit on
+    const pieces = []; g.scene.traverse(x => { if (x.userData.bone && bone(x.userData.bone)) pieces.push(x) });
+    if (pieces.length) {
+      if (hand !== defHand) return;
+      for (const x of pieces) { const c = x.clone(); c.position.set(0, 0, 0); bone(x.userData.bone).add(c); h.worn.push(c) }
+      return;
+    }
     // Weapon models point down -Y. R_Weapon's +Y points out of the fist (the models' own Ctrl_Sword node carries the
     // same half turn about Z); L_Weapon mirrors R_Weapon, so the left hand takes the model as it is
     // Dual weapons (No Rest for the Wicked) carry one root per hand, named R and L

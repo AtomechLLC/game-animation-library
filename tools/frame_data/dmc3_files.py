@@ -37,7 +37,8 @@ motion pack pl000_00_<n>, file id % 100 its slot; both halves name the same file
   00 _ u16 frame u8 _       wait until the motion reaches frame (0x7fff: for good)
   01 a b c group index u16  play the motion of (group, index) from u16 (0x7fff: the motion's own start frame)
   02 _ s16                  jump back
-  03 / 04 b0..b4            set the 5-byte state block 0 / 1 (03 at 0x5d, 04 at 0x62 of the motion controller)
+  03 / 04 b0..b4            set the 5-byte state block 0 / 1 (03 at 0x5d, 04 at 0x62 of the motion controller); block
+                            0's b4 is a signal to the action's code for that frame (a gun fires on it, for one)
   05 _                      clear both blocks
   06 n                      pick damage entry n of the action's attack table and start a new hit (targets already
                             struck can be struck again); 07 n picks only, 08 _ starts a new hit only
@@ -302,10 +303,11 @@ class Scripts:
 
     def run(self, group, index):
         """One script: dict(motion=(pack, slot), start=frame or None, slots={slot: [(frame, 'buffer'|'go'|'off')]},
-        hits=[(frame, 'wave', entry) | (frame, 'on', frames or None, [ids]) | (frame, 'off', ('mask'|'id', n))]), up to
-        where it hands over to the next motion."""
+        hits=[(frame, 'wave', entry) | (frame, 'on', frames or None, [ids]) | (frame, 'off', ('mask'|'id', n))],
+        signals=[(frame, n)] the frames block 0's last byte is set, which the action's code acts on), up to where it hands
+        over to the next motion."""
         s, o = self.s, self._entry(0, group, index)
-        out = {'motion': None, 'start': None, 'slots': {}, 'hits': []}
+        out = {'motion': None, 'start': None, 'slots': {}, 'hits': [], 'signals': []}
         frame = 0
         for _ in range(1000):
             op = s[o]
@@ -320,6 +322,8 @@ class Scripts:
                 if frame == 0x7fff: break
             elif op == 2:
                 break
+            elif op == 3 and s[o + 5]:
+                out['signals'].append((frame, s[o + 5]))
             elif op == 4:
                 for b in s[o + 1:o + 6]:
                     st = {0x30: 'buffer', 0x10: 'go', 0x20: 'off'}.get(b & 0xf0)
@@ -336,3 +340,18 @@ class Scripts:
                 out['hits'].append((frame, 'off', ('id', struct.unpack_from('<h', s, o + 2)[0])))
             o += n
         return out
+
+
+class WeaponScripts(Scripts):
+    """A weapon's own motion scripts, which Cerberus has (plwp_nunchaku.pac slot 5): the same bytecode, one list of u16
+    offsets from 0x0a with a script per index; its 01 plays the weapon's own motion (group, index), here returned as is.
+    Its colliders are ids of Dante's list (81-98 sit on the chain's bones)."""
+    def __init__(self, s):
+        self.s = s
+        self.u16 = lambda o: struct.unpack_from('<H', s, o)[0]
+
+    def _entry(self, table, group, index):
+        return 10 + self.u16(10 + 2 * index)
+
+    def file(self, group, index):
+        return group, index

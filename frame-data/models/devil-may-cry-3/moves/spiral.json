@@ -1,1 +1,1 @@
-{"class":"spiral","moves":{"spiral.sniper":{"frames":152,"weapon":"Spiral","anim":"spiral-sniper","hits":[]},"spiral.trick-shot":{"frames":100,"weapon":"Spiral","anim":"spiral-trick-shot","hits":[]}},"attacks":{"0":{}}}
+{"class":"spiral","moves":{"spiral.sniper":{"frames":152,"weapon":"Spiral","anim":"spiral-sniper","hits":[{"start":60,"end":60,"judge":null}]},"spiral.trick-shot":{"frames":100,"weapon":"Spiral","anim":"spiral-trick-shot","hits":[{"start":15,"end":15,"judge":null}]}},"attacks":{"0":{}}}
