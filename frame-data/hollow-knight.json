@@ -11,7 +11,7 @@
   "name": "Hollow Knight game files",
   "url": "https://github.com/AtomechLLC/game-animation-library/blob/main/tools/frame_data/import_hk_game.py",
   "author": "Team Cherry",
-  "retrieved": "2026-10-23",
+  "retrieved": "2026-10-24",
   "method": "import_hk_game.py",
   "note": "Hollow Knight data is read straight from the game files: timings from the Knight's HeroController and PlayMaker FSMs (Spell Control, Nail Arts and each hit object's own FSM), hitboxes from the colliders on the Knight's attack and spell objects, sprites from its tk2d animations. Damage is per hit at base level; nail damage depends on the nail upgrade.",
   "links": [
