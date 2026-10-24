@@ -86,8 +86,14 @@ aside h2{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transf
 .status{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
 .status h2{font-family:var(--display);font-size:28px;font-weight:700;letter-spacing:-.02em;margin:0;text-wrap:balance;display:flex;align-items:center;gap:10px}
 .status h2 img{width:40px;height:40px}
-.status p{margin:2px 0 0;color:var(--muted);max-width:70ch}
-.buy{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:8px 0 0;font-size:12px;color:var(--muted)}
+.status p{margin:0;color:var(--muted)}
+/* title, description and store links share one row; the description gives way first (truncated, full text on hover) */
+.head1{flex:1;min-width:0;display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px}
+.head1 h2{flex:0 1 auto;min-width:0}
+.head1 #sub{flex:1 1 16ch;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.head1 #sub:empty{display:none}
+.buy{display:flex;flex-wrap:wrap;align-items:center;gap:6px;flex:0 0 auto;font-size:12px;color:var(--muted)}
+.buy:empty{display:none}
 .buy a{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:2px 10px;color:var(--fg);text-decoration:none;font-weight:500}
 .buy a.main{background:var(--fg);color:var(--bg);border-color:var(--fg)}
 .buy a:hover{border-color:var(--fg)}
@@ -257,7 +263,7 @@ tbody tr.on td{background:var(--chip);box-shadow:inset 0 1px var(--key),inset 0 
   <main>
     <div class="pick" id="pick">
       <div class="pick-l">
-        <div class="status"><div><h2 id="ttl">Frame data</h2><p id="sub"></p><p class="buy" id="buy"></p></div><span class="count" id="count"></span></div>
+        <div class="status"><div class="head1"><h2 id="ttl">Frame data</h2><p id="sub"></p><p class="buy" id="buy"></p></div><span class="count" id="count"></span></div>
         <div class="active" id="active"></div>
         <div id="index"></div>
         <div id="weapons"></div>
@@ -382,7 +388,7 @@ function renderAll(){
 function renderHead(){
   const c=st.cls&&CL[st.cls],w=c&&st.w!=null?c.weapons[st.w]:null,f=st.fam&&FAM[st.fam];
   $('#ttl').innerHTML=c?`${icoHtml(w||c.icon,'')} ${esc(w||c.name)}`:esc(f?f.name:`${D.game.name} frame data`);
-  $('#sub').textContent=c?(w?`${c.name} · the animations this weapon uses, by move type.`:`${c.name} · ${L.classView}`)
+  $('#sub').textContent=$('#sub').title=c?(w?`${c.name} · the animations this weapon uses, by move type.`:`${c.name} · ${L.classView}`)
     :L.pickClass;
   const act=[];if(st.q)act.push(['q',`“${st.q}”`]);st.types.forEach(t=>act.push(['type:'+t,T[t].name]));st.grips.forEach(g=>act.push(['grip:'+g,GR[g]]));
   if(st.armor)act.push(['armor','Hyper armor']);if(st.multi)act.push(['multi','Multi-hit']);if(st.noparry)act.push(['noparry',"Can't be parried"]);
