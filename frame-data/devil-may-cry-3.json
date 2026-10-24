@@ -865,7 +865,7 @@
     "Script": "13-15",
     "Style": "Swordmaster"
    },
-   "desc": "Catching Rebellion"
+   "desc": "Catching Rebellion; the sword hits on its way back as part of Sword Pierce, not here"
   },
   {
    "id": "rebellion.aerial-rave-1",
@@ -1089,7 +1089,8 @@
     "Motion": "pl000_00_13.pac #17, frames 0–58",
     "Script": "13-17",
     "Style": "Swordmaster"
-   }
+   },
+   "desc": "The dash into part 2; it switches on no hitbox"
   },
   {
    "id": "rebellion.dance-macabre-2",
@@ -2875,17 +2876,22 @@
    "type": "swordmaster",
    "grip": "ground",
    "name": "Tempest",
-   "startup": null,
-   "active": [],
-   "activeFrames": null,
-   "hits": null,
-   "recovery": null,
-   "total": 85,
+   "startup": 46,
+   "active": [
+    [
+     46,
+     49
+    ]
+   ],
+   "activeFrames": 4,
+   "hits": 1,
+   "recovery": 51,
+   "total": 100,
    "cancels": {
-    "attack": 70,
-    "dodge": 70,
-    "skill": 70,
-    "move": 82
+    "attack": 85,
+    "dodge": 85,
+    "skill": 85,
+    "move": 97
    },
    "armor": [],
    "iframes": [],
@@ -2897,10 +2903,11 @@
    "weapons": [],
    "default": true,
    "extra": {
-    "Motion": "pl000_00_15.pac #8, frames 38–83, pl000_00_15.pac #9, frames 84–124",
-    "Script": "15-8, 15-9",
+    "Motion": "pl000_00_15.pac #8, frames 38–83, pl000_00_15.pac #8, frames 68–83, pl000_00_15.pac #9, frames 84–124",
+    "Script": "15-8, 15-10 from 68, 15-9",
     "Style": "Swordmaster"
-   }
+   },
+   "desc": "Held for one extra spin, which is the one that hits"
   },
   {
    "id": "agni-rudra.sky-dance-1",
