@@ -1,1 +1,1 @@
-{"class":"royalguard","moves":{"royalguard.release":{"frames":57,"weapon":"None","anim":"royalguard-release","hits":[]},"royalguard.air-release":{"frames":57,"weapon":"None","anim":"royalguard-air-release","hits":[]}}}
+{"class":"royalguard","moves":{"royalguard.release":{"frames":57,"weapon":"None","anim":"royalguard-release","hits":[{"start":10,"end":18,"judge":170}]},"royalguard.air-release":{"frames":57,"weapon":"None","anim":"royalguard-air-release","hits":[{"start":10,"end":18,"judge":172}]}},"attacks":{"0":{"170":[{"a":170,"r":0.85}],"172":[{"a":172,"r":1.21}]}}}

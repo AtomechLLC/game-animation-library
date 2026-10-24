@@ -234,10 +234,17 @@ python tools/frame_data/export_dmc3_models.py "D:/Games/Devil May Cry 3 SE"     
 - **Icons.** Each weapon's icon is its HUD icon, and Royalguard's is its style emblem, from `id100.pac` (the HUD
   archive; texture slots 42-50 and 30-38 for the weapons, 24 for Royalguard, as the Crimson mod's `HUD.cpp` reads
   them), cropped and centred at 96 px.
-- **Not known yet.** When the hit comes out isn't in the scripts or any data file; the executable decides it, so startup,
-  active frames, recovery and the 3D preview's hitboxes are left out for now. Also not listed yet: the guns' normal
-  aimed shots and Twosome Time (their motions come from aim tables), Trickster, Quicksilver and Doppelganger moves
-  (started outside the action dispatch), and damage.
+- **Startup, active, hits.** The scripts also switch Dante's hitboxes on and off: `10+k` switches on k+1 colliders for
+  a number of frames (or until a `20` / `24` switches them off), and `06` / `08` before it lets the move strike the
+  same enemy again. Colliders are `pl000.pac` slot 6 (type, bone, shape; type bit 0 deals damage) with their spheres in
+  slot 7. Active frames are the frames a damaging collider is on, counted like cancels (frame 1 is the first frame the
+  move plays); startup is the first, recovery is total minus the last, hits counts the `06` / `08`s that come before a
+  damaging collider. A collider left on for good ends with its motion (dive kicks end on landing in the game).
+- **Not known yet.** Cerberus's swings, the guns' shots and the thrown sword (Sword Pierce) don't use the
+  scripts' colliders, so their startup and active frames are blank; nor do they in the 3D preview. A few style moves
+  use boxes instead of spheres, which the preview doesn't draw. Also not listed yet: the guns' normal aimed shots and
+  Twosome Time (their motions come from aim tables), Trickster, Quicksilver and Doppelganger moves (started outside
+  the action dispatch), and damage (each `06` picks an entry in the weapon's damage table, which isn't read yet).
 
 ## Ninja Gaiden Black
 
@@ -409,7 +416,9 @@ writes `models/devil-may-cry-3/` in the same layout (about 2.4 MB):
   on the left hand for Ebony & Ivory and Agni & Rudra).
 - `anim/<move>.bin`: the move's motions played in a row from each script's start frame, sampled at 60 fps (`FDA2`);
   root motion carries on from one motion to the next.
-- `moves/<class>.json`: per move its `anim`, `frames` and preview `weapon`; `hits` is empty until hit windows are found.
+- `moves/<class>.json`: per move its `anim`, `frames`, preview `weapon` and `hits` (each damaging collider's frames, its
+  id as `judge`); `attacks["0"]` holds each collider's sphere radius, and `models.json` `body` places its centre on its
+  bone. Every weapon is variation 0, since the colliders belong to Dante, not the weapon.
 
 These are Capcom's assets, under the same terms as the Elden Ring files above.
 

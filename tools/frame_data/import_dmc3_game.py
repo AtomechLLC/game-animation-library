@@ -56,18 +56,24 @@ def icons(game):
 def main(game_dir):
     game = D.Game(game_dir)
     icon_names = icons(game)
-    scripts = D.Scripts(D.subfiles(game.read('pl000.pac'))[5])
+    pac = D.subfiles(game.read('pl000.pac'))
+    scripts, cols = D.Scripts(pac[5]), D.colliders(pac)
     moves = []
     for mv in M.moves():
         segs = M.segments(game, scripts, mv)
         total, cancels = M.timing(segs)
+        hs = M.hits(segs, cols)
+        win = M.windows(hs)
         style = M.STYLE_GROUPS.get(mv['scripts'][0][0])
         extra = {'Motion': ', '.join('pl000_00_%d.pac #%d, frames %d–%d' % (g['pack'], g['slot'], g['start'], g['end'])
                                      for g in segs),
                  'Script': ', '.join('%d-%d' % s for s in mv['scripts'])}
         if style: extra['Style'] = style
         moves.append({'id': mv['id'], 'class': mv['class'], 'type': mv['type'], 'grip': mv['grip'], 'name': mv['name'],
-                      'startup': None, 'active': [], 'activeFrames': None, 'hits': None, 'recovery': None,
+                      'startup': win[0][0] if win else None, 'active': win,
+                      'activeFrames': sum(b - a + 1 for a, b in win) if win else None,
+                      'hits': max(h['hit'] for h in hs) if hs else None,
+                      'recovery': total - win[-1][1] if win else None,
                       'total': total, 'cancels': cancels, 'armor': [], 'iframes': [], 'parryable': None,
                       'damage': {}, 'anim': [mv['id'].replace('.', '-')], 'weapons': [], 'default': True,
                       'extra': extra, **({'desc': mv['desc']} if mv.get('desc') else {})})
@@ -81,15 +87,17 @@ def main(game_dir):
                  'version': 'PS2, Europe (SLES-54186)',
                  'frameNote': "Devil May Cry 3 runs its motions at 60 fps. Total is the move's motions from the frame "
                               "the game starts them to their last frame; cancels are the first frame the move's "
-                              "script lets the next attack, jump or roll, block, style move or movement act. When "
-                              "the hit comes out is decided by the game's code, not its data files, so startup and "
-                              "active frames aren't known yet."},
+                              "script lets the next attack, jump or roll, block, style move or movement act. Active "
+                              "frames are when the script has a damaging hitbox switched on, for the frames it gives; "
+                              "startup is the first of them and recovery the frames after the last. Hits counts the "
+                              "times the script lets the move strike the same enemy again. Cerberus's swings, gunshots "
+                              "and thrown weapons hit some other way and are left blank."},
         'source': {'name': 'Devil May Cry 3 game files',
                    'url': 'https://github.com/AtomechLLC/game-animation-library/blob/main/tools/frame_data/import_dmc3_game.py',
                    'author': 'Capcom', 'retrieved': datetime.date.today().isoformat(), 'method': 'import_dmc3_game.py',
                    'note': "Read from the PS2 game's GData.afs and executable (SLES_541.86): the executable's action code "
                            "names which of Dante's motion scripts each move plays, and the scripts give each move's "
-                           "motion, length and cancel frames."},
+                           "motion, length, cancel frames and when its hitboxes switch on and off."},
         'families': [{'id': f, 'name': n} for f, n in M.FAMILIES],
         'classes': classes,
         'moveTypes': [{'id': t, 'name': n, 'description': d} for t, n, d in M.MOVE_TYPES],
