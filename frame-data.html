@@ -226,6 +226,28 @@ footer p{max-width:85ch;margin:0 0 8px}
 .pick.min .wtiles,.pick.min .v3d,.pick.min #sub,.pick.min #active{display:none}
 @media (min-width:821px) and (min-height:640px){.pick.dockon{position:sticky;top:var(--hdr,0px);z-index:4;background:var(--bg);border-bottom:1px solid var(--line);padding-bottom:8px}}
 @media (max-width:820px){.pick.dockon{grid-template-columns:minmax(0,1fr)}}
+/* phones: the header scrolls away compacted (one-line game chips, no tagline) and the preview alone sticks to the top,
+   so a move can be picked from the table while it plays; .pick steps aside so the dock sticks against the whole page */
+@media (max-width:820px){
+  header{position:static}
+  .hrow{gap:8px 10px;padding-block:8px}
+  .club{padding:4px 6px}
+  .club span{display:none}
+  .brand{flex:1 1 0}
+  .brand h1{font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .brand .tagline{display:none}
+  .tabs a{padding:6px 10px}
+  .search{flex-basis:160px}
+  .grow{gap:4px 12px;padding-bottom:8px}
+  .domain{overflow-x:auto;scrollbar-width:none}
+  .domain::-webkit-scrollbar{display:none}
+  .domain button{flex:none;white-space:nowrap;padding:6px 10px}
+  .pick.dockon{display:contents}
+  .pick.dockon .dock{position:sticky;top:env(safe-area-inset-top,0px);z-index:4;background:var(--bg);border-bottom:1px solid var(--line);margin:0 -16px 12px;padding:6px 16px 8px}
+  .dock-head h3{font-size:14px}
+  .dock .v3d-stage{height:clamp(150px,27vh,230px)}
+  .dock .v3d-opts{gap:2px 12px}
+}
 .more-c{width:1%;text-align:right;padding-left:4px!important}
 .rowmore{border:1px solid var(--line);background:var(--sunk);border-radius:4px;padding:0 9px;height:24px;cursor:pointer;font-weight:700;line-height:1}
 .rowmore:hover{border-color:var(--key)}
@@ -362,6 +384,8 @@ function count(list,f){const c=new Map();list.forEach(m=>{const k=f(m);c.set(k,(
 
 function renderAll(){
   $('#games').innerHTML=GAMES.map(g=>`<button data-game="${esc(g.id)}" aria-pressed="${g.id===st.game}">${esc(g.name)}</button>`).join('');
+  // on phones the game bar is one scrolling row: bring the current game into view
+  {const bar=$('#games'),on=bar.querySelector('[aria-pressed="true"]');if(on&&bar.scrollWidth>bar.clientWidth)bar.scrollLeft+=on.getBoundingClientRect().left-bar.getBoundingClientRect().left-(bar.clientWidth-on.offsetWidth)/2}
   $('#ver').title=$('#ver').textContent=`${D.moves.length.toLocaleString()} moves · ${D.classes.length} ${L.classes} · ${L.patch}${D.game.version}`;
   $('#keys').innerHTML=`<button class="kf" data-fam="" aria-pressed="${!st.fam&&!st.cls}"><i></i>${esc(L.allFamilies)}</button>`+D.families.map(f=>`<button class="kf" data-fam="${f.id}" aria-pressed="${st.fam===f.id}"><i></i>${esc(f.name)}</button>`).join('');
   const tc=count(pool('type'),m=>m.type);
