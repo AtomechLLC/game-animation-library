@@ -3164,6 +3164,20 @@
       "confidence": "high",
       "what": "Pure Vessel dash stab: game sprites with hurtbox and attack hitboxes"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=phantom&t=attack&m=phantom.attack.stabs",
+     "media_url": "",
+     "title": "Phantom stab flurry, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.thrust-stab-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Phantom stab flurry: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ],
    "rejected_gifs": [
@@ -3312,6 +3326,34 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Hornet whirl: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=lace&t=attack&m=lace.attack.circleSlash",
+     "media_url": "",
+     "title": "Lace circle slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.spin-attack-hk-2.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Lace circle slash: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=lastJudge&t=attack&m=lastJudge.attack.spin",
+     "media_url": "",
+     "title": "Last Judge censer spin, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.spin-attack-hk-3.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Last Judge censer spin: game sprites with hurtbox and attack hitboxes"
      }
     }
    ]
@@ -3679,6 +3721,20 @@
       "confidence": "high",
       "what": "Silksong Hornet down spike (Hunter crest): game sprites with hurtbox and attack hitboxes"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=lace&t=attack&m=lace.attack.downstab",
+     "media_url": "",
+     "title": "Lace down stab, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.plunging-downward-attack-hk-2.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Lace down stab: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ],
    "rejected_gifs": [
@@ -3918,6 +3974,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Silksong Hornet dash stab: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=lace&t=attack&m=lace.attack.charge",
+     "media_url": "",
+     "title": "Lace lunge, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.dash-attack-lunge-hk-3.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Lace lunge: game sprites with hurtbox and attack hitboxes"
      }
     }
    ]
@@ -4236,6 +4306,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.combo-finisher-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/cloud/CloudJab3.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=lace&t=attack&m=lace.attack.comboSlash",
+     "media_url": "",
+     "title": "Lace combo slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.combo-finisher-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Lace combo slash: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -5099,6 +5183,20 @@
       "confidence": "high",
       "what": "Knight Desolate Dive, cast from the ground: game sprites with hurtbox and attack hitboxes"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=phantom&t=attack&m=phantom.attack.dragoon",
+     "media_url": "",
+     "title": "Phantom dragoon drop, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.ground-pound-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Phantom dragoon drop: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ],
    "rejected_gifs": [
@@ -5405,6 +5503,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.whip-chain-lash-ufd-2.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/zero_suit_samus/ZeroSuitSamusPlasmaWhip.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=lastJudge&t=attack&m=lastJudge.attack.spin",
+     "media_url": "",
+     "title": "Last Judge censer swing, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.whip-chain-lash-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Last Judge censer swing: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },
@@ -5487,6 +5599,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.dual-wield-flurry-ufd-0.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/pit/PitJabRapid.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=lace&t=attack&m=lace.attack.rapidSlash",
+     "media_url": "",
+     "title": "Lace rapid air slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.dual-wield-flurry-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Lace rapid air slash: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ],
    "rejected_gifs": [
@@ -5599,6 +5725,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Hornet needle throw and recall: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=phantom&t=attack&m=phantom.attack.throw",
+     "media_url": "",
+     "title": "Phantom pin throw, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/melee.weapon-throw-recall-hk-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Phantom pin throw: game sprites with hurtbox and attack hitboxes"
      }
     }
    ],
@@ -14901,6 +15041,34 @@
       "confidence": "high",
       "what": "Mantis Lord dash slash: game sprites with hurtbox and attack hitboxes"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=bellBeast&t=attack&m=bellBeast.attack.charge",
+     "media_url": "",
+     "title": "Bell Beast charge, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/enemies.charging-rush-hk-2.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Bell Beast charge: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=widow&t=attack&m=widow.attack.dashCharge",
+     "media_url": "",
+     "title": "Widow charge, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/enemies.charging-rush-hk-3.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Widow charge: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ],
    "rejected_gifs": [
@@ -22572,6 +22740,20 @@
      "title": "Warcraft III spitting spider unit animation",
      "game": "Warcraft III",
      "host": "Tenor"
+    },
+    {
+     "page_url": "frame-data.html#g=hollow-knight&c=widow&t=attack&m=widow.attack.dashCharge",
+     "media_url": "",
+     "title": "Widow skittering charge, with hitboxes, rendered from the Frame Data preview",
+     "game": "Hollow Knight: Silksong",
+     "host": "Hollow Knight: Silksong render",
+     "local": "gifs/creature.insect-spider-crawl-hk-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Widow skittering charge: game sprites with hurtbox and attack hitboxes"
+     }
     }
    ]
   },

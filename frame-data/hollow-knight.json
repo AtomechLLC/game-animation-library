@@ -69,6 +69,10 @@
   {
    "id": "silksong",
    "name": "Silksong"
+  },
+  {
+   "id": "silksongBosses",
+   "name": "Silksong bosses"
   }
  ],
  "classes": [
@@ -135,6 +139,54 @@
    "icon": "Hornet (Silksong)",
    "weapons": [],
    "moves": 12
+  },
+  {
+   "id": "lace",
+   "name": "Lace",
+   "family": "silksongBosses",
+   "icon": "Lace",
+   "weapons": [],
+   "moves": 9
+  },
+  {
+   "id": "bellBeast",
+   "name": "Bell Beast",
+   "family": "silksongBosses",
+   "icon": "Bell Beast",
+   "weapons": [],
+   "moves": 2
+  },
+  {
+   "id": "lastJudge",
+   "name": "Last Judge",
+   "family": "silksongBosses",
+   "icon": "Last Judge",
+   "weapons": [],
+   "moves": 3
+  },
+  {
+   "id": "phantom",
+   "name": "Phantom",
+   "family": "silksongBosses",
+   "icon": "Phantom",
+   "weapons": [],
+   "moves": 5
+  },
+  {
+   "id": "widow",
+   "name": "Widow",
+   "family": "silksongBosses",
+   "icon": "Widow",
+   "weapons": [],
+   "moves": 2
+  },
+  {
+   "id": "mossMother",
+   "name": "Moss Mother",
+   "family": "silksongBosses",
+   "icon": "Moss Mother",
+   "weapons": [],
+   "moves": 1
   }
  ],
  "moveTypes": [
@@ -946,16 +998,11 @@
    "type": "attack",
    "grip": "any",
    "name": "Whirl (ground)",
-   "startup": 50,
-   "active": [
-    [
-     50,
-     110
-    ]
-   ],
-   "activeFrames": 61,
-   "hits": 1,
-   "recovery": 10,
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
    "total": 120,
    "cancels": {},
    "armor": [],
@@ -970,7 +1017,7 @@
     "FSM states": "Sphere Antic G → Sphere → Sphere Recover",
     "Health": "900"
    },
-   "desc": "Control FSM from Sphere Antic G"
+   "desc": "Control FSM from Sphere Antic G; its damage comes from spawned projectiles or objects, not drawn yet"
   },
   {
    "id": "hornet.attack.spinAir",
@@ -978,16 +1025,11 @@
    "type": "attack",
    "grip": "any",
    "name": "Whirl (air)",
-   "startup": 35,
-   "active": [
-    [
-     35,
-     95
-    ]
-   ],
-   "activeFrames": 61,
-   "hits": 1,
-   "recovery": 15,
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
    "total": 110,
    "cancels": {},
    "armor": [],
@@ -1002,7 +1044,7 @@
     "FSM states": "Sphere Antic A → Sphere A → Sphere Recover A → Sphere A End → In Air",
     "Health": "900"
    },
-   "desc": "Control FSM from Sphere Antic A"
+   "desc": "Control FSM from Sphere Antic A; its damage comes from spawned projectiles or objects, not drawn yet"
   },
   {
    "id": "hornet.attack.throw",
@@ -1053,7 +1095,7 @@
    "iframes": [],
    "parryable": null,
    "damage": {
-    "amount": 1
+    "amount": null
    },
    "weapons": [],
    "default": true,
@@ -1133,16 +1175,11 @@
    "type": "attack",
    "grip": "any",
    "name": "Whirl (ground)",
-   "startup": 50,
-   "active": [
-    [
-     50,
-     95
-    ]
-   ],
-   "activeFrames": 46,
-   "hits": 1,
-   "recovery": 10,
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
    "total": 105,
    "cancels": {},
    "armor": [],
@@ -1157,7 +1194,7 @@
     "FSM states": "Sphere Antic G → Sphere → Sphere Recover",
     "Health": "800"
    },
-   "desc": "Control FSM from Sphere Antic G"
+   "desc": "Control FSM from Sphere Antic G; its damage comes from spawned projectiles or objects, not drawn yet"
   },
   {
    "id": "hornet2.attack.spinAir",
@@ -1165,16 +1202,11 @@
    "type": "attack",
    "grip": "any",
    "name": "Whirl (air)",
-   "startup": 22,
-   "active": [
-    [
-     22,
-     66
-    ]
-   ],
-   "activeFrames": 45,
-   "hits": 1,
-   "recovery": 15,
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
    "total": 81,
    "cancels": {},
    "armor": [],
@@ -1189,7 +1221,7 @@
     "FSM states": "Sphere Antic A → Sphere A → Sphere Recover A → Sphere A End → In Air",
     "Health": "800"
    },
-   "desc": "Control FSM from Sphere Antic A"
+   "desc": "Control FSM from Sphere Antic A; its damage comes from spawned projectiles or objects, not drawn yet"
   },
   {
    "id": "hornet2.attack.throw",
@@ -1240,7 +1272,7 @@
    "iframes": [],
    "parryable": null,
    "damage": {
-    "amount": 1
+    "amount": null
    },
    "weapons": [],
    "default": true,
@@ -1267,7 +1299,7 @@
    "iframes": [],
    "parryable": null,
    "damage": {
-    "amount": 1
+    "amount": null
    },
    "weapons": [],
    "default": true,
@@ -1326,7 +1358,7 @@
    "iframes": [],
    "parryable": null,
    "damage": {
-    "amount": 1
+    "amount": null
    },
    "weapons": [],
    "default": true,
@@ -1353,7 +1385,7 @@
    "iframes": [],
    "parryable": null,
    "damage": {
-    "amount": 1
+    "amount": null
    },
    "weapons": [],
    "default": true,
@@ -1380,7 +1412,7 @@
    "iframes": [],
    "parryable": null,
    "damage": {
-    "amount": 1
+    "amount": null
    },
    "weapons": [],
    "default": true,
@@ -1407,7 +1439,7 @@
    "iframes": [],
    "parryable": null,
    "damage": {
-    "amount": 1
+    "amount": null
    },
    "weapons": [],
    "default": true,
@@ -1538,7 +1570,7 @@
    "iframes": [],
    "parryable": null,
    "damage": {
-    "amount": 2
+    "amount": null
    },
    "weapons": [],
    "default": true,
@@ -1581,16 +1613,11 @@
    "type": "attack",
    "grip": "any",
    "name": "Focus burst",
-   "startup": 68,
-   "active": [
-    [
-     68,
-     91
-    ]
-   ],
-   "activeFrames": 24,
-   "hits": 1,
-   "recovery": 31,
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
    "total": 122,
    "cancels": {},
    "armor": [],
@@ -1605,7 +1632,7 @@
     "FSM states": "Tendril Antic → Tendril Burst → Tendril Start → Tendril Hit → T2 → T3 → Tendril Hit End → Tendril Recover",
     "Health": "1600"
    },
-   "desc": "Control FSM from Tendril Antic"
+   "desc": "Control FSM from Tendril Antic; its damage comes from spawned projectiles or objects, not drawn yet"
   },
   {
    "id": "pureVessel.attack.shot",
@@ -1624,7 +1651,7 @@
    "iframes": [],
    "parryable": null,
    "damage": {
-    "amount": 2
+    "amount": null
    },
    "weapons": [],
    "default": true,
@@ -1651,7 +1678,7 @@
    "iframes": [],
    "parryable": null,
    "damage": {
-    "amount": 2
+    "amount": null
    },
    "weapons": [],
    "default": true,
@@ -1710,7 +1737,7 @@
    "iframes": [],
    "parryable": null,
    "damage": {
-    "amount": 2
+    "amount": null
    },
    "weapons": [],
    "default": true,
@@ -1769,7 +1796,7 @@
    "iframes": [],
    "parryable": null,
    "damage": {
-    "amount": 2
+    "amount": null
    },
    "weapons": [],
    "default": true,
@@ -1796,7 +1823,7 @@
    "iframes": [],
    "parryable": null,
    "damage": {
-    "amount": 2
+    "amount": null
    },
    "weapons": [],
    "default": true,
@@ -1823,7 +1850,7 @@
    "iframes": [],
    "parryable": null,
    "damage": {
-    "amount": 2
+    "amount": null
    },
    "weapons": [],
    "default": true,
@@ -1850,7 +1877,7 @@
    "iframes": [],
    "parryable": null,
    "damage": {
-    "amount": 2
+    "amount": null
    },
    "weapons": [],
    "default": true,
@@ -1877,7 +1904,7 @@
    "iframes": [],
    "parryable": null,
    "damage": {
-    "amount": 2
+    "amount": null
    },
    "weapons": [],
    "default": true,
@@ -2212,6 +2239,660 @@
    "weapons": [],
    "default": true,
    "desc": "Bind: spend silk to heal, on the ground"
+  },
+  {
+   "id": "lace.attack.charge",
+   "class": "lace",
+   "type": "attack",
+   "grip": "any",
+   "name": "Lunge",
+   "startup": 43,
+   "active": [
+    [
+     43,
+     52
+    ]
+   ],
+   "activeFrames": 10,
+   "hits": 1,
+   "recovery": 0,
+   "total": 52,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": null
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "FSM states": "Charge Antic → Charge Break → Charge → Charge Crossup? → Charge Recover → Will Counter? → Pose",
+    "Health": "800"
+   },
+   "desc": "Control FSM from Charge Antic"
+  },
+  {
+   "id": "lace.attack.multiCharge",
+   "class": "lace",
+   "type": "attack",
+   "grip": "any",
+   "name": "Multi lunge",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 76,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": null
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "FSM states": "MultiCharge Antic → MultiCharge Break → MultiCharge → MultiCharge Recover → Will Counter? → Pose",
+    "Health": "800"
+   },
+   "desc": "Control FSM from MultiCharge Antic; its damage comes from spawned projectiles or objects, not drawn yet"
+  },
+  {
+   "id": "lace.attack.downstab",
+   "class": "lace",
+   "type": "attack",
+   "grip": "any",
+   "name": "Down stab",
+   "startup": 20,
+   "active": [
+    [
+     20,
+     54
+    ]
+   ],
+   "activeFrames": 35,
+   "hits": 1,
+   "recovery": 0,
+   "total": 54,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": null
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "FSM states": "Downstab Antic → Dstab Angle → Downstab → Downstab Land → Will Counter? → Pose",
+    "Health": "800"
+   },
+   "desc": "Control FSM from Downstab Antic"
+  },
+  {
+   "id": "lace.attack.crossSlash",
+   "class": "lace",
+   "type": "attack",
+   "grip": "any",
+   "name": "Cross slash",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 70,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": null
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "FSM states": "CrossSlash Antic → CrossSlash → Finish Multihit → Slash Slam → Repeat? → Reset Slashes → Hop Off Hero? → Pose",
+    "Health": "800"
+   },
+   "desc": "Control FSM from CrossSlash Antic; its damage comes from spawned projectiles or objects, not drawn yet"
+  },
+  {
+   "id": "lace.attack.bombSlash",
+   "class": "lace",
+   "type": "attack",
+   "grip": "any",
+   "name": "Hop slashes",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 59,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": null
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "FSM states": "B Slash HopAntic → B Slash Hop → B Slash Hop 2 → B Slash 1 → B Slash 2 → B Slash 3 → B Slash End → Fall",
+    "Health": "800"
+   },
+   "desc": "Control FSM from B Slash HopAntic; its damage comes from spawned projectiles or objects, not drawn yet"
+  },
+  {
+   "id": "lace.attack.comboSlash",
+   "class": "lace",
+   "type": "attack",
+   "grip": "any",
+   "name": "Combo slash",
+   "startup": 91,
+   "active": [
+    [
+     91,
+     135
+    ]
+   ],
+   "activeFrames": 45,
+   "hits": 1,
+   "recovery": 0,
+   "total": 135,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": null
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "FSM states": "Hop Antic 2 → Hop 2 → Hop Recover 2 → ComboSlash 1 → ComboSlash 2 → ComboSlash 3 → ComboSlash 4 → ComboSlash 5 → ComboSlash 6 → ComboSlash 7 → Will Counter? → Pose",
+    "Health": "800"
+   },
+   "desc": "Control FSM from Hop Antic 2"
+  },
+  {
+   "id": "lace.attack.circleSlash",
+   "class": "lace",
+   "type": "attack",
+   "grip": "any",
+   "name": "Circle slash",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 56,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": null
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "FSM states": "J Slash M Antic → J Slash Petals? → J Slash Multi → Force R? → Force L?",
+    "Health": "800"
+   },
+   "desc": "Control FSM from J Slash M Antic; its damage comes from spawned projectiles or objects, not drawn yet"
+  },
+  {
+   "id": "lace.attack.rapidSlash",
+   "class": "lace",
+   "type": "attack",
+   "grip": "any",
+   "name": "Rapid air slash",
+   "startup": 1,
+   "active": [
+    [
+     1,
+     47
+    ]
+   ],
+   "activeFrames": 47,
+   "hits": 1,
+   "recovery": 0,
+   "total": 47,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": null
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "FSM states": "RapidSlashAir Antic → RapidSlash Air → Slash End → Bounce Back",
+    "Health": "800"
+   },
+   "desc": "Control FSM from RapidSlashAir Antic"
+  },
+  {
+   "id": "lace.attack.counter",
+   "class": "lace",
+   "type": "attack",
+   "grip": "any",
+   "name": "Counter",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 58,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": null
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "FSM states": "Counter Antic → Counter Stance → Counter End → P3 Check → P2 Check → CrossSlash?",
+    "Health": "800"
+   },
+   "desc": "Control FSM from Counter Antic; its damage comes from spawned projectiles or objects, not drawn yet"
+  },
+  {
+   "id": "bellBeast.attack.charge",
+   "class": "bellBeast",
+   "type": "attack",
+   "grip": "any",
+   "name": "Charge",
+   "startup": 1,
+   "active": [
+    [
+     1,
+     88
+    ]
+   ],
+   "activeFrames": 88,
+   "hits": 1,
+   "recovery": 95,
+   "total": 183,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": 2
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "FSM states": "Charge Antic → Charge → Charge End → Dig In → Submerged → Rage? → Bell Burst? → Choose Dir",
+    "Health": "150"
+   },
+   "desc": "Control FSM from Charge Antic"
+  },
+  {
+   "id": "bellBeast.attack.leap",
+   "class": "bellBeast",
+   "type": "attack",
+   "grip": "any",
+   "name": "Leap",
+   "startup": 61,
+   "active": [
+    [
+     61,
+     84
+    ]
+   ],
+   "activeFrames": 24,
+   "hits": 1,
+   "recovery": 150,
+   "total": 234,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": 2
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "FSM states": "Emerge Antic L → Leap Out → Descending → Leap Land → Dig In → Submerged → Rage? → Bell Burst? → Choose Dir",
+    "Health": "150"
+   },
+   "desc": "Control FSM from Emerge Antic L"
+  },
+  {
+   "id": "lastJudge.attack.spin",
+   "class": "lastJudge",
+   "type": "attack",
+   "grip": "any",
+   "name": "Censer spin",
+   "startup": 32,
+   "active": [
+    [
+     32,
+     92
+    ]
+   ],
+   "activeFrames": 61,
+   "hits": 1,
+   "recovery": 20,
+   "total": 112,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": 2
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "FSM states": "Spin Antic → Spinning → Spin End",
+    "Health": "720"
+   },
+   "desc": "Control FSM from Spin Antic"
+  },
+  {
+   "id": "lastJudge.attack.jump",
+   "class": "lastJudge",
+   "type": "attack",
+   "grip": "any",
+   "name": "Jump slam",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 60,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": null
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "FSM states": "Jump Antic → Jump Rise → Jump Fall → Land → After Land",
+    "Health": "720"
+   },
+   "desc": "Control FSM from Jump Antic; its damage comes from spawned projectiles or objects, not drawn yet"
+  },
+  {
+   "id": "lastJudge.attack.dash",
+   "class": "lastJudge",
+   "type": "attack",
+   "grip": "any",
+   "name": "Dash",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 33,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": null
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "FSM states": "Dash Antic → Dash → Dash Land → Range Check",
+    "Health": "720"
+   },
+   "desc": "Control FSM from Dash Antic; its damage comes from spawned projectiles or objects, not drawn yet"
+  },
+  {
+   "id": "phantom.attack.stabs",
+   "class": "phantom",
+   "type": "attack",
+   "grip": "any",
+   "name": "Stab flurry",
+   "startup": 35,
+   "active": [
+    [
+     35,
+     91
+    ]
+   ],
+   "activeFrames": 57,
+   "hits": 1,
+   "recovery": 0,
+   "total": 91,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": 1
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "FSM states": "Stab Antic → Stab 1 → Stab 2 → Stab 3 → Stab Check → Stab 4 → Stab 5 → Stab 6",
+    "Health": "650"
+   },
+   "desc": "Control FSM from Stab Antic"
+  },
+  {
+   "id": "phantom.attack.throw",
+   "class": "phantom",
+   "type": "attack",
+   "grip": "any",
+   "name": "Pin throw",
+   "startup": 31,
+   "active": [
+    [
+     31,
+     63
+    ]
+   ],
+   "activeFrames": 33,
+   "hits": 1,
+   "recovery": 0,
+   "total": 63,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": 1
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "FSM states": "G Throw Antic → G Throw → G Pull Wait",
+    "Health": "650"
+   },
+   "desc": "Control FSM from G Throw Antic"
+  },
+  {
+   "id": "phantom.attack.pull",
+   "class": "phantom",
+   "type": "attack",
+   "grip": "any",
+   "name": "Pull and stab",
+   "startup": 33,
+   "active": [
+    [
+     33,
+     43
+    ]
+   ],
+   "activeFrames": 11,
+   "hits": 1,
+   "recovery": 0,
+   "total": 43,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": 1
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "FSM states": "G Pull Antic → G Dash → Final Catch → Catch Stab 1 → Catch Stab 2 → Catch Stab 3",
+    "Health": "650"
+   },
+   "desc": "Control FSM from G Pull Antic"
+  },
+  {
+   "id": "phantom.attack.dragoon",
+   "class": "phantom",
+   "type": "attack",
+   "grip": "any",
+   "name": "Dragoon drop",
+   "startup": 55,
+   "active": [
+    [
+     55,
+     97
+    ]
+   ],
+   "activeFrames": 43,
+   "hits": 1,
+   "recovery": 0,
+   "total": 97,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": 2
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "FSM states": "Drop Antic → Dragoon Down → Remove Focus? → Dragoon Blast → Repeat? → Dragoon End",
+    "Health": "650"
+   },
+   "desc": "Control FSM from Drop Antic"
+  },
+  {
+   "id": "phantom.attack.parry",
+   "class": "phantom",
+   "type": "attack",
+   "grip": "any",
+   "name": "Parry stance",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 56,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": null
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "FSM states": "Parry Antic → Counter Stance → Unparry → Parry End → Fall? → Parry Fall",
+    "Health": "650"
+   },
+   "desc": "Control FSM from Parry Antic; its damage comes from spawned projectiles or objects, not drawn yet"
+  },
+  {
+   "id": "widow.attack.dashSlash",
+   "class": "widow",
+   "type": "attack",
+   "grip": "any",
+   "name": "Dash slash",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 45,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": null
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "FSM states": "DashSlash Antic → DashSlash Pullback → DashSlash",
+    "Health": "360"
+   },
+   "desc": "Control FSM from DashSlash Antic"
+  },
+  {
+   "id": "widow.attack.dashCharge",
+   "class": "widow",
+   "type": "attack",
+   "grip": "any",
+   "name": "Charge",
+   "startup": 1,
+   "active": [
+    [
+     1,
+     100
+    ]
+   ],
+   "activeFrames": 100,
+   "hits": 1,
+   "recovery": 0,
+   "total": 100,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": null
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "FSM states": "DashCharge Antic → DashCharge → DashCharge End → Dash Audio End → Tele Out → Away → Phase Check",
+    "Health": "360"
+   },
+   "desc": "Control FSM from DashCharge Antic"
+  },
+  {
+   "id": "mossMother.attack.swoop",
+   "class": "mossMother",
+   "type": "attack",
+   "grip": "any",
+   "name": "Swoop",
+   "startup": null,
+   "active": [],
+   "activeFrames": 0,
+   "hits": 0,
+   "recovery": null,
+   "total": 120,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {
+    "amount": null
+   },
+   "weapons": [],
+   "default": true,
+   "extra": {
+    "FSM states": "Swoop Antic → Swoop → Swoop Extend → Swoop Return → Swoop Recover",
+    "Health": "350"
+   },
+   "desc": "Control FSM from Swoop Antic; its damage comes from spawned projectiles or objects, not drawn yet"
   }
  ]
 }

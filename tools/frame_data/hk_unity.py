@@ -158,7 +158,8 @@ class Game:
                 self._cabs = json.load(open(cache))
             else:
                 self._cabs = {}
-                for fn in sorted(os.listdir(self.aa)):
+                for fn in sorted(os.path.relpath(os.path.join(r, n), self.aa).replace(os.sep, '/')
+                                 for r, _, ns in os.walk(self.aa) for n in ns):
                     if not fn.endswith('.bundle'): continue
                     try: e = UnityPy.load(os.path.join(self.aa, fn))
                     except Exception: continue

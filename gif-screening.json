@@ -3365,6 +3365,97 @@
    "game": "Hollow Knight: Silksong",
    "what": "Silksong Hornet Bind (heal): game sprites with hurtbox and attack hitboxes",
    "confidence": "high"
+  },
+  {
+   "animation": "melee.dash-attack-lunge",
+   "clip": "melee.dash-attack-lunge-hk-3",
+   "game": "Hollow Knight: Silksong",
+   "what": "Lace lunge: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.plunging-downward-attack",
+   "clip": "melee.plunging-downward-attack-hk-2",
+   "game": "Hollow Knight: Silksong",
+   "what": "Lace down stab: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.combo-finisher",
+   "clip": "melee.combo-finisher-hk-0",
+   "game": "Hollow Knight: Silksong",
+   "what": "Lace combo slash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.spin-attack",
+   "clip": "melee.spin-attack-hk-2",
+   "game": "Hollow Knight: Silksong",
+   "what": "Lace circle slash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.spin-attack",
+   "clip": "melee.spin-attack-hk-3",
+   "game": "Hollow Knight: Silksong",
+   "what": "Last Judge censer spin: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.dual-wield-flurry",
+   "clip": "melee.dual-wield-flurry-hk-0",
+   "game": "Hollow Knight: Silksong",
+   "what": "Lace rapid air slash: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.thrust-stab",
+   "clip": "melee.thrust-stab-hk-1",
+   "game": "Hollow Knight: Silksong",
+   "what": "Phantom stab flurry: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.weapon-throw-recall",
+   "clip": "melee.weapon-throw-recall-hk-1",
+   "game": "Hollow Knight: Silksong",
+   "what": "Phantom pin throw: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.ground-pound",
+   "clip": "melee.ground-pound-hk-1",
+   "game": "Hollow Knight: Silksong",
+   "what": "Phantom dragoon drop: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "enemies.charging-rush",
+   "clip": "enemies.charging-rush-hk-2",
+   "game": "Hollow Knight: Silksong",
+   "what": "Bell Beast charge: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "enemies.charging-rush",
+   "clip": "enemies.charging-rush-hk-3",
+   "game": "Hollow Knight: Silksong",
+   "what": "Widow charge: game sprites with hurtbox and attack hitboxes",
+   "confidence": "high"
+  },
+  {
+   "animation": "melee.whip-chain-lash",
+   "clip": "melee.whip-chain-lash-hk-0",
+   "game": "Hollow Knight: Silksong",
+   "what": "Last Judge censer swing: game sprites with hurtbox and attack hitboxes",
+   "confidence": "low"
+  },
+  {
+   "animation": "creature.insect-spider-crawl",
+   "clip": "creature.insect-spider-crawl-hk-0",
+   "game": "Hollow Knight: Silksong",
+   "what": "Widow skittering charge: game sprites with hurtbox and attack hitboxes",
+   "confidence": "low"
   }
  ]
 }
