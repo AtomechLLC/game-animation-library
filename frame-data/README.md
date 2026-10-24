@@ -25,6 +25,9 @@ The page knows nothing about where the numbers came from, so every source only h
 - `hollow-knight.json` — Hollow Knight (Steam build), frames of 1/60 s. Built by `tools/frame_data/import_hk_game.py`
   from an installed copy (see [Hollow Knight](#hollow-knight)), which also writes `sprites/hollow-knight/` for the
   2D preview and `icons/hollow-knight/`.
+- `devil-may-cry-3.json` — Devil May Cry 3: Special Edition (PS2, Europe), 60 fps, Dante's 118 weapon and style moves.
+  Built by `tools/frame_data/import_dmc3_game.py` from the disc's files (see [Devil May Cry 3](#devil-may-cry-3));
+  `tools/frame_data/export_dmc3_models.py` writes `models/devil-may-cry-3/` for the 3D preview.
 - `clipviewer.js` — the hitbox clip preview docked above the move table for games with `clips` (see [Hitbox clips](#hitbox-clips)).
 - `models/elden-ring/` and `viewer3d.js` — the 3D preview docked above the move table (see [3D preview](#3d-preview)).
 - `icons/elden-ring/` — 96px WebP inventory icons per weapon and `icons.json` (weapon name → file, source page). Built by
@@ -200,6 +203,34 @@ Sheets are cropped only for projectiles flying far ahead, so big spell and boss 
 
 `add_hk.py` renders library clips from the same sheets (hitboxes drawn on, dark background) for the moves it maps.
 
+## Devil May Cry 3
+
+`tools/frame_data/import_dmc3_game.py` reads Devil May Cry 3: Special Edition straight from the PS2 disc's files
+(European release, SLES-54186): the folder with `GData.afs`, or a folder it was unpacked to. Read-only; the formats
+are written up in `tools/frame_data/dmc3_files.py`.
+
+```bash
+python tools/frame_data/import_dmc3_game.py "D:/Games/Devil May Cry 3 SE"        # writes devil-may-cry-3.json
+python tools/frame_data/export_dmc3_models.py "D:/Games/Devil May Cry 3 SE"      # writes models/devil-may-cry-3/
+```
+
+- **Which moves.** The executable (`SLES_541.86`) starts each of Dante's actions from one dispatch chain, one function
+  per action id; each function plays one or more of his motion scripts by (group, index). `tools/frame_data/dmc3_moves.py`
+  lists those per move, with names from the action ids (the enum in the community
+  [Crimson](https://github.com/berthrage/Devil-May-Cry-3-Crimson) mod for the PC port matches the PS2 ids). Classes are the
+  five devil arms, five guns and Royalguard; Swordmaster and Gunslinger moves sit under their weapon with type
+  Swordmaster / Gunslinger.
+- **Total.** A script plays one motion of a motion pack (`pl000_00_<n>.pac`) from a start frame to its last frame; the
+  spans of a move's scripts added up are its total. A combo part's motion carries the parts before it and the script
+  starts it where the previous part handed over, so totals count from there.
+- **Cancels.** A script also sets per-input next-action policies as the motion plays (buffer, act, off). The first frame
+  it lets an input act is the cancel: `attack` (melee), `dodge` (jump or roll), `block` (Royalguard), `skill` (style
+  move) and `move` (plain movement, the end of recovery). They come from the move's last script.
+- **Not known yet.** When the hit comes out isn't in the scripts or any data file; the executable decides it, so startup,
+  active frames, recovery and the 3D preview's hitboxes are left out for now. Also not listed yet: the guns' normal
+  aimed shots and Twosome Time (their motions come from aim tables), Trickster, Quicksilver and Doppelganger moves
+  (started outside the action dispatch), and damage.
+
 ## Super Smash Bros. Ultimate
 
 ```bash
@@ -323,6 +354,25 @@ Reibach's Claws have no mesh yet), 1.2 MB of armor and the move files. Not cover
 `<context>-<name>`.
 
 These are Moon Studios' assets, under the same terms as the Elden Ring files above.
+
+### Devil May Cry 3
+
+```bash
+python tools/frame_data/export_dmc3_models.py "<folder with GData.afs>"   # ~1 minute
+```
+
+writes `models/devil-may-cry-3/` in the same layout (about 2.4 MB):
+
+- `dante.glb`: Dante's body (`pl000.pac` slot 1) on his 24-bone skeleton with the textures of slot 0, scaled from
+  centimetres to metres. His coat (slot 12) is cloth-simulated in the game; here each coat vertex takes the skin of the
+  nearest hip or leg vertex, eased toward the lower body further down, so it swings with the legs.
+- `weapon-<name>.glb`: each weapon's MOD (`plwp_*.pac` slot 1), origin at the grip, on the right hand (and node `L`
+  on the left hand for Ebony & Ivory and Agni & Rudra).
+- `anim/<move>.bin`: the move's motions played in a row from each script's start frame, sampled at 60 fps (`FDA2`);
+  root motion carries on from one motion to the next.
+- `moves/<class>.json`: per move its `anim`, `frames` and preview `weapon`; `hits` is empty until hit windows are found.
+
+These are Capcom's assets, under the same terms as the Elden Ring files above.
 
 ## Store links
 

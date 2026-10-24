@@ -1,0 +1,154 @@
+{
+ "schema": "frame-data-models/2",
+ "game": "devil-may-cry-3",
+ "version": "PS2 Special Edition (SLES-54186)",
+ "fps": 60,
+ "weaponTurn": false,
+ "skeleton": {
+  "weaponBone": "R_Hand",
+  "leftWeaponBone": "L_Hand",
+  "rootBone": "Root",
+  "follow": "Hips",
+  "fit": [
+   "Head",
+   "L_Toe",
+   "R_Toe",
+   "L_Hand",
+   "R_Hand"
+  ],
+  "bones": [
+   "Root",
+   "Hips",
+   "UpperBody",
+   "Spine",
+   "Chest",
+   "Head",
+   "L_Clavicle",
+   "L_UpperArm",
+   "L_Forearm",
+   "L_Hand",
+   "R_Clavicle",
+   "R_UpperArm",
+   "R_Forearm",
+   "R_Hand",
+   "LowerBody",
+   "L_Thigh",
+   "L_Calf",
+   "L_Foot",
+   "L_Toe",
+   "R_Thigh",
+   "R_Calf",
+   "R_Foot",
+   "R_Toe",
+   "Hair"
+  ]
+ },
+ "armor": {
+  "name": "Dante",
+  "file": "dante.glb"
+ },
+ "weapons": {
+  "Rebellion": {
+   "model": "plwp_sword.pac",
+   "file": "weapon-rebellion.glb"
+  },
+  "Cerberus": {
+   "model": "plwp_nunchaku.pac",
+   "file": "weapon-cerberus.glb"
+  },
+  "Agni & Rudra": {
+   "model": "plwp_2sword.pac",
+   "file": "weapon-agni-rudra.glb"
+  },
+  "Nevan": {
+   "model": "plwp_guitar.pac",
+   "file": "weapon-nevan.glb"
+  },
+  "Beowulf": {
+   "model": "plwp_fight.pac",
+   "file": "weapon-beowulf.glb"
+  },
+  "Ebony & Ivory": {
+   "model": "plwp_gun.pac",
+   "file": "weapon-ebony-ivory.glb"
+  },
+  "Shotgun": {
+   "model": "plwp_shotgun.pac",
+   "file": "weapon-shotgun.glb"
+  },
+  "Artemis": {
+   "model": "plwp_laser.pac",
+   "file": "weapon-artemis.glb"
+  },
+  "Spiral": {
+   "model": "plwp_rifle.pac",
+   "file": "weapon-spiral.glb"
+  },
+  "Kalina Ann": {
+   "model": "plwp_ladygun.pac",
+   "file": "weapon-kalina-ann.glb"
+  },
+  "None": {
+   "model": null,
+   "file": null
+  }
+ },
+ "body": {},
+ "classes": {
+  "rebellion": {
+   "file": "moves/rebellion.json",
+   "weapon": "Rebellion",
+   "hand": "R"
+  },
+  "cerberus": {
+   "file": "moves/cerberus.json",
+   "weapon": "Cerberus",
+   "hand": "R"
+  },
+  "agni-rudra": {
+   "file": "moves/agni-rudra.json",
+   "weapon": "Agni & Rudra",
+   "hand": "R"
+  },
+  "nevan": {
+   "file": "moves/nevan.json",
+   "weapon": "Nevan",
+   "hand": "R"
+  },
+  "beowulf": {
+   "file": "moves/beowulf.json",
+   "weapon": "Beowulf",
+   "hand": "R"
+  },
+  "ebony-ivory": {
+   "file": "moves/ebony-ivory.json",
+   "weapon": "Ebony & Ivory",
+   "hand": "R"
+  },
+  "shotgun": {
+   "file": "moves/shotgun.json",
+   "weapon": "Shotgun",
+   "hand": "R"
+  },
+  "artemis": {
+   "file": "moves/artemis.json",
+   "weapon": "Artemis",
+   "hand": "R"
+  },
+  "spiral": {
+   "file": "moves/spiral.json",
+   "weapon": "Spiral",
+   "hand": "R"
+  },
+  "kalina-ann": {
+   "file": "moves/kalina-ann.json",
+   "weapon": "Kalina Ann",
+   "hand": "R"
+  },
+  "royalguard": {
+   "file": "moves/royalguard.json",
+   "weapon": "None",
+   "hand": "R"
+  }
+ }
+}
