@@ -49,7 +49,10 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var
 .search{flex:1 1 240px;display:flex;align-items:center;gap:8px;background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:0 10px;min-width:0}
 .search input{flex:1;min-width:0;border:0;background:transparent;color:var(--fg);font:inherit;padding:9px 0;outline:none}
 .search kbd{font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:0 5px}
-.domain{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+/* the game bar gets its own row, ahead of the per-game counts, so switching games never moves or resizes it */
+.grow{display:flex;align-items:center;gap:6px 16px;flex-wrap:wrap;padding-bottom:10px;margin-top:-4px}
+.grow .ver{flex:1 1 220px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.domain{display:flex;flex:none;max-width:100%;border:1px solid var(--line);border-radius:6px;overflow:hidden}
 .domain button{border:0;background:transparent;padding:7px 12px;cursor:pointer;font-size:13px;font-weight:500}
 .domain button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
 .ruler{position:relative;height:30px;border-top:1px solid var(--line);overflow:hidden;font-family:var(--mono);font-size:10px;color:var(--muted)}
@@ -199,10 +202,13 @@ footer p{max-width:85ch;margin:0 0 8px}
 /* weapon buttons and the preview share a row that floats under the header while the table scrolls; Hide folds it */
 .pick.dockon{display:grid;grid-template-columns:minmax(0,1fr) minmax(340px,46%);gap:0 20px;align-items:start;margin-bottom:12px}
 .pick-l{min-width:0}
-.dock{display:grid;gap:6px;padding-top:4px}
+.dock{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;padding-top:4px;min-width:0}
 .dock-head{display:flex;align-items:end;justify-content:space-between;gap:10px}
 .dock-head small{font-family:var(--mono);font-size:10.5px;color:var(--key-ink);text-transform:uppercase;letter-spacing:.05em}
 .dock-head h3{font-family:var(--display);font-size:16px;font-weight:800;margin:0;line-height:1.2}
+/* one line each, so the stage sits at the same height whichever game or move is shown */
+.dock-head>div{min-width:0}
+.dock-head small,.dock-head h3{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .dock-btns{display:flex;gap:6px;flex:none}
 .dock .v3d-stage{aspect-ratio:auto;height:clamp(200px,30vh,330px)}
 .pick.min .wtiles,.pick.min .v3d,.pick.min #sub,.pick.min #active{display:none}
@@ -221,12 +227,12 @@ tbody tr.on td{background:var(--chip);box-shadow:inset 0 1px var(--key),inset 0 
 <header>
   <div class="wrap hrow">
     <a class="club" href="https://funsmith.club" aria-label="Funsmith club"><svg viewBox="0 0 127.14 96.36" aria-hidden="true"><path d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0a105.89 105.89 0 0 0-26.25 8.09C2.79 32.65-1.71 56.6.54 80.21a105.73 105.73 0 0 0 32.17 16.15 77.7 77.7 0 0 0 6.89-11.11 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.66 2a68.68 68.68 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1 105.25 105.25 0 0 0 32.19-16.14c2.64-27.38-4.51-51.11-18.9-72.15ZM42.45 65.69C36.18 65.69 31 60 31 53s5-12.74 11.43-12.74S54 46 53.89 53s-5.05 12.69-11.44 12.69Zm42.24 0C78.41 65.69 73.25 60 73.25 53s5-12.74 11.44-12.74S96.23 46 96.12 53s-5.04 12.69-11.43 12.69Z"/></svg><span>Funsmith club</span></a>
-    <div class="brand"><h1>Game Animation Library</h1><span class="ver" id="ver"></span></div>
+    <div class="brand"><h1>Game Animation Library</h1></div>
     <nav class="tabs" aria-label="Sections"><a href="./">Animations</a><a href="frame-data.html" aria-current="page">Frame Data</a></nav>
     <label class="search" for="q"><span aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Search moves, weapons…" autocomplete="off"><kbd>/</kbd></label>
-    <div class="domain" role="group" aria-label="Game" id="games"></div>
     <button class="rail-toggle" id="railBtn" aria-expanded="false">Filters</button>
   </div>
+  <div class="wrap grow"><div class="domain" role="group" aria-label="Game" id="games"></div><span class="ver" id="ver"></span></div>
   <div class="ruler"><div class="ticks"></div><div class="keys" id="keys"></div><div class="playhead"></div></div>
 </header>
 
@@ -344,7 +350,7 @@ function count(list,f){const c=new Map();list.forEach(m=>{const k=f(m);c.set(k,(
 
 function renderAll(){
   $('#games').innerHTML=GAMES.map(g=>`<button data-game="${esc(g.id)}" aria-pressed="${g.id===st.game}">${esc(g.name)}</button>`).join('');
-  $('#ver').textContent=`${D.moves.length.toLocaleString()} moves · ${D.classes.length} ${L.classes} · ${L.patch}${D.game.version}`;
+  $('#ver').title=$('#ver').textContent=`${D.moves.length.toLocaleString()} moves · ${D.classes.length} ${L.classes} · ${L.patch}${D.game.version}`;
   $('#keys').innerHTML=`<button class="kf" data-fam="" aria-pressed="${!st.fam&&!st.cls}"><i></i>${esc(L.allFamilies)}</button>`+D.families.map(f=>`<button class="kf" data-fam="${f.id}" aria-pressed="${st.fam===f.id}"><i></i>${esc(f.name)}</button>`).join('');
   const tc=count(pool('type'),m=>m.type);
   $('#types').innerHTML=D.moveTypes.filter(t=>tc.get(t.id)||st.types.has(t.id)).map(t=>`<button class="fitem" data-type="${t.id}" aria-pressed="${st.types.has(t.id)}" title="${esc(t.description)}"><span>${esc(t.name)}</span><span>${tc.get(t.id)||0}</span></button>`).join('');
@@ -498,7 +504,7 @@ async function preview(m){
   document.querySelectorAll('tbody tr.on').forEach(r=>r.classList.remove('on'));
   document.querySelector(`tbody tr[data-m="${CSS.escape(key)}"]`)?.classList.add('on');
   $('#dockSrc').textContent=`${CL[m.class].name} › ${T[m.type].name} · ${GR[m.grip]}`;
-  $('#dockName').textContent=`${m.name} · `+(m.active.length?`startup ${m.startup}, active ${m.active.map(([s,e])=>s===e?s:s+'–'+e).join(', ')}`:`${m.total??'—'} frames`);
+  $('#dockName').title=$('#dockName').textContent=`${m.name} · `+(m.active.length?`startup ${m.startup}, active ${m.active.map(([s,e])=>s===e?s:s+'–'+e).join(', ')}`:`${m.total??'—'} frames`);
   const view=await DOCK.view;
   if(DOCK.key!==key)return;
   if(byClass()){if(!DOCK.cm)return;view.show(m,{weapon:pickName(),strip:stripHtml(m,DOCK.cm.moves[m.id].frames),state:f=>frameState(m,f)})}
