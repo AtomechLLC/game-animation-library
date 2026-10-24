@@ -3456,6 +3456,97 @@
    "game": "Hollow Knight: Silksong",
    "what": "Widow skittering charge: game sprites with hurtbox and attack hitboxes",
    "confidence": "low"
+  },
+  {
+   "animation": "melee.light-attack-combo-string",
+   "clip": "melee.light-attack-combo-string-ngb-0",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Crimson Slash, the Dragon Sword's third X: figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.light-attack-combo-string",
+   "clip": "melee.light-attack-combo-string-ngb-1",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Blade of the Dragon's Tail (XXYYY finisher): figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.combo-finisher",
+   "clip": "melee.combo-finisher-ngb-0",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Dragon Tear (XXXY finisher): figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.uppercut-launcher",
+   "clip": "melee.uppercut-launcher-ngb-0",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Blade of the Undefeatable, the launcher of the XY air strings: figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.aerial-attack",
+   "clip": "melee.aerial-attack-ngb-0",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's first air slash after the launcher: figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.aerial-attack",
+   "clip": "melee.aerial-attack-ngb-1",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Blade of the Empty Air (jump X): figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.plunging-downward-attack",
+   "clip": "melee.plunging-downward-attack-ngb-0",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Blade of Nirrti, a diving air finisher: figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.spin-attack",
+   "clip": "melee.spin-attack-ngb-0",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Windmill Slash: figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.kick",
+   "clip": "melee.kick-ngb-0",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Fiend's Bane Kick: figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.kick",
+   "clip": "melee.kick-ngb-1",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Early Winter Rain, three kicks: figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.sprint-attack",
+   "clip": "melee.sprint-attack-ngb-0",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Violent Wind, X while running: figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "melee.charged-attack",
+   "clip": "melee.charged-attack-ngb-0",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Haze Straight Slash, released after holding Y: figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
+  },
+  {
+   "animation": "magic.ultimate-super-ability",
+   "clip": "magic.ultimate-super-ability-ngb-0",
+   "game": "Ninja Gaiden Black",
+   "what": "Ryu's Hundred Wing Blade (Ultimate Technique) timing: figure posed from the game animation with the sword hitbox",
+   "confidence": "low"
   }
  ]
 }

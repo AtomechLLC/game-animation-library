@@ -1,0 +1,17 @@
+{
+ "fps": 60,
+ "smooth": true,
+ "kinds": {
+  "a": "Attack"
+ },
+ "source": {
+  "name": "Ninja Gaiden Black game files (figure posed from the game's animation)",
+  "url": "https://github.com/AtomechLLC/game-animation-library/blob/main/tools/frame_data/import_ngb_game.py",
+  "author": "Team Ninja"
+ },
+ "classes": {
+  "dragonSword": {
+   "file": "moves/dragonSword.json"
+  }
+ }
+}

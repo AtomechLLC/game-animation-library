@@ -47,24 +47,32 @@ two), 2,281 of the 2,297 scripts parse end to end. Script 400 (a Dragon Sword at
 0 6   13 0 0 15 1 0      0 7   13 0 0 15 0 0
 0 9   d 0 1              ; attack slot 0 on  (frame 9)
 0 a   e 2100 0           ; swing sound
-0 c   13 2 4 1 3 0       ; input window
+0 c   13 2 4 1 3 0       ; status 4 on bone 3: a footstep sound
 0 d   d 0 0              ; attack slot 0 off (frame 13): 4 active frames
-0 2c  9 0
-0 2f  13 2 4 1 ffff ffff ; any input accepted from here
+      9 1                ; combo input window opens
+0 2c  9 0                ; and closes
+0 2f  13 2 4 1 ffff ffff ; another footstep
 0 31  ...                ; end of script at frame 49
 ```
 
-So startup and active frames come from the `0x0d` events (slot, 1 = on, 0 or 4 = off; slots other than 0 are
-kicks and other limbs), and the cancel windows from the `0x13 2 4 ...` input events. The exact meaning of each
-`0x13` sub-command still has to be confirmed in the game code.
+So startup and active frames come from the `0x0d` events (slot, 1 = on, 0 or 4 = off; slots 0x0c and up are the
+feet), and the combo window from `9 1` / `9 0`, which set the flag (player+0x27ac = 2) the input rules check.
+`13 2 4 ...` turned out to be footstep sounds, not input windows.
 
 ## The motions
 
-A motion is 44 track offsets (one per animated channel), then one track per channel: keys of 32 bits, the high
-16 bits a value that moves smoothly from key to key (most likely a binary angle, 65,536 = one turn, with 4 more bits
-of fraction), the low 12 bits a duration (`5` on every key of a sampled track, `0` on the last). Script 400's events
-run to frame 49 and its motion has 60 keys of `5`, so `5` is probably one 60 fps frame; to be confirmed. Constant channels are a single key. Which bone and axis each of
-the 44 channels drives is not known yet; the model has 59 bones, so the mapping is part of the KMD or the `.chr`.
+A motion is 44 track offsets (relative to the bank, the tracks lie before this header). A key is two 16-bit words:
+bits 0-1 of the first are the interpolation (0 = last key; 2 and 3 add one or two tangent words), bits 2-11 the
+duration in frames, bits 12-15 the top of a signed 20-bit value whose low 16 bits are the second word; values are
+x 1e-4, metres or radians (the game's decoder is at xbe 0x190DE0). Channels (from the pose builder at 0x18EEE0):
+0-2 root translation, 3-5 root rotation, 6-8 spine, 9-11 head, then four blocks of 8 for the right arm, left arm,
+right leg and left leg: an IK end-effector position, its rotation and two angles.
+
+## Update: what was built
+
+The importer (`tools/frame_data/import_ngb_game.py`, README "Ninja Gaiden Black") now reads the input rules in
+`ryu.chr` (a bytecode interpreted at xbe 0x16300) to tie inputs to states, and the technique list in `default.xbe`
+for names. It covers 27 Dragon Sword moves; the preview is a figure posed from the motions, not the model.
 
 ## What is left, and effort
 

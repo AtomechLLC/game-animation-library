@@ -6,6 +6,7 @@
   {"id": "street-fighter-3-third-strike", "name": "Street Fighter III: 3rd Strike", "data": "frame-data/street-fighter-3-third-strike.json", "icons": "frame-data/icons/street-fighter-3-third-strike/", "sprites": "frame-data/sprites/street-fighter-3-third-strike/"},
   {"id": "super-smash-bros-ultimate", "name": "Super Smash Bros. Ultimate", "data": "frame-data/super-smash-bros-ultimate.json", "icons": "frame-data/icons/super-smash-bros-ultimate/", "clips": "frame-data/clips/super-smash-bros-ultimate/"},
   {"id": "hollow-knight", "name": "Hollow Knight", "data": "frame-data/hollow-knight.json", "icons": "frame-data/icons/hollow-knight/", "sprites": "frame-data/sprites/hollow-knight/"},
-  {"id": "devil-may-cry-3", "name": "Devil May Cry 3: Special Edition", "data": "frame-data/devil-may-cry-3.json", "icons": "frame-data/icons/devil-may-cry-3/", "models": "frame-data/models/devil-may-cry-3/"}
+  {"id": "devil-may-cry-3", "name": "Devil May Cry 3: Special Edition", "data": "frame-data/devil-may-cry-3.json", "icons": "frame-data/icons/devil-may-cry-3/", "models": "frame-data/models/devil-may-cry-3/"},
+  {"id": "ninja-gaiden-black", "name": "Ninja Gaiden Black", "data": "frame-data/ninja-gaiden-black.json", "icons": "frame-data/icons/ninja-gaiden-black/", "sprites": "frame-data/sprites/ninja-gaiden-black/"}
  ]
 }

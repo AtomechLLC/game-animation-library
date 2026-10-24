@@ -28,6 +28,9 @@ The page knows nothing about where the numbers came from, so every source only h
 - `devil-may-cry-3.json` — Devil May Cry 3: Special Edition (PS2, Europe), 60 fps, Dante's 118 weapon and style moves.
   Built by `tools/frame_data/import_dmc3_game.py` from the disc's files (see [Devil May Cry 3](#devil-may-cry-3));
   `tools/frame_data/export_dmc3_models.py` writes `models/devil-may-cry-3/` for the 3D preview.
+- `ninja-gaiden-black.json` — Ninja Gaiden Black (Xbox), 60 fps, Ryu's Dragon Sword. Built by
+  `tools/frame_data/import_ngb_game.py` from the game disc (see [Ninja Gaiden Black](#ninja-gaiden-black)), which also
+  writes `sprites/ninja-gaiden-black/` for the 2D preview and `icons/ninja-gaiden-black/`.
 - `clipviewer.js` — the hitbox clip preview docked above the move table for games with `clips` (see [Hitbox clips](#hitbox-clips)).
 - `models/elden-ring/` and `viewer3d.js` — the 3D preview docked above the move table (see [3D preview](#3d-preview)).
 - `icons/elden-ring/` — 96px WebP inventory icons per weapon and `icons.json` (weapon name → file, source page). Built by
@@ -230,6 +233,38 @@ python tools/frame_data/export_dmc3_models.py "D:/Games/Devil May Cry 3 SE"     
   active frames, recovery and the 3D preview's hitboxes are left out for now. Also not listed yet: the guns' normal
   aimed shots and Twosome Time (their motions come from aim tables), Trickster, Quicksilver and Doppelganger moves
   (started outside the action dispatch), and damage.
+
+## Ninja Gaiden Black
+
+```bash
+python tools/frame_data/import_ngb_game.py "C:/Games/Ninja Gaiden Black.iso"     # or a folder holding cmn.afs and chr_ryu.afs
+python tools/frame_data/import_ngb_game.py <iso> --no-sprites                    # frame data only
+```
+
+Reads only (numpy, Pillow). The disc is an Xbox XDVDFS image read by `ngb_xiso.py`; game data is in CRI AFS archives.
+Formats are in `tools/frame_data/ngb_files.py`, worked out from the bytes and the game's code (disassembled with the
+[ngbrecomp](https://github.com/gamboozino/ngbrecomp) toolkit); notes in `scouting-ninja-gaiden-black.md`.
+
+- `cmn.afs/ryu.mtn`, section 1: one timeline script per player state. `0 <frame>` waits for that frame of the state's
+  motion. `0x0d slot state` switches an attack on (1) and off (0 or 4): slot 0 is the sword, 0x0c and up the feet,
+  so startup and active windows read straight out of it. `9 1` / `9 0` open and close the combo input window
+  (player+0x27ac = 2), which the input rules test before chaining to the next attack: that is the tab's → Attack.
+- `cmn.afs/rm_kt.mot`: the Dragon Sword's motions (a script's motion 10000 + n). Total is the motion's length.
+  Recovery is total minus the last active frame; no dodge-cancel marker has been decoded yet.
+- Names and inputs: `ryu.chr` holds the input rules as a small bytecode (interpreter at xbe 0x16300: state and
+  state-group tests, button tests per weapon, then the state to go to), which gives the chains (X → XX → XXX,
+  XX → XXY → XXYY → XXYYY, XX → XX6X → XX6XX / XX6XY, XY launcher → air XXX → X or Y, ...). The names are the
+  game's own technique list in `default.xbe`. Moves the chains don't reach with certainty are left out.
+- The Ultimate Technique family (Haze Straight Slash, its Essence and Ultimate versions) shares one animation and
+  timing; only the effects differ.
+
+The 2D preview is not the game's model: `sprites/ninja-gaiden-black/` draws a figure posed from the game's animation
+(root, spine and head rotations, limbs as two-bone IK chains to the motion's end-effectors) seen from the side, the
+sword along the right hand's rotation, and the sword (or foot) attack capsule in red on the active frames. Sword
+length and placement are approximate. `add_ngb.py` renders library clips from the same sheets.
+
+Not read yet: other weapons (the scripts and rules are there: nunchaku, Warhammer, ...), damage, Izuna Drop's throw
+after the grab, flying-swallow and wall moves, the model's meshes.
 
 ## Super Smash Bros. Ultimate
 

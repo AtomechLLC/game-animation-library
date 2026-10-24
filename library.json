@@ -2616,6 +2616,34 @@
       "confidence": "high",
       "what": "Pure Vessel triple slash: game sprites with hurtbox and attack hitboxes"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=combo&m=x3",
+     "media_url": "",
+     "title": "Ryu's Crimson Slash, the Dragon Sword's third X, with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.light-attack-combo-string-ngb-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Crimson Slash, the Dragon Sword's third X: figure posed from the game animation with the sword hitbox"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=combo&m=xxyyy",
+     "media_url": "",
+     "title": "Ryu's Blade of the Dragon's Tail (XXYYY finisher), with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.light-attack-combo-string-ngb-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Blade of the Dragon's Tail (XXYYY finisher): figure posed from the game animation with the sword hitbox"
+     }
     }
    ]
   },
@@ -2835,6 +2863,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Knight Great Slash, released after the charge: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=ut&m=y.hold",
+     "media_url": "",
+     "title": "Ryu's Haze Straight Slash, released after holding Y, with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.charged-attack-ngb-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Haze Straight Slash, released after holding Y: figure posed from the game animation with the sword hitbox"
      }
     }
    ]
@@ -3355,6 +3397,20 @@
       "confidence": "high",
       "what": "Last Judge censer spin: game sprites with hurtbox and attack hitboxes"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=combo&m=6x",
+     "media_url": "",
+     "title": "Ryu's Windmill Slash, with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.spin-attack-ngb-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Windmill Slash: figure posed from the game animation with the sword hitbox"
+     }
     }
    ]
   },
@@ -3444,6 +3500,20 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.uppercut-launcher-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/terry/TerryUTilt.gif"
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=combo&m=y",
+     "media_url": "",
+     "title": "Ryu's Blade of the Undefeatable, the launcher of the XY air strings, with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.uppercut-launcher-ngb-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Blade of the Undefeatable, the launcher of the XY air strings: figure posed from the game animation with the sword hitbox"
+     }
     }
    ],
    "rejected_gifs": [
@@ -3582,6 +3652,34 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Silksong Hornet up slash: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=air&m=xyx",
+     "media_url": "",
+     "title": "Ryu's first air slash after the launcher, with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.aerial-attack-ngb-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's first air slash after the launcher: figure posed from the game animation with the sword hitbox"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=air&m=air.x",
+     "media_url": "",
+     "title": "Ryu's Blade of the Empty Air (jump X), with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.aerial-attack-ngb-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Blade of the Empty Air (jump X): figure posed from the game animation with the sword hitbox"
      }
     }
    ],
@@ -3734,6 +3832,20 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Lace down stab: game sprites with hurtbox and attack hitboxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=air&m=xyxxxx",
+     "media_url": "",
+     "title": "Ryu's Blade of Nirrti, a diving air finisher, with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.plunging-downward-attack-ngb-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Blade of Nirrti, a diving air finisher: figure posed from the game animation with the sword hitbox"
      }
     }
    ],
@@ -4119,6 +4231,20 @@
       "confidence": "high",
       "what": "Silksong Hornet sprint attack (dash stab): game sprites with hurtbox and attack hitboxes"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=run&m=run.x",
+     "media_url": "",
+     "title": "Ryu's Violent Wind, X while running, with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.sprint-attack-ngb-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Violent Wind, X while running: figure posed from the game animation with the sword hitbox"
+     }
     }
    ]
   },
@@ -4320,6 +4446,20 @@
       "confidence": "high",
       "what": "Lace combo slash: game sprites with hurtbox and attack hitboxes"
      }
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=combo&m=xxxy",
+     "media_url": "",
+     "title": "Ryu's Dragon Tear (XXXY finisher), with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.combo-finisher-ngb-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Dragon Tear (XXXY finisher): figure posed from the game animation with the sword hitbox"
+     }
     }
    ]
   },
@@ -4417,6 +4557,34 @@
       "verdict": "added",
       "confidence": "high",
       "what": "Chun-Li standing Roundhouse: sprite frames with hurtboxes and attack boxes"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=combo&m=xx6xx",
+     "media_url": "",
+     "title": "Ryu's Fiend's Bane Kick, with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.kick-ngb-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Fiend's Bane Kick: figure posed from the game animation with the sword hitbox"
+     }
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=combo&m=xx6xy",
+     "media_url": "",
+     "title": "Ryu's Early Winter Rain, three kicks, with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/melee.kick-ngb-1.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Early Winter Rain, three kicks: figure posed from the game animation with the sword hitbox"
      }
     }
    ]
@@ -8691,6 +8859,20 @@
      "host": "Tenor",
      "local": "gifs/magic.ultimate-super-ability-4.webp",
      "source_url": "https://media.tenor.com/LD5qn8gHfWQAAAA1/vendetta-overwatch-vendetta-overwatch-vendetta-ultimate-vendetta-overwatch-ultimate.webp"
+    },
+    {
+     "page_url": "frame-data.html#g=ninja-gaiden-black&c=dragonSword&t=ut&m=y.ut",
+     "media_url": "",
+     "title": "Ryu's Hundred Wing Blade (Ultimate Technique) timing, with hitboxes, rendered from the Frame Data preview",
+     "game": "Ninja Gaiden Black",
+     "host": "Ninja Gaiden Black render",
+     "local": "gifs/magic.ultimate-super-ability-ngb-0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Ryu's Hundred Wing Blade (Ultimate Technique) timing: figure posed from the game animation with the sword hitbox"
+     }
     }
    ]
   },

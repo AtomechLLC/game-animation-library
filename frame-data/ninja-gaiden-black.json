@@ -1,0 +1,1073 @@
+{
+ "schema": "frame-data/1",
+ "game": {
+  "id": "ninja-gaiden-black",
+  "name": "Ninja Gaiden Black",
+  "fps": 60,
+  "version": "Xbox, USA (5443000D)",
+  "frameNote": "Frames are 1/60 s, 1-based, as the game counts them in its move scripts: an attack switched on at script frame N is active from frame N + 1. Total is the length of the move's animation; recovery is total minus the last active frame (the game has no separate dodge-cancel marker that was decoded yet). → Attack is when the combo input window opens."
+ },
+ "source": {
+  "name": "Ninja Gaiden Black game files",
+  "url": "https://github.com/AtomechLLC/game-animation-library/blob/main/tools/frame_data/import_ngb_game.py",
+  "author": "Team Ninja",
+  "retrieved": "2026-10-24",
+  "method": "import_ngb_game.py",
+  "note": "Read straight from the disc: Ryu's move scripts (ryu.mtn), Dragon Sword motions (rm_kt.mot) and input rules (ryu.chr), names from the technique list in default.xbe. The preview is a figure posed from the game's animation (IK limbs from the motion's end-effectors) with the sword placed along the right hand; the model itself is not drawn.",
+  "links": [
+   {
+    "name": "Importer",
+    "url": "https://github.com/AtomechLLC/game-animation-library/blob/main/tools/frame_data/import_ngb_game.py"
+   },
+   {
+    "name": "Ninja Gaiden Black Recompiled (toolkit used to read the code)",
+    "url": "https://github.com/gamboozino/ngbrecomp"
+   }
+  ]
+ },
+ "labels": {
+  "class": "Weapon",
+  "classes": "weapons",
+  "allClasses": "All weapons",
+  "grip": "Where",
+  "allFamilies": "All weapons",
+  "everyClass": "Every weapon",
+  "patch": "",
+  "pickClass": "Pick a weapon to see its moves by type.",
+  "classView": "every move, by type.",
+  "recovery": "Frames from the last active frame to the end of the animation"
+ },
+ "columns": [
+  "name",
+  "input"
+ ],
+ "columnNames": {
+  "attack": [
+   "→ Attack",
+   "First frame the combo input window is open"
+  ]
+ },
+ "families": [
+  {
+   "id": "ryu",
+   "name": "Ryu Hayabusa"
+  }
+ ],
+ "classes": [
+  {
+   "id": "dragonSword",
+   "name": "Dragon Sword",
+   "family": "ryu",
+   "icon": "Dragon Sword",
+   "weapons": [],
+   "moves": 27
+  }
+ ],
+ "moveTypes": [
+  {
+   "id": "combo",
+   "name": "Ground strings",
+   "description": "X / Y strings on the ground, by the game's technique list"
+  },
+  {
+   "id": "run",
+   "name": "Running",
+   "description": "Attacks out of a run"
+  },
+  {
+   "id": "air",
+   "name": "Air",
+   "description": "Jump, flip and launcher strings"
+  },
+  {
+   "id": "ut",
+   "name": "Charged",
+   "description": "Hold Y: Ultimate Technique family, timed from the release"
+  }
+ ],
+ "grips": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "short": "Ground"
+  },
+  {
+   "id": "air",
+   "name": "Air",
+   "short": "Air"
+  }
+ ],
+ "moves": [
+  {
+   "id": "x1",
+   "class": "dragonSword",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Crimson Slash (1st hit)",
+   "input": "X",
+   "startup": 10,
+   "active": [
+    [
+     10,
+     13
+    ]
+   ],
+   "activeFrames": 4,
+   "hits": 1,
+   "recovery": 35,
+   "total": 48,
+   "cancels": {
+    "attack": 14
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "First swing of the basic combo",
+   "extra": {
+    "Script": "400 (motion 10400 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "14–44"
+   }
+  },
+  {
+   "id": "x2",
+   "class": "dragonSword",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Crimson Slash (2nd hit)",
+   "input": "XX",
+   "startup": 13,
+   "active": [
+    [
+     13,
+     16
+    ]
+   ],
+   "activeFrames": 4,
+   "hits": 1,
+   "recovery": 44,
+   "total": 60,
+   "cancels": {
+    "attack": 17
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "Second swing",
+   "extra": {
+    "Script": "401 (motion 10401 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "17–52"
+   }
+  },
+  {
+   "id": "x3",
+   "class": "dragonSword",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Crimson Slash",
+   "input": "XXX",
+   "startup": 23,
+   "active": [
+    [
+     23,
+     27
+    ]
+   ],
+   "activeFrames": 5,
+   "hits": 1,
+   "recovery": 52,
+   "total": 79,
+   "cancels": {
+    "attack": 31
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "Third swing, the end of the basic three-hit combo",
+   "extra": {
+    "Script": "402 (motion 10402 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "31–65"
+   }
+  },
+  {
+   "id": "xxxy",
+   "class": "dragonSword",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Dragon Tear",
+   "input": "XXXY",
+   "startup": 21,
+   "active": [
+    [
+     21,
+     26
+    ]
+   ],
+   "activeFrames": 6,
+   "hits": 1,
+   "recovery": 46,
+   "total": 72,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "Strong finisher after Crimson Slash",
+   "extra": {
+    "Script": "409 (motion 10409 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "—"
+   }
+  },
+  {
+   "id": "xxy",
+   "class": "dragonSword",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Tiger Roar",
+   "input": "XXY",
+   "startup": 19,
+   "active": [
+    [
+     19,
+     23
+    ]
+   ],
+   "activeFrames": 5,
+   "hits": 1,
+   "recovery": 52,
+   "total": 75,
+   "cancels": {
+    "attack": 24
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "",
+   "extra": {
+    "Script": "535 (motion 10535 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "24–54"
+   }
+  },
+  {
+   "id": "xxyy",
+   "class": "dragonSword",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Fang of the Wolf",
+   "input": "XXYY",
+   "startup": 29,
+   "active": [
+    [
+     29,
+     34
+    ]
+   ],
+   "activeFrames": 6,
+   "hits": 1,
+   "recovery": 60,
+   "total": 94,
+   "cancels": {
+    "attack": 43
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "",
+   "extra": {
+    "Script": "536 (motion 10536 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "43–72"
+   }
+  },
+  {
+   "id": "xxyyy",
+   "class": "dragonSword",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Blade of the Dragon's Tail",
+   "input": "XXYYY",
+   "startup": 13,
+   "active": [
+    [
+     13,
+     16
+    ],
+    [
+     23,
+     29
+    ]
+   ],
+   "activeFrames": 11,
+   "hits": 2,
+   "recovery": 55,
+   "total": 84,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "Two-hit finisher",
+   "extra": {
+    "Script": "537 (motion 10537 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "—"
+   }
+  },
+  {
+   "id": "xx6x",
+   "class": "dragonSword",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Forward slash (XX6X)",
+   "input": "XX6X",
+   "startup": 22,
+   "active": [
+    [
+     22,
+     27
+    ]
+   ],
+   "activeFrames": 6,
+   "hits": 1,
+   "recovery": 29,
+   "total": 56,
+   "cancels": {
+    "attack": 28
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "Opener of the XX6X strings",
+   "extra": {
+    "Script": "530 (motion 10530 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "28–48"
+   }
+  },
+  {
+   "id": "xx6xx",
+   "class": "dragonSword",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Fiend's Bane Kick",
+   "input": "XX6XX",
+   "startup": 24,
+   "active": [
+    [
+     24,
+     27
+    ]
+   ],
+   "activeFrames": 4,
+   "hits": 1,
+   "recovery": 45,
+   "total": 72,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "A kick (foot hitbox)",
+   "extra": {
+    "Script": "531 (motion 10531 of rm_kt.mot)",
+    "Hitbox slots": "foot 0xc",
+    "Combo window": "—"
+   }
+  },
+  {
+   "id": "xx6xy",
+   "class": "dragonSword",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Early Winter Rain",
+   "input": "XX6XY",
+   "startup": 16,
+   "active": [
+    [
+     16,
+     17
+    ],
+    [
+     22,
+     24
+    ],
+    [
+     35,
+     36
+    ]
+   ],
+   "activeFrames": 7,
+   "hits": 3,
+   "recovery": 38,
+   "total": 74,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "Three kicks",
+   "extra": {
+    "Script": "410 (motion 410 of ryu.mtn)",
+    "Hitbox slots": "foot 0xd",
+    "Combo window": "—"
+   }
+  },
+  {
+   "id": "y",
+   "class": "dragonSword",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Blade of the Undefeatable",
+   "input": "Y",
+   "startup": 13,
+   "active": [
+    [
+     13,
+     24
+    ]
+   ],
+   "activeFrames": 12,
+   "hits": 1,
+   "recovery": 37,
+   "total": 61,
+   "cancels": {
+    "attack": 27
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "Rising slash; after X it is the launcher of the XY air strings",
+   "extra": {
+    "Script": "550 (motion 10550 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "27–36"
+   }
+  },
+  {
+   "id": "6x",
+   "class": "dragonSword",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Windmill Slash",
+   "input": "6X",
+   "startup": 6,
+   "active": [
+    [
+     6,
+     14
+    ]
+   ],
+   "activeFrames": 9,
+   "hits": 1,
+   "recovery": 39,
+   "total": 53,
+   "cancels": {
+    "attack": 15
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "Spinning slash",
+   "extra": {
+    "Script": "431 (motion 10431 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "15–24"
+   }
+  },
+  {
+   "id": "6x.repeat",
+   "class": "dragonSword",
+   "type": "combo",
+   "grip": "ground",
+   "name": "Windmill Slash (repeat)",
+   "input": "6X, X",
+   "startup": 6,
+   "active": [
+    [
+     6,
+     16
+    ]
+   ],
+   "activeFrames": 11,
+   "hits": 1,
+   "recovery": 38,
+   "total": 54,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "Next spin while X is pressed again",
+   "extra": {
+    "Script": "433 (motion 10433 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "—"
+   }
+  },
+  {
+   "id": "run.x",
+   "class": "dragonSword",
+   "type": "run",
+   "grip": "ground",
+   "name": "Violent Wind",
+   "input": "X while running",
+   "startup": 20,
+   "active": [
+    [
+     20,
+     23
+    ]
+   ],
+   "activeFrames": 4,
+   "hits": 1,
+   "recovery": 32,
+   "total": 55,
+   "cancels": {
+    "attack": 28
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "",
+   "extra": {
+    "Script": "420 (motion 10420 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "28–48"
+   }
+  },
+  {
+   "id": "run.xx",
+   "class": "dragonSword",
+   "type": "run",
+   "grip": "ground",
+   "name": "Violent Gale",
+   "input": "XX while running",
+   "startup": 22,
+   "active": [
+    [
+     22,
+     26
+    ]
+   ],
+   "activeFrames": 5,
+   "hits": 1,
+   "recovery": 43,
+   "total": 69,
+   "cancels": {
+    "attack": 29
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "",
+   "extra": {
+    "Script": "538 (motion 10538 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "29–61"
+   }
+  },
+  {
+   "id": "xyx",
+   "class": "dragonSword",
+   "type": "air",
+   "grip": "air",
+   "name": "Air slash (XYX)",
+   "input": "XYX",
+   "startup": 11,
+   "active": [
+    [
+     11,
+     14
+    ]
+   ],
+   "activeFrames": 4,
+   "hits": 1,
+   "recovery": 46,
+   "total": 60,
+   "cancels": {
+    "attack": 18
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "First air slash after the launcher",
+   "extra": {
+    "Script": "551 (motion 10551 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "18–27"
+   }
+  },
+  {
+   "id": "xyxx",
+   "class": "dragonSword",
+   "type": "air",
+   "grip": "air",
+   "name": "Air slash (XYXX)",
+   "input": "XYXX",
+   "startup": 14,
+   "active": [
+    [
+     14,
+     17
+    ]
+   ],
+   "activeFrames": 4,
+   "hits": 1,
+   "recovery": 43,
+   "total": 60,
+   "cancels": {
+    "attack": 18
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "",
+   "extra": {
+    "Script": "552 (motion 10552 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "18–28"
+   }
+  },
+  {
+   "id": "xyxxx",
+   "class": "dragonSword",
+   "type": "air",
+   "grip": "air",
+   "name": "Air slash (XYXXX)",
+   "input": "XYXXX",
+   "startup": 9,
+   "active": [
+    [
+     9,
+     15
+    ]
+   ],
+   "activeFrames": 7,
+   "hits": 1,
+   "recovery": 45,
+   "total": 60,
+   "cancels": {
+    "attack": 20
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "",
+   "extra": {
+    "Script": "553 (motion 10553 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "20–29"
+   }
+  },
+  {
+   "id": "xyxxxx",
+   "class": "dragonSword",
+   "type": "air",
+   "grip": "air",
+   "name": "Blade of Nirrti",
+   "input": "XYXXXX",
+   "startup": 25,
+   "active": [
+    [
+     25,
+     32
+    ]
+   ],
+   "activeFrames": 8,
+   "hits": 1,
+   "recovery": 0,
+   "total": 32,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "Diving finisher; the hitbox stays out until landing",
+   "extra": {
+    "Script": "554 (motion 10554 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "—",
+    "Note": "The hitbox stays out to the end of the script (until landing for air moves)"
+   }
+  },
+  {
+   "id": "xyxxxy",
+   "class": "dragonSword",
+   "type": "air",
+   "grip": "air",
+   "name": "Izuna Drop",
+   "input": "XYXXXY",
+   "startup": 1,
+   "active": [
+    [
+     1,
+     5
+    ]
+   ],
+   "activeFrames": 5,
+   "hits": 1,
+   "recovery": 0,
+   "total": 5,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "The grab that starts the throw (attack code 0x15)",
+   "extra": {
+    "Script": "573 (motion 10573 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "—",
+    "Note": "The hitbox stays out to the end of the script (until landing for air moves)"
+   }
+  },
+  {
+   "id": "air.x",
+   "class": "dragonSword",
+   "type": "air",
+   "grip": "air",
+   "name": "Blade of the Empty Air",
+   "input": "X in a jump",
+   "startup": 5,
+   "active": [
+    [
+     5,
+     10
+    ]
+   ],
+   "activeFrames": 6,
+   "hits": 1,
+   "recovery": 45,
+   "total": 55,
+   "cancels": {
+    "attack": 12
+   },
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "",
+   "extra": {
+    "Script": "480 (motion 10480 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "12–22"
+   }
+  },
+  {
+   "id": "flip.x",
+   "class": "dragonSword",
+   "type": "air",
+   "grip": "air",
+   "name": "Air Destruction Slash",
+   "input": "X in a flip",
+   "startup": 3,
+   "active": [
+    [
+     3,
+     23
+    ]
+   ],
+   "activeFrames": 21,
+   "hits": 1,
+   "recovery": 26,
+   "total": 49,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "",
+   "extra": {
+    "Script": "484 (motion 10484 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "—"
+   }
+  },
+  {
+   "id": "flip.y",
+   "class": "dragonSword",
+   "type": "air",
+   "grip": "air",
+   "name": "Falling Dragon Blade",
+   "input": "Y in a flip",
+   "startup": 25,
+   "active": [
+    [
+     25,
+     27
+    ]
+   ],
+   "activeFrames": 3,
+   "hits": 1,
+   "recovery": 0,
+   "total": 27,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "The hitbox stays out until landing",
+   "extra": {
+    "Script": "547 (motion 10547 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "—",
+    "Note": "The hitbox stays out to the end of the script (until landing for air moves)"
+   }
+  },
+  {
+   "id": "y.hold",
+   "class": "dragonSword",
+   "type": "ut",
+   "grip": "ground",
+   "name": "Haze Straight Slash",
+   "input": "Y!",
+   "startup": 6,
+   "active": [
+    [
+     6,
+     14
+    ],
+    [
+     16,
+     22
+    ],
+    [
+     24,
+     29
+    ],
+    [
+     31,
+     40
+    ],
+    [
+     45,
+     50
+    ]
+   ],
+   "activeFrames": 38,
+   "hits": 5,
+   "recovery": 76,
+   "total": 126,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "Released without essence: five spinning hits",
+   "extra": {
+    "Script": "1425 (motion 11425 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "—"
+   }
+  },
+  {
+   "id": "y.et",
+   "class": "dragonSword",
+   "type": "ut",
+   "grip": "ground",
+   "name": "Extinction Straight Slash",
+   "input": "Y! (Essence Technique)",
+   "startup": 6,
+   "active": [
+    [
+     6,
+     14
+    ],
+    [
+     16,
+     22
+    ],
+    [
+     24,
+     29
+    ],
+    [
+     31,
+     40
+    ],
+    [
+     45,
+     50
+    ]
+   ],
+   "activeFrames": 38,
+   "hits": 5,
+   "recovery": 76,
+   "total": 126,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "Same timing, with the ET effects",
+   "extra": {
+    "Script": "1427 (motion 11425 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "—"
+   }
+  },
+  {
+   "id": "y.ut",
+   "class": "dragonSword",
+   "type": "ut",
+   "grip": "ground",
+   "name": "Hundred Wing Blade",
+   "input": "Y! (Ultimate Technique)",
+   "startup": 6,
+   "active": [
+    [
+     6,
+     14
+    ],
+    [
+     16,
+     22
+    ],
+    [
+     24,
+     29
+    ],
+    [
+     31,
+     40
+    ],
+    [
+     45,
+     50
+    ]
+   ],
+   "activeFrames": 38,
+   "hits": 5,
+   "recovery": 76,
+   "total": 126,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "Same timing, with the UT effects",
+   "extra": {
+    "Script": "1429 (motion 11425 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "—"
+   }
+  },
+  {
+   "id": "y.ut3",
+   "class": "dragonSword",
+   "type": "ut",
+   "grip": "ground",
+   "name": "Storm of the Heavenly Dragon",
+   "input": "Y! (Ultimate Technique, level 3)",
+   "startup": 6,
+   "active": [
+    [
+     6,
+     14
+    ],
+    [
+     16,
+     22
+    ],
+    [
+     24,
+     29
+    ],
+    [
+     31,
+     40
+    ],
+    [
+     45,
+     50
+    ]
+   ],
+   "activeFrames": 38,
+   "hits": 5,
+   "recovery": 76,
+   "total": 126,
+   "cancels": {},
+   "armor": [],
+   "iframes": [],
+   "parryable": null,
+   "damage": {},
+   "weapons": [],
+   "default": true,
+   "desc": "Same timing, with the level 3 UT effects",
+   "extra": {
+    "Script": "1359 (motion 11425 of rm_kt.mot)",
+    "Hitbox slots": "sword",
+    "Combo window": "—"
+   }
+  }
+ ]
+}
