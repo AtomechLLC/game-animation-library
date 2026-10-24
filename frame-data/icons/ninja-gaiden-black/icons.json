@@ -1,6 +1,6 @@
 {
- "lead": "The icon is a frame of the preview figure",
- "note": "Posed from Team Ninja's animation data.",
+ "lead": "The icon is the game's own Dragon Sword model",
+ "note": "Drawn from katana.kmd, as the weapon menu shows it. Art (c) Tecmo.",
  "icons": {
   "Dragon Sword": {
    "file": "dragonSword.webp"
