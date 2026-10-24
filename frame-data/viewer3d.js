@@ -4,7 +4,7 @@
 // the game's frame rate (models.json fps, 30 for Elden Ring).
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
-import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {createBlenderNavigation} from './navigation3d.js?v=3';
 
 const loader = new GLTFLoader();
 const cache = new Map();
@@ -45,6 +45,9 @@ function decodeAnim(buf, names) {
   return {frames: N, step, bones, root};
 }
 
+// Numpad 1 and 3: the camera azimuths (navigation3d.js) that face the character's front and right side
+const VIEWS = {front: Math.PI, right: Math.PI / 2};
+
 const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim() || '#c2412d';
 
 // A persistent preview in `el`: the models load once, then show(move) swaps the animation, weapon and hitboxes in
@@ -52,7 +55,7 @@ const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).
 // label next to the frame number.
 export async function createViewer(el, base) {
   const man = await manifest(base);
-  el.innerHTML = `<div class="v3d-stage"><canvas></canvas><div class="v3d-msg">Loading models…</div>
+  el.innerHTML = `<div class="v3d-stage" tabindex="0" aria-label="3D view. Drag with the left or middle button to orbit, add Shift or use the right button to pan, wheel to zoom or orbit. Numpad 1, 3 and 7 for front, right and top. F frames the move, D restores the default camera, Tab switches between mouse and trackpad."><canvas></canvas><div class="v3d-msg">Loading models…</div>
     <div class="v3d-hud"><b class="v3d-f">1</b><span class="v3d-state"></span></div></div>
     <div class="v3d-bar">
       <button class="v3d-play" aria-label="Pause">❚❚</button>
@@ -72,9 +75,10 @@ export async function createViewer(el, base) {
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(35, 1, 0.05, 100);
-  camera.position.set(2.9, 1.5, -2.3);
-  const controls = new OrbitControls(camera, canvas);
-  controls.target.set(0, 1.0, 0); controls.enableDamping = true; controls.update();
+  // the opening angle, a three-quarter view from the character's front right (it faces -Z, its right is +X)
+  const DEFAULT_DIR = new THREE.Vector3(2.9, 0.5, -2.3).normalize();
+  const nav = createBlenderNavigation({camera, dom: stage, views: VIEWS, onFrame: () => { fit(); go(f) }, onDefault: () => { fit(DEFAULT_DIR); go(f) }});
+  nav.frameTo(new THREE.Vector3(0, 1, 0), DEFAULT_DIR, 3.7, 2);
   scene.add(new THREE.HemisphereLight(0xffffff, 0x5a5a62, 2.4));
   const sun = new THREE.DirectionalLight(0xffffff, 2.6); sun.position.set(3, 5, -3); scene.add(sun);
   const grid = new THREE.GridHelper(8, 16, 0x888888, 0x555555); grid.material.transparent = true; grid.material.opacity = .35; scene.add(grid);
@@ -144,7 +148,7 @@ export async function createViewer(el, base) {
     scene.updateMatrixWorld(true);
     // keep the character framed: the camera rides along with root motion, the grid shows the distance covered
     pelvis.getWorldPosition(v1); v1.y = 0;
-    camera.position.add(v2.subVectors(v1, follow)); controls.target.add(v2); follow.copy(v1);
+    nav.shift(v2.subVectors(v1, follow)); follow.copy(v1);
     const showAll = $('.v3d-ghost').checked, on = $('.v3d-hb').checked;
     for (const x of boxes) {
       const active = frame >= x.h.start && frame <= x.h.end;
@@ -184,6 +188,7 @@ export async function createViewer(el, base) {
   el.querySelectorAll('.v3d-opts input').forEach(i => i.onchange = () => go(f));
   const onKey = e => {
     if (e.target.closest('input,select,textarea') && e.target.type !== 'range') return;
+    if (e.code === 'NumpadDecimal') return;  // Numpad . frames the move (navigation3d.js), as in Blender
     if (e.key === ',') { setPlaying(false); go(f - 1) }
     else if (e.key === '.') { setPlaying(false); go(f + 1) }
   };
@@ -191,9 +196,9 @@ export async function createViewer(el, base) {
   setPlaying(playing);
 
   // Frame the whole move (every weapon point and the body over all frames, relative to the pelvis the camera
-  // follows), keeping the angle the viewer has orbited to
-  function fit() {
-    const dir = camera.position.clone().sub(controls.target).normalize();
+  // follows), keeping the angle the viewer has orbited to unless `dir` (target to camera) is given
+  function fit(dir = camera.position.clone().sub(nav.target).normalize()) {
+    if (!anim) return;
     const box = new THREE.Box3(), o = new THREE.Vector3(), held = Object.values(hands).filter(h => h.obj);
     for (let k = 1; k <= N; k++) {
       pose(k);
@@ -213,8 +218,9 @@ export async function createViewer(el, base) {
     }
     dist *= 1.05;
     follow.set(0, 0, 0);
-    controls.target.copy(c); camera.position.copy(c).addScaledVector(dir, dist);
-    camera.far = dist * 10; camera.updateProjectionMatrix(); controls.update();
+    const size = Math.max(box.getSize(v1).length(), 0.5);
+    nav.frameTo(c, dir, dist, size);
+    camera.far = Math.max(dist * 10, size * 25); camera.updateProjectionMatrix();
   }
 
   const loadWeapon = name => { const f = base + man.weapons[name].file; return once(f, () => glb(f)) };
@@ -292,12 +298,12 @@ export async function createViewer(el, base) {
     raf = requestAnimationFrame(tick);
     const dt = Math.min(now - last, 100); last = now;
     if (playing && anim) { acc += dt * speed * FPS / 1000; if (acc >= 1) { const n = Math.floor(acc); acc -= n; go(f + n) } }
-    controls.update(); renderer.render(scene, camera);
+    renderer.render(scene, camera);
   };
   raf = requestAnimationFrame(tick);
   return {
     show, view, setView,
-    debug: {THREE, scene, camera, controls, body, motion, bone, go: f => go(f), boxes: () => boxes, hands},
+    debug: {THREE, scene, camera, nav, body, motion, bone, go: f => go(f), boxes: () => boxes, hands},
     // warm the cache for the row under the pointer, so the swap on click is instant
     async prefetch(m, pick) {
       const c = await classData(base, m.class).catch(() => null), mv = c && c.moves[m.id];
@@ -305,7 +311,7 @@ export async function createViewer(el, base) {
     },
     dispose() {
       disposed = true; cancelAnimationFrame(raf); ro.disconnect(); document.removeEventListener('keydown', onKey);
-      controls.dispose(); renderer.dispose(); sphereG.dispose(); cylG.dispose(); boxG.dispose(); mat.dispose(); ghostMat.dispose();
+      nav.dispose(); renderer.dispose(); sphereG.dispose(); cylG.dispose(); boxG.dispose(); mat.dispose(); ghostMat.dispose();
     },
   };
 }
