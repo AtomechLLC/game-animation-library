@@ -209,7 +209,7 @@ footer p{max-width:85ch;margin:0 0 8px}
 .v3d-corner{position:absolute;left:12px;bottom:12px;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
 .v3d-gizmo{border-radius:50%;transition:background-color .15s}.v3d-gizmo:hover{background:rgba(255,255,255,.2)}.v3d-gizmo canvas{display:block;cursor:pointer;width:100px;height:100px}
 /* viewport overlays (frame-data/viewer3d.js): Mouse | Trackpad under the gizmo, camera buttons and Help top right */
-.v3d-stage kbd{border:1px solid var(--line);background:var(--sunk);border-radius:3px;padding:0 4px;font-family:var(--mono);font-size:10px;font-weight:500;color:var(--muted)}
+.v3d-stage kbd,.v3d-keys kbd{border:1px solid var(--line);background:var(--sunk);border-radius:3px;padding:0 4px;font-family:var(--mono);font-size:10px;font-weight:500;color:var(--muted)}
 .v3d-mode{display:flex;margin:0;padding:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:color-mix(in srgb,var(--panel) 80%,transparent);backdrop-filter:blur(6px)}
 .v3d-mode button{border:0;background:none;padding:4px 10px;font-size:10px;font-weight:700;color:var(--muted);cursor:pointer}.v3d-mode button:hover{color:var(--fg)}
 .v3d-mode button[aria-pressed=true]{background:var(--key);color:#fff}
@@ -236,6 +236,7 @@ footer p{max-width:85ch;margin:0 0 8px}
 .v3d-scrub .strip{width:100%;height:26px}
 .v3d-scrub::after{content:"";position:absolute;top:-3px;bottom:-3px;left:var(--v3d-at,0%);width:2px;margin-left:-1px;background:var(--fg);pointer-events:none}
 .v3d-scrub input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.v3d-keys{display:flex;flex-wrap:wrap;gap:4px 14px;margin:0;font-size:11px;color:var(--muted)}
 .v3d-opts{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--muted);align-items:center}
 .v3d-opts label{display:inline-flex;gap:5px;align-items:center;cursor:pointer}
 .v3d-who{margin-left:auto;font-family:var(--mono);font-size:10.5px}

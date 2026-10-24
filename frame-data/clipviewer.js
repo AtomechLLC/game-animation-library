@@ -15,6 +15,7 @@ export function createViewer(el, base) {
       <div class="v3d-scrub"><div class="v3d-strip"></div><input type="range" min="1" max="1" step="1" value="1" aria-label="Frame"></div>
       <select class="v3d-speed" aria-label="Playback speed"><option value="1">1×</option><option value="0.5">½×</option><option value="0.25" selected>¼×</option><option value="0.125">⅛×</option></select>
     </div>
+    <p class="v3d-keys"><span><kbd>Space</kbd> Play / pause</span><span><kbd>,</kbd> <kbd>.</kbd> Previous / next frame</span><span><kbd>Ctrl</kbd> + <kbd>←</kbd> <kbd>→</kbd> Back / forward 1 second</span><span><kbd>Shift</kbd> + <kbd>←</kbd> <kbd>→</kbd> First / last frame</span></p>
     <div class="v3d-opts"><span class="clip-alts" role="group" aria-label="Clip"></span><a class="v3d-who" target="_blank" rel="noopener"></a></div>`;
   const $ = s => el.querySelector(s);
   const canvas = $('canvas'), ctx = canvas.getContext('2d'), img = $('img'), msg = $('.v3d-msg');
@@ -70,6 +71,12 @@ export function createViewer(el, base) {
   const onKey = e => {
     if (e.target.closest('input,select,textarea') && e.target.type !== 'range') return;
     if (e.code === 'Space' && !e.repeat && !e.target.closest('button')) { e.preventDefault(); setPlaying(!playing) }
+    else if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && e.ctrlKey !== e.shiftKey && !e.altKey && !e.metaKey) {
+      // Ctrl jumps one second of the animation (clamped at the ends), Shift goes to the first or last frame
+      e.preventDefault(); setPlaying(false);
+      const d = e.key === 'ArrowLeft' ? -1 : 1;
+      go(e.shiftKey ? (d < 0 ? 1 : N) : Math.min(N, Math.max(1, f + d * FPS)));
+    }
     else if (e.key === ',') { setPlaying(false); go(f - 1) }
     else if (e.key === '.') { setPlaying(false); go(f + 1) }
   };

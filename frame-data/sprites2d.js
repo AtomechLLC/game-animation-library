@@ -35,6 +35,7 @@ export async function createViewer(el, base) {
       <div class="v3d-scrub"><div class="v3d-strip"></div><input type="range" min="1" max="1" step="1" value="1" aria-label="Frame"></div>
       <select class="v3d-speed" aria-label="Playback speed"><option value="1">1×</option><option value="0.5">½×</option><option value="0.25">¼×</option><option value="0.1">0.1×</option></select>
     </div>
+    <p class="v3d-keys"><span><kbd>Space</kbd> Play / pause</span><span><kbd>,</kbd> <kbd>.</kbd> Previous / next frame</span><span><kbd>Ctrl</kbd> + <kbd>←</kbd> <kbd>→</kbd> Back / forward 1 second</span><span><kbd>Shift</kbd> + <kbd>←</kbd> <kbd>→</kbd> First / last frame</span></p>
     <div class="v3d-opts">${Object.entries(man.kinds).map(([k, l]) => `<label title="${l}"><input type="checkbox" data-k="${k}"${ON[k] ? ' checked' : ''}><i style="display:inline-block;width:10px;height:10px;border:1px solid ${COLORS[k]};background:${COLORS[k]}55"></i>${l}</label>`).join('')}
       <span class="v3d-who">Sprites and boxes: <a href="${man.source.url}" target="_blank" rel="noopener">${man.source.name}</a></span></div>`;
   const $ = s => el.querySelector(s);
@@ -92,6 +93,12 @@ export async function createViewer(el, base) {
   const onKey = e => {
     if (e.target.closest('input,select,textarea') && e.target.type !== 'range') return;
     if (e.code === 'Space' && !e.repeat && !e.target.closest('button')) { e.preventDefault(); setPlaying(!playing) }
+    else if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && e.ctrlKey !== e.shiftKey && !e.altKey && !e.metaKey) {
+      // Ctrl jumps one second of the animation (clamped at the ends), Shift goes to the first or last frame
+      e.preventDefault(); setPlaying(false);
+      const d = e.key === 'ArrowLeft' ? -1 : 1;
+      go(e.shiftKey ? (d < 0 ? 1 : N) : Math.min(N, Math.max(1, f + d * FPS)));
+    }
     else if (e.key === ',') { setPlaying(false); go(f - 1) }
     else if (e.key === '.') { setPlaying(false); go(f + 1) }
   };

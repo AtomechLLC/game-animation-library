@@ -60,7 +60,8 @@ const helpHTML = mode => `<p class="v3d-help-title" id="v3d-help-title">Help</p>
     : row('Left or middle drag', 'Orbit') + row('Right drag / Shift + drag', 'Pan') + row('Scroll wheel', 'Zoom') + row('Ctrl + scroll', 'Zoom, faster')}</ul>
   <p class="v3d-help-title">Viewport</p>
   <ul>${row(kbd('Tab', 'Shift + Tab'), 'Input mode') + row(kbd('F', 'Home', 'Numpad .'), 'Frame') + row(kbd('D', 'Numpad 0'), 'Default camera') + row(kbd('Z'), 'Floor grid')
-    + row(kbd('Space'), 'Play / pause') + row(kbd(',', '.'), 'Previous / next frame') + row(kbd('/', '?'), 'Help')}</ul>
+    + row(kbd('Space'), 'Play / pause') + row(kbd(',', '.'), 'Previous / next frame') + row(kbd('Ctrl + ←', 'Ctrl + →'), 'Back / forward 1 second')
+    + row(kbd('Shift + ←', 'Shift + →'), 'First / last frame') + row(kbd('/', '?'), 'Help')}</ul>
   <p class="v3d-help-title">Numpad</p>
   <ul>${row('2 / 4 / 6 / 8', 'Orbit') + row('1 / 3 / 7', 'Front / Right / Top') + row('Ctrl + 7', 'Bottom') + row('9', 'Opposite view') + row('+ / −', 'Zoom in / out')}</ul>`;
 
@@ -88,6 +89,7 @@ export async function createViewer(el, base) {
       <div class="v3d-scrub"><div class="v3d-strip"></div><input type="range" min="1" max="1" step="1" value="1" aria-label="Frame"></div>
       <select class="v3d-speed" aria-label="Playback speed"><option value="1">1×</option><option value="0.5">½×</option><option value="0.25">¼×</option><option value="0.1">0.1×</option></select>
     </div>
+    <p class="v3d-keys"><span><kbd>Space</kbd> Play / pause</span><span><kbd>,</kbd> <kbd>.</kbd> Previous / next frame</span><span><kbd>Ctrl</kbd> + <kbd>←</kbd> <kbd>→</kbd> Back / forward 1 second</span><span><kbd>Shift</kbd> + <kbd>←</kbd> <kbd>→</kbd> First / last frame</span></p>
     <div class="v3d-opts"><label><input type="checkbox" class="v3d-hb" checked> Hitboxes</label>
       <label><input type="checkbox" class="v3d-ghost"> Show hitboxes on every frame</label>
       <label><input type="checkbox" class="v3d-rm" checked> Root motion</label>
@@ -232,6 +234,12 @@ export async function createViewer(el, base) {
     if (e.target.closest('input,select,textarea') && e.target.type !== 'range') return;
     if (e.code === 'NumpadDecimal') return;  // Numpad . frames the move (navigation3d.js), as in Blender
     if (e.code === 'Space' && !e.repeat && !e.target.closest('button')) { e.preventDefault(); setPlaying(!playing) }
+    else if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && e.ctrlKey !== e.shiftKey && !e.altKey && !e.metaKey) {
+      // Ctrl jumps one second of the animation (clamped at the ends), Shift goes to the first or last frame
+      e.preventDefault(); setPlaying(false);
+      const d = e.key === 'ArrowLeft' ? -1 : 1;
+      go(e.shiftKey ? (d < 0 ? 1 : N) : Math.min(N, Math.max(1, f + d * FPS)));
+    }
     else if (e.key === ',') { setPlaying(false); go(f - 1) }
     else if (e.key === '.') { setPlaying(false); go(f + 1) }
   };
