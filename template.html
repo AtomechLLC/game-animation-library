@@ -408,7 +408,7 @@ function placePlayhead(){
   const i=k.querySelector('i'),x=i.offsetLeft+i.offsetWidth/2,row=ph.parentNode;
   ph.classList.toggle('still',phStill);ph.hidden=false;phStill=false;
   ph.style.transform=`translateX(${x-1}px)`;
-  if(x<row.scrollLeft+40||x>row.scrollLeft+row.clientWidth-60)row.scrollTo({left:x-row.clientWidth/2,behavior:'smooth'})}
+  if(row.scrollWidth>row.clientWidth&&(x<row.scrollLeft+40||x>row.scrollLeft+row.clientWidth-60))row.scrollTo({left:x-row.clientWidth/2,behavior:'smooth'})}
 addEventListener('resize',()=>{phStill=true;placePlayhead()});
 document.fonts?.ready.then(()=>{phStill=true;placePlayhead()});
 // Left/Right step through the ruler's keys like keyframes, stopping at the first and last; returns the key to select
