@@ -2687,6 +2687,15 @@
       "confidence": "high",
       "what": "Makoto Hayate, fully charged: sprite frames with hurtboxes and attack boxes"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/king_dedede",
+     "media_url": "https://ultimateframedata.com/hitboxes/king_dedede/KingDededeJet HammerGMax.gif",
+     "title": "King Dedede Down B, Full Charge (Jet Hammer, Full Charge) (GMax), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.charged-attack-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/king_dedede/KingDededeJet HammerGMax.gif"
     }
    ]
   },
@@ -2774,6 +2783,15 @@
       "confidence": "high",
       "what": "Elena Mallet Smash (Fierce): sprite frames with hurtboxes and attack boxes"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/kirby",
+     "media_url": "https://ultimateframedata.com/hitboxes/kirby/KirbyHammerFlipGMax.gif",
+     "title": "Kirby Hammer, Full Charge, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.overhead-slam-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/kirby/KirbyHammerFlipGMax.gif"
     }
    ],
    "rejected_gifs": [
@@ -4181,6 +4199,15 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.grab-throw-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/ganondorf/GanondorfBThrow.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/snake",
+     "media_url": "https://ultimateframedata.com/hitboxes/snake/SnakeFThrow.gif",
+     "title": "Snake Forward Throw, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.grab-throw-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/snake/SnakeFThrow.gif"
     }
    ]
   },
@@ -4347,6 +4374,15 @@
      "host": "Tenor",
      "local": "gifs/melee.backstab-2.webp",
      "source_url": "https://media.tenor.com/wn9fSEui1F8AAAA1/demons-souls-backstab-back-stab-skeleton-context-sensitivity.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/meta_knight",
+     "media_url": "https://ultimateframedata.com/hitboxes/meta_knight/MetaKnightDimensionalCapeGB.gif",
+     "title": "Meta Knight Dimensional Cape, Attack (Ground, Back), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.backstab-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/meta_knight/MetaKnightDimensionalCapeGB.gif"
     }
    ]
   },
@@ -4522,6 +4558,24 @@
      "host": "Tenor",
      "local": "gifs/melee.finisher-execution-4.webp",
      "source_url": "https://media.tenor.com/XIyf_MPosjUAAAA1/genichiro-sekiro-parry-deathblow.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/kazuya",
+     "media_url": "https://ultimateframedata.com/hitboxes/kazuya/Shoto4RageDriveInput.gif",
+     "title": "Kazuya Rage Drive (Input) F, D, DF, Hold A/B (623 Hold-A/B) (Grab (Input)), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.finisher-execution-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/kazuya/Shoto4RageDriveInput.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/incineroar",
+     "media_url": "https://ultimateframedata.com/hitboxes/incineroar/IncineroarAlolanWhipLariat.gif",
+     "title": "Incineroar Alolan Whip, Lariat Attack, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.finisher-execution-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/incineroar/IncineroarAlolanWhipLariat.gif"
     }
    ]
   },
@@ -4794,6 +4848,24 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.weapon-art-skill-attack-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/cloud/CloudFinishingTouchG.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/hero",
+     "media_url": "https://ultimateframedata.com/hitboxes/hero/HeroFlameSlash.gif",
+     "title": "Hero Flame Slash, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.weapon-art-skill-attack-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/hero/HeroFlameSlash.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/cloud",
+     "media_url": "https://ultimateframedata.com/hitboxes/cloud/CloudCrossSlashLimitRight.gif",
+     "title": "Cloud Limit Cross Slash (Right), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.weapon-art-skill-attack-ufd-3.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/cloud/CloudCrossSlashLimitRight.gif"
     }
    ]
   },
@@ -4960,6 +5032,15 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/melee.whip-chain-lash-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/simon/SimonFTilt.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/zero_suit_samus",
+     "media_url": "https://ultimateframedata.com/hitboxes/zero_suit_samus/ZeroSuitSamusPlasmaWhip.gif",
+     "title": "Zero Suit Samus Side B (Plasma Whip) (Normal), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/melee.whip-chain-lash-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/zero_suit_samus/ZeroSuitSamusPlasmaWhip.gif"
     }
    ]
   },
@@ -7154,6 +7235,15 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/magic.spell-cast-instant-ufd-0.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/hero/Sizzle.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/hero",
+     "media_url": "https://ultimateframedata.com/hitboxes/hero/HeroKazap.gif",
+     "title": "Hero Side B, (Zap/Zapple/Kazap) (Kazap), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.spell-cast-instant-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/hero/HeroKazap.gif"
     }
    ]
   },
@@ -7456,6 +7546,15 @@
      "host": "Tenor",
      "local": "gifs/magic.area-of-effect-slam-1.webp",
      "source_url": "https://media.tenor.com/p5mlueM9_lgAAAA1/malphite-league-of-legends-tomasz-rock-solid-ultimate.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/donkey_kong",
+     "media_url": "https://ultimateframedata.com/hitboxes/donkey_kong/DonkeyKongHandSlapG.gif",
+     "title": "Donkey Kong Down B (Hand Slap), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.area-of-effect-slam-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/donkey_kong/DonkeyKongHandSlapG.gif"
     }
    ]
   },
@@ -7745,6 +7844,24 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/magic.shield-barrier-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/mega_man/MegaManLeafShield.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/wolf",
+     "media_url": "https://ultimateframedata.com/hitboxes/wolf/WolfReflector.gif",
+     "title": "Wolf Down B (Reflector) (Hold), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.shield-barrier-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/wolf/WolfReflector.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/joker",
+     "media_url": "https://ultimateframedata.com/hitboxes/joker/JokerMakarakarn.gif",
+     "title": "Joker Arsene, Makarakarn Reflect, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.shield-barrier-ufd-3.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/joker/JokerMakarakarn.gif"
     }
    ]
   },
@@ -7814,6 +7931,15 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/magic.teleport-blink-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/sheik/SheikVanishG.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/meta_knight",
+     "media_url": "https://ultimateframedata.com/hitboxes/meta_knight/MetaKnightDimensionalCapeG.gif",
+     "title": "Meta Knight Dimensional Cape, Attack (Ground, Stationary), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.teleport-blink-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/meta_knight/MetaKnightDimensionalCapeG.gif"
     }
    ]
   },
@@ -8155,6 +8281,15 @@
       "confidence": "low",
       "what": "Anivia's Frostbite and ice-shard spells cast on an enemy in lane (small, weaker pick)"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ice_climbers",
+     "media_url": "https://ultimateframedata.com/hitboxes/ice_climbers/PopoBlizzard.gif",
+     "title": "Ice Climbers Down B (Blizzard) (Popo Blizzard), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.ice-frost-spell-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ice_climbers/PopoBlizzard.gif"
     }
    ]
   },
@@ -8230,6 +8365,24 @@
      "host": "Tenor",
      "local": "gifs/magic.fire-breath-flame-spray-3.webp",
      "source_url": "https://media.tenor.com/So6Gtz3b2dsAAAA1/dark-souls-sacred-flame-piromancy.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ridley",
+     "media_url": "https://ultimateframedata.com/hitboxes/ridley/RidleyPlasmaBreath.gif",
+     "title": "Ridley Neutral B (Plasma Breath) (Default), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.fire-breath-flame-spray-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ridley/RidleyPlasmaBreath.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/piranha_plant",
+     "media_url": "https://ultimateframedata.com/hitboxes/piranha_plant/PiranhaPlantPoisonBreathMax.gif",
+     "title": "Piranha Plant Side B, Full Charge (Poison Breath, Full Charge), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.fire-breath-flame-spray-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/piranha_plant/PiranhaPlantPoisonBreathMax.gif"
     }
    ]
   },
@@ -8260,6 +8413,33 @@
      "host": "Tenor",
      "local": "gifs/magic.telekinesis-force-push-0.webp",
      "source_url": "https://media.tenor.com/UdOHFEoYaWwAAAA1/star-wars-yeet-darth-vader-fallen-order-jedi.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/mewtwo",
+     "media_url": "https://ultimateframedata.com/hitboxes/mewtwo/MewtwoConfusion.gif",
+     "title": "Mewtwo Side B (Confusion), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.telekinesis-force-push-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/mewtwo/MewtwoConfusion.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/lucario",
+     "media_url": "https://ultimateframedata.com/hitboxes/lucario/LucarioForcePalm.gif",
+     "title": "Lucario Side B (Force Palm) (Ground), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.telekinesis-force-push-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/lucario/LucarioForcePalm.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ness",
+     "media_url": "https://ultimateframedata.com/hitboxes/ness/NessPSIMagnet.gif",
+     "title": "Ness Down B (PSI Magnet) (Pulse), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/magic.telekinesis-force-push-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ness/NessPSIMagnet.gif"
     }
    ]
   },
@@ -8659,6 +8839,24 @@
       "confidence": "high",
       "what": "Parry against Pontiff Sulyvahn's flaming sword"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/roy",
+     "media_url": "https://ultimateframedata.com/hitboxes/roy/RoyCounter.gif",
+     "title": "Roy Down B (Counter), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.parry-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/roy/RoyCounter.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/little_mac",
+     "media_url": "https://ultimateframedata.com/hitboxes/little_mac/LittleMacSlipCounter.gif",
+     "title": "Little Mac Down B (Slip Counter), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.parry-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/little_mac/LittleMacSlipCounter.gif"
     }
    ],
    "rejected_gifs": [
@@ -8735,6 +8933,33 @@
      "host": "Tenor",
      "local": "gifs/defense.perfect-block-deflect-1.webp",
      "source_url": "https://media.tenor.com/tfIBJM6g7eIAAAA1/sekiro-shadows-die-twice-sekiro-true-corrupted-monk-katana-parry.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/mario",
+     "media_url": "https://ultimateframedata.com/hitboxes/mario/MarioCape.gif",
+     "title": "Mario Side B (Cape), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.perfect-block-deflect-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/mario/MarioCape.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/palutena",
+     "media_url": "https://ultimateframedata.com/hitboxes/palutena/PalutenaCounterHit.gif",
+     "title": "Palutena Counter, Attack/Reflect, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.perfect-block-deflect-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/palutena/PalutenaCounterHit.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/falco",
+     "media_url": "https://ultimateframedata.com/hitboxes/falco/FalcoReflector.gif",
+     "title": "Falco Down B (Reflector), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.perfect-block-deflect-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/falco/FalcoReflector.gif"
     }
    ],
    "rejected_gifs": [
@@ -9010,6 +9235,15 @@
       "confidence": "high",
       "what": "Quick hop backward out of range"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/sheik",
+     "media_url": "https://ultimateframedata.com/hitboxes/sheik/SheikBouncingFish.gif",
+     "title": "Sheik Down B (Bouncing Fish), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.backstep-backflip-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/sheik/SheikBouncingFish.gif"
     }
    ]
   },
@@ -9153,6 +9387,15 @@
      "host": "Tenor",
      "local": "gifs/defense.air-dash-2.webp",
      "source_url": "https://media.tenor.com/2UEWBgnjMQAAAAA1/hornet-silksong-dash-hornet-run-hornet-dash.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/pikachu",
+     "media_url": "https://ultimateframedata.com/hitboxes/pikachu/PikachuQuickAttack.gif",
+     "title": "Pikachu Up B (Quick Attack), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.air-dash-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/pikachu/PikachuQuickAttack.gif"
     }
    ]
   },
@@ -9297,6 +9540,33 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/defense.counter-attack-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/little_mac/LittleMacSlipCounterHitG.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/sora",
+     "media_url": "https://ultimateframedata.com/hitboxes/sora/SoraCounterAttackHit.gif",
+     "title": "Sora Down B (Counterattack, Success), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.counter-attack-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/sora/SoraCounterAttackHit.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/corrin",
+     "media_url": "https://ultimateframedata.com/hitboxes/corrin/CorrinCounterSurgeHit.gif",
+     "title": "Corrin Counter Surge, Attack, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.counter-attack-ufd-3.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/corrin/CorrinCounterSurgeHit.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/king_k_rool",
+     "media_url": "https://ultimateframedata.com/hitboxes/king_k_rool/KingKRoolGutCheckHit.gif",
+     "title": "King K. Rool Gut Check, Counterattack (Normal), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.counter-attack-ufd-4.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/king_k_rool/KingKRoolGutCheckHit.gif"
     }
    ],
    "rejected_gifs": [
@@ -9379,6 +9649,24 @@
      "host": "Tenor",
      "local": "gifs/defense.guard-break-shield-break-2.webp",
      "source_url": "https://media.tenor.com/2hLxg4AsSNIAAAA1/sekiro-shadows-die-twice-sekiro-katana-deflect.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/marth",
+     "media_url": "https://ultimateframedata.com/hitboxes/marth/MarthShieldbreakerMax.gif",
+     "title": "Marth Neutral B (Shield Breaker) (Max), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.guard-break-shield-break-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/marth/MarthShieldbreakerMax.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/lucina",
+     "media_url": "https://ultimateframedata.com/hitboxes/lucina/LucinaShieldbreakerMax.gif",
+     "title": "Lucina Neutral B (Shieldbreaker) (Max), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/defense.guard-break-shield-break-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/lucina/LucinaShieldbreakerMax.gif"
     }
    ]
   },
@@ -12029,6 +12317,33 @@
       "confidence": "low",
       "what": "Dudley taunt (rose toss): sprite frames with hurtboxes and attack boxes"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/luigi",
+     "media_url": "https://ultimateframedata.com/hitboxes/luigi/LuigiDTaunt.gif",
+     "title": "Luigi Down Taunt, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.taunt-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/luigi/LuigiDTaunt.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/greninja",
+     "media_url": "https://ultimateframedata.com/hitboxes/greninja/GreninjaDTaunt.gif",
+     "title": "Greninja Down Taunt, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.taunt-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/greninja/GreninjaDTaunt.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/kazuya",
+     "media_url": "https://ultimateframedata.com/hitboxes/kazuya/Shoto4SideTaunt.gif",
+     "title": "Kazuya Demon's Wrath (Side Taunt), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.taunt-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/kazuya/Shoto4SideTaunt.gif"
     }
    ]
   },
@@ -12501,6 +12816,33 @@
      "host": "Ultimate Frame Data",
      "local": "gifs/fighting.command-grab-ufd-1.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/incineroar/IncineroarAlolanWhipG.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ridley",
+     "media_url": "https://ultimateframedata.com/hitboxes/ridley/RidleySpacePirateRushDragStart.gif",
+     "title": "Ridley Side B (Space Pirate Rush, Success) (Drag Start), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.command-grab-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ridley/RidleySpacePirateRushDragStart.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/bowser",
+     "media_url": "https://ultimateframedata.com/hitboxes/bowser/BowserFlyingSlamGrabG.gif",
+     "title": "Bowser Side B (Flying Slam) (Ground), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.command-grab-ufd-3.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/bowser/BowserFlyingSlamGrabG.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/mii_brawler",
+     "media_url": "https://ultimateframedata.com/hitboxes/mii_brawler/MiiBrawlerCounterThrowGrabG.gif",
+     "title": "Mii Brawler Counter Throw, Activated (Grab, Ground), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.command-grab-ufd-4.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/mii_brawler/MiiBrawlerCounterThrowGrabG.gif"
     }
    ]
   },
@@ -12628,6 +12970,15 @@
       "confidence": "high",
       "what": "Chun-Li Houyoku Sen, Super Art II: sprite frames with hurtboxes and attack boxes"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/kazuya",
+     "media_url": "https://ultimateframedata.com/hitboxes/kazuya/Shoto4RageDriveInputLand.gif",
+     "title": "Kazuya Rage Drive (Input) F, D, DF, Hold A/B (623 Hold-A/B) (Landing (Input)), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/fighting.super-critical-art-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/kazuya/Shoto4RageDriveInputLand.gif"
     }
    ]
   },
@@ -13660,6 +14011,24 @@
       "confidence": "low",
       "what": "Werewolf leaps through the snow and pounces at the camera (the lunge before a pin)"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ridley",
+     "media_url": "https://ultimateframedata.com/hitboxes/ridley/RidleySpacePirateRushDrag.gif",
+     "title": "Ridley Side B (Space Pirate Rush, Success) (Dragging), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/enemies.monster-grab-pin-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ridley/RidleySpacePirateRushDrag.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/incineroar",
+     "media_url": "https://ultimateframedata.com/hitboxes/incineroar/IncineroarAlolanWhipG.gif",
+     "title": "Incineroar Side B (Alolan Whip, Grab) (Ground), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/enemies.monster-grab-pin-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/incineroar/IncineroarAlolanWhipG.gif"
     }
    ],
    "rejected_gifs": [
@@ -13732,6 +14101,33 @@
       "confidence": "high",
       "what": "Diablos charges head-down at a Great Sword hunter, who tackles through it"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/pt_charizard",
+     "media_url": "https://ultimateframedata.com/hitboxes/pt_charizard/charitardFlareBlitz.gif",
+     "title": "Charizard Side B (Flare Blitz), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/enemies.charging-rush-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/pt_charizard/charitardFlareBlitz.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ridley",
+     "media_url": "https://ultimateframedata.com/hitboxes/ridley/RidleySpacePirateRushG.gif",
+     "title": "Ridley Side B (Space Pirate Rush), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/enemies.charging-rush-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ridley/RidleySpacePirateRushG.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/bowser_jr",
+     "media_url": "https://ultimateframedata.com/hitboxes/bowser_jr/BowserJrClownKartDashG.gif",
+     "title": "Bowser Jr. Side B (Clown Kart Dash) (Ground), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/enemies.charging-rush-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/bowser_jr/BowserJrClownKartDashG.gif"
     }
    ],
    "rejected_gifs": [
@@ -14045,6 +14441,15 @@
      "host": "Tenor",
      "local": "gifs/stealth.chokehold-sleeper-hold-2.webp",
      "source_url": "https://media.tenor.com/OGcJatRjcTQAAAA1/choke-choking-putting-him-to-sleep-down-throw-kemoryona.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/snake",
+     "media_url": "https://ultimateframedata.com/hitboxes/snake/SnakePummel.gif",
+     "title": "Snake Pummel, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/stealth.chokehold-sleeper-hold-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/snake/SnakePummel.gif"
     }
    ]
   },
@@ -17024,6 +17429,15 @@
       "confidence": "high",
       "what": "Player skydives, then deploys the glider and floats down to the map"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/steve",
+     "media_url": "https://ultimateframedata.com/hitboxes/steve/SteveElytra.gif",
+     "title": "Steve Up B (Elytra), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/exploration.glide-paraglider-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/steve/SteveElytra.gif"
     }
    ]
   },
@@ -17219,6 +17633,15 @@
       "confidence": "high",
       "what": "Driving a white muscle car through Los Santos, drifting around corners"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/wario",
+     "media_url": "https://ultimateframedata.com/hitboxes/wario/WarioBikeDrive.gif",
+     "title": "Wario Side B (Wario Bike), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/exploration.drive-steer-vehicle-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/wario/WarioBikeDrive.gif"
     }
    ]
   },
@@ -18128,6 +18551,15 @@
      "host": "Tenor",
      "local": "gifs/interaction.eat-drink-1.webp",
      "source_url": "https://media.tenor.com/ckx6wQUygRoAAAA1/monster-hunter-mh-potion-potion-flex-mh-potion.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/king_dedede",
+     "media_url": "https://ultimateframedata.com/hitboxes/king_dedede/KingDededeInhale.gif",
+     "title": "King Dedede Neutral B (Inhale) (Default), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/interaction.eat-drink-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/king_dedede/KingDededeInhale.gif"
     }
    ],
    "rejected_gifs": [
@@ -18395,6 +18827,15 @@
       "confidence": "high",
       "what": "Pickaxe breaking a diamond ore block"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/villager",
+     "media_url": "https://ultimateframedata.com/hitboxes/villager/VillagerTimberAxe.gif",
+     "title": "Villager Timber Axe, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/interaction.mine-chop-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/villager/VillagerTimberAxe.gif"
     }
    ]
   },
@@ -18440,6 +18881,15 @@
      "game": "Stardew Valley",
      "media_url": "",
      "host": "Tenor"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/isabelle",
+     "media_url": "https://ultimateframedata.com/hitboxes/isabelle/IsabelleGrab.gif",
+     "title": "Isabelle Grab, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/interaction.fishing-cast-reel-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/isabelle/IsabelleGrab.gif"
     }
    ]
   },
@@ -18526,6 +18976,15 @@
       "confidence": "high",
       "what": "Chefs chop, fry and plate orders around a busy kitchen"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/mr_game_and_watch",
+     "media_url": "https://ultimateframedata.com/hitboxes/mr_game_and_watch/MrGame_WatchChef.gif",
+     "title": "Mr. Game & Watch Neutral B (Chef), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/interaction.cook-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/mr_game_and_watch/MrGame_WatchChef.gif"
     }
    ]
   },
@@ -18564,6 +19023,15 @@
      "host": "Tenor",
      "local": "gifs/interaction.plant-water-crops-1.webp",
      "source_url": "https://media.tenor.com/3brTw4lUeWAAAAA1/stardew-watering-water-crops-watering-crops-crops.webp"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/villager",
+     "media_url": "https://ultimateframedata.com/hitboxes/villager/VillagerTimberGrowth.gif",
+     "title": "Villager Timber Tree Grow/Fall (Grow), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/interaction.plant-water-crops-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/villager/VillagerTimberGrowth.gif"
     }
    ]
   },
@@ -21359,6 +21827,15 @@
       "confidence": "high",
       "what": "Lichdragon Fortissax flies overhead and unleashes red death lightning"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ridley",
+     "media_url": "https://ultimateframedata.com/hitboxes/ridley/RidleyWingBlitzForward.gif",
+     "title": "Ridley Up B (Wing Blitz) (Forward), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/creature.dragon-flight-breath-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ridley/RidleyWingBlitzForward.gif"
     }
    ],
    "rejected_gifs": [
@@ -22831,6 +23308,33 @@
       "confidence": "high",
       "what": "Mario tosses the ball up and serves"
      }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/ness",
+     "media_url": "https://ultimateframedata.com/hitboxes/ness/NessFSmash.gif",
+     "title": "Ness Forward Smash, with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/sports.swing-golf-tennis-bat-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/ness/NessFSmash.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/peach",
+     "media_url": "https://ultimateframedata.com/hitboxes/Peach/PeachFSmashGolfClub.gif",
+     "title": "Peach Forward Smash (Golf Club), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/sports.swing-golf-tennis-bat-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/Peach/PeachFSmashGolfClub.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/daisy",
+     "media_url": "https://ultimateframedata.com/hitboxes/daisy/DaisyFSmashTennisRacket.gif",
+     "title": "Daisy Forward Smash (Tennis Racket), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/sports.swing-golf-tennis-bat-ufd-2.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/daisy/DaisyFSmashTennisRacket.gif"
     }
    ],
    "rejected_gifs": [
