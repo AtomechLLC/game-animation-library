@@ -265,9 +265,10 @@ footer p{max-width:85ch;margin:0 0 8px}
 .cxk span{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
 .cxk span::before{content:"";width:12px;height:3px;border-radius:1px;background:var(--c)}
 .cxk b{color:var(--fg);font-weight:600}
+.cxk em{font-style:normal}
 /* with the key the scrubber grows downward, so the play buttons stay level with the phase strip */
 .v3d-bar:has(.cxk){align-items:flex-start}
-.v3d-scrub::after{content:"";position:absolute;top:-3px;bottom:-3px;left:var(--v3d-at,0%);width:2px;margin-left:-1px;background:var(--fg);pointer-events:none}
+.v3d-scrub::after{content:"";position:absolute;top:-3px;height:32px;left:var(--v3d-at,0%);width:2px;margin-left:-1px;background:var(--fg);pointer-events:none}
 .v3d-scrub input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
 .v3d-keys{display:flex;flex-wrap:wrap;gap:4px 14px;margin:0;font-size:11px;color:var(--muted)}
 .v3d-opts{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--muted);align-items:center}
@@ -303,6 +304,10 @@ footer p{max-width:85ch;margin:0 0 8px}
 .insp .r.on span{color:var(--fg)}
 .insp .r.open b{color:var(--calm);font-weight:700}
 .insp .r.open b::after{content:" \2713  open";font-weight:500}
+/* cancel rows carry the colour of their timeline line, so the inspector is the key's full explanation */
+.insp .cxnote{margin:0 0 4px;color:var(--muted);font-size:12px}
+.insp .r[data-can] span{display:inline-flex;align-items:center;gap:6px}
+.insp .r[data-can] span::before{content:"";width:14px;height:3px;border-radius:1px;background:var(--c)}
 /* ten weapons to a row, sized to the inspector's width */
 .insp .iw{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:4px}
 .insp .iw button{aspect-ratio:1;min-width:0;padding:2px;border:1px solid var(--line);background:var(--sunk);border-radius:4px;cursor:pointer}
@@ -347,6 +352,13 @@ footer p{max-width:85ch;margin:0 0 8px}
   .dock-head h3{font-size:14px}
   .dock .v3d-stage{height:clamp(150px,27vh,230px)}
   .dock .v3d-opts{gap:2px 12px}
+  /* the scrubber takes its own full-width row under the play buttons, and its cancel key shrinks to one line of
+     colour strips with their frames; the inspector names each one */
+  .v3d-bar{flex-wrap:wrap}
+  .v3d-scrub{order:1;flex-basis:100%}
+  .v3d-speedl{margin-left:auto}
+  .cxk{flex-wrap:nowrap;overflow:hidden;gap:2px 8px}
+  .cxk em{display:none}
 }
 .more-c{width:1%;text-align:right;padding-left:4px!important}
 .rowmore{border:1px solid var(--line);background:var(--sunk);border-radius:4px;padding:0 9px;height:24px;cursor:pointer;font-weight:700;line-height:1}
@@ -569,7 +581,7 @@ function cancelLanes(m,scale,end){
   if(!ls.length)return ['',''];
   const lines=ls.map(([k])=>{const f=m.cancels[k],x=(f-1)/scale*100,w=Math.max((to-f+1)/scale*100,.6);
     return `<i style="--c:var(--cx-${k});margin-left:${x.toFixed(2)}%;width:${w.toFixed(2)}%"></i>`}).join('');
-  return [`<div class="cxl">${lines}</div>`,`<div class="cxk">${ls.map(([k,l])=>`<span style="--c:var(--cx-${k})">${l} <b>${m.cancels[k]}</b></span>`).join('')}</div>`]}
+  return [`<div class="cxl">${lines}</div>`,`<div class="cxk">${ls.map(([k,l])=>`<span style="--c:var(--cx-${k})" title="${l} from frame ${m.cancels[k]}"><em>${l}</em> <b>${m.cancels[k]}</b></span>`).join('')}</div>`]}
 function legendHtml(){const has=k=>D.moves.some(m=>k==='free'?m.cancels.dodge:m[k].length);
   return [['--f-start','Startup'],['--f-active','Active'],['--f-gap','Between hits'],['--f-rec','Recovery'],['--f-free','Can dodge','free'],['--f-armor','Hyper armor','armor'],['--f-iframe','I-frames','iframes']].filter(x=>!x[2]||has(x[2])).map(([c,l])=>`<span><i style="background:var(${c})"></i>${l}</span>`).join('')}
 function cell(k,m,scale){
@@ -666,7 +678,7 @@ function renderInsp(m){
     <div class="now"><small>Frame</small><b id="iF">1</b><span class="ph" id="iPh"></span><span class="tag" id="iArm"></span></div>
     <p class="who">${esc(c.name)} › ${esc(T[m.type].name)} · ${GR[m.grip]}${pickName()?` · ${esc(pickName())}`:''} · <code>${esc(m.id)}</code></p>
     ${m.active.length?`<h4>Timing · ${D.game.fps} fps</h4>${row('Startup',m.startup??'—',' data-ph="startup"')}${row('Active',win(m.active)+(m.hits>1?` · ${m.hits} hits`:''),' data-ph="active"')}${m.recovery!=null?row('Recovery',m.recovery+' frames',' data-ph="recovery"'):''}${m.armor.length?row('Hyper armor',win(m.armor),' data-arm'):''}${m.iframes.length?row('I-frames',win(m.iframes)):''}`:''}
-    ${can.length?`<h4>Can cancel into</h4>${can.map(([k,l])=>row(l,'from '+m.cancels[k],` data-can="${m.cancels[k]}"`)).join('')}`:''}
+    ${can.length?`<h4>Can cancel into</h4><p class="cxnote">Each colour is a line on the timeline that starts at the frame the cancel opens and runs to the end of the move.</p>${can.map(([k,l])=>row(l,'from '+m.cancels[k],` data-can="${m.cancels[k]}" style="--c:var(--cx-${k})"`)).join('')}`:''}
     ${m.cancelTo?.length?`<h4>Cancels into</h4><p class="who">${esc(m.cancelTo.join(', '))}</p>`:''}
     ${adv.length?`<h4>Advantage</h4>${adv.map(([k,l])=>row(l,sgn(m[k]))).join('')}`:''}
     ${dmg.length?`<h4>${c.weapons.length?'First hit only':'Damage'}</h4>${dmg.map(([k,l])=>row(l,dm[k])).join('')}`:''}
