@@ -1,6 +1,6 @@
 # WP-08: Funsmith club → Discord hub
 
-**Status:** Suggestion · **Priority:** P2 · **Depends on:** the Discord invite URL from Xelnath
+**Status:** In progress (minimal) · **Priority:** P2 · **Depends on:** the Discord invite URL from Xelnath
 
 ## User task and intended outcome
 
@@ -49,3 +49,16 @@ improve the library find the Discord easily, and the page feels like part of the
 ## Evidence to capture
 
 - Header before and after on both pages; the contextual invitation.
+
+## Implementation record (as of 2026-10-25)
+
+**Implemented**
+- The Funsmith club header link opens in a new tab in all three apps (af19c74, PR #69; `frame-data.html:418`,
+  `template.html:220`, `trends.html:207`).
+- A Game Design Skills logo was added to the header (f0a96ca) and then reverted (2519264), which keeps the Funsmith
+  identity of scope 3 intact.
+
+**Not implemented**
+- The link still points to `https://funsmith.club`, not a Discord invite (the invite URL is still needed).
+- No "Discuss this move" link or Action Atlas Discord invitation.
+- No referral tracking.

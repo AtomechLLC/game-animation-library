@@ -1,6 +1,6 @@
 # WP-06: Hide or relabel unreliable fields
 
-**Status:** Suggestion · **Priority:** P1 (small) · **Depends on:** none
+**Status:** In progress (partly implemented) · **Priority:** P1 (small) · **Depends on:** none
 
 ## User task and intended outcome
 
@@ -44,3 +44,18 @@ mislabelled values presented as facts.
 ## Evidence to capture
 
 - Table header and details sheet, before and after.
+
+## Implementation record (as of 2026-10-25)
+
+**Implemented**
+- The inspector leaves out empty fields such as poise and i-frames (`frame-data.html:727, 741, 746`; ec152a6,
+  PR #62). The phase legend already hid i-frames.
+- `parry` is hidden by the zero-count filter (`frame-data.html:555`); no move uses it.
+
+**Not implemented**
+1. Poise is still a default table column (`DEFAULT_COLS`, `frame-data.html:496`), and the detail sheet still shows
+   "Poise damage" (`frame-data.html:695-696`) and an "I-frames" row (`frame-data.html:704`). No Elden Ring move has
+   poise or i-frame data.
+2. `total` is not renamed: the tooltip still says "Length of the animation in frames" (`frame-data.html:481`), as
+   does `frame-data/README.md:529`.
+3. No explanation for missing values on jumping or buffed moves.

@@ -1,6 +1,6 @@
 # WP-11: Before/after evidence and article
 
-**Status:** Suggestion · **Priority:** Ongoing · **Depends on:** each package that changes the page
+**Status:** In progress (captures added, then removed) · **Priority:** Ongoing · **Depends on:** each package that changes the page
 
 ## User task and intended outcome
 
@@ -44,3 +44,15 @@ explaining what you did and why as a resource." The article explains each change
 ## Done when
 
 - Every adopted package has a before/after pair and an entry in the article outline.
+
+## Implementation record (as of 2026-10-25)
+
+**What happened**
+- Before/after captures for PR #62 were added under `docs/screenshots/pr-62/` (f914e80).
+- They were removed again (e5410cb); the pull request media now lives as GitHub attachments.
+- The `before/` set was removed and the capture settings were folded into this file and the README (58f90ac).
+  The deleted images are still in git history (about 65 MB; see [WP-23](../performance-2026-10/wp-23-repository-and-media-hosting.md)).
+
+**Not implemented**
+- No article outline.
+- No before/after pairs per package.

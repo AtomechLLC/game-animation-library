@@ -1,6 +1,6 @@
 # WP-09: Course waiting-list call to action
 
-**Status:** Suggestion · **Priority:** P2 · **Depends on:** the course outline, a waitlist URL or form, and copy
+**Status:** Suggestion (blocked; related link on Trends only) · **Priority:** P2 · **Depends on:** the course outline, a waitlist URL or form, and copy
 approval (all from Xelnath / Jacopo)
 
 ## User task and intended outcome
@@ -52,3 +52,12 @@ Business goal: course discovery. Visitors who are interested in game feel find o
 ## Evidence to capture
 
 - Both placements, on the home page and the Frame Data page.
+
+## Implementation record (as of 2026-10-25)
+
+**Related work**
+- Trends has a "Further reading" block linking to the gamedesignskills.com "Polishing Game Feel Bootcamp" and a
+  combat design guide (`trends.html:222-228`; 2c372ef PR #65, 75ba310 PR #66, 6d05eb2 PR #67).
+
+**Not implemented:** the waiting-list call to action itself. It is still blocked on the course outline and a
+waitlist URL or form. Nothing course-related appears in the Action Atlas or Move Explorer.

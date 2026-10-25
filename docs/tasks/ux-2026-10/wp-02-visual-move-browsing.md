@@ -1,6 +1,6 @@
 # WP-02: Recognise moves visually before opening them
 
-**Status:** Suggestion · **Priority:** P1 · **Depends on:** WP-01 (soft)
+**Status:** In progress (mostly implemented) · **Priority:** P1 · **Depends on:** WP-01 (soft)
 
 ## User task and intended outcome
 
@@ -53,3 +53,22 @@ they mean by seeing it, not by opening moves one by one.
 ## Evidence to capture
 
 - `after/frame-data-search-preview.png`: search results with the preview open.
+
+## Implementation record (as of 2026-10-25)
+
+Line numbers refer to commit `e67c341`.
+
+**Implemented**
+- An example move is in the viewer before a class is picked (99de21b, PR #62), taken from the selected weapon type
+  (13f2c18, PR #62).
+- Tapping a row in the all-classes table loads that move's class and swaps the preview instead of opening the detail
+  sheet (`dockMove`, `frame-data.html:822-829`; 9c2f844, PR #72).
+- The preview stays in place when a class is picked (9e63855, PR #69).
+- In the class view the preview follows the keyboard: Up/Down step through moves (`stepMove`,
+  `frame-data.html:949-957`; 4a1e63b, PR #70), and Left/Right step moves while the Moveset Inspector has focus
+  (ea91cfc, PR #75; scoped to the focused zone in ff1064e and 040c530, PR #76).
+
+**Not implemented**
+- Keyboard stepping through rows of the all-classes table. Hovering there only prefetches (`frame-data.html:973`).
+- The short delay against preview thrashing.
+- A legend that links strip colours to design terms (`legendHtml`, `frame-data.html:631`, is unchanged).
