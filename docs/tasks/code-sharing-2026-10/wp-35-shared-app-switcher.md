@@ -1,6 +1,16 @@
 # WP-35: One app switcher
 
-**Status:** Suggestion · **Priority:** P2 · **Depends on:** WP-34 (soft)
+**Status:** In progress · **Priority:** P2 · **Depends on:** WP-34 (soft)
+
+## Progress
+
+- **Done:** the switcher, the Funsmith club link and the title are written once by `shared/appbar.js` and styled by
+  `shared/appbar.css`; each app marks itself current with `data-app`. This also fixed a phone problem: each app had
+  its own phone rules for this row (Trends had none), so on a phone the row was 87 px tall in Action Atlas, 99 px in
+  Move Explorer and 189 px in Trends, and changed shape on every switch. It now has one phone layout (the club as
+  its Discord icon alone, the title on one line, name-only app buttons), the same 87 px in all three. Desktop is
+  unchanged. A cross-document view transition keeps the bar still while the app below changes, where supported.
+- **Open:** the game count is still written into the subtitle ("· 7 games"), not read from `frame-data/games.json`.
 
 ## User task it protects
 

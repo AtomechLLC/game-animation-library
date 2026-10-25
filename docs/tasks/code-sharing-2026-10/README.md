@@ -66,7 +66,7 @@ These are the pattern to follow; packages should not undo them.
 |---|---|---|---|---|---|
 | 33 | [One set of preview controls](wp-33-shared-preview-controls.md) | Move Explorer previews | P1 | none | Suggestion |
 | 34 | [One page shell stylesheet](wp-34-shared-shell-styles.md) | All | P1 | none | Suggestion |
-| 35 | [One app switcher](wp-35-shared-app-switcher.md) | All | P2 | 34 (soft) | Suggestion |
+| 35 | [One app switcher](wp-35-shared-app-switcher.md) | All | P2 | 34 (soft) | In progress |
 | 36 | [One filter rail and detail sheet](wp-36-shared-rail-and-sheet.md) | Action Atlas, Move Explorer | P2 | 34 (soft) | Suggestion |
 | 37 | [Shared helpers and one meaning for frame data](wp-37-shared-helpers-frame-data.md) | All | P1 | none | Suggestion |
 
