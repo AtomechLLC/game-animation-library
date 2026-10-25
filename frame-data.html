@@ -13,7 +13,7 @@
 /* Same shell as template.html (sticky timeline header, filter rail, slide-over sheet), with a weapon icon index and frame tables. */
 :root{
   --bg:#f3f2ee; --panel:#ffffff; --sunk:#e9e7e1; --fg:#1c1b19; --muted:#6b6860; --line:#d8d5cc;
-  --key:#e08a00; --key-ink:#8a5200; --combat:#c2412d; --calm:#2f7a6b; --chip:#efece5; --playhead:#d92d20;
+  --key:#e08a00; --key-ink:#8a5200; --combat:#c2412d; --calm:#2f7a6b; --chip:#efece5; --playhead:#d92d20; --focus:#2563eb;
   --f-start:#cfcbc0; --f-active:#c2412d; --f-gap:#e6b8ae; --f-rec:#e08a00; --f-free:#2f7a6b40; --f-armor:#4b5bd6; --f-iframe:#0e9bb8;
   --cx-attack:#c2185b; --cx-dodge:#2f7a6b; --cx-block:#5b6b7f; --cx-skill:#7c3aed; --cx-item:#8a6d00; --cx-move:#2563eb;
   --v3d-bounds:#3fae3a;
@@ -23,12 +23,12 @@
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
-  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; color-scheme:dark;
+  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; --focus:#6ea8ff; color-scheme:dark;
   --f-start:#4a4b52; --f-active:#ff7a63; --f-gap:#6b3a33; --f-rec:#ffb020; --f-free:#62c9b14d; --f-armor:#8f9bff; --f-iframe:#4cc9e8;
   --cx-attack:#f06292; --cx-dodge:#62c9b1; --cx-block:#a3b1c2; --cx-skill:#b794f6; --cx-item:#e0c040; --cx-move:#6ea8ff; --v3d-bounds:#91f48b}}
 :root[data-theme="dark"]{
   --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
-  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; color-scheme:dark;
+  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; --focus:#6ea8ff; color-scheme:dark;
   --f-start:#4a4b52; --f-active:#ff7a63; --f-gap:#6b3a33; --f-rec:#ffb020; --f-free:#62c9b14d; --f-armor:#8f9bff; --f-iframe:#4cc9e8;
   --cx-attack:#f06292; --cx-dodge:#62c9b1; --cx-block:#a3b1c2; --cx-skill:#b794f6; --cx-item:#e0c040; --cx-move:#6ea8ff; --v3d-bounds:#91f48b}
 *{box-sizing:border-box}
@@ -292,12 +292,13 @@ footer p{max-width:85ch;margin:0 0 8px}
 .dock.set .mlist{display:block}
 .mlist>div{position:absolute;inset:0;overflow:auto;scrollbar-width:thin}
 /* clicking a move focuses the list, where Left/Right also step the moves; the border shows it, like the 3D stage's */
-#mlist{outline:none}.mlist:focus-within{border-color:var(--key);box-shadow:0 0 0 1px var(--key)}
-/* Left/Right go to whichever of the ruler, the viewer and the Moveset Inspector has focus: that one shows the accent
-   border and a chip naming what the arrows step (the viewer's options take focus but not the arrows) */
-.ruler .keys{outline:none}.ruler:focus-within{box-shadow:inset 0 0 0 2px var(--key)}
-.dock .v3d:focus-within:not(:has(.v3d-opts :focus)) .v3d-stage{border-color:var(--key);box-shadow:0 0 0 1px var(--key)}
-.ruler:focus-within::after,.dock .v3d:focus-within:not(:has(.v3d-opts :focus)) .v3d-stage::after,.mlist:focus-within::after{position:absolute;right:8px;bottom:8px;z-index:3;pointer-events:none;border:1px solid var(--key);border-radius:999px;background:var(--panel);color:var(--key-ink);padding:1px 8px;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0;white-space:nowrap}
+#mlist{outline:none}.mlist:focus-within{border-color:var(--focus);box-shadow:0 0 0 1px var(--focus)}
+/* Left/Right go to whichever of the ruler, the viewer and the Moveset Inspector has focus: that one shows a blue border
+   and a chip naming what the arrows step (the viewer's options take focus but not the arrows). Blue, not the orange
+   accent, which already means selected and the recovery frames */
+.ruler .keys{outline:none}.ruler:focus-within{box-shadow:inset 0 0 0 2px var(--focus)}
+.dock .v3d:focus-within:not(:has(.v3d-opts :focus)) .v3d-stage{border-color:var(--focus);box-shadow:0 0 0 1px var(--focus)}
+.ruler:focus-within::after,.dock .v3d:focus-within:not(:has(.v3d-opts :focus)) .v3d-stage::after,.mlist:focus-within::after{position:absolute;right:8px;bottom:8px;z-index:3;pointer-events:none;border:1px solid var(--focus);border-radius:999px;background:var(--focus);color:var(--bg);padding:1px 8px;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0;white-space:nowrap}
 .ruler:focus-within::after{content:"← → " attr(data-step);bottom:auto;top:50%;transform:translateY(-50%)}
 .dock .v3d:focus-within:not(:has(.v3d-opts :focus)) .v3d-stage::after{content:"← → Frame"}
 .mlist:focus-within::after{content:"↑ ↓ ← → Move"}
