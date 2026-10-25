@@ -48,8 +48,21 @@ function serveFile(res, pathname, dir, types, maxAge) {
 }
 const serveGif = (res, p) => serveFile(res, p, 'gifs', TYPES, 604800);
 
+/**
+ * Sent with every response (a response's own headers win). No frame-ancestors: teachers may embed the pages in course
+ * material; /admin refuses framing itself. The scripts are inline, so the policy only shuts off plugins, <base> and
+ * forms posting elsewhere.
+ */
+function baseHeaders(req, res) {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Content-Security-Policy', "object-src 'none'; base-uri 'self'; form-action 'self'");
+  if (req.headers['x-forwarded-proto'] === 'https' || req.socket.encrypted) res.setHeader('Strict-Transport-Security', 'max-age=31536000');
+}
+
 const server = http.createServer(async (req, res) => {
   try {
+    baseHeaders(req, res);
     const u = new URL(req.url, 'http://x');
     const p = u.pathname;
     if (p === '/' || p === '/index.html' || p === '/index.php') {
