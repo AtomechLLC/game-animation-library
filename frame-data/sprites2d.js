@@ -1,4 +1,4 @@
-// 2D preview for the Frame Data tab: plays a move frame by frame from sprite sheets and draws its boxes on each
+// 2D preview for Move Explorer: plays a move frame by frame from sprite sheets and draws its boxes on each
 // frame, like Baston's hitbox viewer. Everything it loads is written by tools/frame_data/export_baston_sprites.py
 // (format in frame-data/README.md, "2D preview"). It has the same interface as viewer3d.js, so the page docks either.
 // Frames here are the tab's frames: 1-based, at the game's frame rate (sprites.json fps).

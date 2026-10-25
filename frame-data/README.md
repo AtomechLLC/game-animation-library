@@ -1,6 +1,6 @@
 # Frame data
 
-The **Frame Data** tab (`frame-data.html`) reads `games.json`, then one JSON file per game in the `frame-data/1` format below.
+**Move Explorer** (`move-explorer.html`) reads `games.json`, then one JSON file per game in the `frame-data/1` format below.
 The page knows nothing about where the numbers came from, so every source only has to write the same format.
 
 ## Files

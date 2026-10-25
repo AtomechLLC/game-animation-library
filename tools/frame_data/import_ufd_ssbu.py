@@ -10,7 +10,7 @@ shield lag, shield stun, which hitbox the values are for, advantage on shield an
 GIFs. The GIFs are captures of the game (Nintendo's footage) with hitboxes drawn on, one GIF frame per game frame.
 
 --clips downloads each move's GIFs and converts them to animated WebPs (at most 440x280) in
-frame-data/clips/super-smash-bros-ultimate/<character>/ (the Frame Data tab's docked previewer steps through them
+frame-data/clips/super-smash-bros-ultimate/<character>/ (Move Explorer's docked previewer steps through them
 frame by frame). Moves only list clips that exist locally, so run it before the JSON build you commit.
 """
 import json, os, re, sys, time, html, subprocess, tempfile, urllib.request

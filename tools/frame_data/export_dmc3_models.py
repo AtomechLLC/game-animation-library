@@ -1,4 +1,4 @@
-"""Exports what the Frame Data tab's 3D preview needs from Devil May Cry 3: Special Edition (PS2): Dante's model and
+"""Exports what Move Explorer's 3D preview needs from Devil May Cry 3: Special Edition (PS2): Dante's model and
 coat, his weapons and every move's motion, baked per frame. Same layout and animation format as export_er_models.py,
 so frame-data/viewer3d.js plays it.
 

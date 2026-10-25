@@ -1,4 +1,4 @@
-"""Exports what the Frame Data tab's 3D preview needs from an Elden Ring install: the player skeleton wearing one armor
+"""Exports what Move Explorer's 3D preview needs from an Elden Ring install: the player skeleton wearing one armor
 set (glTF), weapon models (glTF), each move's animation and its hitboxes.
 
     python tools/frame_data/export_er_models.py "D:/SteamLibrary/steamapps/common/ELDEN RING"

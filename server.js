@@ -66,15 +66,19 @@ const server = http.createServer(async (req, res) => {
     baseHeaders(req, res);
     const u = new URL(req.url, 'http://x');
     const p = u.pathname;
-    if (p === '/' || p === '/index.html' || p === '/index.php') {
+    // Each app has a URL named after it. The site root opens Action Atlas; Move Explorer's old address (frame-data.html,
+    // still linked from library entries and shared links) has moved for good. The browser keeps the #link across both
+    if (p === '/' || p === '/index.html' || p === '/index.php') return send(res, 302, '', { Location: '/action-atlas.html' + u.search });
+    if (p === '/frame-data' || p === '/frame-data.html') return send(res, 301, '', { Location: '/move-explorer.html' + u.search });
+    if (p === '/action-atlas' || p === '/action-atlas.html') {
       return send(res, 200, renderPage(), { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache' });
     }
     if (p === '/api' || p === '/api.php') return await api.handle(req, res, u.searchParams); // api.php: older GitHub Pages builds
     if (p === '/admin' || p === '/admin.php') return await admin.handle(req, res, u.searchParams);
     if (p.startsWith('/gifs/')) return serveGif(res, p);
-    // Frame data tab: a static page that loads frame-data/games.json and one JSON file per game
-    if (p === '/frame-data' || p === '/frame-data.html') return serveFile(res, '/frame-data.html', '', { '.html': 'text/html; charset=utf-8' }, 0);
-    // Trends tab: compares the frame data of every game, from the same files
+    // Move Explorer: a static page that loads frame-data/games.json and one JSON file per game
+    if (p === '/move-explorer' || p === '/move-explorer.html') return serveFile(res, '/move-explorer.html', '', { '.html': 'text/html; charset=utf-8' }, 0);
+    // Trends: compares the frame data of every game, from the same files
     if (p === '/trends' || p === '/trends.html') return serveFile(res, '/trends.html', '', { '.html': 'text/html; charset=utf-8' }, 0);
     // the game list and per-game JSON change with every import, so browsers recheck them; models, icons and clips keep an hour
     if (p.startsWith('/frame-data/')) return serveFile(res, p, 'frame-data', FRAME_TYPES, p.endsWith('.json') ? 0 : 3600);

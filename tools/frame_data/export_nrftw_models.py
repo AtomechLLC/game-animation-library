@@ -1,4 +1,4 @@
-"""Exports what the Frame Data tab's 3D preview needs from a No Rest for the Wicked install: the player skeleton wearing
+"""Exports what Move Explorer's 3D preview needs from a No Rest for the Wicked install: the player skeleton wearing
 one armor set, weapon models, each move's animation and its per-frame hitboxes. Same output layout and animation
 format as export_er_models.py, so frame-data/viewer3d.js plays both.
 

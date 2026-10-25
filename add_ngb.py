@@ -3,7 +3,7 @@
 Each mapped move's frames come from frame-data/sprites/ninja-gaiden-black/ (written by tools/frame_data/import_ngb_game.py
 from the game disc): a figure posed from the game's own animation with the sword's attack capsule (red) drawn on the
 frames the move scripts switch it on, on a dark background, as a 60 fps animated WebP at gifs/<id>-ngb-<n>.webp
-(host `Ninja Gaiden Black render`, page_url = the move in the Frame Data tab). Safe to rerun: records already present
+(host `Ninja Gaiden Black render`, page_url = the move in Move Explorer). Safe to rerun: records already present
 (same page) are skipped. Needs Pillow.
 """
 import json, os
@@ -65,10 +65,11 @@ if __name__ == '__main__':
         a.setdefault('gifs', [])
         n = sum(1 for g in a['gifs'] if g.get('local', '').startswith(f'gifs/{aid}-ngb-'))
         for mid, label in moves:
-            page = 'frame-data.html#g=%s&c=%s&t=%s&m=%s' % (GAME_ID, fd[mid]['class'], fd[mid]['type'], mid)
+            page = 'move-explorer.html#g=%s&c=%s&t=%s&m=%s' % (GAME_ID, fd[mid]['class'], fd[mid]['type'], mid)
             local = f'gifs/{aid}-ngb-{n}.webp'
-            if any(g.get('page_url') == page for g in a['gifs'] + a.get('rejected_gifs', [])):
-                if REDRAW: render(fd[mid]['class'], mid, next(g['local'] for g in a['gifs'] if g.get('page_url') == page))
+            same = (page, page.replace('move-explorer.html', 'frame-data.html', 1))   # records written before the rename
+            if any(g.get('page_url') in same for g in a['gifs'] + a.get('rejected_gifs', [])):
+                if REDRAW: render(fd[mid]['class'], mid, next(g['local'] for g in a['gifs'] if g.get('page_url') in same))
                 continue
             count = render(fd[mid]['class'], mid, local)
             conf = 'low'                        # a posed figure, not the game's model

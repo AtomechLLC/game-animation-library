@@ -177,8 +177,8 @@ async function cpuByType(b) {
   const out = {}; for (const p of processInfo) out[p.type] = (out[p.type] || 0) + p.cpuTime; return out;
 }
 
-const PAGES = {atlas: '', moveExplorer: 'frame-data.html', trends: 'trends.html'};
-const ME = BASE + 'frame-data.html';
+const PAGES = {atlas: 'action-atlas.html', moveExplorer: 'move-explorer.html', trends: 'trends.html'};
+const ME = BASE + 'move-explorer.html';
 const glRenderer = p => p.ev(`(() => { const g = document.createElement('canvas').getContext('webgl'), x = g && g.getExtension('WEBGL_debug_renderer_info'); return x ? g.getParameter(x.UNMASKED_RENDERER_WEBGL) : null })()`);
 
 // ---------- scenarios ----------
