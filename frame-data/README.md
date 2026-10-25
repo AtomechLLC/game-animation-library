@@ -355,6 +355,22 @@ viewer in wia-seasonal-ui-asset-generator. Click the 3D view first (it gets an o
   body, the weapons and the hitboxes out on that frame. It is off on load and measured only while it shows.
 - The view is a previewer, so these tools are keys only: the `?` button (or `/`) over the view lists them all.
 
+**Render stats (developers).** `` ` `` (backquote) with the view focused shows a small overlay under the frame
+number, from `frame-data/renderstats.js`. Once a second it shows:
+
+- **Loop and renders:** animation-frame loop ticks and `renderer.render` calls per second.
+- **Per render:** draw calls and triangles.
+- **Render CPU time:** average and maximum.
+- **Memory:** three.js geometries and textures, and the JavaScript heap.
+- **State:** playing or paused, the frame, and whether the view is on screen.
+- **Idle input:** time since the last input in the view.
+
+**Copy JSON** copies the same snapshot that `viewer.debug.stats()` returns. The `?` panel lists the key under View.
+The overlay stays on across game switches until `` ` `` is pressed again. While off, it
+adds no timer or observer. It is the in-app check for the performance work on the viewer's idle cost
+(`docs/tasks/performance-2026-10/wp-15-viewer-render-on-demand.md`). The browser's own frame rate shows in the loop
+line: a window that Chrome throttles (hidden or occluded) reads about 1–2/s.
+
 It holds the weapon picked above the table; with no weapon picked, each move plays with its class's preview weapon
 (`EXPORT` in the exporter: the class's first weapon, Katana → Moonveil) or, when that weapon doesn't use the move, the
 first weapon that does. Powerstance moves hold the weapon in both hands, off-hand attacks and bows in the left.
