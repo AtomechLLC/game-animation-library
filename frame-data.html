@@ -13,7 +13,7 @@
 /* Same shell as template.html (sticky timeline header, filter rail, slide-over sheet), with a weapon icon index and frame tables. */
 :root{
   --bg:#f3f2ee; --panel:#ffffff; --sunk:#e9e7e1; --fg:#1c1b19; --muted:#6b6860; --line:#d8d5cc;
-  --key:#e08a00; --key-ink:#8a5200; --combat:#c2412d; --calm:#2f7a6b; --chip:#efece5; --playhead:#d92d20;
+  --key:#e08a00; --key-ink:#8a5200; --combat:#c2412d; --calm:#2f7a6b; --chip:#efece5; --playhead:#d92d20; --focus:#2563eb;
   --f-start:#cfcbc0; --f-active:#c2412d; --f-gap:#e6b8ae; --f-rec:#e08a00; --f-free:#2f7a6b40; --f-armor:#4b5bd6; --f-iframe:#0e9bb8;
   --cx-attack:#c2185b; --cx-dodge:#2f7a6b; --cx-block:#5b6b7f; --cx-skill:#7c3aed; --cx-item:#8a6d00; --cx-move:#2563eb;
   --v3d-bounds:#3fae3a;
@@ -23,12 +23,12 @@
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
-  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; color-scheme:dark;
+  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; --focus:#6ea8ff; color-scheme:dark;
   --f-start:#4a4b52; --f-active:#ff7a63; --f-gap:#6b3a33; --f-rec:#ffb020; --f-free:#62c9b14d; --f-armor:#8f9bff; --f-iframe:#4cc9e8;
   --cx-attack:#f06292; --cx-dodge:#62c9b1; --cx-block:#a3b1c2; --cx-skill:#b794f6; --cx-item:#e0c040; --cx-move:#6ea8ff; --v3d-bounds:#91f48b}}
 :root[data-theme="dark"]{
   --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
-  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; color-scheme:dark;
+  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; --focus:#6ea8ff; color-scheme:dark;
   --f-start:#4a4b52; --f-active:#ff7a63; --f-gap:#6b3a33; --f-rec:#ffb020; --f-free:#62c9b14d; --f-armor:#8f9bff; --f-iframe:#4cc9e8;
   --cx-attack:#f06292; --cx-dodge:#62c9b1; --cx-block:#a3b1c2; --cx-skill:#b794f6; --cx-item:#e0c040; --cx-move:#6ea8ff; --v3d-bounds:#91f48b}
 *{box-sizing:border-box}
@@ -292,7 +292,16 @@ footer p{max-width:85ch;margin:0 0 8px}
 .dock.set .mlist{display:block}
 .mlist>div{position:absolute;inset:0;overflow:auto;scrollbar-width:thin}
 /* clicking a move focuses the list, where Left/Right also step the moves; the border shows it, like the 3D stage's */
-#mlist{outline:none}.mlist:focus-within{border-color:var(--key);box-shadow:0 0 0 1px var(--key)}
+#mlist{outline:none}.mlist:focus-within{border-color:var(--focus);box-shadow:0 0 0 1px var(--focus)}
+/* Left/Right go to whichever of the ruler, the viewer and the Moveset Inspector has focus: that one shows a blue border
+   and a chip naming what the arrows step (the viewer's options take focus but not the arrows). Blue, not the orange
+   accent, which already means selected and the recovery frames */
+.ruler .keys{outline:none}.ruler:focus-within{box-shadow:inset 0 0 0 2px var(--focus)}
+.dock .v3d:focus-within:not(:has(.v3d-opts :focus)) .v3d-stage{border-color:var(--focus);box-shadow:0 0 0 1px var(--focus)}
+.ruler:focus-within::after,.dock .v3d:focus-within:not(:has(.v3d-opts :focus)) .v3d-stage::after,.mlist:focus-within::after{position:absolute;right:8px;bottom:8px;z-index:3;pointer-events:none;border:1px solid var(--focus);border-radius:999px;background:var(--focus);color:var(--bg);padding:1px 8px;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0;white-space:nowrap}
+.ruler:focus-within::after{content:"← → " attr(data-step);bottom:auto;top:50%;transform:translateY(-50%)}
+.dock .v3d:focus-within:not(:has(.v3d-opts :focus)) .v3d-stage::after{content:"← → Frame"}
+.mlist:focus-within::after{content:"↑ ↓ ← → Move"}
 .mlist table{font-size:12.5px}
 .mlist th,.mlist td{padding:4px 5px}
 .mlist th{letter-spacing:0}
@@ -415,7 +424,7 @@ tbody tr.on td{background:var(--chip);box-shadow:inset 0 1px var(--key),inset 0 
     <button class="rail-toggle" id="railBtn" aria-expanded="false">Filters</button>
   </div>
   <div class="wrap grow"><div class="domain" role="group" aria-label="Game" id="games"></div><span class="ver" id="ver"></span></div>
-  <div class="ruler"><div class="ticks"></div><div class="keys"><div class="kfs" id="keys"></div><span class="playhead" id="playhead" hidden></span></div></div>
+  <div class="ruler"><div class="ticks"></div><div class="keys" tabindex="-1"><div class="kfs" id="keys"></div><span class="playhead" id="playhead" hidden></span></div></div>
 </header>
 
 <div class="wrap shell">
@@ -535,10 +544,13 @@ function renderAll(){
   // on phones the game bar is one scrolling row: bring the current game into view
   {const bar=$('#games'),on=bar.querySelector('[aria-pressed="true"]');if(on&&bar.scrollWidth>bar.clientWidth)bar.scrollLeft+=on.getBoundingClientRect().left-bar.getBoundingClientRect().left-(bar.clientWidth-on.offsetWidth)/2}
   $('#ver').title=$('#ver').textContent=`${D.moves.length.toLocaleString()} moves · ${D.classes.length} ${L.classes} · ${L.patch}${D.game.version}`;
-  // a game with a single family (a fighting game's roster) keys its characters instead
+  // a game with a single family (a fighting game's roster) keys its characters instead. Redrawing drops the focused
+  // key, so focus goes back to the ruler and Left/Right keep stepping it
+  const rf=$('.ruler').contains(document.activeElement);$('.ruler').dataset.step=rulerStep();
   $('#keys').innerHTML=D.families.length===1
     ?`<button class="kf" data-cls="" aria-pressed="${!st.cls}"><i></i>${esc(L.allClasses)}</button>`+D.classes.map(c=>`<button class="kf" data-cls="${esc(c.id)}" aria-pressed="${st.cls===c.id}"><i></i>${esc(c.name)}</button>`).join('')
     :`<button class="kf" data-fam="" aria-pressed="${!st.fam&&!st.cls}"><i></i>${esc(L.allFamilies)}</button>`+D.families.map(f=>`<button class="kf" data-fam="${f.id}" aria-pressed="${st.fam===f.id}"><i></i>${esc(f.name)}</button>`).join('');placePlayhead();
+  if(rf)$('#keys').parentNode.focus({preventScroll:true});
   const tc=count(pool('type'),m=>m.type);
   $('#types').innerHTML=D.moveTypes.filter(t=>tc.get(t.id)||st.types.has(t.id)).map(t=>`<button class="fitem" data-type="${t.id}" aria-pressed="${st.types.has(t.id)}" title="${esc(t.description)}"><span>${esc(t.name)}</span><span>${tc.get(t.id)||0}</span></button>`).join('');
   const gc=count(pool('grip'),m=>m.grip);
@@ -777,7 +789,7 @@ async function dock(list){
     sec.setAttribute('aria-label',G.models?'3D preview':G.sprites?'Hitbox preview':'Hitbox clip');
     if(DOCK.game!==G.id){if(DOCK.view)DOCK.view.then(x=>x.dispose());DOCK.view=Promise.resolve(v.createViewer($('#dockView'),byClass()||G.clips));DOCK.game=G.id;DOCK.key=null
       // the viewer's key line also names the moveset's Up/Down keys (shown while the Moveset Inspector is)
-      DOCK.view.then(()=>$('#dockView .v3d-keys')?.insertAdjacentHTML('afterbegin','<span class="mkey"><kbd>↑</kbd> <kbd>↓</kbd> Previous / next move (<kbd>←</kbd> <kbd>→</kbd> too, in the moveset)</span><span class="mkey"><kbd>Ctrl</kbd> + <kbd>↑</kbd> <kbd>↓</kbd> Back / forward 10 moves</span><span class="mkey"><kbd>Shift</kbd> + <kbd>↑</kbd> <kbd>↓</kbd> First / last move</span><span class="mkey"><kbd>Tab</kbd> Expand / collapse moveset</span>'))}
+      DOCK.view.then(()=>$('#dockView .v3d-keys')?.insertAdjacentHTML('afterbegin',`<span><kbd>←</kbd> <kbd>→</kbd> ${esc(rulerStep())} (click the ruler first)</span>`+'<span class="mkey"><kbd>↑</kbd> <kbd>↓</kbd> Previous / next move (<kbd>←</kbd> <kbd>→</kbd> too, in the moveset)</span><span class="mkey"><kbd>Ctrl</kbd> + <kbd>↑</kbd> <kbd>↓</kbd> Back / forward 10 moves</span><span class="mkey"><kbd>Shift</kbd> + <kbd>↑</kbd> <kbd>↓</kbd> First / last move</span><span class="mkey"><kbd>Tab</kbd> Expand / collapse moveset</span>'))}
     // keep the move on show while it is still in the list (re-shown when the picked weapon changes); otherwise show
     // the list's first move
     const cur=ok.find(m=>m.class+'|'+m.id===DOCK.key),linked=LINKED&&ok.find(m=>m.class+'|'+m.id===LINKED);
@@ -919,10 +931,13 @@ function elasticRow(row){
     e.preventDefault();stop();if(!row.style.transform)p=row.scrollLeft;p+=Math.abs(dx)>Math.abs(dy)?dx:dy;show();
     clearTimeout(wt);wt=setTimeout(settle,120)},{passive:false})}
 elasticRow($('#keys').parentNode);
-// Left/Right step through the ruler's keys like keyframes, stopping at the first and last; returns the key to select
+// what Left/Right step on the ruler: weapon families, or a fighting game's characters
+function rulerStep(){return D.families.length===1?L.class:'Weapon family'}
+// with focus in the ruler (click a key first), Left/Right step through its keys like keyframes, stopping at the first
+// and last; returns the key to select
 function stepKey(e){
   if((e.key!=='ArrowLeft'&&e.key!=='ArrowRight')||e.ctrlKey||e.shiftKey||e.altKey||e.metaKey||e.defaultPrevented)return null;
-  if(e.target.closest?.('input,select,textarea,[contenteditable],#dock')||!$('#sheet').hidden)return null;
+  if(!e.target.closest?.('.ruler')||!$('#sheet').hidden)return null;
   const ks=[...document.querySelectorAll('#keys .kf')];if(!ks.length)return null;
   const i=ks.findIndex(k=>k.getAttribute('aria-pressed')==='true'),d=e.key==='ArrowLeft'?-1:1;
   const n=i<0?(d>0?0:ks.length-1):Math.min(ks.length-1,Math.max(0,i+d));
