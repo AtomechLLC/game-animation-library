@@ -1,0 +1,1051 @@
+{
+  "base": "https://atomechllc.github.io/game-animation-library/",
+  "startedAt": "2026-10-25T14:54:37.445Z",
+  "chrome": "Chrome/155.0.8059.85",
+  "throttled": {
+    "latency": 150,
+    "downloadThroughput": 200000,
+    "uploadThroughput": 93750,
+    "cpu": 4
+  },
+  "site": {
+    "before": {
+      "run": 40201887374,
+      "commit": "23fbc61",
+      "status": "completed",
+      "conclusion": "success",
+      "at": "2026-10-25T14:23:13Z"
+    },
+    "after": {
+      "run": 40201887374,
+      "commit": "23fbc61",
+      "status": "completed",
+      "conclusion": "success",
+      "at": "2026-10-25T14:23:13Z"
+    },
+    "changedDuringRun": false
+  },
+  "load": {
+    "atlas.unthrottled": {
+      "cold": {
+        "fcpMs": 1056,
+        "lcpMs": 1056,
+        "domContentLoadedMs": 1103,
+        "loadEventMs": 1191,
+        "firstWebglDrawMs": null,
+        "blockingMs": 55,
+        "longTasks": 5,
+        "longestTaskMs": 100,
+        "domNodes": 3984,
+        "wallLoadMs": 1281,
+        "requests": 29,
+        "transferredKB": 4515,
+        "byTypeKB": {
+          "Stylesheet": 1,
+          "Document": 183,
+          "Font": 151,
+          "Image": 4179
+        },
+        "status": {
+          "200": 29
+        }
+      },
+      "repeat": {
+        "fcpMs": 360,
+        "lcpMs": 560,
+        "domContentLoadedMs": 73,
+        "loadEventMs": 539,
+        "firstWebglDrawMs": null,
+        "blockingMs": 64,
+        "longTasks": 3,
+        "longestTaskMs": 212,
+        "domNodes": 3984,
+        "wallLoadMs": 558,
+        "requests": 29,
+        "transferredKB": 0,
+        "byTypeKB": {},
+        "status": {
+          "200": 29
+        }
+      }
+    },
+    "atlas.throttled": {
+      "cold": {
+        "fcpMs": 1676,
+        "lcpMs": 1676,
+        "domContentLoadedMs": 4113,
+        "loadEventMs": 4161,
+        "firstWebglDrawMs": null,
+        "blockingMs": 3588,
+        "longTasks": 7,
+        "longestTaskMs": 2086,
+        "domNodes": 3984,
+        "wallLoadMs": 5246,
+        "requests": 29,
+        "transferredKB": 4515,
+        "byTypeKB": {
+          "Stylesheet": 1,
+          "Document": 183,
+          "Font": 151,
+          "Image": 4179
+        },
+        "status": {
+          "200": 29
+        }
+      },
+      "repeat": {
+        "fcpMs": 652,
+        "lcpMs": 652,
+        "domContentLoadedMs": 2293,
+        "loadEventMs": 3807,
+        "firstWebglDrawMs": null,
+        "blockingMs": 3093,
+        "longTasks": 7,
+        "longestTaskMs": 1324,
+        "domNodes": 3984,
+        "wallLoadMs": 3905,
+        "requests": 29,
+        "transferredKB": 0,
+        "byTypeKB": {},
+        "status": {
+          "200": 29
+        }
+      }
+    },
+    "moveExplorer.unthrottled": {
+      "cold": {
+        "fcpMs": 984,
+        "lcpMs": 1648,
+        "domContentLoadedMs": 944,
+        "loadEventMs": 1058,
+        "firstWebglDrawMs": 1881,
+        "blockingMs": 295,
+        "longTasks": 4,
+        "longestTaskMs": 241,
+        "domNodes": 4777,
+        "wallLoadMs": 1140,
+        "requests": 82,
+        "transferredKB": 3181,
+        "byTypeKB": {
+          "Document": 34,
+          "Stylesheet": 1,
+          "Fetch": 2532,
+          "Font": 151,
+          "Script": 294,
+          "Image": 169
+        },
+        "status": {
+          "200": 82
+        },
+        "webglRenderer": "ANGLE (Intel, Intel(R) Graphics (0x00007D67) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "repeat": {
+        "fcpMs": 100,
+        "lcpMs": 464,
+        "domContentLoadedMs": 72,
+        "loadEventMs": 90,
+        "firstWebglDrawMs": 609,
+        "blockingMs": 217,
+        "longTasks": 4,
+        "longestTaskMs": 164,
+        "domNodes": 4777,
+        "wallLoadMs": 113,
+        "requests": 82,
+        "transferredKB": 0,
+        "byTypeKB": {},
+        "status": {
+          "200": 82
+        }
+      }
+    },
+    "moveExplorer.throttled": {
+      "cold": {
+        "fcpMs": 1448,
+        "lcpMs": 8392,
+        "domContentLoadedMs": 1477,
+        "loadEventMs": 2767,
+        "firstWebglDrawMs": 21112,
+        "blockingMs": 3096,
+        "longTasks": 49,
+        "longestTaskMs": 1463,
+        "domNodes": 4777,
+        "wallLoadMs": 2920,
+        "requests": 82,
+        "transferredKB": 3181,
+        "byTypeKB": {
+          "Document": 34,
+          "Stylesheet": 1,
+          "Fetch": 2532,
+          "Font": 151,
+          "Script": 294,
+          "Image": 169
+        },
+        "status": {
+          "200": 82
+        },
+        "webglRenderer": "ANGLE (Intel, Intel(R) Graphics (0x00007D67) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "repeat": {
+        "fcpMs": 420,
+        "lcpMs": 2540,
+        "domContentLoadedMs": 419,
+        "loadEventMs": 440,
+        "firstWebglDrawMs": 3020,
+        "blockingMs": 2483,
+        "longTasks": 43,
+        "longestTaskMs": 997,
+        "domNodes": 4777,
+        "wallLoadMs": 533,
+        "requests": 82,
+        "transferredKB": 0,
+        "byTypeKB": {},
+        "status": {
+          "200": 82
+        }
+      }
+    },
+    "trends.unthrottled": {
+      "cold": {
+        "fcpMs": 5964,
+        "lcpMs": 6980,
+        "domContentLoadedMs": 5923,
+        "loadEventMs": 6048,
+        "firstWebglDrawMs": null,
+        "blockingMs": 135,
+        "longTasks": 2,
+        "longestTaskMs": 185,
+        "domNodes": 1753,
+        "wallLoadMs": 6149,
+        "requests": 13,
+        "transferredKB": 692,
+        "byTypeKB": {
+          "Document": 27,
+          "Stylesheet": 1,
+          "Font": 151,
+          "Fetch": 513
+        },
+        "status": {
+          "200": 13
+        }
+      },
+      "repeat": {
+        "fcpMs": 84,
+        "lcpMs": 336,
+        "domContentLoadedMs": 14,
+        "loadEventMs": 77,
+        "firstWebglDrawMs": null,
+        "blockingMs": 101,
+        "longTasks": 1,
+        "longestTaskMs": 151,
+        "domNodes": 1753,
+        "wallLoadMs": 107,
+        "requests": 13,
+        "transferredKB": 0,
+        "byTypeKB": {},
+        "status": {
+          "200": 13
+        }
+      }
+    },
+    "trends.throttled": {
+      "cold": {
+        "fcpMs": 1436,
+        "lcpMs": 6584,
+        "domContentLoadedMs": 1431,
+        "loadEventMs": 2193,
+        "firstWebglDrawMs": null,
+        "blockingMs": 1806,
+        "longTasks": 7,
+        "longestTaskMs": 1255,
+        "domNodes": 1753,
+        "wallLoadMs": 2301,
+        "requests": 13,
+        "transferredKB": 692,
+        "byTypeKB": {
+          "Document": 27,
+          "Stylesheet": 1,
+          "Font": 151,
+          "Fetch": 513
+        },
+        "status": {
+          "200": 13
+        }
+      },
+      "repeat": {
+        "fcpMs": 384,
+        "lcpMs": 2068,
+        "domContentLoadedMs": 369,
+        "loadEventMs": 451,
+        "firstWebglDrawMs": null,
+        "blockingMs": 1307,
+        "longTasks": 7,
+        "longestTaskMs": 1098,
+        "domNodes": 1753,
+        "wallLoadMs": 563,
+        "requests": 13,
+        "transferredKB": 0,
+        "byTypeKB": {},
+        "status": {
+          "200": 13
+        }
+      }
+    }
+  },
+  "atlasScroll": {
+    "firstScreen": {
+      "requests": 29,
+      "transferredKB": 4515
+    },
+    "fullScroll": {
+      "requests": 297,
+      "transferredKB": 67544,
+      "seconds": 17,
+      "images": 321,
+      "main": {
+        "longTasks": 0,
+        "longTaskMs": 0,
+        "longestTaskMs": 0,
+        "blockingMs": 0,
+        "slowestEventMs": 0,
+        "events": 0,
+        "replaceState": 0,
+        "calls": {}
+      }
+    },
+    "idleAtBottom": {
+      "seconds": 5,
+      "webglFramesPerSecond": 0,
+      "drawCallsPerSecond": 0,
+      "canvas2dFramesPerSecond": 0,
+      "mainThreadBusyMsPerSecond": 21,
+      "cpuMsPerSecondByProcess": {
+        "browser": 53,
+        "renderer": 92,
+        "GPU": 159,
+        "network.mojom.NetworkService": 0,
+        "storage.mojom.StorageService": 1,
+        "passage_embeddings.mojom.PassageEmbeddingsService": 40
+      }
+    }
+  },
+  "interact": {
+    "cpu1x": {
+      "atlasSearchTenCharacters": {
+        "longTasks": 3,
+        "longTaskMs": 209,
+        "longestTaskMs": 87,
+        "blockingMs": 59,
+        "slowestEventMs": 112,
+        "events": 42,
+        "replaceState": 0,
+        "calls": {
+          "render": {
+            "n": 10,
+            "totalMs": 74,
+            "maxMs": 25
+          }
+        },
+        "transferredKB": 5656
+      },
+      "startupSliderTwoSecondDrag": {
+        "longTasks": 59,
+        "longTaskMs": 5669,
+        "longestTaskMs": 157,
+        "blockingMs": 2719,
+        "slowestEventMs": 24,
+        "events": 30,
+        "replaceState": 58,
+        "calls": {
+          "dock": {
+            "n": 58,
+            "totalMs": 4,
+            "maxMs": 0
+          },
+          "renderTable": {
+            "n": 58,
+            "totalMs": 867,
+            "maxMs": 21
+          },
+          "renderAll": {
+            "n": 58,
+            "totalMs": 1111,
+            "maxMs": 26
+          },
+          "dock (settled)": {
+            "n": 58,
+            "totalMs": 11805,
+            "maxMs": 350
+          }
+        }
+      },
+      "pickEldenRingClass": {
+        "longTasks": 0,
+        "longTaskMs": 0,
+        "longestTaskMs": 0,
+        "blockingMs": 0,
+        "slowestEventMs": 72,
+        "events": 35,
+        "replaceState": 2,
+        "calls": {
+          "dock": {
+            "n": 1,
+            "totalMs": 1,
+            "maxMs": 1
+          },
+          "renderTable": {
+            "n": 1,
+            "totalMs": 18,
+            "maxMs": 18
+          },
+          "renderAll": {
+            "n": 1,
+            "totalMs": 24,
+            "maxMs": 24
+          },
+          "preview": {
+            "n": 1,
+            "totalMs": 2,
+            "maxMs": 2
+          },
+          "viewer.show": {
+            "n": 1,
+            "totalMs": 0,
+            "maxMs": 0
+          },
+          "dock (settled)": {
+            "n": 1,
+            "totalMs": 159,
+            "maxMs": 159
+          },
+          "viewer.show (settled)": {
+            "n": 1,
+            "totalMs": 136,
+            "maxMs": 136
+          },
+          "preview (settled)": {
+            "n": 1,
+            "totalMs": 139,
+            "maxMs": 139
+          }
+        },
+        "domNodes": 3869,
+        "hiddenTableRows": 92,
+        "movesetRows": 81
+      },
+      "singleDownStepToFirstFrameMs": [
+        140,
+        194,
+        132,
+        288,
+        137,
+        196
+      ],
+      "holdDownTwoSeconds": {
+        "longTasks": 0,
+        "longTaskMs": 0,
+        "longestTaskMs": 0,
+        "blockingMs": 0,
+        "slowestEventMs": 32,
+        "events": 374,
+        "replaceState": 61,
+        "calls": {
+          "preview": {
+            "n": 61,
+            "totalMs": 105,
+            "maxMs": 2
+          },
+          "stepMove": {
+            "n": 61,
+            "totalMs": 139,
+            "maxMs": 3
+          },
+          "viewer.show": {
+            "n": 61,
+            "totalMs": 1,
+            "maxMs": 0
+          },
+          "viewer.show (settled)": {
+            "n": 61,
+            "totalMs": 8643,
+            "maxMs": 292
+          },
+          "preview (settled)": {
+            "n": 61,
+            "totalMs": 8760,
+            "maxMs": 294
+          }
+        },
+        "keyEvents": 61,
+        "from": "Greatsword|a025_032020",
+        "to": "Greatsword|a025_032610",
+        "consoleWarnings": 0
+      }
+    },
+    "cpu4x": {
+      "atlasSearchTenCharacters": {
+        "longTasks": 8,
+        "longTaskMs": 2400,
+        "longestTaskMs": 955,
+        "blockingMs": 2000,
+        "slowestEventMs": 1128,
+        "events": 50,
+        "replaceState": 0,
+        "calls": {
+          "render": {
+            "n": 10,
+            "totalMs": 682,
+            "maxMs": 277
+          }
+        },
+        "transferredKB": 5656
+      },
+      "startupSliderTwoSecondDrag": {
+        "longTasks": 69,
+        "longTaskMs": 40543,
+        "longestTaskMs": 1132,
+        "blockingMs": 37093,
+        "slowestEventMs": 120,
+        "events": 30,
+        "replaceState": 58,
+        "calls": {
+          "dock": {
+            "n": 58,
+            "totalMs": 24,
+            "maxMs": 1
+          },
+          "renderTable": {
+            "n": 58,
+            "totalMs": 6309,
+            "maxMs": 183
+          },
+          "renderAll": {
+            "n": 58,
+            "totalMs": 7802,
+            "maxMs": 231
+          },
+          "dock (settled)": {
+            "n": 58,
+            "totalMs": 117702,
+            "maxMs": 2957
+          }
+        }
+      },
+      "pickEldenRingClass": {
+        "longTasks": 4,
+        "longTaskMs": 525,
+        "longestTaskMs": 249,
+        "blockingMs": 325,
+        "slowestEventMs": 352,
+        "events": 35,
+        "replaceState": 2,
+        "calls": {
+          "dock": {
+            "n": 1,
+            "totalMs": 8,
+            "maxMs": 8
+          },
+          "renderTable": {
+            "n": 1,
+            "totalMs": 88,
+            "maxMs": 88
+          },
+          "renderAll": {
+            "n": 1,
+            "totalMs": 119,
+            "maxMs": 119
+          },
+          "preview": {
+            "n": 1,
+            "totalMs": 13,
+            "maxMs": 13
+          },
+          "viewer.show": {
+            "n": 1,
+            "totalMs": 0,
+            "maxMs": 0
+          },
+          "dock (settled)": {
+            "n": 1,
+            "totalMs": 476,
+            "maxMs": 476
+          },
+          "viewer.show (settled)": {
+            "n": 1,
+            "totalMs": 171,
+            "maxMs": 171
+          },
+          "preview (settled)": {
+            "n": 1,
+            "totalMs": 189,
+            "maxMs": 189
+          }
+        },
+        "domNodes": 3869,
+        "hiddenTableRows": 92,
+        "movesetRows": 81
+      },
+      "singleDownStepToFirstFrameMs": [
+        212,
+        118,
+        96,
+        87,
+        173,
+        110
+      ],
+      "holdDownTwoSeconds": {
+        "longTasks": 21,
+        "longTaskMs": 1235,
+        "longestTaskMs": 76,
+        "blockingMs": 185,
+        "slowestEventMs": 136,
+        "events": 432,
+        "replaceState": 61,
+        "calls": {
+          "preview": {
+            "n": 61,
+            "totalMs": 762,
+            "maxMs": 29
+          },
+          "stepMove": {
+            "n": 61,
+            "totalMs": 945,
+            "maxMs": 34
+          },
+          "viewer.show": {
+            "n": 61,
+            "totalMs": 3,
+            "maxMs": 0
+          },
+          "viewer.show (settled)": {
+            "n": 61,
+            "totalMs": 134089,
+            "maxMs": 4035
+          },
+          "preview (settled)": {
+            "n": 61,
+            "totalMs": 134963,
+            "maxMs": 4046
+          }
+        },
+        "keyEvents": 61,
+        "from": "Greatsword|a025_032020",
+        "to": "Greatsword|a025_032610",
+        "consoleWarnings": 0
+      }
+    }
+  },
+  "idle": {
+    "eldenRing3d": {
+      "webglRenderer": "ANGLE (Intel, Intel(R) Graphics (0x00007D67) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "playing": {
+        "seconds": 5,
+        "webglFramesPerSecond": 227.8,
+        "drawCallsPerSecond": 5980,
+        "canvas2dFramesPerSecond": 0,
+        "mainThreadBusyMsPerSecond": 127,
+        "cpuMsPerSecondByProcess": {
+          "browser": 31,
+          "renderer": 248,
+          "GPU": 338,
+          "network.mojom.NetworkService": 4,
+          "storage.mojom.StorageService": 0
+        }
+      },
+      "paused": {
+        "seconds": 5,
+        "webglFramesPerSecond": 171.4,
+        "drawCallsPerSecond": 4456,
+        "canvas2dFramesPerSecond": 0,
+        "mainThreadBusyMsPerSecond": 88,
+        "cpuMsPerSecondByProcess": {
+          "browser": 369,
+          "renderer": 173,
+          "GPU": 350,
+          "network.mojom.NetworkService": 163,
+          "storage.mojom.StorageService": 0,
+          "quarantine.mojom.Quarantine": 4
+        }
+      },
+      "foldedPaused": {
+        "seconds": 5,
+        "webglFramesPerSecond": 166.8,
+        "drawCallsPerSecond": 4337,
+        "canvas2dFramesPerSecond": 0,
+        "mainThreadBusyMsPerSecond": 60,
+        "cpuMsPerSecondByProcess": {
+          "browser": 61,
+          "renderer": 80,
+          "GPU": 97,
+          "network.mojom.NetworkService": 0,
+          "storage.mojom.StorageService": 1,
+          "passage_embeddings.mojom.PassageEmbeddingsService": 36
+        }
+      },
+      "hiddenByEmptySearch": {
+        "dockHidden": true,
+        "seconds": 5,
+        "webglFramesPerSecond": 162.4,
+        "drawCallsPerSecond": 4222,
+        "canvas2dFramesPerSecond": 0,
+        "mainThreadBusyMsPerSecond": 70,
+        "cpuMsPerSecondByProcess": {
+          "browser": 15,
+          "renderer": 113,
+          "GPU": 92,
+          "network.mojom.NetworkService": 2,
+          "storage.mojom.StorageService": 0,
+          "passage_embeddings.mojom.PassageEmbeddingsService": 0
+        }
+      },
+      "exampleOffScreenPaused": {
+        "dockInView": false,
+        "seconds": 5,
+        "webglFramesPerSecond": 198.6,
+        "drawCallsPerSecond": 5164,
+        "canvas2dFramesPerSecond": 0,
+        "mainThreadBusyMsPerSecond": 116,
+        "cpuMsPerSecondByProcess": {
+          "browser": 29,
+          "renderer": 163,
+          "GPU": 108,
+          "network.mojom.NetworkService": 0,
+          "storage.mojom.StorageService": 0
+        }
+      }
+    },
+    "streetFighterSprites": {
+      "playing": {
+        "seconds": 5,
+        "webglFramesPerSecond": 0,
+        "drawCallsPerSecond": 0,
+        "canvas2dFramesPerSecond": 30,
+        "mainThreadBusyMsPerSecond": 94,
+        "cpuMsPerSecondByProcess": {
+          "browser": 35,
+          "renderer": 154,
+          "GPU": 110,
+          "network.mojom.NetworkService": 5,
+          "storage.mojom.StorageService": 0
+        }
+      },
+      "paused": {
+        "seconds": 5,
+        "webglFramesPerSecond": 0,
+        "drawCallsPerSecond": 0,
+        "canvas2dFramesPerSecond": 0,
+        "mainThreadBusyMsPerSecond": 29,
+        "cpuMsPerSecondByProcess": {
+          "browser": 387,
+          "renderer": 58,
+          "GPU": 53,
+          "network.mojom.NetworkService": 164,
+          "storage.mojom.StorageService": 0
+        }
+      },
+      "foldedPaused": {
+        "seconds": 5,
+        "webglFramesPerSecond": 0,
+        "drawCallsPerSecond": 0,
+        "canvas2dFramesPerSecond": 0,
+        "mainThreadBusyMsPerSecond": 26,
+        "cpuMsPerSecondByProcess": {
+          "browser": 57,
+          "renderer": 47,
+          "GPU": 68,
+          "network.mojom.NetworkService": 0,
+          "storage.mojom.StorageService": 1,
+          "passage_embeddings.mojom.PassageEmbeddingsService": 0
+        }
+      },
+      "hiddenByEmptySearch": {
+        "dockHidden": true,
+        "seconds": 5,
+        "webglFramesPerSecond": 0,
+        "drawCallsPerSecond": 0,
+        "canvas2dFramesPerSecond": 0,
+        "mainThreadBusyMsPerSecond": 26,
+        "cpuMsPerSecondByProcess": {
+          "browser": 18,
+          "renderer": 65,
+          "GPU": 48,
+          "network.mojom.NetworkService": 1,
+          "storage.mojom.StorageService": 0,
+          "passage_embeddings.mojom.PassageEmbeddingsService": 0
+        }
+      },
+      "exampleOffScreenPaused": {
+        "dockInView": false,
+        "seconds": 5,
+        "webglFramesPerSecond": 0,
+        "drawCallsPerSecond": 0,
+        "canvas2dFramesPerSecond": 0,
+        "mainThreadBusyMsPerSecond": 21,
+        "cpuMsPerSecondByProcess": {
+          "browser": 15,
+          "renderer": 58,
+          "GPU": 35,
+          "network.mojom.NetworkService": 1,
+          "storage.mojom.StorageService": 0
+        }
+      }
+    },
+    "smashClips": {
+      "playing": {
+        "seconds": 5,
+        "webglFramesPerSecond": 0,
+        "drawCallsPerSecond": 0,
+        "canvas2dFramesPerSecond": 15,
+        "mainThreadBusyMsPerSecond": 50,
+        "cpuMsPerSecondByProcess": {
+          "browser": 30,
+          "renderer": 83,
+          "GPU": 47,
+          "network.mojom.NetworkService": 7,
+          "storage.mojom.StorageService": 0
+        }
+      },
+      "paused": {
+        "seconds": 5,
+        "webglFramesPerSecond": 0,
+        "drawCallsPerSecond": 0,
+        "canvas2dFramesPerSecond": 0,
+        "mainThreadBusyMsPerSecond": 23,
+        "cpuMsPerSecondByProcess": {
+          "browser": 351,
+          "renderer": 37,
+          "GPU": 25,
+          "network.mojom.NetworkService": 145,
+          "storage.mojom.StorageService": 0
+        }
+      },
+      "foldedPaused": {
+        "seconds": 5,
+        "webglFramesPerSecond": 0,
+        "drawCallsPerSecond": 0,
+        "canvas2dFramesPerSecond": 0,
+        "mainThreadBusyMsPerSecond": 20,
+        "cpuMsPerSecondByProcess": {
+          "browser": 56,
+          "renderer": 26,
+          "GPU": 38,
+          "network.mojom.NetworkService": 0,
+          "storage.mojom.StorageService": 2,
+          "passage_embeddings.mojom.PassageEmbeddingsService": 0
+        }
+      },
+      "hiddenByEmptySearch": {
+        "dockHidden": true,
+        "seconds": 5,
+        "webglFramesPerSecond": 0,
+        "drawCallsPerSecond": 0,
+        "canvas2dFramesPerSecond": 0,
+        "mainThreadBusyMsPerSecond": 20,
+        "cpuMsPerSecondByProcess": {
+          "browser": 17,
+          "renderer": 44,
+          "GPU": 21,
+          "network.mojom.NetworkService": 0,
+          "storage.mojom.StorageService": 0,
+          "passage_embeddings.mojom.PassageEmbeddingsService": 0
+        }
+      }
+    }
+  },
+  "hover": {
+    "eldenRingAllClassesTable": {
+      "rowsSwept": 50,
+      "requests": 51,
+      "transferredKB": 398,
+      "byTypeKB": {
+        "Fetch": 398
+      },
+      "main": {
+        "longTasks": 0,
+        "longTaskMs": 0,
+        "longestTaskMs": 0,
+        "blockingMs": 0,
+        "slowestEventMs": 24,
+        "events": 314,
+        "replaceState": 0,
+        "calls": {}
+      }
+    },
+    "smashMovesetInspector": {
+      "rowsSwept": 50,
+      "requests": 50,
+      "transferredKB": 3780,
+      "byTypeKB": {
+        "Fetch": 3780
+      },
+      "main": {
+        "longTasks": 0,
+        "longTaskMs": 0,
+        "longestTaskMs": 0,
+        "blockingMs": 0,
+        "slowestEventMs": 16,
+        "events": 8,
+        "replaceState": 0,
+        "calls": {}
+      }
+    }
+  },
+  "memory": {
+    "eldenRingTwentyWeapons": {
+      "start": {
+        "jsHeapMB": 7.3,
+        "processMB": {
+          "browser": 62,
+          "renderer": 258,
+          "GPU": 235,
+          "network.mojom.NetworkService": 15,
+          "storage.mojom.StorageService": 8
+        },
+        "decodedBitmapsMB": 8.1,
+        "webglContextsCreated": 1
+      },
+      "after": {
+        "jsHeapMB": 8.2,
+        "processMB": {
+          "browser": 75,
+          "renderer": 251,
+          "GPU": 244,
+          "network.mojom.NetworkService": 15,
+          "storage.mojom.StorageService": 8,
+          "passage_embeddings.mojom.PassageEmbeddingsService": 49
+        },
+        "decodedBitmapsMB": 9.7,
+        "webglContextsCreated": 1
+      },
+      "distinctViewerLabels": 9,
+      "modelFilesLoaded": 18
+    },
+    "smashTenClips": {
+      "start": {
+        "jsHeapMB": 3.9,
+        "processMB": {
+          "browser": 59,
+          "renderer": 237,
+          "GPU": 170,
+          "network.mojom.NetworkService": 14,
+          "storage.mojom.StorageService": 8
+        },
+        "decodedBitmapsMB": 7.4,
+        "webglContextsCreated": 0
+      },
+      "after": {
+        "jsHeapMB": 4,
+        "processMB": {
+          "browser": 72,
+          "renderer": 299,
+          "GPU": 370,
+          "network.mojom.NetworkService": 14,
+          "storage.mojom.StorageService": 8,
+          "passage_embeddings.mojom.PassageEmbeddingsService": 49
+        },
+        "decodedBitmapsMB": 170.8,
+        "webglContextsCreated": 0
+      },
+      "at": "kazuya|kazuya.ground.flash-punch-combo-final-hit-a-a-delay-a"
+    },
+    "hollowKnightLargeSheet": {
+      "start": {
+        "jsHeapMB": 1.2,
+        "processMB": {
+          "browser": 61,
+          "renderer": 209,
+          "GPU": 167,
+          "network.mojom.NetworkService": 13,
+          "storage.mojom.StorageService": 8
+        },
+        "decodedBitmapsMB": 0,
+        "webglContextsCreated": 0
+      },
+      "after": {
+        "jsHeapMB": 1.3,
+        "processMB": {
+          "browser": 70,
+          "renderer": 195,
+          "GPU": 308,
+          "network.mojom.NetworkService": 14,
+          "storage.mojom.StorageService": 8
+        },
+        "decodedBitmapsMB": 0,
+        "webglContextsCreated": 0
+      },
+      "shown": true,
+      "secondsToSettle": 9,
+      "sheets": [
+        {
+          "file": "nkg.attack.firebats.webp",
+          "KB": 2169
+        }
+      ]
+    },
+    "fiveGameSwitches": {
+      "games": [
+        "no-rest-for-the-wicked",
+        "ninja-gaiden-black",
+        "devil-may-cry-3",
+        "elden-ring",
+        "no-rest-for-the-wicked"
+      ],
+      "start": {
+        "jsHeapMB": 7.2,
+        "processMB": {
+          "browser": 73,
+          "renderer": 272,
+          "GPU": 251,
+          "network.mojom.NetworkService": 15,
+          "storage.mojom.StorageService": 8
+        },
+        "decodedBitmapsMB": 8.1,
+        "webglContextsCreated": 1
+      },
+      "after": {
+        "jsHeapMB": 8.5,
+        "processMB": {
+          "browser": 81,
+          "renderer": 286,
+          "GPU": 495,
+          "network.mojom.NetworkService": 15,
+          "storage.mojom.StorageService": 9,
+          "passage_embeddings.mojom.PassageEmbeddingsService": 49
+        },
+        "decodedBitmapsMB": 21.5,
+        "webglContextsCreated": 6
+      },
+      "webglWarnings": []
+    }
+  },
+  "repository": {
+    "count": "732",
+    "size": "84.09 MiB",
+    "in-pack": "11854",
+    "packs": "1",
+    "size-pack": "563.27 MiB",
+    "prune-packable": "0",
+    "garbage": "0",
+    "size-garbage": "0 bytes",
+    "trackedFiles": 11869,
+    "commit": "e3efb46"
+  },
+  "pages": {
+    "run": {
+      "createdAt": "2026-10-25T14:21:58Z",
+      "databaseId": 40201887374,
+      "displayTitle": "Merge pull request #80 from AtomechLLC/claude/project-thread-8r1tvp"
+    },
+    "artifactMB": 553,
+    "stepSeconds": {
+      "Set up job": 2,
+      "Checkout": 16,
+      "Build library page": 0,
+      "Setup Pages": 0,
+      "Upload artifact": 22,
+      "Deploy to GitHub Pages": 28,
+      "Post Checkout": 0,
+      "Complete job": 0
+    }
+  },
+  "finishedAt": "2026-10-25T15:09:15.079Z"
+}

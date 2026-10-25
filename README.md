@@ -17,6 +17,10 @@ python merge.py
 
 On every push to `main`, `.github/workflows/static.yml` runs `python3 build_page.py index.html` (template.html + library.json) and publishes the repo root, so the site always matches the committed `library.json`. Run `python build_page.py` locally to preview `index.html`.
 
+`node tools/perf/baseline.mjs` measures the published site (page loads, interactions, the 3D viewer's idle cost,
+memory, deployment size) in an installed Chrome and writes a JSON file; `--base` points it at another copy and
+`--only` picks scenarios. The baseline and how to read it are in `docs/reports/performance-2026-10/baseline.md`.
+
 The app switcher icons (Atlas, High kick and Histogram) are by Delapouite from [game-icons.net](https://game-icons.net/), under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/); each app's footer credits them.
 
 ## Move Explorer (Frame Data tab)
