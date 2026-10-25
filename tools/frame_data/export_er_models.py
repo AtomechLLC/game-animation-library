@@ -2,6 +2,7 @@
 set (glTF), weapon models (glTF), each move's animation and its hitboxes.
 
     python tools/frame_data/export_er_models.py "D:/SteamLibrary/steamapps/common/ELDEN RING"
+    python tools/frame_data/export_er_models.py "<install>" --armor "Tree Sentinel" [more sets]   # armor only
 
 Reads only (see import_er_game.py for the archive, param and TAE readers); writes frame-data/models/elden-ring/:
 
@@ -30,7 +31,7 @@ OUT = os.path.join(ROOT, 'frame-data', 'models', 'elden-ring')
 G.REFS['EquipParamProtector.xml'] = 'https://raw.githubusercontent.com/soulsmods/Paramdex/master/ER/Defs/EquipParamProtector.xml'
 
 EXPORT = {
-    'armor': 'Raging Wolf',          # set name prefix: <name> Helm / Armor / Gauntlets / Greaves
+    'armor': 'Haligtree Knight',     # <name> Helm / Armor / Gauntlets / Greaves; pale, so it reads on the dark page
     'preview': {'Katana': 'Moonveil'},  # class -> weapon shown when none is picked (default: the class's first)
 }
 TEX_SIZE = 1024                      # armor
@@ -306,6 +307,8 @@ class Game:
             mi = add_mesh(g, flver, tpf, self.skeleton_joint(flver), hidden, model)
             meshes.append(g.node(name=model, mesh=mi, skin=0))
         g.j['scenes'][0]['nodes'] = roots + meshes
+        missing = [w for p, w in (('hd', 'Helm'), ('bd', 'Armor'), ('am', 'Gauntlets'), ('lg', 'Greaves')) if p not in pieces]
+        if missing: print(f'  {set_name}: no {", ".join(missing)}')
         return g.glb(), {'name': f'{set_name} Set', 'pieces': [n for _, n in sorted(pieces.values())]}
 
     # --- weapons
@@ -444,14 +447,28 @@ def bake(a, times):
 def slug(s):
     return re.sub(r'[^a-z0-9]+', '-', s.lower()).strip('-')
 
+def export_armor(gm, set_name):
+    glb, armor = gm.armor(set_name)
+    armor['file'] = f"armor-{slug(set_name)}.glb"
+    open(os.path.join(OUT, armor['file']), 'wb').write(glb)
+    print('armor', armor['file'], len(glb) // 1024, 'KB')
+    return armor
+
+def main_armor(game_dir, sets):
+    """Only the armor: writes each set's glb and points models.json at the first (the rest are to compare)."""
+    gm = Game(game_dir)
+    armors = [export_armor(gm, s) for s in sets]
+    path = os.path.join(OUT, 'models.json')
+    manifest = json.load(open(path, encoding='utf-8'))
+    manifest['armor'] = armors[0]
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(manifest, f, ensure_ascii=False, separators=(',', ':'))
+
 def main(game_dir, only=None):
     gm = Game(game_dir)
     fd = json.load(open(os.path.join(ROOT, 'frame-data', 'elden-ring.json'), encoding='utf-8'))
     for d in ('anim', 'moves'): os.makedirs(os.path.join(OUT, d), exist_ok=True)
-    glb, armor = gm.armor(EXPORT['armor'])
-    armor['file'] = f"armor-{slug(EXPORT['armor'])}.glb"
-    open(os.path.join(OUT, armor['file']), 'wb').write(glb)
-    print('armor', armor['file'], len(glb) // 1024, 'KB')
+    armor = export_armor(gm, EXPORT['armor'])
     manifest = {'schema': 'frame-data-models/2', 'game': 'elden-ring', 'version': fd['game']['version'],
                 'skeleton': {'weaponBone': 'R_Weapon', 'leftWeaponBone': 'L_Weapon', 'rootBone': 'Master', 'bones': gm.bones},
                 'armor': armor, 'body': gm.body_dummies(), 'weapons': {}, 'classes': {}}
@@ -505,4 +522,5 @@ def main(game_dir, only=None):
 
 if __name__ == '__main__':
     if len(sys.argv) < 2: sys.exit(__doc__)
-    main(G.game_dir(sys.argv[1]), set(sys.argv[2:]) or None)
+    if sys.argv[2:3] == ['--armor']: main_armor(G.game_dir(sys.argv[1]), sys.argv[3:] or [EXPORT['armor']])
+    else: main(G.game_dir(sys.argv[1]), set(sys.argv[2:]) or None)
