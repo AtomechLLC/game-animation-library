@@ -306,6 +306,8 @@ footer p{max-width:85ch;margin:0 0 8px}
 .insp .r.open b::after{content:" \2713  open";font-weight:500}
 /* cancel rows carry the colour of their timeline line, so the inspector is the key's full explanation */
 .insp .cxnote{margin:0 0 4px;color:var(--muted);font-size:12px}
+.sheet .cxnote{margin:0 0 8px;color:var(--muted);font-size:12px}
+.cxsw{display:inline-block;width:14px;height:3px;border-radius:1px;background:var(--c);vertical-align:middle;margin:-2px 6px 0 0}
 .insp .r[data-can] span{display:inline-flex;align-items:center;gap:6px}
 .insp .r[data-can] span::before{content:"";width:14px;height:3px;border-radius:1px;background:var(--c)}
 /* ten weapons to a row, sized to the inspector's width */
@@ -348,10 +350,14 @@ footer p{max-width:85ch;margin:0 0 8px}
   .domain::-webkit-scrollbar{display:none}
   .domain button{flex:none;white-space:nowrap;padding:6px 10px}
   .pick.dockon{display:contents}
-  .pick.dockon .dock{position:sticky;top:env(safe-area-inset-top,0px);z-index:4;background:var(--bg);border-bottom:1px solid var(--line);margin:0 -16px 12px;padding:6px 16px 8px}
+  .dock{position:sticky;top:env(safe-area-inset-top,0px);z-index:4;background:var(--bg);border-bottom:1px solid var(--line);margin:0 -16px 12px;padding:6px 16px 8px}
   .dock-head h3{font-size:14px}
-  .dock .v3d-stage{height:clamp(150px,27vh,230px)}
+  .dock .v3d-stage{height:clamp(140px,24vh,220px)}
   .dock .v3d-opts{gap:2px 12px}
+  /* the sticky preview stays under about half the screen, so the table can still be read and tapped beneath it:
+     the inspector moves to Frame details (the viewport's frame counter shows the phase as it plays), and the
+     keyboard shortcuts and outfit credit, which a phone doesn't need while scrubbing, are left out */
+  .dock .insp,.dock .v3d-keys,.dock .v3d-who{display:none}
   /* the scrubber takes its own full-width row under the play buttons, and its cancel key shrinks to one line of
      colour strips with their frames; the inspector names each one */
   .v3d-bar{flex-wrap:wrap}
@@ -624,7 +630,7 @@ function openMove(key){
   const [cls,id]=key.split('|'),m=D.moves.find(x=>x.class===cls&&x.id===id);if(!m)return;
   const c=CL[m.class],end=Math.max(m.total||0,m.cancels.dodge||0);
   const win=a=>a.length?a.map(([s,e])=>s===e?s:`${s}–${e}`).join(', '):'—';
-  const can=[['attack','Attack'],['dodge','Dodge / roll'],['block','Block'],['skill','Skill'],['item','Item'],['move','Walk / run']].filter(([k])=>m.cancels[k]).map(([k,l])=>`<dt>${l}</dt><dd>from frame ${m.cancels[k]}</dd>`).join('');
+  const can=CANCELS.filter(([k])=>m.cancels[k]).map(([k,l])=>`<dt><i class="cxsw" style="--c:var(--cx-${k})"></i>${l}</dt><dd>from frame ${m.cancels[k]}</dd>`).join('');
   const ws=m.weapons.length?m.weapons:[];
   const fmt=v=>typeof v==='number'&&v>0?'+'+v:v??'—';
   const DMG=[['type','Damage type'],['amount','Damage'],['stun','Stun'],['guard','Guard'],['mv','Motion value'],['poise','Poise damage'],['level','Damage level'],['stamina','Stamina']];
@@ -637,7 +643,7 @@ function openMove(key){
   <div class="stats"><div class="stat"><small>Startup</small><b>${m.startup??'—'}</b></div><div class="stat"><small>Active</small><b>${m.activeFrames??'—'}</b></div><div class="stat"><small>Recovery</small><b>${m.recovery??'—'}</b></div><div class="stat"><small>Total</small><b>${m.total??'—'}</b></div></div>
   <section class="big"><h3>Timeline (${D.game.fps} fps)</h3>${stripHtml(m,end||1,true)}<div class="ruler2"><span>1</span><span>${Math.round(end/2)}</span><span>${end}</span></div><div class="legend" style="margin-top:8px">${legendHtml()}</div></section>
   <section><h3>Windows</h3><dl class="meta"><dt>Active</dt><dd>${win(m.active)} (${m.hits} hit${m.hits===1?'':'s'})</dd><dt>Hyper armor</dt><dd>${win(m.armor)}</dd><dt>I-frames</dt><dd>${win(m.iframes)}</dd>${m.charge?`<dt>Charge</dt><dd title="Frames the button is held before this charged version comes out">${m.charge} frames held</dd>`:''}<dt>Parryable</dt><dd>${m.parryable?'Yes':'No'}</dd></dl></section>
-  <section><h3>Cancels</h3><dl class="meta">${can||cto||'<dt>—</dt><dd>No cancel windows recorded</dd>'}${can?cto:''}</dl></section>
+  <section><h3>Cancels</h3>${can?`<p class="cxnote">${CXNOTE}</p>`:''}<dl class="meta">${can||cto||'<dt>—</dt><dd>No cancel windows recorded</dd>'}${can?cto:''}</dl></section>
   ${adv}${dm.length?`<section><h3>${c.weapons.length?'First hit':'Damage'}</h3><dl class="meta">${dm.map(([k,l])=>`<dt${k==='level'?' title="How hard the hit staggers"':''}>${l}</dt><dd>${esc(m.damage[k]??'—')}</dd>`).join('')}</dl></section>`:''}${ext}
   ${c.weapons.length?`<section><h3>Used by (${ws.length||'default moveset'})</h3>${ws.length?`<div class="wlist">${ws.map(i=>`<button data-pickw="${i}" data-pickc="${esc(c.id)}">${icoHtml(c.weapons[i],'')}${esc(c.weapons[i])}</button>`).join('')}</div>`:'<p class="note">Part of the class default moveset.</p>'}</section>`:''}
   <section><h3>Source</h3><div class="quick">${m.url||D.source.moveUrl?`<a target="_blank" rel="noopener" href="${esc(m.url||D.source.moveUrl.replace('{id}',m.id))}">Open in ${esc(D.source.moveName||D.source.name)} ↗</a>`:''}${(m.clips||[]).map(x=>`<a target="_blank" rel="noopener" href="${esc(x.source)}">Hitbox GIF${m.clips.length>1?' · '+esc(x.label):''} ↗</a>`).join('')}<a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(D.game.name+' '+c.name+' '+m.name.replace(/^(1h|2h)\s/,''))}">YouTube ↗</a></div><p class="note">Animation ${esc(m.id)}. ${esc(D.game.frameNote)}</p></section>`;
@@ -660,6 +666,7 @@ function frameState(m,f){
   return [s,inW(m.armor)&&'hyper armor',inW(m.iframes)&&'i-frames'].filter(Boolean).join(' · ')}
 // Inspector beside the viewer: the move's numbers in one place, with the frame on show marked as it plays or steps.
 // Fields a game leaves empty (Elden Ring's poise and i-frames) are left out rather than shown as dashes.
+const CXNOTE='Each colour is a line on the timeline that starts at the frame the cancel opens and runs to the end of the move.';
 const CANCELS=[['attack','Attack'],['dodge','Dodge / roll'],['block','Block'],['skill','Skill'],['item','Item'],['move','Walk / run']];
 const PHASE={startup:['Startup','--f-start'],active:['Active','--f-active'],gap:['Between hits','--f-gap'],recovery:['Recovery','--f-rec'],free:['Can dodge','--f-free']};
 function phaseAt(m,f){
@@ -678,7 +685,7 @@ function renderInsp(m){
     <div class="now"><small>Frame</small><b id="iF">1</b><span class="ph" id="iPh"></span><span class="tag" id="iArm"></span></div>
     <p class="who">${esc(c.name)} › ${esc(T[m.type].name)} · ${GR[m.grip]}${pickName()?` · ${esc(pickName())}`:''} · <code>${esc(m.id)}</code></p>
     ${m.active.length?`<h4>Timing · ${D.game.fps} fps</h4>${row('Startup',m.startup??'—',' data-ph="startup"')}${row('Active',win(m.active)+(m.hits>1?` · ${m.hits} hits`:''),' data-ph="active"')}${m.recovery!=null?row('Recovery',m.recovery+' frames',' data-ph="recovery"'):''}${m.armor.length?row('Hyper armor',win(m.armor),' data-arm'):''}${m.iframes.length?row('I-frames',win(m.iframes)):''}`:''}
-    ${can.length?`<h4>Can cancel into</h4><p class="cxnote">Each colour is a line on the timeline that starts at the frame the cancel opens and runs to the end of the move.</p>${can.map(([k,l])=>row(l,'from '+m.cancels[k],` data-can="${m.cancels[k]}" style="--c:var(--cx-${k})"`)).join('')}`:''}
+    ${can.length?`<h4>Can cancel into</h4><p class="cxnote">${CXNOTE}</p>${can.map(([k,l])=>row(l,'from '+m.cancels[k],` data-can="${m.cancels[k]}" style="--c:var(--cx-${k})"`)).join('')}`:''}
     ${m.cancelTo?.length?`<h4>Cancels into</h4><p class="who">${esc(m.cancelTo.join(', '))}</p>`:''}
     ${adv.length?`<h4>Advantage</h4>${adv.map(([k,l])=>row(l,sgn(m[k]))).join('')}`:''}
     ${dmg.length?`<h4>${c.weapons.length?'First hit only':'Damage'}</h4>${dmg.map(([k,l])=>row(l,dm[k])).join('')}`:''}
