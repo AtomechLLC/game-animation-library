@@ -109,7 +109,7 @@ Where the columns say "Shown in":
 | `models.json` `body` | 218 body dummy points `id → [bone, x, y, z]`; anchors for body hitboxes (kicks, shield bashes) | Viewer (only those hitboxes reference) |
 | `models.json` `weapons` | 455 `{id, model, file, variation}`; `variation` picks the weapon's hitbox set | Viewer |
 | `models.json` `classes` | Class → move file, preview weapon, `hand: "L"` for bows | Viewer |
-| `models.json` `armor` | Raging Wolf Set, the one armor the character wears | Viewer ("Raging Wolf Set · {weapon}") |
+| `models.json` `armor` | Haligtree Knight Set, the one armor the character wears | Viewer ("Haligtree Knight Set · {weapon}") |
 | `weapon-wp_a_XXXX.glb` | Weapon mesh; root `extras.dummies` hold blade points hitboxes attach to | Viewer |
 | `moves/<class>.json` `moves[id]` | `frames` (clip length), `weapon`, `hits[{start, end, judge, hand?}]` | Viewer: hitbox timing in 3D |
 | `moves/<class>.json` `attacks` | Per weapon `variation` → `judge` → shapes `{a, b, r, type}`: sphere at dummy `a`, or capsule `a`–`b`, radius `r` | Viewer draws spheres/capsules; `type` unused |

@@ -31,7 +31,7 @@ OUT = os.path.join(ROOT, 'frame-data', 'models', 'elden-ring')
 G.REFS['EquipParamProtector.xml'] = 'https://raw.githubusercontent.com/soulsmods/Paramdex/master/ER/Defs/EquipParamProtector.xml'
 
 EXPORT = {
-    'armor': 'Raging Wolf',          # set name prefix: <name> Helm / Armor / Gauntlets / Greaves
+    'armor': 'Haligtree Knight',     # <name> Helm / Armor / Gauntlets / Greaves; pale, so it reads on the dark page
     'preview': {'Katana': 'Moonveil'},  # class -> weapon shown when none is picked (default: the class's first)
 }
 TEX_SIZE = 1024                      # armor

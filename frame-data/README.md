@@ -366,9 +366,9 @@ python tools/frame_data/export_er_models.py "<install>" Katana "Great Katana"   
 
 writes `models/elden-ring/` for every class and weapon in `elden-ring.json` (read-only, same archive readers as above):
 
-- `armor-raging-wolf.glb`: the Raging Wolf set skinned to the c0000 skeleton (`chr/c0000.anibnd` → `Skeleton.hkx`),
-  rest pose = the Havok reference pose, meshes the set's own `invisibleFlag`s hide left out, low-res (`_l`) albedo
-  textures only. Game space is left-handed, so the viewer mirrors X once at the root.
+- `armor-haligtree-knight.glb`: the Haligtree Knight set, chosen because it is pale and reads on the dark page,
+  skinned to the c0000 skeleton (`chr/c0000.anibnd` → `Skeleton.hkx`), rest pose = the Havok reference pose, meshes
+  the set's own `invisibleFlag`s hide left out, low-res (`_l`) albedo textures only. Game space is left-handed, so the viewer mirrors X once at the root.
 - `weapon-wp_a_XXXX.glb`: one file per weapon model (`parts/wp_a_XXXX`; a few weapons share one), origin at the grip,
   256 px textures, int16 positions and int8 normals (`KHR_mesh_quantization`). The root node's `extras.dummies` holds
   the model's dummy points (weapon model space). The viewer attaches it to `R_Weapon` and/or `L_Weapon`.
@@ -386,11 +386,14 @@ writes `models/elden-ring/` for every class and weapon in `elden-ring.json` (rea
   variation → judge through BehaviorParam_PC → AtkParam_Pc to shapes (`a`, `b` dummy poly ids, `r` radius; a capsule
   when `b` is set), so each weapon shows its own hitboxes. Ids from 10000 up name their source (10xxx weapon).
 
-About 115 MB in all: ~60 MB of animation for 3,700 moves, ~50 MB of weapon models, 3.5 MB of armor.
+About 115 MB in all: ~60 MB of animation for 3,700 moves, ~50 MB of weapon models, 3.7 MB of armor.
 
-Not covered yet: other armor sets (change `EXPORT`), hitboxes of skill-buffed heavies (War Cry, Barbaric Roar fire
-projectiles, BulletParam isn't read), weapon-specific animation (sheaths, Moonveil's scabbard, whip and flail
-chains) and cloth physics.
+Another set: change `EXPORT`, or re-export only the armor (a minute) with
+`python tools/frame_data/export_er_models.py "<install>" --armor "<set>" [more sets]`: every set gets its glb and
+`models.json` points at the first.
+
+Not covered yet: hitboxes of skill-buffed heavies (War Cry, Barbaric Roar fire projectiles, BulletParam isn't read),
+weapon-specific animation (sheaths, Moonveil's scabbard, whip and flail chains) and cloth physics.
 
 These files are FromSoftware's assets, converted from a retail install. Hosting them publicly is a legal exposure the
 site owner accepts; they are kept small (low-res textures, one armor set) and can be removed by deleting `models/` and
