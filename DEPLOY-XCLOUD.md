@@ -36,7 +36,8 @@ npm run secret             # paste the SECRET=... line into .env
 Then check `.env`:
 
 - `PORT` matches the port xCloud proxies to.
-- `ADMIN_PASSWORD_HASH` and `SECRET` from the two commands above.
+- `ADMIN_PASSWORD_HASH` and `SECRET` from the two commands above. Without `SECRET` the app signs review page sessions
+  with a random key it keeps in `library-data/session-key`, but IPs and voter tokens are hashed with a guessable value, so set it.
 - Submissions and votes are stored in `~/library-data` (found automatically: the home folder of whichever user runs the app),
   outside the app folder so deploys never overwrite it. Set `DATA_DIR` only to move it. Include that folder in your
   backups: it holds every vote and submission.
