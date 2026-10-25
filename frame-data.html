@@ -708,13 +708,15 @@ async function dock(list){
   // with no class picked, model and sprite games still show an example: the first default move of the selected weapon
   // type's first class (or the first class when none is selected), so the viewer is on screen from the start (it then
   // neither follows the other filters nor sticks under the header)
-  const cls=st.cls||(byClass()?(D.classes.find(c=>c.family===st.fam)||D.classes[0])?.id:null);
+  // (or the move tapped from the list, while it is still in it)
+  const tapped=!st.cls&&DOCK.key&&list.find(m=>m.class+'|'+m.id===DOCK.key);
+  const cls=st.cls||(byClass()?tapped?.class||(D.classes.find(c=>c.family===st.fam)||D.classes[0])?.id:null);
   $('#pick').classList.toggle('browse',!st.cls);placeDock(!st.cls);
   if(!(byClass()||G.clips)||!cls){dockOn(false);openLinked();return}
   try{
     const v=await import(G.models?VIEWER:G.sprites?VIEWER2D:CLIPVIEWER),cm=byClass()?await v.classData(byClass(),cls):null;
     if(seq!==DOCK.seq)return;
-    const src=st.cls?list:D.moves.filter(m=>m.class===cls&&m.default);
+    const src=st.cls?list:D.moves.filter(m=>m.class===cls&&(m.default||m===tapped));
     const ok=byClass()?(cm?src.filter(m=>cm.moves[m.id]):[]):src.filter(m=>m.clips?.length);
     if(!ok.length){dockOn(false);openLinked();return}
     dockOn(true);DOCK.cm=cm;
@@ -726,12 +728,12 @@ async function dock(list){
     if(linked){LINKED=null;preview(linked)}else{openLinked();if(DOCK.cls!==cls||!cur)preview(ok[0]);else if(DOCK.w!==st.w)preview(cur)}
     DOCK.cls=cls;DOCK.w=st.w;
   }catch(e){if(seq===DOCK.seq){dockOn(true);$('#dockView').innerHTML=`<div class="empty">Could not load the preview (${esc(e.message)}).</div>`}}}
-async function preview(m){
+async function preview(m,picked){
   const key=m.class+'|'+m.id;DOCK.key=key;if(LINKVIEW&&LINKVIEW.key!==key)LINKVIEW=null;
   document.querySelectorAll('tbody tr.on').forEach(r=>r.classList.remove('on'));
   if(st.cls)document.querySelector(`tbody tr[data-m="${CSS.escape(key)}"]`)?.classList.add('on');
   writeHash();
-  $('#dockSrc').textContent=`${st.cls?'':'Example · '}${CL[m.class].name} › ${T[m.type].name} · ${GR[m.grip]}`;
+  $('#dockSrc').textContent=`${st.cls||picked?'':'Example · '}${CL[m.class].name} › ${T[m.type].name} · ${GR[m.grip]}`;
   $('#dockName').title=$('#dockName').textContent=m.name;renderInsp(m);
   const view=await DOCK.view;
   if(DOCK.key!==key)return;
@@ -741,6 +743,17 @@ async function preview(m){
   // a link's frame, speed and overlays apply once, to the move it names
   if(LINKVIEW?.key===key&&DOCK.key===key&&shown!==false){const v=LINKVIEW;LINKVIEW=null;await view.setView?.(v)}
 }
+// A row tapped from the list swaps the move in the viewer. With no class picked the list mixes classes, so the tapped
+// move's class is loaded first; a move with no export opens the detail sheet instead. On a phone the viewer can be
+// scrolled out of sight by then, so it is brought back into view.
+async function dockMove(m){
+  if(byClass()&&m.class!==DOCK.cls){
+    const v=await import(G.models?VIEWER:VIEWER2D),cm=await v.classData(byClass(),m.class).catch(()=>null);
+    if(!cm?.moves[m.id]){openMove(m.class+'|'+m.id);return}
+    DOCK.cm=cm;DOCK.cls=m.class}
+  preview(m,true);
+  const r=$('#dockView').getBoundingClientRect();
+  if(r.bottom<60||r.top>innerHeight-60)$('#dock').scrollIntoView({behavior:'smooth',block:'start'})}
 function closeSheet(){$('#sheet').hidden=true;$('#scrim').hidden=true}
 // Shareable state in the hash: #g=elden-ring&c=Katana&w=Moonveil&t=light,heavy&m=a020_030000 (m: the move in the viewer)
 // A move named by a link (class|id), shown in the viewer if it can be, else in the detail sheet, once
@@ -779,7 +792,7 @@ document.addEventListener('click',e=>{
   const t=e.target.closest('button,tr[data-m]');if(!t)return;
   const d=t.dataset;
   if(d.open){openMove(d.open);return}
-  if(d.m){const m=moveOf(d.m);if(!$('#dock').hidden&&DOCK.view&&m&&canDock(m))preview(m);else openMove(d.m);return}
+  if(d.m){const m=moveOf(d.m);if(!$('#dock').hidden&&DOCK.view&&m&&(canDock(m)||byClass()&&!st.cls))dockMove(m);else openMove(d.m);return}
   if(t.id==='dockMore'){if(DOCK.key)openMove(DOCK.key);return}
   if(t.id==='dockLink'){copyLink(t);return}
   if(t.id==='pickMin'){pickMin(!$('#pick').classList.contains('min'));return}
