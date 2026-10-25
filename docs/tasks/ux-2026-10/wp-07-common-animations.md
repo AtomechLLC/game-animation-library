@@ -1,6 +1,6 @@
 # WP-07: Browsable Common animations
 
-**Status:** Suggestion · **Priority:** P3 · **Depends on:** WP-01, WP-03
+**Status:** Suggestion (not started) · **Priority:** P3 · **Depends on:** WP-01, WP-03
 
 ## User task and intended outcome
 
@@ -42,3 +42,8 @@ gestures and interactions can be studied frame by frame like attacks.
 ## Evidence to capture
 
 - The Common group list and one Common animation in the viewport.
+
+## Implementation record (as of 2026-10-25)
+
+No scope item has been implemented. No game has a Common class in its frame data, and `common_anims.json` is
+unchanged.

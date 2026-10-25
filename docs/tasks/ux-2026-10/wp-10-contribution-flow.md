@@ -1,6 +1,6 @@
 # WP-10: Approachable contribution flow
 
-**Status:** Suggestion · **Priority:** P3 · **Depends on:** WP-08
+**Status:** In progress (Action Atlas side implemented) · **Priority:** P3 · **Depends on:** WP-08
 
 ## User task and intended outcome
 
@@ -49,3 +49,18 @@ classification, knows what happens next, and feels welcome doing it.
 ## Evidence to capture
 
 - The submit flow from start to confirmation, on the public build.
+
+## Implementation record (as of 2026-10-25)
+
+**Implemented** (7ab0680, PR #68)
+- "Propose a new animation" in the Action Atlas: in the intro, the footer and the empty-search fallback
+  (`template.html:243, 250, 348-386`).
+- The form checks for likely duplicates and says proposals are reviewed and credited.
+- On the Node host, proposals are reviewed on `/admin` and exported as `taxonomy.txt` lines
+  (`lib/api.js:118`, `lib/admin.js:46-58`). The static copy opens a prefilled GitHub issue instead.
+- `README.md` and `DEPLOY-XCLOUD.md` describe the flow.
+
+**Not implemented**
+- The audit of the existing flow was not recorded here.
+- No "Report an issue with this move" in Move Explorer.
+- No "what happens next / follow up on Discord" text (depends on WP-08).

@@ -1,6 +1,6 @@
 # WP-01: Find a move by what it is
 
-**Status:** Suggestion · **Priority:** P1 (first focus) · **Depends on:** none
+**Status:** Suggestion (not started) · **Priority:** P1 (first focus) · **Depends on:** none
 
 ## User task and intended outcome
 
@@ -64,3 +64,21 @@ should reach a short list of matching moves in a few steps, without knowing Elde
 ## Evidence to capture
 
 - `after/frame-data-viewport.png` (landing view), plus a search result screenshot for one test query.
+
+## Implementation record (as of 2026-10-25)
+
+No scope item has been implemented. Line numbers refer to commit `e67c341`.
+
+**Side effects that help a little**
+- The move id is now visible in the inspector (`frame-data.html:745`; ec152a6, PR #62). This addresses the "id is
+  nearly hidden" problem, not a scope item.
+- A move id works in the URL hash (`m=`; eeca3eb, PR #62), but not as a search query.
+
+**Not implemented**
+1. Synonym and alias search. The search text is unchanged and does not include the move id (`frame-data.html:522`).
+2. Action-first entry point. Move types are still only in the side rail, and the landing view is still class tiles
+   (`renderIndex`, `frame-data.html:594-608`).
+3. Readable move labels.
+4. A better empty state (`frame-data.html:655` is unchanged).
+
+**Not verified:** the test queries and timings in "Done when" have not been run.

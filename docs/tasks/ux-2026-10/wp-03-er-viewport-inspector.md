@@ -1,6 +1,6 @@
 # WP-03: Elden Ring viewport and inspector
 
-**Status:** Suggestion · **Priority:** P1 · **Depends on:** WP-06 (so the inspector does not present misleading
+**Status:** In progress (mostly implemented) · **Priority:** P1 · **Depends on:** WP-06 (so the inspector does not present misleading
 fields)
 
 ## User task and intended outcome
@@ -65,3 +65,30 @@ the timing phases together, frame by frame, with the numbers and context beside 
 
 - `after/er-viewport-inspector.png` at a mid-active frame, and the same move in the before state (dock and sheet
   screenshots).
+
+## Implementation record (as of 2026-10-25)
+
+Line numbers refer to commit `e67c341`. Most of this landed in PR #62
+(branch `ux/elden-ring-viewport-inspector`).
+
+**Implemented**
+1. **Phase timeline under the viewport.** The scrubber already showed the phase strip. Cancel windows were added as
+   lines inside it, with a colour key (f4eecf2, PR #63; 9a304fe, PR #64; `cancelLanes`, `frame-data.html:625-630`).
+   The current frame and phase are always visible in the viewer's heads-up text (`frameState`,
+   `frame-data.html:722-725`) and in the inspector (`inspFrame`, `frame-data.html:754-764`).
+2. **Inspector beside the viewport** (ec152a6, PR #62; `renderInsp`, `frame-data.html:735-753`):
+   - Identity: class › type · grip · weapon · move id.
+   - Timing: startup, active, recovery, hyper armor, and every cancel, colour-coded and explained (99b7eab, PR #71).
+   - Damage labelled "First hit only" (`frame-data.html:750`).
+   - "Used by" weapon icons and the Frame Data Explorer link (`frame-data.html:751-752`).
+   - Stepping updates the frame number, phase, highlighted rows and open cancels together. Viewer stepping:
+     arrow keys (7ca2e72), Space (7787c88), one-second and first/last jumps (c457a61).
+
+**Not implemented**
+- The plain move name in the inspector.
+- The linked atlas entry ("Illustrates", depends on WP-04).
+- Timing windows drawn in the 3D view itself (they appear only on the strip and in heads-up text).
+- The optional compare slot.
+
+**Not verified:** there is no record of the four verification moves in "Done when" (multi-hit, hyper armor,
+jumping, two-handed colossal heavy).

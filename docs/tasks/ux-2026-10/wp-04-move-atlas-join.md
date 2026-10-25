@@ -1,6 +1,6 @@
 # WP-04: Join moves and atlas entries
 
-**Status:** Suggestion · **Priority:** P2 · **Depends on:** none
+**Status:** In progress (partly implemented; scope 5 Parked) · **Priority:** P2 · **Depends on:** none
 
 ## User task and intended outcome
 
@@ -58,3 +58,20 @@ handle the same action.
 ## Evidence to capture
 
 - Atlas entry with the new link, and the move it opens.
+
+## Implementation record (as of 2026-10-25)
+
+**Implemented**
+- **Scope 2, move deep link,** as `c=<class>&m=<id>` rather than `m=<class>|<id>` (eeca3eb, PR #62). An unknown
+  class falls back to the move's own class (`fromHash`, `frame-data.html:858-860`).
+- **"Done when" 1 is effectively met.** The Elden Ring importer already wrote `frame-data.html#c=…&t=…&m=…`
+  links, and they now open the move. Only 4 of the 45 Elden Ring renders are attacks with a source move; the other
+  41 are Common animations with no row to link to (see WP-07).
+- The importer was extended to Devil May Cry 3 (3ef7197, PR #60; `tools/er_gifs/add_to_library.py`).
+- **Scope 5 is Parked** (note added in e7ca02e).
+
+**Not implemented**
+1. Scope 1: separate class and id fields on clips (they exist only inside `page_url`).
+2. Scope 3: the "Inspect frame by frame" label (the Action Atlas shows the generic title link, `template.html:317`).
+3. Scope 4: the "Illustrates" line in Move Explorer.
+4. Scope 6: cleaning the stale curation records.

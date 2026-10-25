@@ -1,6 +1,6 @@
 # WP-05: Teaching links to an exact moment
 
-**Status:** Suggestion · **Priority:** P2 · **Depends on:** WP-03, WP-04
+**Status:** In progress (scope implemented; "Done when" not verified) · **Priority:** P2 · **Depends on:** WP-03, WP-04
 
 ## User task and intended outcome
 
@@ -44,3 +44,15 @@ settings they want to discuss, and paste it into slides, Discord or homework.
 ## Evidence to capture
 
 - The copy-link control, and the result of opening a link in a new window.
+
+## Implementation record (as of 2026-10-25)
+
+**Implemented** (e7ca02e, PR #62)
+- The link carries the move (`m`), frame (`fr`), speed (`sp`), clip index (`cl`) and overlay toggles as `show` and
+  `hide` lists instead of separate keys.
+- A "Copy link" button (`frame-data.html:450`; `copyLink`, `frame-data.html:846-854`).
+- The link opens paused on the frame: `setView` pauses and then goes to the frame (`frame-data/viewer3d.js:372-377`).
+  The same interface exists in `frame-data/sprites2d.js:131-148` and `frame-data/clipviewer.js:116-143`.
+- Old links still work; only `m` triggers the new handling.
+
+**Not verified:** the fresh-browser check in "Done when" has not been run.
