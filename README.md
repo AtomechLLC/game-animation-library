@@ -15,7 +15,7 @@ python merge.py
 
 ## GitHub Pages
 
-On every push to `main`, `.github/workflows/static.yml` runs `python3 build_page.py index.html` (template.html + library.json) and publishes the repo root, so the site always matches the committed `library.json`. Run `python build_page.py` locally to preview `index.html`.
+On every push to `main`, `.github/workflows/static.yml` runs `python3 build_page.py action-atlas.html` (template.html + library.json) and publishes the repo root, so the site always matches the committed `library.json`. Run `python build_page.py` locally to preview `action-atlas.html`.
 
 `node tools/perf/baseline.mjs` measures the published site (page loads, interactions, the 3D viewer's idle cost,
 memory, deployment size) in an installed Chrome and writes a JSON file; `--base` points it at another copy and
@@ -23,17 +23,22 @@ memory, deployment size) in an installed Chrome and writes a JSON file; `--base`
 
 The app switcher icons (Atlas, High kick and Histogram) are by Delapouite from [game-icons.net](https://game-icons.net/), under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/); each app's footer credits them.
 
-## Move Explorer (Frame Data tab)
+## Move Explorer
 
-The site has two apps, switched from the header: **Action Atlas** (`index.html`) and **Move Explorer**
-(`frame-data.html`). It has per-move frame data (startup, active, recovery, cancels, hyper armor, damage), starting
+The site has three apps, switched from the header, each at a URL named after it: **Action Atlas**
+(`action-atlas.html`), **Move Explorer** (`move-explorer.html`) and **Trends** (`trends.html`). The site root
+(`index.html`) opens Action Atlas, and Move Explorer's old address (`frame-data.html`, still used by library entries and
+shared links) forwards to `move-explorer.html` with the link's game and move. Both are small redirect pages, and
+`server.js` and `serve_local.py` redirect the same paths.
+
+Move Explorer has per-move frame data (startup, active, recovery, cancels, hyper armor, damage), starting
 with Elden Ring: browse by weapon class and weapon (icon index), then by move type, or sort and filter every class at once.
 It is a static page that loads `frame-data/games.json` and one JSON file per game, so it works on GitHub Pages, `server.js`
-(`/frame-data`) and `serve_local.py` alike. Data format, sources and rebuild steps: [frame-data/README.md](frame-data/README.md).
+(`/move-explorer`) and `serve_local.py` alike. Data format, sources and rebuild steps: [frame-data/README.md](frame-data/README.md).
 
-## Trends tab
+## Trends
 
-`trends.html` compares the games in the Frame Data tab: a typical basic attack phase by phase, the spread of startup,
+`trends.html` compares the games in Move Explorer: a typical basic attack phase by phase, the spread of startup,
 active, recovery and total frames, light vs heavy attacks, cancel windows, i-frames, hyper armor and multi-hits, advantage
 on block (fighting games) and a short write-up per game, plus a table of which fields each game's data covers. It reads
 the same `frame-data/games.json` and per-game files, so a newly added game shows up on its own; which of its moves count
@@ -64,7 +69,7 @@ sprite capture of every frame, extracted from the CPS3 emulator FBA-RR. Two scri
 
 - `python tools/frame_data/import_baston_sf3.py` writes `frame-data/street-fighter-3-third-strike.json` (all 20
   characters, 1,303 moves) and the animated stance icons in `frame-data/icons/street-fighter-3-third-strike/`, for the
-  Frame Data tab. Downloads are cached in `.cache/baston/`.
+  Move Explorer. Downloads are cached in `.cache/baston/`.
 - `python tools/frame_data/export_baston_sprites.py` (after the importer) packs every move's frame captures and boxes into
   `frame-data/sprites/street-fighter-3-third-strike/` (~50 MB) for the hitbox preview docked above the 3rd Strike move
   table (`frame-data/sprites2d.js`, in place of the 3D preview).
@@ -81,7 +86,7 @@ credited on the site) has every character's moves with frame data and hitbox GIF
 
 - `python tools/frame_data/import_ufd_ssbu.py --clips` writes `frame-data/super-smash-bros-ultimate.json` (all 89
   characters, 3,589 moves), the character icons in `frame-data/icons/super-smash-bros-ultimate/` and each move's hitbox
-  GIFs as small animated WebPs in `frame-data/clips/super-smash-bros-ultimate/`, which the Frame Data tab's docked
+  GIFs as small animated WebPs in `frame-data/clips/super-smash-bros-ultimate/`, which Move Explorer's docked
   previewer steps through frame by frame. One request a second, cached in `.cache/ufd/`.
 - `add_ufd.py` (above) puts some of the same GIFs into library entries.
 
@@ -89,7 +94,7 @@ The footage is Nintendo's and the hitbox GIFs are Ultimate Frame Data's; every m
 
 ## Elden Ring and No Rest for the Wicked renders
 
-`tools/er_gifs/` renders Elden Ring animations with the Frame Data tab's 3D preview to animated WebP for library
+`tools/er_gifs/` renders Elden Ring animations with Move Explorer's 3D preview to animated WebP for library
 entries. `jobs.json` maps an entry to a class and move id (or several ids played in a row); `node tools/er_gifs/render.js`
 (Playwright + ffmpeg) loads `render.html`, which runs `frame-data/viewer3d.js` paused, seeks it frame by frame, reads each
 frame off the canvas, crops to the character over the whole job and writes `gifs/<entry>-er<n>.webp` (360 px, 15 fps).
@@ -108,7 +113,7 @@ mantles, ladder and wall climbing, wall shimmy) listed in `tools/er_gifs/nrftw_c
 class, and `GAME=no-rest-for-the-wicked render.js --sheet` draws their contact sheets.
 
 Devil May Cry 3 jobs (`"game": "devil-may-cry-3"`, out `<entry>-dmc<n>`) play Dante's frame data moves by class and move
-id (`ebony-ivory` / `ebony-ivory.rain-storm`); `add_to_library.py` links them to the move in the Frame Data tab.
+id (`ebony-ivory` / `ebony-ivory.rain-storm`); `add_to_library.py` links them to the move in Move Explorer.
 
 Where a render now shows a move that an entry only had a weak clip for (flagged for review as a meme, trailer or
 unclear shot), the weak clip was taken out: it moved to the entry's `rejected_gifs` and to `removed` in

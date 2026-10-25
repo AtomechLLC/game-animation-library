@@ -1,4 +1,4 @@
-// 3D preview for the Frame Data tab: plays a move on the game's own character, armor and weapon models and draws its
+// 3D preview for Move Explorer: plays a move on the game's own character, armor and weapon models and draws its
 // hitboxes on the frames they are out. Everything it loads is written by tools/frame_data/export_er_models.py or
 // the other export_*_models.py (format in frame-data/README.md, "3D preview"). Frames here are the tab's frames: 1-based, at
 // the game's frame rate (models.json fps, 30 for Elden Ring).

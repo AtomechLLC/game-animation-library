@@ -3,7 +3,7 @@
 Each mapped move's frames come from frame-data/sprites/hollow-knight/ (written by tools/frame_data/import_hk_game.py
 from the installed game): the game's sprites with the move's hurtbox (blue) and attack polygons (red) drawn on, on
 a dark background, as a 60 fps animated WebP at gifs/<id>-hk-<n>.webp (host `Hollow Knight render`, page_url = the
-move in the Frame Data tab). Safe to rerun: records already present (same local file) are skipped. Needs Pillow.
+move in Move Explorer). Safe to rerun: records already present (same local file) are skipped. Needs Pillow.
 """
 import json, os
 from PIL import Image, ImageDraw
@@ -120,10 +120,11 @@ if __name__ == '__main__':
         a.setdefault('gifs', [])
         n = sum(1 for g in a['gifs'] if g.get('local', '').startswith(f'gifs/{aid}-hk-'))
         for mid, label in moves:
-            page = 'frame-data.html#g=%s&c=%s&t=%s&m=%s' % (GAME_ID, fd[mid]['class'], fd[mid]['type'], mid)
+            page = 'move-explorer.html#g=%s&c=%s&t=%s&m=%s' % (GAME_ID, fd[mid]['class'], fd[mid]['type'], mid)
             local = f'gifs/{aid}-hk-{n}.webp'
-            if any(g.get('page_url') == page for g in a['gifs'] + a.get('rejected_gifs', [])):
-                if REDRAW: render(fd[mid]['class'], mid, next(g['local'] for g in a['gifs'] if g.get('page_url') == page))
+            same = (page, page.replace('move-explorer.html', 'frame-data.html', 1))   # records written before the rename
+            if any(g.get('page_url') in same for g in a['gifs'] + a.get('rejected_gifs', [])):
+                if REDRAW: render(fd[mid]['class'], mid, next(g['local'] for g in a['gifs'] if g.get('page_url') in same))
                 continue
             count = render(fd[mid]['class'], mid, local)
             conf = 'low' if aid in LOW or aid in LOWB else 'high'

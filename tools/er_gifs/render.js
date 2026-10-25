@@ -1,4 +1,4 @@
-// Renders Elden Ring animations with the Frame Data 3D preview (frame-data/viewer3d.js) to animated WebP for the
+// Renders Elden Ring animations with Move Explorer's 3D preview (frame-data/viewer3d.js) to animated WebP for the
 // library. Needs playwright and ffmpeg; serves the repo itself on a free port.
 //   node tools/er_gifs/render.js [out ...]             render jobs.json (or only the named outs) to gifs/<out>.webp
 //   node tools/er_gifs/render.js --sheet DIR [id ...]   8-frame contact sheets of common_anims.json ids, to pick ids

@@ -1,7 +1,7 @@
 """Add the Elden Ring, No Rest for the Wicked and Devil May Cry 3 renders from tools/er_gifs/render.js to library.json and gif-screening.json.
 
 Each job in jobs.json with a rendered gifs/<out>.webp gets a `gifs` record on its entry (host "<game> render",
-page_url = the move in the Frame Data tab). Safe to rerun: records already present (same local file) are skipped.
+page_url = the move in Move Explorer). Safe to rerun: records already present (same local file) are skipped.
 """
 import json, os, re
 
@@ -31,10 +31,10 @@ for j in jobs:
         move = fdOf(gid)[(j['class'], j['move'])]
         if gid == 'elden-ring':
             title = '%s %s (%s), rendered from the Frame Data 3D preview' % (j['class'], j['label'], weapon)
-            page = 'frame-data.html#c=%s&t=%s&m=%s' % (j['class'].replace(' ', '+'), move['type'], j['move'])
+            page = 'move-explorer.html#c=%s&t=%s&m=%s' % (j['class'].replace(' ', '+'), move['type'], j['move'])
         else:                                                   # Devil May Cry 3: Dante's moves, linked with the game
             title = "Dante's %s (%s), rendered from the Frame Data 3D preview" % (j['label'], weapon)
-            page = 'frame-data.html#g=%s&c=%s&t=%s&m=%s' % (gid, j['class'], move['type'], j['move'])
+            page = 'move-explorer.html#g=%s&c=%s&t=%s&m=%s' % (gid, j['class'], move['type'], j['move'])
     # `also` lists further entries that show the same render
     for entry in [re.sub(r'-(er|nr|dmc)\d+$', '', j['out'])] + j.get('also', []):
         a = byid[entry]

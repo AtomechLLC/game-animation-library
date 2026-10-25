@@ -27,14 +27,21 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.wfile.write(body)
 
     def do_GET(self):
-        path = self.path.split('?')[0]
-        if path in ('/', '/index.html'):
+        path, _, query = self.path.partition('?')
+        # The site root and the old addresses open the apps under their names; the browser keeps the #link
+        moved = {'/': '/action-atlas.html', '/index.html': '/action-atlas.html', '/frame-data.html': '/move-explorer.html'}
+        if path in moved:
+            self.send_response(302)
+            self.send_header('Location', moved[path] + ('?' + query if query else ''))
+            self.send_header('Content-Length', '0')
+            return self.end_headers()
+        if path == '/action-atlas.html':
             html, _ = render({'local': True, 'marks': 'marks.json'})
             return self.send_body(200, html.encode('utf-8'), 'text/html; charset=utf-8')
         if path == '/marks.json':
             body = open(MARKS, 'rb').read() if os.path.exists(MARKS) else b'{"marks": []}'
             return self.send_body(200, body, 'application/json')
-        if not (path.startswith('/gifs/') or path.startswith('/frame-data/') or path.startswith('/shared/') or path in ('/library.json', '/frame-data.html', '/trends.html')):
+        if not (path.startswith('/gifs/') or path.startswith('/frame-data/') or path.startswith('/shared/') or path in ('/library.json', '/move-explorer.html', '/trends.html')):
             return self.send_error(404)
         return super().do_GET()
 
@@ -61,5 +68,5 @@ if __name__ == '__main__':
     PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8765
     print(f'Local atlas on http://localhost:{PORT}  (marks are saved to {MARKS})')
     print('Leave this window open while you review; press Ctrl+C to stop.')
-    threading.Timer(0.5, webbrowser.open, [f'http://localhost:{PORT}']).start()
+    threading.Timer(0.5, webbrowser.open, [f'http://localhost:{PORT}/action-atlas.html']).start()
     http.server.ThreadingHTTPServer(('127.0.0.1', PORT), Handler).serve_forever()

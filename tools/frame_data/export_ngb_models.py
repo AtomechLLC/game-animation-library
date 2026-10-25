@@ -1,4 +1,4 @@
-"""Exports what the Frame Data tab's 3D preview needs from Ninja Gaiden Black (Xbox): Ryu's model, the Dragon Sword and
+"""Exports what Move Explorer's 3D preview needs from Ninja Gaiden Black (Xbox): Ryu's model, the Dragon Sword and
 every Dragon Sword move's motion, baked per frame. Same layout and animation format as export_dmc3_models.py, so
 frame-data/viewer3d.js plays it.
 

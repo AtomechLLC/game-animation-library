@@ -1,4 +1,4 @@
-"""Exports Baston's per-frame sprites and hitboxes for the Frame Data tab's 2D preview (frame-data/sprites2d.js).
+"""Exports Baston's per-frame sprites and hitboxes for Move Explorer's 2D preview (frame-data/sprites2d.js).
 
     python tools/frame_data/import_baston_sf3.py          # first: the frame data and the cached hitbox pages
     python tools/frame_data/export_baston_sprites.py      # ~50,000 frame captures, fetched 6 at a time, cached

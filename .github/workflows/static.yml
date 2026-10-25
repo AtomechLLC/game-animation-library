@@ -35,7 +35,7 @@ jobs:
         # Set the repository variable LIBRARY_API_URL (e.g. https://your-site/api) to turn on voting here too
         env:
           LIBRARY_API_URL: ${{ vars.LIBRARY_API_URL }}
-        run: python3 build_page.py index.html
+        run: python3 build_page.py action-atlas.html
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
