@@ -4,7 +4,7 @@
 //   left drag and Shift + left drag: the same as the middle button (not in the source; Blender has no left-drag orbit)
 //   right drag: pan, and no context menu over the stage
 //   wheel, Mouse mode: zoom              wheel, Trackpad mode: orbit (crosses the poles); Shift + wheel: pan
-//   Ctrl + wheel or pinch: zoom
+//   Ctrl + wheel or pinch: zoom          two-finger pinch (touch): zoom; one finger left on the stage orbits again
 //   Numpad 8/2/4/6: orbit 15°  Numpad 9: opposite side  Numpad 1/3/7: front/right/top  Ctrl + Numpad 7: bottom
 //   Numpad +/−: zoom  F, Home, Numpad .: fit the move to the view  D, Numpad 0: default camera  Tab: Mouse/Trackpad
 //   / or ?: Help panel
@@ -61,6 +61,11 @@ export function createBlenderNavigation({camera, dom, views, onFit, onDefault, o
     } else zoom(distance * (1 + e.deltaY * ZOOM_SENSITIVITY));
   }
 
+  // touch fingers on the stage, pointerId → position; two of them pinch to zoom
+  const touches = new Map();
+  const span = () => { const [a, b] = touches.values(); return Math.hypot(a.x - b.x, a.y - b.y) || 1 };
+  const pinch = () => ({mode: 'pinch', span: span(), distance});
+
   function onPointerDown(e) {
     dom.focus({preventScroll: true});
     if (e.target.closest('button,input,textarea,select')) return;
@@ -68,12 +73,20 @@ export function createBlenderNavigation({camera, dom, views, onFit, onDefault, o
     if (e.button !== 0 && e.button !== 1 && e.button !== 2) return;
     e.preventDefault();
     dom.setPointerCapture(e.pointerId);
+    if (e.pointerType === 'touch') {
+      touches.set(e.pointerId, {x: e.clientX, y: e.clientY});
+      if (touches.size === 2) { drag = pinch(); return }
+      if (touches.size > 2) return;
+    }
     if (e.shiftKey || e.button === 2) {
       const [right, upv] = axes();
       drag = {mode: 'pan', id: e.pointerId, x: e.clientX, y: e.clientY, right, upv, s: panScale()};
     } else drag = {mode: 'orbit', id: e.pointerId, x: e.clientX, y: e.clientY, azimuth, elevation};
   }
   function onPointerMove(e) {
+    if (touches.has(e.pointerId)) touches.set(e.pointerId, {x: e.clientX, y: e.clientY});
+    // spreading the fingers brings the camera closer, in proportion to their distance apart
+    if (drag?.mode === 'pinch') { if (touches.has(e.pointerId)) zoom(drag.distance * drag.span / span()); return }
     if (!drag || drag.id !== e.pointerId) return;
     const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
     if (drag.mode === 'pan') {
@@ -90,6 +103,15 @@ export function createBlenderNavigation({camera, dom, views, onFit, onDefault, o
     }
   }
   function onPointerUp(e) {
+    const wasTouch = touches.delete(e.pointerId);
+    if (wasTouch) try { dom.releasePointerCapture(e.pointerId) } catch {}
+    if (wasTouch && drag?.mode === 'pinch') {
+      // the finger left behind orbits from where it is now, so the view doesn't jump
+      if (touches.size >= 2) drag = pinch();
+      else if (touches.size === 1) { const [[id, p]] = touches; drag = {mode: 'orbit', id, x: p.x, y: p.y, azimuth, elevation} }
+      else drag = null;
+      return;
+    }
     if (!drag || drag.id !== e.pointerId) return;
     try { dom.releasePointerCapture(e.pointerId) } catch {}
     drag = null;
