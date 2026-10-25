@@ -5,7 +5,7 @@
 import {speedHtml, bindSpeed} from './speed.js?v=1';
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
-import {createBlenderNavigation} from './navigation3d.js?v=8';
+import {createBlenderNavigation} from './navigation3d.js?v=9';
 import {createRenderStats} from './renderstats.js?v=1';
 
 const loader = new GLTFLoader();
@@ -107,7 +107,12 @@ export async function createViewer(el, base) {
   const help = $('.v3d-help'), helpToggle = $('.v3d-help-toggle');
   const toggleHelp = () => { help.hidden = !help.hidden; helpToggle.setAttribute('aria-pressed', !help.hidden) };
   const syncMode = m => { for (const b of el.querySelectorAll('.v3d-mode button')) b.setAttribute('aria-pressed', b.dataset.mode === m); help.innerHTML = helpHTML(m) };
-  const nav = createBlenderNavigation({camera, dom: stage, views: VIEWS, onFit: fitMove, onDefault: defaultCamera, onHelp: toggleHelp, onMode: syncMode});
+  // The view renders only when its picture changes (a frame, the camera, an overlay, the size) and runs its animation
+  // loop only while a move plays on screen, so a paused, folded, hidden or scrolled-away view costs nothing.
+  // requestRender marks the picture stale and wakes the loop for one render; it waits for `ready` (the models loaded)
+  let disposed = false, raf = 0, dirty = true, onScreen = true, ready = false;
+  function requestRender() { dirty = true; if (ready && !raf && !disposed && onScreen) { last = performance.now(); raf = requestAnimationFrame(tick) } }
+  const nav = createBlenderNavigation({camera, dom: stage, views: VIEWS, onFit: fitMove, onDefault: defaultCamera, onHelp: toggleHelp, onMode: syncMode, onChange: requestRender});
   syncMode(nav.mode);
   // the overlay buttons hand the keyboard to the stage; presses and wheel turns on the overlays don't navigate
   for (const b of el.querySelectorAll('.v3d-stage button')) b.addEventListener('mousedown', e => { e.preventDefault(); stage.focus({preventScroll: true}) });
@@ -120,7 +125,7 @@ export async function createViewer(el, base) {
   const grid = new THREE.GridHelper(8, 16, 0x888888, 0x555555); grid.material.transparent = true; grid.material.opacity = .35; scene.add(grid);
   // The view is a previewer, so its tools are keys only (listed under ?): D, F, and Z (as in the centerpiece viewer)
   // hides the floor, e.g. for a clean view in class
-  const toggleGrid = () => { grid.visible = !grid.visible };
+  const toggleGrid = () => { grid.visible = !grid.visible; requestRender() };
   // B (as in the centerpiece viewer) shows a box around the pose on show: the body, the weapons and
   // the hitboxes out on this frame. Off by default; measured only while it shows
   // drawn in the collider green of engine gizmos (Unity's collider outline), apart from the red hitboxes; the page's
@@ -136,9 +141,11 @@ export async function createViewer(el, base) {
     else if (k === 'b') { e.preventDefault(); toggleBounds() }
   });
 
-  let disposed = false, raf = 0;
-  const resize = () => { const w = stage.clientWidth, h = stage.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix() };
+  const resize = () => { const w = stage.clientWidth, h = stage.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); requestRender() };
   const ro = new ResizeObserver(resize); ro.observe(stage); resize();
+  // off screen covers scrolled away, folded (Hide) and hidden (no move matches): the loop stops; back on screen it renders
+  // the current picture and a playing move carries on
+  const io = new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; if (onScreen) requestRender() }); io.observe(stage);
 
   const FPS = man.fps || 30, sk = man.skeleton;
   const armorG = await glb(base + man.armor.file);
@@ -245,8 +252,8 @@ export async function createViewer(el, base) {
     motion.traverseVisible(add);
     for (const x of shapes) if (x.g.visible) x.g.traverseVisible(add);
   }
-  const setPlaying = p => { playing = p; $('.v3d-play').textContent = p ? '❚❚' : '▶'; $('.v3d-play').setAttribute('aria-label', p ? 'Pause' : 'Play') };
-  const go = frame => { if (!anim) return; f = ((frame - 1 + N) % N) + 1; pose(f) };
+  const setPlaying = p => { playing = p; $('.v3d-play').textContent = p ? '❚❚' : '▶'; $('.v3d-play').setAttribute('aria-label', p ? 'Pause' : 'Play'); if (p) requestRender() };
+  const go = frame => { if (!anim) return; f = ((frame - 1 + N) % N) + 1; pose(f); requestRender() };
   $('.v3d-play').onclick = () => setPlaying(!playing);
   $('.v3d-prev').onclick = () => { setPlaying(false); go(f - 1) };
   $('.v3d-next').onclick = () => { setPlaying(false); go(f + 1) };
@@ -381,16 +388,21 @@ export async function createViewer(el, base) {
     go(Math.min(Math.max(1, v.frame || 1), N));
   }
 
+  // raf stays set while a tick runs, so requestRender calls from inside it (go, the camera following root motion) only
+  // mark the picture stale
   const tick = now => {
     if (disposed) return;
-    raf = requestAnimationFrame(tick); stats.tick();
-    const dt = Math.min(now - last, 100); last = now;
+    stats.tick();
+    const dt = Math.max(0, Math.min(now - last, 100)); last = now;
     if (playing && anim) { acc += dt * speed * FPS / 1000; if (acc >= 1) { const n = Math.floor(acc); acc -= n; go(f + n) } }
-    stats.render(() => renderer.render(scene, camera));
+    if (dirty) { dirty = false; stats.render(() => renderer.render(scene, camera)) }
+    raf = playing && anim && onScreen ? requestAnimationFrame(tick) : 0;
   };
-  raf = requestAnimationFrame(tick);
+  ready = true; requestRender();
   return {
     show, view, setView,
+    // for code that changes the scene from outside (tools/er_gifs/render.html): draw it on the next animation frame
+    requestRender,
     debug: {THREE, scene, camera, nav, body, motion, bone, go: f => go(f), boxes: () => boxes, hands, stats: stats.snapshot},
     // warm the cache for the row under the pointer, so the swap on click is instant
     async prefetch(m, pick) {
@@ -398,7 +410,7 @@ export async function createViewer(el, base) {
       if (mv) { loadAnim(mv.anim || m.id).catch(() => {}); loadWeapon(weaponFor(mv, pick)).catch(() => {}) }
     },
     dispose() {
-      disposed = true; cancelAnimationFrame(raf); ro.disconnect(); document.removeEventListener('keydown', onKey); stats.dispose();
+      disposed = true; cancelAnimationFrame(raf); ro.disconnect(); io.disconnect(); document.removeEventListener('keydown', onKey); stats.dispose();
       nav.dispose(); renderer.dispose(); sphereG.dispose(); cylG.dispose(); boxG.dispose(); mat.dispose(); ghostMat.dispose(); bounds.geometry.dispose(); bounds.material.dispose();
     },
   };

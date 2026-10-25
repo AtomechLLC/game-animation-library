@@ -1,0 +1,673 @@
+{
+  "label": "WP-15 after: the 3D viewer renders only when its picture changes. Idle scenario, three runs, local copy of branch perf/wp-15-render-on-demand",
+  "base": "http://127.0.0.1:8765/",
+  "chrome": "Chrome/155.0.8059.85",
+  "runs": [
+    {
+      "startedAt": "2026-10-25T16:27:48.791Z",
+      "finishedAt": "2026-10-25T16:32:30.306Z",
+      "idle": {
+        "eldenRing3d": {
+          "webglRenderer": "ANGLE (Intel, Intel(R) Graphics (0x00007D67) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+          "playing": {
+            "seconds": 5,
+            "webglFramesPerSecond": 15,
+            "drawCallsPerSecond": 394,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 83,
+            "cpuMsPerSecondByProcess": {
+              "browser": 38,
+              "renderer": 126,
+              "GPU": 67,
+              "network.mojom.NetworkService": 10,
+              "storage.mojom.StorageService": 0
+            }
+          },
+          "paused": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 24,
+            "cpuMsPerSecondByProcess": {
+              "browser": 319,
+              "renderer": 52,
+              "GPU": 24,
+              "network.mojom.NetworkService": 128,
+              "storage.mojom.StorageService": 0
+            }
+          },
+          "foldedPaused": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 21,
+            "cpuMsPerSecondByProcess": {
+              "browser": 83,
+              "renderer": 28,
+              "GPU": 27,
+              "network.mojom.NetworkService": 7,
+              "storage.mojom.StorageService": 2,
+              "passage_embeddings.mojom.PassageEmbeddingsService": 40
+            }
+          },
+          "hiddenByEmptySearch": {
+            "dockHidden": true,
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 20,
+            "cpuMsPerSecondByProcess": {
+              "browser": 26,
+              "renderer": 43,
+              "GPU": 22,
+              "network.mojom.NetworkService": 1,
+              "storage.mojom.StorageService": 0,
+              "passage_embeddings.mojom.PassageEmbeddingsService": 0
+            }
+          },
+          "exampleOffScreenPaused": {
+            "dockInView": false,
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 24,
+            "cpuMsPerSecondByProcess": {
+              "browser": 21,
+              "renderer": 54,
+              "GPU": 29,
+              "network.mojom.NetworkService": 0,
+              "storage.mojom.StorageService": 0
+            }
+          }
+        },
+        "streetFighterSprites": {
+          "playing": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 30,
+            "mainThreadBusyMsPerSecond": 87,
+            "cpuMsPerSecondByProcess": {
+              "browser": 29,
+              "renderer": 143,
+              "GPU": 105,
+              "network.mojom.NetworkService": 11,
+              "storage.mojom.StorageService": 0
+            }
+          },
+          "paused": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 28,
+            "cpuMsPerSecondByProcess": {
+              "browser": 353,
+              "renderer": 71,
+              "GPU": 50,
+              "network.mojom.NetworkService": 150,
+              "storage.mojom.StorageService": 0
+            }
+          },
+          "foldedPaused": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 29,
+            "cpuMsPerSecondByProcess": {
+              "browser": 86,
+              "renderer": 51,
+              "GPU": 63,
+              "network.mojom.NetworkService": 6,
+              "storage.mojom.StorageService": 1,
+              "passage_embeddings.mojom.PassageEmbeddingsService": 37
+            }
+          },
+          "hiddenByEmptySearch": {
+            "dockHidden": true,
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 24,
+            "cpuMsPerSecondByProcess": {
+              "browser": 19,
+              "renderer": 61,
+              "GPU": 47,
+              "network.mojom.NetworkService": 1,
+              "storage.mojom.StorageService": 0,
+              "passage_embeddings.mojom.PassageEmbeddingsService": 0
+            }
+          },
+          "exampleOffScreenPaused": {
+            "dockInView": false,
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 28,
+            "cpuMsPerSecondByProcess": {
+              "browser": 16,
+              "renderer": 53,
+              "GPU": 47,
+              "network.mojom.NetworkService": 0,
+              "storage.mojom.StorageService": 0,
+              "passage_embeddings.mojom.PassageEmbeddingsService": 0
+            }
+          }
+        },
+        "smashClips": {
+          "playing": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 15,
+            "mainThreadBusyMsPerSecond": 59,
+            "cpuMsPerSecondByProcess": {
+              "browser": 28,
+              "renderer": 100,
+              "GPU": 59,
+              "network.mojom.NetworkService": 11,
+              "storage.mojom.StorageService": 0
+            }
+          },
+          "paused": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 27,
+            "cpuMsPerSecondByProcess": {
+              "browser": 324,
+              "renderer": 62,
+              "GPU": 32,
+              "network.mojom.NetworkService": 126,
+              "storage.mojom.StorageService": 0
+            }
+          },
+          "foldedPaused": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 27,
+            "cpuMsPerSecondByProcess": {
+              "browser": 104,
+              "renderer": 39,
+              "GPU": 44,
+              "network.mojom.NetworkService": 18,
+              "storage.mojom.StorageService": 2,
+              "passage_embeddings.mojom.PassageEmbeddingsService": 42
+            }
+          },
+          "hiddenByEmptySearch": {
+            "dockHidden": true,
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 26,
+            "cpuMsPerSecondByProcess": {
+              "browser": 32,
+              "renderer": 59,
+              "GPU": 32,
+              "network.mojom.NetworkService": 2,
+              "storage.mojom.StorageService": 0,
+              "passage_embeddings.mojom.PassageEmbeddingsService": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "startedAt": "2026-10-25T16:32:30.417Z",
+      "finishedAt": "2026-10-25T16:34:13.372Z",
+      "idle": {
+        "eldenRing3d": {
+          "webglRenderer": "ANGLE (Intel, Intel(R) Graphics (0x00007D67) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+          "playing": {
+            "seconds": 5,
+            "webglFramesPerSecond": 15,
+            "drawCallsPerSecond": 399,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 88,
+            "cpuMsPerSecondByProcess": {
+              "browser": 74,
+              "renderer": 149,
+              "GPU": 71,
+              "network.mojom.NetworkService": 11,
+              "storage.mojom.StorageService": 0
+            }
+          },
+          "paused": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 28,
+            "cpuMsPerSecondByProcess": {
+              "browser": 332,
+              "renderer": 47,
+              "GPU": 30,
+              "network.mojom.NetworkService": 144,
+              "storage.mojom.StorageService": 0
+            }
+          },
+          "foldedPaused": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 25,
+            "cpuMsPerSecondByProcess": {
+              "browser": 83,
+              "renderer": 37,
+              "GPU": 47,
+              "network.mojom.NetworkService": 0,
+              "storage.mojom.StorageService": 2,
+              "passage_embeddings.mojom.PassageEmbeddingsService": 38
+            }
+          },
+          "hiddenByEmptySearch": {
+            "dockHidden": true,
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 22,
+            "cpuMsPerSecondByProcess": {
+              "browser": 26,
+              "renderer": 48,
+              "GPU": 25,
+              "network.mojom.NetworkService": 1,
+              "storage.mojom.StorageService": 0,
+              "passage_embeddings.mojom.PassageEmbeddingsService": 0
+            }
+          },
+          "exampleOffScreenPaused": {
+            "dockInView": false,
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 23,
+            "cpuMsPerSecondByProcess": {
+              "browser": 24,
+              "renderer": 34,
+              "GPU": 24,
+              "network.mojom.NetworkService": 0,
+              "storage.mojom.StorageService": 0,
+              "passage_embeddings.mojom.PassageEmbeddingsService": 0
+            }
+          }
+        },
+        "streetFighterSprites": {
+          "playing": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 30,
+            "mainThreadBusyMsPerSecond": 85,
+            "cpuMsPerSecondByProcess": {
+              "browser": 37,
+              "renderer": 138,
+              "GPU": 102,
+              "network.mojom.NetworkService": 10,
+              "storage.mojom.StorageService": 0
+            }
+          },
+          "paused": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 31,
+            "cpuMsPerSecondByProcess": {
+              "browser": 343,
+              "renderer": 77,
+              "GPU": 54,
+              "network.mojom.NetworkService": 118,
+              "storage.mojom.StorageService": 0
+            }
+          },
+          "foldedPaused": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 24,
+            "cpuMsPerSecondByProcess": {
+              "browser": 83,
+              "renderer": 30,
+              "GPU": 46,
+              "network.mojom.NetworkService": 34,
+              "storage.mojom.StorageService": 2,
+              "passage_embeddings.mojom.PassageEmbeddingsService": 38
+            }
+          },
+          "hiddenByEmptySearch": {
+            "dockHidden": true,
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 22,
+            "cpuMsPerSecondByProcess": {
+              "browser": 25,
+              "renderer": 55,
+              "GPU": 42,
+              "network.mojom.NetworkService": 0,
+              "storage.mojom.StorageService": 0,
+              "passage_embeddings.mojom.PassageEmbeddingsService": 0
+            }
+          },
+          "exampleOffScreenPaused": {
+            "dockInView": false,
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 23,
+            "cpuMsPerSecondByProcess": {
+              "browser": 24,
+              "renderer": 50,
+              "GPU": 38,
+              "network.mojom.NetworkService": 2,
+              "storage.mojom.StorageService": 0,
+              "passage_embeddings.mojom.PassageEmbeddingsService": 0
+            }
+          }
+        },
+        "smashClips": {
+          "playing": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 15,
+            "mainThreadBusyMsPerSecond": 55,
+            "cpuMsPerSecondByProcess": {
+              "browser": 26,
+              "renderer": 91,
+              "GPU": 50,
+              "network.mojom.NetworkService": 10,
+              "storage.mojom.StorageService": 0
+            }
+          },
+          "paused": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 23,
+            "cpuMsPerSecondByProcess": {
+              "browser": 283,
+              "renderer": 52,
+              "GPU": 25,
+              "network.mojom.NetworkService": 96,
+              "storage.mojom.StorageService": 0,
+              "quarantine.mojom.Quarantine": 18
+            }
+          },
+          "foldedPaused": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 22,
+            "cpuMsPerSecondByProcess": {
+              "browser": 84,
+              "renderer": 14,
+              "GPU": 23,
+              "network.mojom.NetworkService": 43,
+              "storage.mojom.StorageService": 1,
+              "passage_embeddings.mojom.PassageEmbeddingsService": 36
+            }
+          },
+          "hiddenByEmptySearch": {
+            "dockHidden": true,
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 24,
+            "cpuMsPerSecondByProcess": {
+              "browser": 22,
+              "renderer": 54,
+              "GPU": 28,
+              "network.mojom.NetworkService": 0,
+              "storage.mojom.StorageService": 0,
+              "passage_embeddings.mojom.PassageEmbeddingsService": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "startedAt": "2026-10-25T16:34:13.510Z",
+      "finishedAt": "2026-10-25T16:35:55.967Z",
+      "idle": {
+        "eldenRing3d": {
+          "webglRenderer": "ANGLE (Intel, Intel(R) Graphics (0x00007D67) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+          "playing": {
+            "seconds": 5,
+            "webglFramesPerSecond": 15,
+            "drawCallsPerSecond": 399,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 83,
+            "cpuMsPerSecondByProcess": {
+              "browser": 36,
+              "renderer": 126,
+              "GPU": 70,
+              "network.mojom.NetworkService": 11,
+              "storage.mojom.StorageService": 0
+            }
+          },
+          "paused": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 25,
+            "cpuMsPerSecondByProcess": {
+              "browser": 332,
+              "renderer": 58,
+              "GPU": 30,
+              "network.mojom.NetworkService": 140,
+              "storage.mojom.StorageService": 0
+            }
+          },
+          "foldedPaused": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 21,
+            "cpuMsPerSecondByProcess": {
+              "browser": 85,
+              "renderer": 30,
+              "GPU": 36,
+              "network.mojom.NetworkService": 1,
+              "storage.mojom.StorageService": 1,
+              "passage_embeddings.mojom.PassageEmbeddingsService": 39
+            }
+          },
+          "hiddenByEmptySearch": {
+            "dockHidden": true,
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 13,
+            "cpuMsPerSecondByProcess": {
+              "browser": 20,
+              "renderer": 31,
+              "GPU": 16,
+              "network.mojom.NetworkService": 1,
+              "storage.mojom.StorageService": 0,
+              "passage_embeddings.mojom.PassageEmbeddingsService": 0
+            }
+          },
+          "exampleOffScreenPaused": {
+            "dockInView": false,
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 18,
+            "cpuMsPerSecondByProcess": {
+              "browser": 22,
+              "renderer": 26,
+              "GPU": 20,
+              "network.mojom.NetworkService": 0,
+              "storage.mojom.StorageService": 0,
+              "passage_embeddings.mojom.PassageEmbeddingsService": 0
+            }
+          }
+        },
+        "streetFighterSprites": {
+          "playing": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 30,
+            "mainThreadBusyMsPerSecond": 104,
+            "cpuMsPerSecondByProcess": {
+              "browser": 46,
+              "renderer": 170,
+              "GPU": 119,
+              "network.mojom.NetworkService": 13,
+              "storage.mojom.StorageService": 0
+            }
+          },
+          "paused": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 26,
+            "cpuMsPerSecondByProcess": {
+              "browser": 304,
+              "renderer": 67,
+              "GPU": 47,
+              "network.mojom.NetworkService": 130,
+              "storage.mojom.StorageService": 0
+            }
+          },
+          "foldedPaused": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 22,
+            "cpuMsPerSecondByProcess": {
+              "browser": 72,
+              "renderer": 37,
+              "GPU": 48,
+              "network.mojom.NetworkService": 0,
+              "storage.mojom.StorageService": 2,
+              "passage_embeddings.mojom.PassageEmbeddingsService": 34
+            }
+          },
+          "hiddenByEmptySearch": {
+            "dockHidden": true,
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 19,
+            "cpuMsPerSecondByProcess": {
+              "browser": 23,
+              "renderer": 49,
+              "GPU": 39,
+              "network.mojom.NetworkService": 1,
+              "storage.mojom.StorageService": 0,
+              "passage_embeddings.mojom.PassageEmbeddingsService": 0
+            }
+          },
+          "exampleOffScreenPaused": {
+            "dockInView": false,
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 20,
+            "cpuMsPerSecondByProcess": {
+              "browser": 20,
+              "renderer": 44,
+              "GPU": 37,
+              "network.mojom.NetworkService": 0,
+              "storage.mojom.StorageService": 0,
+              "passage_embeddings.mojom.PassageEmbeddingsService": 0
+            }
+          }
+        },
+        "smashClips": {
+          "playing": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 15.2,
+            "mainThreadBusyMsPerSecond": 50,
+            "cpuMsPerSecondByProcess": {
+              "browser": 37,
+              "renderer": 84,
+              "GPU": 47,
+              "network.mojom.NetworkService": 10,
+              "storage.mojom.StorageService": 0
+            }
+          },
+          "paused": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 16,
+            "cpuMsPerSecondByProcess": {
+              "browser": 270,
+              "renderer": 36,
+              "GPU": 17,
+              "network.mojom.NetworkService": 95,
+              "storage.mojom.StorageService": 0
+            }
+          },
+          "foldedPaused": {
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 17,
+            "cpuMsPerSecondByProcess": {
+              "browser": 55,
+              "renderer": 7,
+              "GPU": 19,
+              "network.mojom.NetworkService": 15,
+              "storage.mojom.StorageService": 2,
+              "passage_embeddings.mojom.PassageEmbeddingsService": 33
+            }
+          },
+          "hiddenByEmptySearch": {
+            "dockHidden": true,
+            "seconds": 5,
+            "webglFramesPerSecond": 0,
+            "drawCallsPerSecond": 0,
+            "canvas2dFramesPerSecond": 0,
+            "mainThreadBusyMsPerSecond": 19,
+            "cpuMsPerSecondByProcess": {
+              "browser": 16,
+              "renderer": 42,
+              "GPU": 21,
+              "network.mojom.NetworkService": 0,
+              "storage.mojom.StorageService": 0,
+              "passage_embeddings.mojom.PassageEmbeddingsService": 0
+            }
+          }
+        }
+      }
+    }
+  ]
+}

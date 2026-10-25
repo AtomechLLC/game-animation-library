@@ -48,7 +48,7 @@ As in the UX round, each package keeps apart the **observed problem** (evidence 
 | 12 | [Measure before changing](wp-12-performance-baseline.md) | All | P0, first | none | Done ([report](../../reports/performance-2026-10/baseline.md)) |
 | 13 | [Compress and revalidate on the Node host](wp-13-server-caching-compression.md) | Node host | P0 | 12 | Suggestion |
 | 14 | [Deploy only what the site serves](wp-14-pages-deploy-artifact.md) | GitHub Pages | P0 | none | Suggestion |
-| 15 | [3D viewer renders only when something changes](wp-15-viewer-render-on-demand.md) | Move Explorer | P0 | 12 | Suggestion |
+| 15 | [3D viewer renders only when something changes](wp-15-viewer-render-on-demand.md) | Move Explorer | P0 | 12 | Done ([result](../../reports/performance-2026-10/wp-15-render-on-demand.md)) |
 | 16 | [Fast move stepping](wp-16-move-switch-cost.md) | Move Explorer | P0 | 12 | Suggestion |
 | 17 | [Re-render only what changed](wp-17-move-explorer-rendering.md) | Move Explorer | P1 | 12 | Suggestion |
 | 18 | [Shorter first-load chain](wp-18-move-explorer-cold-load.md) | Move Explorer | P1 | 12, 13 (soft) | Suggestion |

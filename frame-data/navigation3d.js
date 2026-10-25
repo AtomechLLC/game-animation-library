@@ -27,7 +27,8 @@ export function poleOrbitAngles(cumEl, azBase) {
 const anglesOf = dir => ({azimuth: Math.atan2(dir.x, dir.z), elevation: Math.atan2(dir.y, Math.hypot(dir.x, dir.z))});
 
 // views: {front, right} azimuths of the character's front and right side. onFit / onDefault / onHelp: F, D and /.
-export function createBlenderNavigation({camera, dom, views, onFit, onDefault, onHelp, onMode}) {
+// onChange: called whenever the camera moves, so the viewer can render only then
+export function createBlenderNavigation({camera, dom, views, onFit, onDefault, onHelp, onMode, onChange = () => {}}) {
   const target = new THREE.Vector3();
   let distance = 1, azimuth = 0, elevation = 0, pole = null, limits = {min: 0.01, max: 100}, drag = null;
   let mode = 'mouse';
@@ -41,6 +42,7 @@ export function createBlenderNavigation({camera, dom, views, onFit, onDefault, o
     camera.up.set(0, pastPole ? -1 : 1, 0);
     camera.lookAt(target);
     camera.updateMatrixWorld(true);
+    onChange();
   }
   const zoom = d => { distance = Math.max(limits.min, Math.min(limits.max, d)); place(pole ? Math.cos(pole.cumEl) < 0 : false) };
   const panScale = () => 2 * distance * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) / (dom.clientHeight || 600);
@@ -141,7 +143,7 @@ export function createBlenderNavigation({camera, dom, views, onFit, onDefault, o
   dom.addEventListener('keydown', onKey);
 
   // move the camera and target together (pan, or riding along with root motion)
-  function shift(d) { camera.position.add(d); target.add(d); camera.updateMatrixWorld(true) }
+  function shift(d) { camera.position.add(d); target.add(d); camera.updateMatrixWorld(true); onChange() }
 
   return {
     target,

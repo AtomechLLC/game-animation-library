@@ -44,9 +44,10 @@ window.ER = {
   async show(m, weapon, bare) {
     const ok = await view.show(m, {weapon});
     for (const [bone, o] of held) o.visible = !bare;
-    await raf(); return ok && frames();
+    view.requestRender(); await raf(); return ok && frames();
   },
-  async grid(on) { grids.forEach(g => g.visible = on); await raf() },
+  // the viewer renders only when its picture changes, so changes made from here ask it to
+  async grid(on) { grids.forEach(g => g.visible = on); view.requestRender(); await raf() },
   // the character's screen box: every bone plus the weapons in hand, in canvas pixels
   box() {
     const cam = cams[0], c = el.querySelector('canvas'), w = c.clientWidth, h = c.clientHeight, v = new THREE.Vector3(), b = new THREE.Box3();

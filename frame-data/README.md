@@ -338,6 +338,13 @@ game's own models: play/pause, one-frame steps (`−1 f` / `+1 f`, or `,` `.`), 
 motion, and the move's hitboxes drawn on exactly the frames the table calls active. `frame-data/viewer3d.js` does
 this with three.js (loaded from jsDelivr through the page's import map).
 
+The viewer renders only when its picture changes:
+- It renders when the frame changes, the camera moves, an overlay is toggled or the view is resized.
+- Its animation loop runs only while a move plays on screen. A paused, folded ("Hide"), hidden or scrolled-away
+  view costs nothing.
+- Code that changes the scene from outside calls `viewer.requestRender()`, as `tools/er_gifs/render.html` does after
+  toggling the grid or the weapons.
+
 The camera uses Blender-style viewport navigation (`frame-data/navigation3d.js`), ported from the centerpiece splat
 viewer in wia-seasonal-ui-asset-generator. Click the 3D view first (it gets an outline) so the keys go to it:
 
