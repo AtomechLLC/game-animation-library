@@ -1,10 +1,13 @@
 # WP-15: 3D viewer renders only when something changes
 
-**Status:** Suggestion · **Priority:** P0 · **Depends on:** WP-12
+**Status:** Done (2026-10-25) · **Priority:** P0 · **Depends on:** WP-12
+
+**Result:** [WP-15 before and after](../../reports/performance-2026-10/wp-15-render-on-demand.md)
 
 **In-app check:** the render stats overlay (`` ` `` in the 3D view; `frame-data/renderstats.js`, described in
 `frame-data/README.md`). It shows renders per second next to the playback state and whether the view is on screen.
-Before this package, renders per second match the loop rate whether the move is playing, paused, folded or hidden.
+Before this package, renders per second matched the loop rate whether the move was playing, paused, folded or
+hidden. Now they read 0 whenever nothing changes.
 
 ## User task it protects
 
@@ -61,3 +64,34 @@ stays responsive.
   overlay toggle and resize.
 - Verified on Elden Ring, No Rest for the Wicked (3D), Street Fighter III (sprites) and Super Smash Bros. Ultimate
   (clips).
+
+## Implementation record (as of 2026-10-25)
+
+**Implemented** (branch `perf/wp-15-render-on-demand`)
+- **Scope 1, render on demand,** in `frame-data/viewer3d.js`:
+  - `requestRender()` marks the picture stale and wakes the animation-frame loop for one render.
+  - These call it: `go()` (play, scrub, frame keys, the overlay checkboxes, `setView`, `show`, Bounds), the grid
+    toggle, resize, and starting playback.
+  - Camera moves call it through a new `onChange` option of `createBlenderNavigation`
+    (`frame-data/navigation3d.js`, from `place()` and `shift()`).
+  - The loop renders only when the picture is stale, and keeps running only while a move plays on screen.
+  - A side effect: while playing, it renders only when the pose changes, which is 15 renders/s at 0.5× instead of
+    the display rate.
+- **Scope 2, stop when not visible:**
+  - An `IntersectionObserver` on the stage stops the loop when the view is off screen, folded or hidden, and
+    renders again when the view comes back.
+  - Hidden browser tabs already stop animation frames, so `visibilitychange` was not needed.
+- **Outside changes:** `createViewer` now returns `requestRender` for code that changes the scene from outside.
+  `tools/er_gifs/render.html` calls it after showing or hiding the grid and the weapons.
+- **Cache versions:** `viewer3d.js?v=19` and `navigation3d.js?v=9`.
+
+**Changed from the scope**
+- **Scope 3 dropped.** The baseline showed that the sprite and clip viewers already stop drawing when paused (0
+  frames/s); their remaining cost is at the measurement floor.
+- **Scope 4 not needed.** With the canvas static, the `backdrop-filter` overlays have nothing to recomposite. The
+  paused view's GPU-process CPU fell from about 350 to 25–30 ms/s with them in place.
+
+**Result**
+- Paused, folded, hidden and off screen: 160–200 → **0** renders/s.
+- Playing at 0.5×: 228 → 15 renders/s.
+- Details: [`wp-15-render-on-demand.md`](../../reports/performance-2026-10/wp-15-render-on-demand.md).
