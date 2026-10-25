@@ -65,8 +65,10 @@ This package produces the metrics; there is no target.
 **Implemented**
 - `tools/perf/baseline.mjs` drives an installed Chrome over the DevTools protocol (Node 22+, no dependencies). It
   measures page loads (cold and repeat, unthrottled and throttled), the Action Atlas full scroll, the four
-  interactions at 1× and 4× CPU, the 3D viewer's idle cost, the four memory sequences, and the hosting and
-  repository sizes. It writes one JSON file.
+  interactions at 1× and 4× CPU, the idle cost of each viewer kind (3D, sprite sheets, clips) when playing, paused,
+  folded, hidden and off screen, hover prefetch over 50 rows, the four memory sequences, and the hosting and
+  repository sizes. It records which Pages deployment it measured and flags a redeploy during the run. It writes
+  one JSON file.
 - Scope item 2 (timing page functions) is done from the script instead of the app code. The script wraps
   `renderAll`, `renderTable`, `preview`, `stepMove`, `dock`, the viewer's `show` and the Action Atlas's `render`
   in the page, so the apps stay unchanged.
@@ -80,5 +82,4 @@ This package produces the metrics; there is no target.
   package has to be installed.
 - **Desktop only,** answering the second open question for now.
 
-**Not measured:** hover prefetch over the move table.
 

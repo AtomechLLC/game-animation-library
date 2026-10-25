@@ -2,7 +2,7 @@
 // Drives an installed Chrome over the DevTools protocol (Node 22+, no dependencies) and writes one JSON file of
 // measurements; docs/reports/performance-2026-10/ explains them.
 //
-//   node tools/perf/baseline.mjs [--base URL] [--out FILE] [--only load,scroll,interact,idle,memory,hosting]
+//   node tools/perf/baseline.mjs [--base URL] [--out FILE] [--only load,scroll,interact,idle,hover,memory,hosting]
 //
 // --base defaults to the live GitHub Pages site. CHROME overrides the browser path. Each scenario runs in a fresh
 // browser profile, so nothing is cached unless the scenario says so.
@@ -14,7 +14,7 @@ import path from 'node:path';
 const arg = (k, d) => { const i = process.argv.indexOf('--' + k); return i > 0 ? process.argv[i + 1] : d };
 const BASE = arg('base', 'https://atomechllc.github.io/game-animation-library/').replace(/\/?$/, '/');
 const OUT = arg('out', `docs/reports/performance-2026-10/baseline-${new Date().toISOString().slice(0, 10)}.json`);
-const ONLY = arg('only', 'load,scroll,interact,idle,memory,hosting').split(',');
+const ONLY = arg('only', 'load,scroll,interact,idle,hover,memory,hosting').split(',');
 const CHROME = process.env.CHROME || {
   win32: 'C:/Program Files/Google/Chrome/Application/chrome.exe',
   darwin: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
@@ -61,7 +61,7 @@ async function launch() {
 // history.replaceState calls and WebGL contexts created, and can wrap page functions to time them.
 const INSTRUMENT = `(() => {
   const P = window.__perf = {longtasks: [], lcp: 0, fcp: 0, events: [], firstDraw: 0, draws: 0, drawFrames: 0, frames: 0,
-    bitmaps: 0, bitmapBytes: 0, replaceState: 0, webgl: 0, calls: {}, keyAt: 0, showFrameAt: 0};
+    draws2d: 0, drawFrames2d: 0, bitmaps: 0, bitmapBytes: 0, replaceState: 0, webgl: 0, calls: {}, keyAt: 0, showFrameAt: 0};
   const obs = (type, fn, o = {}) => { try { new PerformanceObserver(l => l.getEntries().forEach(fn)).observe({type, buffered: true, ...o}) } catch {} };
   obs('longtask', e => P.longtasks.push([e.startTime, e.duration]));
   obs('largest-contentful-paint', e => { P.lcp = e.startTime });
@@ -71,7 +71,9 @@ const INSTRUMENT = `(() => {
     const f = C.prototype[k];
     C.prototype[k] = function (...a) { if (!P.firstDraw) P.firstDraw = performance.now(); P.draws++; P.drew = true; return f.apply(this, a) };
   }
-  const loop = () => { P.frames++; if (P.drew) { P.drawFrames++; P.drew = false } requestAnimationFrame(loop) };
+  const d2 = CanvasRenderingContext2D.prototype.drawImage;
+  CanvasRenderingContext2D.prototype.drawImage = function (...a) { P.draws2d++; P.drew2d = true; return d2.apply(this, a) };
+  const loop = () => { P.frames++; if (P.drew) { P.drawFrames++; P.drew = false } if (P.drew2d) { P.drawFrames2d++; P.drew2d = false } requestAnimationFrame(loop) };
   requestAnimationFrame(loop);
   const cib = window.createImageBitmap;
   window.createImageBitmap = (...a) => cib(...a).then(b => { P.bitmaps++; P.bitmapBytes += b.width * b.height * 4; return b });
@@ -86,7 +88,7 @@ const INSTRUMENT = `(() => {
       if (r && r.then) r.then(() => { rec(label + k + ' (settled)', performance.now() - t); if (k === 'show') requestAnimationFrame(() => { P.showFrameAt = performance.now() }) }, () => {});
       return r };
     w.__perf = 1; obj[k] = w } };
-  P.reset = () => { P.longtasks = []; P.events = []; P.calls = {}; P.draws = 0; P.drawFrames = 0; P.frames = 0; P.replaceState = 0 };
+  P.reset = () => { P.longtasks = []; P.events = []; P.calls = {}; P.draws = 0; P.drawFrames = 0; P.draws2d = 0; P.drawFrames2d = 0; P.frames = 0; P.replaceState = 0 };
 })()`;
 
 async function openPage(b, {throttle = false, cache = false} = {}) {
@@ -249,9 +251,10 @@ async function idleWindow(b, p, ms) {
   await p.ev('__perf.reset()');
   const m0 = await p.metrics(), c0 = await cpuByType(b);
   await sleep(ms);
-  const m1 = await p.metrics(), c1 = await cpuByType(b), P = await p.ev('({draws: __perf.draws, drawFrames: __perf.drawFrames, frames: __perf.frames})');
+  const m1 = await p.metrics(), c1 = await cpuByType(b), P = await p.ev('({draws: __perf.draws, drawFrames: __perf.drawFrames, draws2d: __perf.draws2d, drawFrames2d: __perf.drawFrames2d})');
   const s = ms / 1000;
   return {seconds: s, webglFramesPerSecond: +(P.drawFrames / s).toFixed(1), drawCallsPerSecond: Math.round(P.draws / s),
+    canvas2dFramesPerSecond: +(P.drawFrames2d / s).toFixed(1),
     mainThreadBusyMsPerSecond: Math.round((m1.TaskDuration - m0.TaskDuration) * 1000 / s),
     cpuMsPerSecondByProcess: Object.fromEntries(Object.keys(c1).map(k => [k, Math.round(((c1[k] - (c0[k] || 0)) * 1000) / s)]))};
 }
@@ -302,9 +305,10 @@ async function scenarioInteract() {
       await p.ev(`document.activeElement && document.activeElement.blur()`);
       const steps = [];
       for (let i = 0; i < 6; i++) {
-        await p.ev('__perf.showFrameAt = 0');
+        // a frame from the previous move can still arrive late, so only a frame after this key counts
+        await p.ev('__perf.showFrameAt = 0; __perf.keyAt = 0');
         await p.key('ArrowDown', 'ArrowDown', 40); await p.key('ArrowDown', 'ArrowDown', 40, {type: 'keyUp'});
-        await p.until('__perf.showFrameAt > 0', 30000);
+        await p.until('__perf.keyAt > 0 && __perf.showFrameAt > __perf.keyAt', 30000);
         steps.push(Math.round(await p.ev('__perf.showFrameAt - __perf.keyAt')));
         await p.quiet(800);
       }
@@ -323,26 +327,64 @@ async function scenarioInteract() {
   }
 }
 
+// The viewer's cost in each state it can sit in: playing, paused, folded ("Hide"), hidden (a search that matches no
+// move hides the dock) and, before a class is picked, scrolled off screen. One game per viewer kind: Elden Ring (3D),
+// Street Fighter III (sprite sheets), Super Smash Bros. Ultimate (clips; it has no example viewer before a class)
+const IDLE_GAMES = [
+  {key: 'eldenRing3d', game: 'elden-ring', cls: 'Greatsword', example: true},
+  {key: 'streetFighterSprites', game: 'street-fighter-3-third-strike', cls: 'ryu', example: true},
+  {key: 'smashClips', game: 'super-smash-bros-ultimate', cls: 'kazuya', example: false},
+];
 async function scenarioIdle() {
-  log('idle viewer');
-  results.idle = await withBrowser(async b => {
-    const p = await openPage(b, {cache: true});
-    const out = {};
-    await p.goto(ME + '#c=Greatsword'); await p.until('__perf.firstDraw > 0'); await p.quiet(2000);
-    out.webglRenderer = await glRenderer(p);
-    out.classViewPlaying = await idleWindow(b, p, 5000);
-    await p.ev(`DOCK.view.then(v => v.setView({frame: 10}))`); await sleep(300);
-    out.classViewPaused = await idleWindow(b, p, 5000);
-    await p.ev(`pickMin(true)`); await sleep(300);
-    out.classViewFoldedPaused = await idleWindow(b, p, 5000);
-    await p.ev(`pickMin(false)`);
-    // no class picked: the example viewer sits above the class index, so scrolling down takes it off screen
-    await p.goto(ME); await p.until('__perf.firstDraw > 0'); await p.quiet(2000);
-    await p.ev(`DOCK.view.then(v => v.setView({frame: 10}))`);
-    await p.ev(`scrollTo(0, document.documentElement.scrollHeight)`); await sleep(500);
-    out.exampleViewerOffScreenPaused = await idleWindow(b, p, 5000);
-    return out;
-  });
+  results.idle = {};
+  for (const g of IDLE_GAMES) {
+    log('idle viewer', g.key);
+    results.idle[g.key] = await withBrowser(async b => {
+      const p = await openPage(b, {cache: true}), out = {}, ready = `!document.querySelector('#dock').hidden && !!DOCK.key`;
+      await p.goto(`${ME}#g=${g.game}&c=${g.cls}`); await p.until(ready); await p.quiet(2000); await sleep(1500);
+      if (g.key === 'eldenRing3d') out.webglRenderer = await glRenderer(p);
+      out.playing = await idleWindow(b, p, 5000);
+      await p.ev(`DOCK.view.then(v => v.setView({frame: 10}))`); await sleep(300);
+      out.paused = await idleWindow(b, p, 5000);
+      await p.ev(`pickMin(true)`); await sleep(300);
+      out.foldedPaused = await idleWindow(b, p, 5000);
+      await p.ev(`pickMin(false)`); await sleep(300);
+      await p.ev(`(() => { const q = document.querySelector('#q'); q.value = 'zzzzzz'; q.dispatchEvent(new Event('input', {bubbles: true})) })()`);
+      await sleep(800);
+      out.hiddenByEmptySearch = {dockHidden: await p.ev(`document.querySelector('#dock').hidden`), ...await idleWindow(b, p, 5000)};
+      if (g.example) {
+        await p.goto(`${ME}#g=${g.game}`); await p.ev('location.reload()'); await sleep(500);
+        await p.until(ready); await p.quiet(2000); await sleep(1500);
+        await p.ev(`DOCK.view.then(v => v.setView({frame: 10}))`);
+        await p.ev(`scrollTo(0, document.documentElement.scrollHeight)`); await sleep(500);
+        out.exampleOffScreenPaused = {dockInView: await p.ev(`document.querySelector('#dock').getBoundingClientRect().bottom > 0`), ...await idleWindow(b, p, 5000)};
+      }
+      return out;
+    });
+  }
+}
+
+// Hover prefetch: sweep the pointer down rows of the move table (Elden Ring, no class picked) and the Moveset
+// Inspector (Super Smash Bros. Ultimate, Kazuya), 60 ms per row, and count what downloads without a click
+async function scenarioHover() {
+  results.hover = {};
+  for (const [key, hash, sel] of [['eldenRingAllClassesTable', '', '#table tr[data-m]'], ['smashMovesetInspector', '#g=super-smash-bros-ultimate&c=kazuya', '#mlist tr[data-m]']]) {
+    log('hover', key);
+    results.hover[key] = await withBrowser(async b => {
+      const p = await openPage(b, {cache: true});
+      await p.goto(ME + hash); await p.until(`!document.querySelector('#dock').hidden && !!DOCK.key`); await p.quiet(2000); await sleep(1000);
+      p.resetNet(); await p.ev('__perf.reset()');
+      const n = Math.min(50, await p.ev(`document.querySelectorAll(${JSON.stringify(sel)}).length`));
+      for (let i = 0; i < n; i++) {
+        const r = await p.ev(`(() => { const e = document.querySelectorAll(${JSON.stringify(sel)})[${i}]; e.scrollIntoView({block: 'nearest'}); const b = e.getBoundingClientRect(); return [b.x + 40, b.y + b.height / 2] })()`);
+        await p.s('Input.dispatchMouseEvent', {type: 'mouseMoved', x: r[0], y: r[1]});
+        await sleep(60);
+      }
+      await p.quiet(2000);
+      return {rowsSwept: n, requests: p.net.requests, transferredKB: kb(p.net.bytes), byTypeKB: Object.fromEntries(Object.entries(p.net.byType).map(([k, v]) => [k, kb(v)])),
+        main: await activity(p)};
+    });
+  }
 }
 
 async function memorySnapshot(b, p) {
@@ -414,11 +456,26 @@ function scenarioHosting() {
   }
 }
 
-const SCENARIOS = {load: scenarioLoad, scroll: scenarioScroll, interact: scenarioInteract, idle: scenarioIdle, memory: scenarioMemory, hosting: scenarioHosting};
+// the Pages deployment being measured, read before and after the run: a push to main during the run would mix two
+// versions of the site, so the run is flagged
+function deployed() {
+  try {
+    const [r] = JSON.parse(execFileSync('gh', ['run', 'list', '--workflow', 'static.yml', '--branch', 'main', '--limit', '1', '--json', 'databaseId,headSha,status,conclusion,updatedAt'], {encoding: 'utf8'}));
+    return r && {run: r.databaseId, commit: r.headSha.slice(0, 7), status: r.status, conclusion: r.conclusion, at: r.updatedAt};
+  } catch { return null }
+}
+
+const SCENARIOS = {load: scenarioLoad, scroll: scenarioScroll, interact: scenarioInteract, idle: scenarioIdle, hover: scenarioHover, memory: scenarioMemory, hosting: scenarioHosting};
+results.site = {before: BASE.includes('github.io') ? deployed() : null};
 for (const k of ONLY) {
   try { await SCENARIOS[k]() } catch (e) { log(k, 'failed:', e.message); results[k + 'Error'] = e.message }
 }
 results.finishedAt = new Date().toISOString();
+if (results.site.before) {
+  results.site.after = deployed();
+  results.site.changedDuringRun = results.site.after?.run !== results.site.before.run || results.site.before.status !== 'completed';
+  if (results.site.changedDuringRun) log('WARNING: the site was redeployed during the run; measure again');
+}
 mkdirSync(path.dirname(OUT), {recursive: true});
 writeFileSync(OUT, JSON.stringify(results, null, 2) + '\n');
 log('wrote', OUT);
