@@ -9,12 +9,13 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="shared/ruler.css?v=1">
 <style>
 /* Same shell as frame-data.html (sticky header, game bar on its own row, ruler), with cross-game charts below. */
 /* Same shell as template.html (sticky timeline header, filter rail, slide-over sheet), with a weapon icon index and frame tables. */
 :root{
   --bg:#f3f2ee; --panel:#ffffff; --sunk:#e9e7e1; --fg:#1c1b19; --muted:#6b6860; --line:#d8d5cc;
-  --key:#e08a00; --key-ink:#8a5200; --combat:#c2412d; --calm:#2f7a6b; --chip:#efece5; --playhead:#d92d20;
+  --key:#e08a00; --key-ink:#8a5200; --combat:#c2412d; --calm:#2f7a6b; --chip:#efece5; --playhead:#d92d20; --focus:#2563eb;
   --f-start:#cfcbc0; --f-active:#c2412d; --f-gap:#e6b8ae; --f-rec:#e08a00; --f-free:#2f7a6b40; --f-armor:#4b5bd6; --f-iframe:#0e9bb8;
   --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
   --body:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
@@ -22,11 +23,11 @@
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
-  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; color-scheme:dark;
+  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; --focus:#6ea8ff; color-scheme:dark;
   --f-start:#4a4b52; --f-active:#ff7a63; --f-gap:#6b3a33; --f-rec:#ffb020; --f-free:#62c9b14d; --f-armor:#8f9bff; --f-iframe:#4cc9e8}}
 :root[data-theme="dark"]{
   --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
-  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; color-scheme:dark;
+  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; --focus:#6ea8ff; color-scheme:dark;
   --f-start:#4a4b52; --f-active:#ff7a63; --f-gap:#6b3a33; --f-rec:#ffb020; --f-free:#62c9b14d; --f-armor:#8f9bff; --f-iframe:#4cc9e8}
 *{box-sizing:border-box}
 html,body{max-width:100%;overflow-x:clip}
@@ -76,25 +77,6 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var
 .domain{overflow-x:auto;scrollbar-width:none}
 .domain button{white-space:nowrap;border:0;background:transparent;padding:7px 12px;cursor:pointer;font-size:13px;font-weight:500}
 .domain button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
-.ruler{position:relative;height:30px;border-top:1px solid var(--line);overflow:hidden;font-family:var(--mono);font-size:10px;color:var(--muted)}
-.ruler .ticks{position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 12px);opacity:.9;height:8px}
-.ruler .keys{position:absolute;inset:0;display:flex;overflow-x:auto;scrollbar-width:none;padding-top:8px;padding-inline:max(16px,env(safe-area-inset-left,0px))}
-.ruler .kfs{display:flex;gap:2px;flex:none}
-.ruler .keys::-webkit-scrollbar{display:none}
-.ruler .keys{cursor:grab}
-.ruler .keys.dragging,.ruler .keys.dragging .kf{cursor:grabbing;user-select:none}
-/* after being pulled past an end the key row springs back, overshooting slightly */
-.ruler .keys.settle{transition:transform .45s cubic-bezier(.25,1.3,.5,1)}
-.kf{display:flex;align-items:center;gap:5px;white-space:nowrap;border:0;background:transparent;cursor:pointer;padding:2px 8px 2px 4px;border-radius:3px;font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
-.kf i{width:8px;height:8px;transform:rotate(45deg);background:var(--line);display:inline-block}
-.kf:hover{color:var(--fg)}
-.kf[aria-pressed="true"]{color:var(--key-ink)}
-.kf[aria-pressed="true"] i{background:var(--playhead)}
-/* the red playhead points at the selected key and slides to the next one, overshooting it slightly */
-.playhead{position:absolute;left:0;top:0;width:2px;height:12px;background:var(--playhead);pointer-events:none;transition:transform .34s cubic-bezier(.25,1.1,.5,1)}
-.playhead::before{content:"";position:absolute;left:-4px;top:0;border:5px solid transparent;border-top:6px solid var(--playhead);border-bottom:0}
-.playhead.still{transition:none}
-@media (prefers-reduced-motion:reduce){.playhead{transition:none}}
 /* chart colors: slots 1 and 2 of the dataviz reference palette (blue, orange), validated as a pair in both modes */
 :root{--s1:#2a78d6;--s2:#eb6834;--s1-wash:#2a78d633;--grid:#e6e3db}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--s1:#3987e5;--s2:#d95926;--s1-wash:#3987e540;--grid:#2c2d32}}
@@ -209,7 +191,7 @@ footer p{max-width:85ch;margin:0 0 8px}
     <nav class="apps" aria-label="Apps"><a href="./" style="--app:#2f62c9"><span class="ico"><svg viewBox="0 0 512 512" aria-hidden="true"><path d="M256 22.115c-5.825 0-11.563.366-17.193 1.074l25.27 19.44 27.44-15.832A136.438 136.438 0 0 0 256 22.115zm-31.406 3.64C164.628 39.899 120.115 93.66 120.115 158c0 70.687 53.73 128.608 122.65 135.244.11-.089.213-.183.323-.271 8.263-6.629 19.152-10.972 31.252-12.305 6.22-.685 12.228-.512 17.822.457l.006-.025v-.002c1.954-7.778 6.776-13.879 12.527-17.332 4.314-2.59 8.978-3.837 13.528-4.137a34.41 34.41 0 0 1 4.496.002c5.895.383 11.445 2.11 16.095 5.584.123.092.244.195.366.29 31.612-24.477 52.098-62.602 52.681-105.62-6.228-5.54-16.99-15.23-18.4-17.346-1.987-2.98-21.852-22.348-21.852-22.348l-44.199-2.484 19.865 24.336-26.818 11.422-20.494-27.983 24.85 59.018-16.856 67.424-33.713-1.406-14.748-62.506-53.379-11.239 19.666-58.996h69.082l3.41-6.275-36.312-19.03-41.799 18.985-.701-41.437s21.068-18.964 21.068-24.582c0-3.13 2.132-12.118 4.063-19.682zm95.91 251.806c-2.437.009-4.81.597-6.543 1.638-1.982 1.19-3.436 2.711-4.334 6.287l-.006.018-13.79 53.928-8.073-1.25c-12.118-1.876-25.705-2.017-32.533-1.07-4.91 1.625-7.226 4.484-7.848 6.286-.635 1.842-.734 2.198 1.135 3.5.717.457 5.872 2.645 12.074 4.186 6.256 1.554 13.908 2.898 21.277 3.61 7.37.71 14.537.749 19.438.023 4.9-.726 5.96-2.624 5.191-.912 13.432-29.903 16.61-45.388 21.844-74.057-.08-.024-.02.092-.293-.111-1.067-.797-3.7-1.864-6.492-2.045-.35-.023-.699-.033-1.047-.031zm-40.055 20.785c-1.604.011-3.25.106-4.926.29-8.933.985-16.716 4.342-21.64 8.292-4.924 3.95-6.649 7.762-6.438 10.965a8.07 8.07 0 0 0 .633 2.617 37.532 37.532 0 0 1 2.498-.854l.582-.174.602-.093c8.147-1.276 19.2-1.204 30.615.006l5.25-20.53a44.952 44.952 0 0 0-7.176-.52zm-49.455 11.103c-32.373 12.647-66.581 48.933-73.314 87.27 8.55 13.94 15.925 25.451 42.213 28.804 20.25 2.584 36.195-3.383 53.138-11.421-4.61 27.314-9.023 54.627-22.347 81.941l61.582 1.49-1.987-11.422-37.248-4.47c10.766-27.243 34.074-58.795 28.309-88.399-18.755-3.482-37.817-6.687-69.527 1.49 2.954-8.21 13.434-21.073 25.947-33.408-7.491-5.58-10.196-15.685-7.399-23.795a24.701 24.701 0 0 1 2.993-5.914c-2.137-3.465-3.52-7.4-3.807-11.752-.238-3.613.312-7.107 1.447-10.414zm-65.64 120.928c5.496 14.215 12.952 27.97 20.136 41.58-17.916-10.752-58.268-14.487-64.808-14.402-3.1 17.06-10.632 26.4-25.02 35.74l14.899 2.978 19.804-23.074c26.19 15.067 75.1 30.943 84.442 19.444.305-9.276-.076-28.955-5.8-49.584-17.281.494-32.183-4.853-43.653-12.682z"/></svg></span><span><b>Action Atlas</b><small>Compare one action across games</small></span></a><a href="frame-data.html" style="--app:#8a3fc9"><span class="ico"><svg viewBox="0 0 512 512" aria-hidden="true"><path d="M117.842 26.268a15.25 15.25 0 0 0-4.418.76c-5.625 1.858-10.165 7.048-12.6 15.701-2.435 8.653-2.255 20.27 1.668 32.045 3.923 11.775 10.754 21.198 17.9 26.686 7.147 5.488 13.9 6.946 19.526 5.088 5.625-1.858 10.163-7.046 12.597-15.7 2.435-8.653 2.256-20.271-1.668-32.046-3.923-11.776-10.753-21.196-17.9-26.684-5.36-4.116-10.498-5.966-15.105-5.85zm183.933 12.373c-3.461.157-6.505 1.749-8.25 5.344L279.89 68.73l-26.733 32.309s-53.832-9.528-72.039-6.863a518.655 518.655 0 0 0-11.318 1.767c-3.614 12.656-11.809 23.592-24.192 27.682-11.513 3.803-23.674.702-33.761-6.178-4.565 3.511-8.787 7.581-12.557 12.33-18.674 14.66-26.385 24.747-42.1 34.92 3.083-14.864 10.683-29.677 19.026-41.879 1.37-2.003 11.495-10.555 12.888-12.406 7.48-14.706-8.464-41.216-23.476-15.86-1.425 1.979-7.346 18.877-8.817 21.096-14.574 28.867-23.676 47.817-15.474 76.325 2.756 9.578 30.91-4.905 55.23-22.159 26.469 37.34 59.364 48.604 78.373 63.078-23.266 83.384 10.267 147.263 29.276 207.721l-29.149 36.086c-8.868 10.627 48.711 13.113 52.412.75l7.71-33.84c-28.831-90.508-3.142-157.686 17.62-207.722 55.208-59.043 115.23-82.304 168.9-128.791l45.302-9.635c10.848-19.916 10.236-29.748-13.854-30.697l-44.924 17.595c-56.586 31.807-146.01 53.348-186.496 97.99-.897-14.045-17.4-47.3-20.902-58.437 19.373 2.573 45.668 4.223 60.642-2.682 16.005-7.38 33.63-40.796 33.63-40.796l19.663-14.551c17.065-10.058-.63-27.798-12.994-27.24z"/></svg></span><span><b>Move Explorer</b><small>Step through moves frame by frame · 7 games</small></span></a><a href="trends.html" style="--app:#1f8a6e" aria-current="page"><span class="ico"><svg viewBox="0 0 512 512" aria-hidden="true"><path d="M23 23v466h466v-18h-40.893V256h-48v215h-31.675V159.33h-48V471h-31.227V320.242h-48V471H207.2V80.418h-48V471H128V192H80v279H41V23H23z"/></svg></span><span><b>Trends</b><small>Compare timing across games</small></span></a></nav>
   </div>
   <div class="wrap grow"><div class="domain" role="group" aria-label="Games compared" id="games"></div><span class="ver" id="ver"></span></div>
-  <div class="ruler"><div class="ticks"></div><div class="keys"><div class="kfs" id="keys"></div><span class="playhead" id="playhead" hidden></span></div></div>
+  <div class="ruler" data-step="Section"><div class="ticks"></div><div class="keys" tabindex="-1"><div class="kfs" id="keys"></div><span class="playhead" id="playhead" hidden></span></div></div>
 </header>
 
 <main class="wrap" id="main">
@@ -233,6 +215,7 @@ footer p{max-width:85ch;margin:0 0 8px}
 </main>
 <div id="tip" hidden role="tooltip"></div>
 
+<script src="shared/ruler.js?v=1"></script>
 <script>
 // Trends tab. Reads frame-data/games.json and every game's frame-data/1 file (see frame-data/README.md), then compares
 // them. Which moves count as attacks, basic (light) attacks and heavy attacks differs per game, so PROFILES says it per
@@ -536,7 +519,7 @@ function render(){
   $('#ver').title=$('#ver').textContent=`${xs.length} of ${GAMES.length} games · ${n.toLocaleString()} attacks compared`;
   const out=SECTIONS.map(s=>({s,r:s.render()})).filter(o=>o.r.html);
   // the first key, "Index", is the top of the page: selected on opening and above the first section
-  $('#keys').innerHTML=`<button class="kf" data-jump="" aria-pressed="false"><i></i>Index</button>`+out.map(({s})=>`<button class="kf" data-jump="${s.id}" aria-pressed="false"><i></i>${esc(s.key)}</button>`).join('');
+  setKeys(`<button class="kf" data-jump="" aria-pressed="false"><i></i>Index</button>`+out.map(({s})=>`<button class="kf" data-jump="${s.id}" aria-pressed="false"><i></i>${esc(s.key)}</button>`).join(''));
   $('#sections').innerHTML=out.map(o=>o.r.html).join('');
   DRAWS=out.map(o=>o.r.draw);redraw();writeHash();spy();
 }
@@ -569,55 +552,6 @@ function jump(id){const t=id&&document.getElementById(id),behavior=matchMedia('(
   spy();clearTimeout(jump.t);jump.t=setTimeout(()=>{JUMP=null;spy()},1500)}
 addEventListener('scroll',()=>requestAnimationFrame(spy),{passive:true});
 addEventListener('scrollend',()=>{if(JUMP!==null){JUMP=null;spy()}});
-// the playhead appears in place (no slide) on load, after a resize and after being hidden; the key row scrolls to keep it in view
-let phStill=true;
-function placePlayhead(){
-  const ph=$('#playhead'),k=$('#keys .kf[aria-pressed="true"]');
-  if(!k){ph.hidden=true;phStill=true;return}
-  const i=k.querySelector('i'),x=i.offsetLeft+i.offsetWidth/2,row=ph.parentNode;
-  ph.classList.toggle('still',phStill);ph.hidden=false;phStill=false;
-  ph.style.transform=`translateX(${x-1}px)`;
-  if(row.scrollWidth>row.clientWidth&&(x<row.scrollLeft+40||x>row.scrollLeft+row.clientWidth-60))row.scrollTo({left:x-row.clientWidth/2,behavior:'smooth'})}
-addEventListener('resize',()=>{phStill=true;placePlayhead()});
-document.fonts?.ready.then(()=>{phStill=true;placePlayhead()});
-// the key row scrolls sideways by dragging (a flick glides on) or by the wheel; pulled past either end it stretches with
-// growing resistance and springs back. A vertical wheel moves the row only while it can, then scrolls the page
-function elasticRow(row){
-  const calm=matchMedia('(prefers-reduced-motion: reduce)'),max=()=>Math.max(0,row.scrollWidth-row.clientWidth);
-  let p=0,v=0,glide=0,drag=null,dragged=false,wt;
-  const show=()=>{const c=Math.min(max(),Math.max(0,p)),o=p-c;row.scrollLeft=c;row.style.transform=o?`translateX(${(-o*.5/(1+Math.abs(o)/160)).toFixed(1)}px)`:''};
-  const settle=()=>{p=Math.min(max(),Math.max(0,p));if(!row.style.transform)return;row.classList.toggle('settle',!calm.matches);row.style.transform=''};
-  const stop=()=>{cancelAnimationFrame(glide);glide=0;row.classList.remove('settle')};
-  // past an end the glide brakes hard, so a flick into the end stretches the row briefly before it springs back
-  const fly=()=>{v*=p<0||p>max()?.6:.95;p+=v;show();if(Math.abs(v)>.5)glide=requestAnimationFrame(fly);else{glide=0;settle()}};
-  row.addEventListener('transitionend',e=>{if(e.target===row)row.classList.remove('settle')});
-  row.addEventListener('pointerdown',e=>{if(e.button||e.pointerType==='touch')return;stop();p=row.scrollLeft;v=0;dragged=false;drag={id:e.pointerId,x:e.clientX,p,t:e.timeStamp}});
-  row.addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.id)return;const dx=e.clientX-drag.x;
-    if(!dragged){if(Math.abs(dx)<4)return;dragged=true;row.setPointerCapture(e.pointerId);row.classList.add('dragging')}
-    const np=drag.p-dx;v=(np-p)/Math.max(1,e.timeStamp-drag.t)*16;drag.t=e.timeStamp;p=np;show()});
-  const end=e=>{if(!drag||e.pointerId!==drag.id)return;const still=e.timeStamp-drag.t>80;drag=null;row.classList.remove('dragging');if(!dragged)return;
-    if(!calm.matches&&!still&&Math.abs(v)>1&&p>=0&&p<=max())glide=requestAnimationFrame(fly);else settle()};
-  row.addEventListener('pointerup',end);row.addEventListener('pointercancel',end);
-  // a drag that ends over a key doesn't select it
-  row.addEventListener('click',e=>{if(dragged){dragged=false;e.stopPropagation();e.preventDefault()}},true);
-  row.addEventListener('wheel',e=>{if(e.ctrlKey)return;
-    const k=e.deltaMode===1?16:e.deltaMode===2?row.clientWidth:1,dx=e.deltaX*k,dy=e.deltaY*k,m=max();
-    if(Math.abs(dx)<=Math.abs(dy)&&!e.shiftKey){
-      if(!m||(dy<0?row.scrollLeft<=0:row.scrollLeft>=m-1))return;
-      e.preventDefault();stop();row.scrollLeft+=dy;return}
-    e.preventDefault();stop();if(!row.style.transform)p=row.scrollLeft;p+=Math.abs(dx)>Math.abs(dy)?dx:dy;show();
-    clearTimeout(wt);wt=setTimeout(settle,120)},{passive:false})}
-elasticRow($('#keys').parentNode);
-// Left/Right step through the ruler's keys like keyframes, stopping at the first and last; returns the key to select
-function stepKey(e){
-  if((e.key!=='ArrowLeft'&&e.key!=='ArrowRight')||e.ctrlKey||e.shiftKey||e.altKey||e.metaKey||e.defaultPrevented)return null;
-  if(e.target.closest?.('input,select,textarea,[contenteditable]')||$('#sheet')?.hidden===false)return null;
-  const ks=[...document.querySelectorAll('#keys .kf')];if(!ks.length)return null;
-  const i=ks.findIndex(k=>k.getAttribute('aria-pressed')==='true'),d=e.key==='ArrowLeft'?-1:1;
-  const n=i<0?(d>0?0:ks.length-1):Math.min(ks.length-1,Math.max(0,i+d));
-  // a key clicked earlier keeps focus (the keys aren't rebuilt here), and its ring would stay on the old key
-  if(document.activeElement?.classList.contains('kf'))document.activeElement.blur();
-  e.preventDefault();return n===i?null:ks[n]}
 document.addEventListener('keydown',e=>{const k=stepKey(e);if(k)jump(k.dataset.jump)});
 addEventListener('resize',()=>{clearTimeout(RESIZE);RESIZE=setTimeout(redraw,120)});
 addEventListener('hashchange',()=>{if(GAMES.length){fromHash();render()}});
