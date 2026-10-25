@@ -15,6 +15,7 @@ const { send } = require('./lib/http');
 const TYPES = { '.webp': 'image/webp', '.gif': 'image/gif', '.png': 'image/png', '.jpg': 'image/jpeg', '.mp4': 'video/mp4' };
 const FRAME_TYPES = { '.json': 'application/json; charset=utf-8', '.webp': 'image/webp', '.png': 'image/png',
   '.js': 'text/javascript; charset=utf-8', '.glb': 'model/gltf-binary', '.bin': 'application/octet-stream' };
+const SHARED_TYPES = { '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8' };
 
 /**
  * template.html + library.json, with community features pointed at /api. Same output as build_page.py,
@@ -50,7 +51,7 @@ const serveGif = (res, p) => serveFile(res, p, 'gifs', TYPES, 604800);
 
 /**
  * Sent with every response (a response's own headers win). No frame-ancestors: teachers may embed the pages in course
- * material; /admin refuses framing itself. The scripts are inline, so the policy only shuts off plugins, <base> and
+ * material; /admin refuses framing itself. The scripts are inline or same-origin, so the policy only shuts off plugins, <base> and
  * forms posting elsewhere.
  */
 function baseHeaders(req, res) {
@@ -77,6 +78,8 @@ const server = http.createServer(async (req, res) => {
     if (p === '/trends' || p === '/trends.html') return serveFile(res, '/trends.html', '', { '.html': 'text/html; charset=utf-8' }, 0);
     // the game list and per-game JSON change with every import, so browsers recheck them; models, icons and clips keep an hour
     if (p.startsWith('/frame-data/')) return serveFile(res, p, 'frame-data', FRAME_TYPES, p.endsWith('.json') ? 0 : 3600);
+    // code every app loads (the ruler); the pages link it with a version, so an hour of caching is safe
+    if (p.startsWith('/shared/')) return serveFile(res, p, 'shared', SHARED_TYPES, 3600);
     if (p === '/healthz') return send(res, 200, 'ok');
     send(res, 404, 'Not found');
   } catch (e) {

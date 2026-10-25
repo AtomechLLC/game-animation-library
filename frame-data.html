@@ -9,6 +9,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="shared/ruler.css?v=1">
 <style>
 /* Same shell as template.html (sticky timeline header, filter rail, slide-over sheet), with a weapon icon index and frame tables. */
 :root{
@@ -77,25 +78,6 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var
 .domain{display:flex;flex:none;max-width:100%;border:1px solid var(--line);border-radius:6px;overflow:hidden}
 .domain button{border:0;background:transparent;padding:7px 12px;cursor:pointer;font-size:13px;font-weight:500}
 .domain button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
-.ruler{position:relative;height:30px;border-top:1px solid var(--line);overflow:hidden;font-family:var(--mono);font-size:10px;color:var(--muted)}
-.ruler .ticks{position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 12px);opacity:.9;height:8px}
-.ruler .keys{position:absolute;inset:0;display:flex;overflow-x:auto;scrollbar-width:none;padding-top:8px;padding-inline:max(16px,env(safe-area-inset-left,0px))}
-.ruler .kfs{display:flex;gap:2px;flex:none}
-.ruler .keys::-webkit-scrollbar{display:none}
-.ruler .keys{cursor:grab}
-.ruler .keys.dragging,.ruler .keys.dragging .kf{cursor:grabbing;user-select:none}
-/* after being pulled past an end the key row springs back, overshooting slightly */
-.ruler .keys.settle{transition:transform .45s cubic-bezier(.25,1.3,.5,1)}
-.kf{display:flex;align-items:center;gap:5px;white-space:nowrap;border:0;background:transparent;cursor:pointer;padding:2px 8px 2px 4px;border-radius:3px;font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
-.kf i{width:8px;height:8px;transform:rotate(45deg);background:var(--line);display:inline-block}
-.kf:hover{color:var(--fg)}
-.kf[aria-pressed="true"]{color:var(--key-ink)}
-.kf[aria-pressed="true"] i{background:var(--playhead)}
-/* the red playhead points at the selected key and slides to the next one, overshooting it slightly */
-.playhead{position:absolute;left:0;top:0;width:2px;height:12px;background:var(--playhead);pointer-events:none;transition:transform .34s cubic-bezier(.25,1.1,.5,1)}
-.playhead::before{content:"";position:absolute;left:-4px;top:0;border:5px solid transparent;border-top:6px solid var(--playhead);border-bottom:0}
-.playhead.still{transition:none}
-@media (prefers-reduced-motion:reduce){.playhead{transition:none}}
 .shell{display:grid;grid-template-columns:240px minmax(0,1fr);gap:24px;padding-block:20px}
 aside{position:sticky;top:120px;align-self:start;max-height:calc(100vh - 140px);overflow:auto;display:grid;gap:20px;padding-right:4px}
 aside h2{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px;font-weight:600}
@@ -300,13 +282,11 @@ footer p{max-width:85ch;margin:0 0 8px}
 .mlist>div{position:absolute;inset:0;overflow:auto;scrollbar-width:thin}
 /* clicking a move focuses the list, where Left/Right also step the moves; the border shows it, like the 3D stage's */
 #mlist{outline:none}.mlist:focus-within{border-color:var(--focus);box-shadow:0 0 0 1px var(--focus)}
-/* Left/Right go to whichever of the ruler, the viewer and the Moveset Inspector has focus: that one shows a blue border
-   and a chip naming what the arrows step (the viewer's options take focus but not the arrows). Blue, not the orange
-   accent, which already means selected and the recovery frames */
-.ruler .keys{outline:none}.ruler:focus-within{box-shadow:inset 0 0 0 2px var(--focus)}
+/* Left/Right go to whichever of the ruler (shared/ruler.css), the viewer and the Moveset Inspector has focus: that one
+   shows a blue border and a chip naming what the arrows step (the viewer's options take focus but not the arrows). Blue,
+   not the orange accent, which already means selected and the recovery frames */
 .dock .v3d:focus-within:not(:has(.v3d-opts :focus)) .v3d-stage{border-color:var(--focus);box-shadow:0 0 0 1px var(--focus)}
-.ruler:focus-within::after,.dock .v3d:focus-within:not(:has(.v3d-opts :focus)) .v3d-stage::after,.mlist:focus-within::after{position:absolute;right:8px;bottom:8px;z-index:3;pointer-events:none;border:1px solid var(--focus);border-radius:999px;background:var(--focus);color:var(--bg);padding:1px 8px;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0;white-space:nowrap}
-.ruler:focus-within::after{content:"← → " attr(data-step);bottom:auto;top:50%;transform:translateY(-50%)}
+.dock .v3d:focus-within:not(:has(.v3d-opts :focus)) .v3d-stage::after,.mlist:focus-within::after{position:absolute;right:8px;bottom:8px;z-index:3;pointer-events:none;border:1px solid var(--focus);border-radius:999px;background:var(--focus);color:var(--bg);padding:1px 8px;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0;white-space:nowrap}
 .dock .v3d:focus-within:not(:has(.v3d-opts :focus)) .v3d-stage::after{content:"← → Frame"}
 .mlist:focus-within::after{content:"↑ ↓ ← → Move"}
 .mlist table{font-size:12.5px}
@@ -465,6 +445,7 @@ tbody tr.on td{background:var(--chip);box-shadow:inset 0 1px var(--key),inset 0 
 <div class="scrim" id="scrim" hidden></div>
 <article class="sheet" id="sheet" hidden aria-modal="true" role="dialog" aria-labelledby="dName"></article>
 
+<script src="shared/ruler.js?v=1"></script>
 <script>
 // Frame data tab. Each game is one JSON file in the frame-data/1 format (see frame-data/README.md), listed in frame-data/games.json.
 // Whatever produced the file (a web import now, the game files later), the page only reads that format.
@@ -551,13 +532,11 @@ function renderAll(){
   // on phones the game bar is one scrolling row: bring the current game into view
   {const bar=$('#games'),on=bar.querySelector('[aria-pressed="true"]');if(on&&bar.scrollWidth>bar.clientWidth)bar.scrollLeft+=on.getBoundingClientRect().left-bar.getBoundingClientRect().left-(bar.clientWidth-on.offsetWidth)/2}
   $('#ver').title=$('#ver').textContent=`${D.moves.length.toLocaleString()} moves · ${D.classes.length} ${L.classes} · ${L.patch}${D.game.version}`;
-  // a game with a single family (a fighting game's roster) keys its characters instead. Redrawing drops the focused
-  // key, so focus goes back to the ruler and Left/Right keep stepping it
-  const rf=$('.ruler').contains(document.activeElement);$('.ruler').dataset.step=rulerStep();
-  $('#keys').innerHTML=D.families.length===1
+  // a game with a single family (a fighting game's roster) keys its characters instead
+  $('.ruler').dataset.step=rulerStep();
+  setKeys(D.families.length===1
     ?`<button class="kf" data-cls="" aria-pressed="${!st.cls}"><i></i>${esc(L.allClasses)}</button>`+D.classes.map(c=>`<button class="kf" data-cls="${esc(c.id)}" aria-pressed="${st.cls===c.id}"><i></i>${esc(c.name)}</button>`).join('')
-    :`<button class="kf" data-fam="" aria-pressed="${!st.fam&&!st.cls}"><i></i>${esc(L.allFamilies)}</button>`+D.families.map(f=>`<button class="kf" data-fam="${f.id}" aria-pressed="${st.fam===f.id}"><i></i>${esc(f.name)}</button>`).join('');placePlayhead();
-  if(rf)$('#keys').parentNode.focus({preventScroll:true});
+    :`<button class="kf" data-fam="" aria-pressed="${!st.fam&&!st.cls}"><i></i>${esc(L.allFamilies)}</button>`+D.families.map(f=>`<button class="kf" data-fam="${f.id}" aria-pressed="${st.fam===f.id}"><i></i>${esc(f.name)}</button>`).join(''));
   const tc=count(pool('type'),m=>m.type);
   $('#types').innerHTML=D.moveTypes.filter(t=>tc.get(t.id)||st.types.has(t.id)).map(t=>`<button class="fitem" data-type="${t.id}" aria-pressed="${st.types.has(t.id)}" title="${esc(t.description)}"><span>${esc(t.name)}</span><span>${tc.get(t.id)||0}</span></button>`).join('');
   const gc=count(pool('grip'),m=>m.grip);
@@ -899,56 +878,8 @@ document.addEventListener('click',e=>{
 $('#scrim').onclick=closeSheet;
 let qt;$('#q').addEventListener('input',e=>{clearTimeout(qt);qt=setTimeout(()=>{st.q=e.target.value.trim().toLowerCase();st.shown=PAGE;renderAll()},120)});
 $('#maxStart').addEventListener('input',e=>{st.max=+e.target.value;st.shown=PAGE;renderAll()});
-// the playhead appears in place (no slide) on load, after a resize and after being hidden; the key row scrolls to keep it in view
-let phStill=true;
-function placePlayhead(){
-  const ph=$('#playhead'),k=$('#keys .kf[aria-pressed="true"]');
-  if(!k){ph.hidden=true;phStill=true;return}
-  const i=k.querySelector('i'),x=i.offsetLeft+i.offsetWidth/2,row=ph.parentNode;
-  ph.classList.toggle('still',phStill);ph.hidden=false;phStill=false;
-  ph.style.transform=`translateX(${x-1}px)`;
-  if(row.scrollWidth>row.clientWidth&&(x<row.scrollLeft+40||x>row.scrollLeft+row.clientWidth-60))row.scrollTo({left:x-row.clientWidth/2,behavior:'smooth'})}
-addEventListener('resize',()=>{phStill=true;placePlayhead()});
-document.fonts?.ready.then(()=>{phStill=true;placePlayhead()});
-// the key row scrolls sideways by dragging (a flick glides on) or by the wheel; pulled past either end it stretches with
-// growing resistance and springs back. A vertical wheel moves the row only while it can, then scrolls the page
-function elasticRow(row){
-  const calm=matchMedia('(prefers-reduced-motion: reduce)'),max=()=>Math.max(0,row.scrollWidth-row.clientWidth);
-  let p=0,v=0,glide=0,drag=null,dragged=false,wt;
-  const show=()=>{const c=Math.min(max(),Math.max(0,p)),o=p-c;row.scrollLeft=c;row.style.transform=o?`translateX(${(-o*.5/(1+Math.abs(o)/160)).toFixed(1)}px)`:''};
-  const settle=()=>{p=Math.min(max(),Math.max(0,p));if(!row.style.transform)return;row.classList.toggle('settle',!calm.matches);row.style.transform=''};
-  const stop=()=>{cancelAnimationFrame(glide);glide=0;row.classList.remove('settle')};
-  // past an end the glide brakes hard, so a flick into the end stretches the row briefly before it springs back
-  const fly=()=>{v*=p<0||p>max()?.6:.95;p+=v;show();if(Math.abs(v)>.5)glide=requestAnimationFrame(fly);else{glide=0;settle()}};
-  row.addEventListener('transitionend',e=>{if(e.target===row)row.classList.remove('settle')});
-  row.addEventListener('pointerdown',e=>{if(e.button||e.pointerType==='touch')return;stop();p=row.scrollLeft;v=0;dragged=false;drag={id:e.pointerId,x:e.clientX,p,t:e.timeStamp}});
-  row.addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.id)return;const dx=e.clientX-drag.x;
-    if(!dragged){if(Math.abs(dx)<4)return;dragged=true;row.setPointerCapture(e.pointerId);row.classList.add('dragging')}
-    const np=drag.p-dx;v=(np-p)/Math.max(1,e.timeStamp-drag.t)*16;drag.t=e.timeStamp;p=np;show()});
-  const end=e=>{if(!drag||e.pointerId!==drag.id)return;const still=e.timeStamp-drag.t>80;drag=null;row.classList.remove('dragging');if(!dragged)return;
-    if(!calm.matches&&!still&&Math.abs(v)>1&&p>=0&&p<=max())glide=requestAnimationFrame(fly);else settle()};
-  row.addEventListener('pointerup',end);row.addEventListener('pointercancel',end);
-  // a drag that ends over a key doesn't select it
-  row.addEventListener('click',e=>{if(dragged){dragged=false;e.stopPropagation();e.preventDefault()}},true);
-  row.addEventListener('wheel',e=>{if(e.ctrlKey)return;
-    const k=e.deltaMode===1?16:e.deltaMode===2?row.clientWidth:1,dx=e.deltaX*k,dy=e.deltaY*k,m=max();
-    if(Math.abs(dx)<=Math.abs(dy)&&!e.shiftKey){
-      if(!m||(dy<0?row.scrollLeft<=0:row.scrollLeft>=m-1))return;
-      e.preventDefault();stop();row.scrollLeft+=dy;return}
-    e.preventDefault();stop();if(!row.style.transform)p=row.scrollLeft;p+=Math.abs(dx)>Math.abs(dy)?dx:dy;show();
-    clearTimeout(wt);wt=setTimeout(settle,120)},{passive:false})}
-elasticRow($('#keys').parentNode);
 // what Left/Right step on the ruler: weapon families, or a fighting game's characters
 function rulerStep(){return D.families.length===1?L.class:'Weapon family'}
-// with focus in the ruler (click a key first), Left/Right step through its keys like keyframes, stopping at the first
-// and last; returns the key to select
-function stepKey(e){
-  if((e.key!=='ArrowLeft'&&e.key!=='ArrowRight')||e.ctrlKey||e.shiftKey||e.altKey||e.metaKey||e.defaultPrevented)return null;
-  if(!e.target.closest?.('.ruler')||!$('#sheet').hidden)return null;
-  const ks=[...document.querySelectorAll('#keys .kf')];if(!ks.length)return null;
-  const i=ks.findIndex(k=>k.getAttribute('aria-pressed')==='true'),d=e.key==='ArrowLeft'?-1:1;
-  const n=i<0?(d>0?0:ks.length-1):Math.min(ks.length-1,Math.max(0,i+d));
-  e.preventDefault();return n===i?null:ks[n]}
 // Up/Down step through the Moveset Inspector's moves, stopping at the first and last, like Left/Right through frames:
 // Ctrl jumps ten moves (clamped at the ends), Shift goes to the first or last move. Moves the viewer can't show are
 // skipped. With focus in the Moveset Inspector, plain Left/Right step the moves too (Ctrl/Shift + Left/Right stay the

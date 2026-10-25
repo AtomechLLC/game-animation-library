@@ -1,0 +1,26 @@
+/* The timeline ruler under each app's header (Action Atlas, Move Explorer, Trends): frame ticks across the top, keyframe
+   diamonds for the app's keys (categories, weapon families or characters, sections). Uses the app's --line, --muted,
+   --fg, --key-ink, --playhead, --focus, --bg and --mono */
+.ruler{position:relative;height:30px;border-top:1px solid var(--line);overflow:hidden;font-family:var(--mono);font-size:10px;color:var(--muted)}
+.ruler .ticks{position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 12px);opacity:.9;height:8px}
+.ruler .keys{position:absolute;inset:0;display:flex;overflow-x:auto;scrollbar-width:none;padding-top:8px;padding-inline:max(16px,env(safe-area-inset-left,0px))}
+.ruler .kfs{display:flex;gap:2px;flex:none}
+.ruler .keys::-webkit-scrollbar{display:none}
+.ruler .keys{cursor:grab}
+.ruler .keys.dragging,.ruler .keys.dragging .kf{cursor:grabbing;user-select:none}
+/* after being pulled past an end the key row springs back, overshooting slightly */
+.ruler .keys.settle{transition:transform .45s cubic-bezier(.25,1.3,.5,1)}
+.kf{display:flex;align-items:center;gap:5px;white-space:nowrap;border:0;background:transparent;cursor:pointer;padding:2px 8px 2px 4px;border-radius:3px;font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.kf i{width:8px;height:8px;transform:rotate(45deg);background:var(--line);display:inline-block}
+.kf:hover{color:var(--fg)}
+.kf[aria-pressed="true"]{color:var(--key-ink)}
+.kf[aria-pressed="true"] i{background:var(--playhead)}
+/* the red playhead points at the selected key and slides to the next one, overshooting it slightly */
+.playhead{position:absolute;left:0;top:0;width:2px;height:12px;background:var(--playhead);pointer-events:none;transition:transform .34s cubic-bezier(.25,1.1,.5,1)}
+.playhead::before{content:"";position:absolute;left:-4px;top:0;border:5px solid transparent;border-top:6px solid var(--playhead);border-bottom:0}
+.playhead.still{transition:none}
+@media (prefers-reduced-motion:reduce){.playhead{transition:none}}
+/* with focus in the ruler (click a key), Left/Right step its keys: a blue inset border and a chip naming what they step
+   (the ruler's data-step) show it. Blue, not the orange accent, which already means selected */
+.ruler .keys{outline:none}.ruler:focus-within{box-shadow:inset 0 0 0 2px var(--focus)}
+.ruler:focus-within::after{content:"← → " attr(data-step);position:absolute;right:8px;top:50%;transform:translateY(-50%);z-index:3;pointer-events:none;border:1px solid var(--focus);border-radius:999px;background:var(--focus);color:var(--bg);padding:1px 8px;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0;white-space:nowrap}

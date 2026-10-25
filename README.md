@@ -49,6 +49,7 @@ as basic and heavy attacks (and its write-up) go in `PROFILES` at the top of the
 - `gifs` field on each animation — GIF examples found on Tenor/Giphy: `page_url` (always), `media_url` (direct file, only when the search page exposed it), `title`, `game`, `host`. Picked from Tenor descriptions, not watched; spot-check before relying on one. Files saved at `gifs/<id>-<n>.gif|webp|mp4` get a `local` path and play inline on the page.
 - `missing-references.json` — animations still without web references.
 - `template.html` — the library page; `__DATA__` is replaced with library.json.
+- `shared/ruler.css`, `shared/ruler.js` — the timeline ruler under the header of Action Atlas, Move Explorer and Trends (keys, playhead, dragging, Left/Right while the ruler has focus). Change the ruler here, not in an app, and bump the `?v=` on the three pages' links.
 
 To add animations: append lines to taxonomy.txt, rebuild index.json, rerun merge.py, republish the page.
 
