@@ -6,6 +6,7 @@ import {speedHtml, bindSpeed} from './speed.js?v=1';
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {createBlenderNavigation} from './navigation3d.js?v=8';
+import {createRenderStats} from './renderstats.js?v=1';
 
 const loader = new GLTFLoader();
 const cache = new Map();
@@ -60,7 +61,8 @@ const helpHTML = mode => `<p class="v3d-help-title" id="v3d-help-title">Help</p>
     : row('Left or middle drag', 'Orbit') + row('Right drag / Shift + drag', 'Pan') + row('Scroll wheel', 'Zoom') + row('Ctrl + scroll', 'Zoom, faster')}</ul>
   <p class="v3d-help-title">View</p>
   <ul>${row(kbd('F', 'Home', 'Numpad .'), 'Fit to view') + row(kbd('D', 'Numpad 0'), 'Default camera') + row(kbd('Z'), 'Floor grid')
-    + row(kbd('B'), 'Bounds box (current pose)') + row(kbd('Tab', 'Shift + Tab'), 'Mouse / Trackpad') + row(kbd('/', '?'), 'Help')}</ul>
+    + row(kbd('B'), 'Bounds box (current pose)') + row(kbd('Tab', 'Shift + Tab'), 'Mouse / Trackpad') + row(kbd('`'), 'Render stats')
+    + row(kbd('/', '?'), 'Help')}</ul>
   <p class="v3d-help-title">Playback</p>
   <ul>${row(kbd('Space'), 'Play / pause') + row(kbd(',', '.', '←', '→'), 'Previous / next frame') + row(kbd('Ctrl + ←', 'Ctrl + →'), 'Back / forward 1 second')
     + row(kbd('Shift + ←', 'Shift + →'), 'First / last frame')}</ul>
@@ -167,6 +169,9 @@ export async function createViewer(el, base) {
   let info = null, anim = null, defHand = 'R', tracks = [], shapes = [], boxes = [], opts = {}, N = 1;
   let fitting = false;  // fit() poses every frame; the bounds box waits for the frame it lands on
   let f = 1, playing = !matchMedia('(prefers-reduced-motion: reduce)').matches, speed = 0.5, acc = 0, last = performance.now(), token = 0;
+  // ` (backquote) shows the render stats overlay (renderstats.js)
+  const stats = createRenderStats(stage, renderer, () => ({playing, frame: f, frames: N}));
+  stage.addEventListener('keydown', e => { if (e.key === '`' && !e.ctrlKey && !e.metaKey && !e.altKey) { e.preventDefault(); stats.toggle() } });
 
   function point(id, hand, out) {
     let src = 'any', k = id;
@@ -378,22 +383,22 @@ export async function createViewer(el, base) {
 
   const tick = now => {
     if (disposed) return;
-    raf = requestAnimationFrame(tick);
+    raf = requestAnimationFrame(tick); stats.tick();
     const dt = Math.min(now - last, 100); last = now;
     if (playing && anim) { acc += dt * speed * FPS / 1000; if (acc >= 1) { const n = Math.floor(acc); acc -= n; go(f + n) } }
-    renderer.render(scene, camera);
+    stats.render(() => renderer.render(scene, camera));
   };
   raf = requestAnimationFrame(tick);
   return {
     show, view, setView,
-    debug: {THREE, scene, camera, nav, body, motion, bone, go: f => go(f), boxes: () => boxes, hands},
+    debug: {THREE, scene, camera, nav, body, motion, bone, go: f => go(f), boxes: () => boxes, hands, stats: stats.snapshot},
     // warm the cache for the row under the pointer, so the swap on click is instant
     async prefetch(m, pick) {
       const c = await classData(base, m.class).catch(() => null), mv = c && c.moves[m.id];
       if (mv) { loadAnim(mv.anim || m.id).catch(() => {}); loadWeapon(weaponFor(mv, pick)).catch(() => {}) }
     },
     dispose() {
-      disposed = true; cancelAnimationFrame(raf); ro.disconnect(); document.removeEventListener('keydown', onKey);
+      disposed = true; cancelAnimationFrame(raf); ro.disconnect(); document.removeEventListener('keydown', onKey); stats.dispose();
       nav.dispose(); renderer.dispose(); sphereG.dispose(); cylG.dispose(); boxG.dispose(); mat.dispose(); ghostMat.dispose(); bounds.geometry.dispose(); bounds.material.dispose();
     },
   };

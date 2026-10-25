@@ -2,6 +2,10 @@
 
 **Status:** Suggestion · **Priority:** P0 · **Depends on:** WP-12
 
+**In-app check:** the render stats overlay (`` ` `` in the 3D view; `frame-data/renderstats.js`, described in
+`frame-data/README.md`). It shows renders per second next to the playback state and whether the view is on screen.
+Before this package, renders per second match the loop rate whether the move is playing, paused, folded or hidden.
+
 ## User task it protects
 
 *Observe deliberately* and *use examples in teaching*. A learner or instructor often pauses on one frame and talks

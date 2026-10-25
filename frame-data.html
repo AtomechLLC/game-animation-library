@@ -251,6 +251,13 @@ footer p{max-width:85ch;margin:0 0 8px}
 .v3d-hud{position:absolute;left:10px;top:8px;display:flex;align-items:baseline;gap:8px;pointer-events:none}
 .v3d-hud b{font-family:var(--display);font-size:28px;font-weight:800;font-variant-numeric:tabular-nums}
 .v3d-hud span{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+/* the render stats overlay (` in the 3D view, frame-data/renderstats.js), a developer tool; no blur, so it adds no
+   compositing cost of its own */
+.v3d-stats{position:absolute;left:10px;top:48px;z-index:1;font:11px/1.45 var(--mono);color:var(--fg);background:color-mix(in srgb,var(--panel) 90%,transparent);border:1px solid var(--line);border-radius:4px;padding:6px 8px;pointer-events:none;font-variant-numeric:tabular-nums}
+.v3d-stats p{margin:0 0 2px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.v3d-stats dl{display:grid;grid-template-columns:auto auto;gap:0 10px;margin:0}
+.v3d-stats dt{color:var(--muted)}.v3d-stats dd{margin:0}
+.v3d-stats button{pointer-events:auto;margin-top:4px;font:inherit;color:var(--fg);background:var(--sunk);border:1px solid var(--line);border-radius:3px;padding:1px 6px;cursor:pointer}
 .v3d-bar{display:flex;align-items:center;gap:6px}
 .v3d-bar button,.v3d-bar select{color:var(--fg);border:1px solid var(--line);background:var(--sunk);border-radius:4px;height:30px;min-width:34px;cursor:pointer;font-size:12px}
 .v3d-scrub{position:relative;flex:1;min-width:0}
@@ -712,7 +719,7 @@ function openMove(key){
 // covers swaps the move in place, other rows open the detail sheet. The 3D viewer holds the picked weapon, else each
 // move's class preview weapon.
 // Bump ?v= whenever viewer3d.js (and the ?v= on its navigation3d.js import), sprites2d.js or clipviewer.js changes: browsers and Pages cache them, and a stale copy next to a new page breaks the dock
-const VIEWER='./frame-data/viewer3d.js?v=17',VIEWER2D='./frame-data/sprites2d.js?v=6',CLIPVIEWER='./frame-data/clipviewer.js?v=5';
+const VIEWER='./frame-data/viewer3d.js?v=18',VIEWER2D='./frame-data/sprites2d.js?v=6',CLIPVIEWER='./frame-data/clipviewer.js?v=5';
 // the models and sprites viewers load per class (classData); the clip viewer reads each move's clips
 const byClass=()=>G.models||G.sprites;
 const DOCK={key:null,view:null,game:null,cls:null,w:null,cm:null,seq:0};
