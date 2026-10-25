@@ -5,7 +5,7 @@
 import {speedHtml, bindSpeed} from './speed.js?v=1';
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
-import {createBlenderNavigation} from './navigation3d.js?v=9';
+import {createBlenderNavigation} from './navigation3d.js?v=10';
 import {createRenderStats} from './renderstats.js?v=1';
 
 const loader = new GLTFLoader();
