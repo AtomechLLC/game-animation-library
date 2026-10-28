@@ -330,7 +330,7 @@ Clips are animated WebPs fitted in 440×280 at quality 50, about 60 KB each.
 ## 3D preview
 
 When a weapon class is picked and `games.json` gives the game a `models` folder whose `models.json` covers the
-class's moves, a 3D preview docks at the top (sticky under the header on wide screens), with the class's or weapon's
+class's moves, a 3D preview docks at the top (Pin keeps it under the header while the page scrolls on wide screens; phones always keep it there), with the class's or weapon's
 moveset listed by move type in the Moveset Inspector, a scrolling list between the viewer and the inspector; the full move table returns
 under the page when the preview is hidden. Expand, at the top right of the Moveset Inspector, shows every column
 (sortable) beside a smaller viewer, setting the inspector aside until Collapse. Clicking a row, or Up / Down for the previous or next move (Ctrl for ten moves, Shift for the first or last), swaps that move in place without reloading the models; "Frame details" opens the detail sheet. It plays the move on the
