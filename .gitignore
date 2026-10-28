@@ -14,7 +14,13 @@ desktop.ini
 .vscode/
 .idea/
 action-atlas.html
-.claude/
+.claude/*
+# Shared Claude Code setup: Impeccable design skill, its agents and hooks
+!.claude/settings.json
+!.claude/skills/
+!.claude/agents/
+# The Impeccable launcher downloads its engine on first run (checksum-verified)
+.claude/skills/impeccable/scripts/bin/
 
 # Server-side (xCloud) private files
 .env

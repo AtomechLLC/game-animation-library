@@ -159,3 +159,7 @@ On Windows, double-click `serve_local.bat` (or run `python serve_local.py`). You
 
 To get replacements, ask Claude to "search for better GIFs for my marks". Claude reads `marks.json` from this folder on your computer or from the repo (commit and push it), finds candidates for each marked entry, and clears the marks it has handled.
 Replacement clips are saved as `gifs/<id>-r<n>.webp` (Tenor 200px WebP); the clips they replace move to `rejected_gifs` with a `screened` note and are listed under `removed` in `gif-screening.json`.
+
+## Design skill (Impeccable)
+
+`.claude/` carries [Impeccable](https://github.com/pbakaus/impeccable) (Apache 2.0), a frontend design skill for Claude Code: `/impeccable critique`, `audit`, `distill`, `polish`, `shape` and more, plus hooks in `.claude/settings.json` that run its design detector after Claude edits UI files. The launcher downloads its engine into `~/.impeccable/bin/` on first run and checks it against `engine-checksums.txt`; the engine binaries are git-ignored. You can also scan a page yourself with `.claude/skills/impeccable/scripts/impeccable detect template.html`. To update, run `npx impeccable update` from the repo root and commit the result; to turn off its anonymous usage data, run `impeccable telemetry off` or set `IMPECCABLE_NO_TELEMETRY=1`.

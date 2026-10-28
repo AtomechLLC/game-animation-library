@@ -3,3 +3,4 @@
 *.webp binary
 *.mp4 binary
 *.bat text eol=crlf
+*.cmd text eol=crlf
