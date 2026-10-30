@@ -3,25 +3,25 @@ Combat Idle Stance | Stance | idle,loop,stance | Dark Souls;For Honor;Street Fig
 Idle Fidget / Breakaway | Stance | idle,personality | Sekiro;Hollow Knight;World of Warcraft | A one-off flourish that plays after the character idles for a while, such as a weapon twirl or stretch.
 Combat Walk | Footwork | walk,loop | Dark Souls;The Witcher 3;Monster Hunter World | A guarded walk with weapon ready, slower than travel walk.
 Run Cycle | Footwork | run,loop | God of War (2018);Devil May Cry 5;Elden Ring | The standard looping run while a weapon is drawn.
-Sprint | Footwork | sprint,loop,stamina | Elden Ring;Call of Duty;Apex Legends | An all-out run with exaggerated lean, often costing stamina and lowering the weapon.
+Sprint | Footwork | sprint,loop,stamina | Elden Ring;Call of Duty;Apex Legends | An all-out run with exaggerated lean, often costing stamina and lowering the weapon. | mobility
 Strafe (Lock-on Movement) | Footwork | strafe,lock-on,8-way | Dark Souls;Zelda Ocarina of Time;For Honor | Sideways and backward movement while facing a locked target, usually an 8-way blend space.
 Backpedal | Footwork | walk,lock-on | Dark Souls;Resident Evil 4;Bloodborne | Walking backward while keeping guard up and eyes on the enemy.
 Turn in Place | Footwork | turn,root-motion | Red Dead Redemption 2;The Last of Us Part II;Monster Hunter World | Pivot animations (90 and 180 degree) that rotate the character without moving forward.
 Start / Stop Transitions | Footwork | transition,root-motion | Red Dead Redemption 2;Assassin's Creed;Uncharted 4 | Acceleration and deceleration clips that sell weight when beginning or ending a run.
 Pivot / Hard Turn | Footwork | turn,run | Assassin's Creed Unity;Uncharted 4;Spider-Man | A planted-foot skid turn when reversing direction at speed.
-Jump | Aerial | jump,air | Super Mario Bros;Devil May Cry 5;Hollow Knight | Takeoff, apex and fall poses of a jump, often split into separate clips.
-Double Jump | Aerial | jump,air | Devil May Cry 5;Hollow Knight;Bayonetta | A second midair jump, usually with a flip, wing or magical burst.
+Jump | Aerial | jump,air | Super Mario Bros;Devil May Cry 5;Hollow Knight | Takeoff, apex and fall poses of a jump, often split into separate clips. | mobility
+Double Jump | Aerial | jump,air | Devil May Cry 5;Hollow Knight;Bayonetta | A second midair jump, usually with a flip, wing or magical burst. | mobility
 Fall Loop | Aerial | fall,loop,air | Elden Ring;Uncharted;Prince of Persia | The looping flail or tuck pose while falling.
 Landing (Soft / Hard) | Aerial | land,recovery | Elden Ring;Uncharted 4;Titanfall 2 | Impact on touchdown, with a heavier recovery or roll for long falls.
 Crouch | Footwork | crouch,stealth | Metal Gear Solid;Counter-Strike;Street Fighter | Lowering into a crouch, plus the crouch idle.
-Crouch Walk | Footwork | crouch,stealth,loop | Metal Gear Solid V;The Last of Us;Hitman | Slow, low movement used for stealth or behind cover.
-Slide | Traversal | slide,movement-tech | Apex Legends;Call of Duty;Titanfall 2 | A momentum slide along the ground, often cancellable into a jump or shot.
-Wall Run | Traversal | wallrun,parkour | Titanfall 2;Prince of Persia;Mirror's Edge | Running along a vertical wall surface.
-Wall Jump / Wall Kick | Traversal | wall,jump | Mega Man X;Celeste;Hollow Knight | Kicking off a wall to gain height.
-Vault | Traversal | vault,parkour | Assassin's Creed;Dying Light;Apex Legends | Hopping over waist-high obstacles without breaking stride.
-Mantle / Ledge Climb | Traversal | climb,mantle | Uncharted;Apex Legends;Tomb Raider | Pulling up onto a ledge from a hang or jump.
-Ledge Grab / Hang | Traversal | climb,hang | Tomb Raider;Uncharted;Super Smash Bros | Catching and hanging from a ledge edge.
-Swing / Grapple Swing | Traversal | grapple,swing | Spider-Man;Just Cause 3;Sekiro | Swinging on a rope, web or grappling hook.
+Crouch Walk | Footwork | crouch,stealth,loop | Metal Gear Solid V;The Last of Us;Hitman | Slow, low movement used for stealth or behind cover. | mobility
+Slide | Traversal | slide,movement-tech | Apex Legends;Call of Duty;Titanfall 2 | A momentum slide along the ground, often cancellable into a jump or shot. | mobility
+Wall Run | Traversal | wallrun,parkour | Titanfall 2;Prince of Persia;Mirror's Edge | Running along a vertical wall surface. | mobility
+Wall Jump / Wall Kick | Traversal | wall,jump | Mega Man X;Celeste;Hollow Knight | Kicking off a wall to gain height. | mobility
+Vault | Traversal | vault,parkour | Assassin's Creed;Dying Light;Apex Legends | Hopping over waist-high obstacles without breaking stride. | mobility
+Mantle / Ledge Climb | Traversal | climb,mantle | Uncharted;Apex Legends;Tomb Raider | Pulling up onto a ledge from a hang or jump. | mobility
+Ledge Grab / Hang | Traversal | climb,hang | Tomb Raider;Uncharted;Super Smash Bros | Catching and hanging from a ledge edge. | mobility
+Swing / Grapple Swing | Traversal | grapple,swing | Spider-Man;Just Cause 3;Sekiro | Swinging on a rope, web or grappling hook. | mobility
 Mount / Dismount | Traversal | mount,horse | Elden Ring;Red Dead Redemption 2;The Witcher 3 | Getting on and off a horse or creature.
 # CAT melee | Melee Attacks | Close-range strikes with weapons, fists and feet.
 Light Attack | Basic | attack,light,combo | Dark Souls;God of War;Devil May Cry 5 | The fast, low-commitment strike that starts most combo strings.
@@ -89,7 +89,7 @@ Summon | Casting | summon,minion | Elden Ring Spirit Ash;Diablo Necromancer;Pers
 Self Buff / Power Up | Support | buff,aura | Dragon Ball Z Kaioken;Monster Hunter;Dark Souls | Powering up with an aura flare or roar.
 Heal | Support | heal,support | Overwatch Mercy;World of Warcraft;Final Fantasy | Casting a healing spell on self or ally.
 Shield / Barrier | Support | barrier,defense | Overwatch Reinhardt;Halo;Apex Legends Gibraltar | Projecting a protective dome or wall.
-Teleport / Blink | Movement | teleport,blink | Dishonored Blink;Overwatch Tracer;Diablo | Vanishing and reappearing at another spot.
+Teleport / Blink | Movement | teleport,blink | Dishonored Blink;Overwatch Tracer;Diablo | Vanishing and reappearing at another spot. | mobility
 Transformation | Special | transform,form-change | Devil May Cry Devil Trigger;Bayonetta;Batman Arkham Knight | A dramatic change of form or mode, such as a devil trigger.
 Ultimate / Super Ability | Special | ultimate,cinematic | Overwatch;Valorant;Street Fighter Super Art | The big signature move charged over the match.
 Charge Up / Ki Charge | Casting | charge,aura,hold | Dragon Ball FighterZ;Naruto Storm;Kingdom Hearts | Standing in place to build energy, with an aura loop.
@@ -108,8 +108,8 @@ Perfect Block / Deflect | Parry | deflect,timing,sparks | Sekiro;Ghost of Tsushi
 Dodge Roll | Dodge | dodge,roll,i-frames | Dark Souls;Elden Ring;Enter the Gungeon | A tumbling roll with invulnerability frames.
 Sidestep / Quickstep | Dodge | dodge,step | Bloodborne;Tekken;Devil May Cry Trickster | A short, fast lateral step.
 Backstep / Backflip | Dodge | dodge,backstep | Dark Souls;Devil May Cry;Nier Automata | A quick hop backward out of range.
-Dash | Dodge | dash,i-frames | Hades;Celeste;Hollow Knight | A burst of speed in any direction.
-Air Dash | Dodge | dash,air | Hollow Knight;Guilty Gear;Devil May Cry | A dash performed midair.
+Dash | Dodge | dash,i-frames | Hades;Celeste;Hollow Knight | A burst of speed in any direction. | mobility
+Air Dash | Dodge | dash,air | Hollow Knight;Guilty Gear;Devil May Cry | A dash performed midair. | mobility
 Perfect Dodge / Witch Time | Dodge | dodge,timing,slow-motion | Bayonetta;Nier Automata;Astral Chain | A last-moment dodge that triggers slow motion or a counter.
 Counter Attack | Parry | counter,reaction | Batman Arkham;Assassin's Creed;Shadow of Mordor | A prompted counter that punishes an incoming attack.
 Guard Break / Shield Break | Block | guard-break,stagger | For Honor;Sekiro;Soulcalibur | Losing your guard after too many blocked hits.
@@ -156,7 +156,7 @@ Boss Death Sequence | Death | boss,cinematic | Elden Ring;Hollow Knight;Dark Sou
 Fighter Intro | Presentation | intro,cinematic | Street Fighter 6;Tekken 8;Guilty Gear Strive | The pre-round entrance animation.
 Victory Pose | Presentation | win,pose | Street Fighter;Tekken;Super Smash Bros | The win animation after a round or match.
 Taunt | Presentation | taunt,emote | Street Fighter;Super Smash Bros;Devil May Cry | A provocative gesture, sometimes with a gameplay effect.
-Forward / Back Dash | Movement | dash,fighting | Street Fighter;Guilty Gear;Tekken | Short burst movement in a 2D or 3D fighter.
+Forward / Back Dash | Movement | dash,fighting | Street Fighter;Guilty Gear;Tekken | Short burst movement in a 2D or 3D fighter. | mobility
 Crouch Block | Defense | block,low | Street Fighter;Mortal Kombat;King of Fighters | Blocking low while crouched.
 Special Move (Projectile) | Special | special,projectile,motion-input | Street Fighter Hadouken;Mortal Kombat;King of Fighters | A motion-input fireball move.
 Rising Uppercut (Shoryuken) | Special | special,invincible,anti-air | Street Fighter Shoryuken;King of Fighters;Tekken | An invincible anti-air uppercut.
@@ -236,9 +236,9 @@ Jog / Run (Explore) | Ground | run,loop | Zelda Breath of the Wild;Okami;Genshin
 Sneak / Tiptoe | Ground | sneak,tiptoe,cartoon | Mickey Mouse cartoons;Luigi's Mansion;Untitled Goose Game | Exaggerated careful tiptoeing, high knees and arched back.
 Swim (Surface) | Water | swim,loop | Zelda Breath of the Wild;Red Dead Redemption 2;Subnautica | Paddling or crawl stroke on the water surface.
 Dive / Underwater Swim | Water | swim,dive | Super Mario 64;Subnautica;Abzu | Swimming freely beneath the surface.
-Free Climb | Climbing | climb,surface | Zelda Breath of the Wild;Shadow of the Colossus;Assassin's Creed | Climbing a rock or wall face in any direction.
+Free Climb | Climbing | climb,surface | Zelda Breath of the Wild;Shadow of the Colossus;Assassin's Creed | Climbing a rock or wall face in any direction. | mobility
 Ladder Climb | Climbing | ladder,loop | Resident Evil;Metal Gear Solid;Half-Life | Climbing up or down a ladder with hand-over-hand cycles.
-Glide / Paraglider | Air | glide,air | Zelda Breath of the Wild;Spyro;Genshin Impact | Floating down with a glider, cape or wings.
+Glide / Paraglider | Air | glide,air | Zelda Breath of the Wild;Spyro;Genshin Impact | Floating down with a glider, cape or wings. | mobility
 Fly | Air | fly,loop | Spyro;Superman games;Sonic | Sustained flight with wing flaps or superhero pose.
 Ride Horse (Gallop) | Mount | horse,gallop | Red Dead Redemption 2;Shadow of the Colossus;Ghost of Tsushima | Rider and horse gallop cycle.
 Drive / Steer Vehicle | Vehicle | vehicle,steer | GTA V;Mario Kart;Death Stranding | Hands on the wheel, leaning into turns.
@@ -246,11 +246,20 @@ Slide Down Slope | Ground | slide,slope | Super Mario 64;Uncharted;Tomb Raider |
 Balance Beam / Tightrope | Ground | balance,beam | Uncharted;Assassin's Creed;Crash Bandicoot | Arms out, wobbling across a narrow surface.
 Squeeze Through Gap | Ground | squeeze,loading | God of War;Uncharted;Tomb Raider | Shimmying sideways through a narrow crack, often hiding a load.
 Push / Pull Object | Interaction | push,pull,physics | Zelda;Uncharted;Inside | Leaning into a block or crate to move it.
-Zipline | Air | zipline,slide | Uncharted;Dying Light;Apex Legends | Hanging from a line and sliding along it.
+Zipline | Air | zipline,slide | Uncharted;Dying Light;Apex Legends | Hanging from a line and sliding along it. | mobility
 Leap of Faith | Air | dive,signature | Assassin's Creed;Prince of Persia;Uncharted | A swan dive from a great height into a haystack or water.
-Spin Dash / Roll Ball | Ground | spin,ball,platformer | Sonic the Hedgehog;Metroid Morph Ball;Spyro | Curling into a ball to roll at speed.
-Wall Slide | Climbing | wall,slide,platformer | Mega Man X;Celeste;Super Mario Odyssey | Sliding slowly down a wall while clinging.
+Spin Dash / Roll Ball | Ground | spin,ball,platformer | Sonic the Hedgehog;Metroid Morph Ball;Spyro | Curling into a ball to roll at speed. | mobility
+Wall Slide | Climbing | wall,slide,platformer | Mega Man X;Celeste;Super Mario Odyssey | Sliding slowly down a wall while clinging. | mobility
 Cap Throw / Possess | Ground | throw,signature,platformer | Super Mario Odyssey;Kirby;Psychonauts | A signature platformer verb with a thrown or transformed object.
+# CAT mobility | Mobility & Movement | Movement abilities and tech for getting around fast: dashes, grapples, wall runs, flips and more. Also lists the movement entries from other categories.
+Grappling Hook Pull | Grapple | grapple,hookshot,zip | Zelda Ocarina of Time Hookshot;Just Cause 3;Overwatch;Sekiro | Firing a hook or line at a point and being reeled toward it, as opposed to swinging under it.
+Recovery Move (Up Special) | Air | recovery,up-special,air | Super Smash Bros. Ultimate;Brawlhalla;Rivals of Aether | A rising special move that carries the character back up to the stage or a ledge after being knocked away.
+Jetpack / Hover Boost | Air | jetpack,hover,thrust | Halo Reach;Titanfall 2;Apex Legends;Donkey Kong 64 | Short powered bursts of thrust that lift or hold the character in the air, with flames or exhaust from the pack.
+Triple Jump / Long Jump | Jump | jump,platformer,chain | Super Mario 64;Super Mario Odyssey;Super Mario 3D World | Platformer jump variants: a chain of three rising jumps ending in a flip, or a low, far leap out of a run.
+Rail Grind | Ground | grind,rail,speed | Jet Set Radio;Sonic Adventure 2;Ratchet & Clank | Locking onto a rail and sliding along it at speed, balancing and hopping between rails.
+Super Dash / Charged Dash | Dash | dash,charge,speed | Hollow Knight Crystal Heart;Super Metroid Shinespark;Mega Man X | A dash that charges up first, then launches the character a long way at high speed until it hits something.
+Ledge Shimmy / Wall Sidle | Climbing | shimmy,ledge,sidle | Uncharted;Tomb Raider;No Rest for the Wicked | Moving sideways hand over hand along a ledge, or sidling along a narrow walkway with the back to the wall.
+Skydive / Wingsuit | Air | skydive,wingsuit,freefall | Just Cause 3;Call of Duty;Fortnite | Freefalling or gliding in a wingsuit from a great height, steering with the arms and legs before landing or opening a chute.
 # CAT interaction | World Interaction | Everyday verbs: picking up, opening, using and gathering.
 Pick Up Item | Pickup | pickup,item | Zelda;Resident Evil;The Last of Us | Bending to grab an item off the ground or table.
 Item Get / Holding Aloft | Pickup | item,celebrate,fanfare | Zelda Item Get;Super Mario 64 Star;Okami Brush Technique | Raising a new item overhead with a fanfare.

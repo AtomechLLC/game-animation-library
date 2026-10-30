@@ -1348,5 +1348,79 @@
 "Dance Central",
 "Persona Dancing"
 ]
+},
+{
+"id": "mobility.grappling-hook-pull",
+"name": "Grappling Hook Pull",
+"example_games": [
+"Zelda Ocarina of Time Hookshot",
+"Just Cause 3",
+"Overwatch",
+"Sekiro"
+]
+},
+{
+"id": "mobility.recovery-move-up-special",
+"name": "Recovery Move (Up Special)",
+"example_games": [
+"Super Smash Bros. Ultimate",
+"Brawlhalla",
+"Rivals of Aether"
+]
+},
+{
+"id": "mobility.jetpack-hover-boost",
+"name": "Jetpack / Hover Boost",
+"example_games": [
+"Halo Reach",
+"Titanfall 2",
+"Apex Legends",
+"Donkey Kong 64"
+]
+},
+{
+"id": "mobility.triple-jump-long-jump",
+"name": "Triple Jump / Long Jump",
+"example_games": [
+"Super Mario 64",
+"Super Mario Odyssey",
+"Super Mario 3D World"
+]
+},
+{
+"id": "mobility.rail-grind",
+"name": "Rail Grind",
+"example_games": [
+"Jet Set Radio",
+"Sonic Adventure 2",
+"Ratchet & Clank"
+]
+},
+{
+"id": "mobility.super-dash-charged-dash",
+"name": "Super Dash / Charged Dash",
+"example_games": [
+"Hollow Knight Crystal Heart",
+"Super Metroid Shinespark",
+"Mega Man X"
+]
+},
+{
+"id": "mobility.ledge-shimmy-wall-sidle",
+"name": "Ledge Shimmy / Wall Sidle",
+"example_games": [
+"Uncharted",
+"Tomb Raider",
+"No Rest for the Wicked"
+]
+},
+{
+"id": "mobility.skydive-wingsuit",
+"name": "Skydive / Wingsuit",
+"example_games": [
+"Just Cause 3",
+"Call of Duty",
+"Fortnite"
+]
 }
 ]

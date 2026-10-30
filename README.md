@@ -2,7 +2,7 @@
 
 *learn from the legends of combat design*
 
-A catalogue of 330 video game animations across 20 categories (combat and non-combat), each with a description, tags, example games, web references and GIF examples. `template.html` renders it as a browsable page (the "atlas").
+A catalogue of 338 video game animations across 21 categories (combat and non-combat), each with a description, tags, example games, web references and GIF examples. `template.html` renders it as a browsable page (the "atlas").
 
 ## Rebuilding
 
@@ -47,7 +47,7 @@ as basic and heavy attacks (and its write-up) go in `PROFILES` at the top of the
 
 ## Source data
 
-- `taxonomy.txt` — the hand-written index. One `# CAT id | Name | description` line per category, then one line per animation: `Name | Subcategory | tags,comma,separated | Game;Game;Game | Description`.
+- `taxonomy.txt` — the hand-written index. One `# CAT id | Name | description` line per category, then one line per animation: `Name | Subcategory | tags,comma,separated | Game;Game;Game | Description`. An optional sixth field lists other category ids the animation also appears under (written to `also`), so Mobility & Movement can gather the dashes, wall runs and grapples that live in Combat Locomotion, Defense, Exploration and Magic without duplicating them.
 - `build_index.py taxonomy.txt index.json` — turns the taxonomy into JSON (ids are `category.slug`).
 - `library.json` — the full library: categories plus animations with `references` (title, url, source, game, note) gathered by web search.
 - `merge.py` — run in a folder holding `index.json`, `refs*.json` and `template.html`; merges reference files and writes `library.json`, `atlas.html` and `todo.json` (animations still missing references).

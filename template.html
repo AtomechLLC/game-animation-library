@@ -341,13 +341,13 @@ addEventListener('hashchange',route);
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const gameKey=g=>g.replace(/\s+(Glory Kill|Fatality|Blood Vial|Estus|Item Get|Bonfire|Spirit Ash|Kaioken|Witch Time|Mark and Execute|Shootdodge|Stinger|Drive Impact|Critical Art|Fatal Blow|Overdrive|Burst|Breaker|Focus Attack|Heat|Morph Ball|Hookshot|Viewpoint|Wish|Loot Box|Pack|Achievements|Trophy|Gestures|Meditate|Site of Grace|Smithy|Potion|Rings|Wumpa|Super Peel Out|Star|Dizzy|Crumple|Hadouken|Shoryuken|Tatsumaki|Zangief|King|Potemkin|Style Meter|Death|Cloak|Eagle|Dogmeat|Brush Technique|Leviathan Axe|Blades of Chaos|Devil Trigger|Ebony and Ivory|Vergil|Trickster|Spartan Rage|Roar|Shout|Pyromancy|Lightning Spear|Comet Azur|Zarya|Mercy|Reinhardt|Gibraltar|Tracer|Blink|Kamehameha|Isshin|Radagon|Gael|Perilous Attack|El Gigante|Diablos|Hunter|Grunts|Bottle|Visceral Attack|X-Ray|VATS|plasma|Active Reload|Necromancer|Fus Ro Dah)$/,'').trim();
-A.forEach(a=>{a.gifs=a.gifs||[];a.gk=[...new Set(a.example_games.map(gameKey))];a.hay=(a.name+' '+a.description+' '+a.subcategory+' '+a.tags.join(' ')+' '+a.example_games.join(' ')+' '+C[a.category].name).toLowerCase()});
-function base(skip){return A.filter(a=>(st.dom==='all'||C[a.category].domain===st.dom)&&(skip==='cat'||!st.cat||a.category===st.cat)&&(skip==='game'||!st.game||a.gk.includes(st.game))&&(skip==='tag'||[...st.tags].every(t=>a.tags.includes(t)))&&(!st.gif||a.gifs.length)&&(!st.mark||isMarked(a))&&(!st.flag||isFlagged(a))&&(!st.need||isNeedy(a))&&(!st.q||st.q.split(/\s+/).every(w=>a.hay.includes(w))))}
+A.forEach(a=>{a.gifs=a.gifs||[];a.cats=[a.category,...(a.also||[]).filter(c=>C[c])];a.gk=[...new Set(a.example_games.map(gameKey))];a.hay=(a.name+' '+a.description+' '+a.subcategory+' '+a.tags.join(' ')+' '+a.example_games.join(' ')+' '+a.cats.map(c=>C[c].name).join(' ')).toLowerCase()});
+function base(skip){return A.filter(a=>(st.dom==='all'||a.cats.some(c=>C[c].domain===st.dom))&&(skip==='cat'||!st.cat||a.cats.includes(st.cat))&&(skip==='game'||!st.game||a.gk.includes(st.game))&&(skip==='tag'||[...st.tags].every(t=>a.tags.includes(t)))&&(!st.gif||a.gifs.length)&&(!st.mark||isMarked(a))&&(!st.flag||isFlagged(a))&&(!st.need||isNeedy(a))&&(!st.q||st.q.split(/\s+/).every(w=>a.hay.includes(w))))}
 function counts(list,f){const m=new Map();list.forEach(a=>f(a).forEach(k=>m.set(k,(m.get(k)||0)+1)));return m}
 function render(){
   const list=base();
   // keyframe ruler
-  const cc=counts(base('cat'),a=>[a.category]);
+  const cc=counts(base('cat'),a=>a.cats);
   setKeys(D.categories.filter(c=>st.dom==='all'||c.domain===st.dom).map(c=>`<button class="kf" data-cat="${c.id}" aria-pressed="${st.cat===c.id}"><i></i>${esc(c.name)}</button>`).join(''));
   $('#cats').innerHTML=`<button class="fitem" data-cat="" aria-pressed="${!st.cat}"><span>All categories</span><span>${base('cat').length}</span></button>`+D.categories.filter(c=>st.dom==='all'||c.domain===st.dom).map(c=>`<button class="fitem" data-cat="${c.id}" aria-pressed="${st.cat===c.id}"><span>${esc(c.name)}</span><span>${cc.get(c.id)||0}</span></button>`).join('');
   const tc=[...counts(base('tag'),a=>a.tags)].sort((x,y)=>y[1]-x[1]||x[0].localeCompare(y[0])).slice(0,48);
@@ -375,7 +375,7 @@ function openSheet(id,push=true){
   <p style="margin:0;max-width:65ch">${esc(a.description)}</p>
   ${CS.needs.has(a.id)?`<div class="needbox"><b>Needs replacement.</b> We're looking for a better example of this animation. <a href="#submit/${esc(a.id)}">Submit a GIF</a></div>`:''}
   <dl class="meta"><dt>Domain</dt><dd><span class="dom ${c.domain==='combat'?'combat':''}">${c.domain==='combat'?'Combat':'Non-combat'}</span></dd>
-  <dt>Category</dt><dd>${esc(c.name)} › ${esc(a.subcategory)}</dd>
+  <dt>Category</dt><dd>${esc(c.name)} › ${esc(a.subcategory)}${a.cats.length>1?`<br>Also in ${a.cats.slice(1).map(x=>`<button class="chip" data-cat="${x}" data-close="1">${esc(C[x].name)}</button>`).join(' ')}`:''}</dd>
   <dt>Tags</dt><dd class="chips">${a.tags.map(t=>`<button class="chip" data-tag="${esc(t)}" data-close="1">${esc(t)}</button>`).join('')}</dd>
   <dt>Seen in</dt><dd class="chips gamechips">${a.example_games.map(g=>`<a class="chip" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${q(g+' '+a.name+' animation')}">${esc(g)} ↗</a>`).join('')}</dd></dl>
   <section><h3>GIF examples (${gl.length})</h3>${gl.length?`<ul class="reflist gifl">${gl.map((x,i)=>gifItem(a,x,!i&&gl.length>1&&score(x.t)>0)).join('')}</ul>`:'<p class="count">No GIF found yet. Try the Giphy or Tenor search below.</p>'}
@@ -403,7 +403,7 @@ document.addEventListener('click',e=>{
   if(t.id==='markOnly'){st.mark=!st.mark;t.setAttribute('aria-pressed',st.mark);render();return}
   if(t.id==='flagOnly'){st.flag=!st.flag;t.setAttribute('aria-pressed',st.flag);render();return}
   if(t.dataset.d){st.dom=t.dataset.d;st.cat=null;document.querySelectorAll('.domain button').forEach(b=>b.setAttribute('aria-pressed',b===t));render();return}
-  if(t.dataset.cat!==undefined){st.cat=st.cat===t.dataset.cat||!t.dataset.cat?null:t.dataset.cat;render();return}
+  if(t.dataset.cat!==undefined){if(t.dataset.close){closeSheet();st.cat=t.dataset.cat;if(st.dom!=='all'&&C[st.cat].domain!==st.dom){st.dom='all';document.querySelectorAll('.domain button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.d==='all'))}}else st.cat=st.cat===t.dataset.cat||!t.dataset.cat?null:t.dataset.cat;render();return}
   if(t.dataset.tag){st.tags.has(t.dataset.tag)?st.tags.delete(t.dataset.tag):st.tags.add(t.dataset.tag);if(t.dataset.close)closeSheet();render();return}
   if(t.dataset.game){st.game=st.game===t.dataset.game?null:t.dataset.game;render();return}
   if(t.dataset.clear){const k=t.dataset.clear;if(k==='all'){st.q='';$('#q').value='';st.game=null;st.tags.clear()}else if(k==='q'){st.q='';$('#q').value=''}else if(k==='game')st.game=null;else st.tags.delete(k.slice(4));render();return}
