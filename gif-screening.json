@@ -3652,6 +3652,118 @@
    "game": "Devil May Cry 3",
    "what": "Dante whirls the twin swords Agni & Rudra in a rapid flurry of slashes",
    "confidence": "high"
+  },
+  {
+   "animation": "mobility.rail-grind",
+   "clip": "mobility.rail-grind-0",
+   "game": "Ratchet & Clank Future: Tools of Destruction",
+   "what": "Ratchet grinds a rail across the city, hopping between rails",
+   "confidence": "high"
+  },
+  {
+   "animation": "mobility.rail-grind",
+   "clip": "mobility.rail-grind-1",
+   "game": "Sonic Advance",
+   "what": "Cream lands on a rail and grinds down it in 2D",
+   "confidence": "high"
+  },
+  {
+   "animation": "mobility.rail-grind",
+   "clip": "mobility.rail-grind-2",
+   "game": "Jet Set Radio Future",
+   "what": "Grinding rails and wall-riding over Tokyo rooftops",
+   "confidence": "medium"
+  },
+  {
+   "animation": "mobility.triple-jump-long-jump",
+   "clip": "mobility.triple-jump-long-jump-0",
+   "game": "Super Mario 64",
+   "what": "Mario chains a triple jump, flipping on the third, into a painting",
+   "confidence": "high"
+  },
+  {
+   "animation": "mobility.triple-jump-long-jump",
+   "clip": "mobility.triple-jump-long-jump-1",
+   "game": "Super Mario 64 DS",
+   "what": "Yoshi triple jumps up the castle steps",
+   "confidence": "high"
+  },
+  {
+   "animation": "mobility.triple-jump-long-jump",
+   "clip": "mobility.triple-jump-long-jump-2",
+   "game": "Super Mario 3D World + Bowser's Fury",
+   "what": "Mario rolls, then long jumps low and far across the snow",
+   "confidence": "low"
+  },
+  {
+   "animation": "mobility.super-dash-charged-dash",
+   "clip": "mobility.super-dash-charged-dash-0",
+   "game": "Hollow Knight",
+   "what": "The Knight charges Crystal Heart and shoots across Crystal Peak",
+   "confidence": "high"
+  },
+  {
+   "animation": "mobility.super-dash-charged-dash",
+   "clip": "mobility.super-dash-charged-dash-1",
+   "game": "Super Metroid",
+   "what": "The Speed Booster run that charges a Shinespark, shown by the Dachora",
+   "confidence": "low"
+  },
+  {
+   "animation": "mobility.skydive-wingsuit",
+   "clip": "mobility.skydive-wingsuit-0",
+   "game": "Just Cause 3",
+   "what": "Rico skims the ground in a wingsuit",
+   "confidence": "high"
+  },
+  {
+   "animation": "mobility.skydive-wingsuit",
+   "clip": "mobility.skydive-wingsuit-1",
+   "game": "Just Cause 3",
+   "what": "Rico freefalls, opens the wingsuit and lands on a rooftop",
+   "confidence": "high"
+  },
+  {
+   "animation": "mobility.skydive-wingsuit",
+   "clip": "mobility.skydive-wingsuit-2",
+   "game": "Call of Duty: Warzone",
+   "what": "Players skydive from a plane, trailing smoke",
+   "confidence": "medium"
+  },
+  {
+   "animation": "mobility.grappling-hook-pull",
+   "clip": "mobility.grappling-hook-pull-0",
+   "game": "Just Cause 3",
+   "what": "Rico fires the grappling hook and zips toward an enemy",
+   "confidence": "high"
+  },
+  {
+   "animation": "mobility.grappling-hook-pull",
+   "clip": "mobility.grappling-hook-pull-1",
+   "game": "Overwatch",
+   "what": "Widowmaker fires her grappling hook and is pulled up to a ledge",
+   "confidence": "high"
+  },
+  {
+   "animation": "mobility.grappling-hook-pull",
+   "clip": "mobility.grappling-hook-pull-2",
+   "game": "Gravity Circuit",
+   "what": "Kai grapples to points and swings between them in 2D",
+   "confidence": "medium"
+  },
+  {
+   "animation": "mobility.jetpack-hover-boost",
+   "clip": "mobility.jetpack-hover-boost-0",
+   "game": "Jet pack adventure game",
+   "what": "A character hovers on a jetpack with twin exhaust flames",
+   "confidence": "low"
+  },
+  {
+   "animation": "mobility.ledge-shimmy-wall-sidle",
+   "clip": "mobility.ledge-shimmy-wall-sidle-nr0",
+   "game": "No Rest for the Wicked",
+   "what": "Sidling along a narrow ledge with the back to the wall (the wall is not drawn)",
+   "confidence": "high"
   }
  ]
 }

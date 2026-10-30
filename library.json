@@ -79,6 +79,12 @@
    "domain": "non-combat"
   },
   {
+   "id": "mobility",
+   "name": "Mobility & Movement",
+   "description": "Movement abilities and tech for getting around fast: dashes, grapples, wall runs, flips and more. Also lists the movement entries from other categories.",
+   "domain": "non-combat"
+  },
+  {
    "id": "interaction",
    "name": "World Interaction",
    "description": "Everyday verbs: picking up, opening, using and gathering.",
@@ -610,6 +616,9 @@
       "what": "Close-ups from a CoD MW2/Warzone trailer with a 'RUN' caption on every frame; soldiers in close-up, no clear sprint. Replaced by the Elden Ring sprint render"
      }
     }
+   ],
+   "also": [
+    "mobility"
    ]
   },
   {
@@ -1140,6 +1149,9 @@
       "what": "Silksong Hornet full-height jump: game sprites with hurtbox and attack hitboxes"
      }
     }
+   ],
+   "also": [
+    "mobility"
    ]
   },
   {
@@ -1249,6 +1261,9 @@
       "what": "Silksong Hornet double jump: game sprites with hurtbox and attack hitboxes"
      }
     }
+   ],
+   "also": [
+    "mobility"
    ]
   },
   {
@@ -1617,6 +1632,9 @@
       "what": "Crouched sneak walk loop, two cycles"
      }
     }
+   ],
+   "also": [
+    "mobility"
    ]
   },
   {
@@ -1696,6 +1714,9 @@
      "local": "gifs/locomotion.slide-2.webp",
      "source_url": "https://media.giphy.com/media/vgS552Vjh609CRxy7S/200w.webp"
     }
+   ],
+   "also": [
+    "mobility"
    ]
   },
   {
@@ -1808,6 +1829,9 @@
       "what": "'ABSOLUTE TITANFALL' black-and-white image macro meme"
      }
     }
+   ],
+   "also": [
+    "mobility"
    ]
   },
   {
@@ -1894,6 +1918,9 @@
       "what": "Zero kicks off the walls to climb a vertical shaft"
      }
     }
+   ],
+   "also": [
+    "mobility"
    ]
   },
   {
@@ -1982,6 +2009,9 @@
       "what": "Quick vault up onto a waist-high ledge (the ledge is not drawn)"
      }
     }
+   ],
+   "also": [
+    "mobility"
    ]
   },
   {
@@ -2095,6 +2125,9 @@
       "what": "Tomb Raider: The Last Revelation, Lara hanging on a rope or pole in the dark; real gameplay but no mantle"
      }
     }
+   ],
+   "also": [
+    "mobility"
    ]
   },
   {
@@ -2194,6 +2227,9 @@
       "what": "Very dark shot of a figure hanging on a rope or chain over a pit, almost static. Replaced by the No Rest for the Wicked wall shimmy render"
      }
     }
+   ],
+   "also": [
+    "mobility"
    ]
   },
   {
@@ -2277,6 +2313,9 @@
      "local": "gifs/locomotion.swing-grapple-swing-2.webp",
      "source_url": "https://media.tenor.com/3e4swWWKm0MAAAA1/spiderman-2-ps5-playstation-5-spider-man-spider-man-2.webp"
     }
+   ],
+   "also": [
+    "mobility"
    ]
   },
   {
@@ -8834,6 +8873,9 @@
      "local": "gifs/magic.teleport-blink-ufd-2.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/meta_knight/MetaKnightDimensionalCapeG.gif"
     }
+   ],
+   "also": [
+    "mobility"
    ]
   },
   {
@@ -10345,6 +10387,9 @@
       "what": "Silksong Hornet dash: game sprites with hurtbox and attack hitboxes"
      }
     }
+   ],
+   "also": [
+    "mobility"
    ]
   },
   {
@@ -10444,6 +10489,9 @@
       "what": "Knight dash, usable in the air: game sprites with hurtbox and attack hitboxes"
      }
     }
+   ],
+   "also": [
+    "mobility"
    ]
   },
   {
@@ -13569,6 +13617,9 @@
       "what": "Ryu back dash: sprite frames with hurtboxes and attack boxes"
      }
     }
+   ],
+   "also": [
+    "mobility"
    ]
   },
   {
@@ -18561,6 +18612,9 @@
       "what": "Free climbing up a wall, then sideways (the wall is not drawn)"
      }
     }
+   ],
+   "also": [
+    "mobility"
    ]
   },
   {
@@ -18732,6 +18786,9 @@
      "local": "gifs/exploration.glide-paraglider-ufd-0.webp",
      "source_url": "https://ultimateframedata.com/hitboxes/steve/SteveElytra.gif"
     }
+   ],
+   "also": [
+    "mobility"
    ]
   },
   {
@@ -19169,6 +19226,9 @@
       "what": "The cat rides a bucket along a cable over the slums (a zipline-style ride)"
      }
     }
+   ],
+   "also": [
+    "mobility"
    ]
   },
   {
@@ -19287,6 +19347,9 @@
       "what": "Hand-drawn cartoon/fan animation of Sonic jumping off a rock spire and curling into a ball"
      }
     }
+   ],
+   "also": [
+    "mobility"
    ]
   },
   {
@@ -19346,6 +19409,9 @@
       "what": "Mega Man X 3D cutscene or render: X crashes through debris in an explosion and falls; no wall slide"
      }
     }
+   ],
+   "also": [
+    "mobility"
    ]
   },
   {
@@ -19435,6 +19501,427 @@
       "verdict": "meme",
       "confidence": "high",
       "what": "'ME INHALING MY [plasma wisp] BECAUSE OF HOW THIS IS' Kirby caption meme"
+     }
+    }
+   ]
+  },
+  {
+   "id": "mobility.grappling-hook-pull",
+   "name": "Grappling Hook Pull",
+   "category": "mobility",
+   "subcategory": "Grapple",
+   "tags": [
+    "grapple",
+    "hookshot",
+    "zip"
+   ],
+   "example_games": [
+    "Zelda Ocarina of Time Hookshot",
+    "Just Cause 3",
+    "Overwatch",
+    "Sekiro"
+   ],
+   "description": "Firing a hook or line at a point and being reeled toward it, as opposed to swinging under it.",
+   "search_query": "Grappling Hook Pull animation video game",
+   "references": [],
+   "gifs": [
+    {
+     "page_url": "https://tenor.com/view/grapple-hook-just-cause3-zip-towards-im-coming-for-you-kick-gif-16356779",
+     "media_url": "https://media.tenor.com/9KOn2FwZCzEAAAA1/grapple-hook-just-cause3.webp",
+     "title": "Rico fires the grappling hook and zips toward an enemy",
+     "game": "Just Cause 3",
+     "host": "Tenor",
+     "local": "gifs/mobility.grappling-hook-pull-0.webp",
+     "source_url": "https://media.tenor.com/9KOn2FwZCzEAAAA1/grapple-hook-just-cause3.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Rico fires the grappling hook and zips toward an enemy"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/overwatch-potg-play-of-the-game-widowmaker-grappling-hook-gif-4270596382546954365",
+     "media_url": "https://media.tenor.com/O0Q0yIjHiH0AAAA1/overwatch-potg.webp",
+     "title": "Widowmaker fires her grappling hook and is pulled up to a ledge",
+     "game": "Overwatch",
+     "host": "Tenor",
+     "local": "gifs/mobility.grappling-hook-pull-1.webp",
+     "source_url": "https://media.tenor.com/O0Q0yIjHiH0AAAA1/overwatch-potg.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Widowmaker fires her grappling hook and is pulled up to a ledge"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/grapple-hook-platformer-gravity-circuit-grappling-hook-game-gif-12979947409579917508",
+     "media_url": "https://media.tenor.com/tCIJZfdDQMQAAAA1/grapple-hook-platformer.webp",
+     "title": "Kai grapples to points and swings between them in 2D",
+     "game": "Gravity Circuit",
+     "host": "Tenor",
+     "local": "gifs/mobility.grappling-hook-pull-2.webp",
+     "source_url": "https://media.tenor.com/tCIJZfdDQMQAAAA1/grapple-hook-platformer.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "medium",
+      "what": "Kai grapples to points and swings between them in 2D"
+     }
+    }
+   ]
+  },
+  {
+   "id": "mobility.recovery-move-up-special",
+   "name": "Recovery Move (Up Special)",
+   "category": "mobility",
+   "subcategory": "Air",
+   "tags": [
+    "recovery",
+    "up-special",
+    "air"
+   ],
+   "example_games": [
+    "Super Smash Bros. Ultimate",
+    "Brawlhalla",
+    "Rivals of Aether"
+   ],
+   "description": "A rising special move that carries the character back up to the stage or a ledge after being knocked away.",
+   "search_query": "Recovery Move (Up Special) animation video game",
+   "references": [],
+   "gifs": [
+    {
+     "page_url": "https://ultimateframedata.com/fox",
+     "media_url": "https://ultimateframedata.com/hitboxes/fox/FoxFireFox.gif",
+     "title": "Fox Up B (Fire Fox), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/mobility.recovery-move-up-special-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/fox/FoxFireFox.gif"
+    },
+    {
+     "page_url": "https://ultimateframedata.com/captain_falcon",
+     "media_url": "https://ultimateframedata.com/hitboxes/captain_falcon/CaptainFalconFalconDiveG.gif",
+     "title": "Captain Falcon Up B (Falcon Dive) (Ground), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/mobility.recovery-move-up-special-ufd-1.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/captain_falcon/CaptainFalconFalconDiveG.gif"
+    }
+   ]
+  },
+  {
+   "id": "mobility.jetpack-hover-boost",
+   "name": "Jetpack / Hover Boost",
+   "category": "mobility",
+   "subcategory": "Air",
+   "tags": [
+    "jetpack",
+    "hover",
+    "thrust"
+   ],
+   "example_games": [
+    "Halo Reach",
+    "Titanfall 2",
+    "Apex Legends",
+    "Donkey Kong 64"
+   ],
+   "description": "Short powered bursts of thrust that lift or hold the character in the air, with flames or exhaust from the pack.",
+   "search_query": "Jetpack / Hover Boost animation video game",
+   "references": [],
+   "gifs": [
+    {
+     "page_url": "https://tenor.com/view/jet-pack-adventure-game-video-game-flying-around-on-a-mission-gif-14347338",
+     "media_url": "https://media.tenor.com/nPxCYtHkA4sAAAA1/jet-pack-adventure-game.webp",
+     "title": "A character hovers on a jetpack with twin exhaust flames",
+     "game": "Jet pack adventure game",
+     "host": "Tenor",
+     "local": "gifs/mobility.jetpack-hover-boost-0.webp",
+     "source_url": "https://media.tenor.com/nPxCYtHkA4sAAAA1/jet-pack-adventure-game.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "A character hovers on a jetpack with twin exhaust flames"
+     }
+    },
+    {
+     "page_url": "https://ultimateframedata.com/diddy_kong",
+     "media_url": "https://ultimateframedata.com/hitboxes/diddy_kong/DiddyKongRocketBarrels.gif",
+     "title": "Diddy Kong Up B (Rocketbarrel Boost), with hitboxes",
+     "game": "Super Smash Bros. Ultimate",
+     "host": "Ultimate Frame Data",
+     "local": "gifs/mobility.jetpack-hover-boost-ufd-0.webp",
+     "source_url": "https://ultimateframedata.com/hitboxes/diddy_kong/DiddyKongRocketBarrels.gif"
+    }
+   ]
+  },
+  {
+   "id": "mobility.triple-jump-long-jump",
+   "name": "Triple Jump / Long Jump",
+   "category": "mobility",
+   "subcategory": "Jump",
+   "tags": [
+    "jump",
+    "platformer",
+    "chain"
+   ],
+   "example_games": [
+    "Super Mario 64",
+    "Super Mario Odyssey",
+    "Super Mario 3D World"
+   ],
+   "description": "Platformer jump variants: a chain of three rising jumps ending in a flip, or a low, far leap out of a run.",
+   "search_query": "Triple Jump / Long Jump animation video game",
+   "references": [],
+   "gifs": [
+    {
+     "page_url": "https://tenor.com/view/super-mario-64-triple-jump-oops-fail-acrobatic-gif-12493902271493685147",
+     "media_url": "https://media.tenor.com/rWNB657Tv5sAAAA1/super-mario-64-triple-jump.webp",
+     "title": "Mario chains a triple jump, flipping on the third, into a painting",
+     "game": "Super Mario 64",
+     "host": "Tenor",
+     "local": "gifs/mobility.triple-jump-long-jump-0.webp",
+     "source_url": "https://media.tenor.com/rWNB657Tv5sAAAA1/super-mario-64-triple-jump.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Mario chains a triple jump, flipping on the third, into a painting"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/super-mario64ds-super-mario-64-ds-3d-platformer-triple-jump-yoshi-gif-27278865",
+     "media_url": "https://media.tenor.com/qdaTwy00dzAAAAA1/super-mario64ds-super-mario-64-ds.webp",
+     "title": "Yoshi triple jumps up the castle steps",
+     "game": "Super Mario 64 DS",
+     "host": "Tenor",
+     "local": "gifs/mobility.triple-jump-long-jump-1.webp",
+     "source_url": "https://media.tenor.com/qdaTwy00dzAAAAA1/super-mario64ds-super-mario-64-ds.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Yoshi triple jumps up the castle steps"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/rolling-lung-jump-super-mario-3d-world-super-mario-bowsers-fury-nintendo-switch-gif-26683189",
+     "media_url": "https://media.tenor.com/X8K7B6Wk1rsAAAA1/rolling-lung-jump-super-mario-3d-world.webp",
+     "title": "Mario rolls, then long jumps low and far across the snow",
+     "game": "Super Mario 3D World + Bowser's Fury",
+     "host": "Tenor",
+     "local": "gifs/mobility.triple-jump-long-jump-2.webp",
+     "source_url": "https://media.tenor.com/X8K7B6Wk1rsAAAA1/rolling-lung-jump-super-mario-3d-world.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "Mario rolls, then long jumps low and far across the snow"
+     }
+    }
+   ]
+  },
+  {
+   "id": "mobility.rail-grind",
+   "name": "Rail Grind",
+   "category": "mobility",
+   "subcategory": "Ground",
+   "tags": [
+    "grind",
+    "rail",
+    "speed"
+   ],
+   "example_games": [
+    "Jet Set Radio",
+    "Sonic Adventure 2",
+    "Ratchet & Clank"
+   ],
+   "description": "Locking onto a rail and sliding along it at speed, balancing and hopping between rails.",
+   "search_query": "Rail Grind animation video game",
+   "references": [],
+   "gifs": [
+    {
+     "page_url": "https://tenor.com/view/tools-of-destruction-ratchet-and-clank-ratchet-clank-insomniac-games-gif-23685562",
+     "media_url": "https://media.tenor.com/Qah-USpj_f8AAAA1/tools-of-destruction-ratchet-and-clank.webp",
+     "title": "Ratchet grinds a rail across the city, hopping between rails",
+     "game": "Ratchet & Clank Future: Tools of Destruction",
+     "host": "Tenor",
+     "local": "gifs/mobility.rail-grind-0.webp",
+     "source_url": "https://media.tenor.com/Qah-USpj_f8AAAA1/tools-of-destruction-ratchet-and-clank.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Ratchet grinds a rail across the city, hopping between rails"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/sonic-advance-cream-cream-the-rabbit-rabbit-wooh-gif-23371654",
+     "media_url": "https://media.tenor.com/Oc2dafrkFw8AAAA1/sonic-advance-cream.webp",
+     "title": "Cream lands on a rail and grinds down it in 2D",
+     "game": "Sonic Advance",
+     "host": "Tenor",
+     "local": "gifs/mobility.rail-grind-1.webp",
+     "source_url": "https://media.tenor.com/Oc2dafrkFw8AAAA1/sonic-advance-cream.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Cream lands on a rail and grinds down it in 2D"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/jet-set-radio-jet-set-radio-future-grind-xbox-cel-shading-gif-9869647478439869473",
+     "media_url": "https://media.tenor.com/iPgIFwq8_CEAAAA1/jet-set-radio-jet-set-radio-future.webp",
+     "title": "Grinding rails and wall-riding over Tokyo rooftops",
+     "game": "Jet Set Radio Future",
+     "host": "Tenor",
+     "local": "gifs/mobility.rail-grind-2.webp",
+     "source_url": "https://media.tenor.com/iPgIFwq8_CEAAAA1/jet-set-radio-jet-set-radio-future.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "medium",
+      "what": "Grinding rails and wall-riding over Tokyo rooftops"
+     }
+    }
+   ]
+  },
+  {
+   "id": "mobility.super-dash-charged-dash",
+   "name": "Super Dash / Charged Dash",
+   "category": "mobility",
+   "subcategory": "Dash",
+   "tags": [
+    "dash",
+    "charge",
+    "speed"
+   ],
+   "example_games": [
+    "Hollow Knight Crystal Heart",
+    "Super Metroid Shinespark",
+    "Mega Man X"
+   ],
+   "description": "A dash that charges up first, then launches the character a long way at high speed until it hits something.",
+   "search_query": "Super Dash / Charged Dash animation video game",
+   "references": [],
+   "gifs": [
+    {
+     "page_url": "https://tenor.com/view/fly-hollow-knight-crystals-zoom-gif-17890067",
+     "media_url": "https://media.tenor.com/RNeMnwEfqUUAAAA1/fly-hollow.webp",
+     "title": "The Knight charges Crystal Heart and shoots across Crystal Peak",
+     "game": "Hollow Knight",
+     "host": "Tenor",
+     "local": "gifs/mobility.super-dash-charged-dash-0.webp",
+     "source_url": "https://media.tenor.com/RNeMnwEfqUUAAAA1/fly-hollow.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "The Knight charges Crystal Heart and shoots across Crystal Peak"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/super-metroid-animals-dachora-ostrich-super-speed-gif-6698931857158728183",
+     "media_url": "https://media.tenor.com/XPdjCBh-afcAAAA1/super-metroid-animals.webp",
+     "title": "The Speed Booster run that charges a Shinespark, shown by the Dachora",
+     "game": "Super Metroid",
+     "host": "Tenor",
+     "local": "gifs/mobility.super-dash-charged-dash-1.webp",
+     "source_url": "https://media.tenor.com/XPdjCBh-afcAAAA1/super-metroid-animals.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "low",
+      "what": "The Speed Booster run that charges a Shinespark, shown by the Dachora"
+     }
+    }
+   ]
+  },
+  {
+   "id": "mobility.ledge-shimmy-wall-sidle",
+   "name": "Ledge Shimmy / Wall Sidle",
+   "category": "mobility",
+   "subcategory": "Climbing",
+   "tags": [
+    "shimmy",
+    "ledge",
+    "sidle"
+   ],
+   "example_games": [
+    "Uncharted",
+    "Tomb Raider",
+    "No Rest for the Wicked"
+   ],
+   "description": "Moving sideways hand over hand along a ledge, or sidling along a narrow walkway with the back to the wall.",
+   "search_query": "Ledge Shimmy / Wall Sidle animation video game",
+   "references": [],
+   "gifs": [
+    {
+     "page_url": "gifs/mobility.ledge-shimmy-wall-sidle-nr0.webp",
+     "media_url": "",
+     "title": "Wall shimmy, rendered with the Frame Data 3D preview",
+     "game": "No Rest for the Wicked",
+     "host": "No Rest for the Wicked render",
+     "local": "gifs/mobility.ledge-shimmy-wall-sidle-nr0.webp",
+     "source_url": "",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Sidling along a narrow ledge with the back to the wall (the wall is not drawn)"
+     }
+    }
+   ]
+  },
+  {
+   "id": "mobility.skydive-wingsuit",
+   "name": "Skydive / Wingsuit",
+   "category": "mobility",
+   "subcategory": "Air",
+   "tags": [
+    "skydive",
+    "wingsuit",
+    "freefall"
+   ],
+   "example_games": [
+    "Just Cause 3",
+    "Call of Duty",
+    "Fortnite"
+   ],
+   "description": "Freefalling or gliding in a wingsuit from a great height, steering with the arms and legs before landing or opening a chute.",
+   "search_query": "Skydive / Wingsuit animation video game",
+   "references": [],
+   "gifs": [
+    {
+     "page_url": "https://tenor.com/view/wingsuit-just-cause-3-flying-avalance-studios-gif-24456143",
+     "media_url": "https://media.tenor.com/Qo1SHArDNE8AAAA1/wingsuit-just-cause-3.webp",
+     "title": "Rico skims the ground in a wingsuit",
+     "game": "Just Cause 3",
+     "host": "Tenor",
+     "local": "gifs/mobility.skydive-wingsuit-0.webp",
+     "source_url": "https://media.tenor.com/Qo1SHArDNE8AAAA1/wingsuit-just-cause-3.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Rico skims the ground in a wingsuit"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/just-cause3gif-just-cause3-video-game-flying-gif-17937170",
+     "media_url": "https://media.tenor.com/L7aZl-tv7CoAAAA1/just-cause3gif-just-cause3.webp",
+     "title": "Rico freefalls, opens the wingsuit and lands on a rooftop",
+     "game": "Just Cause 3",
+     "host": "Tenor",
+     "local": "gifs/mobility.skydive-wingsuit-1.webp",
+     "source_url": "https://media.tenor.com/L7aZl-tv7CoAAAA1/just-cause3gif-just-cause3.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "high",
+      "what": "Rico freefalls, opens the wingsuit and lands on a rooftop"
+     }
+    },
+    {
+     "page_url": "https://tenor.com/view/skydiving-call-of-duty-pacific-gameplay-falling-free-falling-gif-24091242",
+     "media_url": "https://media.tenor.com/9qnYFNMsXnEAAAA1/skydiving-call-of-duty.webp",
+     "title": "Players skydive from a plane, trailing smoke",
+     "game": "Call of Duty: Warzone",
+     "host": "Tenor",
+     "local": "gifs/mobility.skydive-wingsuit-2.webp",
+     "source_url": "https://media.tenor.com/9qnYFNMsXnEAAAA1/skydiving-call-of-duty.webp",
+     "screened": {
+      "verdict": "added",
+      "confidence": "medium",
+      "what": "Players skydive from a plane, trailing smoke"
      }
     }
    ]

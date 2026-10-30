@@ -103,6 +103,8 @@ MOVES = {
  'interaction.eat-drink': [('king-dedede.special.neutral-b-inhale', 1)],
  'sports.swing-golf-tennis-bat': [('ness.ground.forward-smash', 0), ('peach.ground.forward-smash', 1), ('daisy.ground.forward-smash', 2)],
  'creature.dragon-flight-breath': [('ridley.special.up-b-wing-blitz', 0)],
+ 'mobility.recovery-move-up-special': [('fox.special.up-b-fire-fox', 0), ('captain-falcon.special.up-b-falcon-dive', 0)],
+ 'mobility.jetpack-hover-boost': [('diddy-kong.special.up-b-rocketbarrel-boost', 0)],
 }
 
 
