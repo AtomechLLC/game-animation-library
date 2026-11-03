@@ -67,6 +67,8 @@ as basic and heavy attacks (and its write-up) go in `PROFILES` at the top of the
 
 ## Source data
 
+See the [classification architecture (Markdown + Mermaid)](docs/architectgure/architecture.md) for the current data relationships, Combat/Non-combat rules, Mobility cross-listing, filtering and build flow. Update that document in the same change whenever the documented structure, behavior or data facts change; contributor instructions are in [AGENTS.md](AGENTS.md) and [CLAUDE.md](CLAUDE.md).
+
 - `taxonomy.txt` — the hand-written index. One `# CAT id | Name | description` line per category, then one line per animation: `Name | Subcategory | tags,comma,separated | Game;Game;Game | Description`. An optional sixth field lists other category ids the animation also appears under (written to `also`), so Mobility & Movement can gather the dashes, wall runs and grapples that live in Combat Locomotion, Defense, Exploration and Magic without duplicating them.
 - `build_index.py taxonomy.txt index.json` — turns the taxonomy into JSON (ids are `category.slug`).
 - `library.json` — the full library: categories plus animations with `references` (title, url, source, game, note) gathered by web search.
