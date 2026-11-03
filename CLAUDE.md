@@ -6,6 +6,12 @@ Use this document as enduring product direction for UX design and implementation
 
 `README.md` is the detailed reference; update it when a workflow changes.
 
+### Keep classification architecture current
+
+[The classification architecture](docs/architectgure/architecture.md) documents the current Action Atlas implementation in English, with Markdown and Mermaid. When changing classification fields or IDs, domain assignment, category membership, cross-listing, filtering, classification display/navigation, or the data generation and page rendering paths, update it in the same change. Keep its prose, examples, diagrams, category table and affected counts consistent with the implementation, and check its relative links and Mermaid syntax. A clip-only replacement that does not affect the documented structure or facts does not require an update. This is a contributor requirement, not automatic generation or a CI synchronization check.
+
+### Components
+
 - **Apps and their URLs:** Action Atlas (`action-atlas.html`), Move Explorer (`move-explorer.html`) and Trends (`trends.html`), switched from the shared app bar (`shared/appbar.js`). `index.html` (site root) and `frame-data.html` (Move Explorer's old address, still used by `library.json` links and shared links) are committed redirect pages that keep the `#link`.
 - **Action Atlas:** `taxonomy.txt` → `build_index.py` → `index.json` → `merge.py` → `library.json`, the committed source of truth (about 340 animations in 21 categories, with references and clips). `build_page.py` renders `template.html` + `library.json` into `action-atlas.html`. `index.json`, `atlas.html`, `todo.json` and `action-atlas.html` are generated and git-ignored.
 - **Clips:** `gifs/` holds local clips. Importers: `add_ufd.py` (Smash Ultimate hitboxes), `add_baston.py` (Street Fighter III: 3rd Strike), `tools/er_gifs/` (Elden Ring renders from the 3D viewer, via Playwright + ffmpeg). Curation records: `gif-screening.json`, `gif-blocklist.json` with `blocklist.py` (any pass that adds clips must skip blocked ones), `marks.json`, `missing-references.json`.
