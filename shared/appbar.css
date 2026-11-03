@@ -47,3 +47,7 @@
 ::view-transition-group(appbar),::view-transition-new(appbar){animation:none}
 ::view-transition-old(appbar){display:none}
 @media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}
+
+.theme-toggle{margin-left:auto;align-self:center;margin-bottom:12px;border:1px solid var(--line);border-radius:6px;background:transparent;color:var(--fg);padding:5px 8px;cursor:pointer;font:12px var(--body);white-space:nowrap}
+.theme-toggle:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+@media (max-width:820px){.theme-toggle{order:0;margin-bottom:6px}.apps{order:1;flex-basis:100%}}
