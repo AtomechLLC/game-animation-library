@@ -52,8 +52,9 @@ aside{position:sticky;top:120px;align-self:start;max-height:calc(100vh - 140px);
 aside h2{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px;font-weight:600}
 .tag-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}
 .tag-heading h2{margin:0}
-.tag-heading select{min-width:0;max-width:100%;font:11px var(--mono);color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:5px 4px;cursor:pointer}
-.tag-heading select:focus-visible{outline:2px solid var(--key-ink);outline-offset:2px}
+.tag-heading select{min-width:0;max-width:100%;font:11px var(--body);color:var(--muted);background:transparent;border:0;border-radius:4px;padding:2px 4px;cursor:pointer}
+.tag-heading select:hover{color:var(--fg)}
+.tag-heading select option{color:var(--fg);background:var(--bg)}
 .flist{display:grid;gap:1px}
 .fitem{display:flex;justify-content:space-between;gap:8px;border:0;background:transparent;text-align:left;padding:4px 8px;border-radius:4px;cursor:pointer;font-size:13px}
 .fitem:hover{background:var(--chip)}
@@ -61,6 +62,7 @@ aside h2{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transf
 .fitem span:last-child{font-family:var(--mono);font-size:11px;opacity:.7;font-variant-numeric:tabular-nums}
 .chips{display:flex;flex-wrap:wrap;gap:4px}
 .chip{border:1px solid var(--line);background:var(--chip);border-radius:3px;padding:1px 7px;font-size:12px;cursor:pointer;font-family:var(--mono)}
+.tag-usage{font-family:var(--body);font-size:10px;opacity:.7;margin-left:3px;font-variant-numeric:tabular-nums}
 .chip[aria-pressed="true"]{background:var(--key);border-color:var(--key);color:#1c1b19}
 .status{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
 .status h2{font-family:var(--display);font-size:28px;font-weight:700;letter-spacing:-.02em;margin:0;text-wrap:balance}
@@ -354,7 +356,7 @@ function renderTags(){
   st.tags.forEach(t=>{if(!tc.has(t))tc.set(t,0)});
   const sorted=[...tc].sort((x,y)=>(st.tagSort==='usage'?y[1]-x[1]:0)||x[0].localeCompare(y[0],'en'));
   const visible=st.tagsExpanded?sorted:sorted.slice(0,48);
-  $('#tags').innerHTML=visible.map(([t])=>`<button class="chip" data-tag="${esc(t)}" aria-pressed="${st.tags.has(t)}">${esc(t)}</button>`).join('')+(!st.tagsExpanded&&sorted.length>48?'<button class="chip" id="showAllTags" aria-label="Show all tags">...</button>':'');
+  $('#tags').innerHTML=visible.map(([t,n])=>`<button class="chip" data-tag="${esc(t)}" aria-pressed="${st.tags.has(t)}">${esc(t)}${st.tagSort==='usage'&&n!==1?`<span class="tag-usage">${n}</span>`:''}</button>`).join('')+(!st.tagsExpanded&&sorted.length>48?'<button class="chip" id="showAllTags" aria-label="Show all tags">...</button>':'');
 }
 function render(){
   const list=base();
