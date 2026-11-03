@@ -352,6 +352,8 @@ const gameKey=g=>g.replace(/\s+(Glory Kill|Fatality|Blood Vial|Estus|Item Get|Bo
 A.forEach(a=>{a.gifs=a.gifs||[];a.cats=[a.category,...(a.also||[]).filter(c=>C[c])];a.gk=[...new Set(a.example_games.map(gameKey))];a.hay=(a.name+' '+a.description+' '+a.subcategory+' '+a.tags.join(' ')+' '+a.example_games.join(' ')+' '+a.cats.map(c=>C[c].name).join(' ')).toLowerCase()});
 function base(skip){return A.filter(a=>(st.dom==='all'||C[a.category].domain===st.dom)&&(skip==='cat'||!st.cat||a.cats.includes(st.cat))&&(skip==='game'||!st.game||a.gk.includes(st.game))&&(skip==='tag'||[...st.tags].every(t=>a.tags.includes(t)))&&(!st.gif||a.gifs.length)&&(!st.mark||isMarked(a))&&(!st.flag||isFlagged(a))&&(!st.need||isNeedy(a))&&(!st.q||st.q.split(/\s+/).every(w=>a.hay.includes(w))))}
 function counts(list,f){const m=new Map();list.forEach(a=>f(a).forEach(k=>m.set(k,(m.get(k)||0)+1)));return m}
+// Category discovery depends only on domain and membership, not the other filters.
+function categoryAvailable(id){return st.dom==='all'||A.some(a=>C[a.category].domain===st.dom&&a.cats.includes(id))}
 function renderTags(){
   const tc=counts(base('tag'),a=>a.tags);
   st.tags.forEach(t=>{if(!tc.has(t))tc.set(t,0)});
@@ -363,8 +365,9 @@ function render(){
   const list=base();
   // keyframe ruler
   const cc=counts(base('cat'),a=>a.cats);
-  setKeys(D.categories.filter(c=>st.dom==='all'||c.domain===st.dom).map(c=>`<button class="kf" data-cat="${c.id}" aria-pressed="${st.cat===c.id}"><i></i>${esc(c.name)}</button>`).join(''));
-  $('#cats').innerHTML=`<button class="fitem" data-cat="" aria-pressed="${!st.cat}"><span>All categories</span><span>${base('cat').length}</span></button>`+D.categories.filter(c=>st.dom==='all'||c.domain===st.dom).map(c=>`<button class="fitem" data-cat="${c.id}" aria-pressed="${st.cat===c.id}"><span>${esc(c.name)}</span><span>${cc.get(c.id)||0}</span></button>`).join('');
+  const categories=D.categories.filter(c=>categoryAvailable(c.id));
+  setKeys(categories.map(c=>`<button class="kf" data-cat="${c.id}" aria-pressed="${st.cat===c.id}"><i></i>${esc(c.name)}</button>`).join(''));
+  $('#cats').innerHTML=`<button class="fitem" data-cat="" aria-pressed="${!st.cat}"><span>All categories</span><span>${base('cat').length}</span></button>`+categories.map(c=>`<button class="fitem" data-cat="${c.id}" aria-pressed="${st.cat===c.id}"><span>${esc(c.name)}</span><span>${cc.get(c.id)||0}</span></button>`).join('');
   renderTags();
   const gc=[...counts(base('game'),a=>a.gk)].sort((x,y)=>y[1]-x[1]||x[0].localeCompare(y[0])).slice(0,30);
   $('#games').innerHTML=gc.map(([g,n])=>`<button class="fitem" data-game="${esc(g)}" aria-pressed="${st.game===g}"><span>${esc(g)}</span><span>${n}</span></button>`).join('');
@@ -417,7 +420,7 @@ document.addEventListener('click',e=>{
   if(t.id==='markOnly'){st.mark=!st.mark;t.setAttribute('aria-pressed',st.mark);render();return}
   if(t.id==='flagOnly'){st.flag=!st.flag;t.setAttribute('aria-pressed',st.flag);render();return}
   if(t.dataset.d){st.dom=t.dataset.d;st.cat=null;document.querySelectorAll('.domain button').forEach(b=>b.setAttribute('aria-pressed',b===t));render();return}
-  if(t.dataset.cat!==undefined){if(t.dataset.close){closeSheet();st.cat=t.dataset.cat;if(st.dom!=='all'&&C[st.cat].domain!==st.dom){st.dom='all';document.querySelectorAll('.domain button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.d==='all'))}}else st.cat=st.cat===t.dataset.cat||!t.dataset.cat?null:t.dataset.cat;render();return}
+  if(t.dataset.cat!==undefined){if(t.dataset.close){closeSheet();st.cat=t.dataset.cat;if(!categoryAvailable(st.cat)){st.dom='all';document.querySelectorAll('.domain button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.d==='all'))}}else st.cat=st.cat===t.dataset.cat||!t.dataset.cat?null:t.dataset.cat;render();return}
   if(t.dataset.tag){st.tags.has(t.dataset.tag)?st.tags.delete(t.dataset.tag):st.tags.add(t.dataset.tag);if(t.dataset.close)closeSheet();render();return}
   if(t.dataset.game){st.game=st.game===t.dataset.game?null:t.dataset.game;render();return}
   if(t.dataset.clear){const k=t.dataset.clear;if(k==='all'){st.q='';$('#q').value='';st.game=null;st.tags.clear()}else if(k==='q'){st.q='';$('#q').value=''}else if(k==='game')st.game=null;else st.tags.delete(k.slice(4));render();return}

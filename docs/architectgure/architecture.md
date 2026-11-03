@@ -13,6 +13,8 @@ For example, **Forward / Back Dash belongs to Combat and can also appear in Mobi
 
 **Implementation status: compliant.** Domain filtering and detail display both use the primary category's domain. Additional category memberships affect category discovery, not domain membership. No data migration or per-animation domain field is required.
 
+The rationale and before/after navigation diagrams are recorded in [ADR-2026-11-04-category-discovery-by-member-domain](../architecture/00-architecture-decisions.md#adr-2026-11-04-category-discovery-by-member-domain).
+
 ## Reading this document
 
 The principles above are the agreed classification requirements. Sections 1–6 describe the current implementation. This document does not infer Xelnath's intentions. When the documented structure or behavior changes, **update the prose, examples, and Mermaid diagrams in the same change.**
@@ -191,9 +193,9 @@ flowchart TD
 
 Different filters are combined with AND. `subcategory` contributes to search and detail display but has no independent selection filter or grouping header. Initially the domain is `all`, no category or game is selected, tags and search are empty, and Show conditions are off.
 
-Category buttons are limited by **each category's own domain**. Cross-listed entries do not make Non-combat category buttons appear in the Combat view. Category counts ignore only the current category condition and count each matching entry under its `cats`; All categories counts entries. The sum of category counts can therefore exceed the total entry count. Game and tag counts similarly ignore their own filter condition while retaining the others.
+Category buttons in both the sidebar and the top category ruler use **the domains of their member entries**, including primary and additional memberships. All shows every category. Combat and Non-combat show a category when at least one member entry's primary category has the selected domain. The shared `categoryAvailable` helper checks only domain and membership, so search, game, tags, and Show filters cannot hide these buttons; they can reduce a displayed count to zero. Category counts ignore only the current category condition and count each matching entry under its `cats`; All categories counts entries. The sum of category counts can therefore exceed the total entry count. Game and tag counts similarly ignore their own filter condition while retaining the others.
 
-Cards show the primary category name. The detail sheet's Domain and Category also come from the primary category; additional categories appear as separate `Also in` buttons. Clicking one closes the sheet and selects that category. If the current domain conflicts with the target category's domain, it changes to All; other filters such as search, game, and tags remain active. Clicking a top-level domain button clears the category selection.
+Cards show the primary category name. The detail sheet's Domain and Category also come from the primary category; additional categories appear as separate `Also in` buttons. Clicking one closes the sheet and selects that category. It preserves the current domain whenever the target category has any member entry in that domain, using the same `categoryAvailable` helper as the menus. Only a target with no members in the current domain changes the domain to All. Other filters such as search, game, tags, and Show remain active, even when they leave no matching results. Clicking a top-level domain button clears the category selection.
 
 The Tags heading includes a sort selector: **Alphabetical (A–Z)** (the default) or **Most used**. Alphabetical mode uses English name collation; Most used sorts by the tag counts described above, descending, with the same name order for ties, and displays counts other than one beside their tags in smaller, muted body text without parentheses. Alphabetical mode displays tag names without counts. Initially only the first 48 tags are shown. If more exist, a `...` button appears as the 49th item with the accessible name `Show all tags`. Activating it reveals all remaining tags in the same order, removes the button, and focuses the first newly revealed tag. Selected tags that no longer match the other filters remain in the sorted list with a count of zero and follow the same display limit; selected tags hidden by the limit can still be removed from the active filter area. Sorting and expanding only update the tag buttons, without changing active filters or animation results. The existing sidebar scroll and mobile filter panel contain the list.
 
@@ -221,17 +223,17 @@ Mobility was added in `3c8dd5e` and merged in `48ffc78`. Existing entries retain
 
 The eight new entries are Grappling Hook Pull, Recovery Move (Up Special), Jetpack / Hover Boost, Triple Jump / Long Jump, Rail Grind, Super Dash / Charged Dash, Ledge Shimmy / Wall Sidle, and Skydive / Wingsuit.
 
-The main access path is **Action Atlas > All or Non-combat > Category: Mobility & Movement > entry card**. On narrow screens, Filters opens the category list. The top category ruler, a `mobility` search, and an existing entry's `Also in` button provide other entry points. With All selected and no other filters, the category shows 28 entries. Under Non-combat, it shows 13; the 15 Combat entries are excluded.
+The main access path is **Action Atlas > All, Combat, or Non-combat > Category: Mobility & Movement > entry card**. On narrow screens, Filters opens the category list. The top category ruler, a `mobility` search, and an existing entry's `Also in` button provide other entry points. With no other filters, the category shows 28 entries under All, 15 under Combat, and 13 under Non-combat. From Forward / Back Dash in Combat, clicking `Also in > Mobility & Movement` keeps Combat selected and shows the 15 Combat members.
 
 | Where Dash is viewed | Result |
 |---|---|
 | All | The original Dash entry appears once |
 | Combat | Included through Defense's domain |
 | Non-combat | Excluded because the primary category is Combat |
-| Mobility & Movement | Included through `also` when All is selected; excluded under Non-combat |
+| Mobility & Movement | Included through `also` when All or Combat is selected; excluded under Non-combat |
 | Dash card and detail sheet | Primary category remains Defense & Evasion; the detail sheet adds Dodge and reports Domain as Combat |
 
-Combat and Non-combat are mutually exclusive sets of entries: 220 Combat and 118 Non-combat entries form the 338-entry All result. Cross-listing can span categories from both domains without changing an entry's primary domain. The Mobility category button itself remains hidden when Combat is selected; use All to browse the complete Mobility collection.
+Combat and Non-combat are mutually exclusive sets of entries: 220 Combat and 118 Non-combat entries form the 338-entry All result. Cross-listing can span categories from both domains without changing an entry's primary domain. The Mobility category button appears in all three domain views because it has members in both domains; use All to browse the complete Mobility collection.
 
 Mobility does not automatically collect every movement animation. Only explicit primary or additional memberships include an entry. For example, Jump and Crouch Walk are included, whereas Run Cycle and swimming entries currently are not. Its subcategories mix spatial labels such as Air/Ground with movement methods such as Dash/Jump/Grapple, and the page displays them in a single card list.
 
@@ -243,6 +245,6 @@ Update this document in the same change when modifying any of the following:
 - Domain, category, subcategory, tag, or search behavior; classification display or access paths.
 - Data generation, merging, clip enrichment, page delivery, or data facts reflected in the tables, examples, and counts.
 
-Compare the document with the actual `library.json`, scripts, and template. Check relative links and Mermaid syntax. Verify that Combat and Non-combat results are disjoint and their union equals All, with each entry appearing once. Forward / Back Dash must appear under Combat and All but not Non-combat. Mobility shows 28 entries under All and 13 under Non-combat. Adding or removing additional Mobility membership must not change domain results. Check search combinations and agreement with the detail sheet's domain. Keep category visibility and selection behavior unchanged unless explicitly redesigned.
+Compare the document with the actual `library.json`, scripts, and template. Check relative links and Mermaid syntax. Verify that Combat and Non-combat results are disjoint and their union equals All, with each entry appearing once. Forward / Back Dash must appear under Combat and All but not Non-combat. Mobility shows 28 entries under All, 15 under Combat, and 13 under Non-combat. Adding or removing additional Mobility membership must not change domain results. Check search combinations and agreement with the detail sheet's domain. Sidebar and ruler categories must agree and remain visible with zero counts caused by other filters. Check that `Also in` preserves the domain when the target has members in that domain, switches to All only when it has none, and preserves other filters in either case. Existing entry links and clip mappings must remain intact.
 
 A clip-only replacement that does not change the documented structure or facts needs no documentation update. This document is not automatically generated, and CI does not enforce synchronization. The maintenance requirement is recorded in [AGENTS.md](../../AGENTS.md) and [CLAUDE.md](../../CLAUDE.md).
