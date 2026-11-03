@@ -1,6 +1,21 @@
 # Action Atlas Classification Architecture
 
-This document describes the classification rules implemented by the current code and data. It does not prescribe a redesign or infer Xelnath's intentions. When the documented structure or behavior changes, **update the prose, examples, and Mermaid diagrams in the same change.**
+## Classification principles
+
+> **Every animation must belong to exactly one domain: Combat or Non-combat. Mobility membership must not change that domain.**
+
+- Combat and Non-combat must be mutually exclusive and together cover every animation entry.
+- Mobility is a separate grouping for finding movement animations. An entry can belong to Mobility while retaining either domain.
+- Adding or removing Mobility membership must not change whether an entry appears in the Combat or Non-combat filter.
+- All shows both domains together, with each entry appearing once.
+
+For example, **Forward / Back Dash belongs to Combat and can also appear in Mobility. It must not appear under Non-combat merely because it belongs to Mobility.**
+
+**Implementation status: not yet compliant.** The current filter derives an entry's domains from all its category memberships, and Mobility is assigned to Non-combat. This makes Forward / Back Dash appear in both domain filters. The implementation must be brought into line with the principles above; the data model and migration approach have not yet been selected.
+
+## Reading this document
+
+The principles above are the agreed classification requirements. Sections 1–6 describe the **current implementation**, including its known divergence from those requirements; their examples and Mermaid diagrams do not represent the intended corrected behavior. This document does not infer Xelnath's intentions. When the documented structure or behavior changes, **update the prose, examples, and Mermaid diagrams in the same change.**
 
 Initial baseline: 2026-11-03, commit `38f508f`. Counts below reflect `library.json` at that baseline; keep them current when the corresponding data changes.
 
@@ -208,7 +223,7 @@ The main access path is **Action Atlas > All or Non-combat > Category: Mobility 
 | Mobility & Movement | Included through `also` |
 | Dash card and detail sheet | Primary category remains Defense & Evasion; the detail sheet adds Dodge and reports Domain as Combat |
 
-Combat and Non-combat are not mutually exclusive sets of entries. Each category has one domain, but an entry can belong to categories from both domains. The Mobility category button itself is hidden when Combat is selected.
+**Known violation of the classification principles:** in the current implementation, Combat and Non-combat are not mutually exclusive sets of entries. Each category has one domain, but an entry can belong to categories from both domains. The Mobility category button itself is hidden when Combat is selected.
 
 Mobility does not automatically collect every movement animation. Only explicit primary or additional memberships include an entry. For example, Jump and Crouch Walk are included, whereas Run Cycle and swimming entries currently are not. Its subcategories mix spatial labels such as Air/Ground with movement methods such as Dash/Jump/Grapple, and the page displays them in a single card list.
 
@@ -220,6 +235,6 @@ Update this document in the same change when modifying any of the following:
 - Domain, category, subcategory, tag, or search behavior; classification display or access paths.
 - Data generation, merging, clip enrichment, page delivery, or data facts reflected in the tables, examples, and counts.
 
-Compare the document with the actual `library.json`, scripts, and template. Check relative links and Mermaid syntax. Verify Dash's inclusion in both domains, its single appearance in All, and Mobility's absence from Combat category buttons. If implementation changes intentionally alter those behaviors, update the examples accordingly.
+Compare the document with the actual `library.json`, scripts, and template. Check relative links and Mermaid syntax. Until the classification fix is implemented, reproduce the documented mismatch: Dash appears in both domains, appears once in All, and Mobility is absent from Combat category buttons. These are observations of the current implementation, not requirements to preserve. When implementing the fix, verify that every entry belongs to exactly one domain, Mobility membership changes leave that domain unchanged, and All shows each entry once. Update the current-implementation descriptions, examples, diagrams, and compliance status accordingly.
 
 A clip-only replacement that does not change the documented structure or facts needs no documentation update. This document is not automatically generated, and CI does not enforce synchronization. The maintenance requirement is recorded in [AGENTS.md](../../AGENTS.md) and [CLAUDE.md](../../CLAUDE.md).
