@@ -366,6 +366,8 @@ function render(){
   // keyframe ruler
   const cc=counts(base('cat'),a=>a.cats);
   const categories=D.categories.filter(c=>categoryAvailable(c.id));
+  const domainEntries=A.filter(a=>st.dom==='all'||C[a.category].domain===st.dom);
+  $('#ver').textContent=`${domainEntries.length} entries · ${categories.length} categories`;
   setKeys(categories.map(c=>`<button class="kf" data-cat="${c.id}" aria-pressed="${st.cat===c.id}"><i></i>${esc(c.name)}</button>`).join(''));
   $('#cats').innerHTML=`<button class="fitem" data-cat="" aria-pressed="${!st.cat}"><span>All categories</span><span>${base('cat').length}</span></button>`+categories.map(c=>`<button class="fitem" data-cat="${c.id}" aria-pressed="${st.cat===c.id}"><span>${esc(c.name)}</span><span>${cc.get(c.id)||0}</span></button>`).join('');
   renderTags();
@@ -434,7 +436,6 @@ $('#tagSort').value=st.tagSort;
 $('#tagSort').addEventListener('change',e=>{st.tagSort=e.target.value;store('atlas.tagSort',st.tagSort);renderTags()});
 $('#q').addEventListener('input',e=>{st.q=e.target.value.trim().toLowerCase();render()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#sheet').hidden)closeSheet();if(e.key==='/'&&document.activeElement!==$('#q')){e.preventDefault();$('#q').focus()};const k=stepKey(e);if(k){st.cat=k.dataset.cat;render()}});
-$('#ver').textContent=`${A.length} entries · ${D.categories.length} categories`;
 async function vote(b){
   const t=b.dataset.t,want=+b.dataset.vote,cur=CS.mine[t]||0,value=cur===want?0:want;
   b.disabled=true;
