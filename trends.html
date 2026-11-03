@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script>try{const t=localStorage.getItem("library.theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Trends · Game Animation Library</title>
@@ -10,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
 <link rel="stylesheet" href="shared/ruler.css?v=1">
-<link rel="stylesheet" href="shared/appbar.css?v=1">
+<link rel="stylesheet" href="shared/appbar.css?v=2">
 <style>
 /* Same shell as move-explorer.html (sticky header, game bar on its own row, ruler), with cross-game charts below. */
 /* Same shell as template.html (sticky timeline header, filter rail, slide-over sheet), with a weapon icon index and frame tables. */
@@ -163,7 +164,7 @@ footer p{max-width:85ch;margin:0 0 8px}
 
 <header>
   <div class="wrap hrow approw">
-    <script src="shared/appbar.js?v=2" data-app="trends"></script>
+    <script src="shared/appbar.js?v=3" data-app="trends"></script>
   </div>
   <div class="wrap grow"><div class="domain" role="group" aria-label="Games compared" id="games"></div><span class="ver" id="ver"></span></div>
   <div class="ruler" data-step="Section"><div class="ticks"></div><div class="keys" tabindex="-1"><div class="kfs" id="keys"></div><span class="playhead" id="playhead" hidden></span></div></div>
