@@ -4,6 +4,26 @@
 
 A catalogue of 338 video game animations across 21 categories (combat and non-combat), each with a description, tags, example games, web references and GIF examples. `template.html` renders it as a browsable page (the "atlas").
 
+## Running a local server
+
+You can run the site locally in two ways. Run either one from the repo root; both serve Action Atlas, Move Explorer
+and Trends, and build Action Atlas from `template.html` + `library.json` on each request, so no build step is needed.
+
+| | Python: local review | Node.js: community server |
+|---|---|---|
+| Start | `python serve_local.py`, or double-click `serve_local.bat` on Windows | `npm start` (same as `node server.js`) |
+| Needs | Python 3 | Node.js 20+, no `npm install` needed |
+| Opens at | http://localhost:8765 (your browser opens by itself) | http://127.0.0.1:3000 |
+| Other port | `python serve_local.py 9000` | `PORT=9000` in `.env` |
+| Settings | None | None to start; `.env` for `/admin` (see [DEPLOY-XCLOUD.md](DEPLOY-XCLOUD.md)) |
+| Use it to | Mark bad GIFs for Claude to replace ([Local review](#local-review-mark-bad-gifs-with-)) | Try votes, suggestions and the `/admin` review page ([Community features](#community-features-xcloud--any-nodejs-host)) |
+| Action Atlas adds | **✕ Bad GIF**, **✕ Needs better GIFs** | ▲/▼ votes, suggest a GIF, propose an animation; **⚑ Mark for replacement** when signed in |
+| Saves to | `marks.json` in the repo (commit it so Claude can read it) | `~/library-data/db.json`, outside the repo |
+
+To only look at the pages, either one works. Both can mark a GIF for replacement, but each keeps its marks in its own
+store: a leftover from when the community backend was PHP. Merging the two is proposed in
+[WP-38](docs/tasks/local-servers-2026-11/wp-38-one-local-server.md).
+
 ## Rebuilding
 
 ```bash
