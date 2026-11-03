@@ -195,6 +195,10 @@ Category buttons are limited by **each category's own domain**. Cross-listed ent
 
 Cards show the primary category name. The detail sheet's Domain and Category also come from the primary category; additional categories appear as separate `Also in` buttons. Clicking one closes the sheet and selects that category. If the current domain conflicts with the target category's domain, it changes to All; other filters such as search, game, and tags remain active. Clicking a top-level domain button clears the category selection.
 
+The Tags heading includes a sort selector: **Alphabetical (A–Z)** (the default) or **Most used**. Alphabetical mode uses English name collation; Most used sorts by the tag counts described above, descending, with the same name order for ties. All tags matching the other filters are shown, without a display limit. Selected tags that no longer match those filters remain available for deselection with a count of zero and follow the same sorting rules. Changing the sort only reorders the tag buttons; it does not change the active filters or animation results. The existing sidebar scroll and mobile filter panel contain the list.
+
+The tag sort preference is saved in browser local storage under `atlas.tagSort` (`alphabetical` or `usage`) and survives Clear all and page reloads. Missing, invalid, or unreadable preferences default to alphabetical order; sorting still works when storage is unavailable.
+
 Category selection itself is not stored in the URL. Current hash routes handle entry details and submission/proposal screens.
 
 ## 6. Mobility example and access paths

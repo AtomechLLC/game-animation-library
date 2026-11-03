@@ -50,6 +50,10 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var
 .shell{display:grid;grid-template-columns:240px minmax(0,1fr);gap:24px;padding-block:20px}
 aside{position:sticky;top:120px;align-self:start;max-height:calc(100vh - 140px);overflow:auto;display:grid;gap:20px;padding-right:4px}
 aside h2{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px;font-weight:600}
+.tag-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}
+.tag-heading h2{margin:0}
+.tag-heading select{min-width:0;max-width:100%;font:11px var(--mono);color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:5px 4px;cursor:pointer}
+.tag-heading select:focus-visible{outline:2px solid var(--key-ink);outline-offset:2px}
 .flist{display:grid;gap:1px}
 .fitem{display:flex;justify-content:space-between;gap:8px;border:0;background:transparent;text-align:left;padding:4px 8px;border-radius:4px;cursor:pointer;font-size:13px}
 .fitem:hover{background:var(--chip)}
@@ -187,7 +191,7 @@ footer{color:var(--muted);font-size:12px;padding-block:24px;border-top:1px solid
   <aside id="rail">
     <section><h2>Category</h2><div class="flist" id="cats"></div></section>
     <section><h2>Show</h2><div class="flist"><button class="fitem" id="gifOnly" aria-pressed="false"><span>Only entries with GIFs</span><span id="gifN"></span></button><button class="fitem" id="markOnly" aria-pressed="false" hidden><span>Only entries marked bad ✕</span><span id="markN"></span></button><button class="fitem" id="flagOnly" aria-pressed="false" hidden><span>Only flagged by downvotes</span><span id="flagN"></span></button><button class="fitem" id="needOnly" aria-pressed="false" hidden><span>Only entries needing replacement</span><span id="needN"></span></button></div></section>
-    <section><h2>Tags</h2><div class="chips" id="tags"></div></section>
+    <section><div class="tag-heading"><h2>Tags</h2><select id="tagSort" aria-label="Sort tags"><option value="alphabetical">Alphabetical (A–Z)</option><option value="usage">Most used</option></select></div><div class="chips" id="tags"></div></section>
     <section><h2>Example games</h2><div class="flist" id="games"></div></section>
   </aside>
   <main>
@@ -217,6 +221,7 @@ const D=JSON.parse(document.getElementById('data').textContent);
 const A=D.animations, C=Object.fromEntries(D.categories.map(c=>[c.id,c]));
 const code={};D.categories.forEach(c=>{let n=0;A.filter(a=>a.category===c.id).forEach(a=>{a.code=c.id.slice(0,3).toUpperCase()+'·'+String(++n).padStart(3,'0')})});
 const st={gif:false,mark:false,flag:false,need:false,q:'',dom:'all',cat:null,tags:new Set(),game:null};
+st.tagSort=store('atlas.tagSort')==='usage'?'usage':'alphabetical';
 // Modes: {api:"api"} turns on community voting and suggestions (server.js on xCloud);
 // {local:true} is the owner's workstation copy (serve_local.py) where entries and GIFs can be marked ✕ into marks.json.
 let CFG={};try{CFG=JSON.parse(document.getElementById('cfg').textContent)||{}}catch(e){}
@@ -344,15 +349,19 @@ const gameKey=g=>g.replace(/\s+(Glory Kill|Fatality|Blood Vial|Estus|Item Get|Bo
 A.forEach(a=>{a.gifs=a.gifs||[];a.cats=[a.category,...(a.also||[]).filter(c=>C[c])];a.gk=[...new Set(a.example_games.map(gameKey))];a.hay=(a.name+' '+a.description+' '+a.subcategory+' '+a.tags.join(' ')+' '+a.example_games.join(' ')+' '+a.cats.map(c=>C[c].name).join(' ')).toLowerCase()});
 function base(skip){return A.filter(a=>(st.dom==='all'||C[a.category].domain===st.dom)&&(skip==='cat'||!st.cat||a.cats.includes(st.cat))&&(skip==='game'||!st.game||a.gk.includes(st.game))&&(skip==='tag'||[...st.tags].every(t=>a.tags.includes(t)))&&(!st.gif||a.gifs.length)&&(!st.mark||isMarked(a))&&(!st.flag||isFlagged(a))&&(!st.need||isNeedy(a))&&(!st.q||st.q.split(/\s+/).every(w=>a.hay.includes(w))))}
 function counts(list,f){const m=new Map();list.forEach(a=>f(a).forEach(k=>m.set(k,(m.get(k)||0)+1)));return m}
+function renderTags(){
+  const tc=counts(base('tag'),a=>a.tags);
+  st.tags.forEach(t=>{if(!tc.has(t))tc.set(t,0)});
+  const sorted=[...tc].sort((x,y)=>(st.tagSort==='usage'?y[1]-x[1]:0)||x[0].localeCompare(y[0],'en'));
+  $('#tags').innerHTML=sorted.map(([t])=>`<button class="chip" data-tag="${esc(t)}" aria-pressed="${st.tags.has(t)}">${esc(t)}</button>`).join('');
+}
 function render(){
   const list=base();
   // keyframe ruler
   const cc=counts(base('cat'),a=>a.cats);
   setKeys(D.categories.filter(c=>st.dom==='all'||c.domain===st.dom).map(c=>`<button class="kf" data-cat="${c.id}" aria-pressed="${st.cat===c.id}"><i></i>${esc(c.name)}</button>`).join(''));
   $('#cats').innerHTML=`<button class="fitem" data-cat="" aria-pressed="${!st.cat}"><span>All categories</span><span>${base('cat').length}</span></button>`+D.categories.filter(c=>st.dom==='all'||c.domain===st.dom).map(c=>`<button class="fitem" data-cat="${c.id}" aria-pressed="${st.cat===c.id}"><span>${esc(c.name)}</span><span>${cc.get(c.id)||0}</span></button>`).join('');
-  const tc=[...counts(base('tag'),a=>a.tags)].sort((x,y)=>y[1]-x[1]||x[0].localeCompare(y[0])).slice(0,48);
-  st.tags.forEach(t=>{if(!tc.find(x=>x[0]===t))tc.unshift([t,0])});
-  $('#tags').innerHTML=tc.map(([t,n])=>`<button class="chip" data-tag="${esc(t)}" aria-pressed="${st.tags.has(t)}">${esc(t)}</button>`).join('');
+  renderTags();
   const gc=[...counts(base('game'),a=>a.gk)].sort((x,y)=>y[1]-x[1]||x[0].localeCompare(y[0])).slice(0,30);
   $('#games').innerHTML=gc.map(([g,n])=>`<button class="fitem" data-game="${esc(g)}" aria-pressed="${st.game===g}"><span>${esc(g)}</span><span>${n}</span></button>`).join('');
   const c=st.cat&&C[st.cat];
@@ -413,6 +422,8 @@ document.addEventListener('click',e=>{
   if(t.id==='railBtn'){const r=$('#rail');r.classList.toggle('open');t.setAttribute('aria-expanded',r.classList.contains('open'))}
 });
 $('#scrim').onclick=closeSheet;
+$('#tagSort').value=st.tagSort;
+$('#tagSort').addEventListener('change',e=>{st.tagSort=e.target.value;store('atlas.tagSort',st.tagSort);renderTags()});
 $('#q').addEventListener('input',e=>{st.q=e.target.value.trim().toLowerCase();render()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#sheet').hidden)closeSheet();if(e.key==='/'&&document.activeElement!==$('#q')){e.preventDefault();$('#q').focus()};const k=stepKey(e);if(k){st.cat=k.dataset.cat;render()}});
 $('#ver').textContent=`${A.length} entries · ${D.categories.length} categories`;
