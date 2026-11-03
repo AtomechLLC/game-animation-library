@@ -220,7 +220,7 @@ footer{color:var(--muted);font-size:12px;padding-block:24px;border-top:1px solid
 const D=JSON.parse(document.getElementById('data').textContent);
 const A=D.animations, C=Object.fromEntries(D.categories.map(c=>[c.id,c]));
 const code={};D.categories.forEach(c=>{let n=0;A.filter(a=>a.category===c.id).forEach(a=>{a.code=c.id.slice(0,3).toUpperCase()+'·'+String(++n).padStart(3,'0')})});
-const st={gif:false,mark:false,flag:false,need:false,q:'',dom:'all',cat:null,tags:new Set(),game:null};
+const st={gif:false,mark:false,flag:false,need:false,q:'',dom:'all',cat:null,tags:new Set(),game:null,tagsExpanded:false};
 st.tagSort=store('atlas.tagSort')==='usage'?'usage':'alphabetical';
 // Modes: {api:"api"} turns on community voting and suggestions (server.js on xCloud);
 // {local:true} is the owner's workstation copy (serve_local.py) where entries and GIFs can be marked ✕ into marks.json.
@@ -353,7 +353,8 @@ function renderTags(){
   const tc=counts(base('tag'),a=>a.tags);
   st.tags.forEach(t=>{if(!tc.has(t))tc.set(t,0)});
   const sorted=[...tc].sort((x,y)=>(st.tagSort==='usage'?y[1]-x[1]:0)||x[0].localeCompare(y[0],'en'));
-  $('#tags').innerHTML=sorted.map(([t])=>`<button class="chip" data-tag="${esc(t)}" aria-pressed="${st.tags.has(t)}">${esc(t)}</button>`).join('');
+  const visible=st.tagsExpanded?sorted:sorted.slice(0,48);
+  $('#tags').innerHTML=visible.map(([t])=>`<button class="chip" data-tag="${esc(t)}" aria-pressed="${st.tags.has(t)}">${esc(t)}</button>`).join('')+(!st.tagsExpanded&&sorted.length>48?'<button class="chip" id="showAllTags" aria-label="Show all tags">...</button>':'');
 }
 function render(){
   const list=base();
@@ -404,6 +405,7 @@ function openSheet(id,push=true){
 function closeSheet(){$('#sheet').hidden=true;$('#scrim').hidden=true;try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}}
 document.addEventListener('click',e=>{
   const t=e.target.closest('button,a');if(!t)return;
+  if(t.id==='showAllTags'){st.tagsExpanded=true;renderTags();$('#tags').querySelectorAll('[data-tag]')[48]?.focus();return}
   if(t.dataset.vote){vote(t);return}
   if(t.dataset.sugclose){$('#sugSlot')?$('#sugSlot').innerHTML='':closeSheet();return}
   if(t.dataset.mark!==undefined){toggleMark(t.dataset.mark,t.dataset.gif);return}
