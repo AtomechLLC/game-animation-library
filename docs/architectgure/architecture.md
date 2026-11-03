@@ -11,11 +11,11 @@
 
 For example, **Forward / Back Dash belongs to Combat and can also appear in Mobility. It must not appear under Non-combat merely because it belongs to Mobility.**
 
-**Implementation status: not yet compliant.** The current filter derives an entry's domains from all its category memberships, and Mobility is assigned to Non-combat. This makes Forward / Back Dash appear in both domain filters. The implementation must be brought into line with the principles above; the data model and migration approach have not yet been selected.
+**Implementation status: compliant.** Domain filtering and detail display both use the primary category's domain. Additional category memberships affect category discovery, not domain membership. No data migration or per-animation domain field is required.
 
 ## Reading this document
 
-The principles above are the agreed classification requirements. Sections 1–6 describe the **current implementation**, including its known divergence from those requirements; their examples and Mermaid diagrams do not represent the intended corrected behavior. This document does not infer Xelnath's intentions. When the documented structure or behavior changes, **update the prose, examples, and Mermaid diagrams in the same change.**
+The principles above are the agreed classification requirements. Sections 1–6 describe the current implementation. This document does not infer Xelnath's intentions. When the documented structure or behavior changes, **update the prose, examples, and Mermaid diagrams in the same change.**
 
 Initial baseline: 2026-11-03, commit `38f508f`. Counts below reflect `library.json` at that baseline; keep them current when the corresponding data changes.
 
@@ -59,7 +59,7 @@ flowchart LR
 | Animation `tags` | An array of strings, filtered independently of category and domain |
 | Other animation fields | `name`, `description`, `example_games`, `search_query`, `references`, `gifs`, and related metadata |
 
-Animations do not store their own `domain`. `All` is a UI filter state, not a stored domain. Cross-listing with `also` neither copies the entry nor changes its ID. Changing the primary category or name and rebuilding the index can change the ID, so existing links and ID-based clip mappings must also be checked.
+Animations do not store their own `domain`; their primary category supplies the single domain used by filters and detail display. `All` is a UI filter state, not a stored domain. Cross-listing with `also` neither copies the entry nor changes its ID. Changing the primary category or name and rebuilding the index can change the ID, so existing links and ID-based clip mappings must also be checked.
 
 This example contains only the relevant classification fields from the actual Dash entry:
 
@@ -160,7 +160,7 @@ On load, the template creates `C`, a lookup table indexed by category ID, and co
 a.cats = [a.category, ...(a.also || []).filter(c => C[c])];
 
 // The domain and category conditions from base(), shown separately.
-const domainMatches = st.dom === 'all' || a.cats.some(c => C[c].domain === st.dom);
+const domainMatches = st.dom === 'all' || C[a.category].domain === st.dom;
 const categoryMatches = !st.cat || a.cats.includes(st.cat);
 ```
 
@@ -171,7 +171,7 @@ flowchart TD
     A["Library animation entry"] --> C["Combine category and valid also IDs into cats"]
     C --> D{"Is domain All?"}
     D -->|Yes| K{"No category selected, or selected ID is in cats?"}
-    D -->|No| M{"Does any category in cats have the selected domain?"}
+    D -->|No| M{"Does the primary category have the selected domain?"}
     M -->|Yes| K
     M -->|No| H["Exclude from results"]
     K -->|No| H
@@ -182,7 +182,7 @@ flowchart TD
 
 | Filter | Current matching rule |
 |---|---|
-| Domain | `all` imposes no domain restriction; otherwise any category membership with that domain is enough |
+| Domain | `all` imposes no domain restriction; otherwise the primary category must have the selected domain |
 | Category | The selected ID must appear in `cats` |
 | Tags | The entry must contain every selected tag |
 | Example games | The selected game must appear in `gk`, derived from example game names using `gameKey` normalization |
@@ -213,17 +213,17 @@ Mobility was added in `3c8dd5e` and merged in `48ffc78`. Existing entries retain
 
 The eight new entries are Grappling Hook Pull, Recovery Move (Up Special), Jetpack / Hover Boost, Triple Jump / Long Jump, Rail Grind, Super Dash / Charged Dash, Ledge Shimmy / Wall Sidle, and Skydive / Wingsuit.
 
-The main access path is **Action Atlas > All or Non-combat > Category: Mobility & Movement > entry card**. On narrow screens, Filters opens the category list. The top category ruler, a `mobility` search, and an existing entry's `Also in` button provide other entry points. With no other filters, the category shows 28 entries.
+The main access path is **Action Atlas > All or Non-combat > Category: Mobility & Movement > entry card**. On narrow screens, Filters opens the category list. The top category ruler, a `mobility` search, and an existing entry's `Also in` button provide other entry points. With All selected and no other filters, the category shows 28 entries. Under Non-combat, it shows 13; the 15 Combat entries are excluded.
 
 | Where Dash is viewed | Result |
 |---|---|
 | All | The original Dash entry appears once |
 | Combat | Included through Defense's domain |
-| Non-combat | Included through Mobility's domain |
-| Mobility & Movement | Included through `also` |
+| Non-combat | Excluded because the primary category is Combat |
+| Mobility & Movement | Included through `also` when All is selected; excluded under Non-combat |
 | Dash card and detail sheet | Primary category remains Defense & Evasion; the detail sheet adds Dodge and reports Domain as Combat |
 
-**Known violation of the classification principles:** in the current implementation, Combat and Non-combat are not mutually exclusive sets of entries. Each category has one domain, but an entry can belong to categories from both domains. The Mobility category button itself is hidden when Combat is selected.
+Combat and Non-combat are mutually exclusive sets of entries: 220 Combat and 118 Non-combat entries form the 338-entry All result. Cross-listing can span categories from both domains without changing an entry's primary domain. The Mobility category button itself remains hidden when Combat is selected; use All to browse the complete Mobility collection.
 
 Mobility does not automatically collect every movement animation. Only explicit primary or additional memberships include an entry. For example, Jump and Crouch Walk are included, whereas Run Cycle and swimming entries currently are not. Its subcategories mix spatial labels such as Air/Ground with movement methods such as Dash/Jump/Grapple, and the page displays them in a single card list.
 
@@ -235,6 +235,6 @@ Update this document in the same change when modifying any of the following:
 - Domain, category, subcategory, tag, or search behavior; classification display or access paths.
 - Data generation, merging, clip enrichment, page delivery, or data facts reflected in the tables, examples, and counts.
 
-Compare the document with the actual `library.json`, scripts, and template. Check relative links and Mermaid syntax. Until the classification fix is implemented, reproduce the documented mismatch: Dash appears in both domains, appears once in All, and Mobility is absent from Combat category buttons. These are observations of the current implementation, not requirements to preserve. When implementing the fix, verify that every entry belongs to exactly one domain, Mobility membership changes leave that domain unchanged, and All shows each entry once. Update the current-implementation descriptions, examples, diagrams, and compliance status accordingly.
+Compare the document with the actual `library.json`, scripts, and template. Check relative links and Mermaid syntax. Verify that Combat and Non-combat results are disjoint and their union equals All, with each entry appearing once. Forward / Back Dash must appear under Combat and All but not Non-combat. Mobility shows 28 entries under All and 13 under Non-combat. Adding or removing additional Mobility membership must not change domain results. Check search combinations and agreement with the detail sheet's domain. Keep category visibility and selection behavior unchanged unless explicitly redesigned.
 
 A clip-only replacement that does not change the documented structure or facts needs no documentation update. This document is not automatically generated, and CI does not enforce synchronization. The maintenance requirement is recorded in [AGENTS.md](../../AGENTS.md) and [CLAUDE.md](../../CLAUDE.md).
