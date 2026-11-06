@@ -139,6 +139,14 @@
    "file": "coiled-dawn.webp",
    "source": "Assets/armaments/root/oneHanded/wakizashis/coiledDawn/coiledDawn.asset"
   },
+  "Copper Shovel": {
+   "file": "copper-shovel.webp",
+   "source": "Assets/quantumAssetDatabase/entities/items/tools/shovels/copperShovel.asset"
+  },
+  "Copper Woodcutter's Axe": {
+   "file": "copper-woodcutter-s-axe.webp",
+   "source": "Assets/quantumAssetDatabase/entities/items/tools/woodcuttersAxes/copperWoodcuttersAxe.asset"
+  },
   "Coral Piercer": {
    "file": "coral-piercer.webp",
    "source": "Assets/armaments/root/oneHanded/spears/coralPiercer/coralPiercer.asset"
@@ -323,6 +331,10 @@
    "file": "icebreaker.webp",
    "source": "Assets/armaments/root/twoHanded/greatSwords/icebreaker/icebreaker.asset"
   },
+  "Iron Pickaxe": {
+   "file": "iron-pickaxe.webp",
+   "source": "Assets/quantumAssetDatabase/entities/items/tools/pickaxes/ironPickaxe.asset"
+  },
   "Ironstud Interrogators": {
    "file": "ironstud-interrogators.webp",
    "source": "Assets/armaments/root/dualWield/gauntlets/ironstudInterrogators/ironstudInterrogators.asset"
@@ -414,6 +426,10 @@
   "Pig Sticker": {
    "file": "pig-sticker.webp",
    "source": "Assets/armaments/root/oneHanded/rapiers/pigSticker/pigSticker.asset"
+  },
+  "Pine Fishing Rod": {
+   "file": "pine-fishing-rod.webp",
+   "source": "Assets/quantumAssetDatabase/entities/items/tools/fishingRods/pineFishingRod.asset"
   },
   "Pinwheel Staff": {
    "file": "pinwheel-staff.webp",

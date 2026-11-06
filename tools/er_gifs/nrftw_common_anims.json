@@ -398,5 +398,376 @@
   "id": "hero-ropeGetOnTopLeft",
   "label": "Rope get on (top)",
   "want": "rope climb"
+ },
+ {
+  "id": "hero-pickAxeA",
+  "label": "Mine ore (strike A)",
+  "want": "mine / chop",
+  "type": "mining",
+  "tool": "Iron Pickaxe"
+ },
+ {
+  "id": "hero-pickAxeB",
+  "label": "Mine ore (strike B)",
+  "want": "mine / chop",
+  "type": "mining",
+  "tool": "Iron Pickaxe"
+ },
+ {
+  "id": "hero-pickAxeC",
+  "label": "Mine ore (strike C)",
+  "want": "mine / chop",
+  "type": "mining",
+  "tool": "Iron Pickaxe"
+ },
+ {
+  "id": "hero-pickAxeToolBreak",
+  "label": "Tool breaks mid-swing",
+  "want": "mine / chop",
+  "type": "mining",
+  "tool": "Iron Pickaxe"
+ },
+ {
+  "id": "hero-chopTreeA",
+  "label": "Chop tree (strike A)",
+  "want": "mine / chop",
+  "type": "woodcutting",
+  "tool": "Copper Woodcutter's Axe"
+ },
+ {
+  "id": "hero-chopTreeB",
+  "label": "Chop tree (strike B)",
+  "want": "mine / chop",
+  "type": "woodcutting",
+  "tool": "Copper Woodcutter's Axe"
+ },
+ {
+  "id": "hero-chopTreeFinisher",
+  "label": "Chop tree (finishing strike)",
+  "want": "mine / chop",
+  "type": "woodcutting",
+  "tool": "Copper Woodcutter's Axe"
+ },
+ {
+  "id": "hero-chopLog",
+  "label": "Chop log (NPC, on the player rig)",
+  "want": "mine / chop",
+  "type": "woodcutting",
+  "tool": "Copper Woodcutter's Axe"
+ },
+ {
+  "id": "hero-chopLogIdle",
+  "label": "Chop log idle (NPC, on the player rig)",
+  "want": "mine / chop",
+  "type": "woodcutting",
+  "tool": "Copper Woodcutter's Axe"
+ },
+ {
+  "id": "hero-poleCast",
+  "label": "Fishing cast",
+  "want": "fishing",
+  "type": "fishing",
+  "tool": "Pine Fishing Rod"
+ },
+ {
+  "id": "hero-poleIdle",
+  "label": "Fishing idle (waiting for a bite)",
+  "want": "fishing",
+  "type": "fishing",
+  "tool": "Pine Fishing Rod"
+ },
+ {
+  "id": "hero-poleIdletoReel",
+  "label": "Fishing bite (idle to reel)",
+  "want": "fishing",
+  "type": "fishing",
+  "tool": "Pine Fishing Rod"
+ },
+ {
+  "id": "hero-poleReeling",
+  "label": "Fishing reel (loop)",
+  "want": "fishing",
+  "type": "fishing",
+  "tool": "Pine Fishing Rod"
+ },
+ {
+  "id": "hero-poleReelPullQuick",
+  "label": "Fishing catch (quick pull)",
+  "want": "fishing",
+  "type": "fishing",
+  "tool": "Pine Fishing Rod"
+ },
+ {
+  "id": "hero-poleReelFail",
+  "label": "Fishing fail (fish gets away)",
+  "want": "fishing",
+  "type": "fishing",
+  "tool": "Pine Fishing Rod"
+ },
+ {
+  "id": "hero-digAltA",
+  "label": "Dig (strike A)",
+  "want": "gather / harvest",
+  "type": "digging",
+  "tool": "Copper Shovel"
+ },
+ {
+  "id": "hero-digAltB",
+  "label": "Dig (strike B)",
+  "want": "gather / harvest",
+  "type": "digging",
+  "tool": "Copper Shovel"
+ },
+ {
+  "id": "hero-digA",
+  "label": "Dig (short)",
+  "want": "gather / harvest",
+  "type": "digging",
+  "tool": "Copper Shovel"
+ },
+ {
+  "id": "digging-openEnter",
+  "label": "Dig up and open",
+  "want": "gather / harvest",
+  "type": "digging",
+  "tool": "Copper Shovel"
+ },
+ {
+  "id": "hero-harvestPotato",
+  "label": "Harvest crop (potato, pumpkin, tomato)",
+  "want": "gather / harvest",
+  "type": "harvesting",
+  "tool": "Bare hands"
+ },
+ {
+  "id": "playerPickupBlendspace-groundLootFastStraightSword",
+  "label": "Quick pickup from the ground (one-handed stance)",
+  "want": "gather / harvest",
+  "type": "harvesting",
+  "tool": "Bare hands"
+ },
+ {
+  "id": "playerPickupBlendspace-groundLootFastGreatSword",
+  "label": "Quick pickup from the ground (greatsword stance)",
+  "want": "gather / harvest",
+  "type": "harvesting",
+  "tool": "Bare hands"
+ },
+ {
+  "id": "playerPickupBlendspace-groundLootFastGreatHammer",
+  "label": "Quick pickup from the ground (great hammer stance)",
+  "want": "gather / harvest",
+  "type": "harvesting",
+  "tool": "Bare hands"
+ },
+ {
+  "id": "playerPickupBlendspace-groundLootFastBow",
+  "label": "Quick pickup from the ground (bow stance)",
+  "want": "gather / harvest",
+  "type": "harvesting",
+  "tool": "Bare hands"
+ },
+ {
+  "id": "playerPickupBlendspace-groundLootFast2hStaff",
+  "label": "Quick pickup from the ground (staff stance)",
+  "want": "gather / harvest",
+  "type": "harvesting",
+  "tool": "Bare hands"
+ },
+ {
+  "id": "hero-wall",
+  "label": "Quick pickup from a wall",
+  "want": "gather / harvest",
+  "type": "harvesting",
+  "tool": "Bare hands"
+ },
+ {
+  "id": "heroLootPickupFastData-groundFastEnter",
+  "label": "Fast pickup (reach down)",
+  "want": "gather / harvest",
+  "type": "harvesting",
+  "tool": "Bare hands"
+ },
+ {
+  "id": "heroLootPickupFastData-groundFastLoop",
+  "label": "Fast pickup (hold)",
+  "want": "gather / harvest",
+  "type": "harvesting",
+  "tool": "Bare hands"
+ },
+ {
+  "id": "heroLootPickupFastData-groundFastExit",
+  "label": "Fast pickup (stand up)",
+  "want": "gather / harvest",
+  "type": "harvesting",
+  "tool": "Bare hands"
+ },
+ {
+  "id": "lootShinyPickupData-groundEnter",
+  "label": "Loot a shiny (reach down)",
+  "want": "gather / harvest",
+  "type": "harvesting",
+  "tool": "Bare hands"
+ },
+ {
+  "id": "lootShinyPickupData-groundLoop",
+  "label": "Loot a shiny (hold)",
+  "want": "gather / harvest",
+  "type": "harvesting",
+  "tool": "Bare hands"
+ },
+ {
+  "id": "lootShinyPickupData-groundExit",
+  "label": "Loot a shiny (stand up)",
+  "want": "gather / harvest",
+  "type": "harvesting",
+  "tool": "Bare hands"
+ },
+ {
+  "id": "hero-ground",
+  "label": "Loot from the ground (whole motion)",
+  "want": "gather / harvest",
+  "type": "harvesting",
+  "tool": "Bare hands"
+ },
+ {
+  "id": "hero-pickup",
+  "label": "Pick up an item",
+  "want": "gather / harvest",
+  "type": "harvesting",
+  "tool": "Bare hands"
+ },
+ {
+  "id": "lootChestOpenData-openEnter",
+  "label": "Open a chest",
+  "want": "gather / harvest",
+  "type": "looting",
+  "tool": "Bare hands"
+ },
+ {
+  "id": "lootChestGrabData-grabEnter",
+  "label": "Chest loot (reach in)",
+  "want": "gather / harvest",
+  "type": "looting",
+  "tool": "Bare hands"
+ },
+ {
+  "id": "lootChestOpenData-grabLoop",
+  "label": "Chest loot (rummage loop)",
+  "want": "gather / harvest",
+  "type": "looting",
+  "tool": "Bare hands"
+ },
+ {
+  "id": "lootChestGrabData-grabExit",
+  "label": "Chest loot (step back)",
+  "want": "gather / harvest",
+  "type": "looting",
+  "tool": "Bare hands"
+ },
+ {
+  "id": "lootSmallChestOpenData-openEnter",
+  "label": "Open a small chest",
+  "want": "gather / harvest",
+  "type": "looting",
+  "tool": "Bare hands"
+ },
+ {
+  "id": "lootSmallChestGrabData-grabEnter",
+  "label": "Small chest loot (reach in)",
+  "want": "gather / harvest",
+  "type": "looting",
+  "tool": "Bare hands"
+ },
+ {
+  "id": "lootSmallChestGrabData-grabExit",
+  "label": "Small chest loot (step back)",
+  "want": "gather / harvest",
+  "type": "looting",
+  "tool": "Bare hands"
+ },
+ {
+  "id": "hero-hoeActiveIdleIn",
+  "label": "Hoe (raise)",
+  "want": "gather / harvest",
+  "type": "farming",
+  "tool": "Pine Hoe"
+ },
+ {
+  "id": "hero-hoeActiveIdle",
+  "label": "Hoe (ready idle)",
+  "want": "gather / harvest",
+  "type": "farming",
+  "tool": "Pine Hoe"
+ },
+ {
+  "id": "hero-hoeLongLoop",
+  "label": "Hoe (till loop)",
+  "want": "gather / harvest",
+  "type": "farming",
+  "tool": "Pine Hoe"
+ },
+ {
+  "id": "hero-hoeActiveRotate90Left",
+  "label": "Hoe (turn 90° left)",
+  "want": "gather / harvest",
+  "type": "farming",
+  "tool": "Pine Hoe"
+ },
+ {
+  "id": "hero-hoeActiveRotate90Right",
+  "label": "Hoe (turn 90° right)",
+  "want": "gather / harvest",
+  "type": "farming",
+  "tool": "Pine Hoe"
+ },
+ {
+  "id": "hero-hoeActiveRotate180Left",
+  "label": "Hoe (turn 180°)",
+  "want": "gather / harvest",
+  "type": "farming",
+  "tool": "Pine Hoe"
+ },
+ {
+  "id": "hero-hoeActiveIdleOut",
+  "label": "Hoe (lower)",
+  "want": "gather / harvest",
+  "type": "farming",
+  "tool": "Pine Hoe"
+ },
+ {
+  "id": "hero-wateringCanLongStart",
+  "label": "Watering can (start pouring)",
+  "want": "gather / harvest",
+  "type": "farming",
+  "tool": "Copper Watering Can"
+ },
+ {
+  "id": "hero-wateringCanLongLoop",
+  "label": "Watering can (pour loop)",
+  "want": "gather / harvest",
+  "type": "farming",
+  "tool": "Copper Watering Can"
+ },
+ {
+  "id": "hero-wateringCanLongEnd",
+  "label": "Watering can (stop pouring)",
+  "want": "gather / harvest",
+  "type": "farming",
+  "tool": "Copper Watering Can"
+ },
+ {
+  "id": "hero-wateringCanFill",
+  "label": "Refill watering can",
+  "want": "gather / harvest",
+  "type": "farming",
+  "tool": "Copper Watering Can"
+ },
+ {
+  "id": "hero-wateringCanFillFromWell",
+  "label": "Refill watering can at a well",
+  "want": "gather / harvest",
+  "type": "farming",
+  "tool": "Copper Watering Can"
  }
 ]

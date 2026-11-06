@@ -1,6 +1,8 @@
 """Exports No Rest for the Wicked's common (non-attack) player animations for the 3D preview and the GIF renders:
-quicksteps, rolls, sneaking, swimming, mantles, ladders, wall and rope climbing. Listed in
-tools/er_gifs/nrftw_common_anims.json as [{"id": "oneHanded-quickStepL", "label": "Quickstep left", "want": ...}, ...].
+quicksteps, rolls, sneaking, swimming, mantles, ladders, wall and rope climbing, and the gathering clips (mining,
+woodcutting, fishing, digging, harvesting, looting, farming). Listed in tools/er_gifs/nrftw_common_anims.json as
+[{"id": "oneHanded-quickStepL", "label": "Quickstep left", "want": ...}, ...]; gathering entries also have a "type" (their
+move type) and a "tool" (their preview model).
 
     python tools/frame_data/export_nrftw_common.py "Z:/SteamLibrary/steamapps/common/NoRestForTheWicked"
     python tools/frame_data/export_nrftw_common.py "<install>" --find quickStepL stroke     # list candidates
@@ -9,8 +11,13 @@ Run export_nrftw_models.py first; this adds to its output in frame-data/models/n
 
     anim/<id>.bin               each clip baked the way export_nrftw_models bakes an action (60 fps, FDA2, poses every
                                 2nd frame, root_JNT's translation as root motion, the same bones)
-    moves/common.json           the "Common" class: {id: {frames, anim, weapon, hits: []}}, no boxes
-    models.json                 gains classes.Common; nothing else in it changes
+    moves/common.json           the "Common" class: {id: {frames, anim, weapon, hits: []}}, no boxes; every listed clip
+    moves/gathering.json        the "Gathering" class in the same form: the entries with a "type"
+    weapon-<tool>.glb           each tool's view prefab (nrftw_gathering.TOOLS) and an empty one for bare hands
+    models.json                 gains classes.Common, classes.gathering and the tools; nothing else in it changes
+
+and adds the Gathering class to frame-data/no-rest-for-the-wicked.json (nrftw_gathering.merge), the only class of these
+that Move Explorer lists.
 
 These animations aren't Quantum actions: the hero's view plays them through Moon's own animator. Each is a
 ClipAnimation MonoBehaviour (its Clip is the AnimationClip) of playerMoonAnimatorDefinition, reached from a weapon
@@ -21,6 +28,7 @@ name alone is unique.
 """
 import collections, json, os, sys
 import export_nrftw_models as M
+import nrftw_gathering as G
 
 LIST = os.path.join(M.ROOT, 'tools', 'er_gifs', 'nrftw_common_anims.json')
 WEAPON = 'Claymore'
@@ -115,6 +123,13 @@ def main(game_dir, find=None):
     path = os.path.join(M.OUT, 'models.json')
     manifest = json.load(open(path, encoding='utf-8'))
     assert WEAPON in manifest['weapons'], WEAPON
+    tsize = 0
+    for name, stem in [(G.BARE_HANDS, None)] + list(G.TOOLS.items()):
+        glb = ex.no_weapon() if stem is None else ex.tool(f'{G.TOOL_ROOT}{stem}View.prefab')
+        assert glb is not None, name
+        file = f'weapon-{M.slug(name)}.glb'
+        open(os.path.join(M.OUT, file), 'wb').write(glb); tsize += len(glb)
+        manifest['weapons'][name] = {'file': file}
     moves, missing, size = {}, [], 0
     for w in wanted:
         aid = w['id']
@@ -135,13 +150,22 @@ def main(game_dir, find=None):
         frames, data = r
         open(os.path.join(M.OUT, 'anim', f'{aid}.bin'), 'wb').write(data)
         size += len(data)
-        moves[aid] = {'frames': frames, 'anim': aid, 'weapon': WEAPON, 'hits': []}
+        moves[aid] = {'frames': frames, 'anim': aid, 'weapon': w.get('tool', WEAPON), 'hits': []}
     with open(os.path.join(M.OUT, 'moves', 'common.json'), 'w', encoding='utf-8') as f:
         json.dump({'class': 'Common', 'moves': moves, 'boxes': {}}, f, ensure_ascii=False, separators=(',', ':'))
     manifest['classes']['Common'] = {'file': 'moves/common.json', 'weapon': WEAPON}
+    gathering = {w['id']: moves[w['id']] for w in wanted if w.get('type') and w['id'] in moves}
+    with open(G.MOVES, 'w', encoding='utf-8') as f:
+        json.dump({'class': G.CLASS, 'moves': gathering, 'boxes': {}}, f, ensure_ascii=False, separators=(',', ':'))
+    manifest['classes'][G.CLASS] = {'file': 'moves/gathering.json', 'weapon': next(iter(G.TOOLS))}
     with open(path, 'w', encoding='utf-8') as f:
         json.dump(manifest, f, ensure_ascii=False, separators=(',', ':'))
-    print(f'{len(moves)} of {len(wanted)} animations, {size / 1e6:.1f} MB; missing: {", ".join(missing) or "none"}')
+    fd = os.path.join(M.ROOT, 'frame-data', 'no-rest-for-the-wicked.json')
+    data = json.load(open(fd, encoding='utf-8'))
+    n = G.merge(data)
+    with open(fd, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, separators=(',', ':'))
+    print(f'{len(moves)} of {len(wanted)} animations, {size / 1e6:.1f} MB; {n} in Gathering; tools {tsize / 1e6:.2f} MB; missing: {", ".join(missing) or "none"}')
 
 if __name__ == '__main__':
     if len(sys.argv) < 2: sys.exit(__doc__)

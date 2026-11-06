@@ -224,12 +224,27 @@ class Exporter:
         """glb of a weapon's view prefab: a node per weapon root (R, L), meshes under it with their local transforms."""
         addr = arm['ViewAssets'][0]['Address'] if arm.get('ViewAssets') else None
         go = addr and self.A.get('Assets/armaments/' + addr, 'GameObject')
-        if go is None: return None
+        return self.view(go, 'weaponRoot') if go is not None else None
+
+    def tool(self, prefab):
+        """glb of a gathering tool's view prefab (one root, toolRoot), shown in the hand like a weapon. The prefab also
+        holds parts switched off in game (an old mesh, the caught fish), which are left out."""
+        go = self.A.get(prefab, 'GameObject')
+        return self.view(go, 'toolRoot', active_only=True) if go is not None else None
+
+    def no_weapon(self):
+        """glb with nothing in it, the preview weapon of moves done with bare hands."""
+        g = Gltf(); g.j['asset']['generator'] = 'export_nrftw_models.py'
+        g.j['scenes'][0]['nodes'] = [g.node(name='weapon')]
+        return g.glb()
+
+    def view(self, go, root, active_only=False):
         g = Gltf(); g.j['asset']['generator'] = 'export_nrftw_models.py'
         top = g.node(name='weapon'); g.j['scenes'][0]['nodes'] = [top]
         textures = {}
         def add(tr, parent):
             go = tr.m_GameObject.read()
+            if active_only and not go.m_IsActive: return
             t, q, s = U.local_trs(tr)
             kw = {}
             name = go.m_Name
@@ -249,7 +264,7 @@ class Exporter:
             for smr in U.comps(go, 'SkinnedMeshRenderer'):
                 # bows and some spears and staves are rigged: shown rigid, in their bind pose
                 ms = [m.read() for m in smr.m_Materials if m.m_PathID]
-                if smr.m_Mesh.m_PathID and smr.m_Enabled and ms and not ms[0].m_Shader.read().m_ParsedForm.m_Name.endswith('baseSimple'):
+                if smr.m_Mesh.m_PathID and smr.m_Enabled and ms and (active_only or not ms[0].m_Shader.read().m_ParsedForm.m_Name.endswith('baseSimple')):
                     mats, mesh = ms, smr.m_Mesh.read()
             if mesh is not None:
                 mi, off, scale = add_mesh(g, U.mesh_data(mesh), U.albedo(mats[0]) if mats else None, mesh.m_Name,
@@ -259,7 +274,7 @@ class Exporter:
             for ch in tr.m_Children: add(ch.read(), n)
         for ch in U.transform(go).m_Children:
             c = ch.read()
-            if c.m_GameObject.read().m_Name.startswith('weaponRoot'): add(c, top)
+            if c.m_GameObject.read().m_Name.startswith(root): add(c, top)
         return g.glb()
 
     # -- animation --
@@ -425,7 +440,8 @@ def main(game_dir, only=None):
         item = g.path.get(arm['Weapons'][0]['Id']['Value']) if arm['Weapons'] else None
         if item: arms[g.english(item)] = arm
     filters = {f['Data']['Id']['Value']: f for f in ex.lut['ArmamentFilters']}
-    classes = [c for c in fd['classes'] if not only or c['id'] in only]
+    # Gathering has no armaments: export_nrftw_common.py adds it, its tools and the other non-attack clips
+    classes = [c for c in fd['classes'] if c['id'] != 'gathering' and (not only or c['id'] in only)]
     wsize = 0
     for c in classes:
         for name in c['weapons']:
