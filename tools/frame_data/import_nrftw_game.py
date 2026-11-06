@@ -24,6 +24,7 @@ Times are seconds in the simulation, which runs at 60 fps; frames here are 1-bas
 """
 import datetime, json, os, re, sys
 import nrftw_files as N
+import nrftw_gathering
 from nrftw_il2cpp import Metadata
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -295,6 +296,10 @@ if __name__ == '__main__':
     if not args: sys.exit(__doc__)
     imp = Importer(args[0])
     data = imp.build()
+    nrftw_gathering.merge(data)      # the Gathering class, baked by export_nrftw_common.py
+    for name, stem in nrftw_gathering.TOOLS.items():
+        item = nrftw_gathering.TOOL_ROOT + stem + '.asset'
+        if item in imp.g.guid: imp.items[name] = item
     with open(out, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, separators=(',', ':'))
     print('wrote', out, len(data['classes']), 'classes', len(data['moves']), 'moves')
