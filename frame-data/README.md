@@ -453,12 +453,23 @@ About 33 MB in all: 18 MB of animation for 558 actions (1,339 moves), 13 MB of w
 Reibach's Claws have no mesh yet), 1.2 MB of armor and the move files. Not covered yet: other armor sets (`EXPORT`), runes' projectiles and spawned areas
 (their active frames show, no shape), and cloth.
 
-`tools/frame_data/export_nrftw_common.py "<install>"` then adds the "Common" class (`moves/common.json`, 133 clips,
-2.8 MB): quicksteps, rolls, sneaking, swimming, mantles, ladder, wall and rope climbing, and the gathering clips below,
+`tools/frame_data/export_nrftw_common.py "<install>"` then adds the "Common" class (`moves/common.json`, 149 clips,
+2.9 MB): quicksteps, rolls, sneaking, swimming, mantles, ladder, wall and rope climbing, hit reactions, and the gathering
+clips below,
 listed in `tools/er_gifs/nrftw_common_anims.json`. They aren't Quantum actions but ClipAnimations of the hero's
 `playerMoonAnimatorDefinition`, found by weapon group (`oneHandedAnimationSet`...) or blend space; ids are
 `<context>-<name>`, or `hero-<name>` when the name alone is unique. Run it after `export_nrftw_models.py`, which rewrites
 `models.json`.
+
+The hit reactions are the player's own (16): the light hit blend space `hitReactLightBlendSpace`, driven by
+`hitReactionDirection` (front `hitReactLight`, left `hitReactLightL`, right `hitReactLightR`, back `backLight` in the
+one-handed `base` set; `frontLight`, `leftLight`, `rightLight`, `backLight` in the greatsword set), and the knockdown
+sequence (`knockdownFront`, `knockdownFallFront` while airborne, the `knockdownFrontIdle` loop on the ground,
+`knockdownFrontGetUp`, `knockdownFrontToRoll`), one-handed and greatsword. The player's other hit clips are additive
+layers (`additiveHitReactBlendSpace`'s `frontAdditive`..., and `frontMidAdditive`...) played over the current pose, which
+can't be baked on their own, so they are left out; no full-body medium or heavy hit for the player was found; `frontMid`,
+`frontheavy` and `frontStaggerOneHandShared` are on the player rig but played by humanoid enemies
+(`humanoid*HitReactionData`), so they are left out too.
 
 The same run writes the "Gathering" class (`moves/gathering.json`), the only one of these Move Explorer lists, 53 moves:
 mining 4, woodcutting 5, fishing 6, digging 4, harvesting and picking up 15, looting chests 7, farming 12 (entries with a

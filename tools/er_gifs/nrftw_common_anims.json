@@ -769,5 +769,85 @@
   "want": "gather / harvest",
   "type": "farming",
   "tool": "Copper Watering Can"
+ },
+ {
+  "id": "hero-hitReactLight",
+  "label": "Light hit reaction front (one-handed)",
+  "want": "directional hit reaction"
+ },
+ {
+  "id": "hero-hitReactLightL",
+  "label": "Light hit reaction left (one-handed)",
+  "want": "directional hit reaction"
+ },
+ {
+  "id": "hero-hitReactLightR",
+  "label": "Light hit reaction right (one-handed)",
+  "want": "directional hit reaction"
+ },
+ {
+  "id": "base-backLight",
+  "label": "Light hit reaction back (one-handed)",
+  "want": "directional hit reaction"
+ },
+ {
+  "id": "greatSwords-frontLight",
+  "label": "Light hit reaction front (greatsword)",
+  "want": "directional hit reaction"
+ },
+ {
+  "id": "greatSwords-leftLight",
+  "label": "Light hit reaction left (greatsword)",
+  "want": "directional hit reaction"
+ },
+ {
+  "id": "greatSwords-rightLight",
+  "label": "Light hit reaction right (greatsword)",
+  "want": "directional hit reaction"
+ },
+ {
+  "id": "greatSwords-backLight",
+  "label": "Light hit reaction back (greatsword)",
+  "want": "directional hit reaction"
+ },
+ {
+  "id": "base-knockdownFront",
+  "label": "Knockdown front (one-handed)",
+  "want": "knockdown"
+ },
+ {
+  "id": "hero-knockdownFallFront",
+  "label": "Knockdown while falling, front",
+  "want": "knockdown"
+ },
+ {
+  "id": "knockDownFrontIdleBlendSpace-knockdownFrontIdle",
+  "label": "Knocked down lying on the ground (one-handed)",
+  "want": "knockdown"
+ },
+ {
+  "id": "oneHandShared-knockdownFrontGetUp",
+  "label": "Get up from a knockdown (one-handed)",
+  "want": "get up"
+ },
+ {
+  "id": "hero-knockdownFrontToRoll",
+  "label": "Roll out of a knockdown",
+  "want": "get up"
+ },
+ {
+  "id": "greatSwords-knockdownFront",
+  "label": "Knockdown front (greatsword)",
+  "want": "knockdown"
+ },
+ {
+  "id": "greatSwords-knockdownFrontIdle",
+  "label": "Knocked down lying on the ground (greatsword)",
+  "want": "knockdown"
+ },
+ {
+  "id": "greatSwords-knockdownFrontGetUp",
+  "label": "Get up from a knockdown (greatsword)",
+  "want": "get up"
  }
 ]
