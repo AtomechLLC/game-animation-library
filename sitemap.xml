@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The site's canonical pages, for Google Search Console. The site root and frame-data.html are redirects, so they are not listed. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://atomechllc.github.io/game-animation-library/action-atlas.html</loc></url>
+  <url><loc>https://atomechllc.github.io/game-animation-library/move-explorer.html</loc></url>
+  <url><loc>https://atomechllc.github.io/game-animation-library/trends.html</loc></url>
+</urlset>

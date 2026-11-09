@@ -36,6 +36,9 @@ jobs:
         env:
           LIBRARY_API_URL: ${{ vars.LIBRARY_API_URL }}
         run: python3 build_page.py action-atlas.html
+      - name: Drop the unbuilt template
+        # template.html is only build input; published, Google sees it as a duplicate of action-atlas.html
+        run: rm template.html
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

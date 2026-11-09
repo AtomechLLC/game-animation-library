@@ -37,6 +37,11 @@ python merge.py
 
 On every push to `main`, `.github/workflows/static.yml` runs `python3 build_page.py action-atlas.html` (template.html + library.json) and publishes the repo root, so the site always matches the committed `library.json`. Run `python build_page.py` locally to preview `action-atlas.html`.
 
+For search engines, each app page carries a `<link rel="canonical">` to its github.io address, the redirect pages
+(`index.html`, `frame-data.html`) point their canonical at the app they open, and `sitemap.xml` lists only the three app
+pages. The workflow leaves `template.html` out of the published site. Add a page to `sitemap.xml` and give it a canonical
+when you add an app; submit `https://atomechllc.github.io/game-animation-library/sitemap.xml` in Google Search Console.
+
 `node tools/perf/baseline.mjs` measures the published site (page loads, interactions, the 3D viewer's idle cost,
 memory, deployment size) in an installed Chrome and writes a JSON file; `--base` points it at another copy and
 `--only` picks scenarios. The baseline and how to read it are in `docs/reports/performance-2026-10/baseline.md`.
