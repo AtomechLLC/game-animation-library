@@ -49,6 +49,9 @@ function serveFile(res, pathname, dir, types, maxAge) {
 }
 const serveGif = (res, p) => serveFile(res, p, 'gifs', TYPES, 604800);
 
+// The public address that canonical links, sitemap.xml and robots.txt name (keep them in step)
+const SITE_HOST = 'gameanimationlibrary.com';
+
 /**
  * Sent with every response (a response's own headers win). No frame-ancestors: teachers may embed the pages in course
  * material; /admin refuses framing itself. The scripts are inline or same-origin, so the policy only shuts off plugins, <base> and
@@ -66,9 +69,11 @@ const server = http.createServer(async (req, res) => {
     baseHeaders(req, res);
     const u = new URL(req.url, 'http://x');
     const p = u.pathname;
+    // One address for search engines: www. forwards to the bare domain the canonical links and sitemap.xml name
+    if (req.headers.host === 'www.' + SITE_HOST) return send(res, 301, '', { Location: `https://${SITE_HOST}${req.url}` });
     // Each app has a URL named after it. The site root opens Action Atlas; Move Explorer's old address (frame-data.html,
     // still linked from library entries and shared links) has moved for good. The browser keeps the #link across both
-    if (p === '/' || p === '/index.html' || p === '/index.php') return send(res, 302, '', { Location: '/action-atlas.html' + u.search });
+    if (p === '/' || p === '/index.html' || p === '/index.php') return send(res, 301, '', { Location: '/action-atlas.html' + u.search });
     if (p === '/frame-data' || p === '/frame-data.html') return send(res, 301, '', { Location: '/move-explorer.html' + u.search });
     if (p === '/action-atlas' || p === '/action-atlas.html') {
       return send(res, 200, renderPage(), { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache' });
@@ -84,6 +89,9 @@ const server = http.createServer(async (req, res) => {
     if (p.startsWith('/frame-data/')) return serveFile(res, p, 'frame-data', FRAME_TYPES, p.endsWith('.json') ? 0 : 3600);
     // code every app loads (the ruler); the pages link it with a version, so an hour of caching is safe
     if (p.startsWith('/shared/')) return serveFile(res, p, 'shared', SHARED_TYPES, 3600);
+    // sitemap.xml lists the three app pages; robots.txt points crawlers at it and away from the API and review page
+    if (p === '/sitemap.xml') return serveFile(res, '/sitemap.xml', '', { '.xml': 'application/xml; charset=utf-8' }, 3600);
+    if (p === '/robots.txt') return send(res, 200, `User-agent: *\nDisallow: /api\nDisallow: /admin\nSitemap: https://${SITE_HOST}/sitemap.xml\n`, { 'Content-Type': 'text/plain; charset=utf-8' });
     if (p === '/healthz') return send(res, 200, 'ok');
     send(res, 404, 'Not found');
   } catch (e) {
