@@ -195,7 +195,7 @@ body{display:flex;flex-direction:column;min-height:100dvh}
 .now b{font-family:var(--display);font-size:30px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1}
 .now small{font:500 10.5px var(--mono);color:var(--muted);text-transform:uppercase}
 .now .ph{border-radius:999px;padding:2px 9px;font-size:12px;font-weight:600;color:#1c1b19;background:var(--ph,var(--chip))}
-.now .tag{border-radius:999px;padding:2px 9px;font-size:12px;border:1px solid var(--line)}
+.now .tag{border-radius:999px;padding:2px 9px;font-size:12px;border:1px solid var(--line);color:var(--fg);font-family:var(--body);font-weight:400;line-height:1.5}
 .now .ph:empty,.now .tag:empty{display:none}
 details.sec{border-bottom:1px solid var(--line)}
 details.sec>summary{display:flex;align-items:center;gap:8px;padding:11px 12px;cursor:pointer;list-style:none;font-weight:600;font-size:14px}
@@ -222,6 +222,10 @@ details.sec:not([open])>summary::after{transform:rotate(-90deg)}
 .mv button[aria-current=true]{background:var(--chip);box-shadow:inset 3px 0 0 var(--key);font-weight:600}
 .mv button>span:first-child{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mv button i{font:normal 500 11px var(--mono);color:var(--muted)}
+.tag{flex:none;font:600 10.5px/1.5 var(--mono);border-radius:3px;padding:0 4px;border:1px solid var(--line);color:var(--muted)}
+.tag.ha{background:var(--f-armor);border-color:var(--f-armor);color:#fff}
+.tag.np{border-color:var(--combat);color:var(--combat)}
+.disp-h h2 .tag{display:inline;margin-left:8px;vertical-align:4px;font-size:12px}
 .mv .bar{position:relative;flex:1 0 100%;display:block}
 .mv .bar .strip{width:100%;height:7px;border-radius:2px}
 .mv .bar .strip .ar,.mv .bar .strip .ifr{height:2px}
@@ -315,6 +319,8 @@ function stripHtml(m,scale,lanes=true){
   m.iframes.forEach(([s,e])=>h+=`<span class="ifr" style="left:${pc(s-1)};width:${pc(Math.min(e,end)-s+1)}"></span>`);
   const cx=lanes?cancelLanes(m,scale,end):['',''];
   return `<div class="strip">${h}${cx[0]}</div>${cx[1]}`}
+// the table's badges: HA hyper armor, NP can't be parried, ×n hits
+const tags=m=>(m.armor.length?'<small class="tag ha" title="Hyper armor">HA</small>':'')+(m.parryable===false&&m.active.length?'<small class="tag np" title="Cannot be parried">NP</small>':'')+(m.hits>1?`<small class="tag" title="Hits">×${m.hits}</small>`:'');
 const moveEnd=m=>Math.max(m.total||0,m.cancels.dodge||0,lastActive(m));
 const PHASE={startup:['Startup','--f-start'],active:['Active','--f-active'],gap:['Between hits','--f-gap'],recovery:['Recovery','--f-rec'],free:['Can dodge','--f-free']};
 function phaseAt(m,f){
@@ -411,7 +417,7 @@ async function loadClass(my,move){
 async function show(m,clicked){
   CUR=m;writeHash();
   $('#dSrc').textContent=`${G.name} › ${CL[m.class].name} › ${T[m.type].name} · ${GR[m.grip]||m.grip}`;
-  $('#dName').textContent=$('#dName').title=m.name;
+  $('#dName').innerHTML=esc(m.name)+tags(m);$('#dName').title=m.name;
   renderInfo(clicked);
   const state=f=>{infoFrame(m,f);return frameState(m,f)};
   if(byClass())await VIEW.show(m,{strip:stripHtml(m,CM.moves[m.id].frames),state});
@@ -454,7 +460,7 @@ function renderInfo(clicked){
     let mv='',t=null;
     for(const x of MOVES){if(x.type!==t){t=x.type;mv+=`<h4>${esc(T[t].name)}</h4>`}
       const tip=`Startup ${x.startup??'—'} · active ${x.active.map(a=>a.join('–')).join(', ')||'—'} · recovery ${x.recovery??'—'} · total ${x.total??'—'}`;
-      mv+=`<button data-m="${esc(x.id)}" aria-current="${x===m}" title="${esc(tip)}"><span>${esc(x.name)}</span><i>${x.startup??'–'}f</i><span class="bar">${stripHtml(x,SCALE,false)}${x===m?'<b class="at"></b>':''}</span></button>`}
+      mv+=`<button data-m="${esc(x.id)}" aria-current="${x===m}" title="${esc(tip)}"><span>${esc(x.name)}</span>${tags(x)}<i>${x.startup??'–'}f</i><span class="bar">${stripHtml(x,SCALE,false)}${x===m?'<b class="at"></b>':''}</span></button>`}
     h+=sec('moves',`${esc(CL[st.cls].name)} moves`,`${MOVES.length}`,`<div class="mv">${mv}</div>`)}
   if(m){const url=m.url||D.source.moveUrl?.replace('{id}',m.id);
     h+=sec('source','Source','',`<p class="who">${esc(D.source.name)}${D.source.author?` · ${esc(D.source.author)}`:''}</p>${url?`<a href="${esc(url)}" target="_blank" rel="noopener">Open in ${esc(D.source.moveName||D.source.name)} ↗</a><br>`:''}<a href="move-explorer.html#game=${esc(G.id)}">Full table in Move Explorer</a>`)}
