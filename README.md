@@ -59,7 +59,7 @@ shared links) forwards to `move-explorer.html` with the link's game and move. Bo
 `server.js` and `serve_local.py` redirect the same paths.
 
 `layout-spike.html` (**Layout preview** in the app bar) is a layout experiment: Move Explorer's data and viewers in three
-panels (a collapsible A–Z game catalogue, weapon tabs over the viewer, and an info panel of collapsible sections), for
+panels (a collapsible A–Z game catalogue, every weapon class as an icon tile over the viewer, and an info panel of collapsible sections), for
 comparison before any change to the main layout.
 
 Move Explorer has per-move frame data (startup, active, recovery, cancels, hyper armor, damage), starting
