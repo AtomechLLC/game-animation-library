@@ -217,11 +217,15 @@ details.sec:not([open])>summary::after{transform:rotate(-90deg)}
 .secb .note{margin:0 0 6px;color:var(--muted);font-size:11.5px}
 .mv h4{margin:10px 0 2px;font:600 10.5px/1.4 var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
 .mv h4:first-child{margin-top:0}
-.mv button{display:flex;align-items:center;gap:8px;width:100%;text-align:left;border:0;background:none;border-radius:4px;padding:4px 6px;cursor:pointer;font-size:13px}
+.mv button{display:flex;flex-wrap:wrap;align-items:center;gap:3px 8px;width:100%;text-align:left;border:0;background:none;border-radius:4px;padding:4px 6px;cursor:pointer;font-size:13px}
 .mv button:hover{background:var(--sunk)}
 .mv button[aria-current=true]{background:var(--chip);box-shadow:inset 3px 0 0 var(--key);font-weight:600}
-.mv button span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mv button>span:first-child{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mv button i{font:normal 500 11px var(--mono);color:var(--muted)}
+.mv .bar{position:relative;flex:1 0 100%;display:block}
+.mv .bar .strip{width:100%;height:7px;border-radius:2px}
+.mv .bar .strip .ar,.mv .bar .strip .ifr{height:2px}
+.mv .bar .at{position:absolute;top:-2px;bottom:-2px;width:2px;margin-left:-1px;background:var(--fg);border-radius:1px;pointer-events:none}
 .secb a{font-size:12.5px}
 
 /* narrower screens: the info panel drops under the viewer, the catalogue becomes a drawer */
@@ -286,7 +290,7 @@ const VIEWER='./frame-data/viewer3d.js?v=19',VIEWER2D='./frame-data/sprites2d.js
 const GRIP={'1h':'1H','2h':'2H','Paired':'PS','Offhand':'OH','Mounted':'Horse','any':'—'};
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 
-let GAMES=[],G=null,D=null,ICONS={},T={},CL={},GR=GRIP,CM=null,VIEW=null,VIEWGAME=null,MOVES=[],CUR=null,seq=0;
+let SCALE=1,GAMES=[],G=null,D=null,ICONS={},T={},CL={},GR=GRIP,CM=null,VIEW=null,VIEWGAME=null,MOVES=[],CUR=null,seq=0;
 const DATA=new Map();   // game id -> its frame data, once loaded (search reads the class names from it)
 const st={game:null,cls:null,move:null,q:''};
 const byClass=()=>G.models||G.sprites;
@@ -300,7 +304,7 @@ function cancelLanes(m,scale,end){
   const lines=ls.map(([k])=>{const f=m.cancels[k],x=(f-1)/scale*100,w=Math.max((to-f+1)/scale*100,.6);
     return `<i style="--c:var(--cx-${k});margin-left:${x.toFixed(2)}%;width:${w.toFixed(2)}%"></i>`}).join('');
   return [`<div class="cxl">${lines}</div>`,`<div class="cxk">${ls.map(([k,l])=>`<span style="--c:var(--cx-${k})" title="${l} from frame ${m.cancels[k]}"><em>${l}</em> <b>${m.cancels[k]}</b></span>`).join('')}</div>`]}
-function stripHtml(m,scale){
+function stripHtml(m,scale,lanes=true){
   const end=Math.max(m.total||0,m.cancels.dodge||0,lastActive(m));
   const pc=f=>(f/scale*100).toFixed(2)+'%',seg=(a,b,c)=>b>a?`<span style="left:${pc(a)};width:${pc(b-a)};background:var(${c})"></span>`:'';
   let h=m.active.length?seg(0,m.startup-1,'--f-start'):'';
@@ -309,8 +313,9 @@ function stripHtml(m,scale){
   if(!m.active.length)h+=seg(0,end,'--f-start');else if(dodge!=null){h+=seg(last,dodge,'--f-rec');h+=seg(dodge,end,'--f-free')}else h+=seg(last,end,'--f-rec');
   m.armor.forEach(([s,e])=>h+=`<span class="ar" style="left:${pc(s-1)};width:${pc(Math.min(e,end)-s+1)}"></span>`);
   m.iframes.forEach(([s,e])=>h+=`<span class="ifr" style="left:${pc(s-1)};width:${pc(Math.min(e,end)-s+1)}"></span>`);
-  const cx=cancelLanes(m,scale,end);
+  const cx=lanes?cancelLanes(m,scale,end):['',''];
   return `<div class="strip">${h}${cx[0]}</div>${cx[1]}`}
+const moveEnd=m=>Math.max(m.total||0,m.cancels.dodge||0,lastActive(m));
 const PHASE={startup:['Startup','--f-start'],active:['Active','--f-active'],gap:['Between hits','--f-gap'],recovery:['Recovery','--f-rec'],free:['Can dodge','--f-free']};
 function phaseAt(m,f){
   if(!m.active.length)return ['',0];
@@ -444,9 +449,12 @@ function renderInfo(clicked){
     h+=sec('damage',adv.length?'Damage & advantage':'Damage','',adv.map(([k,l])=>row(l,dash(sgn(m[k])))).join('')+dmg.map(([k,l])=>row(l,dash(dm[k]))).join(''));
   }
   if(MOVES.length){
+    // one frame scale for the whole class, so a longer move draws a longer bar, as in Move Explorer's table
+    SCALE=Math.max(...MOVES.map(moveEnd));
     let mv='',t=null;
     for(const x of MOVES){if(x.type!==t){t=x.type;mv+=`<h4>${esc(T[t].name)}</h4>`}
-      mv+=`<button data-m="${esc(x.id)}" aria-current="${x===m}"><span>${esc(x.name)}</span><i>${x.startup??'–'}f</i></button>`}
+      const tip=`Startup ${x.startup??'—'} · active ${x.active.map(a=>a.join('–')).join(', ')||'—'} · recovery ${x.recovery??'—'} · total ${x.total??'—'}`;
+      mv+=`<button data-m="${esc(x.id)}" aria-current="${x===m}" title="${esc(tip)}"><span>${esc(x.name)}</span><i>${x.startup??'–'}f</i><span class="bar">${stripHtml(x,SCALE,false)}${x===m?'<b class="at"></b>':''}</span></button>`}
     h+=sec('moves',`${esc(CL[st.cls].name)} moves`,`${MOVES.length}`,`<div class="mv">${mv}</div>`)}
   if(m){const url=m.url||D.source.moveUrl?.replace('{id}',m.id);
     h+=sec('source','Source','',`<p class="who">${esc(D.source.name)}${D.source.author?` · ${esc(D.source.author)}`:''}</p>${url?`<a href="${esc(url)}" target="_blank" rel="noopener">Open in ${esc(D.source.moveName||D.source.name)} ↗</a><br>`:''}<a href="move-explorer.html#game=${esc(G.id)}">Full table in Move Explorer</a>`)}
@@ -460,6 +468,7 @@ function infoFrame(m,f){
   if(CUR!==m)return;
   const [ph,hit]=phaseAt(m,f),p=PHASE[ph];
   $('#iF').textContent=f;
+  $('#secs .mv [aria-current=true] .at')?.style.setProperty('left',((f-.5)/SCALE*100).toFixed(2)+'%');
   $('#iPh').textContent=p?p[0]+(ph==='active'&&m.hits>1?` · hit ${hit} of ${m.hits}`:''):'';
   $('#iPh').style.setProperty('--ph',p?`var(${p[1]})`:'');
   $('#iArm').textContent=inW(m.armor,f)?'Hyper armor':'';
