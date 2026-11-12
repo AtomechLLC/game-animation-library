@@ -5,7 +5,7 @@ The page knows nothing about where the numbers came from, so every source only h
 
 ## Files
 
-- `games.json` — the games the tab offers: `id`, `name`, `data` (the game's JSON), `icons` (folder with `icons.json`) optionally `models` (folder with `models.json`, for the 3D preview) or `clips` (folder of per-move hitbox clips).
+- `games.json` — the games the tab offers: `id`, `name`, `data` (the game's JSON), `icons` (folder with `icons.json`) optionally `models` (folder with `models.json`, for the 3D preview) or `clips` (folder of per-move hitbox clips), and `preview` (`"clips"` plays a model game's pre-rendered clips instead of the 3D viewer, see [Pre-rendered clips](#pre-rendered-clips)).
 - `stores.json` — where each game is sold, plus your Steam Curator and affiliate ids. See [Store links](#store-links).
 - `elden-ring.json` — Elden Ring, patch 1.17.3. Built by `tools/frame_data/import_er_game.py` straight from an installed
   copy of the game (see below). `tools/frame_data/import_er_nyasu.py` builds the same file from the
@@ -326,6 +326,25 @@ tilts and smashes, early/late) get a button per clip. Frames are decoded once wi
 six clips); browsers without it get the WebP playing by itself.
 
 Clips are animated WebPs fitted in 440×280 at quality 50, about 60 KB each.
+
+### Pre-rendered clips
+
+A game with `models` can also have `clips` and `"preview": "clips"` in `games.json`: Move Explorer then docks the clip
+viewer with clips rendered from the 3D models, instead of loading the live 3D viewer. No Rest for the Wicked is set
+this way. To go back to the 3D models, remove `"preview": "clips"` (or set it to `"models"`) and push; the clips stay
+in place for next time.
+
+The clips are rendered by the same viewer, every game frame with hitboxes on, and listed in the folder's `clips.json`
+(`"class|move id"` → `{file, frames}`, plus the `credit` line the viewer shows); moves of a class with the same export
+share a file:
+
+```
+SIZE=480 WORKERS=4 node tools/er_gifs/render.js --clips no-rest-for-the-wicked [class ...]
+```
+
+Existing clips are kept, so a run resumes where it stopped; delete a clip (and its `.json`) to render it again. Clips
+are 320×320 at quality 55 (`CLIP` and `Q` change that). The WebP encoder merges repeated frames, so the clip viewer
+holds a merged frame for as long as it lasts to keep frame numbers the game's.
 
 ## 3D preview
 

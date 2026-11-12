@@ -3,13 +3,17 @@
 //   node tools/er_gifs/render.js [out ...]             render jobs.json (or only the named outs) to gifs/<out>.webp
 //   node tools/er_gifs/render.js --sheet DIR [id ...]   8-frame contact sheets of common_anims.json ids, to pick ids
 //                                                      (GAME=no-rest-for-the-wicked: nrftw_common_anims.json)
+//   node tools/er_gifs/render.js --clips GAME [class ...] Move Explorer clips: every frame-data move with a 3D export,
+//                                                      one WebP frame per game frame, hitboxes on, to
+//                                                      frame-data/clips/GAME/<class>/<id>.webp, listed in clips.json
+//                                                      there (existing files are kept, so a run can be resumed)
 // A job: {out, game? (default elden-ring), class, move | moves: [ids played in a row], weapon?, grip? (Offhand holds the weapon left),
 // bare? (hide the weapon), every?}. Class "Common" plays the common
 // (non-weapon) animations from tools/frame_data/export_er_common.py. Frames are cropped to the character over the
 // whole job and scaled to a square of OUT px.
 const http = require('http'), fs = require('fs'), os = require('os'), path = require('path'), {execFileSync} = require('child_process');
 const {chromium} = require(process.env.PLAYWRIGHT || 'playwright');
-const ROOT = path.resolve(__dirname, '../..'), SIZE = 600, OUT = 360, WORKERS = +(process.env.WORKERS || 3);
+const ROOT = path.resolve(__dirname, '../..'), SIZE = +(process.env.SIZE || 600), OUT = 360, WORKERS = +(process.env.WORKERS || 3);
 const types = {'.html': 'text/html', '.js': 'text/javascript', '.json': 'application/json', '.glb': 'model/gltf-binary'};
 const server = http.createServer((q, r) => {
   const p = path.join(ROOT, decodeURIComponent(q.url.split('?')[0]));
@@ -20,10 +24,10 @@ const fdata = {}, fdOf = g => fdata[g] ||= JSON.parse(fs.readFileSync(path.join(
 // common (non-weapon) animations have no frame-data row: they play as a bare move of the Common class
 const moveOf = (game, cls, id, grip = '1h') => cls === 'Common' ? {id, class: 'Common', grip} : fdOf(game).moves.find(x => x.class === cls && x.id === id);
 
-async function open(browser, game) {
+async function open(browser, game, hitboxes) {
   const page = await browser.newPage({viewport: {width: SIZE, height: SIZE}, deviceScaleFactor: 1});
   page.on('console', m => m.type() === 'error' && console.error('page:', m.text()));
-  await page.goto(`http://localhost:${server.address().port}/tools/er_gifs/render.html?w=${SIZE}&h=${SIZE}&game=${game}`);
+  await page.goto(`http://localhost:${server.address().port}/tools/er_gifs/render.html?w=${SIZE}&h=${SIZE}&game=${game}${hitboxes ? '&hitboxes=1' : ''}`);
   await page.waitForFunction(() => window.READY, null, {timeout: 120000});
   return page;
 }
@@ -47,10 +51,10 @@ async function capture(page, game, cls, ids, weapon, pick, dir, grip, bare) {
 }
 
 // a square around the box, padded for cloth and armor beyond the bones, kept inside the frame
-function crop(box, pad = 1.25) {
-  const side = Math.min(SIZE, Math.round(Math.max(box[2] - box[0], box[3] - box[1]) * pad));
+function crop(box, pad = 1.25, size = SIZE) {
+  const side = Math.min(size, Math.round(Math.max(box[2] - box[0], box[3] - box[1]) * pad));
   const cx = (box[0] + box[2]) / 2, cy = (box[1] + box[3]) / 2;
-  const x = Math.round(Math.min(Math.max(cx - side / 2, 0), SIZE - side)), y = Math.round(Math.min(Math.max(cy - side / 2, 0), SIZE - side));
+  const x = Math.round(Math.min(Math.max(cx - side / 2, 0), size - side)), y = Math.round(Math.min(Math.max(cy - side / 2, 0), size - side));
   return `crop=${side}:${side}:${x}:${y}`;
 }
 
@@ -69,6 +73,46 @@ async function renderJob(pageFor, j) {
   console.log(j.out, files.length, 'frames', (fs.statSync(out).size / 1024).toFixed(0) + ' KB');
 }
 
+// Move Explorer clips (games.json "preview": "clips"): every frame of a move, so the clip viewer's frame numbers are
+// the game's. Moves of a class with the same export share one file.
+const CLIP = +(process.env.CLIP || 320);
+async function renderClip(pageFor, game, cls, m, file, meta) {
+  const out = path.join(ROOT, 'frame-data/clips', game, file);
+  if (fs.existsSync(out)) return meta[file] = meta[file] || JSON.parse(fs.readFileSync(out + '.json', 'utf8'));
+  const page = await pageFor(game);
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'clip-'));
+  const [files, b] = await capture(page, game, cls, [m.id], null, n => Array.from({length: n}, (_, i) => 1 + i), dir);
+  fs.mkdirSync(path.dirname(out), {recursive: true});
+  execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', String(fpsOf(game)), '-i', path.join(dir, '%04d.png'),
+    '-vf', `${crop(b, 1.4)},scale=${CLIP}:${CLIP}:flags=lanczos,eq=gamma=1.25`,
+    '-c:v', 'libwebp_anim', '-quality', process.env.Q || '55', '-compression_level', '6', '-loop', '0', out + '.tmp.webp']);
+  fs.renameSync(out + '.tmp.webp', out);
+  fs.rmSync(dir, {recursive: true});
+  meta[file] = {frames: files.length}; fs.writeFileSync(out + '.json', JSON.stringify(meta[file]));
+  console.log(file, files.length, 'frames', (fs.statSync(out).size / 1024).toFixed(0) + ' KB');
+}
+function clipTasks(game, only) {
+  const fd = fdOf(game), base = path.join(ROOT, 'frame-data/models', game), mj = JSON.parse(fs.readFileSync(path.join(base, 'models.json'), 'utf8'));
+  const tasks = [], index = {}, meta = {};
+  for (const [cls, c] of Object.entries(mj.classes)) {
+    if (only.length && !only.includes(cls)) continue;
+    const exp = JSON.parse(fs.readFileSync(path.join(base, c.file), 'utf8')).moves, seen = {};
+    for (const m of fd.moves.filter(m => m.class === cls && exp[m.id])) {
+      const sig = JSON.stringify(exp[m.id]), file = seen[sig] ||= `${cls}/${m.id.replace(/[^\w.-]/g, '_')}.webp`;
+      index[cls + '|' + m.id] = file;
+      if (seen[sig] === file && !tasks.some(t => t.file === file)) tasks.push(Object.assign(p => renderClip(p, game, cls, m, file, meta), {file}));
+    }
+  }
+  // clips.json: "class|move id" -> {file, frames}, and the credit the clip viewer shows; written once every clip is in
+  const done = () => {
+    const out = {};
+    for (const [k, file] of Object.entries(index)) if (meta[file]) out[k] = {file, frames: meta[file].frames};
+    fs.writeFileSync(path.join(ROOT, 'frame-data/clips', game, 'clips.json'), JSON.stringify({schema: 'frame-data-clips/1', game, credit: 'Rendered from the 3D model, hitboxes on', clips: out}) + '\n');
+    console.log(Object.keys(out).length, 'moves,', Object.keys(meta).length, 'clips');
+  };
+  return [tasks, done];
+}
+
 async function renderSheet(pageFor, game, id, label, outDir) {
   const page = await pageFor(game);
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'er-'));
@@ -82,8 +126,11 @@ async function renderSheet(pageFor, game, id, label, outDir) {
 
 (async () => {
   await new Promise(r => server.listen(0, r));
-  let tasks;
-  if (process.argv[2] === '--sheet') {
+  let tasks, done = () => {}, hitboxes = false;
+  if (process.argv[2] === '--clips') {
+    hitboxes = true;
+    [tasks, done] = clipTasks(process.argv[3], process.argv.slice(4));
+  } else if (process.argv[2] === '--sheet') {
     const game = process.env.GAME || 'elden-ring', outDir = process.argv[3], ids = process.argv.slice(4);
     fs.mkdirSync(outDir, {recursive: true});
     const list = JSON.parse(fs.readFileSync(path.join(__dirname, game === 'elden-ring' ? 'common_anims.json' : 'nrftw_common_anims.json'), 'utf8'));
@@ -96,8 +143,8 @@ async function renderSheet(pageFor, game, id, label, outDir) {
   await Promise.all(Array.from({length: Math.min(WORKERS, tasks.length)}, async () => {
     const b = await chromium.launch({args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader']});
     browsers.push(b);
-    const pages = {}, pageFor = async g => pages[g] ||= await open(b, g);   // one page per game, opened when first needed
+    const pages = {}, pageFor = async g => pages[g] ||= await open(b, g, hitboxes);   // one page per game, opened when first needed
     for (let t; (t = tasks.shift());) await t(pageFor).catch(e => console.error('failed:', e.message));
   }));
-  await Promise.all(browsers.map(b => b.close())); server.close();
+  await Promise.all(browsers.map(b => b.close())); server.close(); done();
 })().catch(e => { console.error(e); process.exit(1) });
