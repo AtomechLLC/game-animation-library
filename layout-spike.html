@@ -153,16 +153,22 @@ body{display:flex;flex-direction:column;min-height:100dvh}
 .catmin #cat .railname{display:block}
 .railname{display:none;writing-mode:vertical-rl;transform:rotate(180deg);margin:12px auto;font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 
-/* top: weapon tabs */
+/* top: weapon tabs. Every class shows at once as a wrapping grid of icon tiles, grouped by family; the label on the
+   left names the one on show, and a hover or focus names any other */
 .tabs{grid-area:tabs;display:flex;align-items:stretch;min-width:0;background:var(--panel);border-bottom:1px solid var(--line)}
-.tabs h3{flex:none;margin:0;display:flex;align-items:center;padding:0 12px;font:600 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border-right:1px solid var(--line)}
-.tablist{position:relative;display:flex;flex:1;min-width:0;overflow-x:auto;scrollbar-width:thin}
-.tablist button{flex:none;display:flex;align-items:center;gap:7px;border:0;border-right:1px solid var(--line);background:none;padding:7px 14px;cursor:pointer;font-size:13px;font-weight:500;white-space:nowrap;color:var(--muted);border-bottom:3px solid transparent}
-.tablist button:hover{color:var(--fg);background:var(--sunk)}
-.tablist button[aria-selected=true]{color:var(--fg);border-bottom-color:var(--key);font-weight:600}
-.tablist img,.tablist .ph{width:26px;height:26px;object-fit:contain;flex:none}
-.tablist .ph{display:grid;place-items:center;border-radius:4px;background:var(--sunk);font:600 11px var(--mono)}
-.tablist .n{font:500 10.5px var(--mono);color:var(--muted)}
+.tabs .lbl{flex:none;width:150px;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:6px 12px;border-right:1px solid var(--line);min-width:0}
+.tabs h3{margin:0;font:600 10.5px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.tabs .lbl b{font-family:var(--display);font-size:15px;font-weight:700;line-height:1.2;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.tablist{flex:1;min-width:0;display:flex;flex-wrap:wrap;align-content:center;gap:3px;padding:6px 10px}
+.tablist .sep{width:1px;align-self:stretch;margin:2px 5px;background:var(--line)}
+.tablist button{position:relative;display:grid;place-items:center;width:var(--tile,36px);height:var(--tile,36px);padding:3px;border:1px solid transparent;border-radius:6px;background:none;cursor:pointer}
+.tablist button:hover{background:var(--sunk);border-color:var(--line)}
+.tablist button[aria-selected=true]{background:color-mix(in srgb,var(--key) 22%,transparent);border-color:var(--key);box-shadow:inset 0 -3px 0 var(--key)}
+.tablist img,.tablist .ph{width:100%;height:100%;object-fit:contain}
+.tablist .ph{display:grid;place-items:center;border-radius:4px;background:var(--sunk);font:600 11px var(--mono);color:var(--fg)}
+.tablist button::after{content:attr(data-name);position:absolute;z-index:6;top:calc(100% + 4px);left:50%;transform:translateX(-50%);white-space:nowrap;padding:3px 8px;border-radius:4px;background:var(--fg);color:var(--bg);font-size:12px;font-weight:600;pointer-events:none;opacity:0;transition:opacity .1s}
+.tablist button:hover::after,.tablist button:focus-visible::after{opacity:1}
+.tabs.dense{--tile:30px}
 
 /* centre: the move on show */
 #main{grid-area:main;display:flex;flex-direction:column;gap:8px;min-width:0;min-height:0;padding:12px 16px}
@@ -206,7 +212,7 @@ details.sec:not([open])>summary::after{transform:rotate(-90deg)}
 .secb .r.on{background:var(--chip);border-left-color:var(--fg)}.secb .r.on span{color:var(--fg)}
 .secb .r.open b{color:var(--calm);font-weight:700}
 .secb .r[style*="--c"] span::before{content:"";display:inline-block;width:10px;height:3px;margin-right:6px;vertical-align:middle;border-radius:1px;background:var(--c)}
-.secb .who{margin:0 0 6px;color:var(--muted);font-size:12px}
+.secb .who{margin:0 0 6px;color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .secb .who code{font-family:var(--mono);font-size:11px;color:var(--fg)}
 .secb .note{margin:0 0 6px;color:var(--muted);font-size:11.5px}
 .mv h4{margin:10px 0 2px;font:600 10.5px/1.4 var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
@@ -228,6 +234,8 @@ details.sec:not([open])>summary::after{transform:rotate(-90deg)}
   #view .v3d-stage{flex:none;height:min(60vh,460px);min-height:0}
 }
 @media (max-width:600px){
+  .tabs{flex-direction:column}
+  .tabs .lbl{width:auto;flex-direction:row;justify-content:flex-start;align-items:baseline;gap:8px;border-right:0;padding:8px 12px 0}
   .lay,.lay.catmin{grid-template-columns:minmax(0,1fr);grid-template-areas:"tabs" "main" "info"}
   .lay.catmin #cat{position:fixed;z-index:8;left:0;bottom:16px;top:auto;width:auto;height:auto;border:1px solid var(--line);border-left:0;border-radius:0 8px 8px 0;box-shadow:0 2px 12px #0004}
   .lay.catmin #cat .railname{display:none}
@@ -250,7 +258,7 @@ details.sec:not([open])>summary::after{transform:rotate(-90deg)}
     <div class="catbody"><ul class="games" id="games" aria-label="Games A to Z"></ul><nav class="az" id="az" aria-label="Jump to letter"></nav></div>
   </aside>
   
-  <nav class="tabs" aria-label="Weapons"><h3 id="tabsH">Weapon</h3><div class="tablist" id="tabs" role="tablist"></div></nav>
+  <nav class="tabs" id="tabsBar" aria-label="Weapons"><div class="lbl"><h3 id="tabsH">Weapon</h3><b id="tabsCur"></b></div><div class="tablist" id="tabs" role="tablist" aria-labelledby="tabsH"></div></nav>
 
   <main id="main">
     <section id="disp" aria-label="Move on show">
@@ -366,9 +374,13 @@ async function go(game,cls,move){
 // ---------- top: weapon tabs ----------
 const icon=n=>{const i=n&&ICONS[n];return i?`<img alt="" loading="lazy" src="${esc(G.icons+i.file)}">`:`<span class="ph" aria-hidden="true">${esc((n||'?').replace(/[^A-Za-z]/g,'').slice(0,1))}</span>`};
 function renderTabs(){
-  $('#tabs').innerHTML=D.classes.map(c=>`<button role="tab" data-c="${esc(c.id)}" aria-selected="${c.id===st.cls}" tabindex="${c.id===st.cls?0:-1}">${icon(c.icon||c.name)}${esc(c.name)}</button>`).join('');
-  const t=$('#tabs [aria-selected=true]'),box=$('#tabs');
-  if(t&&(t.offsetLeft<box.scrollLeft||t.offsetLeft+t.offsetWidth>box.scrollLeft+box.clientWidth))box.scrollLeft=t.offsetLeft-24}
+  let h='',fam=null;
+  for(const c of D.classes){
+    if(fam!==null&&c.family!==fam)h+='<i class="sep" aria-hidden="true"></i>';fam=c.family;
+    h+=`<button role="tab" data-c="${esc(c.id)}" data-name="${esc(c.name)}" aria-label="${esc(c.name)}" aria-selected="${c.id===st.cls}" tabindex="${c.id===st.cls?0:-1}">${icon(c.icon||c.name)}</button>`}
+  $('#tabs').innerHTML=h;
+  $('#tabsBar').classList.toggle('dense',D.classes.length>50);
+  $('#tabsCur').textContent=CL[st.cls].name}
 $('#tabs').onclick=e=>{const b=e.target.closest('[data-c]');if(b&&b.dataset.c!==st.cls)go(G.id,b.dataset.c,null)};
 $('#tabs').onkeydown=e=>{if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;e.preventDefault();e.stopPropagation();
   const i=D.classes.findIndex(c=>c.id===st.cls),n=D.classes[(i+(e.key==='ArrowRight'?1:-1)+D.classes.length)%D.classes.length];
@@ -391,11 +403,11 @@ async function loadClass(my,move){
     if(VIEW){VIEW.dispose();VIEW=null;VIEWGAME=null}
     $('#view').innerHTML=`<div class="empty">No preview for ${esc(CL[st.cls].name)} yet. Its frame data is in <a href="move-explorer.html#game=${esc(G.id)}">Move Explorer</a>.</div>`;writeHash();return}
   show(MOVES.find(m=>m.id===move)||MOVES[0])}
-async function show(m){
+async function show(m,clicked){
   CUR=m;writeHash();
   $('#dSrc').textContent=`${G.name} › ${CL[m.class].name} › ${T[m.type].name} · ${GR[m.grip]||m.grip}`;
   $('#dName').textContent=$('#dName').title=m.name;
-  renderInfo();
+  renderInfo(clicked);
   const state=f=>{infoFrame(m,f);return frameState(m,f)};
   if(byClass())await VIEW.show(m,{strip:stripHtml(m,CM.moves[m.id].frames),state});
   else await VIEW.show(m,{strip:n=>stripHtml(m,n),state})}
@@ -406,23 +418,30 @@ $('#keysBtn').onclick=e=>{const on=$('#view').classList.toggle('keys');e.current
 const OPEN=new Set((store.get('spike-secs')??'timing,cancels,moves').split(',').filter(Boolean));
 const CANCELS=[['attack','Attack'],['dodge','Dodge / roll'],['block','Block'],['skill','Skill'],['item','Item'],['move','Walk / run']];
 function sec(id,title,meta,body){return body?`<details class="sec" data-s="${id}"${OPEN.has(id)?' open':''}><summary><span>${title}</span>${meta?`<em>${meta}</em>`:''}</summary><div class="secb">${body}</div></details>`:''}
-function renderInfo(){
+function renderInfo(clicked){
+  // a move picked from the list stays where it was under the pointer: the sections above it change height with the move,
+  // so the panel scrolls by the same amount instead of letting the list jump
+  const box=$('#info'),pin=clicked&&$(`#secs .mv [data-m="${CSS.escape(clicked)}"]`),was=pin?pin.getBoundingClientRect().top:null;
   const m=CUR;$('#iF').textContent='–';$('#iPh').textContent=$('#iArm').textContent='';
   const row=(l,v,attr='')=>`<div class="r"${attr}><span>${esc(l)}</span><b>${esc(v)}</b></div>`;
   let h='';
   if(m){
+    // Every move of the class gets the same rows, with a dash where a move has no value, so the sections keep their
+    // height from move to move and the list under them stays put
     const c=CL[m.class],dm=m.damage||{},win=a=>a.map(([s,e])=>s===e?s:`${s}–${e}`).join(', '),sgn=v=>typeof v==='number'&&v>0?'+'+v:v;
-    const can=CANCELS.filter(([k])=>m.cancels[k]);
-    const adv=[['blockAdv','On block'],['hitAdv','On hit']].filter(([k])=>m[k]!=null);
-    const dmg=[['type','Damage type'],['amount','Damage'],['stun','Stun'],['guard','Guard'],['mv','Motion value'],['poise','Poise damage'],['level','Damage level'],['stamina','Stamina']].filter(([k])=>dm[k]!=null&&dm[k]!=='');
-    const url=m.url||D.source.moveUrl?.replace('{id}',m.id);
+    const any=f=>MOVES.some(f),dash=v=>v==null||v===''?'—':v;
+    const can=CANCELS.filter(([k])=>any(x=>x.cancels[k])),to=any(x=>x.cancelTo?.length);
+    const adv=[['blockAdv','On block'],['hitAdv','On hit']].filter(([k])=>any(x=>x[k]!=null));
+    const dmg=[['type','Damage type'],['amount','Damage'],['stun','Stun'],['guard','Guard'],['mv','Motion value'],['poise','Poise damage'],['level','Damage level'],['stamina','Stamina']].filter(([k])=>any(x=>x.damage?.[k]!=null&&x.damage[k]!==''));
+    const n=can.filter(([k])=>m.cancels[k]).length;
     h+=sec('timing','Timing',`${D.game.fps} fps · ${m.total??'?'} frames`,
-      `<p class="who">${esc(c.name)} › ${esc(T[m.type].name)} · <code>${esc(m.id)}</code></p>`+
-      (m.active.length?row('Startup',m.startup??'—',' data-ph="startup"')+row('Active',win(m.active)+(m.hits>1?` · ${m.hits} hits`:''),' data-ph="active"')+(m.recovery!=null?row('Recovery',m.recovery+' frames',' data-ph="recovery"'):''):'<p class="note">No hitbox in this move.</p>')+
-      (m.armor.length?row('Hyper armor',win(m.armor),' data-arm'):'')+(m.iframes.length?row('I-frames',win(m.iframes)):'')+row('Total',m.total??'—'));
-    h+=sec('cancels','Cancels',can.length?`${can.length} windows`:m.cancelTo?.length?m.cancelTo.join(' '):'',
-      can.length?`<p class="note">Each colour is a line on the timeline from the frame the cancel opens.</p>`+can.map(([k,l])=>row(l,'from '+m.cancels[k],` data-can="${m.cancels[k]}" style="--c:var(--cx-${k})"`)).join(''):m.cancelTo?.length?`<p class="who">${esc(m.cancelTo.join(', '))}</p>`:'');
-    h+=sec('damage',adv.length?'Damage & advantage':'Damage','',(adv.map(([k,l])=>row(l,sgn(m[k]))).join('')+dmg.map(([k,l])=>row(l,dm[k])).join(''))||'');
+      `<p class="who" title="${esc(m.id)}">${esc(T[m.type].name)} · <code>${esc(m.id)}</code></p>`+
+      row('Startup',dash(m.active.length?m.startup:null),' data-ph="startup"')+row('Active',m.active.length?win(m.active)+(m.hits>1?` · ${m.hits} hits`:''):'—',' data-ph="active"')+row('Recovery',m.active.length&&m.recovery!=null?m.recovery+' frames':'—',' data-ph="recovery"')+
+      (any(x=>x.armor.length)?row('Hyper armor',m.armor.length?win(m.armor):'—',' data-arm'):'')+(any(x=>x.iframes.length)?row('I-frames',m.iframes.length?win(m.iframes):'—'):'')+row('Total',dash(m.total)));
+    h+=sec('cancels','Cancels',can.length?`${n} window${n===1?'':'s'}`:to?(m.cancelTo||[]).join(' ')||'none':'',
+      (can.length?`<p class="note">Each colour is a line on the timeline from the frame the cancel opens.</p>`+can.map(([k,l])=>m.cancels[k]?row(l,'from '+m.cancels[k],` data-can="${m.cancels[k]}" style="--c:var(--cx-${k})"`):row(l,'—',` style="--c:var(--cx-${k})"`)).join(''):'')+
+      (to?`<p class="who">${esc(m.cancelTo?.length?m.cancelTo.join(', '):'No cancels')}</p>`:''));
+    h+=sec('damage',adv.length?'Damage & advantage':'Damage','',adv.map(([k,l])=>row(l,dash(sgn(m[k])))).join('')+dmg.map(([k,l])=>row(l,dash(dm[k]))).join(''));
   }
   if(MOVES.length){
     let mv='',t=null;
@@ -432,9 +451,11 @@ function renderInfo(){
   if(m){const url=m.url||D.source.moveUrl?.replace('{id}',m.id);
     h+=sec('source','Source','',`<p class="who">${esc(D.source.name)}${D.source.author?` · ${esc(D.source.author)}`:''}</p>${url?`<a href="${esc(url)}" target="_blank" rel="noopener">Open in ${esc(D.source.moveName||D.source.name)} ↗</a><br>`:''}<a href="move-explorer.html#game=${esc(G.id)}">Full table in Move Explorer</a>`)}
   $('#secs').innerHTML=h;
-  // keep the move on show in sight, scrolling only the panel (on narrow screens the panel is part of the page)
-  const box=$('#info'),r=$('#secs .mv [aria-current=true]');
-  if(r&&box.scrollHeight>box.clientHeight){const top=r.offsetTop,bot=top+r.offsetHeight-box.clientHeight;if(box.scrollTop>top-40)box.scrollTop=top-40;else if(box.scrollTop<bot+8)box.scrollTop=bot+8}}
+  const r=$('#secs .mv [aria-current=true]');
+  if(!r)return;
+  if(was!=null){const d=r.getBoundingClientRect().top-was;if(box.scrollHeight>box.clientHeight)box.scrollTop+=d;else scrollBy(0,d);return}
+  // stepped with the keys: keep the move on show in sight, scrolling only the panel, and only once it is out of view
+  if(box.scrollHeight>box.clientHeight){const top=r.offsetTop,bot=top+r.offsetHeight-box.clientHeight;if(box.scrollTop>top)box.scrollTop=top-8;else if(box.scrollTop<bot)box.scrollTop=bot+8}}
 function infoFrame(m,f){
   if(CUR!==m)return;
   const [ph,hit]=phaseAt(m,f),p=PHASE[ph];
@@ -447,7 +468,7 @@ function infoFrame(m,f){
   document.querySelector('#secs [data-arm]')?.classList.toggle('on',inW(m.armor,f));
   document.querySelectorAll('#secs [data-can]').forEach(r=>r.classList.toggle('open',f>=+r.dataset.can))}
 $('#secs').addEventListener('toggle',e=>{const s=e.target.dataset?.s;if(!s)return;e.target.open?OPEN.add(s):OPEN.delete(s);store.set('spike-secs',[...OPEN].join(','))},true);
-$('#secs').onclick=e=>{const b=e.target.closest('button[data-m]');if(b){const m=MOVES.find(x=>x.id===b.dataset.m);if(m&&m!==CUR)show(m)}};
+$('#secs').onclick=e=>{const b=e.target.closest('button[data-m]');if(b){const m=MOVES.find(x=>x.id===b.dataset.m);if(m&&m!==CUR)show(m,m.id)}};
 
 // ---------- keys and links ----------
 document.addEventListener('keydown',e=>{
