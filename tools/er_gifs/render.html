@@ -48,11 +48,11 @@ window.ER = {
   },
   // the viewer renders only when its picture changes, so changes made from here ask it to
   async grid(on) { grids.forEach(g => g.visible = on); view.requestRender(); await raf() },
-  // the character's screen box: every bone plus the weapons in hand, in canvas pixels
+  // the character's screen box: every bone plus the weapons in hand, in canvas pixels, seen by the viewer's camera (not a stray default one at the origin); points behind the camera or past the far plane are skipped
   box() {
-    const cam = cams[0], c = el.querySelector('canvas'), w = c.clientWidth, h = c.clientHeight, v = new THREE.Vector3(), b = new THREE.Box3();
+    const cam = cams.find(c => c.position.lengthSq() > 0) || cams[0], c = el.querySelector('canvas'), w = c.clientWidth, h = c.clientHeight, v = new THREE.Vector3(), b = new THREE.Box3();
     let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
-    const put = p => { v.copy(p).project(cam); if (!Number.isFinite(v.x + v.y)) return; const x = (v.x + 1) / 2 * w, y = (1 - v.y) / 2 * h; x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y) };
+    const put = p => { v.copy(p).project(cam); if (!Number.isFinite(v.x + v.y) || Math.abs(v.z) > 1) return; const x = (v.x + 1) / 2 * w, y = (1 - v.y) / 2 * h; x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y) };
     for (const k of skel) if (k.parent && k.name && !/Weapon|Sheath|Master|Root/i.test(k.name)) put(k.getWorldPosition(v.clone()));
     for (const [bone, o] of held) if (o.parent === bone && o.visible) { b.setFromObject(o); if (!b.isEmpty()) for (let i = 0; i < 8; i++) put(new THREE.Vector3(i & 1 ? b.max.x : b.min.x, i & 2 ? b.max.y : b.min.y, i & 4 ? b.max.z : b.min.z)) }
     return [x0, y0, x1, y1];

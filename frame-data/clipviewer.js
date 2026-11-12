@@ -1,5 +1,5 @@
 // Hitbox clip preview for games without 3D models (games.json "clips"): plays a move's own capture, one image frame
-// per game frame, with the same controls as viewer3d.js. Moves list their clips as {file, frames, label, source};
+// per game frame, with the same controls as viewer3d.js. Moves list their clips as {file, frames, label, source?, credit?};
 // files are animated WebPs under the game's clips folder. Frames are decoded once with ImageDecoder so the clip can
 // be stepped and scrubbed; browsers without it get the WebP playing on its own.
 import {speedHtml, bindSpeed} from './speed.js?v=1';
@@ -24,27 +24,30 @@ export function createViewer(el, base) {
   let frames = [], N = 1, f = 1, m = null, clip = null, opts = {}, token = 0, disposed = false;
   let playing = !matchMedia('(prefers-reduced-motion: reduce)').matches, speed = 0.25, acc = 0, last = performance.now(), raf = 0;
 
-  async function decode(file) {
+  async function decode(file, want = 0) {
     const r = await fetch(base + file);
     if (!r.ok) throw new Error(`${file}: ${r.status}`);
     const dec = new ImageDecoder({data: await r.arrayBuffer(), type: 'image/webp'});
     await dec.tracks.ready;
-    const n = dec.tracks.selectedTrack.frameCount, out = [];
+    const n = dec.tracks.selectedTrack.frameCount, out = [], at = [];
     for (let i = 0; i < n; i++) {
       const {image} = await dec.decode({frameIndex: i});
-      out.push(await createImageBitmap(image)); image.close();
+      out.push(await createImageBitmap(image)); at.push(Math.round(image.timestamp * FPS / 1e6)); image.close();
     }
     dec.close();
-    return out;
+    if (want <= n) return out;
+    // WebP encoders merge repeated frames into one longer frame: hold each for as many game frames as it lasts, so
+    // the frame numbers stay the game's
+    return Array.from({length: want}, (_, k) => { let i = 0; while (i + 1 < n && at[i + 1] <= k) i++; return out[i] });
   }
   // decoded frames are big (a 440x280 frame is ~0.5 MB), so keep only the last few clips
   const load = file => {
     if (cache.has(file)) { const p = cache.get(file); cache.delete(file); cache.set(file, p); return p }
-    cache.set(file, decode(file).catch(e => { cache.delete(file); throw e }));
+    cache.set(file, decode(file, clip?.file === file ? clip.frames : 0).catch(e => { cache.delete(file); throw e }));
     for (const [k, p] of cache) {
       if (cache.size <= 6) break;
       if (k === clip?.file) continue;
-      cache.delete(k); p.then(fr => fr.forEach(b => b.close())).catch(() => {});
+      cache.delete(k); p.then(fr => new Set(fr).forEach(b => b.close())).catch(() => {});
     }
     return cache.get(file);
   };
@@ -93,7 +96,9 @@ export function createViewer(el, base) {
     clip = m.clips[i];
     el.querySelectorAll('.clip-alts button').forEach((b, k) => b.setAttribute('aria-pressed', k === i));
     const who = $('.v3d-who');
-    who.href = clip.source; who.textContent = 'Hitbox clip: Ultimate Frame Data ↗';
+    // a clip names its own credit ("credit"), else it is an Ultimate Frame Data capture; no source, no link
+    if (clip.source) who.href = clip.source; else who.removeAttribute('href');
+    who.textContent = clip.credit || 'Hitbox clip: Ultimate Frame Data' + (clip.source ? ' ↗' : '');
     N = clip.frames; $('.v3d-scrub input').max = N; $('.v3d-strip').innerHTML = opts.strip ? opts.strip(N) : '';
     if (!('ImageDecoder' in window)) {
       // no frame stepping: let the image play by itself
@@ -145,7 +150,7 @@ export function createViewer(el, base) {
     prefetch(move) { const c = move.clips?.[0]; if (c && !warm.has(c.file)) { warm.add(c.file); fetch(base + c.file).catch(() => {}) } },
     dispose() {
       disposed = true; cancelAnimationFrame(raf); document.removeEventListener('keydown', onKey);
-      cache.forEach(p => p.then(fr => fr.forEach(b => b.close())).catch(() => {}));
+      cache.forEach(p => p.then(fr => new Set(fr).forEach(b => b.close())).catch(() => {}));
     },
   };
 }

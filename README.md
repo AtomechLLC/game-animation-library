@@ -145,6 +145,11 @@ No Rest for the Wicked works the same way (`"game": "no-rest-for-the-wicked"` on
 mantles, ladder and wall climbing, wall shimmy) listed in `tools/er_gifs/nrftw_common_anims.json` into its `Common`
 class, and `GAME=no-rest-for-the-wicked render.js --sheet` draws their contact sheets.
 
+`render.js --clips no-rest-for-the-wicked` renders every No Rest for the Wicked move, frame by frame with hitboxes on,
+to `frame-data/clips/no-rest-for-the-wicked/`. Move Explorer plays those clips instead of the live 3D viewer while
+`games.json` gives the game `"preview": "clips"`; remove that line to switch back to the 3D models (see
+[Pre-rendered clips](frame-data/README.md#pre-rendered-clips)).
+
 Devil May Cry 3 jobs (`"game": "devil-may-cry-3"`, out `<entry>-dmc<n>`) play Dante's frame data moves by class and move
 id (`ebony-ivory` / `ebony-ivory.rain-storm`); `add_to_library.py` links them to the move in Move Explorer.
 
