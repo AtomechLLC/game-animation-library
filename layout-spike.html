@@ -212,7 +212,7 @@ details.sec:not([open])>summary::after{transform:rotate(-90deg)}
 .secb .r.on{background:var(--chip);border-left-color:var(--fg)}.secb .r.on span{color:var(--fg)}
 .secb .r.open b{color:var(--calm);font-weight:700}
 .secb .r[style*="--c"] span::before{content:"";display:inline-block;width:10px;height:3px;margin-right:6px;vertical-align:middle;border-radius:1px;background:var(--c)}
-.secb .who{margin:0 0 6px;color:var(--muted);font-size:12px}
+.secb .who{margin:0 0 6px;color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .secb .who code{font-family:var(--mono);font-size:11px;color:var(--fg)}
 .secb .note{margin:0 0 6px;color:var(--muted);font-size:11.5px}
 .mv h4{margin:10px 0 2px;font:600 10.5px/1.4 var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
@@ -403,11 +403,11 @@ async function loadClass(my,move){
     if(VIEW){VIEW.dispose();VIEW=null;VIEWGAME=null}
     $('#view').innerHTML=`<div class="empty">No preview for ${esc(CL[st.cls].name)} yet. Its frame data is in <a href="move-explorer.html#game=${esc(G.id)}">Move Explorer</a>.</div>`;writeHash();return}
   show(MOVES.find(m=>m.id===move)||MOVES[0])}
-async function show(m){
+async function show(m,clicked){
   CUR=m;writeHash();
   $('#dSrc').textContent=`${G.name} › ${CL[m.class].name} › ${T[m.type].name} · ${GR[m.grip]||m.grip}`;
   $('#dName').textContent=$('#dName').title=m.name;
-  renderInfo();
+  renderInfo(clicked);
   const state=f=>{infoFrame(m,f);return frameState(m,f)};
   if(byClass())await VIEW.show(m,{strip:stripHtml(m,CM.moves[m.id].frames),state});
   else await VIEW.show(m,{strip:n=>stripHtml(m,n),state})}
@@ -418,23 +418,30 @@ $('#keysBtn').onclick=e=>{const on=$('#view').classList.toggle('keys');e.current
 const OPEN=new Set((store.get('spike-secs')??'timing,cancels,moves').split(',').filter(Boolean));
 const CANCELS=[['attack','Attack'],['dodge','Dodge / roll'],['block','Block'],['skill','Skill'],['item','Item'],['move','Walk / run']];
 function sec(id,title,meta,body){return body?`<details class="sec" data-s="${id}"${OPEN.has(id)?' open':''}><summary><span>${title}</span>${meta?`<em>${meta}</em>`:''}</summary><div class="secb">${body}</div></details>`:''}
-function renderInfo(){
+function renderInfo(clicked){
+  // a move picked from the list stays where it was under the pointer: the sections above it change height with the move,
+  // so the panel scrolls by the same amount instead of letting the list jump
+  const box=$('#info'),pin=clicked&&$(`#secs .mv [data-m="${CSS.escape(clicked)}"]`),was=pin?pin.getBoundingClientRect().top:null;
   const m=CUR;$('#iF').textContent='–';$('#iPh').textContent=$('#iArm').textContent='';
   const row=(l,v,attr='')=>`<div class="r"${attr}><span>${esc(l)}</span><b>${esc(v)}</b></div>`;
   let h='';
   if(m){
+    // Every move of the class gets the same rows, with a dash where a move has no value, so the sections keep their
+    // height from move to move and the list under them stays put
     const c=CL[m.class],dm=m.damage||{},win=a=>a.map(([s,e])=>s===e?s:`${s}–${e}`).join(', '),sgn=v=>typeof v==='number'&&v>0?'+'+v:v;
-    const can=CANCELS.filter(([k])=>m.cancels[k]);
-    const adv=[['blockAdv','On block'],['hitAdv','On hit']].filter(([k])=>m[k]!=null);
-    const dmg=[['type','Damage type'],['amount','Damage'],['stun','Stun'],['guard','Guard'],['mv','Motion value'],['poise','Poise damage'],['level','Damage level'],['stamina','Stamina']].filter(([k])=>dm[k]!=null&&dm[k]!=='');
-    const url=m.url||D.source.moveUrl?.replace('{id}',m.id);
+    const any=f=>MOVES.some(f),dash=v=>v==null||v===''?'—':v;
+    const can=CANCELS.filter(([k])=>any(x=>x.cancels[k])),to=any(x=>x.cancelTo?.length);
+    const adv=[['blockAdv','On block'],['hitAdv','On hit']].filter(([k])=>any(x=>x[k]!=null));
+    const dmg=[['type','Damage type'],['amount','Damage'],['stun','Stun'],['guard','Guard'],['mv','Motion value'],['poise','Poise damage'],['level','Damage level'],['stamina','Stamina']].filter(([k])=>any(x=>x.damage?.[k]!=null&&x.damage[k]!==''));
+    const n=can.filter(([k])=>m.cancels[k]).length;
     h+=sec('timing','Timing',`${D.game.fps} fps · ${m.total??'?'} frames`,
-      `<p class="who">${esc(c.name)} › ${esc(T[m.type].name)} · <code>${esc(m.id)}</code></p>`+
-      (m.active.length?row('Startup',m.startup??'—',' data-ph="startup"')+row('Active',win(m.active)+(m.hits>1?` · ${m.hits} hits`:''),' data-ph="active"')+(m.recovery!=null?row('Recovery',m.recovery+' frames',' data-ph="recovery"'):''):'<p class="note">No hitbox in this move.</p>')+
-      (m.armor.length?row('Hyper armor',win(m.armor),' data-arm'):'')+(m.iframes.length?row('I-frames',win(m.iframes)):'')+row('Total',m.total??'—'));
-    h+=sec('cancels','Cancels',can.length?`${can.length} windows`:m.cancelTo?.length?m.cancelTo.join(' '):'',
-      can.length?`<p class="note">Each colour is a line on the timeline from the frame the cancel opens.</p>`+can.map(([k,l])=>row(l,'from '+m.cancels[k],` data-can="${m.cancels[k]}" style="--c:var(--cx-${k})"`)).join(''):m.cancelTo?.length?`<p class="who">${esc(m.cancelTo.join(', '))}</p>`:'');
-    h+=sec('damage',adv.length?'Damage & advantage':'Damage','',(adv.map(([k,l])=>row(l,sgn(m[k]))).join('')+dmg.map(([k,l])=>row(l,dm[k])).join(''))||'');
+      `<p class="who" title="${esc(m.id)}">${esc(T[m.type].name)} · <code>${esc(m.id)}</code></p>`+
+      row('Startup',dash(m.active.length?m.startup:null),' data-ph="startup"')+row('Active',m.active.length?win(m.active)+(m.hits>1?` · ${m.hits} hits`:''):'—',' data-ph="active"')+row('Recovery',m.active.length&&m.recovery!=null?m.recovery+' frames':'—',' data-ph="recovery"')+
+      (any(x=>x.armor.length)?row('Hyper armor',m.armor.length?win(m.armor):'—',' data-arm'):'')+(any(x=>x.iframes.length)?row('I-frames',m.iframes.length?win(m.iframes):'—'):'')+row('Total',dash(m.total)));
+    h+=sec('cancels','Cancels',can.length?`${n} window${n===1?'':'s'}`:to?(m.cancelTo||[]).join(' ')||'none':'',
+      (can.length?`<p class="note">Each colour is a line on the timeline from the frame the cancel opens.</p>`+can.map(([k,l])=>m.cancels[k]?row(l,'from '+m.cancels[k],` data-can="${m.cancels[k]}" style="--c:var(--cx-${k})"`):row(l,'—',` style="--c:var(--cx-${k})"`)).join(''):'')+
+      (to?`<p class="who">${esc(m.cancelTo?.length?m.cancelTo.join(', '):'No cancels')}</p>`:''));
+    h+=sec('damage',adv.length?'Damage & advantage':'Damage','',adv.map(([k,l])=>row(l,dash(sgn(m[k])))).join('')+dmg.map(([k,l])=>row(l,dash(dm[k]))).join(''));
   }
   if(MOVES.length){
     let mv='',t=null;
@@ -444,9 +451,11 @@ function renderInfo(){
   if(m){const url=m.url||D.source.moveUrl?.replace('{id}',m.id);
     h+=sec('source','Source','',`<p class="who">${esc(D.source.name)}${D.source.author?` · ${esc(D.source.author)}`:''}</p>${url?`<a href="${esc(url)}" target="_blank" rel="noopener">Open in ${esc(D.source.moveName||D.source.name)} ↗</a><br>`:''}<a href="move-explorer.html#game=${esc(G.id)}">Full table in Move Explorer</a>`)}
   $('#secs').innerHTML=h;
-  // keep the move on show in sight, scrolling only the panel (on narrow screens the panel is part of the page)
-  const box=$('#info'),r=$('#secs .mv [aria-current=true]');
-  if(r&&box.scrollHeight>box.clientHeight){const top=r.offsetTop,bot=top+r.offsetHeight-box.clientHeight;if(box.scrollTop>top-40)box.scrollTop=top-40;else if(box.scrollTop<bot+8)box.scrollTop=bot+8}}
+  const r=$('#secs .mv [aria-current=true]');
+  if(!r)return;
+  if(was!=null){const d=r.getBoundingClientRect().top-was;if(box.scrollHeight>box.clientHeight)box.scrollTop+=d;else scrollBy(0,d);return}
+  // stepped with the keys: keep the move on show in sight, scrolling only the panel, and only once it is out of view
+  if(box.scrollHeight>box.clientHeight){const top=r.offsetTop,bot=top+r.offsetHeight-box.clientHeight;if(box.scrollTop>top)box.scrollTop=top-8;else if(box.scrollTop<bot)box.scrollTop=bot+8}}
 function infoFrame(m,f){
   if(CUR!==m)return;
   const [ph,hit]=phaseAt(m,f),p=PHASE[ph];
@@ -459,7 +468,7 @@ function infoFrame(m,f){
   document.querySelector('#secs [data-arm]')?.classList.toggle('on',inW(m.armor,f));
   document.querySelectorAll('#secs [data-can]').forEach(r=>r.classList.toggle('open',f>=+r.dataset.can))}
 $('#secs').addEventListener('toggle',e=>{const s=e.target.dataset?.s;if(!s)return;e.target.open?OPEN.add(s):OPEN.delete(s);store.set('spike-secs',[...OPEN].join(','))},true);
-$('#secs').onclick=e=>{const b=e.target.closest('button[data-m]');if(b){const m=MOVES.find(x=>x.id===b.dataset.m);if(m&&m!==CUR)show(m)}};
+$('#secs').onclick=e=>{const b=e.target.closest('button[data-m]');if(b){const m=MOVES.find(x=>x.id===b.dataset.m);if(m&&m!==CUR)show(m,m.id)}};
 
 // ---------- keys and links ----------
 document.addEventListener('keydown',e=>{
