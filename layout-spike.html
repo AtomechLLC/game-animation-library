@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>try{const t=localStorage.getItem("library.theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+<meta charset="utf-8">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAHsElEQVRYw52Xe2yT5xXGf8e3OHbihNRxro0DuTkEJyEdMSkNBUKltmrLytikIahoqbRpKVopA9Zpqrqt0zYkVG1Lt05BFRvahPiDDW0IiW2M9QpJSB0SyMVJSCAOkPv9avvbH77ENqHAvj/8XfT6fc5zznmfc47wEFeWfZcWyBPkaWAjyFpBMkDiBAGYBnEL4gQ+FuRjkPau5tqFB+0tDwFcBuwW5AUgE0TtBxWCdwJvgS19gvQB5wQ5AVLf2fyHhUcywGrfJQqkAdXAXkFSIgElDFYitgp/F4VBkBOC/Brklqvl90o0lnoZ1hJg/SHILkHiw8El6pnlviuhZyOIQ8AB0m62lLuHB+qV+xpg9YNvBGoFKRdEBBWCClAta8QyrCO+CwhIFrBRkA6zZV13uBHqJfDdAlImSK0gRY/KOsEUR2XFasbHZ5mdW7wnXIIkAQ6BBrOlvG94oB4AVZgD0oAjIEUPYh3+G3T5jm1P8oufvkJ+bnqEXyI8pUgeihxB4fEgqAog2/6KFqQaZNPDsF4Cxh9vEaxZyVxt7qXl2s2IJA0AI0oo3ysEDtiK3tCFeUDKBNkrqFRL7B/MGoTUlBVs3VzCE2W5jI5NkZaaFM066tiJCmQnChUA6mz7Hi3IIZDN9wWLjqey5OSvv+jg4P6XSUtZgclkoL9/hOuttyLWEUYHf/oZBCQ52XFOnZiy1ibITwRV4rJgy7AOX3fr1hCJiUY8Hi/7D36E03kDz6IvQmJCp0QhzDeYQc5rAvKaGS0opngD68ryKS6ykpQUj0hwk6WV7S43/zjbQGFBJg1XOtFpNfzgrW2o1f7DNTY6xfXWPurqXIyPz0SblA48rxFk49Jx9DOzZlk4vP8b2PIzaW3rY3RsaumvsrTNzPQC1qxk0tOT+PyDduKMsWjU6tAaq9XCs8+W0dMzwPvv/x2X67bfCCV0ACo1wNpw4UgwGXn7wA6MBj1vHjpGW5sbj8d7H7mF3Ts3MTw8SafrNuMTMzidN0Lu1mhU5KxK5c3vv8jhQy9z6NCfGB2ZCq8BNhVIRni2V5TbyMtJ51dHT9PccjMALtiLsnl9z1YM+pgQeIxOS4WjgKamHiYmZiNirdWq2bK5mGRzAkePnsFiSaCqyh6eA6CQqRIkLlxG15asovnaTdo73AhgNOhJT01iz+4tbHrajsWSSGrKCgyxMWRmmMnNTeOLS+2Y4mNJMBn82gDEx8Xy2qtV7NhRgbtvmCsNXawpylpKRv86rSZav40GPVNTs3i9CnHGWN750bd4oiyXZLMJj8fHsQ+rWVz08LP3TpGWuoK52QVcrn7e2v8SgwMT1B77J4kJBsbGZnj33ZPMzy2wMO/hzp1RcnJSUasEn3epHqlEkeno2AYD4vUqXKpzce36LRY9Xk6e+hSXqx+1SoXbPYLDkU9Ly01iYrSsdxTQ0zPAUxsKqa2tprQ0m472fm72DvmLjlqFooQSMCBSyqIKcIef69HRKcxmEzqdlrm5Bf525jKdXbf58ssb1B47z/j4DM0tvYiAfY2VS5c7WF34OD6fj6tNPYyOTNLa2sfY6HQo1hq1ipXZKUxNzqL4lICEKwD9KkGc4fzrGjqxFWSwYX1hSLnOnr3Cez8/hcEQQ3GxlcuXOygoyEBEaGnuxVGeR3u7m4GBMa429fLOj/9CV+edkPCUlK6kuDSb+jpXwAMhN7Sp8PdvvqARjY3dXLjYzIH923jphXVYkhO4e3eMoaFJSuzZ6LQanM4eyr+Wh8vVj8fjo7R0FU3OHjQaDbF6HTqt/242x1NVVcwP396Os7Gbzz9pDYEL+AQ+0Qj8F38PlwUwP7fIB787x+zMAt/77nO8/tozTE7M+rXTbKKr6w6zM/OUleVw+vQX5OWmkZn5GNu3r2frMyURvV5cnJ7YWB0X/9PC8WP/ZmZmPlyI7gLnNCAd/gaS7xAoHmNj0/zmt2c5c6aOQlsmRmNMKESdnbdZuTKF+Hg9Vxq68Pl8HPnl6XsbSwXm5hboaHPT032XRY83HBzggsA1ASgoqt4A/BVIXq54RBeV6urnsNutHD74R+x2K7MzC5gSDExNzmI0xDA0NMH09DzzcwuYTAYSE404G7vxLHqD3hkBvtnUUXMh2BHVAyfE31KHC0VEMUWB+Dg96x35NF7pJkanobJyNU9tLOTbOyvJL0hny9Zi0tJWUFa2CqNBT0npSgpsGSi+UOwV4CTwWagnHB6s9yZbHG2AA4WsaNaiLMU1IyOJqqoS/nziIiKCTqfB3TfM9Wt9eBa9DA9NoNNp0Ou1iIBapaKn6y633SNBQo3AgaaOmsGIuaCw6A1B4UngOJAbcrgSOUDoY7RkZCRxo3sARVGCghLZ9SjLDB/+b73AXoQLTR01SkRXPDRYR7LF4QbpEMQhCo8B0cUDr8fH6Oh0CEjCskqiwOVe8H0C55tcNcqyc8HQYJ1iSXZ0Aw2ATSCTAIZEjVGPwFoJuH2fwHmnq8b3lZPRoN+IPoF/ARoUcgQM4UARrO85KRHGjADHBQ4INDrDmD/UcLqmcJ8u0L2+CmwVhTRQVA9g7QuIzAXgI4HPnK6a+f9rOg5edtu+GMCGojwPVArYUMgEtIFNFoF+FNqATwPC1vJVwMHrfygqv2EFzVbvAAAAAElFTkSuQmCC">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Layout spike · Game Animation Library</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Game Animation Library: learn from the legends of combat design.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="shared/appbar.css?v=3">
+<style>
+/* Shared tokens and viewer styles, copied from move-explorer.html for this spike */
+/* Same shell as template.html (sticky timeline header, filter rail, slide-over sheet), with a weapon icon index and frame tables. */
+:root{
+  --bg:#f3f2ee; --panel:#ffffff; --sunk:#e9e7e1; --fg:#1c1b19; --muted:#6b6860; --line:#d8d5cc;
+  --key:#e08a00; --key-ink:#8a5200; --combat:#c2412d; --calm:#2f7a6b; --chip:#efece5; --playhead:#d92d20; --focus:#2563eb;
+  --f-start:#cfcbc0; --f-active:#c2412d; --f-gap:#e6b8ae; --f-rec:#e08a00; --f-free:#2f7a6b40; --f-armor:#4b5bd6; --f-iframe:#0e9bb8;
+  --cx-attack:#c2185b; --cx-dodge:#2f7a6b; --cx-block:#5b6b7f; --cx-skill:#7c3aed; --cx-item:#8a6d00; --cx-move:#2563eb;
+  --v3d-bounds:#3fae3a;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
+  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; --focus:#6ea8ff; color-scheme:dark;
+  --f-start:#4a4b52; --f-active:#ff7a63; --f-gap:#6b3a33; --f-rec:#ffb020; --f-free:#62c9b14d; --f-armor:#8f9bff; --f-iframe:#4cc9e8;
+  --cx-attack:#f06292; --cx-dodge:#62c9b1; --cx-block:#a3b1c2; --cx-skill:#b794f6; --cx-item:#e0c040; --cx-move:#6ea8ff; --v3d-bounds:#91f48b}}
+:root[data-theme="dark"]{
+  --bg:#17181a; --panel:#202125; --sunk:#141517; --fg:#ecebe6; --muted:#9a988f; --line:#33343a;
+  --key:#ffb020; --key-ink:#ffc65a; --combat:#ff7a63; --calm:#62c9b1; --chip:#2a2b30; --playhead:#ff5a4f; --focus:#6ea8ff; color-scheme:dark;
+  --f-start:#4a4b52; --f-active:#ff7a63; --f-gap:#6b3a33; --f-rec:#ffb020; --f-free:#62c9b14d; --f-armor:#8f9bff; --f-iframe:#4cc9e8;
+  --cx-attack:#f06292; --cx-dodge:#62c9b1; --cx-block:#a3b1c2; --cx-skill:#b794f6; --cx-item:#e0c040; --cx-move:#6ea8ff; --v3d-bounds:#91f48b}
+*{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:14px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--panel)}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--key);outline-offset:2px}
+[hidden]{display:none!important}
+.chip{border:1px solid var(--line);background:var(--chip);border-radius:3px;padding:1px 7px;font-size:12px;cursor:pointer;font-family:var(--mono)}
+.chip[aria-pressed="true"]{background:var(--key);border-color:var(--key);color:#1c1b19}
+.strip{position:relative;height:14px;width:220px;background:var(--sunk);border-radius:2px;overflow:hidden}
+.strip span{position:absolute;top:0;bottom:0}
+.strip .ar{top:auto;height:3px;bottom:0;background:var(--f-armor)}
+.strip .ifr{top:0;height:3px;background:var(--f-iframe)}
+/* 3D preview (frame-data/viewer3d.js) */
+.v3d{display:grid;gap:8px}
+.v3d-stage{position:relative;aspect-ratio:4/3;background:radial-gradient(ellipse at 50% 35%,var(--panel),var(--sunk));border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.v3d-stage canvas{display:block;width:100%;height:100%;touch-action:none}
+/* viewport overlays (frame-data/viewer3d.js): Mouse | Trackpad bottom left, camera buttons and Help top right */
+.v3d-corner{position:absolute;left:12px;bottom:12px;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.v3d-stage kbd,.v3d-keys kbd{border:1px solid var(--line);background:var(--sunk);border-radius:3px;padding:0 4px;font-family:var(--mono);font-size:10px;font-weight:500;color:var(--muted)}
+.v3d-mode{display:flex;margin:0;padding:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:color-mix(in srgb,var(--panel) 80%,transparent);backdrop-filter:blur(6px)}
+.v3d-mode button{display:flex;align-items:center;border:0;background:none;padding:4px 8px;color:var(--muted);cursor:pointer}
+.v3d-mode svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}.v3d-mode button:hover{color:var(--fg)}
+.v3d-mode button[aria-pressed=true]{background:var(--key);color:#fff}
+.v3d-side{position:absolute;top:10px;right:10px;bottom:10px;display:flex;flex-direction:column;align-items:flex-end;gap:8px;pointer-events:none}
+.v3d-tools{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px}
+.v3d-tools button{pointer-events:auto;display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:color-mix(in srgb,var(--panel) 85%,transparent);backdrop-filter:blur(6px);border-radius:999px;padding:4px 10px;font-size:12px;font-weight:700;color:var(--fg);cursor:pointer}
+.v3d-tools button:hover,.v3d-tools button[aria-pressed=true]{border-color:var(--key)}
+.v3d-tools button span{display:flex;align-items:center;gap:2px;font-family:var(--mono);font-size:10px;color:var(--muted)}
+.v3d-help{pointer-events:auto;width:240px;min-height:0;overflow-y:auto;overscroll-behavior:contain;border:1px solid var(--line);border-radius:10px;background:color-mix(in srgb,var(--panel) 92%,transparent);backdrop-filter:blur(6px);padding:10px 12px;font-size:11px}
+.v3d-help-title{margin:0 0 4px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.v3d-help-note{margin:0 0 8px;font-size:10px;color:var(--muted)}
+.v3d-help ul{list-style:none;margin:0 0 8px;padding:0;display:grid;gap:4px}
+.v3d-help li{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.v3d-help li span{display:flex;flex-wrap:wrap;align-items:center;gap:2px;font-family:var(--mono);font-size:10.5px;color:var(--muted)}.v3d-help li b{flex-shrink:0;text-align:right}
+/* the 3D stage takes keyboard focus for its navigation keys (frame-data/navigation3d.js); the ring shows when they apply */
+.v3d-stage[tabindex]{outline:none}.v3d-stage[tabindex]:focus{border-color:var(--key);box-shadow:0 0 0 1px var(--key)}
+.v3d-msg{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:13px;text-align:center;padding:16px}
+.v3d-hud{position:absolute;left:10px;top:8px;display:flex;align-items:baseline;gap:8px;pointer-events:none}
+.v3d-hud b{font-family:var(--display);font-size:28px;font-weight:800;font-variant-numeric:tabular-nums}
+.v3d-hud span{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+/* the render stats overlay (` in the 3D view, frame-data/renderstats.js), a developer tool; no blur, so it adds no
+   compositing cost of its own */
+.v3d-stats{position:absolute;left:10px;top:48px;z-index:1;font:11px/1.45 var(--mono);color:var(--fg);background:color-mix(in srgb,var(--panel) 90%,transparent);border:1px solid var(--line);border-radius:4px;padding:6px 8px;pointer-events:none;font-variant-numeric:tabular-nums}
+.v3d-stats p{margin:0 0 2px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.v3d-stats dl{display:grid;grid-template-columns:auto auto;gap:0 10px;margin:0}
+.v3d-stats dt{color:var(--muted)}.v3d-stats dd{margin:0}
+.v3d-stats button{pointer-events:auto;margin-top:4px;font:inherit;color:var(--fg);background:var(--sunk);border:1px solid var(--line);border-radius:3px;padding:1px 6px;cursor:pointer}
+.v3d-bar{display:flex;align-items:center;gap:6px}
+.v3d-bar button,.v3d-bar select{color:var(--fg);border:1px solid var(--line);background:var(--sunk);border-radius:4px;height:30px;min-width:34px;cursor:pointer;font-size:12px}
+.v3d-scrub{position:relative;flex:1;min-width:0}
+.v3d-speedl{display:inline-flex;align-items:center;gap:5px;flex:none;font-size:12px;font-weight:600;color:var(--fg);cursor:pointer}
+.v3d-speedl select{font-weight:600}
+.v3d-scrub .strip{width:100%;height:26px}
+/* cancel windows: thin lines stacked in the middle of the phase bar, clear of the armor and i-frame edges */
+.strip .cxl{position:absolute;inset:4px 0;display:flex;flex-direction:column;justify-content:center;gap:1px;pointer-events:none}
+.cxl i{position:relative;flex:none;height:2px;border-radius:1px;background:var(--c);box-shadow:0 0 0 1px #0005}
+/* the key under the bar names each colour and the frame its cancel opens */
+.cxk{display:flex;flex-wrap:wrap;gap:2px 10px;margin-top:4px;font:600 10px/1.3 var(--mono);color:var(--muted)}
+.cxk span{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.cxk span::before{content:"";width:12px;height:3px;border-radius:1px;background:var(--c)}
+.cxk b{color:var(--fg);font-weight:600}
+.cxk em{font-style:normal}
+/* with the key the scrubber grows downward, so the play buttons stay level with the phase strip */
+.v3d-bar:has(.cxk){align-items:flex-start}
+.v3d-scrub::after{content:"";position:absolute;top:-3px;height:32px;left:var(--v3d-at,0%);width:2px;margin-left:-1px;background:var(--fg);pointer-events:none}
+.v3d-scrub input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.v3d-keys{display:flex;flex-wrap:wrap;gap:4px 14px;margin:0;font-size:11px;color:var(--muted)}
+.v3d-opts{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--muted);align-items:center}
+.v3d-opts label{display:inline-flex;gap:5px;align-items:center;cursor:pointer}
+.v3d-who{margin-left:auto;font-family:var(--mono);font-size:10.5px}
+/* hitbox clips (frame-data/clipviewer.js): the captures' own grey behind them */
+.clip-stage{background:#404040}
+.clip-stage canvas,.clip-stage img{display:block;width:100%;height:100%;object-fit:contain}
+.clip-stage .v3d-hud{color:#fff;text-shadow:0 1px 2px #000}.clip-stage .v3d-hud span{color:#ddd}
+.clip-alts{display:flex;flex-wrap:wrap;gap:4px}
+/* ---- Three-panel layout spike: Game catalogue | weapon tabs + viewer | info display ---- */
+html,body{height:100%}
+body{display:flex;flex-direction:column;min-height:100dvh}
+.hrow{display:flex;align-items:center;gap:16px;padding-block:12px;flex-wrap:wrap}
+.search{flex:1 1 240px;display:flex;align-items:center;gap:8px;background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:0 10px;min-width:0}
+.search input{flex:1;min-width:0;border:0;background:transparent;color:var(--fg);font:inherit;padding:9px 0;outline:none}
+.spike-note{margin:0;padding:6px 16px;font-size:12px;color:var(--muted);background:var(--sunk);border-bottom:1px solid var(--line)}
+.spike-note a{color:var(--fg)}
+.lay{flex:1;min-height:0;display:grid;grid-template-columns:260px minmax(0,1fr) 320px;grid-template-rows:auto minmax(0,1fr);grid-template-areas:"cat tabs info" "cat main info";transition:grid-template-columns .2s ease}
+.lay.catmin{grid-template-columns:48px minmax(0,1fr) 320px}
+@media (prefers-reduced-motion:reduce){.lay{transition:none}}
+.panel-h{display:flex;align-items:center;gap:8px;min-height:44px;padding:8px 12px;border-bottom:1px solid var(--line)}
+.panel-h h2{margin:0;flex:1;min-width:0;font-family:var(--display);font-size:15px;font-weight:700;letter-spacing:.01em}
+.iconbtn{display:inline-grid;place-items:center;width:30px;height:30px;flex:none;border:1px solid var(--line);background:var(--sunk);border-radius:6px;cursor:pointer;color:var(--fg)}
+.iconbtn:hover{border-color:var(--fg)}
+.iconbtn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* left: game catalogue */
+#cat{grid-area:cat;display:flex;flex-direction:column;min-height:0;background:var(--panel);border-right:1px solid var(--line)}
+#cat .search{margin:10px 12px;flex:none}
+.catbody{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 26px}
+.games{overflow-y:auto;overscroll-behavior:contain;margin:0;padding:0 0 12px;list-style:none}
+.games .letter{position:sticky;top:0;z-index:1;padding:4px 12px;font:600 11px/1.4 var(--mono);color:var(--muted);background:var(--panel);border-bottom:1px solid var(--line)}
+.games button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:none;padding:9px 12px;cursor:pointer}
+.games button:hover{background:var(--sunk)}
+.games button[aria-current=true]{background:var(--chip);box-shadow:inset 3px 0 0 var(--key)}
+.games .gname{display:block;font-weight:600;line-height:1.3}
+.games small{display:block;color:var(--muted);font-size:11.5px;line-height:1.35}
+.games small b{color:var(--fg);font-weight:600}
+.games .empty{padding:16px 12px;color:var(--muted);font-size:13px}
+.az{display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;border-left:1px solid var(--line);padding:4px 0;overflow:hidden}
+.az button{flex:1 1 0;min-height:0;border:0;background:none;padding:0;font:600 10.5px/1 var(--mono);color:var(--fg);cursor:pointer}
+.az button:hover:not(:disabled){background:var(--key);color:#1c1b19}
+.az button:disabled{color:var(--muted);opacity:.4;cursor:default}
+/* collapsed: a thin rail with the expand button; the centre takes the room */
+.catmin #cat .search,.catmin #cat .catbody,.catmin #cat h2{display:none}
+.catmin #cat .panel-h{justify-content:center;padding-inline:0}
+.catmin #catBtn svg{transform:rotate(180deg)}
+.catmin #cat .railname{display:block}
+.railname{display:none;writing-mode:vertical-rl;transform:rotate(180deg);margin:12px auto;font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* top: weapon tabs */
+.tabs{grid-area:tabs;display:flex;align-items:stretch;min-width:0;background:var(--panel);border-bottom:1px solid var(--line)}
+.tabs h3{flex:none;margin:0;display:flex;align-items:center;padding:0 12px;font:600 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border-right:1px solid var(--line)}
+.tablist{position:relative;display:flex;flex:1;min-width:0;overflow-x:auto;scrollbar-width:thin}
+.tablist button{flex:none;display:flex;align-items:center;gap:7px;border:0;border-right:1px solid var(--line);background:none;padding:7px 14px;cursor:pointer;font-size:13px;font-weight:500;white-space:nowrap;color:var(--muted);border-bottom:3px solid transparent}
+.tablist button:hover{color:var(--fg);background:var(--sunk)}
+.tablist button[aria-selected=true]{color:var(--fg);border-bottom-color:var(--key);font-weight:600}
+.tablist img,.tablist .ph{width:26px;height:26px;object-fit:contain;flex:none}
+.tablist .ph{display:grid;place-items:center;border-radius:4px;background:var(--sunk);font:600 11px var(--mono)}
+.tablist .n{font:500 10.5px var(--mono);color:var(--muted)}
+
+/* centre: the move on show */
+#main{grid-area:main;display:flex;flex-direction:column;gap:8px;min-width:0;min-height:0;padding:12px 16px}
+.disp-h{display:flex;align-items:center;gap:12px;min-width:0}
+.disp-h div{flex:1;min-width:0}
+.disp-h small{display:block;font:500 11px/1.3 var(--mono);color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.disp-h h2{margin:0;font-family:var(--display);font-size:22px;font-weight:800;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#view{flex:1;min-height:0;display:flex;flex-direction:column;gap:8px}
+#view .v3d-stage{flex:1;min-height:240px;aspect-ratio:auto}
+#view .v3d-keys{display:none}
+#view.keys .v3d-keys{display:flex}
+#view>.empty{flex:1;display:grid;place-items:center;border:1px dashed var(--line);border-radius:6px;color:var(--muted);padding:24px;text-align:center}
+/* fullscreen keeps the playback bar and timeline with the picture */
+#disp:fullscreen{background:var(--bg);padding:16px;display:flex;flex-direction:column;gap:8px}
+#disp:fullscreen #view{flex:1}
+#disp{flex:1;min-height:0;display:flex;flex-direction:column;gap:8px}
+#disp:fullscreen .disp-h h2{font-size:26px}
+#fsBtn .i-exit{display:none}
+#disp:fullscreen #fsBtn .i-exit{display:block}#disp:fullscreen #fsBtn .i-enter{display:none}
+
+/* right: info display, collapsible sections */
+#info{position:relative;grid-area:info;display:flex;flex-direction:column;min-height:0;background:var(--panel);border-left:1px solid var(--line);overflow-y:auto;overscroll-behavior:contain}
+.now{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 12px;border-bottom:1px solid var(--line)}
+.now b{font-family:var(--display);font-size:30px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1}
+.now small{font:500 10.5px var(--mono);color:var(--muted);text-transform:uppercase}
+.now .ph{border-radius:999px;padding:2px 9px;font-size:12px;font-weight:600;color:#1c1b19;background:var(--ph,var(--chip))}
+.now .tag{border-radius:999px;padding:2px 9px;font-size:12px;border:1px solid var(--line)}
+.now .ph:empty,.now .tag:empty{display:none}
+details.sec{border-bottom:1px solid var(--line)}
+details.sec>summary{display:flex;align-items:center;gap:8px;padding:11px 12px;cursor:pointer;list-style:none;font-weight:600;font-size:14px}
+details.sec>summary::-webkit-details-marker{display:none}
+details.sec>summary:hover{background:var(--sunk)}
+details.sec>summary span{flex:1}
+details.sec>summary em{font:normal 500 11px var(--mono);color:var(--muted)}
+details.sec>summary::after{content:"";width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:8px solid var(--muted);transition:transform .15s}
+details.sec:not([open])>summary::after{transform:rotate(-90deg)}
+.secb{padding:0 12px 12px;font-size:13px}
+.secb .r{display:flex;justify-content:space-between;gap:10px;padding:2px 6px;border-radius:4px;border-left:3px solid transparent}
+.secb .r span{color:var(--muted)}
+.secb .r b{font-family:var(--mono);font-weight:500;text-align:right}
+.secb .r.on{background:var(--chip);border-left-color:var(--fg)}.secb .r.on span{color:var(--fg)}
+.secb .r.open b{color:var(--calm);font-weight:700}
+.secb .r[style*="--c"] span::before{content:"";display:inline-block;width:10px;height:3px;margin-right:6px;vertical-align:middle;border-radius:1px;background:var(--c)}
+.secb .who{margin:0 0 6px;color:var(--muted);font-size:12px}
+.secb .who code{font-family:var(--mono);font-size:11px;color:var(--fg)}
+.secb .note{margin:0 0 6px;color:var(--muted);font-size:11.5px}
+.mv h4{margin:10px 0 2px;font:600 10.5px/1.4 var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.mv h4:first-child{margin-top:0}
+.mv button{display:flex;align-items:center;gap:8px;width:100%;text-align:left;border:0;background:none;border-radius:4px;padding:4px 6px;cursor:pointer;font-size:13px}
+.mv button:hover{background:var(--sunk)}
+.mv button[aria-current=true]{background:var(--chip);box-shadow:inset 3px 0 0 var(--key);font-weight:600}
+.mv button span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mv button i{font:normal 500 11px var(--mono);color:var(--muted)}
+.secb a{font-size:12.5px}
+
+/* narrower screens: the info panel drops under the viewer, the catalogue becomes a drawer */
+@media (max-width:1100px){
+  .lay,.lay.catmin{grid-template-columns:48px minmax(0,1fr);grid-template-rows:auto auto auto;grid-template-areas:"cat tabs" "cat main" "cat info"}
+  .lay:not(.catmin) #cat{position:fixed;z-index:8;top:0;bottom:0;left:0;width:min(300px,86vw);box-shadow:0 0 40px #0006}
+  .lay{flex:none}
+  #info{border-left:0;border-top:1px solid var(--line);overflow:visible}
+  #disp,#view{flex:none}
+  #view .v3d-stage{flex:none;height:min(60vh,460px);min-height:0}
+}
+@media (max-width:600px){
+  .lay,.lay.catmin{grid-template-columns:minmax(0,1fr);grid-template-areas:"tabs" "main" "info"}
+  .lay.catmin #cat{position:fixed;z-index:8;left:0;bottom:16px;top:auto;width:auto;height:auto;border:1px solid var(--line);border-left:0;border-radius:0 8px 8px 0;box-shadow:0 2px 12px #0004}
+  .lay.catmin #cat .railname{display:none}
+  #main{padding:10px 12px}
+  #view .v3d-bar{flex-wrap:wrap}
+  #view .v3d-scrub{flex-basis:100%;order:5}
+}
+</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+</head>
+<body>
+<header><div class="wrap hrow approw"><script src="shared/appbar.js?v=4" data-app="explorer"></script></div></header>
+<p class="spike-note">Layout spike: a three-panel take on <a href="move-explorer.html">Move Explorer</a> for comparison. Same data and viewers; nothing else on the site changes.</p>
+
+<div class="lay" id="lay">
+  <aside id="cat" aria-label="Game catalogue">
+    <div class="panel-h"><h2>Game catalogue</h2><button class="iconbtn" id="catBtn" aria-expanded="true" aria-controls="cat" title="Collapse the catalogue ( [ )"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button></div>
+    <span class="railname" aria-hidden="true">Games</span>
+    <label class="search" for="q"><span aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Search games, weapons, characters…" autocomplete="off"></label>
+    <div class="catbody"><ul class="games" id="games" aria-label="Games A to Z"></ul><nav class="az" id="az" aria-label="Jump to letter"></nav></div>
+  </aside>
+  
+  <nav class="tabs" aria-label="Weapons"><h3 id="tabsH">Weapon</h3><div class="tablist" id="tabs" role="tablist"></div></nav>
+
+  <main id="main">
+    <section id="disp" aria-label="Move on show">
+      <div class="disp-h"><div><small id="dSrc"></small><h2 id="dName">Loading…</h2></div>
+        <button class="iconbtn" id="keysBtn" aria-pressed="false" title="Show the keyboard shortcuts">?</button>
+        <button class="iconbtn" id="fsBtn" title="Fullscreen (F11 style; Esc leaves)" aria-label="Fullscreen"><svg class="i-enter" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><svg class="i-exit" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg></button></div>
+      <div id="view"></div>
+    </section>
+  </main>
+
+  <aside id="info" aria-label="Info display">
+    <div class="now"><small>Frame</small><b id="iF">–</b><span class="ph" id="iPh"></span><span class="tag" id="iArm"></span></div>
+    <div id="secs"></div>
+  </aside>
+</div>
+
+<script type="module">
+// Three-panel layout spike over the Move Explorer data (frame-data/games.json and each game's frame-data/1 file).
+// Left: game catalogue A–Z with search and a letter index, collapsible. Top: one tab per weapon class (character in
+// fighting games). Centre: the move in the game's own viewer (3D, sprites or clips), whose bar already carries play,
+// −1/+1 frame, the timeline and speed. Right: the move's numbers and the class's moves in collapsible sections.
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const VIEWER='./frame-data/viewer3d.js?v=19',VIEWER2D='./frame-data/sprites2d.js?v=6',CLIPVIEWER='./frame-data/clipviewer.js?v=5';
+const GRIP={'1h':'1H','2h':'2H','Paired':'PS','Offhand':'OH','Mounted':'Horse','any':'—'};
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+let GAMES=[],G=null,D=null,ICONS={},T={},CL={},GR=GRIP,CM=null,VIEW=null,VIEWGAME=null,MOVES=[],CUR=null,seq=0;
+const DATA=new Map();   // game id -> its frame data, once loaded (search reads the class names from it)
+const st={game:null,cls:null,move:null,q:''};
+const byClass=()=>G.models||G.sprites;
+
+// ---------- frame helpers (as in move-explorer.html) ----------
+const lastActive=m=>m.active.length?m.active[m.active.length-1][1]:0;
+const CX=[['attack','Attack'],['dodge','Dodge'],['block','Block'],['skill','Skill'],['item','Item'],['move','Move']];
+function cancelLanes(m,scale,end){
+  const to=Math.min(end,scale),ls=CX.filter(([k])=>m.cancels[k]&&m.cancels[k]<=to);
+  if(!ls.length)return ['',''];
+  const lines=ls.map(([k])=>{const f=m.cancels[k],x=(f-1)/scale*100,w=Math.max((to-f+1)/scale*100,.6);
+    return `<i style="--c:var(--cx-${k});margin-left:${x.toFixed(2)}%;width:${w.toFixed(2)}%"></i>`}).join('');
+  return [`<div class="cxl">${lines}</div>`,`<div class="cxk">${ls.map(([k,l])=>`<span style="--c:var(--cx-${k})" title="${l} from frame ${m.cancels[k]}"><em>${l}</em> <b>${m.cancels[k]}</b></span>`).join('')}</div>`]}
+function stripHtml(m,scale){
+  const end=Math.max(m.total||0,m.cancels.dodge||0,lastActive(m));
+  const pc=f=>(f/scale*100).toFixed(2)+'%',seg=(a,b,c)=>b>a?`<span style="left:${pc(a)};width:${pc(b-a)};background:var(${c})"></span>`:'';
+  let h=m.active.length?seg(0,m.startup-1,'--f-start'):'';
+  m.active.forEach(([s,e],i)=>{if(i)h+=seg(m.active[i-1][1],s-1,'--f-gap');h+=seg(s-1,e,'--f-active')});
+  const last=lastActive(m),dodge=m.cancels.dodge?m.cancels.dodge-1:null;
+  if(!m.active.length)h+=seg(0,end,'--f-start');else if(dodge!=null){h+=seg(last,dodge,'--f-rec');h+=seg(dodge,end,'--f-free')}else h+=seg(last,end,'--f-rec');
+  m.armor.forEach(([s,e])=>h+=`<span class="ar" style="left:${pc(s-1)};width:${pc(Math.min(e,end)-s+1)}"></span>`);
+  m.iframes.forEach(([s,e])=>h+=`<span class="ifr" style="left:${pc(s-1)};width:${pc(Math.min(e,end)-s+1)}"></span>`);
+  const cx=cancelLanes(m,scale,end);
+  return `<div class="strip">${h}${cx[0]}</div>${cx[1]}`}
+const PHASE={startup:['Startup','--f-start'],active:['Active','--f-active'],gap:['Between hits','--f-gap'],recovery:['Recovery','--f-rec'],free:['Can dodge','--f-free']};
+function phaseAt(m,f){
+  if(!m.active.length)return ['',0];
+  const hit=m.active.findIndex(([s,e])=>f>=s&&f<=e);
+  return [f<m.startup?'startup':hit>=0?'active':f<lastActive(m)?'gap':m.cancels.dodge&&f>=m.cancels.dodge?'free':'recovery',hit+1]}
+const inW=(w,f)=>w.some(([s,e])=>f>=s&&f<=e);
+function frameState(m,f){const [ph]=phaseAt(m,f);return [PHASE[ph]?.[0],inW(m.armor,f)&&'hyper armor',inW(m.iframes,f)&&'i-frames'].filter(Boolean).join(' · ')}
+
+// ---------- left: game catalogue ----------
+const letterOf=n=>{const c=n.replace(/^(the|a)\s+/i,'').charAt(0).toUpperCase();return /[A-Z]/.test(c)?c:'#'};
+function renderCatalogue(){
+  const q=st.q.trim().toLowerCase(),words=q.split(/\s+/).filter(Boolean);
+  const rows=GAMES.map(g=>{
+    const d=DATA.get(g.id),hits=[];
+    if(words.length){
+      const inName=words.every(w=>g.name.toLowerCase().includes(w));
+      if(d)for(const c of d.classes){const hay=(c.name+' '+c.weapons.join(' ')).toLowerCase();if(words.every(w=>hay.includes(w)||g.name.toLowerCase().includes(w)))hits.push(c)}
+      if(!inName&&!hits.length)return null}
+    return {g,d,hits}}).filter(Boolean).sort((a,b)=>a.g.name.localeCompare(b.g.name));
+  let html='',last='';
+  for(const {g,d,hits} of rows){
+    const L=letterOf(g.name);if(L!==last){html+=`<li class="letter" id="L-${L}">${L}</li>`;last=L}
+    const sub=hits.length?`Matches <b>${hits.slice(0,3).map(c=>esc(c.name)).join(', ')}</b>${hits.length>3?` +${hits.length-3}`:''}`:d?`${d.classes.length} ${esc((d.labels?.classes)||'weapon classes')} · ${d.moves.length.toLocaleString()} moves`:'';
+    html+=`<li><button data-g="${esc(g.id)}" data-c="${hits.length?esc(hits[0].id):''}" aria-current="${g.id===st.game}"><span><span class="gname">${esc(g.name)}</span><small>${sub}</small></span></button></li>`}
+  $('#games').innerHTML=html||'<li class="empty">No game or weapon matches that search.</li>';
+  const have=new Set(rows.map(r=>letterOf(r.g.name)));
+  $('#az').innerHTML=[...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'].map(c=>`<button data-l="${c}" ${have.has(c)?'':'disabled'} aria-label="Jump to ${c}">${c}</button>`).join('')}
+$('#games').onclick=e=>{const b=e.target.closest('button[data-g]');if(!b)return;
+  if(matchMedia('(max-width:1100px)').matches)setCat(false);
+  go(b.dataset.g,b.dataset.c||null,null)};
+$('#az').onclick=e=>{const b=e.target.closest('button[data-l]');if(!b||b.disabled)return;const el=$('#L-'+b.dataset.l);if(el)$('#games').scrollTop=el.offsetTop-$('#games').offsetTop};
+$('#q').oninput=e=>{st.q=e.target.value;renderCatalogue();
+  // class names live in each game's file: load the rest once someone searches, so weapons and characters match too
+  if(st.q.trim())GAMES.forEach(g=>{if(!DATA.has(g.id))loadData(g).then(renderCatalogue)})};
+function setCat(open){$('#lay').classList.toggle('catmin',!open);$('#catBtn').setAttribute('aria-expanded',open);$('#catBtn').title=open?'Collapse the catalogue ( [ )':'Expand the catalogue ( [ )';store.set('spike-cat-min',open?'':'1')}
+$('#catBtn').onclick=()=>setCat($('#lay').classList.contains('catmin'));
+// on narrow screens the open catalogue is a drawer over the page: a tap outside it closes it
+document.addEventListener('click',e=>{if(matchMedia('(max-width:1100px)').matches&&!$('#lay').classList.contains('catmin')&&!e.target.closest('#cat'))setCat(false)},true);
+
+// ---------- data ----------
+async function loadData(g){
+  if(DATA.has(g.id))return DATA.get(g.id);
+  const d=await fetch(g.data).then(r=>r.json());DATA.set(g.id,d);return d}
+async function go(game,cls,move){
+  const my=++seq;
+  const g=GAMES.find(x=>x.id===game)||GAMES.find(x=>x.id==='elden-ring')||GAMES[0];
+  if(G?.id!==g.id){
+    $('#dName').textContent='Loading…';$('#dSrc').textContent=g.name;
+    const [d,ic]=await Promise.all([loadData(g),fetch(g.icons+'icons.json').then(r=>r.ok?r.json():{icons:{}}).catch(()=>({icons:{}}))]);
+    if(my!==seq)return;
+    G=g;D=d;ICONS=ic.icons||{};
+    GR={...GRIP,...Object.fromEntries((D.grips||[]).filter(x=>x.short).map(x=>[x.id,x.short]))};
+    T=Object.fromEntries(D.moveTypes.map((t,i)=>[t.id,{...t,i}]));
+    CL=Object.fromEntries(D.classes.map((c,i)=>[c.id,{...c,i}]));
+    $('#tabsH').textContent=(D.labels?.class)||'Weapon';
+  }
+  st.game=G.id;st.cls=CL[cls]?cls:D.classes[0].id;
+  renderCatalogue();renderTabs();
+  await loadClass(my,move)}
+
+// ---------- top: weapon tabs ----------
+const icon=n=>{const i=n&&ICONS[n];return i?`<img alt="" loading="lazy" src="${esc(G.icons+i.file)}">`:`<span class="ph" aria-hidden="true">${esc((n||'?').replace(/[^A-Za-z]/g,'').slice(0,1))}</span>`};
+function renderTabs(){
+  $('#tabs').innerHTML=D.classes.map(c=>`<button role="tab" data-c="${esc(c.id)}" aria-selected="${c.id===st.cls}" tabindex="${c.id===st.cls?0:-1}">${icon(c.icon||c.name)}${esc(c.name)}</button>`).join('');
+  const t=$('#tabs [aria-selected=true]'),box=$('#tabs');
+  if(t&&(t.offsetLeft<box.scrollLeft||t.offsetLeft+t.offsetWidth>box.scrollLeft+box.clientWidth))box.scrollLeft=t.offsetLeft-24}
+$('#tabs').onclick=e=>{const b=e.target.closest('[data-c]');if(b&&b.dataset.c!==st.cls)go(G.id,b.dataset.c,null)};
+$('#tabs').onkeydown=e=>{if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;e.preventDefault();e.stopPropagation();
+  const i=D.classes.findIndex(c=>c.id===st.cls),n=D.classes[(i+(e.key==='ArrowRight'?1:-1)+D.classes.length)%D.classes.length];
+  go(G.id,n.id,null).then(()=>$('#tabs [aria-selected=true]')?.focus())};
+
+// ---------- centre: viewer ----------
+async function loadClass(my,move){
+  const mod=await import(G.models?VIEWER:G.sprites?VIEWER2D:CLIPVIEWER);
+  CM=byClass()?await mod.classData(byClass(),st.cls).catch(()=>null):null;
+  if(my!==seq)return;
+  // only moves the viewer can play: the class's default moveset that the export covers (or that has a clip)
+  const ok=m=>byClass()?!!CM?.moves[m.id]:!!m.clips?.length;
+  MOVES=D.moves.filter(m=>m.class===st.cls&&m.default&&ok(m)).sort((a,b)=>T[a.type].i-T[b.type].i);
+  if(VIEWGAME!==G.id){VIEW?.dispose();VIEW=null;VIEWGAME=G.id;$('#view').innerHTML='';
+    if(byClass()||G.clips)VIEW=await mod.createViewer($('#view'),byClass()||G.clips);
+    // the 3D viewer has its own Help panel; the others list their keys under the bar, behind the ? button
+    $('#keysBtn').hidden=!!$('#view .v3d-help-toggle')}
+  if(my!==seq)return;
+  if(!MOVES.length){CUR=null;renderInfo();$('#dName').textContent=CL[st.cls].name;$('#dSrc').textContent=G.name;
+    if(VIEW){VIEW.dispose();VIEW=null;VIEWGAME=null}
+    $('#view').innerHTML=`<div class="empty">No preview for ${esc(CL[st.cls].name)} yet. Its frame data is in <a href="move-explorer.html#game=${esc(G.id)}">Move Explorer</a>.</div>`;writeHash();return}
+  show(MOVES.find(m=>m.id===move)||MOVES[0])}
+async function show(m){
+  CUR=m;writeHash();
+  $('#dSrc').textContent=`${G.name} › ${CL[m.class].name} › ${T[m.type].name} · ${GR[m.grip]||m.grip}`;
+  $('#dName').textContent=$('#dName').title=m.name;
+  renderInfo();
+  const state=f=>{infoFrame(m,f);return frameState(m,f)};
+  if(byClass())await VIEW.show(m,{strip:stripHtml(m,CM.moves[m.id].frames),state});
+  else await VIEW.show(m,{strip:n=>stripHtml(m,n),state})}
+$('#fsBtn').onclick=()=>document.fullscreenElement?document.exitFullscreen():$('#disp').requestFullscreen?.();
+$('#keysBtn').onclick=e=>{const on=$('#view').classList.toggle('keys');e.currentTarget.setAttribute('aria-pressed',on)};
+
+// ---------- right: info display ----------
+const OPEN=new Set((store.get('spike-secs')??'timing,cancels,moves').split(',').filter(Boolean));
+const CANCELS=[['attack','Attack'],['dodge','Dodge / roll'],['block','Block'],['skill','Skill'],['item','Item'],['move','Walk / run']];
+function sec(id,title,meta,body){return body?`<details class="sec" data-s="${id}"${OPEN.has(id)?' open':''}><summary><span>${title}</span>${meta?`<em>${meta}</em>`:''}</summary><div class="secb">${body}</div></details>`:''}
+function renderInfo(){
+  const m=CUR;$('#iF').textContent='–';$('#iPh').textContent=$('#iArm').textContent='';
+  const row=(l,v,attr='')=>`<div class="r"${attr}><span>${esc(l)}</span><b>${esc(v)}</b></div>`;
+  let h='';
+  if(m){
+    const c=CL[m.class],dm=m.damage||{},win=a=>a.map(([s,e])=>s===e?s:`${s}–${e}`).join(', '),sgn=v=>typeof v==='number'&&v>0?'+'+v:v;
+    const can=CANCELS.filter(([k])=>m.cancels[k]);
+    const adv=[['blockAdv','On block'],['hitAdv','On hit']].filter(([k])=>m[k]!=null);
+    const dmg=[['type','Damage type'],['amount','Damage'],['stun','Stun'],['guard','Guard'],['mv','Motion value'],['poise','Poise damage'],['level','Damage level'],['stamina','Stamina']].filter(([k])=>dm[k]!=null&&dm[k]!=='');
+    const url=m.url||D.source.moveUrl?.replace('{id}',m.id);
+    h+=sec('timing','Timing',`${D.game.fps} fps · ${m.total??'?'} frames`,
+      `<p class="who">${esc(c.name)} › ${esc(T[m.type].name)} · <code>${esc(m.id)}</code></p>`+
+      (m.active.length?row('Startup',m.startup??'—',' data-ph="startup"')+row('Active',win(m.active)+(m.hits>1?` · ${m.hits} hits`:''),' data-ph="active"')+(m.recovery!=null?row('Recovery',m.recovery+' frames',' data-ph="recovery"'):''):'<p class="note">No hitbox in this move.</p>')+
+      (m.armor.length?row('Hyper armor',win(m.armor),' data-arm'):'')+(m.iframes.length?row('I-frames',win(m.iframes)):'')+row('Total',m.total??'—'));
+    h+=sec('cancels','Cancels',can.length?`${can.length} windows`:m.cancelTo?.length?m.cancelTo.join(' '):'',
+      can.length?`<p class="note">Each colour is a line on the timeline from the frame the cancel opens.</p>`+can.map(([k,l])=>row(l,'from '+m.cancels[k],` data-can="${m.cancels[k]}" style="--c:var(--cx-${k})"`)).join(''):m.cancelTo?.length?`<p class="who">${esc(m.cancelTo.join(', '))}</p>`:'');
+    h+=sec('damage',adv.length?'Damage & advantage':'Damage','',(adv.map(([k,l])=>row(l,sgn(m[k]))).join('')+dmg.map(([k,l])=>row(l,dm[k])).join(''))||'');
+  }
+  if(MOVES.length){
+    let mv='',t=null;
+    for(const x of MOVES){if(x.type!==t){t=x.type;mv+=`<h4>${esc(T[t].name)}</h4>`}
+      mv+=`<button data-m="${esc(x.id)}" aria-current="${x===m}"><span>${esc(x.name)}</span><i>${x.startup??'–'}f</i></button>`}
+    h+=sec('moves',`${esc(CL[st.cls].name)} moves`,`${MOVES.length}`,`<div class="mv">${mv}</div>`)}
+  if(m){const url=m.url||D.source.moveUrl?.replace('{id}',m.id);
+    h+=sec('source','Source','',`<p class="who">${esc(D.source.name)}${D.source.author?` · ${esc(D.source.author)}`:''}</p>${url?`<a href="${esc(url)}" target="_blank" rel="noopener">Open in ${esc(D.source.moveName||D.source.name)} ↗</a><br>`:''}<a href="move-explorer.html#game=${esc(G.id)}">Full table in Move Explorer</a>`)}
+  $('#secs').innerHTML=h;
+  // keep the move on show in sight, scrolling only the panel (on narrow screens the panel is part of the page)
+  const box=$('#info'),r=$('#secs .mv [aria-current=true]');
+  if(r&&box.scrollHeight>box.clientHeight){const top=r.offsetTop,bot=top+r.offsetHeight-box.clientHeight;if(box.scrollTop>top-40)box.scrollTop=top-40;else if(box.scrollTop<bot+8)box.scrollTop=bot+8}}
+function infoFrame(m,f){
+  if(CUR!==m)return;
+  const [ph,hit]=phaseAt(m,f),p=PHASE[ph];
+  $('#iF').textContent=f;
+  $('#iPh').textContent=p?p[0]+(ph==='active'&&m.hits>1?` · hit ${hit} of ${m.hits}`:''):'';
+  $('#iPh').style.setProperty('--ph',p?`var(${p[1]})`:'');
+  $('#iArm').textContent=inW(m.armor,f)?'Hyper armor':'';
+  const on=ph==='gap'?'active':ph==='free'?'recovery':ph;
+  document.querySelectorAll('#secs [data-ph]').forEach(r=>r.classList.toggle('on',r.dataset.ph===on));
+  document.querySelector('#secs [data-arm]')?.classList.toggle('on',inW(m.armor,f));
+  document.querySelectorAll('#secs [data-can]').forEach(r=>r.classList.toggle('open',f>=+r.dataset.can))}
+$('#secs').addEventListener('toggle',e=>{const s=e.target.dataset?.s;if(!s)return;e.target.open?OPEN.add(s):OPEN.delete(s);store.set('spike-secs',[...OPEN].join(','))},true);
+$('#secs').onclick=e=>{const b=e.target.closest('button[data-m]');if(b){const m=MOVES.find(x=>x.id===b.dataset.m);if(m&&m!==CUR)show(m)}};
+
+// ---------- keys and links ----------
+document.addEventListener('keydown',e=>{
+  if(e.target.closest('input,select,textarea'))return;
+  if(e.key==='['&&!e.ctrlKey&&!e.metaKey){setCat($('#lay').classList.contains('catmin'));return}
+  if((e.key==='ArrowUp'||e.key==='ArrowDown')&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&CUR&&!e.target.closest('#games,#tabs')){
+    const i=MOVES.indexOf(CUR),n=MOVES[i+(e.key==='ArrowDown'?1:-1)];if(n){e.preventDefault();show(n)}}});
+function writeHash(){history.replaceState(null,'',`#game=${encodeURIComponent(st.game)}&cls=${encodeURIComponent(st.cls)}${CUR?`&move=${encodeURIComponent(CUR.id)}`:''}`)}
+function fromHash(){const p=new URLSearchParams(location.hash.slice(1));return [p.get('game'),p.get('cls'),p.get('move')]}
+addEventListener('hashchange',()=>{const [g,c,m]=fromHash();if(g!==st.game||c!==st.cls||m!==CUR?.id)go(g,c,m)});
+
+(async()=>{
+  setCat(!(store.get('spike-cat-min')==='1'||matchMedia('(max-width:1100px)').matches));
+  GAMES=(await fetch('frame-data/games.json').then(r=>r.json())).games;
+  renderCatalogue();
+  const [g,c,m]=fromHash();await go(g,c,m)})();
+</script>
+</body>
+</html>

@@ -58,6 +58,10 @@ The site has three apps, switched from the header, each at a URL named after it:
 shared links) forwards to `move-explorer.html` with the link's game and move. Both are small redirect pages, and
 `server.js` and `serve_local.py` redirect the same paths.
 
+`layout-spike.html` is a layout experiment, not linked from the app bar: Move Explorer's data and viewers in three
+panels (a collapsible A–Z game catalogue, weapon tabs over the viewer, and an info panel of collapsible sections), for
+comparison before any change to the main layout.
+
 Move Explorer has per-move frame data (startup, active, recovery, cancels, hyper armor, damage), starting
 with Elden Ring: browse by weapon class and weapon (icon index), then by move type, or sort and filter every class at once.
 It is a static page that loads `frame-data/games.json` and one JSON file per game, so it works on GitHub Pages, `server.js`
