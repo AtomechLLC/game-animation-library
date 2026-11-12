@@ -85,7 +85,7 @@ const server = http.createServer(async (req, res) => {
     if (p === '/move-explorer' || p === '/move-explorer.html') return serveFile(res, '/move-explorer.html', '', { '.html': 'text/html; charset=utf-8' }, 0);
     // Trends: compares the frame data of every game, from the same files
     if (p === '/trends' || p === '/trends.html') return serveFile(res, '/trends.html', '', { '.html': 'text/html; charset=utf-8' }, 0);
-    // Layout preview: a three-panel take on Move Explorer over the same files, linked from the app bar while it is compared
+    // Previewer: a three-panel take on Move Explorer over the same files, linked from the app bar while it is compared
     if (p === '/layout-spike' || p === '/layout-spike.html') return serveFile(res, '/layout-spike.html', '', { '.html': 'text/html; charset=utf-8' }, 0);
     // the game list and per-game JSON change with every import, so browsers recheck them; models, icons and clips keep an hour
     if (p.startsWith('/frame-data/')) return serveFile(res, p, 'frame-data', FRAME_TYPES, p.endsWith('.json') ? 0 : 3600);

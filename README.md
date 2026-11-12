@@ -58,7 +58,7 @@ The site has three apps, switched from the header, each at a URL named after it:
 shared links) forwards to `move-explorer.html` with the link's game and move. Both are small redirect pages, and
 `server.js` and `serve_local.py` redirect the same paths.
 
-`layout-spike.html` (**Layout preview** in the app bar) is a layout experiment: Move Explorer's data and viewers in three
+`layout-spike.html` (**Previewer** in the app bar) is a layout experiment: Move Explorer's data and viewers in three
 panels (a collapsible A–Z game catalogue, every weapon class as an icon tile over the viewer, and an info panel of collapsible sections), for
 comparison before any change to the main layout.
 
