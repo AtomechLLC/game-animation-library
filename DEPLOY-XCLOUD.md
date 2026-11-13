@@ -47,18 +47,24 @@ Then check `.env`:
 
 ## 3. Upload size
 
-GIF and WebP submissions can be up to `MAX_UPLOAD_MB` (8 MB by default), short videos up to `VIDEO_MAX_MB` (25 MB).
-If xCloud lets you edit the site's Nginx config, set `client_max_body_size 30m;` so video uploads aren't cut off by
+Every submitted clip (GIF, WebP, MP4, MOV or WebM) must fit three caps, shown on the submit form and checked both in
+the browser and on the server: `UPLOAD_MAX_MB` (4 MB), `UPLOAD_MAX_SECONDS` (8 s) and `UPLOAD_MAX_SIDE` (1920 px on the
+longest side). They keep clips focused on one action, and because the server does the compressing (section 4),
+submitters never need to. A clip from a submitted link may be up to `LINK_MAX_MB` (16 MB) before conversion, since
+Giphy and Tenor originals run large; length and resolution caps still apply. The older `MAX_UPLOAD_MB`,
+`VIDEO_MAX_MB` and `VIDEO_MAX_SECONDS` settings are no longer read, so delete them from `.env`.
+If xCloud lets you edit the site's Nginx config, set `client_max_body_size 8m;` so uploads aren't cut off by
 Nginx before they reach the app (Nginx's default is only 1 MB; the visitor then sees "Not sent").
 
-## 4. Video uploads (ffmpeg)
+## 4. Conversion to one format (ffmpeg)
 
-Visitors can upload a short video (MP4, MOV, WebM, MKV or AVI, up to `VIDEO_MAX_SECONDS`, 10 s by default) instead of
-a GIF. The app turns it into an animated WebP like the rest of the library (or a GIF if ffmpeg has no WebP encoder),
-scaled so its longest side is at most `VIDEO_SIZE` (480 px) at `VIDEO_FPS` (15 fps), without sound. The upload request
-only checks the length and saves the video; the conversion runs right after in the background, one at a time at low
-CPU priority, and the review page shows "Converting video to GIF…" until it is ready to approve. The original video is
-deleted once its GIF exists. Videos linked from a page (for example a Giphy page's MP4) are converted the same way.
+Every submission ends up as an animated WebP, like the rest of the library. GIFs and short videos (MP4, MOV, WebM, MKV
+or AVI) are converted (or turned into a GIF if ffmpeg has no WebP encoder), scaled so the longest side is at most
+`VIDEO_SIZE` (480 px) at `VIDEO_FPS` (15 fps), without sound. A WebP is stored as sent, since it is already in that
+format (ffmpeg can't decode animated WebP). The upload request only checks the caps and saves the file; the conversion
+runs right after in the background, one at a time at low CPU priority, and the review page shows "Converting to WebP…"
+until it is ready to approve. The original is deleted once its WebP exists. Clips linked from a page (for example a
+Giphy page's GIF or MP4) are converted the same way. If a GIF fails to convert, it is kept as sent.
 
 This needs the `ffmpeg` program, and **the app sets it up for you**: when it starts and finds no ffmpeg, it runs
 `tools/install-ffmpeg.js` in the background, which downloads a static ffmpeg build (about 150 MB, from
@@ -79,7 +85,7 @@ sudo apt update && sudo apt install -y ffmpeg
 The app uses `FFMPEG_PATH` from `.env` if set, else `ffmpeg` on the PATH (the apt package), else the downloaded copy.
 Restart the app after installing by hand. If ffmpeg can't be found or downloaded, the log says
 `Video uploads: OFF, ffmpeg was not found` and the review page says so too; the form then only offers GIF, WebP and MP4
-(an MP4 is kept as a video, as before), and other video files are refused with a clear message.
+(stored as sent, still within the caps), and other video files are refused with a clear message.
 
 ## 5. What is public
 
@@ -126,14 +132,14 @@ public page until you approve them there. You can:
   Approving does not change the page by itself: **Export approved proposals** downloads them as `taxonomy.txt` lines
   grouped by category (with a header for a new category), to paste into `taxonomy.txt` and rebuild (see README).
 
-A submitted video shows **Converting video to GIF…** until its GIF is made, then **Converted from MP4 video, 4.2 s**
-(or similar) under it, and can be approved like any GIF. If a conversion fails the card says why; **Delete** it.
+A submitted GIF or video shows **Converting to WebP…** until its WebP is made, then **Converted from MP4 video, 4.2 s,
+1280×720** (or similar) under it, and can be approved like any GIF. If a conversion fails the card says why; **Delete** it.
 
 **Where submissions are stored.** Uploads *and* links are saved on the site: a submitted Giphy/Tenor page or direct
 .gif/.webp/.mp4 link is downloaded when it is sent, so what you approve is exactly what is shown and a link can't be
 swapped for something else later. Files go to `DATA_DIR/uploads` under random names and are only served through
 `/api` (approved only) or `/admin` (signed in). The downloader only fetches public addresses on ports 80/443 and stops
-at `MAX_UPLOAD_MB`.
+at `LINK_MAX_MB`.
 
 The review page signs you in for 12 hours with a cookie; **Sign out** ends it early. Ten wrong passwords in an hour
 from one address are locked out for the rest of that hour.

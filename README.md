@@ -179,8 +179,8 @@ Clips added later to fill empty or single-clip entries are listed under `added` 
 ## Community features (xCloud / any Node.js host)
 
 `server.js` (Node.js 20+, no dependencies) serves the atlas with voting (▲/▼ on every GIF), "Suggest a replacement" /
-"Suggest a GIF" (link or file upload, including short videos that are converted to a GIF with ffmpeg,
-which the app downloads if needed), and an owner
+"Suggest a GIF" (link or file upload of a GIF, WebP, MP4, MOV or WebM, capped at 4 MB, 8 s and 1920 px; GIFs and videos
+are converted to an animated WebP with ffmpeg, which the app downloads if needed), and an owner
 review page at `/admin`. Submitted GIFs (uploads and links) are
 stored on the site and stay hidden until approved; an approved replacement takes the original GIF's place on the page.
 GIFs that collect enough downvotes are flagged and queued for a Giphy/Tenor replacement search; candidates wait for
