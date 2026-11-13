@@ -16,7 +16,8 @@ const { countryOf } = require('./lib/geo');
 const TYPES = { '.webp': 'image/webp', '.gif': 'image/gif', '.png': 'image/png', '.jpg': 'image/jpeg', '.mp4': 'video/mp4' };
 const FRAME_TYPES = { '.json': 'application/json; charset=utf-8', '.webp': 'image/webp', '.png': 'image/png',
   '.js': 'text/javascript; charset=utf-8', '.glb': 'model/gltf-binary', '.bin': 'application/octet-stream' };
-const SHARED_TYPES = { '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8' };
+const SHARED_TYPES = { '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8',
+  '.jpg': 'image/jpeg', '.webp': 'image/webp' }; // images: the site preview in shared/preview/
 
 /**
  * template.html + library.json, with community features pointed at /api. Same output as build_page.py,
@@ -90,7 +91,7 @@ const server = http.createServer(async (req, res) => {
     if (p === '/layout-spike' || p === '/layout-spike.html') return serveFile(res, '/layout-spike.html', '', { '.html': 'text/html; charset=utf-8' }, 0);
     // the game list and per-game JSON change with every import, so browsers recheck them; models, icons and clips keep an hour
     if (p.startsWith('/frame-data/')) return serveFile(res, p, 'frame-data', FRAME_TYPES, p.endsWith('.json') ? 0 : 3600);
-    // code every app loads (the ruler); the pages link it with a version, so an hour of caching is safe
+    // code every app loads (the ruler; the pages link it with a version, so an hour of caching is safe) and the site preview
     if (p.startsWith('/shared/')) return serveFile(res, p, 'shared', SHARED_TYPES, 3600);
     // sitemap.xml lists the three app pages; robots.txt points crawlers at it and away from the API and review page
     if (p === '/sitemap.xml') return serveFile(res, '/sitemap.xml', '', { '.xml': 'application/xml; charset=utf-8' }, 3600);
