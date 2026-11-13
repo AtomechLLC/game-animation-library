@@ -132,6 +132,7 @@ aside h2{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transf
 .sug .hp{position:absolute;left:-9999px}
 .sug button[type=submit]{border:0;background:var(--key);color:#1c1b19;border-radius:4px;padding:6px 14px;cursor:pointer;font-weight:600}
 .sug .msg{font-size:12px}
+.sug .caps{font-size:12px;color:var(--muted)}
 .sug .dupes{font-size:12px;border:1px solid var(--key);border-left-width:4px;border-radius:4px;padding:6px 10px;background:var(--panel);color:var(--fg)}
 .sug .dupes a{font-weight:600;color:var(--key-ink)}
 .empty a{color:var(--key-ink);font-weight:600}
@@ -230,7 +231,27 @@ st.tagSort=store('atlas.tagSort')==='usage'?'usage':'alphabetical';
 // {local:true} is the owner's workstation copy (serve_local.py) where entries and GIFs can be marked ✕ into marks.json.
 let CFG={};try{CFG=JSON.parse(document.getElementById('cfg').textContent)||{}}catch(e){}
 // needs: entries (animation id) and library GIFs (gkey) the admin marked "needs replacement"; admin: CSRF token when signed in on /admin
-const CS={tally:{},mine:{},community:{},flagged:new Set(),needs:new Set(),admin:null,max:8388608,video:null,on:false};
+const CS={tally:{},mine:{},community:{},flagged:new Set(),needs:new Set(),admin:null,lim:{max_upload:4194304,max_seconds:8,max_side:1920,video:false},on:false};
+// Upload caps from the server; it converts GIFs and videos to an animated WebP, so nobody has to compress anything.
+const clipTypes=()=>CS.lim.video?'GIF, WebP, MP4, MOV or WebM':'GIF, WebP or MP4';
+const clipAccept=()=>CS.lim.video?'.gif,.webp,.mp4,.m4v,.mov,.webm,.mkv,.avi,image/gif,image/webp,video/*':'.gif,.webp,.mp4,image/gif,image/webp,video/mp4';
+const clipCaps=()=>`up to ${+(CS.lim.max_upload/1048576).toFixed(1)} MB, ${CS.lim.max_seconds} seconds and ${CS.lim.max_side} px on the longest side`;
+const clipHint=()=>`<small class="caps">${clipTypes()}, ${clipCaps()}.${CS.lim.video?' We convert it to a compact animated WebP for you, so there is no need to compress it first.':''}</small>`;
+/** Checks a chosen file against the caps before it is sent (the server checks again). Resolves '' or a reason. */
+function checkClip(file){
+  const mb=+(CS.lim.max_upload/1048576).toFixed(1);
+  if(file.size>CS.lim.max_upload)return Promise.resolve(`That file is ${(file.size/1048576).toFixed(1)} MB, the limit is ${mb} MB. Trim it to the action itself, or send a link instead.`);
+  const isVid=/^video\//.test(file.type)||/\.(mp4|m4v|mov|webm|mkv|avi)$/i.test(file.name);
+  return new Promise(res=>{
+    const url=URL.createObjectURL(file),el=isVid?document.createElement('video'):new Image();
+    const done=m=>{clearTimeout(t);URL.revokeObjectURL(url);res(m)},t=setTimeout(()=>done(''),4000);
+    el.onerror=()=>done('');
+    const check=(w,h,sec)=>done(sec>CS.lim.max_seconds+0.5?`That clip is ${sec.toFixed(1)} s long, please trim it to ${CS.lim.max_seconds} s or less.`
+      :Math.max(w,h)>CS.lim.max_side?`That clip is ${w}×${h} px, please send one no larger than ${CS.lim.max_side} px on its longest side.`:'');
+    if(isVid){el.preload='metadata';el.muted=true;el.onloadedmetadata=()=>check(el.videoWidth,el.videoHeight,isFinite(el.duration)?el.duration:0)}
+    else el.onload=()=>check(el.naturalWidth,el.naturalHeight,0);
+    el.src=url});
+}
 let MARKS={marks:[]};
 function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
 const voterToken=(()=>{let t=store('voterToken');if(!t||!/^[A-Za-z0-9_-]{16,64}$/.test(t)){t=Array.from(crypto.getRandomValues(new Uint8Array(24)),b=>b.toString(16).padStart(2,'0')).join('');store('voterToken',t)}return t})();
@@ -284,11 +305,10 @@ function comItem(a,c,tv){
 function sugForm(a,rep){
   const g=a&&rep&&a.gifs.find(x=>gkey(a,x)===rep);
   const pick=a?'':`<label>Which entry is it for?<select name="animation" required><option value="">Choose an entry…</option>${D.categories.map(c=>`<optgroup label="${esc(c.name)}">${A.filter(x=>x.category===c.id).map(x=>`<option value="${esc(x.id)}">${esc(x.name)}</option>`).join('')}</optgroup>`).join('')}</select></label>`;
-  const file=!CS.on?'':CS.video?`<div class="row"><label style="flex:1 1 200px">…or upload a file: a GIF or WebP (up to ${Math.round(CS.max/1048576)} MB), or a short video (MP4, MOV or WebM, up to ${CS.video.max_seconds} s and ${Math.round(CS.video.max_upload/1048576)} MB) that we turn into a GIF<input name="file" type="file" accept=".gif,.webp,.mp4,.m4v,.mov,.webm,.mkv,.avi,image/gif,image/webp,video/*"></label></div>`
-    :`<div class="row"><label style="flex:1 1 200px">…or upload a file (GIF, WebP or MP4, up to ${Math.round(CS.max/1048576)} MB)<input name="file" type="file" accept=".gif,.webp,.mp4,image/gif,image/webp,video/mp4"></label></div>`;
+  const file=!CS.on?'':`<div class="row"><label style="flex:1 1 200px">…or upload a file<input name="file" type="file" accept="${clipAccept()}">${clipHint()}</label></div>`;
   return `<form class="sug" id="sugForm" data-a="${esc(a?a.id:'')}"><b>${g?'Suggest a replacement for “'+esc(g.title||'this GIF')+'”':a?'Submit a better GIF for '+esc(a.name):'Submit a GIF'}</b>
   ${pick}<input type="hidden" name="replaces" value="${esc(g?rep:'')}">
-  <div class="row"><label style="flex:1 1 200px">GIF link (a Giphy or Tenor page, or a direct .gif/.webp/.mp4)<input name="url" type="url" placeholder="https://"></label></div>
+  <div class="row"><label style="flex:1 1 200px">GIF link (a Giphy or Tenor page, or a direct .gif, .webp, .mp4 or .webm)<input name="url" type="url" placeholder="https://"></label></div>
   ${file}<label>Why is it a better example? (optional, shown publicly next to the GIF if it is approved; we may edit it)<textarea name="note" rows="2" maxlength="500"></textarea></label>
   <label>Your name for the credit (optional)<input name="name" maxlength="60"></label>
   <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
@@ -309,7 +329,7 @@ function openSubmit(aid,n){
 // Propose a new animation: an action the library does not cover yet. With the API on it goes to /admin for review
 // (approved ones are exported as taxonomy.txt lines); on the static copy it opens a prefilled GitHub issue.
 function propForm(name){
-  const file=!CS.on?'':`<label>A clip that shows it (optional): a GIF or WebP${CS.video?`, or a short video (MP4, MOV or WebM, up to ${CS.video.max_seconds} s) that we turn into a GIF`:' or MP4'}<input name="file" type="file" accept="${CS.video?'.gif,.webp,.mp4,.m4v,.mov,.webm,.mkv,.avi,image/gif,image/webp,video/*':'.gif,.webp,.mp4,image/gif,image/webp,video/mp4'}"></label>`;
+  const file=!CS.on?'':`<label>A clip that shows it (optional)<input name="file" type="file" accept="${clipAccept()}">${clipHint()}</label>`;
   return `<form class="sug" id="propForm">
   <label>Name of the animation<input name="name" required maxlength="80" placeholder="e.g. Weapon Catch, Ledge Teeter" value="${esc(name||'')}"></label>
   <div class="dupes" id="propDupes" hidden></div>
@@ -468,8 +488,7 @@ document.addEventListener('submit',async e=>{
   if(v('category')==='new')fd.set('category','');else fd.delete('new_category');
   if(!file||!file.size)fd.delete('file');
   if(!v('url'))fd.delete('url');
-  const isVid=file&&file.size&&(/^video\//.test(file.type)||/\.(mp4|m4v|mov|webm|mkv|avi)$/i.test(file.name));
-  if(file&&file.size>(isVid&&CS.video?CS.video.max_upload:CS.max)){msg.textContent='That file is too large.';return}
+  if(file&&file.size){const why=await checkClip(file);if(why){msg.textContent=why;return}}
   f.querySelector('button[type=submit]').disabled=true;msg.textContent=file&&file.size?'Uploading…':'Sending…';
   try{await api('propose',{method:'POST',body:fd});f.outerHTML=`<p class="flagged" style="color:var(--calm);border-color:var(--calm)">Thanks! Your proposal for “${esc(v('name'))}” is waiting for review.</p>`}
   catch(err){msg.textContent='Not sent: '+err.message;f.querySelector('button[type=submit]').disabled=false}
@@ -483,10 +502,9 @@ document.addEventListener('submit',async e=>{
   if(!file||!file.size)fd.delete('file');
   if(!url)fd.delete('url');
   if(!url===!(file&&file.size)){msg.textContent='Add a link or a file (just one).';return}
-  const isVid=file&&file.size&&(/^video\//.test(file.type)||/\.(mp4|m4v|mov|webm|mkv|avi)$/i.test(file.name));
-  if(file&&file.size>(isVid&&CS.video?CS.video.max_upload:CS.max)){msg.textContent='That file is too large.';return}
-  f.querySelector('button[type=submit]').disabled=true;msg.textContent=isVid&&CS.video?'Uploading video…':'Sending…';
-  try{await api('submit',{method:'POST',body:fd});f.outerHTML=`<p class="flagged" style="color:var(--calm);border-color:var(--calm)">Thanks! Your suggestion is waiting for review.${isVid&&CS.video?' Your video is being turned into a GIF for it.':''}</p>`}
+  if(file&&file.size){const why=await checkClip(file);if(why){msg.textContent=why;return}}
+  f.querySelector('button[type=submit]').disabled=true;msg.textContent=file&&file.size?'Uploading…':'Sending…';
+  try{await api('submit',{method:'POST',body:fd});f.outerHTML=`<p class="flagged" style="color:var(--calm);border-color:var(--calm)">Thanks! Your suggestion is waiting for review.</p>`}
   catch(err){msg.textContent='Not sent: '+err.message;f.querySelector('button[type=submit]').disabled=false}
 });
 async function boot(){
@@ -495,7 +513,7 @@ async function boot(){
     try{const r=await fetch((CFG.marks||'marks.json')+'?t='+Date.now());if(r.ok)MARKS=await r.json();MARKS.marks=MARKS.marks||[]}catch(e){}
   }
   if(CFG.api){
-    try{const s=await api('state');Object.assign(CS,{tally:s.tally||{},mine:s.mine||{},community:s.community||{},flagged:new Set(s.flagged||[]),needs:new Set((s.needs||[]).map(n=>n.gif||n.animation)),admin:s.admin||null,max:s.max_upload||CS.max,video:s.video||null,on:true});$('#flagOnly').hidden=!CS.flagged.size;if(CS.admin)$('#mode').textContent=' · signed in as admin'}
+    try{const s=await api('state');Object.assign(CS,{tally:s.tally||{},mine:s.mine||{},community:s.community||{},flagged:new Set(s.flagged||[]),needs:new Set((s.needs||[]).map(n=>n.gif||n.animation)),admin:s.admin||null,lim:s.limits||CS.lim,on:true});$('#flagOnly').hidden=!CS.flagged.size;if(CS.admin)$('#mode').textContent=' · signed in as admin'}
     catch(e){console.warn('Community features unavailable:',e)}
   }
   render();route();
