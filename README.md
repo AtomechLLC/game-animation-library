@@ -61,6 +61,10 @@ shared links) forwards to `move-explorer.html` with the link's game and move. Bo
 `layout-spike.html` (**Previewer** in the app bar) is a layout experiment: Move Explorer's data and viewers in three
 panels (a collapsible A–Z game catalogue, every weapon class as an icon tile over the viewer, and an info panel of collapsible sections), for
 comparison before any change to the main layout.
+The Previewer tab is hidden for visitors in Austria: `shared/appbar.js` hides it when the browser's time zone is
+Vienna, or when the site server's `/geo.json` says the visitor's IP is Austrian. The server checks the IP against
+`lib/geo-at.json`, RIPE NCC's Austrian address delegations; refresh it with `python3 tools/geo/build_at_ranges.py`.
+GitHub Pages has no `/geo.json`, so only the time zone check applies there. The page's own address still opens.
 
 Move Explorer has per-move frame data (startup, active, recovery, cancels, hyper armor, damage), starting
 with Elden Ring: browse by weapon class and weapon (icon index), then by move type, or sort and filter every class at once.

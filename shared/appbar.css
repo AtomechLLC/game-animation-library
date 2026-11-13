@@ -56,3 +56,4 @@
 @media (prefers-reduced-motion:reduce){.theme-track,.theme-thumb{transition:none}}
 .theme-toggle:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 @media (max-width:820px){.theme-toggle{order:0;margin-bottom:6px}.apps{order:1;flex-basis:100%}}
+.apps a[hidden]{display:none}
