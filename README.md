@@ -2,6 +2,8 @@
 
 *learn from the legends of combat design*
 
+[![Action Atlas scrolling through its game animation clips](shared/preview/site-preview.webp)](https://gameanimationlibrary.com)
+
 A catalogue of 338 video game animations across 21 categories (combat and non-combat), each with a description, tags, example games, web references and GIF examples. `template.html` renders it as a browsable page (the "atlas").
 
 ## Running a local server
@@ -49,6 +51,14 @@ memory, deployment size) in an installed Chrome and writes a JSON file; `--base`
 `--only` picks scenarios. The baseline and how to read it are in `docs/reports/performance-2026-10/baseline.md`.
 
 The app switcher icons (Atlas, High kick and Histogram) are by Delapouite from [game-icons.net](https://game-icons.net/), under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/); each app's footer credits them.
+
+### Site preview image
+
+`shared/preview/site-preview.webp` (the animated scroll at the top of this README) and `site-preview.jpg` (its first
+frame, 1200×630) show Action Atlas scrolling through its clips. Every app page and `index.html` name the JPG as
+`og:image`, because LinkedIn and most other platforms show only a still in link previews. To remake both after the
+page changes, run `node tools/site_preview/capture.js` (Playwright and ffmpeg with libwebp; pass another URL to record a
+local server). `server.js` serves `shared/` JPG and WebP files for them.
 
 ## Move Explorer
 
