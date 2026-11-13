@@ -10,7 +10,8 @@ const admin = require('./lib/admin');
 const { searchFlagged } = require('./lib/media');
 const video = require('./lib/video');
 const store = require('./lib/store');
-const { send } = require('./lib/http');
+const { send, json, clientIp } = require('./lib/http');
+const { countryOf } = require('./lib/geo');
 
 const TYPES = { '.webp': 'image/webp', '.gif': 'image/gif', '.png': 'image/png', '.jpg': 'image/jpeg', '.mp4': 'video/mp4' };
 const FRAME_TYPES = { '.json': 'application/json; charset=utf-8', '.webp': 'image/webp', '.png': 'image/png',
@@ -94,6 +95,9 @@ const server = http.createServer(async (req, res) => {
     // sitemap.xml lists the three app pages; robots.txt points crawlers at it and away from the API and review page
     if (p === '/sitemap.xml') return serveFile(res, '/sitemap.xml', '', { '.xml': 'application/xml; charset=utf-8' }, 3600);
     if (p === '/robots.txt') return send(res, 200, `User-agent: *\nDisallow: /api\nDisallow: /admin\nSitemap: https://${SITE_HOST}/sitemap.xml\n`, { 'Content-Type': 'text/plain; charset=utf-8' });
+    // the visitor's country, when it is one the site treats differently (only Austria: shared/appbar.js hides the
+    // Previewer tab there); '' otherwise. Per visitor, so never cached
+    if (p === '/geo.json') return json(res, 200, { country: countryOf(clientIp(req)) });
     if (p === '/healthz') return send(res, 200, 'ok');
     send(res, 404, 'Not found');
   } catch (e) {
